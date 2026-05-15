@@ -1,4 +1,4 @@
-# AdSense and SEO Setup
+﻿# AdSense and SEO Setup
 
 This project is now prepared as a free public learning site with ad placements and SEO pages.
 
@@ -6,7 +6,7 @@ This project is now prepared as a free public learning site with ad placements a
 
 1. Publish the site on the final domain.
 2. Update every canonical URL in the HTML files from:
-   `https://palestinianarabiclab.github.io/palestinianarabiclab/`
+   `https://palestinianarabiclab.vercel.app/`
    to the final domain.
 3. Update `robots.txt` and `sitemap.xml` with the final domain.
 4. Keep `privacy.html` and `terms.html` published and linked.

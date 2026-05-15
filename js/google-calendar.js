@@ -8,6 +8,14 @@ let refreshToken = null;
 let calendarId = 'primary';
 window.preplyCalendarId = null; // Will be set from Firebase or user input
 
+function hasGoogleCalendarConfig() {
+    return !!(
+        window.googleCalendarConfig &&
+        window.googleCalendarConfig.clientId &&
+        window.googleCalendarConfig.apiKey
+    );
+}
+
 function normalizeCalendarId(value) {
     const raw = (value || "").trim();
     if (!raw) return "";
@@ -41,6 +49,7 @@ function getPartsInTimeZone(date, timeZone) {
 }
 
 async function getCurrentTeacherDoc() {
+    if (typeof firebase === "undefined" || !firebase.apps?.length) return null;
     const user = firebase.auth().currentUser;
     if (!user) return null;
     const teacherDoc = await firebase.firestore().collection('teachers').doc(user.uid).get();
@@ -233,6 +242,10 @@ async function ensureGoogleCalendarAccess({ interactive = false } = {}) {
 
 // Auto-initialize when script loads
 window.addEventListener('DOMContentLoaded', async () => {
+    if (!hasGoogleCalendarConfig()) {
+        console.info("Google Calendar config is not set. Calendar integration is disabled.");
+        return;
+    }
     console.log("Initializing Google Calendar API...");
     try {
         const ok = await initializeGoogleCalendar();
@@ -248,6 +261,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 // Global initialization functions called from HTML
 window.handleClientLoad = async function() {
+    if (!hasGoogleCalendarConfig()) return;
     try {
         await gapiLoaded();
         console.log('Google API client loaded successfully');
@@ -257,6 +271,7 @@ window.handleClientLoad = async function() {
 };
 
 window.handleGisLoad = async function() {
+    if (!hasGoogleCalendarConfig()) return;
     try {
         await gisLoaded();
         console.log('Google Identity Services loaded successfully');
@@ -267,6 +282,7 @@ window.handleGisLoad = async function() {
 
 // Initialize Google API
 async function initializeGoogleCalendar() {
+    if (!hasGoogleCalendarConfig()) return false;
     try {
         // Load GAPI client
         await gapiLoaded();
@@ -284,6 +300,8 @@ async function initializeGoogleCalendar() {
 // Load GAPI client
 function gapiLoaded() {
     return new Promise((resolve, reject) => {
+        if (!hasGoogleCalendarConfig()) return resolve(false);
+        if (typeof gapi === "undefined") return resolve(false);
         gapi.load('client', () => {
             try {
                 gapiInited = true;
@@ -298,6 +316,8 @@ function gapiLoaded() {
 // Load GIS client
 function gisLoaded() {
     return new Promise((resolve, reject) => {
+        if (!hasGoogleCalendarConfig()) return resolve(false);
+        if (typeof google === "undefined" || !google.accounts?.oauth2) return resolve(false);
         tokenClient = google.accounts.oauth2.initTokenClient({
             client_id: googleCalendarConfig.clientId,
             scope: googleCalendarConfig.scopes,

@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://palestinianarabiclab.github.io/palestinianarabiclab/sitemap.xml
+Sitemap: https://palestinianarabiclab.vercel.app/sitemap.xml

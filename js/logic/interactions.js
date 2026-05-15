@@ -598,7 +598,8 @@ function updateFloatingChatVisibility() {
 }
 
 // =============== AUTH STATE LISTENER =================
-	auth.onAuthStateChanged(async (user) => {
+if (window.auth && typeof window.auth.onAuthStateChanged === "function") {
+	window.auth.onAuthStateChanged(async (user) => {
 	    if (!user) {
 	        if (!isGuestUser()) {
 	            startFreeLearning({ navigate: false });
@@ -678,7 +679,11 @@ function updateFloatingChatVisibility() {
     } catch (err) {
         console.error("auth.onAuthStateChanged error:", err);
     }
-});
+    });
+} else {
+    startFreeLearning({ navigate: false });
+    updateAuthUI();
+}
 
 // =======================
 // Translation Sentence Generator (from lesson vocabulary)
@@ -7714,7 +7719,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             showScreen("home-screen");
             return;
         }
-        auth.signOut();
+        window.auth?.signOut?.();
     });
 
     document.getElementById("authForm").addEventListener("submit", async (e) => {
@@ -7744,7 +7749,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
                 // المدرّس: sign in ثم sign up لو مش موجود
                 try {
-                    cred = await auth.signInWithEmailAndPassword(email, password);
+                    if (!window.auth) throw new Error("Teacher login is not configured on this deployment.");
+                    cred = await window.auth.signInWithEmailAndPassword(email, password);
                 } catch (err) {
                     if (err.code === "auth/user-not-found") {
                         if (errorBox) {
@@ -7758,7 +7764,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 // الطالب: فقط تسجيل دخول بحساب جاهز
                 try {
-                    cred = await auth.signInWithEmailAndPassword(email, password);
+                    if (!window.auth) throw new Error("Student login is not configured on this deployment.");
+                    cred = await window.auth.signInWithEmailAndPassword(email, password);
                 } catch (err) {
                     if (err.code === "auth/user-not-found") {
                         if (errorBox) {
@@ -7783,7 +7790,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	            });
 
 	            if (role === "student" && resolvedRole === "teacher") {
-	                await auth.signOut();
+	                await window.auth?.signOut?.();
 	                if (errorBox) errorBox.textContent = "This email belongs to a teacher account. Please sign in as Teacher.";
 	                return;
 	            }
@@ -7791,7 +7798,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	            let finalRole = resolvedRole;
 	            if (role === "teacher") {
 	                if (resolvedRole !== "teacher") {
-	                    await auth.signOut();
+	                    await window.auth?.signOut?.();
 	                    if (errorBox) errorBox.textContent = "This account is not approved as a teacher.";
 	                    return;
 	                }
@@ -7931,7 +7938,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
     // initial
-    if (!auth.currentUser && !isGuestUser()) {
+    if (!window.auth?.currentUser && !isGuestUser()) {
         startFreeLearning({ navigate: false });
     }
     renderStudents();

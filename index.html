@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Free Palestinian Arabic lessons, phrases, pronunciation practice, and trial lesson booking for beginners learning spoken Arabic online." />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://palestinianarabiclab.github.io/palestinianarabiclab/" />
-    <link rel="alternate" hreflang="en" href="https://palestinianarabiclab.github.io/palestinianarabiclab/" />
-    <link rel="alternate" hreflang="ar" href="https://palestinianarabiclab.github.io/palestinianarabiclab/ar.html" />
-    <link rel="alternate" hreflang="x-default" href="https://palestinianarabiclab.github.io/palestinianarabiclab/" />
+    <link rel="canonical" href="https://palestinianarabiclab.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://palestinianarabiclab.vercel.app/" />
+    <link rel="alternate" hreflang="ar" href="https://palestinianarabiclab.vercel.app/ar.html" />
+    <link rel="alternate" hreflang="x-default" href="https://palestinianarabiclab.vercel.app/" />
     <meta property="og:title" content="Learn Palestinian Arabic Online" />
     <meta property="og:description" content="Practice Palestinian Arabic with free beginner lessons, everyday phrases, and guided exercises." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://palestinianarabiclab.github.io/palestinianarabiclab/" />
+    <meta property="og:url" content="https://palestinianarabiclab.vercel.app/" />
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -24,7 +24,7 @@
             "provider": {
                 "@type": "Organization",
                 "name": "Palestinian Arabic Lab",
-                "url": "https://palestinianarabiclab.github.io/palestinianarabiclab/"
+                "url": "https://palestinianarabiclab.vercel.app/"
             }
         }
     </script>
@@ -344,11 +344,11 @@
             <div class="lesson-topbar">
                 <div>
                     <p class="lesson-topbar__label">Student</p>
-                    <p class="lesson-topbar__value" id="branchingStudentName">–</p>
+                    <p class="lesson-topbar__value" id="branchingStudentName">â€“</p>
                 </div>
                 <div class="lesson-topbar__center">
                     <p class="lesson-topbar__label">Dialogue</p>
-                    <p class="lesson-topbar__value" id="branchingMeta">–</p>
+                    <p class="lesson-topbar__value" id="branchingMeta">â€“</p>
                 </div>
                 <div class="lesson-topbar__right">
                     <div class="font-controls">
@@ -376,11 +376,11 @@
             <div class="lesson-topbar">
                 <div>
                     <p class="lesson-topbar__label">Student</p>
-                    <p class="lesson-topbar__value" id="lessonStudentName">–</p>
+                    <p class="lesson-topbar__value" id="lessonStudentName">â€“</p>
                 </div>
                 <div class="lesson-topbar__center">
                     <p class="lesson-topbar__label">Lesson</p>
-                    <p class="lesson-topbar__value" id="lessonMeta">Beginner – Greetings – Lesson 1</p>
+                    <p class="lesson-topbar__value" id="lessonMeta">Beginner â€“ Greetings â€“ Lesson 1</p>
                 </div>
                 <div class="lesson-topbar__right">
                     <div class="font-controls">
@@ -511,7 +511,7 @@
                     <p id="backupLastInfo" class="teacher-edit-note"></p>
 
                     <div id="backupReminderBanner" class="backup-reminder hidden">
-                        <strong>Reminder:</strong> It’s time to create a new backup of your data.
+                        <strong>Reminder:</strong> Itâ€™s time to create a new backup of your data.
                     </div>
                 </section>
                 <div class="section-header__actions">
@@ -688,7 +688,7 @@
                         <span class="email-usage-stats__label">Emails used today</span>
                         <strong id="emailUsageTotal">0</strong>
                     </div>
-                    <div id="emailUsageBreakdown" class="small-note">Today: Teacher 0 · Student 0 · Cancellations 0</div>
+                    <div id="emailUsageBreakdown" class="small-note">Today: Teacher 0 Â· Student 0 Â· Cancellations 0</div>
                 </div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
                     <button id="btnClearAllBookings" class="btn btn--outline btn--sm">Clear All Bookings</button>
@@ -1079,7 +1079,7 @@
             window.auth = firebase.auth();
             window.db = firebase.firestore();
         } else {
-            console.warn("Firebase runtime config is missing. App initialization was skipped.");
+            console.info("Firebase runtime config is not set. Public learning mode is active.");
         }
     </script>
 
