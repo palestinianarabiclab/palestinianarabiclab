@@ -20,6 +20,12 @@ function normalizeCloudLesson(doc) {
     return JSON.parse(JSON.stringify(lesson));
 }
 
+function saveLessonLocally(lessonId) {
+    if (typeof window.saveLessonToLS === "function") {
+        window.saveLessonToLS(lessonId);
+    }
+}
+
 async function loadLessonsFromCloudOnce() {
     if (!window.db) return;
     try {
@@ -29,7 +35,7 @@ async function loadLessonsFromCloudOnce() {
             if (lesson) {
                 window.lessons[doc.id] = lesson;
                 // keep a local offline copy too
-                window.saveLessonToLS(doc.id);
+                saveLessonLocally(doc.id);
             }
         });
     } catch (e) {
@@ -63,7 +69,7 @@ function subscribeLessonsFromCloud() {
                     }
 
                     window.lessons[id] = lesson;
-                    window.saveLessonToLS(id);
+                    saveLessonLocally(id);
 
                     // If user is viewing this lesson right now, refresh view
                     if (window.appState && window.appState.currentLessonId === id) {
