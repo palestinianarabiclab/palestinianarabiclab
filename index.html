@@ -3,8 +3,31 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Palestinian Arabic – Local LMS</title>
+    <title>Learn Palestinian Arabic Online | Palestinian Arabic Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free Palestinian Arabic lessons, phrases, pronunciation practice, and trial lesson booking for beginners learning spoken Arabic online." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://palestinian-arabic-lab.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://palestinian-arabic-lab.vercel.app/" />
+    <link rel="alternate" hreflang="ar" href="https://palestinian-arabic-lab.vercel.app/ar.html" />
+    <link rel="alternate" hreflang="x-default" href="https://palestinian-arabic-lab.vercel.app/" />
+    <meta property="og:title" content="Learn Palestinian Arabic Online" />
+    <meta property="og:description" content="Practice Palestinian Arabic with free beginner lessons, everyday phrases, and guided exercises." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://palestinian-arabic-lab.vercel.app/" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Palestinian Arabic for Beginners",
+            "description": "Free beginner lessons and practice activities for learning spoken Palestinian Arabic online.",
+            "provider": {
+                "@type": "Organization",
+                "name": "Palestinian Arabic Lab",
+                "url": "https://palestinian-arabic-lab.vercel.app/"
+            }
+        }
+    </script>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://apis.google.com https://accounts.google.com; script-src-elem 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://apis.google.com https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://www.google.com https://firestore.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://www.googleapis.com https://apis.google.com https://www.gstatic.com https://content.googleapis.com https://script.google.com https://script.googleusercontent.com; frame-src https://www.google.com https://www.gstatic.com https://content.googleapis.com https://palestinian-arabic-lab.firebaseapp.com; child-src https://www.google.com https://www.gstatic.com https://content.googleapis.com https://palestinian-arabic-lab.firebaseapp.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f8fafc' font-family='Arial, sans-serif'%3EPA%3C/text%3E%3C/svg%3E" />
@@ -72,24 +95,8 @@
         <div class="modal__backdrop" data-close-subscribe></div>
         <div class="modal__body modal__body--wide">
             <button class="modal__close" data-close-subscribe>&times;</button>
-            <h3 style="margin-bottom:16px; text-align:center;">اختر نوع الإشتراك</h3>
+            <h3 style="margin-bottom:16px; text-align:center;">Book a Trial Lesson</h3>
             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-top:20px;">
-                <!-- خيار 1: Full Site Access -->
-                <div class="subscribe-option-card">
-                    <div style="font-size:48px; margin-bottom:12px;">🌐</div>
-                    <h4 style="margin-bottom:8px;">Full Site Access</h4>
-                    <p style="font-size:0.9rem; color:#666; margin-bottom:16px;">
-                        Get full access to all units and practice exercises.
-                    </p>
-                    <p class="small-note" id="subscribeSitePriceWrap" style="display:none; margin-bottom:16px;">
-                        Price: <strong id="subscribeSitePrice">–</strong>
-                    </p>
-                    <button id="subscribeWhatsAppBtn" class="btn btn--primary btn--sm" style="width:100%;">
-                        📱 Contact on WhatsApp
-                    </button>
-                </div>
-
-                <!-- خيار 2: Trial Lesson -->
                 <div class="subscribe-option-card">
                     <div style="font-size:48px; margin-bottom:12px;">📚</div>
                     <h4 style="margin-bottom:8px;">Book a Trial Lesson</h4>
@@ -107,6 +114,17 @@
         </div>
     </div>
 
+    <div id="adBreakModal" class="modal ad-break-modal" aria-label="Advertisement">
+        <div class="modal__backdrop"></div>
+        <div class="modal__body ad-break-modal__body">
+            <div class="ad-break-modal__eyebrow">Advertisement</div>
+            <div class="ad-slot ad-slot--modal" data-ad-slot="navigation-break">
+                <span>Advertisement</span>
+            </div>
+            <button id="adBreakContinueBtn" class="btn btn--primary btn--sm">Continue</button>
+        </div>
+    </div>
+
     <!-- ============== HOME SCREEN ============== -->
     <section id="home-screen" class="screen screen--active screen--full-hero">
         <div class="hero hero--full">
@@ -116,16 +134,13 @@
 
                 <div class="hero__actions hero__actions--center">
                     <button id="btnHeroStudent" class="btn btn--primary btn--lg">
-                        😊 I'm a Student
+                        Start Learning
                     </button>
                     <button id="btnHeroTeacher" class="btn btn--outline btn--lg">
                         👩‍🏫 I'm a Teacher
                     </button>
-                    <button id="btnHeroGuest" class="btn btn--primary btn--lg btn--guest">
-                        Continue as Guest
-                    </button>
                     <button id="btnHeroSubscribe" class="btn btn--outline btn--lg">
-                        Subscribe
+                        Book a Trial Lesson
                     </button>
 
                 </div>
@@ -138,9 +153,15 @@
 
         <div id="authBar" class="top-nav__links">
             <span id="authStatus" style="font-size:0.8rem; margin-right:8px;"></span>
-            <button id="btnLogin" class="top-nav__link">Login</button>
+            <button id="btnLogin" class="top-nav__link">Teacher Login</button>
             <button id="btnLogout" class="top-nav__link" style="display:none;">Logout</button>
         </div>
+
+        <section class="ad-band" aria-label="Advertisement">
+            <div class="ad-slot" data-ad-slot="home-top">
+                <span>Advertisement</span>
+            </div>
+        </section>
 
 
 
@@ -534,10 +555,6 @@
                 <div class="form-field">
                     <label>Contact / Notification Email</label>
                     <input type="email" id="contactEmail" placeholder="you@example.com" />
-                </div>
-                <div class="form-field">
-                    <label>Full Site Access Price (Optional)</label>
-                    <input type="text" id="contactSitePrice" placeholder="e.g. 49" />
                 </div>
                 <button id="btnSaveContact" class="btn btn--primary btn--sm">Save Contact</button>
                 <p id="contactSaveMsg" style="font-size:0.8rem; margin-top:4px;"></p>

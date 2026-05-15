@@ -134,6 +134,9 @@ const appState = {
     guestStudent: null,
 };
 window.appState = appState;
+
+let pendingAdBreakAction = null;
+
 let backupSettings = {
     frequency: "off",      // "off" | "daily" | "2d" | "weekly"
     lastBackupAt: null,    // ISO string
@@ -533,7 +536,7 @@ function updateAuthUI() {
     );
 
     if (!appState.currentUser) {
-        if (authStatus) authStatus.textContent = "Not signed in";
+        if (authStatus) authStatus.textContent = "Free access";
         if (btnLogin) btnLogin.style.display = "inline-flex";
         if (btnLogout) btnLogout.style.display = "none";
 
@@ -550,11 +553,11 @@ function updateAuthUI() {
     const { email, role } = appState.currentUser;
 
     if (role === "guest") {
-        if (authStatus) authStatus.textContent = "GUEST – Limited access";
+        if (authStatus) authStatus.textContent = "Free access";
         if (btnLogin) btnLogin.style.display = "inline-flex";
         if (btnLogout) {
-            btnLogout.style.display = "inline-flex";
-            btnLogout.textContent = "Exit Guest";
+            btnLogout.style.display = "none";
+            btnLogout.textContent = "Logout";
         }
         if (navTeacher) navTeacher.style.display = "none";
         if (navProfiles) navProfiles.style.display = "none";
@@ -597,14 +600,13 @@ function updateFloatingChatVisibility() {
 // =============== AUTH STATE LISTENER =================
 	auth.onAuthStateChanged(async (user) => {
 	    if (!user) {
-	        appState.currentUser = null;
-	        appState.students = [];
-	        appState.currentStudentId = null;
+	        if (!isGuestUser()) {
+	            startFreeLearning({ navigate: false });
+	        }
 	        try { window.preplyCalendarId = null; } catch {}
 	        updateAuthUI();
 	        try { window.refreshGoogleCalendarStatus?.(); } catch { }
         // رجّعيه للصفحة الرئيسية
-        showScreen("home-screen");
         return;
     }
 
@@ -2822,8 +2824,8 @@ function goToLessonView(opts = {}) {
         return;
     }
     if (isGuestUser() && !isGuestAllowedLesson(appState.currentLessonId)) {
-        toast("Guest access is limited to the first two units.");
-        goToSubscribeScreen();
+        toast("Choose a lesson to start learning.");
+        goToLevels();
         return;
     }
     showScreen("lesson-screen");
@@ -2844,6 +2846,26 @@ function goToLessonView(opts = {}) {
     if (whiteboardPanel && !whiteboardPanel.classList.contains("hidden")) {
         initWhiteboardCanvas();
     }
+}
+
+function shouldShowAdBreak() {
+    return appState.currentUser?.role !== "teacher" && !!document.getElementById("adBreakModal");
+}
+
+function showAdBreak(onContinue) {
+    if (!shouldShowAdBreak()) {
+        onContinue?.();
+        return;
+    }
+    pendingAdBreakAction = typeof onContinue === "function" ? onContinue : null;
+    document.getElementById("adBreakModal")?.classList.add("modal--open");
+}
+
+function continueAfterAdBreak() {
+    document.getElementById("adBreakModal")?.classList.remove("modal--open");
+    const action = pendingAdBreakAction;
+    pendingAdBreakAction = null;
+    action?.();
 }
 
 function buildLessonExportHtml(lesson, options) {
@@ -3409,9 +3431,9 @@ function renderLevels() {
             if (lessonId) {
                 if (isGuestUser() && !isGuestAllowedLesson(lessonId)) {
                     pill.classList.add("unit-pill--locked");
-                    statusSpan.textContent = "Locked (Guest)";
+                    statusSpan.textContent = "Unavailable";
                     pill.addEventListener("click", () => {
-                        goToSubscribeScreen();
+                        toast("This lesson is not available yet.");
                     });
                 } else {
                     pill.classList.add("unit-pill--clickable");
@@ -3439,9 +3461,11 @@ function renderLevels() {
 
                 if (!pill.classList.contains("unit-pill--locked")) {
                     pill.addEventListener("click", () => {
-                        appState.currentLessonId = lessonId;
-                        appState.currentTab = "overview";
-                        goToLessonView();
+                        showAdBreak(() => {
+                            appState.currentLessonId = lessonId;
+                            appState.currentTab = "overview";
+                            goToLessonView();
+                        });
                     });
                 }
             } else {
@@ -3523,13 +3547,26 @@ function isGuestUser() {
     return !!(appState.currentUser && appState.currentUser.role === "guest");
 }
 
+function startFreeLearning({ navigate = true } = {}) {
+    appState.currentUser = { uid: "guest", email: "Guest", role: "guest" };
+    appState.guestMode = true;
+    appState.guestStudent = {
+        id: "guest",
+        name: "Guest Learner",
+        level: "Beginner",
+        progress: {},
+        homeworkNotes: {},
+    };
+    appState.students = [appState.guestStudent];
+    appState.currentStudentId = "guest";
+    appState.currentLessonId = appState.currentLessonId || LESSON_ID_GREETING;
+    appState.currentTab = appState.currentTab || "overview";
+    updateAuthUI();
+    if (navigate) goToLevels();
+}
+
 function isGuestAllowedLesson(lessonId) {
-    if (!lessonId) return false;
-    const lesson = lessons[lessonId];
-    if (!lesson || !lesson.meta) return false;
-    if (lesson.meta.level !== "Beginner") return false;
-    const allowed = new Set(["Greetings", "Family"]);
-    return allowed.has(lesson.meta.unit);
+    return !!lessonId;
 }
 
 async function goToSubscribeScreen() {
@@ -7230,14 +7267,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ===== HERO BUTTONS (أنا طالب / أنا مدرس) =====
     const btnHeroStudent = document.getElementById("btnHeroStudent");
     const btnHeroTeacher = document.getElementById("btnHeroTeacher");
-    const btnHeroGuest = document.getElementById("btnHeroGuest");
     const btnHeroSubscribe = document.getElementById("btnHeroSubscribe");
 
     if (btnHeroStudent) {
         btnHeroStudent.addEventListener("click", () => {
-            // الطالب → نفتح مودال تسجيل الدخول كـ STUDENT
-            console.log("Student hero clicked");
-            openAuthModal("student");
+            // Public learners start without an account.
+            startFreeLearning();
         });
     }
 
@@ -7248,24 +7283,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             openAuthModal("teacher");
         });
     }
-    if (btnHeroGuest) {
-        btnHeroGuest.addEventListener("click", () => {
-            appState.currentUser = { uid: "guest", email: "Guest", role: "guest" };
-            appState.guestMode = true;
-            appState.guestStudent = {
-                id: "guest",
-                name: "Guest",
-                level: "Beginner",
-                progress: {},
-                homeworkNotes: {},
-            };
-            appState.currentStudentId = "guest";
-            appState.currentLessonId = LESSON_ID_GREETING;
-            appState.currentTab = "overview";
-            updateAuthUI();
-            goToLevels();
-        });
-    }
     if (btnHeroSubscribe) {
         btnHeroSubscribe.addEventListener("click", () => {
             openSubscribeModal();
@@ -7273,15 +7290,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // Subscribe modal buttons
-    const subscribeWhatsAppBtn = document.getElementById("subscribeWhatsAppBtn");
     const subscribeBookingBtn = document.getElementById("subscribeBookingBtn");
 
-    if (subscribeWhatsAppBtn) {
-        subscribeWhatsAppBtn.addEventListener("click", () => {
-            closeSubscribeModal();
-            openWhatsAppWithMessage("Hello, I'm interested in Full Site Access. Can you please provide more information?");
-        });
-    }
     const floatingChatBtn = document.getElementById("floatingChatBtn");
     if (floatingChatBtn) {
         floatingChatBtn.addEventListener("click", () => {
@@ -7874,8 +7884,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // lesson tabs
     $all(".lesson-tab").forEach((btn) => {
-        btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
+        btn.addEventListener("click", () => {
+            const nextTab = btn.dataset.tab;
+            if (!nextTab || nextTab === appState.currentTab) return;
+            showAdBreak(() => setActiveTab(nextTab));
+        });
     });
+
+    const adBreakContinueBtn = document.getElementById("adBreakContinueBtn");
+    if (adBreakContinueBtn) {
+        adBreakContinueBtn.addEventListener("click", continueAfterAdBreak);
+    }
 
     // teacher mode toggle
     $("#teacherModeToggle").addEventListener("change", (e) => {
@@ -7912,6 +7931,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
     // initial
+    if (!auth.currentUser && !isGuestUser()) {
+        startFreeLearning({ navigate: false });
+    }
     renderStudents();
     renderTeacherPicker();
     goToHome();

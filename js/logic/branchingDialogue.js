@@ -96,16 +96,6 @@ function makeDialogueLine({ speaker, text, isArabic }) {
 }
 
 function renderBranching(dialogueId, level, unit) {
-  const isGuest = !!(window.appState && window.appState.currentUser && window.appState.currentUser.role === 'guest');
-  if (isGuest && (level !== 'Beginner' || (unit !== 'Greetings' && unit !== 'Family'))) {
-    if (typeof window.toast === 'function') {
-      window.toast('Guest access is limited to the first two units.');
-    }
-    if (typeof window.showScreen === 'function') {
-      window.showScreen('subscribe-screen');
-    }
-    return;
-  }
   const student = getCurrentStudent();
   if (!student) {
     showScreen('levels-screen');
