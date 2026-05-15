@@ -93,6 +93,8 @@ const LESSON_ID_PLANS_FUTURE = CONST.LESSON_ID_PLANS_FUTURE;
 const LESSON_ID_FEELINGS = CONST.LESSON_ID_FEELINGS;
 const LESSON_ID_HOBBIES = CONST.LESSON_ID_HOBBIES;
 const BASE_PROGRESS_TEMPLATE = CONST.BASE_PROGRESS_TEMPLATE;
+const EXTERNAL_BOOKING_URL = "https://bookingapp-tawny.vercel.app/";
+const AD_TAB_INTERVAL = 3;
 
 // Match original variable name used throughout the legacy code
 const defaultLessons = importedDefaultLessons;
@@ -136,6 +138,7 @@ const appState = {
 window.appState = appState;
 
 let pendingAdBreakAction = null;
+let lessonTabNavigationCount = 0;
 
 let backupSettings = {
     frequency: "off",      // "off" | "daily" | "2d" | "weekly"
@@ -538,6 +541,7 @@ function updateAuthUI() {
     const authStatus = document.getElementById("authStatus");
     const btnLogin = document.getElementById("btnLogin");
     const btnLogout = document.getElementById("btnLogout");
+    const authBar = document.getElementById("authBar");
 
     const navTeacher = document.querySelector(
         '.top-nav__link[data-nav="teacher-dashboard-screen"]'
@@ -545,6 +549,17 @@ function updateAuthUI() {
     const navProfiles = document.querySelector(
         '.top-nav__link[data-nav="students-screen"]'
     );
+
+    if (authBar) authBar.style.display = "none";
+    if (btnLogin) btnLogin.style.display = "none";
+    if (btnLogout) btnLogout.style.display = "none";
+    if (navTeacher) navTeacher.style.display = "none";
+    if (navProfiles) navProfiles.style.display = "inline-flex";
+    if (typeof window.setDrawingLayerForRole === "function") {
+        window.setDrawingLayerForRole("guest");
+    }
+    updateFloatingChatVisibility();
+    return;
 
     if (!appState.currentUser) {
         if (authStatus) authStatus.textContent = "Free access";
@@ -2882,6 +2897,10 @@ function continueAfterAdBreak() {
     const action = pendingAdBreakAction;
     pendingAdBreakAction = null;
     action?.();
+}
+
+function openExternalBookingPage() {
+    window.location.assign(EXTERNAL_BOOKING_URL);
 }
 
 function buildLessonExportHtml(lesson, options) {
@@ -6134,7 +6153,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnSubscribe = $("#btnSubscribe");
     if (btnSubscribe) {
         btnSubscribe.addEventListener("click", () => {
-            openSubscribeModal();
+            openExternalBookingPage();
         });
     }
     const btnContact = $("#btnContact");
@@ -7317,7 +7336,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (btnHeroSubscribe) {
         btnHeroSubscribe.addEventListener("click", () => {
-            openSubscribeModal();
+            openExternalBookingPage();
         });
     }
 
@@ -7379,7 +7398,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (subscribeBookingBtn) {
         subscribeBookingBtn.addEventListener("click", () => {
             closeSubscribeModal();
-            goToSubscribeScreen();
+            openExternalBookingPage();
         });
     }
 
@@ -7921,7 +7940,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         btn.addEventListener("click", () => {
             const nextTab = btn.dataset.tab;
             if (!nextTab || nextTab === appState.currentTab) return;
-            showAdBreak(() => setActiveTab(nextTab));
+            lessonTabNavigationCount += 1;
+            if (lessonTabNavigationCount % AD_TAB_INTERVAL === 0) {
+                showAdBreak(() => setActiveTab(nextTab));
+            } else {
+                setActiveTab(nextTab);
+            }
         });
     });
 
