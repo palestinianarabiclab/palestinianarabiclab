@@ -467,7 +467,8 @@ function isSlotBlockedByException(slotStartMs, slotMinutes) {
 }
 
 async function getBookedSlotsMap(startMs, endMs) {
-    return bookingGetBookedSlotsMap(startMs, endMs, { db, bookingSettings });
+    if (!window.db) return new Map();
+    return bookingGetBookedSlotsMap(startMs, endMs, { db: window.db, bookingSettings });
 }
 
 function doesSlotOverlap(slotStartMs, slotMinutes, bookedMap, excludeBookingId = null) {
@@ -475,12 +476,14 @@ function doesSlotOverlap(slotStartMs, slotMinutes, bookedMap, excludeBookingId =
 }
 
 async function findBookingConflict(slotStartMs, { excludeBookingId = null } = {}) {
-    return bookingFindBookingConflict(slotStartMs, { db, bookingSettings }, { excludeBookingId });
+    if (!window.db) return null;
+    return bookingFindBookingConflict(slotStartMs, { db: window.db, bookingSettings }, { excludeBookingId });
 }
 
 async function getAvailableSlots(daysToShow = 14, options = {}) {
+    if (!window.db) return [];
     return bookingGetAvailableSlots(daysToShow, {
-        db,
+        db: window.db,
         bookingSettings,
         runtimeBusyBlocks,
         getLocalTimezone,
@@ -489,8 +492,9 @@ async function getAvailableSlots(daysToShow = 14, options = {}) {
 }
 
 async function getSchedulableSlots(daysToShow = 14, options = {}) {
+    if (!window.db) return [];
     return bookingGetSchedulableSlots(daysToShow, {
-        db,
+        db: window.db,
         bookingSettings,
         runtimeBusyBlocks,
         getLocalTimezone,
@@ -6825,7 +6829,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             bookingTimezoneLabel.textContent = `Showing times in ${tz}`;
         }
         if (bookingEmptyState) {
-            bookingEmptyState.textContent = "No available times in this week.";
+            bookingEmptyState.textContent = window.db
+                ? "No available times in this week."
+                : "Online booking is not configured yet. Please use WhatsApp or email.";
+        }
+
+        if (!window.db) {
+            if (bookingEmptyState) bookingEmptyState.style.display = "block";
+            if (bookingSubmit) bookingSubmit.disabled = true;
+            renderWeeklyCalendar([]);
+            updateBookingInfo();
+            return;
         }
 
         await refreshRuntimeBusyBlocks({ forceRefresh });
@@ -7126,8 +7140,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     async function renderTeacherBookings() {
+        if (!window.db || appState.currentUser?.role !== "teacher") {
+            if (teacherBookingList) teacherBookingList.innerHTML = "";
+            return;
+        }
         bookingCache = await renderTeacherBookingsView({
-            db,
+            db: window.db,
             teacherBookingList,
             bookingCache,
             escapeHtml,
@@ -7216,7 +7234,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
             }
         });
-        renderTeacherBookings();
+        if (window.db && appState.currentUser?.role === "teacher") {
+            renderTeacherBookings();
+        }
     }
 
     if (btnClearBusyBlocks) {
