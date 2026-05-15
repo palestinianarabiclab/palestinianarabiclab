@@ -6,7 +6,7 @@ This project is now prepared as a free public learning site with ad placements a
 
 1. Publish the site on the final domain.
 2. Update every canonical URL in the HTML files from:
-   `https://palestinian-arabic-lab.vercel.app/`
+   `https://palestinianarabiclab.github.io/palestinianarabiclab/`
    to the final domain.
 3. Update `robots.txt` and `sitemap.xml` with the final domain.
 4. Keep `privacy.html` and `terms.html` published and linked.
