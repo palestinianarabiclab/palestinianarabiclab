@@ -4073,3 +4073,19 @@ body.drawing-active {
     font-weight: 700;
     text-decoration: none;
 }
+
+.site-footer {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 24px 16px 32px;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: #0f766e;
+    font-weight: 700;
+    text-decoration: none;
+}

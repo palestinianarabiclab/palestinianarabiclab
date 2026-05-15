@@ -2,7 +2,7 @@
 // Cloud sync expects firebase + db on window (same as original).
 
 // ========================= CLOUD SYNC (LESSON TEMPLATES) =========================
-const CLOUD_LESSONS_COLLECTION = "lessonTemplates"; // Firestore collection name
+const CLOUD_LESSONS_COLLECTION = "content_lessons";
 const CLOUD_LESSONS_DOC_SHAPE_VERSION = 1;
 
 // Local buffer to avoid overwriting active teacher edits when a remote update arrives
@@ -12,14 +12,21 @@ function getServerTimestamp() {
     return firebase.firestore.FieldValue.serverTimestamp();
 }
 
+function normalizeCloudLesson(doc) {
+    const data = doc.data() || {};
+    const lesson = data.lesson && typeof data.lesson === "object" ? data.lesson : data;
+    if (!lesson || typeof lesson !== "object") return null;
+    if (!lesson.meta || typeof lesson.meta !== "object") return null;
+    return JSON.parse(JSON.stringify(lesson));
+}
+
 async function loadLessonsFromCloudOnce() {
     if (!window.db) return;
     try {
         const snap = await window.db.collection(CLOUD_LESSONS_COLLECTION).get();
         snap.forEach((doc) => {
-            const data = doc.data() || {};
-            const lesson = data.lesson || null;
-            if (lesson && typeof lesson === "object") {
+            const lesson = normalizeCloudLesson(doc);
+            if (lesson) {
                 window.lessons[doc.id] = lesson;
                 // keep a local offline copy too
                 window.saveLessonToLS(doc.id);
@@ -37,9 +44,8 @@ function subscribeLessonsFromCloud() {
             (snap) => {
                 snap.docChanges().forEach((ch) => {
                     const id = ch.doc.id;
-                    const data = ch.doc.data() || {};
-                    const lesson = data.lesson || null;
-                    if (!lesson || typeof lesson !== "object") return;
+                    const lesson = normalizeCloudLesson(ch.doc);
+                    if (!lesson) return;
 
                     // If teacher is actively editing this lesson, don't overwrite their local editor state.
                     const isTeacherEditingThis =

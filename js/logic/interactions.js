@@ -3,7 +3,6 @@
 
 import * as CONST from '../core/constants.js';
 import { defaultLessons as importedDefaultLessons } from '../lessons/index.js';
-import * as Cloud from '../cloud/lessonsCloud.js';
 import { arabicLetters, arabicLettersExtras, arabicLettersExercises } from '../data/arabicLettersData.js';
 import {
     createInitialContactSettings,
@@ -11,61 +10,16 @@ import {
     saveContactSettings as saveStoredContactSettings,
     buildWhatsAppUrl as buildWhatsAppUrlFromSettings,
     extractWhatsAppNumber,
-    loadContactSettingsFromCloud as loadContactSettingsStateFromCloud,
-    saveContactSettingsToCloud as saveContactSettingsStateToCloud,
 } from './contactSettingsStore.js';
 import {
-    createInitialBookingSettings,
-    getDefaultBookingSettings as createDefaultBookingSettings,
-    ensureBookingSettingsShape as normalizeBookingSettings,
-    loadBookingSettings as loadStoredBookingSettings,
-    saveBookingSettings as saveStoredBookingSettings,
-    loadBookingSettingsFromCloud as loadBookingSettingsStateFromCloud,
-    saveBookingSettingsToCloud as saveBookingSettingsStateToCloud,
-} from './bookingSettingsStore.js';
-import {
-    canUseTeacherRole,
-    ensureTeacherDoc as ensureTeacherDocRecord,
-    ensureTeacherUserDoc as ensureTeacherUserRecord,
-} from './teacherAccess.js';
-import {
-    resolveUserRole,
-    bootstrapTeacherAccess,
-    createStudentAccount,
-} from './authFlows.js';
-import {
-    renderTeacherBookings as renderTeacherBookingsView,
-    openReschedulePanel,
-    cancelBooking as cancelTeacherBooking,
-    rescheduleBooking as rescheduleTeacherBooking,
-    clearAllBookings as clearAllTeacherBookings,
-} from './teacherBookingAdmin.js';
-import {
-    loadBookingStatusByEmail,
-    submitGuestBooking,
-    cancelGuestBooking,
-} from './guestBookingFlow.js';
-import {
-    wireDialogueEditor,
-    wireGrammarEditor,
-    wireTranslationEditor,
-    wireQuizEditor,
-    wireRolePlayEditor,
-    wireHomeworkEditor,
-    wireTeacherNotesEditor,
-} from './teacherPracticeEditor.js';
-import {
-    toMinutes as bookingToMinutes,
-    addDaysToDateKey as bookingAddDaysToDateKey,
-    getZonedParts as bookingGetZonedParts,
-    zonedDateTimeToUtcMs as bookingZonedDateTimeToUtcMs,
-    isSlotBlockedByException as bookingIsSlotBlockedByException,
-    getBookedSlotsMap as bookingGetBookedSlotsMap,
-    doesSlotOverlap as bookingDoesSlotOverlap,
-    findBookingConflict as bookingFindBookingConflict,
-    getAvailableSlots as bookingGetAvailableSlots,
-    getSchedulableSlots as bookingGetSchedulableSlots,
-} from './bookingAvailability.js';
+    getServerTimestamp,
+    loadLessonsFromCloudOnce,
+    subscribeLessonsFromCloud,
+    startLessonCloudSync,
+    stopLessonCloudSync,
+    syncLessonsNow,
+    setLessonSyncForScreen,
+} from '../cloud/lessonsCloud.js';
 
 // Re-create original constant names in module scope
 const LS_STUDENTS_KEY = CONST.LS_STUDENTS_KEY;
@@ -98,15 +52,88 @@ const AD_TAB_INTERVAL = 3;
 
 // Match original variable name used throughout the legacy code
 const defaultLessons = importedDefaultLessons;
-const getServerTimestamp = Cloud.getServerTimestamp;
-const loadLessonsFromCloudOnce = Cloud.loadLessonsFromCloudOnce;
-const subscribeLessonsFromCloud = Cloud.subscribeLessonsFromCloud;
-const saveLessonToCloud = Cloud.saveLessonToCloud;
-const deleteLessonFromCloud = Cloud.deleteLessonFromCloud;
-const startLessonCloudSync = Cloud.startLessonCloudSync;
-const stopLessonCloudSync = Cloud.stopLessonCloudSync;
-const syncLessonsNow = Cloud.syncLessonsNow;
-const setLessonSyncForScreen = Cloud.setLessonSyncForScreen;
+const saveLessonToCloud = () => {};
+const deleteLessonFromCloud = () => {};
+
+const noopAsync = async () => {};
+const canUseTeacherRole = () => false;
+const ensureTeacherDocRecord = noopAsync;
+const ensureTeacherUserRecord = async () => false;
+const resolveUserRole = async () => ({ role: "guest", data: {} });
+const bootstrapTeacherAccess = noopAsync;
+const createStudentAccount = noopAsync;
+const renderTeacherBookingsView = async ({ bookingCache }) => bookingCache || new Map();
+const openReschedulePanel = noopAsync;
+const cancelTeacherBooking = noopAsync;
+const rescheduleTeacherBooking = noopAsync;
+const clearAllTeacherBookings = noopAsync;
+const loadBookingStatusByEmail = noopAsync;
+const submitGuestBooking = noopAsync;
+const cancelGuestBooking = noopAsync;
+const wireDialogueEditor = () => {};
+const wireGrammarEditor = () => {};
+const wireTranslationEditor = () => {};
+const wireQuizEditor = () => {};
+const wireRolePlayEditor = () => {};
+const wireHomeworkEditor = () => {};
+const wireTeacherNotesEditor = () => {};
+
+function createDefaultBookingSettings(timezone = "Africa/Cairo") {
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].reduce((acc, day) => {
+        acc[day] = { enabled: false, start: "09:00", end: "17:00" };
+        return acc;
+    }, {});
+    return {
+        timezone,
+        slotMinutes: 50,
+        breakMinutes: 10,
+        totalSlotMinutes: 60,
+        days,
+        exceptions: [],
+    };
+}
+
+const createInitialBookingSettings = () => createDefaultBookingSettings();
+const normalizeBookingSettings = (settings) => ({ ...createDefaultBookingSettings(settings?.timezone), ...(settings || {}) });
+const loadStoredBookingSettings = (key, fallback) => {
+    try {
+        const raw = localStorage.getItem(key);
+        return raw ? normalizeBookingSettings(JSON.parse(raw)) : fallback;
+    } catch {
+        return fallback;
+    }
+};
+const saveStoredBookingSettings = (key, settings) => {
+    try { localStorage.setItem(key, JSON.stringify(settings)); } catch {}
+};
+const loadBookingSettingsStateFromCloud = async (_db, fallback) => fallback;
+const saveBookingSettingsStateToCloud = noopAsync;
+const bookingToMinutes = (timeStr) => {
+    const [hours, minutes] = String(timeStr || "0:0").split(":").map(Number);
+    return (hours || 0) * 60 + (minutes || 0);
+};
+const bookingAddDaysToDateKey = (dateKey, days) => {
+    const date = new Date(`${dateKey}T00:00:00`);
+    date.setDate(date.getDate() + days);
+    return date.toISOString().slice(0, 10);
+};
+const bookingGetZonedParts = (date) => ({
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+});
+const bookingZonedDateTimeToUtcMs = (_timeZone, year, month, day, hour, minute) =>
+    new Date(year, month - 1, day, hour, minute).getTime();
+const bookingIsSlotBlockedByException = () => false;
+const bookingGetBookedSlotsMap = async () => new Map();
+const bookingDoesSlotOverlap = () => false;
+const bookingFindBookingConflict = async () => null;
+const bookingGetAvailableSlots = async () => [];
+const bookingGetSchedulableSlots = async () => [];
+const loadContactSettingsStateFromCloud = async (_db, fallback) => fallback;
+const saveContactSettingsStateToCloud = noopAsync;
 
 const lessons = {};
 // Expose for cloud module and other modules
@@ -538,83 +565,17 @@ function getSecondaryAuth() {
 
 // ================= AUTH UI =================
 function updateAuthUI() {
-    const authStatus = document.getElementById("authStatus");
-    const btnLogin = document.getElementById("btnLogin");
-    const btnLogout = document.getElementById("btnLogout");
     const authBar = document.getElementById("authBar");
-
-    const navTeacher = document.querySelector(
-        '.top-nav__link[data-nav="teacher-dashboard-screen"]'
-    );
-    const navProfiles = document.querySelector(
-        '.top-nav__link[data-nav="students-screen"]'
-    );
-
+    const navTeacher = document.querySelector('.top-nav__link[data-nav="teacher-dashboard-screen"]');
+    const navProfiles = document.querySelector('.top-nav__link[data-nav="students-screen"]');
     if (authBar) authBar.style.display = "none";
-    if (btnLogin) btnLogin.style.display = "none";
-    if (btnLogout) btnLogout.style.display = "none";
     if (navTeacher) navTeacher.style.display = "none";
     if (navProfiles) navProfiles.style.display = "inline-flex";
     if (typeof window.setDrawingLayerForRole === "function") {
         window.setDrawingLayerForRole("guest");
     }
     updateFloatingChatVisibility();
-    return;
-
-    if (!appState.currentUser) {
-        if (authStatus) authStatus.textContent = "Free access";
-        if (btnLogin) btnLogin.style.display = "inline-flex";
-        if (btnLogout) btnLogout.style.display = "none";
-
-        // أي حد مش مسجّل → ما يشوف Teacher Dashboard
-        if (navTeacher) navTeacher.style.display = "none";
-        // لو حابة تخلي Profiles ظاهر قبل تسجيل الدخول، خليه هيك:
-        if (navProfiles) navProfiles.style.display = "inline-flex";
-        if (typeof window.setDrawingLayerForRole === "function") {
-            window.setDrawingLayerForRole(null);
-        }
-        return;
-    }
-
-    const { email, role } = appState.currentUser;
-
-    if (role === "guest") {
-        if (authStatus) authStatus.textContent = "Free access";
-        if (btnLogin) btnLogin.style.display = "inline-flex";
-        if (btnLogout) {
-            btnLogout.style.display = "none";
-            btnLogout.textContent = "Logout";
-        }
-        if (navTeacher) navTeacher.style.display = "none";
-        if (navProfiles) navProfiles.style.display = "none";
-        if (typeof window.setDrawingLayerForRole === "function") {
-            window.setDrawingLayerForRole("guest");
-        }
-        return;
-    }
-
-    if (authStatus) authStatus.textContent = `${role.toUpperCase()} – ${email}`;
-    if (btnLogin) btnLogin.style.display = "none";
-    if (btnLogout) {
-        btnLogout.style.display = "inline-flex";
-        btnLogout.textContent = "Logout";
-    }
-
-    if (role === "teacher") {
-        if (navTeacher) navTeacher.style.display = "inline-flex";
-        if (navProfiles) navProfiles.style.display = "inline-flex";
-    } else {
-        // student
-        if (navTeacher) navTeacher.style.display = "none";
-        // الطالب ما يشوف صفحة البروفايلات
-        if (navProfiles) navProfiles.style.display = "none";
-    }
-    if (typeof window.setDrawingLayerForRole === "function") {
-        window.setDrawingLayerForRole(role);
-    }
-    updateFloatingChatVisibility();
 }
-
 function updateFloatingChatVisibility() {
     const floatingChatBtn = document.getElementById("floatingChatBtn");
     if (!floatingChatBtn) return;
@@ -623,93 +584,9 @@ function updateFloatingChatVisibility() {
     floatingChatBtn.style.display = isGuest && isLevelsScreen ? "inline-flex" : "none";
 }
 
-// =============== AUTH STATE LISTENER =================
-if (window.auth && typeof window.auth.onAuthStateChanged === "function") {
-	window.auth.onAuthStateChanged(async (user) => {
-	    if (!user) {
-	        if (!isGuestUser()) {
-	            startFreeLearning({ navigate: false });
-	        }
-	        try { window.preplyCalendarId = null; } catch {}
-	        updateAuthUI();
-	        try { window.refreshGoogleCalendarStatus?.(); } catch { }
-        // رجّعيه للصفحة الرئيسية
-        return;
-    }
-
-    try {
-        // نحاول نقرأ الدور من Firestore، ولو مش موجود من localStorage
-        let savedRole = null;
-        try {
-            savedRole = localStorage.getItem(LS_USER_ROLE_KEY);
-        } catch (e) {
-            console.warn("Could not read role from localStorage", e);
-        }
-
-        const { role } = await resolveUserRole({
-            db,
-            uid: user.uid,
-            email: user.email,
-            savedRole,
-            fallbackRole: null,
-        });
-
-	        appState.currentUser = {
-	            uid: user.uid,
-	            email: user.email,
-	            role,
-	        };
-	        if (role === "teacher") {
-	            appState.students = [];
-	            appState.currentStudentId = null;
-	            try { window.preplyCalendarId = null; } catch {}
-	            bookingSettings = getDefaultBookingSettings();
-	            contactSettings = createInitialContactSettings();
-	            loadBookingSettings();
-	            loadContactSettings();
-	        }
-
-        // نحدّث الـ localStorage بالدور النهائي
-        try {
-            localStorage.setItem(LS_USER_ROLE_KEY, role);
-        } catch (e) {
-            console.warn("Could not save role to localStorage", e);
-        }
-
-        try { window.refreshGoogleCalendarStatus?.(); } catch { }
-        updateAuthUI();
-
-	        if (role === "teacher") {
-	            await bootstrapTeacherAccess({ db, firebase, uid: user.uid, email: user.email });
-            await loadContactSettingsFromCloud();
-            await loadBookingSettingsFromCloud();
-            try { window.refreshGoogleCalendarStatus?.(); } catch { }
-            await syncTeacherStudentsFromCloud?.();
-	            renderStudents();
-	            renderTeacherPicker();
-	            goToTeacherDashboard();
-        } else {
-            appState.students = [
-                {
-                    id: user.uid,
-                    name: user.email,
-                    level: "Beginner",
-                    goals: [],
-                    progress: {},
-                    homeworkNotes: {},
-                },
-            ];
-            appState.currentStudentId = user.uid;
-            goToLevels();
-        }
-    } catch (err) {
-        console.error("auth.onAuthStateChanged error:", err);
-    }
-    });
-} else {
-    startFreeLearning({ navigate: false });
-    updateAuthUI();
-}
+// Public student build: no Firebase Auth session is required.
+startFreeLearning({ navigate: false });
+updateAuthUI();
 
 // =======================
 // Translation Sentence Generator (from lesson vocabulary)
@@ -2789,6 +2666,7 @@ function showScreen(id) {
     $all(".screen").forEach((sec) =>
         sec.classList.toggle("screen--active", sec.id === id)
     );
+    setLessonSyncForScreen(id);
     updateFloatingChatVisibility();
 }
 
@@ -2835,9 +2713,7 @@ function goToLevels() {
     showScreen("levels-screen");
     $("#currentStudentNameLevels").textContent = currentStudent.name;
     const btnSwitchProfile = $("#btnSwitchProfile");
-    const btnGoTeacherDashboard = $("#btnGoTeacherDashboard");
     if (btnSwitchProfile) btnSwitchProfile.style.display = isGuestUser() ? "none" : "inline-flex";
-    if (btnGoTeacherDashboard) btnGoTeacherDashboard.style.display = isGuestUser() ? "none" : "inline-flex";
     renderLevels();
     updateContinueButton();
 }
@@ -2862,7 +2738,8 @@ function goToLessonView(opts = {}) {
     showScreen("lesson-screen");
     if (teacherMode !== null) {
         appState.teacherMode = teacherMode;
-        $("#teacherModeToggle").checked = teacherMode;
+        const teacherModeToggle = $("#teacherModeToggle");
+        if (teacherModeToggle) teacherModeToggle.checked = teacherMode;
     }
     updateTeacherTabsVisibility();
     updateLessonTopBar();
@@ -3605,11 +3482,7 @@ function isGuestAllowedLesson(lessonId) {
 }
 
 async function goToSubscribeScreen() {
-    showScreen("subscribe-screen");
-    try {
-        await loadContactSettingsFromCloud();
-        if (typeof window.buildBookingSelects === "function") window.buildBookingSelects();
-    } catch { }
+    openExternalBookingPage();
 }
 
 // Open subscribe modal
@@ -4309,7 +4182,7 @@ function renderDialogueTab(container, lesson) {
         const note = document.createElement("p");
         note.className = "teacher-edit-note";
         note.textContent =
-            "Teacher Mode: You can edit the dialogue from the Teacher Dashboard form (Edit Lesson Content).";
+            "Teacher notes are disabled in the public student build.";
         container.appendChild(note);
     }
 
@@ -4750,7 +4623,7 @@ function renderPracticeTab(container, lesson) {
         const note = document.createElement("p");
         note.className = "teacher-edit-note";
         note.textContent =
-            "Teacher Mode: You can adjust questions and role-plays from the Teacher Dashboard form (Edit Lesson Content).";
+            "Teacher notes are disabled in the public student build.";
         container.appendChild(note);
     }
 
@@ -4831,7 +4704,7 @@ function renderHomeworkTab(container, lesson) {
         const note = document.createElement("p");
         note.className = "teacher-edit-note";
         note.textContent =
-            "Teacher Mode: You can edit the main homework instructions for this lesson from the Teacher Dashboard form (Edit Lesson Content).";
+            "Teacher notes are disabled in the public student build.";
         container.appendChild(note);
     }
 
@@ -4986,1145 +4859,33 @@ function updateTeacherTabsVisibility() {
     });
 }
 
-// ========================= TEACHER DASHBOARD =========================
-
+// ========================= TEACHER DASHBOARD (disabled in public student build) =========================
 function getLessonIdsSorted() {
-    return Object.keys(lessons).sort((a, b) => {
-        const la = lessons[a]?.meta?.level || "";
-        const lb = lessons[b]?.meta?.level || "";
-        const ua = lessons[a]?.meta?.unit || "";
-        const ub = lessons[b]?.meta?.unit || "";
-        const ta = lessons[a]?.meta?.lessonTitle || "";
-        const tb = lessons[b]?.meta?.lessonTitle || "";
-        return (la + ua + ta).localeCompare(lb + ub + tb);
-    });
+    return Object.keys(lessons).sort();
 }
 
 function getUniqueUnits() {
-    const units = new Set();
-    getLessonIdsSorted().forEach((id) => {
-        const u = (lessons[id]?.meta?.unit || "").trim();
-        if (u) units.add(u);
-    });
-    return Array.from(units).sort((a, b) => a.localeCompare(b));
+    return Array.from(new Set(getLessonIdsSorted().map((id) => lessons[id]?.meta?.unit).filter(Boolean))).sort();
 }
 
-function renderTeacherPicker() {
-    const unitSel = document.getElementById("tdUnitSelect");
-    const lessonSel = document.getElementById("tdLessonSelect");
-    const sectionSel = document.getElementById("tdPickSection");
-    const btnEdit = document.getElementById("tdEditSelected");
-    const btnOpen = document.getElementById("tdOpenSelected");
-    const btnDelete = document.getElementById("tdDeleteSelected");
-    const btnSync = document.getElementById("tdSyncLessonsNow");
+function renderTeacherPicker() {}
+function renderTeacherLessonList() {}
+function createNewLessonTemplate() {}
+function applyTeacherSectionFilter() {}
+function renderTeacherEditor() {}
 
-    // If picker UI isn't present, fall back to the full list
-    if (!unitSel || !lessonSel || !sectionSel || !btnEdit || !btnOpen || !btnDelete) {
-        // Avoid infinite recursion if the dashboard picker isn't in the DOM.
-        // Fall back to rendering the long list if available.
-        if (typeof renderTeacherLessonList === "function") {
-            try { renderTeacherLessonList(); } catch { }
-        }
-        return;
-    }
-
-    // Hide the long list to reduce clutter (still present for compatibility)
-    const listEl = document.getElementById("teacherLessonList");
-    if (listEl) listEl.style.display = "none";
-
-    const units = getUniqueUnits();
-    const savedUnit = localStorage.getItem("td_selected_unit") || "";
-    const savedLesson = localStorage.getItem("td_selected_lesson") || "";
-    const savedPickSection = localStorage.getItem("td_pick_section") || "overview";
-
-    // Fill unit select
-    unitSel.innerHTML = "";
-    const optAll = document.createElement("option");
-    optAll.value = "";
-    optAll.textContent = "All units";
-    unitSel.appendChild(optAll);
-
-    units.forEach((u) => {
-        const opt = document.createElement("option");
-        opt.value = u;
-        opt.textContent = u;
-        unitSel.appendChild(opt);
-    });
-
-    if (savedUnit && units.includes(savedUnit)) unitSel.value = savedUnit;
-
-    // restore last picked section
-    if (sectionSel) {
-        sectionSel.value = savedPickSection;
-        sectionSel.onchange = () => localStorage.setItem("td_pick_section", sectionSel.value || "overview");
-    }
-
-    function fillLessons() {
-        const unit = unitSel.value;
-        const ids = getLessonIdsSorted().filter((id) => {
-            const u = (lessons[id]?.meta?.unit || "").trim();
-            return !unit || u === unit;
-        });
-
-        lessonSel.innerHTML = "";
-        const validIds = [];
-        ids.forEach((id) => {
-            const lesson = lessons[id];
-            if (!lesson || !lesson.meta) return;
-            const level = lesson.meta.level || "";
-            const unitName = lesson.meta.unit || "";
-            const title = lesson.meta.lessonTitle || "";
-            if (!level || !unitName || !title) return;
-
-            const opt = document.createElement("option");
-            opt.value = id;
-            opt.textContent = `${level} • ${unitName} • ${title}`;
-            lessonSel.appendChild(opt);
-            validIds.push(id);
-        });
-
-        // restore last selected lesson if still in filtered set
-        if (savedLesson && validIds.includes(savedLesson)) lessonSel.value = savedLesson;
-        else if (validIds.length) lessonSel.value = validIds[0];
-
-        localStorage.setItem("td_selected_unit", unitSel.value || "");
-        localStorage.setItem("td_selected_lesson", lessonSel.value || "");
-    }
-
-    fillLessons();
-
-    unitSel.onchange = () => {
-        localStorage.setItem("td_selected_unit", unitSel.value || "");
-        fillLessons();
-    };
-
-    lessonSel.onchange = () => {
-        localStorage.setItem("td_selected_lesson", lessonSel.value || "");
-    };
-
-    btnEdit.onclick = () => {
-        const id = lessonSel.value;
-        if (!id) return;
-        const picked = (sectionSel && sectionSel.value) ? sectionSel.value : (localStorage.getItem("td_pick_section") || "overview");
-        renderTeacherEditor(id, null, picked);
-    };
-
-    btnOpen.onclick = () => {
-        const id = lessonSel.value;
-        if (!id) return;
-        appState.currentLessonId = id;
-        goToLessonView({ teacherMode: false });
-    };
-
-    if (btnSync) {
-        btnSync.onclick = async () => {
-            await loadLessonsFromCloudOnce();
-            // refresh picker lists
-            renderTeacherPicker();
-            alert("Synced lessons from online.");
-        };
-    }
-
-    btnDelete.onclick = () => {
-        const id = lessonSel.value;
-        if (!id) return;
-        if (!confirm("Delete this lesson template? This cannot be undone.")) return;
-        delete lessons[id];
-        localStorage.removeItem(LS_LESSON_PREFIX + id);
-        try { deleteLessonFromCloud(id); } catch { }
-        // refresh selects
-        renderTeacherPicker();
-        const editor = $("#teacherEditor");
-        editor.style.display = "none";
-        editor.innerHTML = "";
-    };
-}
-
-
-function renderTeacherLessonList() {
-    const listEl = $("#teacherLessonList");
-    listEl.innerHTML = "";
-    const ids = Object.keys(lessons);
-    const q = (document.getElementById("tdLessonSearch")?.value || "").trim().toLowerCase();
-    if (!ids.length) {
-        const p = document.createElement("p");
-        p.className = "empty-state";
-        p.textContent =
-            "No lesson templates yet. Use “Add New Lesson Template” to create your first lesson.";
-        listEl.appendChild(p);
-        return;
-    }
-
-    ids
-        .filter((id) => {
-            if (!q) return true;
-            const lesson = lessons[id] || {};
-            const hay = `${id} ${lesson?.meta?.level || ""} ${lesson?.meta?.unit || ""} ${lesson?.meta?.lessonTitle || ""}`.toLowerCase();
-            return hay.includes(q);
-        })
-        .forEach((id) => {
-            const lesson = lessons[id];
-            const card = document.createElement("article");
-            card.className = "td-lessonitem" + (appState.currentLessonId === id ? " td-lessonitem--active" : "");
-
-            const title = document.createElement("h4");
-            title.className = "td-lessonitem__title";
-            title.textContent = `${lesson.meta.level} – ${lesson.meta.unit}`;
-
-            const meta = document.createElement("p");
-            meta.className = "td-lessonitem__meta";
-            meta.textContent = lesson.meta.lessonTitle;
-
-            const badge = document.createElement("span");
-            badge.className = "td-lessonitem__id";
-            badge.textContent = `ID: ${id}`;
-
-            const actions = document.createElement("div");
-            actions.className = "td-lessonitem__actions";
-
-            const btnEdit = document.createElement("button");
-            btnEdit.className = "btn btn--primary btn--sm";
-            btnEdit.textContent = "Edit Lesson Content";
-            btnEdit.addEventListener("click", () => {
-                appState.currentLessonId = id;
-                renderTeacherEditor(id, card); // ⭐ مررنا الكارد
-            });
-
-
-
-
-            const btnOpen = document.createElement("button");
-            btnOpen.className = "btn btn--outline btn--sm";
-            btnOpen.textContent = "Open Lesson View";
-            btnOpen.addEventListener("click", () => {
-                appState.currentLessonId = id;
-                appState.teacherMode = false;
-                $("#teacherModeToggle").checked = false;
-                goToLessonView({ teacherMode: false });
-            });
-
-            const btnDelete = document.createElement("button");
-            btnDelete.className = "btn btn--ghost btn--sm";
-            btnDelete.textContent = "Delete Template";
-            btnDelete.addEventListener("click", () => {
-                if (
-                    !confirm(
-                        `Delete lesson template "${lesson.meta.lessonTitle}"?\nThis does not delete students' progress, but the lesson won't be available anymore.`
-                    )
-                )
-                    return;
-                delete lessons[id];
-                localStorage.removeItem(LS_LESSON_PREFIX + id);
-                deleteLessonFromCloud(id);
-                const editor = $("#teacherEditor");
-                editor.style.display = "none";
-                editor.innerHTML = "";
-                renderTeacherPicker();
-            });
-
-            actions.appendChild(btnEdit);
-            actions.appendChild(btnOpen);
-            actions.appendChild(btnDelete);
-
-            card.appendChild(title);
-            card.appendChild(meta);
-            card.appendChild(badge);
-            card.appendChild(actions);
-
-            listEl.appendChild(card);
-        });
-}
-
-function createNewLessonTemplate() {
-    const newId = "lesson_" + Date.now();
-    lessons[newId] = {
-        meta: {
-            level: "Beginner",
-            unit: "New Unit",
-            lessonTitle: "New Lesson",
-        },
-        overview: {
-            title: "New Lesson Overview",
-            description: "",
-            goals: [],
-        },
-        useInLife: [],
-        vocabulary: {
-            core: [],
-            extra: [],
-        },
-        dialogue: {
-            lines: [],
-        },
-        grammar: [],
-        practice: {
-            quiz: [],
-            rolePlays: [],
-            translation: [],
-        },
-        microChecks: {
-            enabled: false,
-            every: 5,
-            items: [],
-        },
-        homework: {
-            instructions: "",
-        },
-        teacherNotes: {
-            myNotes: "",
-        },
-    };
-    saveLessonToLS(newId);
-    saveLessonToCloud(newId);
-    renderTeacherPicker();
-    renderTeacherEditor(newId);
-}
-
-
-
-function applyTeacherSectionFilter(sectionKey) {
-    const sections = $all('.teacher-editor__section[data-td-section]');
-    sections.forEach((sec) => {
-        const key = sec.getAttribute('data-td-section');
-        sec.classList.toggle('td-hidden-section', key !== sectionKey);
-    });
-    localStorage.setItem("td_selected_section", sectionKey);
-}
-
-function renderTeacherEditor(lessonId, anchorCard, preselectSection) {
-    const lesson = lessons[lessonId];
-    const editor = $("#teacherEditor");
-    if (!lesson || !editor) return;
-
-    if (!lesson.practice) lesson.practice = { quiz: [], rolePlays: [], translation: [] };
-    if (!Array.isArray(lesson.practice.translation)) lesson.practice.translation = [];
-    if (lesson.grammarTab && typeof lesson.grammarTab === "object") {
-        delete lesson.grammarTab;
-    }
-
-    // نحرك الفورم تحت الكارد اللي انضغط (Teacher Dashboard)
-    editor.innerHTML = "";
-    if (anchorCard) {
-        anchorCard.insertAdjacentElement("afterend", editor);
-    } else {
-        const list = $("#teacherLessonList");
-        if (list) list.insertAdjacentElement("afterend", editor);
-    }
-    editor.style.display = "block";
-
-    editor.innerHTML = `
-     <div class="teacher-editor__section">
-     
-      <div class="td-editor-buttons">
-        
-        <button id="tdCloseEditor" class="btn btn--ghost btn--sm">Close Editor</button>
-      </div>
-    </div>
-    <h3>Editing: ${escapeHtml(lesson.meta.level)} – ${escapeHtml(lesson.meta.unit)} – ${escapeHtml(lesson.meta.lessonTitle)}</h3>
-    <p class="teacher-edit-note">
-      All changes here are saved locally and will apply to all students for this lesson.
-    </p>
-
-    <div class="td-sectionbar">
-      <label for="tdSectionSelect">Edit section</label>
-      <select id="tdSectionSelect" class="td-select">
-        <option value="meta">Lesson Meta</option>
-        <option value="overview">Overview</option>
-        <option value="vocab">Vocabulary</option>
-        <option value="dialogue">Dialogue</option>
-        <option value="grammar">Grammar</option>
-        <option value="translation">Translation</option>
-        <option value="practice">Practice</option>
-        <option value="homework">Homework</option>
-        <option value="notes">Teacher Notes</option>
-      </select>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="meta">
-      <h4>Lesson Meta</h4>
-      <div class="form-field form-field--inline">
-        <label for="tdMetaLevel">Level</label>
-        <select id="tdMetaLevel">
-          <option value="Beginner">Beginner</option>
-          <option value="Pre-Intermediate">Pre-Intermediate</option>
-          <option value="Intermediate">Intermediate</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="tdMetaUnit">Unit</label>
-        <input id="tdMetaUnit" class="td-input" />
-      </div>
-      <div class="form-field">
-        <label for="tdMetaTitle">Lesson Title</label>
-        <input id="tdMetaTitle" class="td-input" />
-      </div>
-      <p class="section-header__subtitle">Lesson ID: <span id="tdMetaId"></span></p>
-      <div class="td-editor-buttons">
-        <button id="tdSaveMeta" class="btn btn--primary btn--sm">Save Meta</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="overview">
-      <h4>Overview</h4>
-      <div class="form-field">
-        <label for="tdOverviewTitle">Overview Title</label>
-        <input id="tdOverviewTitle" class="td-input" />
-      </div>
-      <div class="form-field">
-        <label for="tdOverviewDesc">Description</label>
-        <textarea id="tdOverviewDesc" class="homework-notes" rows="3"></textarea>
-      </div>
-      <div class="form-field">
-        <label>Goals</label>
-        <div id="tdOverviewGoalsList"></div>
-        <div class="td-editor-buttons">
-          <button id="tdAddGoal" class="btn btn--outline btn--sm">Add Goal</button>
-          <button id="tdSaveGoals" class="btn btn--primary btn--sm">Save Goals</button>
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Use it in your life (Arabic + English)</label>
-        <div id="tdUseInLifeList"></div>
-        <div class="td-editor-buttons">
-          <button id="tdAddUseInLife" class="btn btn--outline btn--sm">Add Prompt</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 🆕 Vocab Section -->
-    <div class="teacher-editor__section" data-td-section="vocab">
-      <h4>Vocabulary</h4>
-      <p class="teacher-edit-note">
-        Edit core and extra vocabulary for this lesson. These words تظهر في تبويب Vocabulary و Quick Review.
-      </p>
-
-      <h5>Core Vocabulary</h5>
-      <div id="tdVocabCoreList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddVocabCore" class="btn btn--outline btn--sm">Add Core Word</button>
-        <button id="tdSaveVocabCore" class="btn btn--primary btn--sm">Save Core</button>
-      </div>
-
-      <h5 style="margin-top: 10px;">Extra Vocabulary</h5>
-      <div id="tdVocabExtraList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddVocabExtra" class="btn btn--outline btn--sm">Add Extra Word</button>
-        <button id="tdSaveVocabExtra" class="btn btn--primary btn--sm">Save Extra</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="dialogue">
-      <h4>Dialogue</h4>
-      <p class="teacher-edit-note">Edit each line: speaker, Arabic (RTL) and English.</p>
-      <div id="tdDialogueList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddDialogueLine" class="btn btn--outline btn--sm">Add Line</button>
-        <button id="tdSaveDialogue" class="btn btn--primary btn--sm">Save Dialogue</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="grammar">
-      <h4>Grammar Points</h4>
-      <p class="teacher-edit-note">Short rules with descriptions.</p>
-      <div id="tdGrammarList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddGrammar" class="btn btn--outline btn--sm">Add Rule</button>
-        <button id="tdSaveGrammar" class="btn btn--primary btn--sm">Save Grammar</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="translation">
-      <h4>Translation (Practice)</h4>
-      <p class="teacher-edit-note">Custom translation sentences for the Translation tab.</p>
-      <div id="tdTranslationList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddTranslation" class="btn btn--outline btn--sm">Add Sentence</button>
-        <button id="tdSaveTranslation" class="btn btn--primary btn--sm">Save Translation</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="practice">
-      <h4>Practice – MCQ</h4>
-      <p class="teacher-edit-note">Edit quiz questions: Arabic question and 3 English options.</p>
-      <div id="tdQuizList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddQuiz" class="btn btn--outline btn--sm">Add MCQ</button>
-        <button id="tdSaveQuiz" class="btn btn--primary btn--sm">Save MCQ</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="practice">
-      <h4>Practice – Role-play Prompts</h4>
-      <p class="teacher-edit-note">Short speaking prompts for in-class practice.</p>
-      <div id="tdRoleList"></div>
-      <div class="td-editor-buttons">
-        <button id="tdAddRole" class="btn btn--outline btn--sm">Add Prompt</button>
-        <button id="tdSaveRole" class="btn btn--primary btn--sm">Save Prompts</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="homework">
-      <h4>Homework Instructions</h4>
-      <p class="teacher-edit-note">This text is shared for all students.</p>
-      <textarea id="tdHomeworkText" class="homework-notes" rows="3"></textarea>
-      <div class="td-editor-buttons">
-        <button id="tdSaveHomework" class="btn btn--primary btn--sm">Save Homework</button>
-      </div>
-    </div>
-
-    <div class="teacher-editor__section" data-td-section="notes">
-      <h4>Teacher Notes (Template)</h4>
-      <textarea id="tdTeacherNotes" class="homework-notes" rows="3"></textarea>
-      <div class="td-editor-buttons">
-        <button id="tdSaveTeacherNotes" class="btn btn--primary btn--sm">Save Notes</button>
-        <button id="tdCloseEditor" class="btn btn--ghost btn--sm">Close Editor</button>
-      </div>
-    </div>
-  `;
-
-    // Section filter: show only one editor section at a time
-    const sectionSel = document.getElementById("tdSectionSelect");
-    if (sectionSel) {
-        const saved = localStorage.getItem("td_selected_section") || "meta";
-        const initial = preselectSection || saved;
-        sectionSel.value = initial;
-        applyTeacherSectionFilter(sectionSel.value);
-        sectionSel.addEventListener("change", () => applyTeacherSectionFilter(sectionSel.value));
-    } else {
-        // if no selector, show all
-        $all('.teacher-editor__section[data-td-section]').forEach((sec) => sec.classList.remove('td-hidden-section'));
-    }
-
-
-    // ========== Meta ==========
-    $("#tdMetaLevel").value = lesson.meta.level;
-    $("#tdMetaUnit").value = lesson.meta.unit;
-    $("#tdMetaTitle").value = lesson.meta.lessonTitle;
-    $("#tdMetaId").textContent = lessonId;
-
-    $("#tdSaveMeta").addEventListener("click", () => {
-        lesson.meta.level = $("#tdMetaLevel").value;
-        lesson.meta.unit = $("#tdMetaUnit").value.trim() || "Unit";
-        lesson.meta.lessonTitle = $("#tdMetaTitle").value.trim() || "Lesson";
-        saveLessonToLS(lessonId);
-        renderTeacherPicker();
-        alert("Lesson meta saved.");
-    });
-
-    // ========== Overview ==========
-    $("#tdOverviewTitle").value = lesson.overview.title || "";
-    $("#tdOverviewDesc").value = lesson.overview.description || "";
-
-    const goalsListEl = $("#tdOverviewGoalsList");
-    function renderGoals() {
-        goalsListEl.innerHTML = "";
-        (lesson.overview.goals || []).forEach((g) => {
-            const row = document.createElement("div");
-            row.className = "td-role-row";
-            const inp = document.createElement("input");
-            inp.className = "td-input td-role-input";
-            inp.value = g;
-            const delBtn = document.createElement("button");
-            delBtn.type = "button";
-            delBtn.className = "btn btn--ghost btn--sm";
-            delBtn.textContent = "Delete";
-            delBtn.addEventListener("click", () => row.remove());
-            row.appendChild(inp);
-            row.appendChild(delBtn);
-            goalsListEl.appendChild(row);
-        });
-    }
-    renderGoals();
-
-    const useInLifeListEl = $("#tdUseInLifeList");
-    function createUseInLifeRow(item = {}) {
-        const row = document.createElement("div");
-        row.className = "td-role-row";
-
-        const ar = document.createElement("input");
-        ar.className = "td-input td-input--ar";
-        ar.placeholder = "Arabic prompt";
-        ar.value = item.ar || "";
-
-        const en = document.createElement("input");
-        en.className = "td-input";
-        en.placeholder = "English prompt";
-        en.value = item.en || "";
-
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-
-        row.appendChild(ar);
-        row.appendChild(en);
-        row.appendChild(delBtn);
-        return row;
-    }
-
-    function renderUseInLife() {
-        if (!useInLifeListEl) return;
-        useInLifeListEl.innerHTML = "";
-        (lesson.useInLife || []).forEach((q) => {
-            const item = typeof q === "string" ? { en: q } : q;
-            useInLifeListEl.appendChild(createUseInLifeRow(item));
-        });
-    }
-    renderUseInLife();
-
-    $("#tdAddGoal").addEventListener("click", () => {
-        const row = document.createElement("div");
-        row.className = "td-role-row";
-        const inp = document.createElement("input");
-        inp.className = "td-input td-role-input";
-        inp.placeholder = "New goal...";
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-        row.appendChild(inp);
-        row.appendChild(delBtn);
-        goalsListEl.appendChild(row);
-    });
-
-    const addUseInLifeBtn = $("#tdAddUseInLife");
-    if (addUseInLifeBtn) {
-        addUseInLifeBtn.addEventListener("click", () => {
-            if (!useInLifeListEl) return;
-            useInLifeListEl.appendChild(createUseInLifeRow({}));
-        });
-    }
-
-    $("#tdSaveGoals").addEventListener("click", () => {
-        const rows = goalsListEl.querySelectorAll(".td-role-row");
-        const newGoals = [];
-        rows.forEach((r) => {
-            const val = r.querySelector("input").value.trim();
-            if (val) newGoals.push(val);
-        });
-
-        const useRows = useInLifeListEl ? useInLifeListEl.querySelectorAll(".td-role-row") : [];
-        const newUseInLife = [];
-        useRows.forEach((r) => {
-            const inputs = r.querySelectorAll("input");
-            const ar = (inputs[0]?.value || "").trim();
-            const en = (inputs[1]?.value || "").trim();
-            if (ar || en) newUseInLife.push({ ar, en });
-        });
-
-        lesson.overview.title = $("#tdOverviewTitle").value.trim() || lesson.overview.title;
-        lesson.overview.description =
-            $("#tdOverviewDesc").value.trim() || lesson.overview.description;
-        lesson.overview.goals = newGoals;
-        lesson.useInLife = newUseInLife;
-        saveLessonToLS(lessonId);
-        // also sync online (shared)
-        saveLessonToCloud(lessonId);
-        alert("Overview saved.");
-    });
-
-    // ========== 🆕 Vocabulary ==========
-
-    const vocabCoreList = $("#tdVocabCoreList");
-    const vocabExtraList = $("#tdVocabExtraList");
-
-
-    function createVocabRow(item = {}, isCore = true) {
-        const row = document.createElement("div");
-        row.className = "td-quiz-row";
-        row.dataset.itemId = item.id || "";
-
-        row.innerHTML = `
-          <div class="td-label">Arabic (with vowels)</div>
-          <input class="td-input td-input--ar td-vocab-ar" value="${escapeAttr(item.ar || "")}" />
-
-          <div class="td-label">English meaning</div>
-          <input class="td-input td-vocab-en" value="${escapeAttr(item.en || "")}" />
-
-          <div class="td-label">Arabeezy (optional)</div>
-          <input class="td-input td-vocab-arabeezy" value="${escapeAttr(item.enArabeezy || "")}" />
-
-          <div class="td-label">Hint (optional)</div>
-          <input class="td-input td-vocab-hint" value="${escapeAttr(item.hint || "")}" />
-
-          <div class="td-label">Arabic example (optional)</div>
-          <textarea class="td-input td-input--ar td-vocab-ex-ar" rows="2">${escapeHtml(item.exampleAr || "")}</textarea>
-
-          <div class="td-label">Arabeezy example (optional)</div>
-          <textarea class="td-input td-vocab-ex-arabeezy" rows="2">${escapeHtml(item.exampleArabeezy || "")}</textarea>
-
-          <div class="td-label">English example (optional)</div>
-          <textarea class="td-input td-vocab-ex-en" rows="2">${escapeHtml(item.exampleEn || "")}</textarea>
-        `;
-
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-        row.appendChild(delBtn);
-
-        return row;
-    }
-
-    function renderVocabGroup(listEl, items) {
-        listEl.innerHTML = "";
-        (items || []).forEach((item) => {
-            listEl.appendChild(createVocabRow(item));
-        });
-    }
-
-    renderVocabGroup(vocabCoreList, lesson.vocabulary.core || []);
-    renderVocabGroup(vocabExtraList, lesson.vocabulary.extra || []);
-
-    $("#tdAddVocabCore").addEventListener("click", () => {
-        vocabCoreList.appendChild(createVocabRow({}, true));
-    });
-
-    $("#tdAddVocabExtra").addEventListener("click", () => {
-        vocabExtraList.appendChild(createVocabRow({}, false));
-    });
-
-    function collectVocabFrom(listEl, isCore) {
-        const rows = listEl.querySelectorAll(".td-quiz-row");
-        const result = [];
-        rows.forEach((row) => {
-            const ar = row.querySelector(".td-vocab-ar").value.trim();
-            const en = row.querySelector(".td-vocab-en").value.trim();
-            const enArabeezy = row.querySelector(".td-vocab-arabeezy").value.trim();
-            const hint = row.querySelector(".td-vocab-hint").value.trim();
-            const exampleAr = row.querySelector(".td-vocab-ex-ar").value.trim();
-            const exampleArabeezy = row.querySelector(".td-vocab-ex-arabeezy").value.trim();
-            const exampleEn = row.querySelector(".td-vocab-ex-en").value.trim();
-            if (!ar || !en) return;
-            let id = row.dataset.itemId;
-            if (!id) {
-                id = (isCore ? "core_" : "extra_") + Date.now() + "_" + Math.random().toString(16).slice(2);
-            }
-            result.push({ id, ar, en, enArabeezy, hint, exampleAr, exampleArabeezy, exampleEn });
-        });
-        return result;
-    }
-
-    $("#tdSaveVocabCore").addEventListener("click", () => {
-        lesson.vocabulary.core = collectVocabFrom(vocabCoreList, true);
-        saveLessonToLS(lessonId);
-        // also sync online (shared)
-        saveLessonToCloud(lessonId);
-        alert("Core vocabulary saved.");
-    });
-
-    $("#tdSaveVocabExtra").addEventListener("click", () => {
-        lesson.vocabulary.extra = collectVocabFrom(vocabExtraList, false);
-        saveLessonToLS(lessonId);
-        // also sync online (shared)
-        saveLessonToCloud(lessonId);
-        alert("Extra vocabulary saved.");
-    });
-
-    wireDialogueEditor({ $, lesson, lessonId, saveLessonToLS, saveLessonToCloud });
-    wireGrammarEditor({
-        $,
-        lesson,
-        lessonId,
-        saveLessonToLS,
-        saveLessonToCloud,
-        escapeAttr,
-        escapeHtml,
-    });
-    wireTranslationEditor({
-        $,
-        lesson,
-        lessonId,
-        saveLessonToLS,
-        saveLessonToCloud,
-        escapeHtml,
-    });
-    wireQuizEditor({ $, lesson, lessonId, saveLessonToLS, saveLessonToCloud });
-
-    if (false) { // Legacy inline editor logic kept disabled during module migration.
-    // ========== Grammar ==========
-    const grammarList = $("#tdGrammarList");
-    function renderGrammarRows() {
-        grammarList.innerHTML = "";
-        (lesson.grammar || []).forEach((g) => {
-            const exampleLines = Array.isArray(g.examples)
-                ? g.examples.map((ex) => [ex.ar, ex.arabeezy, ex.en].filter(Boolean).join(" | ")).join("\n")
-                : "";
-            const row = document.createElement("div");
-            row.className = "td-quiz-row";
-            row.innerHTML = `
-        <div class="td-label">Rule title</div>
-        <input class="td-input td-grammar-title" value="${escapeAttr(g.title || "")}" />
-        <div class="td-label">Description</div>
-        <textarea class="td-input td-grammar-desc" rows="2">${escapeHtml(g.description || "")}</textarea>
-        <div class="td-label">Examples (Arabic | Arabeezy | English)</div>
-        <textarea class="td-input td-grammar-examples" rows="3">${escapeHtml(exampleLines)}</textarea>
-        <div class="td-label">Teacher notes</div>
-        <textarea class="td-input td-grammar-notes" rows="2">${escapeHtml(g.teacherNotes || "")}</textarea>
-      `;
-            const delBtn = document.createElement("button");
-            delBtn.type = "button";
-            delBtn.className = "btn btn--ghost btn--sm";
-            delBtn.textContent = "Delete";
-            delBtn.addEventListener("click", () => row.remove());
-            row.appendChild(delBtn);
-            grammarList.appendChild(row);
-        });
-    }
-    renderGrammarRows();
-
-    $("#tdAddGrammar").addEventListener("click", () => {
-        const row = document.createElement("div");
-        row.className = "td-quiz-row";
-        row.innerHTML = `
-      <div class="td-label">Rule title</div>
-      <input class="td-input td-grammar-title" placeholder="Rule title" />
-      <div class="td-label">Description</div>
-      <textarea class="td-input td-grammar-desc" rows="2" placeholder="Description / example"></textarea>
-      <div class="td-label">Examples (Arabic | Arabeezy | English)</div>
-      <textarea class="td-input td-grammar-examples" rows="3" placeholder="مثال عربي | Arabeezy | English"></textarea>
-      <div class="td-label">Teacher notes</div>
-      <textarea class="td-input td-grammar-notes" rows="2" placeholder="Notes for teacher mode"></textarea>
-    `;
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-        row.appendChild(delBtn);
-        grammarList.appendChild(row);
-    });
-
-    $("#tdSaveGrammar").addEventListener("click", () => {
-        const rows = grammarList.querySelectorAll(".td-quiz-row");
-        const newGrammar = [];
-        rows.forEach((r) => {
-            const title = r.querySelector(".td-grammar-title").value.trim();
-            const desc = r.querySelector(".td-grammar-desc").value.trim();
-            const notes = r.querySelector(".td-grammar-notes")?.value.trim() || "";
-            const examplesRaw = r.querySelector(".td-grammar-examples")?.value || "";
-            const examples = examplesRaw
-                .split("\n")
-                .map((line) => line.trim())
-                .filter(Boolean)
-                .map((line) => {
-                    const parts = line.split("|").map((p) => p.trim());
-                    return {
-                        ar: parts[0] || "",
-                        arabeezy: parts[1] || "",
-                        en: parts[2] || "",
-                    };
-                })
-                .filter((ex) => ex.ar || ex.en || ex.arabeezy);
-            if (title) {
-                newGrammar.push({
-                    id: "g_" + Date.now() + Math.random(),
-                    title,
-                    description: desc,
-                    teacherNotes: notes,
-                    examples,
-                });
-            }
-        });
-        lesson.grammar = newGrammar;
-        saveLessonToLS(lessonId);
-        // also sync online (shared)
-        saveLessonToCloud(lessonId);
-        alert("Grammar saved.");
-    });
-
-    // ========== Translation ==========
-    const translationList = $("#tdTranslationList");
-    function createTranslationRow(item = {}) {
-        const row = document.createElement("div");
-        row.className = "td-quiz-row";
-        row.dataset.itemId = item.id || "";
-
-        row.innerHTML = `
-      <div class="td-label">Direction</div>
-      <select class="td-select td-translation-type">
-        <option value="enToAr">English → Arabic</option>
-        <option value="arToEn">Arabic → English</option>
-      </select>
-      <div class="td-label">English sentence</div>
-      <textarea class="td-input td-translation-en" rows="2">${escapeHtml(item.textEn || "")}</textarea>
-      <div class="td-label">Arabic sentence</div>
-      <textarea class="td-input td-input--ar td-translation-ar" rows="2">${escapeHtml(item.textAr || "")}</textarea>
-    `;
-
-        const typeSel = row.querySelector(".td-translation-type");
-        if (typeSel) typeSel.value = item.type || "enToAr";
-
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-        row.appendChild(delBtn);
-        return row;
-    }
-
-    function renderTranslationRows() {
-        if (!translationList) return;
-        translationList.innerHTML = "";
-        (lesson.practice.translation || []).forEach((t) => {
-            translationList.appendChild(createTranslationRow(t));
-        });
-    }
-    renderTranslationRows();
-
-    const addTranslationBtn = $("#tdAddTranslation");
-    if (addTranslationBtn && translationList) {
-        addTranslationBtn.addEventListener("click", () => {
-            translationList.appendChild(createTranslationRow({}));
-        });
-    }
-
-    const saveTranslationBtn = $("#tdSaveTranslation");
-    if (saveTranslationBtn && translationList) {
-        saveTranslationBtn.addEventListener("click", () => {
-            const rows = translationList.querySelectorAll(".td-quiz-row");
-            const newItems = [];
-            rows.forEach((row, idx) => {
-                const type = row.querySelector(".td-translation-type")?.value || "enToAr";
-                const textEn = row.querySelector(".td-translation-en")?.value.trim() || "";
-                const textAr = row.querySelector(".td-translation-ar")?.value.trim() || "";
-                if (!textEn && !textAr) return;
-                const id = row.dataset.itemId || `t_${Date.now()}_${idx}`;
-                newItems.push({ id, type, textEn, textAr });
-            });
-            lesson.practice.translation = newItems;
-            saveLessonToLS(lessonId);
-            saveLessonToCloud(lessonId);
-            alert("Translation saved.");
-        });
-    }
-
-    // ========== Quiz ==========
-    const quizList = $("#tdQuizList");
-    quizList.innerHTML = "";
-    lesson.practice.quiz.forEach((q) => {
-        const row = document.createElement("div");
-        row.className = "td-quiz-row";
-
-        const qLabel = document.createElement("div");
-        qLabel.className = "td-label";
-        qLabel.textContent = "Question (Arabic)";
-
-        const qInput = document.createElement("textarea");
-        qInput.className = "td-input td-input--ar td-quiz-question";
-        qInput.rows = 2;
-        qInput.value = q.questionAr || "";
-
-        const optLabel = document.createElement("div");
-        optLabel.className = "td-label";
-        optLabel.textContent = "Options (English)";
-
-        const optGrid = document.createElement("div");
-        optGrid.className = "td-quiz-grid";
-
-        const optInputs = [];
-        for (let i = 0; i < 3; i++) {
-            const inp = document.createElement("input");
-            inp.className = "td-input";
-            inp.value = q.optionsEn[i] || "";
-            optGrid.appendChild(inp);
-            optInputs.push(inp);
-        }
-
-        const correctWrap = document.createElement("div");
-        correctWrap.style.marginTop = "4px";
-        correctWrap.style.display = "flex";
-        correctWrap.style.justifyContent = "space-between";
-        correctWrap.style.alignItems = "center";
-
-        const sel = document.createElement("select");
-        sel.className = "td-select";
-        ["Option 1", "Option 2", "Option 3"].forEach((lab, idx) => {
-            const op = document.createElement("option");
-            op.value = String(idx);
-            op.textContent = lab;
-            sel.appendChild(op);
-        });
-        sel.value = String(q.correctIndex || 0);
-
-        const selLabel = document.createElement("span");
-        selLabel.className = "td-label";
-        selLabel.textContent = "Correct option:";
-
-        const left = document.createElement("div");
-        left.style.display = "flex";
-        left.style.flexDirection = "column";
-        left.style.gap = "2px";
-        left.appendChild(selLabel);
-        left.appendChild(sel);
-
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-
-        correctWrap.appendChild(left);
-        correctWrap.appendChild(delBtn);
-
-        row.appendChild(qLabel);
-        row.appendChild(qInput);
-        row.appendChild(optLabel);
-        row.appendChild(optGrid);
-        row.appendChild(correctWrap);
-
-        quizList.appendChild(row);
-    });
-
-    $("#tdAddQuiz").addEventListener("click", () => {
-        const row = document.createElement("div");
-        row.className = "td-quiz-row";
-
-        const qLabel = document.createElement("div");
-        qLabel.className = "td-label";
-        qLabel.textContent = "Question (Arabic)";
-
-        const qInput = document.createElement("textarea");
-        qInput.className = "td-input td-input--ar td-quiz-question";
-        qInput.rows = 2;
-        qInput.placeholder = "Question in Arabic";
-
-        const optLabel = document.createElement("div");
-        optLabel.className = "td-label";
-        optLabel.textContent = "Options (English)";
-
-        const optGrid = document.createElement("div");
-        optGrid.className = "td-quiz-grid";
-        ["Option 1", "Option 2", "Option 3"].forEach((placeholder) => {
-            const inp = document.createElement("input");
-            inp.className = "td-input";
-            inp.placeholder = placeholder;
-            optGrid.appendChild(inp);
-        });
-
-        const correctWrap = document.createElement("div");
-        correctWrap.style.marginTop = "4px";
-        correctWrap.style.display = "flex";
-        correctWrap.style.justifyContent = "space-between";
-        correctWrap.style.alignItems = "center";
-
-        const selLabel = document.createElement("span");
-        selLabel.className = "td-label";
-        selLabel.textContent = "Correct option:";
-
-        const sel = document.createElement("select");
-        sel.className = "td-select";
-        ["Option 1", "Option 2", "Option 3"].forEach((lab, idx) => {
-            const op = document.createElement("option");
-            op.value = String(idx);
-            op.textContent = lab;
-            sel.appendChild(op);
-        });
-
-        const left = document.createElement("div");
-        left.style.display = "flex";
-        left.style.flexDirection = "column";
-        left.style.gap = "2px";
-        left.appendChild(selLabel);
-        left.appendChild(sel);
-
-        const delBtn = document.createElement("button");
-        delBtn.type = "button";
-        delBtn.className = "btn btn--ghost btn--sm";
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener("click", () => row.remove());
-
-        correctWrap.appendChild(left);
-        correctWrap.appendChild(delBtn);
-
-        row.appendChild(qLabel);
-        row.appendChild(qInput);
-        row.appendChild(optLabel);
-        row.appendChild(optGrid);
-        row.appendChild(correctWrap);
-        quizList.appendChild(row);
-    });
-
-    $("#tdSaveQuiz").addEventListener("click", () => {
-        const rows = quizList.querySelectorAll(".td-quiz-row");
-        const newQuiz = [];
-        rows.forEach((row) => {
-            const qInput = row.querySelector(".td-quiz-question");
-            const questionAr = qInput.value.trim();
-            if (!questionAr) return;
-            const opts = Array.from(row.querySelectorAll(".td-quiz-grid .td-input")).map((i) =>
-                i.value.trim()
-            );
-            if (!opts[0] || !opts[1] || !opts[2]) return;
-            const sel = row.querySelector(".td-select");
-            const correctIndex = Number(sel.value) || 0;
-            newQuiz.push({
-                id: "q_" + Date.now() + "_" + Math.random().toString(16).slice(2),
-                questionAr,
-                optionsEn: opts,
-                correctIndex,
-            });
-        });
-        lesson.practice.quiz = newQuiz;
-        saveLessonToLS(lessonId);
-        // also sync online (shared)
-        saveLessonToCloud(lessonId);
-        alert("MCQ saved.");
-    });
-
-    }
-
-    // ========== Role-play / Homework / Teacher Notes ==========
-    wireRolePlayEditor({ $, lesson, lessonId, saveLessonToLS, saveLessonToCloud });
-    wireHomeworkEditor({ $, lesson, lessonId, saveLessonToLS, saveLessonToCloud });
-    wireTeacherNotesEditor({
-        $,
-        lesson,
-        lessonId,
-        saveLessonToLS,
-        saveLessonToCloud,
-        editor,
-    });
-}
 // ================= AUTH MODAL HELPERS =================
-function openAuthModal(forcedRole) {
-    document.body.classList.remove("home-only");
-    console.log("openAuthModal called with role:", forcedRole);
-    const modal = document.getElementById("authModal");
-    const roleSelect = document.getElementById("authRole");
-    const errorBox = document.getElementById("authError");
-
-    if (!modal) return;
-
-    // مسح أي خطأ قديم
-    if (errorBox) errorBox.textContent = "";
-
-    // لو جاي من زر "أنا طالب" أو "أنا مدرس"
-    if (forcedRole === "student" || forcedRole === "teacher") {
-        modal.dataset.forcedRole = forcedRole;
-        if (roleSelect) roleSelect.value = forcedRole;
-    } else {
-        // لو جاي من زر Login العادي
-        delete modal.dataset.forcedRole;
-    }
-
-    modal.classList.add("modal--open");
+function openAuthModal() {
+    openExternalBookingPage();
 }
 
 function closeAuthModal() {
-    const modal = document.getElementById("authModal");
-    if (!modal) return;
-    modal.classList.remove("modal--open");
-    delete modal.dataset.forcedRole;
+    // Auth is disabled in the public student build.
 }
-
 // ========================= DOM READY =========================
 document.addEventListener("DOMContentLoaded", async () => {
     loadLessonDataFromLS();
+    await loadLessonsFromCloudOnce();
     loadCustomUnits();
     loadFontSize();
     appState.students = loadStudentsFromLS();
@@ -6202,1118 +4963,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // Availability editor
-    const availGrid = document.getElementById("availabilityGrid");
-    const availTz = document.getElementById("availTimezone");
-    const availSlot = document.getElementById("availSlotMinutes");
-    const availBreak = document.getElementById("availBreakMinutes");
-    const btnSaveAvail = document.getElementById("btnSaveAvailability");
-    const btnResetAvail = document.getElementById("btnResetAvailability");
-    const availSaveMsg = document.getElementById("availabilitySaveMsg");
-    const dayKeys = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    function renderAvailabilityEditor() {
-        if (availTz) availTz.value = bookingSettings.timezone || "";
-        if (availSlot) availSlot.value = bookingSettings.slotMinutes || 50;
-        if (availBreak) availBreak.value = bookingSettings.breakMinutes || 10;
-        if (!availGrid) return;
-        availGrid.innerHTML = dayKeys
-            .map((d) => {
-                const info = bookingSettings.days[d];
-                return `
-                    <div class="avail-day" data-day="${escapeAttr(d)}">
-                        <div class="avail-day__head">
-                            <input type="checkbox" data-avail-enabled ${info.enabled ? "checked" : ""} />
-                            <strong>${escapeHtml(d)}</strong>
-                        </div>
-                        <div class="form-field form-field--inline">
-                            <label>Start</label>
-                            <input type="time" data-avail-start value="${escapeAttr(info.start)}" />
-                        </div>
-                        <div class="form-field form-field--inline">
-                            <label>End</label>
-                            <input type="time" data-avail-end value="${escapeAttr(info.end)}" />
-                        </div>
-                    </div>
-                `;
-            })
-            .join("");
-    }
-    renderAvailabilityEditor();
-    if (btnSaveAvail) {
-        btnSaveAvail.addEventListener("click", async () => {
-            bookingSettings.timezone = availTz ? availTz.value.trim() : "";
-            bookingSettings.slotMinutes = Number(availSlot?.value || 50);
-            bookingSettings.breakMinutes = Number(availBreak?.value || 10);
-            bookingSettings.totalSlotMinutes = bookingSettings.slotMinutes + bookingSettings.breakMinutes;
-            if (availGrid) {
-                dayKeys.forEach((d) => {
-                    const el = availGrid.querySelector(`.avail-day[data-day="${d}"]`);
-                    if (!el) return;
-                    bookingSettings.days[d] = {
-                        enabled: !!el.querySelector("[data-avail-enabled]")?.checked,
-                        start: el.querySelector("[data-avail-start]")?.value || "09:00",
-                        end: el.querySelector("[data-avail-end]")?.value || "17:00",
-                    };
-                });
-            }
-            saveBookingSettings();
-            await saveBookingSettingsToCloud();
-            if (availSaveMsg) availSaveMsg.textContent = "Saved.";
-            setTimeout(() => {
-                if (availSaveMsg) availSaveMsg.textContent = "";
-            }, 1500);
-        });
-    }
-    if (btnResetAvail) {
-        btnResetAvail.addEventListener("click", async () => {
-            bookingSettings = getDefaultBookingSettings();
-            ensureBookingSettingsShape();
-            renderAvailabilityEditor();
-            saveBookingSettings();
-            await saveBookingSettingsToCloud();
-            renderExceptions();
-            await buildBookingSelects();
-            if (availSaveMsg) availSaveMsg.textContent = "Availability reset to fresh defaults.";
-            setTimeout(() => {
-                if (availSaveMsg) availSaveMsg.textContent = "";
-            }, 1800);
-        });
-    }
-
-    // Busy exceptions
-    const exceptionDate = document.getElementById("exceptionDate");
-    const exceptionStart = document.getElementById("exceptionStart");
-    const exceptionEnd = document.getElementById("exceptionEnd");
-    const exceptionNote = document.getElementById("exceptionNote");
-    const btnAddException = document.getElementById("btnAddException");
-    const exceptionsList = document.getElementById("exceptionsList");
-    const exceptionsMsg = document.getElementById("exceptionsMsg");
-    const busyBlocksToggle = document.getElementById("busyBlocksToggle");
-    const busyBlocksBody = document.getElementById("busyBlocksBody");
-    const btnConnectGoogleCalendar = document.getElementById("btnConnectGoogleCalendar");
-    const btnDisconnectGoogleCalendar = document.getElementById("btnDisconnectGoogleCalendar");
-    const btnImportGoogleCalendar = document.getElementById("btnImportGoogleCalendar");
-    const btnSyncBookingsNow = document.getElementById("btnSyncBookingsNow");
-    const googleCalendarMsg = document.getElementById("googleCalendarMsg");
-    const calendarStatusIndicator = document.getElementById("calendarStatusIndicator");
-    const calendarStatusText = document.getElementById("calendarStatusText");
-    const appsScriptWebAppUrl = document.getElementById("appsScriptWebAppUrl");
-    const btnSaveAppsScriptUrl = document.getElementById("btnSaveAppsScriptUrl");
-    const btnTestAppsScript = document.getElementById("btnTestAppsScript");
-    const btnImportBusyAppsScript = document.getElementById("btnImportBusyAppsScript");
-    const appsScriptMsg = document.getElementById("appsScriptMsg");
-    const preplyCalendarIdInput = document.getElementById("preplyCalendarIdInput");
-    const btnSavePreplyCalendarId = document.getElementById("btnSavePreplyCalendarId");
-    const btnTestPreplyCalendar = document.getElementById("btnTestPreplyCalendar");
-    let calendarSyncTimer = null;
-    let calendarBusyImportDone = false;
-
-    if (busyBlocksToggle && busyBlocksBody) {
-        busyBlocksToggle.addEventListener("click", () => {
-            const nextOpen = busyBlocksToggle.getAttribute("aria-expanded") !== "true";
-            busyBlocksToggle.setAttribute("aria-expanded", String(nextOpen));
-            busyBlocksBody.hidden = !nextOpen;
-        });
-    }
-
-    async function updateGoogleCalendarStatus() {
-        if (!calendarStatusIndicator || !calendarStatusText) return;
-        try {
-            const isConnected = await window.isGoogleCalendarConnected?.();
-            calendarStatusIndicator.className = `status-indicator ${isConnected ? 'connected' : 'disconnected'}`;
-            calendarStatusText.textContent = isConnected ? 'Connected' : 'Not connected';
-            if (btnConnectGoogleCalendar) btnConnectGoogleCalendar.style.display = isConnected ? 'none' : 'inline-block';
-            if (btnDisconnectGoogleCalendar) btnDisconnectGoogleCalendar.style.display = isConnected ? 'inline-block' : 'none';
-            if (appState.currentUser?.role === "teacher" && preplyCalendarIdInput) {
-                try {
-                    const teacherDoc = await db.collection("teachers").doc(appState.currentUser.uid).get();
-                    const teacherData = teacherDoc.exists ? (teacherDoc.data() || {}) : {};
-                    preplyCalendarIdInput.value = teacherData.preplyCalendarId || teacherData.googleCalendar?.preplyCalendarId || "";
-                    if (appsScriptWebAppUrl) appsScriptWebAppUrl.value = teacherData.appsScript?.webAppUrl || "";
-                } catch {}
-            } else {
-                if (preplyCalendarIdInput) preplyCalendarIdInput.value = "";
-                if (appsScriptWebAppUrl) appsScriptWebAppUrl.value = "";
-            }
-            if (isConnected) startCalendarAutoSync();
-            else stopCalendarAutoSync();
-            if (isConnected && appState.currentUser?.role === "teacher" && !calendarBusyImportDone) {
-                calendarBusyImportDone = true;
-                try {
-                    const result = await window.importGoogleCalendarEventsToBusyBlocks?.();
-                    if (result?.success) {
-                        await loadBookingSettingsFromCloud();
-                        renderExceptions();
-                        await buildBookingSelects();
-                    }
-                } catch {}
-            }
-        } catch {
-            calendarStatusIndicator.className = 'status-indicator disconnected';
-            calendarStatusText.textContent = 'Not connected';
-        }
-    }
-    function updateGoogleCalendarStatusMessage(message) {
-        if (googleCalendarMsg) googleCalendarMsg.textContent = message || "";
-    }
-    try { window.refreshGoogleCalendarStatus = updateGoogleCalendarStatus; } catch { }
-    try { window.updateGoogleCalendarStatusMessage = updateGoogleCalendarStatusMessage; } catch { }
-
-    async function refreshRuntimeBusyBlocks({ forceRefresh = false } = {}) {
-        const daysNeeded = Math.max(10, bookingWeekOffset * 7 + 10);
-        if (
-            !forceRefresh &&
-            runtimeBusyBlocks.length &&
-            runtimeBusyBlocksLoadedDays >= daysNeeded &&
-            Date.now() - runtimeBusyBlocksLoadedAt < runtimeBusyBlocksTtlMs
-        ) {
-            return;
-        }
-        runtimeBusyBlocks = [];
-        try {
-            const result = await window.fetchBusyBlocksFromAppsScript?.({
-                days: daysNeeded,
-                timeZone: bookingSettings.timezone || getLocalTimezone() || "Africa/Cairo",
-            });
-            if (result?.success && Array.isArray(result.busyBlocks)) {
-                runtimeBusyBlocks = result.busyBlocks;
-                runtimeBusyBlocksLoadedAt = Date.now();
-                runtimeBusyBlocksLoadedDays = daysNeeded;
-            }
-        } catch {}
-    }
-
-    async function syncPendingBookingsToCalendar({ showMsg = true } = {}) {
-        if (!appState.currentUser || appState.currentUser.role !== "teacher") return;
-        const appsScriptResult = await window.syncPendingBookingsViaAppsScript?.({ limit: 10 });
-        if (appsScriptResult?.success || appsScriptResult?.syncedCount) {
-            if (showMsg && googleCalendarMsg) googleCalendarMsg.textContent = appsScriptResult.message;
-            await refreshRuntimeBusyBlocks();
-            await buildBookingSelects();
-            return;
-        }
-        if (!window.createGoogleCalendarEvent) return;
-        try {
-            const connected = await window.isGoogleCalendarConnected?.();
-            if (!connected) {
-                if (showMsg && googleCalendarMsg) googleCalendarMsg.textContent = "Google Calendar is not connected.";
-                return;
-            }
-            const tokenOk = await window.ensureGoogleCalendarAccess?.({ interactive: false });
-            if (!tokenOk) {
-                if (showMsg && googleCalendarMsg) googleCalendarMsg.textContent = "Reconnect Google Calendar, then try again.";
-                return;
-            }
-            const snap = await db
-                .collection("bookings")
-                .where("calendarSynced", "==", false)
-                .limit(10)
-                .get();
-            const pendingDocs = snap.docs.sort((a, b) => {
-                const aTs = a.data()?.createdAt || 0;
-                const bTs = b.data()?.createdAt || 0;
-                return aTs - bTs;
-            });
-            if (!pendingDocs.length) {
-                if (showMsg && googleCalendarMsg) googleCalendarMsg.textContent = "No pending bookings to sync.";
-                return;
-            }
-            let syncedCount = 0;
-            let failedCount = 0;
-            for (const doc of pendingDocs) {
-                const booking = doc.data();
-                if (!booking || !booking.slot || booking.status === "canceled") continue;
-                const slotDate = new Date(booking.slot);
-                const slotMinutes = bookingSettings.slotMinutes || 50;
-                const slotEnd = new Date(slotDate.getTime() + slotMinutes * 60000);
-                const eventData = {
-                    summary: `Lesson with ${booking.name}`,
-                    description: `Student: ${booking.name}\nEmail: ${booking.email}\nPhone: ${booking.phone}\nNotes: ${booking.notes || 'None'}\nBooking ID: ${doc.id}`,
-                    start: {
-                        dateTime: slotDate.toISOString(),
-                        timeZone: bookingSettings.timezone || getLocalTimezone()
-                    },
-                    end: {
-                        dateTime: slotEnd.toISOString(),
-                        timeZone: bookingSettings.timezone || getLocalTimezone()
-                    },
-                    attendees: [
-                        { email: booking.email, displayName: booking.name }
-                    ],
-                    reminders: { useDefault: true }
-                };
-                const googleEvent = await window.createGoogleCalendarEvent(eventData);
-                if (googleEvent) {
-                    await db.collection("bookings").doc(doc.id).set(
-                        {
-                            calendarSynced: true,
-                            googleCalendarEventId: googleEvent.id,
-                            history: firebase.firestore.FieldValue.arrayUnion({
-                                at: Date.now(),
-                                action: "calendar_synced",
-                                by: "system"
-                            })
-                        },
-                        { merge: true }
-                    );
-                    await db.collection("publicBookings").doc(doc.id).set(
-                        { calendarSynced: true, updatedAt: Date.now() },
-                        { merge: true }
-                    );
-                    syncedCount += 1;
-                } else {
-                    failedCount += 1;
-                }
-            }
-            if (showMsg && googleCalendarMsg) {
-                googleCalendarMsg.textContent = failedCount
-                    ? `Synced ${syncedCount} bookings. ${failedCount} need reconnect or retry.`
-                    : `Bookings synced to Google Calendar (${syncedCount}).`;
-            }
-        } catch (err) {
-            console.error("Booking sync failed:", err);
-            if (showMsg && googleCalendarMsg) googleCalendarMsg.textContent = err?.message || "Sync failed. Try reconnecting Google Calendar.";
-        }
-    }
-
-    function startCalendarAutoSync() {
-        if (calendarSyncTimer) return;
-        calendarSyncTimer = setInterval(() => {
-            syncPendingBookingsToCalendar({ showMsg: false });
-        }, 60000);
-        syncPendingBookingsToCalendar({ showMsg: false });
-    }
-
-    function stopCalendarAutoSync() {
-        if (calendarSyncTimer) clearInterval(calendarSyncTimer);
-        calendarSyncTimer = null;
-    }
-
-    if (btnConnectGoogleCalendar) {
-        btnConnectGoogleCalendar.addEventListener("click", async () => {
-            window.connectToGoogleCalendar?.((success, error) => {
-                if (googleCalendarMsg) {
-                    googleCalendarMsg.textContent = success ? "Google Calendar connected. Now save/test your Preply calendar if needed." : (error || "Connect failed.");
-                }
-                calendarBusyImportDone = false;
-                updateGoogleCalendarStatus();
-            });
-        });
-    }
-    if (btnDisconnectGoogleCalendar) {
-        btnDisconnectGoogleCalendar.addEventListener("click", async () => {
-            const ok = await window.disconnectFromGoogleCalendar?.();
-            if (googleCalendarMsg) googleCalendarMsg.textContent = ok ? "Google Calendar disconnected." : "Disconnect failed.";
-            updateGoogleCalendarStatus();
-        });
-    }
-    if (btnImportGoogleCalendar) {
-        btnImportGoogleCalendar.addEventListener("click", async () => {
-            if (googleCalendarMsg) googleCalendarMsg.textContent = "Importing...";
-            const result = await window.importGoogleCalendarEventsToBusyBlocks?.();
-            if (googleCalendarMsg) googleCalendarMsg.textContent = result?.message || "Import finished.";
-            await updateGoogleCalendarStatus();
-            await loadBookingSettingsFromCloud();
-            renderExceptions();
-            await buildBookingSelects();
-        });
-    }
-    if (btnSyncBookingsNow) {
-        btnSyncBookingsNow.addEventListener("click", async () => {
-            await syncPendingBookingsToCalendar();
-        });
-    }
-    if (btnSaveAppsScriptUrl) {
-        btnSaveAppsScriptUrl.addEventListener("click", async () => {
-            const result = await window.saveAppsScriptSettings?.({ webAppUrl: appsScriptWebAppUrl?.value || "" });
-            if (appsScriptMsg) appsScriptMsg.textContent = result?.message || "Apps Script save finished.";
-        });
-    }
-    if (btnTestAppsScript) {
-        btnTestAppsScript.addEventListener("click", async () => {
-            if (appsScriptMsg) appsScriptMsg.textContent = "Testing Apps Script...";
-            const result = await window.testAppsScriptConnection?.();
-            if (appsScriptMsg) appsScriptMsg.textContent = result?.message || "Apps Script test finished.";
-        });
-    }
-    if (btnImportBusyAppsScript) {
-        btnImportBusyAppsScript.addEventListener("click", async () => {
-            if (appsScriptMsg) appsScriptMsg.textContent = "Importing busy times from Apps Script...";
-            const result = await window.fetchBusyBlocksFromAppsScript?.({
-                days: 35,
-                timeZone: bookingSettings.timezone || getLocalTimezone() || "Africa/Cairo",
-            });
-            if (result?.success && Array.isArray(result.busyBlocks)) {
-                bookingSettings.exceptions = mergeBusyBlocksLists(bookingSettings.exceptions, result.busyBlocks);
-                saveBookingSettings();
-                await saveBookingSettingsToCloud();
-                runtimeBusyBlocks = result.busyBlocks;
-                renderExceptions();
-                await buildBookingSelects();
-                if (appsScriptMsg) appsScriptMsg.textContent = `Imported ${result.busyBlocks.length} busy blocks from Apps Script and merged them with existing busy times.`;
-            } else if (appsScriptMsg) {
-                appsScriptMsg.textContent = result?.message || "Apps Script import failed.";
-            }
-        });
-    }
-    if (btnSavePreplyCalendarId) {
-        btnSavePreplyCalendarId.addEventListener("click", async () => {
-            if (!appState.currentUser || appState.currentUser.role !== "teacher") return;
-            const value = (window.normalizeCalendarId?.(preplyCalendarIdInput?.value || "") || (preplyCalendarIdInput?.value || "").trim());
-            try {
-                await db.collection("teachers").doc(appState.currentUser.uid).set({
-                    preplyCalendarId: value,
-                    googleCalendar: {
-                        preplyCalendarId: value,
-                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }
-                }, { merge: true });
-                try { window.preplyCalendarId = value; } catch {}
-                if (preplyCalendarIdInput) preplyCalendarIdInput.value = value;
-                if (googleCalendarMsg) googleCalendarMsg.textContent = value ? "Preply Calendar ID saved." : "Preply Calendar ID cleared.";
-            } catch (err) {
-                if (googleCalendarMsg) googleCalendarMsg.textContent = "Could not save Preply Calendar ID.";
-            }
-        });
-    }
-    if (btnTestPreplyCalendar) {
-        btnTestPreplyCalendar.addEventListener("click", async () => {
-            if (googleCalendarMsg) googleCalendarMsg.textContent = "Testing Preply calendar...";
-            const result = await window.testPreplyCalendarAccess?.();
-            if (googleCalendarMsg) googleCalendarMsg.textContent = result?.message || "Preply calendar test finished.";
-        });
-    }
-    updateGoogleCalendarStatus();
-
-    function renderExceptions() {
-        if (!exceptionsList) return;
-        const list = Array.isArray(bookingSettings.exceptions) ? bookingSettings.exceptions : [];
-        if (!list.length) {
-            exceptionsList.innerHTML = "<div class=\"small-note\">No busy blocks yet.</div>";
-            return;
-        }
-        exceptionsList.innerHTML = list
-            .map((ex, idx) => {
-                const note = ex.note ? `<div class="exception-item__note">${ex.note}</div>` : "";
-                return `
-                    <div class="exception-item" data-exception-index="${idx}">
-                        <div>
-                            <div class="exception-item__meta">${ex.date} · ${ex.start}–${ex.end}</div>
-                            ${note}
-                        </div>
-                        <button class="btn btn--ghost btn--sm" data-exception-remove>Remove</button>
-                    </div>
-                `;
-            })
-            .join("");
-    }
-
-    if (exceptionsList) {
-        exceptionsList.addEventListener("click", async (e) => {
-            const btn = e.target.closest("[data-exception-remove]");
-            if (!btn) return;
-            const item = btn.closest("[data-exception-index]");
-            if (!item) return;
-            const idx = Number(item.getAttribute("data-exception-index"));
-            if (Number.isNaN(idx)) return;
-            bookingSettings.exceptions.splice(idx, 1);
-            saveBookingSettings();
-            await saveBookingSettingsToCloud();
-            renderExceptions();
-            await buildBookingSelects();
-        });
-    }
-
-    if (btnAddException) {
-        btnAddException.addEventListener("click", async () => {
-            const date = (exceptionDate?.value || "").trim();
-            const start = (exceptionStart?.value || "").trim();
-            const end = (exceptionEnd?.value || "").trim();
-            const note = (exceptionNote?.value || "").trim();
-            if (!date || !start || !end) {
-                if (exceptionsMsg) exceptionsMsg.textContent = "Please choose date, start, and end.";
-                return;
-            }
-            if (toMinutes(end) <= toMinutes(start)) {
-                if (exceptionsMsg) exceptionsMsg.textContent = "End time must be after start time.";
-                return;
-            }
-            bookingSettings.exceptions.push({ date, start, end, note });
-            saveBookingSettings();
-            await saveBookingSettingsToCloud();
-            
-            if (exceptionNote) exceptionNote.value = "";
-            if (exceptionsMsg) exceptionsMsg.textContent = "Busy block added.";
-            setTimeout(() => {
-                if (exceptionsMsg) exceptionsMsg.textContent = "";
-            }, 1500);
-            renderExceptions();
-            await buildBookingSelects();
-        });
-    }
-
-    renderExceptions();
-
-    // Booking UI
-    const bookingForm = document.getElementById("bookingForm");
-    const bookingMsg = document.getElementById("bookingMsg");
-    const bookingSubmit = document.getElementById("bookingSubmit");
-    const bookingInfo = document.getElementById("bookingInfo");
-    const selectedTimeDisplay = document.getElementById("selectedTimeDisplay");
-    const bookingTimezoneLabel = document.getElementById("bookingTimezoneLabel");
-    const bookingDateChips = document.getElementById("bookingDateChips");
-    const bookingWeekPrev = document.getElementById("bookingWeekPrev");
-    const bookingWeekNext = document.getElementById("bookingWeekNext");
-    const bookingWeekLabel = document.getElementById("bookingWeekLabel");
-    const bookingWeeklyGrid = document.getElementById("bookingWeeklyGrid");
-    const bookingEmptyState = document.getElementById("bookingEmptyState");
-    const bookingStatusEmail = document.getElementById("bookingStatusEmail");
-    const bookingStatusBtn = document.getElementById("bookingStatusBtn");
-    const bookingStatusList = document.getElementById("bookingStatusList");
-    const bookingStatusMsg = document.getElementById("bookingStatusMsg");
-    const bookingCancelMsg = document.getElementById("bookingCancelMsg");
+    // Public student build: internal booking, availability, and calendar admin UI are disabled.
+    // All booking actions go to the standalone booking app.
     const bookingSuccessModal = document.getElementById("bookingSuccessModal");
-    const bookingSuccessText = document.getElementById("bookingSuccessText");
-    const btnClearAllBookings = document.getElementById("btnClearAllBookings");
-    const btnClearBusyBlocks = document.getElementById("btnClearBusyBlocks");
-    let slotsByDate = new Map();
-    let scheduleByDate = new Map();
-    let bookingWeekOffset = 0;
-    let bookingBuildSeq = 0;
-    let bookingAutoRefreshTimer = null;
-    let pendingGuestReschedule = null;
+    try { window.buildBookingSelects = async () => []; } catch { }
 
-    function updateBookingInfo() {
-        if (!bookingInfo || !selectedTimeDisplay) return;
-        if (!window.selectedDate || !window.selectedTime) {
-            bookingInfo.style.display = "none";
-            selectedTimeDisplay.textContent = "";
-            return;
-        }
-        const dt = new Date(window.selectedDate);
-        const [h, m] = window.selectedTime.split(":").map(Number);
-        dt.setHours(h, m, 0, 0);
-        bookingInfo.style.display = "block";
-        selectedTimeDisplay.textContent = formatSlotTime(dt.getTime());
-    }
-
-    function renderDateChips(keys, activeKey = "") {
-        if (!bookingDateChips) return;
-        bookingDateChips.innerHTML = "";
-        keys.slice(0, 7).forEach((key) => {
-            const dateObj = new Date(`${key}T12:00:00`);
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "date-chip";
-            btn.textContent = dateObj.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
-            if (activeKey === key) btn.classList.add("is-active");
-            btn.addEventListener("click", () => {
-                const slots = (scheduleByDate.get(key) || []).filter((slot) => slot.available).sort((a, b) => a.startMs - b.startMs);
-                if (slots.length) setSelectedSlot(new Date(slots[0].startMs));
-                renderWeeklyCalendar();
-            });
-            bookingDateChips.appendChild(btn);
-        });
-    }
-
-    function getWeekStart(date, weekOffset = 0) {
-        const base = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-        base.setDate(base.getDate() + weekOffset * 7);
-        return base;
-    }
-
-    function setSelectedSlot(slot) {
-        const dt = new Date(slot.getTime());
-        dt.setSeconds(0, 0);
-        window.selectedDate = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
-        window.selectedTime = dt.toTimeString().slice(0, 5);
-        if (bookingSubmit) bookingSubmit.disabled = false;
-        updateBookingInfo();
-    }
-
-    function renderWeeklyCalendar(activeDateKeys) {
-        if (!bookingWeeklyGrid) return;
-        bookingWeeklyGrid.innerHTML = "";
-        const weekStart = getWeekStart(new Date(), bookingWeekOffset);
-        const todayKey = getDateKey(new Date());
-        for (let i = 0; i < 7; i++) {
-            const day = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate() + i);
-            const dateKey = getDateKey(day);
-            const slots = (scheduleByDate.get(dateKey) || []).slice().sort((a, b) => a.startMs - b.startMs);
-            const col = document.createElement("div");
-            const hasAvailable = slots.some((slot) => slot.available);
-            col.className = `booking-day-column${hasAvailable ? "" : " is-empty"}`;
-            const header = document.createElement("div");
-            header.className = "booking-day-header";
-            const headerLabel = document.createElement("div");
-            headerLabel.className = "booking-day-label";
-            headerLabel.textContent = dateKey === todayKey ? "Today" : day.toLocaleDateString([], { weekday: "short" });
-            const headerDate = document.createElement("div");
-            headerDate.className = "booking-day-date";
-            headerDate.textContent = day.toLocaleDateString([], { month: "short", day: "numeric" });
-            header.appendChild(headerLabel);
-            header.appendChild(headerDate);
-            const body = document.createElement("div");
-            body.className = "booking-day-slots";
-            if (!slots.length) {
-                const empty = document.createElement("div");
-                empty.className = "booking-day-empty";
-                empty.textContent = "No available times";
-                body.appendChild(empty);
-            } else {
-                slots.forEach((slot) => {
-                    const btn = document.createElement("button");
-                    btn.type = "button";
-                    btn.className = `slot-btn${slot.available ? "" : " is-unavailable"}`;
-                    btn.disabled = !slot.available;
-                    const slotDate = new Date(slot.startMs);
-                    btn.appendChild(
-                        document.createTextNode(
-                            slotDate.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })
-                        )
-                    );
-                    if (!slot.available) {
-                        const meta = document.createElement("span");
-                        meta.className = "slot-btn__meta";
-                        meta.textContent = slot.reason || "";
-                        btn.appendChild(meta);
-                    }
-                    if (window.selectedDate && window.selectedTime) {
-                        const selectedStamp = `${getDateKey(window.selectedDate)} ${window.selectedTime}`;
-                        const slotStamp = `${getDateKey(slotDate)} ${slotDate.toTimeString().slice(0, 5)}`;
-                        if (selectedStamp === slotStamp) btn.classList.add("is-active");
-                    }
-                    if (slot.available) {
-                        btn.addEventListener("click", () => {
-                            setSelectedSlot(slotDate);
-                            renderWeeklyCalendar();
-                        });
-                    }
-                    body.appendChild(btn);
-                });
-            }
-            col.appendChild(header);
-            col.appendChild(body);
-            bookingWeeklyGrid.appendChild(col);
-        }
-
-        if (bookingEmptyState) {
-            const hasAnySlots = Array.from({ length: 7 }, (_, idx) => {
-                const d = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate() + idx);
-                return (scheduleByDate.get(getDateKey(d)) || []).length > 0;
-            }).some(Boolean);
-            bookingEmptyState.style.display = hasAnySlots ? "none" : "block";
-        }
-
-        if (bookingWeekLabel) {
-            const weekEnd = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate() + 6);
-            bookingWeekLabel.textContent = `${weekStart.toLocaleDateString([], { month: "short", day: "numeric" })} - ${weekEnd.toLocaleDateString([], { month: "short", day: "numeric" })}`;
-        }
-
-        const visibleKeys = Array.from({ length: 7 }, (_, idx) => {
-            const d = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate() + idx);
-            return getDateKey(d);
-        });
-        renderDateChips(visibleKeys, window.selectedDate ? getDateKey(window.selectedDate) : getDateKey(weekStart));
-    }
-
-    function enableBookingGridDrag() {
-        if (!bookingWeeklyGrid || bookingWeeklyGrid.dataset.dragReady === "1") return;
-        bookingWeeklyGrid.dataset.dragReady = "1";
-        let isDown = false;
-        let startX = 0;
-        let startScrollLeft = 0;
-        bookingWeeklyGrid.addEventListener("pointerdown", (e) => {
-            if (e.target.closest(".slot-btn")) return;
-            isDown = true;
-            startX = e.clientX;
-            startScrollLeft = bookingWeeklyGrid.scrollLeft;
-            bookingWeeklyGrid.classList.add("is-dragging");
-        });
-        window.addEventListener("pointerup", () => {
-            isDown = false;
-            bookingWeeklyGrid.classList.remove("is-dragging");
-        });
-        bookingWeeklyGrid.addEventListener("pointermove", (e) => {
-            if (!isDown) return;
-            const dx = e.clientX - startX;
-            bookingWeeklyGrid.scrollLeft = startScrollLeft - dx;
-        });
-    }
-
-    async function buildBookingSelects({ forceRefresh = false } = {}) {
-        const seq = ++bookingBuildSeq;
-        if (bookingTimezoneLabel) {
-            const tz = getLocalTimezone() || "your local timezone";
-            bookingTimezoneLabel.textContent = `Showing times in ${tz}`;
-        }
-        if (bookingEmptyState) {
-            bookingEmptyState.textContent = window.db
-                ? "No available times in this week."
-                : "Online booking is not configured yet. Please use WhatsApp or email.";
-        }
-
-        if (!window.db) {
-            if (bookingEmptyState) bookingEmptyState.style.display = "block";
-            if (bookingSubmit) bookingSubmit.disabled = true;
-            renderWeeklyCalendar([]);
-            updateBookingInfo();
-            return;
-        }
-
-        await refreshRuntimeBusyBlocks({ forceRefresh });
-        if (seq !== bookingBuildSeq) return;
-        let schedule = [];
-        try {
-            schedule = await getSchedulableSlots(7, {
-                forceRefresh,
-                startOffsetDays: bookingWeekOffset * 7,
-            });
-        } catch (err) {
-            console.error("Could not load booking schedule:", err);
-            if (bookingEmptyState) {
-                bookingEmptyState.style.display = "block";
-                bookingEmptyState.textContent = "Unable to load available times right now.";
-            }
-            if (bookingSubmit) bookingSubmit.disabled = true;
-            return;
-        }
-        if (seq !== bookingBuildSeq) return;
-        slotsByDate = new Map();
-        scheduleByDate = new Map();
-        schedule.forEach((slot) => {
-            const key = slot.dateKey;
-            if (!slot.available) return;
-            if (!scheduleByDate.has(key)) scheduleByDate.set(key, []);
-            scheduleByDate.get(key).push(slot);
-            const dt = new Date(slot.startMs);
-            if (!slotsByDate.has(key)) slotsByDate.set(key, []);
-            slotsByDate.get(key).push(dt);
-        });
-
-        const dateKeys = Array.from(scheduleByDate.keys()).sort();
-        if (!dateKeys.length) {
-            if (bookingEmptyState) bookingEmptyState.style.display = "block";
-            window.selectedDate = null;
-            window.selectedTime = null;
-            if (bookingSubmit) bookingSubmit.disabled = true;
-            renderWeeklyCalendar([]);
-            updateBookingInfo();
-            return;
-        }
-
-        if (window.selectedDate && window.selectedTime) {
-            const selectedKey = getDateKey(window.selectedDate);
-            const stillAvailable = (slotsByDate.get(selectedKey) || []).some((slot) => slot.toTimeString().slice(0, 5) === window.selectedTime);
-            if (!stillAvailable) {
-                window.selectedDate = null;
-                window.selectedTime = null;
-                if (bookingSubmit) bookingSubmit.disabled = true;
-            }
-        }
-
-        renderWeeklyCalendar(dateKeys);
-        updateBookingInfo();
-    }
-
-    if (bookingWeekPrev) {
-        bookingWeekPrev.addEventListener("click", () => {
-            bookingWeekOffset = Math.max(0, bookingWeekOffset - 1);
-            buildBookingSelects();
-        });
-    }
-
-    if (bookingWeekNext) {
-        bookingWeekNext.addEventListener("click", () => {
-            bookingWeekOffset += 1;
-            buildBookingSelects();
-        });
-    }
-
-    buildBookingSelects();
-    bookingAutoRefreshTimer = setInterval(() => {
-        const subscribeScreen = document.getElementById("subscribe-screen");
-        if (!subscribeScreen?.classList.contains("screen--active")) return;
-        buildBookingSelects({ forceRefresh: true });
-    }, 60000);
-    setupBookingPhoneField();
-    enableBookingGridDrag();
-    try { window.buildBookingSelects = buildBookingSelects; } catch { }
-
-    async function loadBookingStatus(email) {
-        await loadBookingStatusByEmail({
-            db,
-            email,
-            bookingStatusList,
-            bookingStatusMsg,
-            hashEmail,
-            escapeHtml,
-            formatSlotTime,
-        });
-    }
-
-    if (bookingStatusBtn) {
-        bookingStatusBtn.addEventListener("click", () => {
-            const email = (bookingStatusEmail?.value || "").trim();
-            loadBookingStatus(email);
-        });
-    }
-    if (bookingStatusList) {
-        bookingStatusList.addEventListener("click", async (e) => {
-            const actionBtn = e.target.closest("[data-booking-action]");
-            if (!actionBtn) return;
-            const action = actionBtn.dataset.bookingAction;
-            const bookingId = actionBtn.dataset.bookingId || "";
-            const cancellationTokenHash = actionBtn.dataset.cancelTokenHash || "";
-            if (!bookingId || !cancellationTokenHash) return;
-
-            if (action === "reschedule") {
-                const slot = Number(actionBtn.dataset.bookingSlot || 0);
-                if (!slot || slot - Date.now() <= 12 * 60 * 60 * 1000) {
-                    if (bookingCancelMsg) bookingCancelMsg.textContent = "Rescheduling is closed within 12 hours of the lesson.";
-                    return;
-                }
-                pendingGuestReschedule = { bookingId, cancellationTokenHash };
-                if (bookingMsg) bookingMsg.textContent = "Choose a new available time, then confirm the reschedule.";
-                const bookingSubmitLabel = bookingSubmit?.querySelector(".btn__label");
-                if (bookingSubmitLabel) bookingSubmitLabel.textContent = "Reschedule Now";
-                bookingWeeklyGrid?.scrollIntoView({ behavior: "smooth", block: "start" });
-                return;
-            }
-
-            if (action !== "cancel") return;
-            if (!window.confirm("Cancel this lesson?")) return;
-            try {
-                await cancelGuestBooking({
-                    db,
-                    firebase,
-                    bookingId,
-                    cancellationTokenHash,
-                    teacherEmail: (contactSettings?.email || bookingSettings?.contactEmail || "farouqmurtaja96@gmail.com").trim(),
-                    bookingCancelMsg,
-                    hashEmail,
-                    cancelBookingViaAppsScript: window.cancelBookingViaAppsScript,
-                    buildBookingSelects,
-                    loadBookingStatus,
-                    bookingStatusEmail,
-                });
-            } catch (err) {
-                console.error("Guest cancellation failed:", err);
-                if (bookingCancelMsg) bookingCancelMsg.textContent = "Cancellation failed. Check your booking ID and code.";
-            }
-        });
-    }
-    const lastEmail = (localStorage.getItem("pal_arabic_last_booking_email") || "").trim();
-    if (lastEmail && bookingStatusEmail) {
-        bookingStatusEmail.value = lastEmail;
-        loadBookingStatus(lastEmail);
-    }
-
-    if (bookingForm) {
-        bookingForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const selectedDate = window.selectedDate;
-            const selectedTime = window.selectedTime;
-            const name = (document.getElementById("bookingName").value || "").trim().slice(0, 100);
-            const email = (document.getElementById("bookingEmail").value || "").trim().toLowerCase().slice(0, 200);
-            const phoneRaw = (document.getElementById("bookingPhone")?.value || "").trim();
-            const phone = buildBookingPhoneValue(phoneRaw);
-            const notes = (document.getElementById("bookingNotes")?.value || "").trim().slice(0, 1000);
-            const reasonLabels = getBookingReasonLabels();
-            const reason = reasonLabels.join(", ");
-            const level = (document.getElementById("bookingLevel")?.value || "").trim().slice(0, 100);
-            const lessonsPerMonth = (document.getElementById("bookingLessonsPerMonth")?.value || "").trim().slice(0, 50);
-            const honeypot = (document.getElementById("bookingWebsite")?.value || "").trim();
-            const studentTimeZone = getLocalTimezone() || "";
-            const studentLocale = navigator.language || "";
-            const countryHint = studentLocale.includes("-") ? studentLocale.split("-").pop() : studentLocale;
-            const bookingSubmitLabel = bookingSubmit?.querySelector(".btn__label");
-            if (!isValidEmail(email)) {
-                if (bookingMsg) bookingMsg.textContent = "Please enter a valid email.";
-                return;
-            }
-            if (!isValidPhone(phone)) {
-                if (bookingMsg) bookingMsg.textContent = "Please enter a valid phone number.";
-                return;
-            }
-            if (notes.length > 1000) {
-                if (bookingMsg) bookingMsg.textContent = "Notes are too long.";
-                return;
-            }
-            const recaptchaReady = isLocalDevHost() || !window.grecaptcha || typeof window.grecaptcha.getResponse !== "function"
-                ? true
-                : !!window.grecaptcha.getResponse();
-            await loadContactSettingsFromCloud();
-
-            const booked = await submitGuestBooking({
-                db,
-                firebase,
-                bookingSettings,
-                contactSettings,
-                getLocalTimezone,
-                selectedDate,
-                selectedTime,
-                formValues: {
-                    name,
-                    email,
-                    phone,
-                    notes,
-                    reasonLabels,
-                    reason,
-                    level,
-                    lessonsPerMonth,
-                    honeypot,
-                    studentTimeZone,
-                    studentLocale,
-                    countryHint,
-                    recaptchaReady,
-                },
-                bookingSubmit,
-                bookingSubmitLabel,
-                bookingMsg,
-                bookingSuccessModal,
-                bookingSuccessText,
-                bookingStatusEmail,
-                findBookingConflict,
-                buildBookingSelects,
-                hashEmail,
-                createBookingViaAppsScript: window.createBookingViaAppsScript,
-                cancelBookingViaAppsScript: window.cancelBookingViaAppsScript,
-                loadBookingStatus,
-                isLocalDevHost,
-                rescheduleTarget: pendingGuestReschedule,
-            });
-            if (booked) {
-                pendingGuestReschedule = null;
-            }
-        });
-    }
-
-    // Teacher booking list
-    const teacherBookingList = document.getElementById("teacherBookingList");
-    const teacherBookingMsg = document.getElementById("teacherBookingMsg");
-    const emailUsageTotal = document.getElementById("emailUsageTotal");
-    const emailUsageBreakdown = document.getElementById("emailUsageBreakdown");
-    let bookingCache = new Map();
-
-    async function renderEmailUsageStats() {
-        if (!emailUsageTotal || !emailUsageBreakdown || appState.currentUser?.role !== "teacher") return;
-        try {
-            const [privateSnap, publicSnap] = await Promise.all([
-                db.collection("bookings").limit(500).get(),
-                db.collection("publicBookings").limit(500).get(),
-            ]);
-            const seen = new Map();
-            publicSnap.forEach((doc) => {
-                seen.set(doc.id, doc.data() || {});
-            });
-            privateSnap.forEach((doc) => {
-                seen.set(doc.id, { ...(seen.get(doc.id) || {}), ...(doc.data() || {}) });
-            });
-            const startOfToday = new Date();
-            startOfToday.setHours(0, 0, 0, 0);
-            const todayStartMs = startOfToday.getTime();
-            const toMillis = (value) => {
-                if (!value) return 0;
-                if (typeof value === "number") return value;
-                if (typeof value.toMillis === "function") return value.toMillis();
-                return Number(value) || 0;
-            };
-            let teacherToday = 0;
-            let studentToday = 0;
-            let cancellationsToday = 0;
-            let totalSaved = 0;
-            let calendarEventsToday = 0;
-            seen.forEach((booking) => {
-                const createdAt = toMillis(booking.createdAt || booking.updatedAt);
-                const canceledAt = toMillis(booking.canceledAt);
-                if (booking.calendarSynced && createdAt >= todayStartMs) calendarEventsToday += 1;
-                if (booking.notificationSent) {
-                    totalSaved += 1;
-                    if (createdAt >= todayStartMs) teacherToday += 1;
-                }
-                if (booking.studentConfirmationSent || booking.calendarInviteSent) {
-                    totalSaved += 1;
-                    if (createdAt >= todayStartMs) studentToday += 1;
-                }
-                if (booking.cancellationNotificationSent) {
-                    totalSaved += 1;
-                    if ((canceledAt || createdAt) >= todayStartMs) cancellationsToday += 1;
-                }
-                if (booking.studentCancellationSent) {
-                    totalSaved += 1;
-                    if ((canceledAt || createdAt) >= todayStartMs) cancellationsToday += 1;
-                }
-            });
-            const totalToday = teacherToday + studentToday + cancellationsToday;
-            const quota = await window.getAppsScriptQuota?.();
-            const remaining = Number.isFinite(Number(quota?.remainingEmailQuota))
-                ? ` · Google remaining ${Number(quota.remainingEmailQuota)}`
-                : "";
-            emailUsageTotal.textContent = String(totalToday);
-            emailUsageBreakdown.textContent = `Today: Teacher ${teacherToday} · Student ${studentToday} · Cancellations ${cancellationsToday} · Calendar events ${calendarEventsToday}${remaining} · Saved total ${totalSaved}`;
-        } catch (err) {
-            console.error("Could not load email usage stats:", err);
-            emailUsageBreakdown.textContent = "Unable to load email usage.";
-        }
-    }
-
-    async function renderTeacherBookings() {
-        if (!window.db || appState.currentUser?.role !== "teacher") {
-            if (teacherBookingList) teacherBookingList.innerHTML = "";
-            return;
-        }
-        bookingCache = await renderTeacherBookingsView({
-            db: window.db,
-            teacherBookingList,
-            bookingCache,
-            escapeHtml,
-            formatSlotTime,
-        });
-        await renderEmailUsageStats();
-    }
-
-    async function openReschedule(itemEl, booking) {
-        await openReschedulePanel({
-            itemEl,
-            booking,
-            getAvailableSlots,
-            escapeHtml,
-        });
-    }
-
-    if (teacherBookingList) {
-        teacherBookingList.addEventListener("click", async (e) => {
-            const btn = e.target.closest("[data-action]");
-            if (!btn) return;
-            const item = btn.closest("[data-booking-id]");
-            if (!item) return;
-            const bookingId = item.getAttribute("data-booking-id");
-            const booking = bookingCache.get(bookingId);
-            const action = btn.getAttribute("data-action");
-            if (!booking) return;
-
-            if (action === "cancel") {
-                try {
-                    await cancelTeacherBooking({ db, firebase, bookingId });
-                    if (teacherBookingMsg) teacherBookingMsg.textContent = "Booking canceled.";
-                    await renderTeacherBookings();
-                    await buildBookingSelects();
-                } catch {
-                    if (teacherBookingMsg) teacherBookingMsg.textContent = "Cancel failed.";
-                }
-                return;
-            }
-
-            if (action === "reschedule") {
-                await openReschedule(item, booking);
-                return;
-            }
-
-            if (action === "close-reschedule") {
-                const resched = item.querySelector(".booking-item__resched");
-                if (resched) {
-                    resched.classList.remove("is-open");
-                    resched.innerHTML = "";
-                }
-                return;
-            }
-
-            if (action === "confirm-reschedule") {
-                const select = item.querySelector(".booking-resched-select");
-                const newSlot = select ? Number(select.value) : null;
-                if (!newSlot || Number.isNaN(newSlot)) return;
-                if (newSlot === booking.slot) {
-                    if (teacherBookingMsg) teacherBookingMsg.textContent = "Pick a different time.";
-                    return;
-                }
-                try {
-                    const conflict = await findBookingConflict(newSlot, { excludeBookingId: bookingId });
-                    if (conflict) {
-                        if (teacherBookingMsg) teacherBookingMsg.textContent = "That slot is taken.";
-                        return;
-                    }
-                    await rescheduleTeacherBooking({
-                        db,
-                        firebase,
-                        bookingId,
-                        booking,
-                        newSlot,
-                        occupiedMinutes: bookingSettings.totalSlotMinutes || bookingSettings.slotMinutes || 50,
-                    });
-                    if (teacherBookingMsg) teacherBookingMsg.textContent = "Booking rescheduled.";
-                    await renderTeacherBookings();
-                    await buildBookingSelects();
-                } catch (err) {
-                    if (teacherBookingMsg) {
-                        teacherBookingMsg.textContent = err?.message === "booking-slot-taken"
-                            ? "That slot is already reserved."
-                            : "Reschedule failed.";
-                    }
-                }
-            }
-        });
-        if (window.db && appState.currentUser?.role === "teacher") {
-            renderTeacherBookings();
-        }
-    }
-
-    if (btnClearBusyBlocks) {
-        btnClearBusyBlocks.addEventListener("click", async () => {
-            if (!window.confirm("Clear all busy blocks? This cannot be undone.")) return;
-            bookingSettings.exceptions = [];
-            saveBookingSettings();
-            await saveBookingSettingsToCloud();
-            renderExceptions();
-            await buildBookingSelects();
-            if (teacherBookingMsg) teacherBookingMsg.textContent = "Busy blocks cleared.";
-        });
-    }
-
-    if (btnClearAllBookings) {
-        btnClearAllBookings.addEventListener("click", async () => {
-            if (!appState.currentUser || appState.currentUser.role !== "teacher") return;
-            if (!window.confirm("Delete all bookings from both private and public collections? This cannot be undone.")) return;
-            try {
-                await clearAllTeacherBookings({ db });
-                if (bookingStatusList) bookingStatusList.innerHTML = "";
-                if (teacherBookingMsg) teacherBookingMsg.textContent = "All bookings cleared.";
-                await renderTeacherBookings();
-                await buildBookingSelects();
-            } catch (err) {
-                if (teacherBookingMsg) teacherBookingMsg.textContent = "Could not clear bookings.";
-            }
-        });
-    }
-
-    // Subscribe screen wiring
     const guestSiteWhatsApp = document.getElementById("guestSiteWhatsApp");
     if (guestSiteWhatsApp) {
-        guestSiteWhatsApp.addEventListener("click", () => {
-            openWhatsAppWithMessage("Hi! I want full site access.");
-        });
+        guestSiteWhatsApp.addEventListener("click", openExternalBookingPage);
     }
     const trialContactBtn = document.getElementById("trialContactBtn");
     if (trialContactBtn) {
-        trialContactBtn.addEventListener("click", () => {
-            openWhatsAppWithMessage("Hi! I want to ask about the free 50-minute trial lesson.");
-        });
+        trialContactBtn.addEventListener("click", openExternalBookingPage);
     }
     const trialEmailBtn = document.getElementById("trialEmailBtn");
     if (trialEmailBtn) {
-        trialEmailBtn.addEventListener("click", () => {
-            const email = (contactSettings.email || "").trim();
-            if (!email) {
-                toast("Contact email not set.");
-                return;
-            }
-            const subject = encodeURIComponent("Question about Palestinian Arabic lessons");
-            const body = encodeURIComponent("Hello,\n\nI want to ask about Palestinian Arabic lessons.");
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-        });
+        trialEmailBtn.addEventListener("click", openExternalBookingPage);
     }
-    initArabicLettersScreen();
 
+    initArabicLettersScreen();
     // hero buttons
     // ===== HERO BUTTONS (أنا طالب / أنا مدرس) =====
     const btnHeroStudent = document.getElementById("btnHeroStudent");
@@ -7550,7 +5218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             openPrintWindow(html);
         });
     }
-    // Backup buttons in Teacher Dashboard
+    // Legacy backup buttons are disabled in the public student build.
     const btnExportBackup = document.getElementById("btnExportBackup");
     const btnImportBackup = document.getElementById("btnImportBackup");
     const backupFileInput = document.getElementById("backupFileInput");
@@ -7606,7 +5274,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
     // level & teacher buttons
-    $("#btnSwitchProfile").addEventListener("click", () => {
+    document.getElementById("btnSwitchProfile")?.addEventListener("click", () => {
         // Save current lesson position before clearing current student
         try { persistResumeBeforeNav(); } catch { }
         appState.currentStudentId = null;
@@ -7624,13 +5292,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     }
-    $("#btnGoTeacherDashboard").addEventListener("click", () => {
-        goToTeacherDashboard();
-    });
-    $("#btnBackToLevels").addEventListener("click", () => goToLevels());
-    $("#btnBackToStudents").addEventListener("click", () => goToStudents());
-    $("#btnTDBackLevels").addEventListener("click", () => goToLevels());
-    $("#btnTDBackStudents").addEventListener("click", () => goToStudents());
+    document.getElementById("btnBackToLevels")?.addEventListener("click", () => goToLevels());
+    document.getElementById("btnBackToStudents")?.addEventListener("click", () => goToStudents());
+    document.getElementById("btnTDBackLevels")?.addEventListener("click", () => goToLevels());
+    document.getElementById("btnTDBackStudents")?.addEventListener("click", () => goToStudents());
     // ================= VOCAB MODAL CONTROLS =================
     const btnPrev = document.getElementById("vocabPrevBtn");
     const btnNext = document.getElementById("vocabNextBtn");
@@ -7750,191 +5415,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (microCheckCloseBtn) {
         microCheckCloseBtn.addEventListener("click", () => continueFromMicroCheck());
     }
-    document.getElementById("btnLogin").addEventListener("click", () => openAuthModal());
-    document
-        .querySelectorAll("[data-close-auth]")
-        .forEach((el) => el.addEventListener("click", closeAuthModal));
-
-    document.getElementById("btnLogout").addEventListener("click", () => {
-        if (isGuestUser()) {
-            appState.currentUser = null;
-            appState.guestMode = false;
-            appState.guestStudent = null;
-            appState.currentStudentId = null;
-            updateAuthUI();
-            showScreen("home-screen");
-            return;
-        }
-        window.auth?.signOut?.();
-    });
-
-    document.getElementById("authForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("authEmail").value.trim();
-        const password = document.getElementById("authPassword").value;
-        const roleSelect = document.getElementById("authRole");
-        const modal = document.getElementById("authModal");
-        const errorBox = document.getElementById("authError");
-
-        if (errorBox) errorBox.textContent = "";
-
-        // الدور المقصود: لو جاي من زر Student / Teacher في الهيرو
-        let role = roleSelect ? roleSelect.value : "student";
-        if (modal && modal.dataset.forcedRole) {
-            role = modal.dataset.forcedRole; // student أو teacher
-        }
-
-        try {
-            let cred;
-
-            if (role === "teacher") {
-                if (!canUseTeacherRole(email)) {
-                    if (errorBox) errorBox.textContent = "Teacher access is restricted.";
-                    return;
-                }
-                // المدرّس: sign in ثم sign up لو مش موجود
-                try {
-                    if (!window.auth) throw new Error("Teacher login is not configured on this deployment.");
-                    cred = await window.auth.signInWithEmailAndPassword(email, password);
-                } catch (err) {
-                    if (err.code === "auth/user-not-found") {
-                        if (errorBox) {
-                            errorBox.textContent = "Teacher account must be created in Firebase first.";
-                        }
-                        return;
-                    } else {
-                        throw err;
-                    }
-                }
-            } else {
-                // الطالب: فقط تسجيل دخول بحساب جاهز
-                try {
-                    if (!window.auth) throw new Error("Student login is not configured on this deployment.");
-                    cred = await window.auth.signInWithEmailAndPassword(email, password);
-                } catch (err) {
-                    if (err.code === "auth/user-not-found") {
-                        if (errorBox) {
-                            errorBox.textContent =
-                                "لا يوجد حساب بهذا الإيميل. تواصلي مع المدرّس ليعمل لك حساب.";
-                        } else {
-                            alert("لا يوجد حساب بهذا الإيميل. اسألي المدرس يعمل لك حساب.");
-                        }
-                        return;
-                    }
-                    throw err;
-                }
-            }
-
-            // نقرأ بيانات المستخدم من Firestore
-	            const { role: resolvedRole } = await resolveUserRole({
-	                db,
-	                uid: cred.user.uid,
-	                email: cred.user.email,
-	                savedRole: null,
-	                fallbackRole: role,
-	            });
-
-	            if (role === "student" && resolvedRole === "teacher") {
-	                await window.auth?.signOut?.();
-	                if (errorBox) errorBox.textContent = "This email belongs to a teacher account. Please sign in as Teacher.";
-	                return;
-	            }
-
-	            let finalRole = resolvedRole;
-	            if (role === "teacher") {
-	                if (resolvedRole !== "teacher") {
-	                    await window.auth?.signOut?.();
-	                    if (errorBox) errorBox.textContent = "This account is not approved as a teacher.";
-	                    return;
-	                }
-	                await bootstrapTeacherAccess({ db, firebase, uid: cred.user.uid, email: cred.user.email });
-	                finalRole = "teacher";
-	            }
-
-            appState.currentUser = {
-                uid: cred.user.uid,
-                email: cred.user.email,
-                role: finalRole,
-            };
-
-            // خزّن الدور محلياً عشان نرجع له بعد الـ refresh
-            try {
-                localStorage.setItem(LS_USER_ROLE_KEY, finalRole);
-            } catch (e) {
-                console.warn("Could not save role to localStorage", e);
-            }
-
-            closeAuthModal();
-            updateAuthUI();
-
-
-            // 🔁 توجيه حسب الدور
-            if (finalRole === "teacher") {
-                // نزامن بيانات الطلاب من السحابة ونفتح Teacher Dashboard
-                await syncTeacherStudentsFromCloud();
-                renderStudents();
-                renderTeacherPicker();
-                goToTeacherDashboard();
-            } else {
-                // STUDENT:
-                // نحمّل بيانات الطالب / تقدمه من السحابة (لو عندك هذه الدالة)
-                await loadStudentProgressFromCloud?.();
-
-                // نربط الطالب الحالي بـ currentStudentId
-                appState.students = [
-                    {
-                        id: appState.currentUser.uid,
-                        name: appState.currentUser.email,
-                        level: "Beginner",
-                        goals: [],
-                        progress: {},
-                        homeworkNotes: {},
-                    },
-                ];
-                appState.currentStudentId = appState.currentUser.uid;
-
-                // مباشرة نفتح صفحة الوحدات
-                goToLevels();
-            }
-        } catch (err) {
-            console.error("Auth error:", err);
-            if (errorBox) {
-                if (err.code === "auth/wrong-password" || err.code === "auth/invalid-login-credentials") {
-                    errorBox.textContent = "كلمة السر غير صحيحة. حاولي مرة ثانية.";
-                } else {
-                    errorBox.textContent = "مشكلة في تسجيل الدخول: " + err.message;
-                }
-            } else {
-                alert("Auth error: " + err.message);
-            }
-        }
-    });
-
-
-
-
-
-    // Add Unit form
-    $("#addUnitForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const level = $("#addUnitLevel").value;
-        const name = $("#addUnitName").value.trim();
-        if (!name) return;
-        if (!customUnits[level]) customUnits[level] = [];
-        if (!customUnits[level].includes(name)) {
-            customUnits[level].push(name);
-            saveCustomUnits();
-        }
-        $("#addUnitName").value = "";
-        renderLevels();
-    });
-
-    // Teacher dashboard actions
-    $("#btnTDAddLesson").addEventListener("click", () => {
-        createNewLessonTemplate();
-    });
-
+    // Public student build: auth, logout, add-unit, and teacher-dashboard controls are disabled.
     // lesson tabs
     $all(".lesson-tab").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -7953,16 +5434,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (adBreakContinueBtn) {
         adBreakContinueBtn.addEventListener("click", continueAfterAdBreak);
     }
-
-    // teacher mode toggle
-    $("#teacherModeToggle").addEventListener("change", (e) => {
-        appState.teacherMode = e.target.checked;
-        updateTeacherTabsVisibility();
-        const lesson = lessons[appState.currentLessonId];
-        if (lesson) updateLessonTabsVisibility(lesson);
-        setActiveTab(appState.currentTab);
-    });
-
 
     // font size
     $("#btnFontSmaller").addEventListener("click", () => {
@@ -7989,18 +5460,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
     // initial
-    if (!window.auth?.currentUser && !isGuestUser()) {
+    if (!isGuestUser()) {
         startFreeLearning({ navigate: false });
     }
     renderStudents();
-    renderTeacherPicker();
     goToHome();
-
-
-    const btnLoginTop = document.getElementById("btnLogin");
-    if (btnLoginTop) {
-        btnLoginTop.addEventListener("click", () => openAuthModal());
-    }
 
 
     const createStudentForm = document.getElementById("createStudentForm");
