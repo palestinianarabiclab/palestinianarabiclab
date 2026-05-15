@@ -172,11 +172,14 @@ function saveBookingSettings() {
 }
 
 async function loadBookingSettingsFromCloud() {
-    bookingSettings = await loadBookingSettingsStateFromCloud(db, bookingSettings);
+    if (!window.db) return bookingSettings;
+    bookingSettings = await loadBookingSettingsStateFromCloud(window.db, bookingSettings);
+    return bookingSettings;
 }
 
 async function saveBookingSettingsToCloud() {
-    await saveBookingSettingsStateToCloud(db, bookingSettings);
+    if (!window.db) return;
+    await saveBookingSettingsStateToCloud(window.db, bookingSettings);
 }
 
 function loadContactSettings() {
@@ -189,19 +192,23 @@ function saveContactSettings() {
 }
 
 async function loadContactSettingsFromCloud() {
-    contactSettings = await loadContactSettingsStateFromCloud(db, contactSettings);
+    if (!window.db) return contactSettings;
+    contactSettings = await loadContactSettingsStateFromCloud(window.db, contactSettings);
     return contactSettings;
 }
 
 async function saveContactSettingsToCloud() {
-    await saveContactSettingsStateToCloud(db, firebase, contactSettings);
+    if (!window.db || typeof firebase === "undefined") return;
+    await saveContactSettingsStateToCloud(window.db, firebase, contactSettings);
 }
 
 async function ensureTeacherDoc(uid, email) {
+    if (!window.db || typeof firebase === "undefined") return;
     return ensureTeacherDocRecord({ db, firebase, uid, email });
 }
 
 async function ensureTeacherUserDoc(uid, email) {
+    if (!window.db || typeof firebase === "undefined") return false;
     return ensureTeacherUserRecord({ db, firebase, uid, email });
 }
 
