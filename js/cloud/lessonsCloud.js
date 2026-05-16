@@ -4,6 +4,7 @@
 // ========================= CLOUD SYNC (LESSON TEMPLATES) =========================
 const CLOUD_LESSONS_COLLECTION = "content_lessons";
 const CLOUD_LESSONS_DOC_SHAPE_VERSION = 1;
+const CLOUD_ENCODED_ARRAY_KEY = "__lessonCloudArray";
 
 // Local buffer to avoid overwriting active teacher edits when a remote update arrives
 const remoteLessonBuffer = {}; // { [lessonId]: lessonObj }
@@ -14,10 +15,28 @@ function getServerTimestamp() {
 
 function normalizeCloudLesson(doc) {
     const data = doc.data() || {};
-    const lesson = data.lesson && typeof data.lesson === "object" ? data.lesson : data;
+    const lesson = decodeLessonFromFirestore(data.lesson && typeof data.lesson === "object" ? data.lesson : data);
     if (!lesson || typeof lesson !== "object") return null;
     if (!lesson.meta || typeof lesson.meta !== "object") return null;
     return JSON.parse(JSON.stringify(lesson));
+}
+
+function decodeLessonFromFirestore(value) {
+    if (Array.isArray(value)) {
+        return value.map((item) => decodeLessonFromFirestore(item));
+    }
+    if (value && typeof value === "object") {
+        if (
+            Object.prototype.hasOwnProperty.call(value, CLOUD_ENCODED_ARRAY_KEY) &&
+            Array.isArray(value[CLOUD_ENCODED_ARRAY_KEY])
+        ) {
+            return value[CLOUD_ENCODED_ARRAY_KEY].map((item) => decodeLessonFromFirestore(item));
+        }
+        return Object.fromEntries(
+            Object.entries(value).map(([key, item]) => [key, decodeLessonFromFirestore(item)])
+        );
+    }
+    return value;
 }
 
 function saveLessonLocally(lessonId) {
