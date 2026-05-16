@@ -12,11 +12,7 @@ import {
     extractWhatsAppNumber,
 } from './contactSettingsStore.js';
 import {
-    getServerTimestamp,
     loadLessonsFromCloudOnce,
-    subscribeLessonsFromCloud,
-    startLessonCloudSync,
-    stopLessonCloudSync,
     syncLessonsNow,
     setLessonSyncForScreen,
 } from '../cloud/lessonsCloud.js';
@@ -53,7 +49,15 @@ const AD_TAB_INTERVAL = 3;
 // Match original variable name used throughout the legacy code
 const defaultLessons = importedDefaultLessons;
 const saveLessonToCloud = () => {};
-const deleteLessonFromCloud = () => {};
+
+window.addEventListener("palArabicFirebaseReady", () => {
+    loadLessonsFromCloudOnce().then(() => {
+        const levelsScreen = document.getElementById("levels-screen");
+        const lessonScreen = document.getElementById("lesson-screen");
+        if (levelsScreen?.classList.contains("screen--active")) renderLevels();
+        if (lessonScreen?.classList.contains("screen--active")) renderLesson();
+    });
+});
 
 const noopAsync = async () => {};
 const canUseTeacherRole = () => false;
