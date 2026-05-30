@@ -2761,20 +2761,14 @@ function goToLessonView(opts = {}) {
 }
 
 function shouldShowAdBreak() {
-    return appState.currentUser?.role !== "teacher" && !!document.getElementById("adBreakModal");
+    return false;
 }
 
 function showAdBreak(onContinue) {
-    if (!shouldShowAdBreak()) {
-        onContinue?.();
-        return;
-    }
-    pendingAdBreakAction = typeof onContinue === "function" ? onContinue : null;
-    document.getElementById("adBreakModal")?.classList.add("modal--open");
+    onContinue?.();
 }
 
 function continueAfterAdBreak() {
-    document.getElementById("adBreakModal")?.classList.remove("modal--open");
     const action = pendingAdBreakAction;
     pendingAdBreakAction = null;
     action?.();

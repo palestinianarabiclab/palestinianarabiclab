@@ -281,6 +281,44 @@ body.home-only main {
     color: #f9fafb;
 }
 
+.hero__subtitle {
+    color: #e5eef8;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 auto 22px;
+    max-width: 620px;
+}
+
+.home-publisher-content {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 36px 18px 48px;
+    display: grid;
+    gap: 24px;
+    background: #ffffff;
+}
+
+.home-publisher-content section {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 20px;
+}
+
+.home-publisher-content section:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.home-publisher-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+}
+
+.home-publisher-content p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
 .hero__actions {
     margin-top: 4px;
     display: flex;
