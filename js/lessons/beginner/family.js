@@ -1,698 +1,440 @@
-// Auto-generated from original app.js
 import { LESSON_ID_FAMILY } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_FAMILY;
+
 export const lesson = {
     meta: {
         level: "Beginner",
         unit: "Family",
-        lessonTitle: "Unit 2 – Family & People",
+        lessonTitle: "Unit 2 - Family & People (Gaza Palestinian Arabic)",
+        contentVersion: 2026062802,
     },
 
     overview: {
-        title: "Unit 2 – Family & People",
+        title: "Unit 2 - Family & People",
         description:
-            "In this unit, students explore how to talk about their family and people close to them in Palestinian Arabic. They learn key family words, how to say ‘I have…’, how to describe older/younger siblings, and how to talk about marital status in a simple, natural way.",
+            "Students learn to talk about family in natural Gaza Palestinian Arabic: who is in the family, who lives at home, brothers and sisters, older/younger relatives, marital status, and close relatives.",
         goals: [
-            "Name close family members and relatives in Palestinian Arabic.",
-            "Use «عِنْدِي…» (I have…) to talk about family and people.",
-            "Describe siblings and relatives using older/younger and basic adjectives.",
-            "Ask and answer simple questions about family size and marital status.",
-            "Participate in longer conversations about family in a natural, story-like way.",
+            "Talk about close family members using natural Gaza words.",
+            "Use عِنْدِي / مَا عِنْدِي to say who they have in their family.",
+            "Ask and answer about brothers, sisters, relatives, and who lives at home.",
+            "Use older/younger/same-age comparisons in simple sentences.",
+            "Recycle greetings from Unit 1 inside a family conversation.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can describe their family in 60 seconds.",
+            "The student can ask someone how many brothers and sisters they have.",
+            "The student can say who is older, younger, married, single, or engaged.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== FAMILY & HOUSEHOLD =====
             {
                 id: "3eileh",
                 ar: "عِيلَة",
                 en: "family",
                 enArabeezy: "3eileh",
-                hint:
-                    "Common word for ‘family’. عِيلْتِي = my family. Often used for close family living together.",
-                exampleAr: "عِيلْتِي مَو كْبِيرَة، بَسّ كْتِير قَرِيبِين مِن بَعْض.",
-                exampleArabeezy: "3ylty mw kbyra, bs ktyr qrybyn mn b3d.",
-                exampleEn: "My family is not big, but we are very close to each other.",
+                hint: "My family = عِيلْتِي. Also common: أَهْلِي = my family / my parents.",
+                exampleAr: "عِيلْتِي صْغِيرَة، بَس قَرِيبِين مِن بَعْض.",
+                exampleArabeezy: "3eelti zghireh, bas qareebeen min ba3d.",
+                exampleEn: "My family is small, but we are close to each other.",
             },
-           
-
-            // ===== PARENTS =====
+            {
+                id: "ahli",
+                ar: "أَهْلِي",
+                en: "my family / my parents",
+                enArabeezy: "ahli",
+                hint: "Usually means my parents/family. With you: أَهْلَك / أَهْلِك. With her: أَهْلْهَا.",
+                exampleAr: "أَنَا سَاكْنَة مَع أَهْلِي.",
+                exampleArabeezy: "ana sakneh ma3 ahli.",
+                exampleEn: "I live with my family.",
+            },
             {
                 id: "abuy",
                 ar: "أَبُوي",
                 en: "my father",
                 enArabeezy: "abuy",
-                hint:
-                    "From أَب (father). أَبُوي = my father. For ‘his father’ you can hear أَبُوه، for ‘her father’ أَبُوهَا.",
-                exampleAr: "أَبُوي بِيِشْتِغِل مُهَنْدِس.",
-                exampleArabeezy: "abwy byshtghl mhnds.",
-                exampleEn: "My father works as an engineer.",
+                hint: "His father = أَبُوه. Her father = أَبُوهَا. Parents = أَبُوي وَإِمِّي / أَهْلِي.",
+                exampleAr: "أَبُوي بِيِشْتِغِل الصُّبُح.",
+                exampleArabeezy: "abuy biyishtighel el-soboh.",
+                exampleEn: "My father works in the morning.",
             },
             {
                 id: "immi",
-                ar: "إِمّي",
+                ar: "إِمِّي",
                 en: "my mother",
                 enArabeezy: "immi",
-                hint:
-                    "From أُمّ (mother). إِمِّي = my mother. You may also hear يَمَّا (mom) in spoken language.",
-                exampleAr: "إمي بتشتغل مُعلِّمة",
-                exampleArabeezy: "imy btshtghl m3lma",
-                exampleEn: "My mother works as a teacher.",
+                hint: "His mother = إِمُّه. Her mother = إِمَّهَا. Calling mom: يَمَّا.",
+                exampleAr: "إِمِّي فِي البِيت اليَوم.",
+                exampleArabeezy: "immi fi el-beet el-yom.",
+                exampleEn: "My mother is at home today.",
             },
-
-            // ===== SIBLINGS & CHILDREN =====
-            {
-                id: "akh",
-                ar: "أَخو",
-                en: "brother",
-                enArabeezy: "akh",
-                hint:
-                    "أَخ = brother. أَخُوي = my brother. Plural: إِخْوَة = siblings/brothers.",
-                exampleAr: "عِنْدي أَخو أَكبَر مِنّي بِسِنِين.",
-                exampleArabeezy: "3ndy akh akbr mny bsnyn.",
-                exampleEn: "I have a brother older than me by a few years.",
+           {
+                id: "akhuy",
+                ar: "أَخُوي",
+                en: "my brother",
+                enArabeezy: "akhuy",
+                hint: "Brother = أخ (akh). My brother = أَخُوي (akhuy). Two brothers = أَخَوَيْن (akhween). Brothers/siblings = إِخْوَة / إِخْوَان. (ikhwan).",
+                exampleAr: "أَخُوي أَكْبَر مِنِّي بِتَلَات سِنِين.",
+                exampleArabeezy: "akhuy akbar minni bi-talat sineen.",
+                exampleEn: "My brother is three years older than me.",
             },
-            {
-                id: "okht",
-                ar: "أُخْت",
-                en: "sister",
-                enArabeezy: "okht",
-                hint:
-                    "أُخْت = sister. أُخْتِي = my sister. Plural: أَخَوَات = sisters.",
-                exampleAr: "أختي بتدرس بالجامعة",
-                exampleArabeezy: "akhty btdrs beljam3a",
-                exampleEn: "My sister studies at university.",
+           {
+                id: "okhti",
+                ar: "أُخْتِي",
+                en: "my sister",
+                enArabeezy: "okhti",
+                hint: "Sister = أخت. My sister = أختي. Two sisters = أختين. Natural Gaza plural: خَوَات.",
+                exampleAr: "أُخْتِي أَصْغَر مِنِّي.",
+                exampleArabeezy: "okhti asghar minni.",
+                exampleEn: "My sister is younger than me.",
             },
             {
-  id: "tawam",
-  ar: "توأم",
-  en: "twin",
-  enArabeezy: "taw'am",
-  hint: "Used for one twin. Plural: توائم (tawa'em).",
-  exampleAr: "أنا وتوأمي بنفس الصف.",
-  exampleArabeezy: "ana w taw'ami b-nafs el-saff.",
-  exampleEn: "My twin and I are in the same class.",
-}
-,
-            {
-                id: "walad",
-                ar: "ابن",
-                en: "son",
-                enArabeezy: "íbin",
-                hint: "Can mean boy or son depending on context.",
-                exampleAr: "عندهم ابن واحد وبنتين",
-                exampleArabeezy: "3ndhm abn wa7d wbntyn",
-                exampleEn: "They have one son and two daughters.",
+                id: "ikhwan",
+                ar: "إِخْوَان / إِخْوَة",
+                en: "siblings / brothers",
+                enArabeezy: "ikhwan",
+                hint: "In daily speech it can mean brothers, or siblings in general. Use context.",
+                exampleAr: "كم أخ وإخت عندك؟ عندي تلات إخوان.",
+                exampleArabeezy: "kam akh w okht 3indak? 3indi talat ikhwan.",
+                exampleEn: "How many brothers and sisters do you have? I have three siblings.",
             },
             {
-                id: "bint",
-                ar: "بِنْت",
-                en: "girl / daughter",
-                enArabeezy: "bint",
-                hint: "بِنْت = girl; can also mean ‘daughter’.",
-                exampleAr: "عِنْدُه بِنْت صْغيرَة كْتير.",
-                exampleArabeezy: "3ndh bnt sghyra ktyr.",
-                exampleEn: "He has a very young daughter.",
+                id: "tawam",
+                ar: "تَوْأَم",
+                en: "twin",
+                enArabeezy: "taw2am",
+                hint: "My twin = تَوْأَمِي. Twins = تَوْأَمِين. Useful when talking about siblings or cousins.",
+                exampleAr: "أَنَا وَتَوْأَمِي بِنَفْس العُمُر.",
+                exampleArabeezy: "ana w taw2ami bnafs el-3omor.",
+                exampleEn: "My twin and I are the same age.",
             },
-            {
-  id: "zawj",
-  ar: "زوج / جوز",
-  en: "husband",
-  enArabeezy: "zawj / joz",
-  hint: "زوج is more formal. In spoken Palestinian Arabic, جوز is more common.",
-  exampleAr: "جوزي مسافر اليوم.",
-  exampleArabeezy: "jozi msaafer el-yom.",
-  exampleEn: "My husband is traveling today.",
-}
-,
-            {
-  id: "zawjeh",
-  ar: "زوجة / مَرَة",
-  en: "wife",
-  enArabeezy: "zawjeh / mara",
-  hint: "زوجة is more formal. In spoken Palestinian Arabic, مَرَة is commonly used.",
-  exampleAr: "مرتي بتشتغل بالمستشفى.",
-  exampleArabeezy: "marti bteshtghol bel-mustashfa.",
-  exampleEn: "My wife works at the hospital.",
-}
-,
-{
-  id: "wlad",
-  ar: "ولاد",
-  en: "children / kids",
-  enArabeezy: "wlad",
-  hint: "Common spoken Palestinian word for children. More natural than أطفال in daily speech.",
-  exampleAr: "الوِلاد بيلعبوا بالحارة.",
-  exampleArabeezy: "el-wlad byel3abo bel-7ara.",
-  exampleEn: "The kids are playing in the neighborhood.",
-}
-,
-
-            // ===== GRANDPARENTS =====
-
+           
+            
             {
                 id: "sidi",
                 ar: "سِيدِي",
                 en: "my grandfather",
                 enArabeezy: "sidi",
-                hint: "Another common word for ‘my grandfather’ in Palestinian Arabic.",
-                exampleAr: "سِيدِي لِسَّا عَايِش فِي الْقَرْيَة.",
-                exampleArabeezy: "sydy lsa 3aysh fy elqrya.",
-                exampleEn: "My grandfather still lives in the village.",
+                hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. His grandfather = سِيدُه. Her grandfather = سِيدْهَا.",
+                 exampleAr: "سيدي ساكن قريب منا.",
+                exampleArabeezy: "sidi saken qareeb minna.",
+                exampleEn: "My grandfather lives near us.",
             },
             {
                 id: "sitti",
-                ar: "سِتّي",
+                ar: "سِتِّي",
                 en: "my grandmother",
                 enArabeezy: "sitti",
-                hint: "Colloquial and affectionate word for ‘my grandmother’.",
-                exampleAr: "سِتّي تِسْكُن قَريب مِنّا.",
-                exampleArabeezy: "sty tskn qryb mna.",
-                exampleEn: "My grandmother lives near us.",
+                hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. Her grandmother = سِتَّهَا.",
+               exampleAr: "بروح عند ستي كل يوم جمعة.",
+                exampleArabeezy: "Baru7 3ind sitti kil yōm jom3a.",
+                exampleEn: "I go to my grandmother's every Friday..",
             },
-{
-  id: "7afeed_7afeedeh",
-  ar: "حفيد / حفيدة",
-  en: "grandson / granddaughter",
-  enArabeezy: "7afeed / 7afeedeh",
-  hint: "حفيد = grandson (male). حفيدة = granddaughter (female). Plural: أحفاد (a7faad).",
-  exampleAr: "هادي حفيدتي، وهادا حفيدي.",
-  exampleArabeezy: "hai 7afeedti, w hada 7afeedi.",
-  exampleEn: "This is my granddaughter, and this is my grandson.",
-}
-,
-            // ===== UNCLES, AUNTS & COUSINS =====
             {
-                id: "3ammo",
+                id: "3amm",
                 ar: "عَمّ",
-                en: "paternal uncle (father’s brother)",
-                enArabeezy: "3ammo",
-                hint: "عَمّ = father’s brother. عَمّي = my uncle (father’s side).",
-                exampleAr: "عَمّي عَندُه أَرْبَع وْلاد.",
-                exampleArabeezy: "3my 3ndh arb3 wlad.",
-                exampleEn: "My paternal uncle has four children.",
+                en: "paternal uncle",
+                enArabeezy: "3amm",
+                hint: "Father's brother. My uncle = عَمِّي. Dual: عَمَّيْن. Plural: عْمَام.",
+                exampleAr: "عَمِّي سَاكِن بَرَّا البَلَد.",
+                exampleArabeezy: "3ammi saken barra el-balad.",
+                exampleEn: "My paternal uncle lives abroad.",
             },
             {
                 id: "3ammeh",
-                ar: "عَمِّة",
-                en: "paternal aunt (father’s sister)",
+                ar: "عَمَّة",
+                en: "paternal aunt",
                 enArabeezy: "3ammeh",
-                hint: "عَمِّة = father’s sister. عَمْتِي = my aunt (father’s side).",
-                exampleAr: "عَمْتِي زَارَتْنَا فِي غَزَّة أُسْبُوع.",
-                exampleArabeezy: "3mty zartna fy ghza asbw3.",
-                exampleEn: "My aunt visited us in Gaza for a week.",
+                hint: "Father's sister. My aunt = عَمْتِي. Dual: عَمْتِين. Plural: عَمَّات.",
+                exampleAr: "عَمْتِي بِتِيجِي عِنْد سِتِّي كُلّ جُمْعَة.",
+                exampleArabeezy: "3amti biteeji 3ind sitti kul jum3a.",
+                exampleEn: "My aunt comes to my grandmother's every Friday.",
             },
             {
                 id: "khal",
                 ar: "خَال",
-                en: "maternal uncle (mother’s brother)",
+                en: "maternal uncle",
                 enArabeezy: "khal",
-                hint: "خَال = mother’s brother. خَالِي = my maternal uncle.",
-                exampleAr: "خَالِي ساكِن بِرامَ الله.",
-                exampleArabeezy: "khaly sakn bram ellh.",
-                exampleEn: "My maternal uncle lives in Ramallah.",
+                hint: "Mother's brother. My uncle = خَالِي. Dual: خَالَيْن. Plural: أَخْوَال.",
+                exampleAr: "خَالِي عِنْدُه اِبِن قَدِّي.",
+                exampleArabeezy: "khali 3indo ibin qaddi.",
+                exampleEn: "My maternal uncle has a son my age.",
             },
             {
-                id: "khalah",
+                id: "khaleh",
                 ar: "خَالَة",
-                en: "maternal aunt (mother’s sister)",
-                enArabeezy: "khalah",
-                hint: "خَالَة = mother’s sister. خَالْتِي = my maternal aunt.",
-                exampleAr: "خَالْتِي مِثْل إِمِّي تَقْرِيبًا.",
-                exampleArabeezy: "khalty mthl imy tqryba.",
+                en: "maternal aunt",
+                enArabeezy: "khaleh",
+                hint: "Mother's sister. My aunt = خَالْتِي. Dual: خَالْتِين. Plural: خَالَات.",
+                exampleAr: "خَالْتِي زَيّ إِمِّي تَقْرِيبًا.",
+                exampleArabeezy: "khalti zay immi taqreeban.",
                 exampleEn: "My aunt is almost like my mother.",
             },
-              
-
-            // ===== RELATIVES & PEOPLE =====
+             {
+                id: "ibin",
+                ar: "اِبِن",
+                en: "son",
+                enArabeezy: "ibin",
+                hint: "Dual: وَلَدِين / اِبْنِين. Plural: وِلَاد. His son = اِبْنُه. Her son = اِبْنْهَا.",
+                exampleAr: "خالتي عندها ابن بالجامعة.",
+                exampleArabeezy: "khalti 3indha ibin bil jam3a.",
+                exampleEn: "My aunt has a son at university.",
+            },
+            {
+                id: "bint",
+                ar: "بِنْت",
+                en: "daughter / girl",
+                enArabeezy: "bint",
+                hint: "Dual: بِنْتِين. Plural: بَنَات. His daughter = بِنْتُه. Her daughter = بِنْتْهَا. Also used for girl.",
+                exampleAr: "خَالْتِي عِنْدْهَا بِنْت صْغِيرَة.",
+                exampleArabeezy: "khalti 3indha bint zghireh.",
+                exampleEn: "My aunt has a young daughter.",
+            },
+             {
+                id: "wlad",
+                ar: "ولاد",
+                en: "children / kids",
+                enArabeezy: "wlad",
+                hint: "Very common spoken word for children or kids. More natural than أطفال in daily speech.",
+                exampleAr: "الولاد بيلعبوا برا.",
+                exampleArabeezy: "el-wlad biyil3abu barra.",
+                exampleEn: "The kids are playing outside.",
+            },
             {
                 id: "qarayeb",
                 ar: "قَرَايِب",
                 en: "relatives",
                 enArabeezy: "qarayeb",
-                hint:
-                    "قَرَايِب = relatives (plural). Often used with إِلْنَا / إِلِّي: ‘we have relatives’.",
-                exampleAr: "عندنا قرايب بغزّة وقرايب برا البلد",
-                exampleArabeezy: "3ndna qrayb bghza wqrayb bra elbld",
-                exampleEn: "We have relatives in Gaza and relatives abroad.",
+                hint: "General word for relatives. Singular: قَرِيب / قَرِيبَة.",
+                exampleAr: "عِنْدِنَا قَرَايِب فِي غَزَّة وَبَرَّا البَلَد.",
+                exampleArabeezy: "3indina qarayeb fi ghazza w barra el-balad.",
+                exampleEn: "We have relatives in Gaza and abroad.",
             },
             {
-  id: "byqarreb_la",
-  ar: "بيقرب لـ",
-  en: "is related to",
-  enArabeezy: "byqarreb la",
-  hint: "Used to describe family relation. Example: هو بيقربلي = he is related to me.",
-  exampleAr: "هو بيقربلي من جهة أمي.",
-  exampleArabeezy: "howa byqarreb-li men jihet emmi.",
-  exampleEn: "He is related to me from my mother’s side.",
-}
-,
-            {
-                id: "nas",
-                ar: "نَاس",
-                en: "people",
-                enArabeezy: "nas",
-                hint: "General word for ‘people’.",
-                exampleAr: "النَّاس هَان طَيِّبِين وَبِيِحِبُّوا الضُّيُوف.",
-                exampleArabeezy: "elnas han tybyn wby7bwa eldywf.",
-                exampleEn: "People here are kind and love guests.",
+                id: "sho_bi2rablek",
+                ar: "شُو بِيِقْرَبْلَك؟",
+                en: "How is he related to you?",
+                enArabeezy: "sho biy2rablek?",
+                hint: "To a woman: شُو بِيِقْرَبْلِك؟ Answer: بِيِقْرَبْلِي خَال / عَمّ / اِبِن خَالِي.",
+                exampleAr: "هَاد شُو بِيِقْرَبْلَك؟ - هَاد اِبِن خَالِي.",
+                exampleArabeezy: "had sho biy2rablek? - had ibin khali.",
+                exampleEn: "How is he related to you? - He is my cousin.",
             },
-            {
-                id: "jar_jiran",
-                ar: "جَار / جِيرَان",
-                en: "neighbor / neighbors",
-                enArabeezy: "jar/jiran",
-                hint:
-                    "جَار = neighbor (singular). جِيرَان = neighbors (plural). Often used socially: neighbors like family.",
-                exampleAr: "جِيرَانَّا مِثْل الْعِيلَة، كُلّ يَوْم مَع بَعْض.",
-                exampleArabeezy: "jyrana mthl el3yla, kl ywm m3 b3d.",
-                exampleEn: "Our neighbors are like family; we’re together every day.",
-            },
-
-            // ===== AGE & COMPARISONS =====
             {
                 id: "akbar",
-                ar: "أَكبَر",
-                en: "older / biggest",
+                ar: "أَكْبَر",
+                en: "older",
                 enArabeezy: "akbar",
-                hint: "Comparative: older / bigger. Often used with مِن.",
-                exampleAr: "هُوَّ أَكبَر وَلَد بِالعيلِة.",
-                exampleArabeezy: "hw akbr wld bel3yla.",
-                exampleEn: "He is the oldest boy in the family.",
+                hint: "Use with مِن: أَكْبَر مِنِّي = older than me.",
+                exampleAr: "أَخُوي أَكْبَر مِنِّي.",
+                exampleArabeezy: "akhuy akbar minni.",
+                exampleEn: "My brother is older than me.",
             },
             {
                 id: "asghar",
-                ar: "أَصغَر",
-                en: "younger / smallest",
+                ar: "أَصْغَر",
+                en: "younger",
                 enArabeezy: "asghar",
-                hint: "Comparative: younger / smaller.",
-                exampleAr: "أَنا أَصغَر واحِد بَيْن إِخْواني.",
-                exampleArabeezy: "ana asghr wa7d byn ikhwany.",
-                exampleEn: "I’m the youngest among my siblings.",
+                hint: "Use with مِن: أَصْغَر مِنِّي = younger than me.",
+                exampleAr: "أُخْتِي أَصْغَر مِنِّي.",
+                exampleArabeezy: "okhti asghar minni.",
+                exampleEn: "My sister is younger than me.",
             },
-          
-
             {
-                id: "2addi",
-                ar: "قَدّي",
+                id: "qaddi",
+                ar: "قَدِّي",
                 en: "same age as me",
-                enArabeezy: "2addi",
-                hint: "Used for same age comparison.",
-                exampleAr: "أُختي تَقْريبًا قَدّي.",
-                exampleArabeezy: "akhty tqryba qdy.",
-                exampleEn: "My sister is almost the same age as me.",
+                enArabeezy: "qaddi",
+                hint: "Same age as him = قَدُّه. Same age as her = قَدَّهَا.",
+                exampleAr: "اِبِن خَالِي قَدِّي.",
+                exampleArabeezy: "ibin khali qaddi.",
+                exampleEn: "My cousin is the same age as me.",
             },
-
-            // ===== MARITAL STATUS =====
             {
-                id: "mutazawwij",
-                ar: "مِتجَوِّز / مِتجَوِّزة",
-                en: "married (m/f)",
-                enArabeezy: "mitjawwez/mitjawwzeh",
-                hint: "Marital status: married man/woman.",
-                exampleAr: "أُختي مِتجَوِّزة جْديد.",
-                exampleArabeezy: "akhty mtjwza jdyd.",
-                exampleEn: "My sister recently got married.",
+                id: "mitjawwez",
+                ar: "مِتْجَوِّز / مِتْجَوِّزَة",
+                en: "married",
+                enArabeezy: "mitjawwez / mitjawwzeh",
+                hint: "Male: مِتْجَوِّز. Female: مِتْجَوِّزَة. Plural: مِتْجَوِّزِين.",
+               exampleAr: "أخوي متجوز وعنده ولد.",
+                exampleArabeezy: "akhuy mitjawwez w 3indo walad.",
+                exampleEn: "My brother is married and has a son.",
             },
-
-              {
-    id: "mṭalla2",
-    ar: "مطلّق / مطلّقة",
-    en: "divorced (m/f)",
-    enArabeezy: "mtalla2 / mtalla2a",
-    hint: "Used for someone who is divorced. Masculine: مطلّق. Feminine: مطلّقة.",
-    exampleAr: "هو مطلّق من سنتين، وهي مطلّقة من سنة.",
-    exampleArabeezy: "howa mtalla2 men santeen, w hiyye mtalla2a men sene.",
-    exampleEn: "He has been divorced for two years, and she has been divorced for one year.",
-}
-,
-{
-    id: "armal",
-    ar: "أرمل / أرملة",
-    en: "widower / widow",
-    enArabeezy: "armal / armaleh",
-    hint: "أرمل = widower (male). أرملة = widow (female). Used for someone whose spouse has passed away.",
-    exampleAr: "هو أرمل من خمس سنين، وهي أرملة وعندها ولدين.",
-    exampleArabeezy: "howa armal men khames seneen, w hiyye armaleh w 3endha waladeen.",
-    exampleEn: "He has been a widower for five years, and she is a widow with two children.",
-}
-,
-    {
-                id: "7amay",
-                ar: "حَماي / حَماتي",
+            {
+                id: "a3zabi",
+                ar: "عزابي / عزابية",
+                en: "single / not married",
+                enArabeezy: "3azabi / 3azabeyeh",
+                hint: "Spoken way to say not married. Male: عزابي. Female: عزابية.",
+                exampleAr: "أختي عزابية ولسه بتدرس.",
+                exampleArabeezy: "okhti 3azabeyeh w lissa bitidros.",
+                exampleEn: "My sister is single and still studies.",
+            },
+                {
+                id: "joz_mara",
+                ar: "جوز / مرة",
+                en: "husband / wife",
+                enArabeezy: "joz / mara",
+                hint: "Natural spoken words. جوزي = my husband. مرتي = my wife.",
+                exampleAr: "مرتي من غزة.",
+                exampleArabeezy: "marti min ghazzeh.",
+                exampleEn: "My wife is from Gaza.",
+            },
+            {id: "7amay_7amati",
+                ar: "حماي / حماتي",
                 en: "father-in-law / mother-in-law",
-                enArabeezy: "7amay/7amayeh",
-                hint: "Parents of a spouse.",
-                exampleAr: "حَماي وَحَماتي بيسْكُنوا بِنَفْس البِنَايِة.",
-                exampleArabeezy: "7may w7maty bysknwa bnfs elbnaya.",
-                exampleEn: "My in-laws live in the same building.",
-            },
-
-            // ===== HAVE & LIVE WITH =====
+                enArabeezy: "7amay / 7amati",
+                hint: "Spouse's parents. حماي (7amay) = my father-in-law. حماتي (7amati) = my mother-in-law. In-laws = حمايل / أهل الجوز أو أهل المرة depending on context.",
+                exampleAr: "حماتي ساكنة قريب منا.",
+                exampleArabeezy: "7amati sakneh qareeb minna.",
+                exampleEn: "My mother-in-law lives near us.",},
             {
                 id: "3indi",
-                ar: "عِنْدي ...",
-                en: "I have ...",
-                enArabeezy: "3indi",
-                hint: "Used to say you have family members or things.",
-                exampleAr: "عِنْدي أُخ وَأُختَيْن.",
-                exampleArabeezy: "3ndy akh wakhtyn.",
-                exampleEn: "I have one brother and two sisters.",
+                ar: "عِنْدِي...",
+                en: "I have...",
+                enArabeezy: "3indi...",
+                hint: "Main structure: عِنْدِي أَخ، عِنْدِي أُخْتِين، عِنْدِي خَوَات.",
+                exampleAr: "عِنْدِي أَخ وَخَوَات.",
+                exampleArabeezy: "3indi akh w khawat.",
+                exampleEn: "I have a brother and sisters.",
             },
             {
                 id: "ma_3indi",
-                ar: "مَا عِنْدي",
-                en: "I don’t have",
-                enArabeezy: "ma_3indi",
-                hint: "Negation of عِنْدي.",
-                exampleAr: "مَا عِنْدي أَطْفَال، بَسّ عِنْدي قِطَّة.",
-                exampleArabeezy: "ma 3ndy atfal, bs 3ndy qta.",
-                exampleEn: "I don’t have children, but I have a cat.",
+                ar: "مَا عِنْدِي",
+                en: "I do not have",
+                enArabeezy: "ma 3indi",
+                hint: "Negative form of عِنْدِي.",
+                exampleAr: "مَا عِنْدِي خَوَات، بَس عِنْدِي أَخ.",
+                exampleArabeezy: "ma 3indi khawat, bas 3indi akh.",
+                exampleEn: "I do not have sisters, but I have a brother.",
             },
             {
                 id: "saken_ma3",
-                ar: "ساكِن / ساكْنة مَع ...",
-                en: "living with (m/f) ...",
-                enArabeezy: "saken/sakneh_ma3",
-                hint: "Talking about who you live with.",
-                exampleAr: "أنا ساكْنة مَع أَهلي.",
-                exampleArabeezy: "ana sakna m3 ahly.",
+                ar: "سَاكِن مَع...",
+                en: "living with...",
+                enArabeezy: "saken ma3...",
+                hint: "Male: سَاكِن. Female: سَاكْنَة. Plural: سَاكْنِين.",
+                exampleAr: "أَنَا سَاكْنَة مَع أَهْلِي.",
+                exampleArabeezy: "ana sakneh ma3 ahli.",
                 exampleEn: "I live with my family.",
             },
-        ],
-
-        extra: [
-            // ===== MORE STATUS & RELATIONS =====
-            
-
+            {
+                id: "masha_allah",
+                ar: "مَا شَاء الله",
+                en: "God has willed / used to show admiration",
+                enArabeezy: "masha allah",
+                hint: "Very natural reaction when someone talks about family, children, or good news. Use it lightly: مَا شَاء الله، عِيلْتَك حِلْوَة.",
+                exampleAr: "مَا شَاء الله، عِنْدَك خَوَات كْتِير.",
+                exampleArabeezy: "masha allah, 3indak khawat kteer.",
+                exampleEn: "Mashallah, you have many sisters.",
+            },
+            {
+                id: "allah_ykhaleelak",
+                ar: "الله يْخَلِّيلَك",
+                en: "May God keep them for you",
+                enArabeezy: "allah ykhaleelak",
+                hint: "Warm Gaza family expression. To a woman: الله يْخَلِّيلِك. For mother: الله يْخَلِّيلِك إِيَّاهَا. Reply: آمِين.",
+                exampleAr: "إِمِّي كْتِير طَيِّبَة. ـ الله يْخَلِّيلِك إِيَّاهَا.",
+                exampleArabeezy: "immi kteer Tayyibeh. - allah ykhaleelik iyyaha.",
+                exampleEn: "My mother is very kind. - May God keep her for you.",
+            },
         ],
     },
 
-    // ====================================
-    // DIALOGUE (long, with real names)
-    // ====================================
     dialogue: {
+        title: "Real Situation - Talking About Family After Class",
+        setting: "Two classmates talk after Arabic class. They already know each other from Unit 1 and now talk naturally about family.",
         lines: [
-            {
-                "speaker": "Samer",
-                "ar": "مَسّا الخير يا ليلى، كِيفِك اليوم؟",
-                "arArabeezy": "msa elkhyr ya lyla, kyfk elywm?",
-                "en": "Good evening, Layla, how are you today?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": "مَسّا النّور يا سامِر، الحَمْدِلله. وإِنْتَ كِيفَك؟",
-                "arArabeezy": "msa elnwr ya samr, el7mdllh. wint kyfk?",
-                "en": "Good evening, Samer, alhamdulillah. And how are you?"
-            },
-            {
-                "speaker": "Samer",
-                "ar": "وين اهلك ساكنين وعلتكم كبيرة ولا صغيرة؟",
-                "arArabeezy": "wyn ahlk saknyn w3ltkm kbyra wla sghyra?",
-                "en": "Where does your family live, and is your family big or small?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": "أَهلي ساكْنين هون بِغَزّة، وعيلِتْنا صغيرة.",
-                "arArabeezy": "ahly saknyn hwn bghza, w3yltna sghyra.",
-                "en": "My family lives here in Gaza, and our family is small."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "كم اخ واخت عندك؟",
-                "arArabeezy": "km akh wakht 3ndk?",
-                "en": "How many brothers and sisters do you have?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": " عِنْدي أُخ أَكبَر مِنّي وَأُخت أَصغَر.",
-                "arArabeezy": "3ndy akh akbr mny wakht asghr.",
-                "en": " I have an older brother and a younger sister."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "أَخوك أَكبَر منك بِقَدّيش؟",
-                "arArabeezy": "akhwk akbr mnk bqdysh?",
-                "en": "How much older is your brother?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": "هو أكبر منّي بحوالي أربع سنين.",
-                "arArabeezy": "huwwa akbar minni b7awali arba3 sneen",
-                "en": "He’s about four years older than me."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "وأختك قدّك ولا أصغر منك كمان؟",
-                "arArabeezy": "wakhtk qdk wla asghr mnk kman?",
-                "en": "And is your sister your age or younger too?"
-            },///
-            {
-                "speaker": "Layla",
-                "ar": "هيَّ أَصغَر، لِسّه بِالتّانَوِيّة.",
-                "arArabeezy": "hy asghr, lsh beltanwya.",
-                "en": "She’s younger, she’s still in high school."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "بتسكنوا كِلْكُم مَع بَعْض؟",
-                "arArabeezy": "btsknwa klkm m3 b3d?",
-                "en": "Do you all live together?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": "أَه، أنا ساكْنة مَع أَهلي: إِمّي، أَبوي، أُخوي، وَأُختي.",
-                "arArabeezy": "ah, ana sakna m3 ahly: imy, abwy, akhwy, wakhty.",
-                "en": "Yes, I live with my family: my mother, father, brother and sister."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "وسيدك وَسِتِّك ساكْنين قَريب مَنْكُم؟",
-                "arArabeezy": "wsydk wstk saknyn qryb mnkm?",
-                "en": "And do your grandfather and grandmother live near you?"
-            },
-            {
-                "speaker": "Layla",
-                "ar": "إي، سيدي وَسِتّي ساكْنين فِي الحارَة اللي جنبنا.",
-                "arArabeezy": "iy, sydy wsty saknyn fy el7ara elly jnbna.",
-                "en": "Yes, my grandfather and grandmother live in the neighborhood next to us."
-            },
-            {
-                "speaker": "Samer",
-                "ar": "حَلُو كْثير. أَنا عيلْتِي أَصْغَر، عِنْدي بَسّ أُخ واحِد.",
-                "arArabeezy": "7lw kthyr. ana 3ylty asghr, 3ndy bs akh wa7d.",
-                "en": "That’s really nice. My family is smaller, I only have one brother."
-            },
-            {
-                "speaker": "Layla",
-                "ar": "هُوَّ أَكبَر مِنَّك وَلّا أَصغَر؟",
-                "arArabeezy": "hw akbr mnk wla asghr?",
-                "en": "Is he older than you or younger?"
-            },
-            {
-                "speaker": "Samer",
-                "ar": "هُوَّ تَقريبًا قَدّي، بِنْدَرُس بنفس السَّنَة بِالجَامْعَة.",
-                "arArabeezy": "hw tqryba qdy, bndrs bnfs elsna beljam3a.",
-                "en": "He’s almost my age, we study the same year at the university."
-            },
-
-            {
-                "speaker": "Layla",
-                "ar": "أخوالك وعمامك ساكنين هون ولا برا البلد؟",
-                "arArabeezy": "akhwalk w3mamk saknyn hwn wla bra elbld?",
-                "en": "Do your maternal and paternal uncles live here or abroad?"
-            },
-            {
-                "speaker": "Samer",
-                "ar": "عِنْدي خال ساكِن هون، وَعَمّي ساكِن بَرّا البَلَد.",
-                "arArabeezy": "3ndy khal sakn hwn, w3my sakn bra elbld.",
-                "en": "I have an uncle on my mom’s side who lives here, and an uncle on my dad’s side who lives abroad."
-            },
-            {
-                "speaker": "Layla",
-                "ar": "مين أقرب شخص إلك بالعيلة؟",
-                "arArabeezy": "myn aqrb shkhs ilk bel3yla?",
-                "en": "Who are you closest to in your family?"
-            },
-            {
-                "speaker": "Samer",
-                "ar": "بصراحة، أقرب شخص إليّ هو أخوي، بنحكي مع بعض كتير.",
-                "arArabeezy": "bsra7a, aqrb shkhs ily hw akhwy, bn7ky m3 b3d ktyr.",
-                "en": "Honestly, I’m closest to my brother, we talk a lot with each other."
-            },
-            {
-                "speaker": "Layla",
-                "ar": "حلو! إن شاء الله دايمًا تكونوا متفاهمين.",
-                "arArabeezy": "7lw! in sha ellh dayma tkwnwa mtfahmyn.",
-                "en": "Nice! Inshallah you always stay in good understanding."
-            }
-        ]
+           { speaker: "Samer", ar: "مرحبا ليلى، كيفك؟ شو هالصورة الحلوة؟", arArabeezy: "mar7aba layla, keefik? shoo hal-soora el-7ilweh?", en: "Hi Layla, how are you? What's this nice picture?" },
+            { speaker: "Layla", ar: "أهلين سامر. هاي صورة من يوم الجمعة عند ستي.", arArabeezy: "ahleen samer. hay soora min yom el-jom3a 3ind sitti.", en: "Hi Samer. This is a picture from Friday at my grandmother's place." },
+            { speaker: "Samer", ar: "ما شاء الله، مبين العيلة كلها كانت هناك.", arArabeezy: "ma sha allah, mbayyen el-3eileh kullha kanat hnak.", en: "Wow, it looks like the whole family was there." },
+            { speaker: "Layla", ar: "تقريبًا آه. إمي، أبوي، إخوتي، وخالتي كمان.", arArabeezy: "taqreeban ah. immi, abuy, ikhwt-i, w khalti kaman.", en: "Almost, yes. My mother, my father, my siblings, and my aunt too." },
+            { speaker: "Samer", ar: "هاد اللي جنب أبوك بقربلك؟", arArabeezy: "had elli janb abook biqarrablak?", en: "Is the one next to your father related to you?" },
+            { speaker: "Layla", ar: "آه، هاد عمي. ساكن قريب منا وبزورنا كتير.", arArabeezy: "ah, had 3ammi. saken qareeb minna w bizoorna kteer.", en: "Yes, that's my uncle. He lives near us and visits us a lot." },
+            { speaker: "Samer", ar: "حلو. وإنتِ ساكنة مع أهلك لسه؟", arArabeezy: "7ilu. w inti sakneh ma3 ahlik lissa?", en: "Nice. And do you still live with your family?" },
+            { speaker: "Layla", ar: "آه، أنا ساكنة مع أهلي: إمي، أبوي، أختي الصغيرة، وأخوي.", arArabeezy: "ah, ana sakneh ma3 ahli: immi, abuy, okhti el-zgheereh, w akhuy.", en: "Yes, I live with my family: my mother, father, younger sister, and brother." },
+            { speaker: "Samer", ar: "أختك هاي اللي لابسة أزرق؟", arArabeezy: "okhtik hay elli labseh azra2?", en: "Is your sister the one wearing blue?" },
+            { speaker: "Layla", ar: "آه، هاي أختي. هي أصغر مني وبتدرس بالجامعة.", arArabeezy: "ah, hay okhti. hiyye asghar minni w bitidros bil jam3a.", en: "Yes, that's my sister. She's younger than me and studies at university." },
+            { speaker: "Samer", ar: "وأخوك وين بالصورة؟", arArabeezy: "w akhook ween bil-soora?", en: "And where is your brother in the picture?" },
+            { speaker: "Layla", ar: "شايف اللي ماسك البنت الصغيرة؟ هاد أخوي الكبير.", arArabeezy: "shayef elli masik el-bint el-zgheereh? had akhuy el-kbeer.", en: "See the one holding the little girl? That's my older brother." },
+            { speaker: "Samer", ar: "آه شفته. هو متجوز؟", arArabeezy: "ah shufto. howwa mitjawwez?", en: "Yes, I see him. Is he married?" },
+            { speaker: "Layla", ar: "آه، متجوز وعنده بنت وحدة. بنته دايمًا بتضحك.", arArabeezy: "ah, mitjawwez w 3indo bint wa7deh. binto dayman bitid7ak.", en: "Yes, he's married and has one daughter. His daughter always laughs." },
+            { speaker: "Samer", ar: "الله يخليها. عيلتك شكلها قريبة من بعض.", arArabeezy: "allah ykhalliha. 3eiltik shakilha qareebeh min ba3d.", en: "May God protect her. Your family seems close to each other." },
+            { speaker: "Layla", ar: "آه الحمد لله. كل جمعة تقريبًا بنجتمع عند ستي.", arArabeezy: "ah el-7amdullah. kul jom3a taqreeban bnjitmi3 3ind sitti.", en: "Yes, thankfully. Almost every Friday we gather at my grandmother's place." },
+            { speaker: "Samer", ar: "وسيدك موجود بالصورة؟", arArabeezy: "w sidik mawjood bil-soora?", en: "And is your grandfather in the picture?" },
+            { speaker: "Layla", ar: "لا، سيدي ساكن مع خالتي وما قدر ييجي هالمرة.", arArabeezy: "la, sidi saken ma3 khalti w ma qider yeeji hal-marra.", en: "No, my grandfather lives with my aunt and couldn't come this time." },
+            { speaker: "Samer", ar: "الله يعطيه الصحة. أنا كمان ستي ساكنة قريب منا.", arArabeezy: "allah yi3Teeh el-Se77a. ana kaman sitti sakneh qareeb minna.", en: "May God give him health. My grandmother also lives near us." },
+            { speaker: "Layla", ar: "عنجد؟ بتزوروها كتير؟", arArabeezy: "3anjad? bitzooroha kteer?", en: "Really? Do you visit her often?" },
+            { speaker: "Samer", ar: "آه، غالبًا يوم الجمعة. بروح أنا وأخوي.", arArabeezy: "ah, ghaliban yom el-jom3a. baroo7 ana w akhuy.", en: "Yes, usually on Friday. My brother and I go." },
+            { speaker: "Layla", ar: "ما عندك خوات، صح؟", arArabeezy: "ma 3indak khawat, sa7?", en: "You don't have sisters, right?" },
+            { speaker: "Samer", ar: "صح، ما عندي خوات. عندي أخ واحد بس، أصغر مني.", arArabeezy: "sa7, ma 3indi khawat. 3indi akh wa7ad bas, asghar minni.", en: "Right, I don't have sisters. I only have one brother, younger than me." },
+            { speaker: "Layla", ar: "بس أكيد البيت أهدى من بيتنا.", arArabeezy: "bas akeed el-beet ahda min beetna.", en: "But your house is surely quieter than ours." },
+            { speaker: "Samer", ar: "مش دايمًا. أخوي بعمل صوت لحاله.", arArabeezy: "mish dayman. akhuy bi3mil Soot la7alo.", en: "Not always. My brother makes noise by himself." },
+            { speaker: "Layla", ar: "هههه، نفس أختي الصغيرة.", arArabeezy: "haha, nafs okhti el-zgheereh.", en: "Haha, same as my younger sister." },
+                    { speaker: "Samer", ar: "الجيران عندكم كمان بيجوا عند ستك؟", arArabeezy: "el-jeeran 3indkom kaman biyiju 3ind sittik?", en: "Do your neighbors also come to your grandmother's home?" },
+            { speaker: "Layla", ar: "آه، جيران ستي زي العيلة. دايمًا بيسألوا عنها.", arArabeezy: "ah, jeeran sitti zay el-3eileh. dayman bis2alu 3anha.", en: "Yes, my grandmother's neighbors are like family. They always ask about her." },
+            { speaker: "Samer", ar: "حلو كتير. هيك الواحد بحس حاله مش لحاله.", arArabeezy: "7ilu kteer. heek el-wa7ad bi7is 7alo mish la7alo.", en: "That's really nice. This way a person feels they are not alone." },
+            { speaker: "Layla", ar: "صح. يلا المرة الجاية بفرجيك صورة أوضح.", arArabeezy: "sa7. yalla el-marra el-jayeh bafarjeek soora awDa7.", en: "True. Next time I'll show you a clearer picture." },
+            { speaker: "Samer", ar: "تمام، يسلمو. ديري بالك على حالك.", arArabeezy: "tamam, yeslamo. deeri balik 3ala 7alik.", en: "Great, thanks. Take care." },
+             { speaker: "Layla", ar: "مع السلامة، بنشوفك بعدين.", arArabeezy: "ma3 el-salameh, binshoofak ba3dain.", en: "Goodbye, see you later." },
+        ],
+        questions: [
+              { ar: "شو كان سامر وليلى بيشوفوا؟", en: "What were Samer and Layla looking at?" },
+            { ar: "الصورة كانت من أي يوم؟", en: "Which day was the picture from?" },
+            { ar: "مين كان موجود بالصورة من عيلة ليلى؟", en: "Who from Layla's family was in the picture?" },
+            { ar: "مين الشخص اللي جنب أبو ليلى؟", en: "Who is the person next to Layla's father?" },
+            { ar: "ليلى ساكنة مع مين؟", en: "Who does Layla live with?" },
+            { ar: "مين أخت ليلى في الصورة؟", en: "Which one is Layla's sister in the picture?" },
+            { ar: "أخ ليلى متجوز ولا أعزب؟", en: "Is Layla's brother married or single?" },
+            { ar: "كل جمعة وين بتجتمع عيلة ليلى؟", en: "Where does Layla's family gather every Friday?" },
+            { ar: "ليش سيد ليلى مش موجود بالصورة؟", en: "Why isn't Layla's grandfather in the picture?" },
+            { ar: "سامر عنده خوات؟", en: "Does Samer have sisters?" },
+            { ar: "أخ سامر أكبر ولا أصغر منه؟", en: "Is Samer's brother older or younger than him?" },
+            { ar: "شو قالت ليلى عن جيران ستي؟", en: "What did Layla say about her grandmother's neighbors?" },
+            { ar: "احكي عن عيلة ليلى بخمس جمل.", en: "Talk about Layla's family in five sentences." },
+            { ar: "احكي عن عيلتك إنت: مين ساكن معك؟ عندك إخوة؟", en: "Talk about your family: who lives with you? Do you have siblings?" },  ],
     },
 
-    // ====================================
-    // GRAMMAR
-    // ====================================
-
-    grammar: [
-        {
-            id: "possessive_pronouns",
-            title: "Possessive Pronouns (suffixes)",
-            short: "Ownership sticks to the word.",
-            description:
-                `In spoken Arabic, we attach ownership to the noun.
-We don’t usually say two separate words for “my/your”.
-
-Golden Rule:
-Add the suffix to show who owns it.`,
-            table: {
-                title: "Common Possessive Suffixes",
-                headers: ["Arabic", "Arabeezy", "English", "Usage Note"],
-                rows: [
-                    ["ـي", "-i", "my", "بيتي"],
-                    ["ـك", "-ak/-ik", "your", "بيتك/بيتكِ"],
-                    ["ـه", "-o", "his", "أبوه"],
-                    ["ـها", "-ha", "her", "أمها"],
-                     ["ـنا", "-na", "our", "بَيْتْنَا"],
-                      ["ـكم", "-kum", "your (plural)", "بَيْتْكُم"],
-                    ["ـهم", "-hom", "their", "أُمَّهُمْ"]
-                ]
-            },
-            examples: [
-              { ar: "هذا بيتنا", arabeezy: "haada beetna", en: "This is our house." },
-{ ar: "وين أبوك؟", arabeezy: "ween abook?", en: "Where is your father?" },
-{ ar: "أختي تعبانة اليوم", arabeezy: "okhti ta3baaneh el-yom", en: "My sister is tired today." },
-{ ar: "أخوها بالبيت", arabeezy: "akhoha bel-beet", en: "Her brother is at home." },
-{ ar: "أمهم في السوق", arabeezy: "omhom fis-soo2", en: "Their mother is at the market." },
-{ ar: "صديقنا ساكن هون", arabeezy: "sadee2na saaken hon", en: "Our friend lives here." },
-{ ar: "وين بيتكم؟", arabeezy: "ween beetkom?", en: "Where is your (plural) house?" },
-{ ar: "أستاذهم مبسوط", arabeezy: "ostazhom mabsut", en: "Their teacher is happy." },
-{ ar: "سيارتي جديدة", arabeezy: "sayyaarti jdeedeh", en: "My car is new." },
-{ ar: "مدرستها قريبة", arabeezy: "madrastha 2areebeh", en: "Her school is close." }
-            ],
-            teacherNotes:
-                `Spoken uses short suffixes more than MSA forms.
-MSA has formal case endings; spoken drops them.
-Teach 2–3 suffixes first, then expand.
-Use family words from the unit.`,
-            commonMistakes: [
-                "Saying ‘أنا + اسم + إلي’ instead of suffix",
-                "Mixing masculine/feminine suffixes",
-                "Overusing full MSA endings",
-            ],
-            functionalUse:
-                "Used to talk about family members and personal belongings.",
-        },
-        {
-            id: "dual_nouns",
-            title: "Dual Nouns (اثنين)",
-            short: "Spoken Arabic often uses -een for two.",
-            description:
-                `The dual form shows “two of something.”
-In spoken Palestinian Arabic, -een is common for most dual nouns.
-
-Golden Rule:
-Add -een to show two.`,
-            table: {
-                title: "Dual Patterns",
-                headers: ["Arabic", "Arabeezy", "English", "Usage Note"],
-                rows: [
-                    ["كتابين", "ktaab-een", "two books", "General"],
-                    ["ولدين", "walad-een", "two boys", "People"],
-                    ["بنتين", "bint-een", "two girls", "People"],
-                    ["يومين", "yoom-een", "two days", "Time"],
-                ]
-            },
-            examples: [
-                { ar: "عندي ولدين", arabeezy: "3indi walad-een", en: "I have two boys." },
-                { ar: "إلها بنتين", arabeezy: "elha bint-een", en: "She has two girls." },
-                { ar: "إحنا عنا كتابين", arabeezy: "e7na 3inna ktaab-een", en: "We have two books." },
-                { ar: "عندي أخوين", arabeezy: "3indi akhween", en: "I have two brothers." },
-                { ar: "سافرت يومين", arabeezy: "safart yoom-een", en: "I traveled for two days." }
-            ],
-            teacherNotes:
-                `Spoken simplifies dual endings compared to MSA.
-MSA uses -ān/-ayn; spoken prefers -een.
-Use family words to keep it concrete.
-Avoid heavy grammar terms.`,
-            commonMistakes: [
-                "Using plural instead of dual",
-                "Forgetting -een ending",
-                "Mixing MSA dual endings",
-            ],
-            functionalUse:
-                "Used to talk about two family members or two items in daily life.",
-        },
-    ],
-
-
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
+                id: "family_mc1",
                 type: "match",
                 prompt: "Match the English word to Arabic: family",
-                options: ["عِيلَة", "أَهْل", "أَبُوي", "إِمّي", "أَخ"],
+                options: ["عِيلَة", "أَبُوي", "خَال", "قَدِّي"],
                 correct: "عِيلَة",
             },
             {
-                id: "mc_complete_2",
+                id: "family_mc2",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: They have one son and two daughters.\nعندهم ___ واحد وبنتين",
-                options: ["أُخْت", "ابن", "بِنْت", "وَلَد / بِنْت", "طِفِل / أَطْفَال"],
-                correct: "ابن",
-            },
-             {
-                id: "mc_match_3",
-                type: "match",
-                prompt: "Match the English word to Arabic: twin",
-                options: ["عِيلَة", "أَهْل", "توأم", "إِمّي", "أَخ"],
-                correct: "توأم",
+                prompt: "Complete: عِنْدِي أَخ وَ___.",
+                options: ["خَوَات", "سَاكِن", "قَدِّي", "مَع"],
+                correct: "خَوَات",
             },
             {
-                id: "mc_reorder_4",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: My grandfather still lives in the village.",
-                options: ["سِيدِي", "لِسَّا", "عَايِش", "فِي", "الْقَرْيَة"],
-                correct: ["سِيدِي", "لِسَّا", "عَايِش", "فِي", "الْقَرْيَة"],
-            },
-            {
-                id: "mc_choose_5",
+                id: "family_mc3",
                 type: "choose",
-                prompt: "Choose the correct Arabic word for: maternal aunt (mother’s sister)",
-                options: ["خَالَة", "وَلاد عَمّي", "وَلاد خالي", "قَرَايِب", "قَريب / قَريبة"],
-                correct: "خَالَة",
+                prompt: "Choose the Gaza-style plural for sisters:",
+                options: ["خَوَات", "إِخْوَة", "أَخُوي", "وِلَاد"],
+                correct: "خَوَات",
             },
             {
-                id: "mc_match_5",
-                type: "match",
-                prompt: "Match the English word to Arabic: people",
-                options: ["نَاس", "جَار / جِيرَان", "أَكبَر", "أَصغَر", "أَكْبَر / أَصْغَر"],
-                correct: "نَاس",
-            },
-            {
-                id: "mc_complete_6",
-                type: "complete",
-                prompt: "Complete the Arabic sentence for: My sister is almost the same age as me.\nأُختي تَقْريبًا ___.",
-                options: ["قَدّي", "مِتجَوِّز / مِتجَوِّزة", "عَزابي / عَزابيّة", "خاطِب / مَخطوبة", "مَكْتُوب كِتَابُه"],
-                correct: "قَدّي",
-            },
-            {
-                id: "mc_reorder_7",
+                id: "family_mc4",
                 type: "reorder",
-                prompt: "Reorder the Arabic words to match: I have one brother and two sisters.",
-                options: ["عِنْدي", "أُخ", "وَأُختَيْن"],
-                correct: ["عِنْدي", "أُخ", "وَأُختَيْن"],
+                prompt: "Reorder: My brother is older than me.",
+                options: ["أَخُوي", "أَكْبَر", "مِنِّي"],
+                correct: ["أَخُوي", "أَكْبَر", "مِنِّي"],
+            },
+            {
+                id: "family_mc5",
+                type: "complete",
+                prompt: "Complete: أَنَا سَاكْنَة ___ أَهْلِي.",
+                options: ["مَع", "مِن", "وِين", "قَدِّي"],
+                correct: "مَع",
             },
         ],
     },
@@ -700,106 +442,141 @@ Avoid heavy grammar terms.`,
     practice: {
         quiz: [
             {
-                id: "fam_q1",
-                questionAr: "«عِنْدِي تَلَات إِخْوَة» مَعْنَاهَا:",
-                optionsEn: [
-                    "I have three sisters.",
-                    "I have three brothers.",
-                    "I have three children.",
-                ],
-                correctIndex: 1,
-            },
-            {
-                id: "fam_q2",
-                questionAr: "«أَخُوي أَكْبَر مِنِّي» مَعْنَاهَا:",
-                optionsEn: [
-                    "My brother is older than me.",
-                    "My brother is younger than me.",
-                    "My brother is the same age as me.",
-                ],
+                id: "family_q1",
+                questionAr: "«عِنْدِي أَخ وَخَوَات» مَعْنَاهَا:",
+                optionsEn: ["I have a brother and sisters.", "I have a father and mother.", "I live with my family."],
                 correctIndex: 0,
             },
             {
-                id: "fam_q3",
-                questionAr: "أَيّ كَلِمَة تِسْتَخْدِمْهَا لِـ قرايب",
-                optionsEn: [
-                    "neighbors",
-                    "people",
-                    "relatives",
-                ],
-                correctIndex: 2,
+                id: "family_q2",
+                questionAr: "«أَخُوي أَكْبَر مِنِّي» مَعْنَاهَا:",
+                optionsEn: ["My brother is older than me.", "My brother is younger than me.", "My brother is my age."],
+                correctIndex: 0,
             },
             {
-                id: "fam_q4",
-                questionAr: "«هُوَّ عَزَّابي» مَعْنَاهَا:",
-                optionsEn: [
-                    "He is married.",
-                    "He is single (not married).",
-                    "He is engaged.",
-                ],
-                correctIndex: 1,
+                id: "family_q3",
+                questionAr: "«اِبِن خَالِي قَدِّي» مَعْنَاهَا:",
+                optionsEn: ["My cousin is my age.", "My uncle is old.", "My son is young."],
+                correctIndex: 0,
             },
             {
-                id: "fam_q5",
-                questionAr: "«مَا عِنْدِي أَطْفَال» مَعْنَاهَا:",
-                optionsEn: [
-                    "I don’t have children.",
-                    "I don’t have siblings.",
-                    "I have small children.",
-                ],
+                id: "family_q4",
+                questionAr: "كِيف بِنْقُول: I do not have sisters؟",
+                optionsEn: ["مَا عِنْدِي خَوَات.", "أَنَا سَاكِن مَع أَهْلِي.", "أُخْتِي أَصْغَر مِنِّي."],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q5",
+                questionAr: "«هَاد شُو بِيِقْرَبْلَك؟» مَعْنَاهَا:",
+                optionsEn: ["How is he related to you?", "Where does he live?", "Is he older than you?"],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q6",
+                questionAr: "كَمِّل: أَنَا سَاكْنَة ___ أَهْلِي.",
+                optionsEn: ["مَع", "مِن", "قَدِّي"],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q7",
+                questionAr: "حَوِّل لِلْمُؤَنَّث: أَخُوي مِتْجَوِّز.",
+                optionsEn: ["أُخْتِي مِتْجَوِّزَة.", "أُخْتِي أَعْزَب.", "أَخُوي مَخْطُوبَة."],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q8",
+                questionAr: "جمع أُخْت باللهجة الطبيعية في غزة:",
+                optionsEn: ["خَوَات", "أَخَوَيْن", "قَرَايِب"],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q9",
+                questionAr: "رَدّ طبيعي لما حدا يحكي عن إِمُّه أو أَبُوه:",
+                optionsEn: ["الله يْخَلِّيلَك", "شُو اِسْمَك؟", "مَع السَّلَامَة"],
+                correctIndex: 0,
+            },
+            {
+                id: "family_q10",
+                questionAr: "«سِيدِي وَسِتِّي» مَعْنَاهَا:",
+                optionsEn: ["My grandfather and grandmother", "My brother and sister", "My uncle and aunt"],
                 correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 3:  student describes a big family gathering at grandma’s house (سِتِّي).",
+            "Introduce your family in 60 seconds. Say who lives with you and how many brothers/sisters you have.",
+            "Ask your classmate about their family: عِيلْتَك كْبِيرَة؟ عِنْدَك إِخْوَة؟ مِين أَكْبَر؟",
+            "Talk about one relative you are close to and why.",
+            "Use the structure عِنْدِي / مَا عِنْدِي in five different sentences.",
+            "Picture role-play: show an imaginary family photo and ask/answer هَاد شُو بِيِقْرَبْلَك؟",
         ],
         translation: [
-            { id: "family_t1", type: "enToAr", textEn: "I have two brothers.", textAr: "عندي أخوين." },
-            { id: "family_t2", type: "arToEn", textEn: "My sister is a student.", textAr: "أختي طالبة." },
-            { id: "family_t3", type: "enToAr", textEn: "Do you have a big family?", textAr: "عيلتك كبيرة؟" },
-            { id: "family_t4", type: "arToEn", textEn: "I live with my parents.", textAr: "أنا ساكن/ساكنة مع أهلي." },
-            { id: "family_t5", type: "enToAr", textEn: "My father works in a hospital.", textAr: "أبوي بشتغل بمستشفى." },
-            { id: "family_t6", type: "arToEn", textEn: "We love our family.", textAr: "إحنا بنحب عيلتنا." },
+            { id: "family_t1", type: "enToAr", textEn: "I have one brother and sisters.", textAr: "عِنْدِي أَخ وَخَوَات." },
+            { id: "family_t2", type: "arToEn", textEn: "My mother is at home today.", textAr: "إِمِّي فِي البِيت اليَوم." },
+            { id: "family_t3", type: "enToAr", textEn: "My brother is three years older than me.", textAr: "أَخُوي أَكْبَر مِنِّي بِتَلَات سِنِين." },
+            { id: "family_t4", type: "arToEn", textEn: "My sister is younger than me.", textAr: "أُخْتِي أَصْغَر مِنِّي." },
+            { id: "family_t5", type: "enToAr", textEn: "My uncle has a son my age.", textAr: "خَالِي عِنْدُه اِبِن قَدِّي." },
+            { id: "family_t6", type: "arToEn", textEn: "I live with my family.", textAr: "أَنَا سَاكِن/سَاكْنَة مَع أَهْلِي." },
+            { id: "family_t7", type: "enToAr", textEn: "My brother is married.", textAr: "أَخُوي مِتْجَوِّز." },
+            { id: "family_t8", type: "arToEn", textEn: "My sister is single.", textAr: "أُخْتِي عَزْبَا." },
+            { id: "family_t9", type: "enToAr", textEn: "My sister is engaged.", textAr: "أُخْتِي مَخْطُوبَة." },
+            { id: "family_t10", type: "arToEn", textEn: "Our neighbors are like family.", textAr: "جِيرَانَّا زَيّ العِيلَة." },
+            { id: "family_t11", type: "enToAr", textEn: "My family lives here in Gaza.", textAr: "أَهْلِي سَاكْنِين هِنَا فِي غَزَّة." },
+            { id: "family_t12", type: "arToEn", textEn: "My maternal uncle has a son my age.", textAr: "خَالِي عِنْدُه اِبِن قَدِّي." },
+            { id: "family_t13", type: "enToAr", textEn: "How is he related to you?", textAr: "هَاد شُو بِيِقْرَبْلَك؟" },
+            { id: "family_t14", type: "arToEn", textEn: "My grandfather lives with my grandmother.", textAr: "سِيدِي سَاكِن مَع سِتِّي." },
+            { id: "family_t15", type: "enToAr", textEn: "My aunt has a daughter and a twin.", textAr: "خَالْتِي عِنْدْهَا بِنْت وَتَوْأَم." },
+            { id: "family_t16", type: "arToEn", textEn: "Mashallah, your family is nice.", textAr: "مَا شَاء الله، عِيلْتَك حِلْوَة." },
+            { id: "family_t17", type: "enToAr", textEn: "May God keep your mother for you.", textAr: "الله يْخَلِّيلِك إِمِّك." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Write and record a 60–90 second story about your family in Palestinian Arabic. Mention: who lives in your house, how many brothers and sisters you have, who is older/younger than you, and if any of them are married, single, or engaged. Try to use at least 8 words from the vocabulary list and the structure «عِنْدِي…».",
+            `Write and record a 60-90 second story about your family in Palestinian Arabic. Mention: who lives in your house, how many brothers and sisters you have, who is older/younger than you, and if any of them are married, single, or engaged. Try to use at least 8 words from the vocabulary list, the structure «عِنْدِي...», and at least 2 words from Unit 1.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Hi, how are you?
+2. What's new? Reassure me about you.
+3. My name is Omar, and I am from Gaza.
+4. I live with my family.
+5. My mother is at home today.
+6. My father works in the morning.
+7. I have one brother and one sister.
+8. I do not have sisters, but I have many relatives.
+9. Her father lives in Gaza.
+10. Her sister is younger than her.
+11. His brother is married and has a daughter.
+12. My maternal uncle has a son my age.
+13. Her paternal aunt visits them on Friday.
+14. My mother-in-law is very kind.
+15. Goodbye, see you later, take care.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "In English, explain that family is one of the easiest and richest topics to practice in any language.",
-            "Draw a simple family tree on the screen or a paper and write Arabic words next to each person (أَبُوي، إِمِّي، أَخُوي، أُخْتِي…).",
-            "Ask the student to tell you the equivalent words in their own language to make it personal.",
+            "Start by recycling Unit 1: مَرْحَبَا، كِيفَك؟ شُو أَخْبَارَك؟",
+            "Ask the student in English who lives in their house, then map only needed words into Arabic.",
+            "Keep the first speaking goal simple: عِنْدِي... / مَا عِنْدِي...",
         ],
         vocabularySteps: [
-            "Teach close family first (parents, siblings, grandparents), then extended family (uncles, aunts, relatives).",
-            "Use lots of personalization: ask about the student’s real family as soon as they understand the word.",
-            "Highlight the ‘my’ forms (أَبُوي، إِمِّي، أَخُوي…) and recycle them in almost every example.",
+            "Teach family words as chunks with possessive forms: أَبُوي، إِمِّي، أَخُوي، أُخْتِي.",
+            "Put related words in hints, not as separate heavy vocabulary.",
+            "Use comparisons through examples: أَكْبَر مِنِّي، أَصْغَر مِنِّي، قَدِّي.",
         ],
         dialogueSteps: [
-            "Read the full dialogue as a story. Then ask the student: ‘Which family do you feel closest to, Roba’s, Mark’s, Yara’s, or Omar’s?’",
-            "Pick one character (for example, Yara) and ask the student to retell her family story in their own words.",
-            "Change the details: same structure but different numbers, countries, and marital status, so the student produces new language using the same pattern.",
+            "Read the dialogue as a real after-class conversation.",
+            "Ask the student to answer the dialogue questions in full sentences.",
+            "Then replace Layla's family with the student's real or imaginary family.",
         ],
         practiceTips: [
-            "When a student answers with short English sentences, gently push them to try small Arabic pieces like «عِنْدِي أَخَيْن» even if the rest is in English.",
-            "Use the quiz questions to open mini-conversations, not only A/B/C answers.",
-            "If the student has a complicated family situation, let them invent a ‘fantasy family’ just for practice to keep it safe and comfortable.",
+            "Push output: every answer should start with عِنْدِي, مَا عِنْدِي, or أَنَا سَاكِن/سَاكْنَة.",
+            "Drill masculine/feminine naturally: مِتْجَوِّز / مِتْجَوِّزَة, سَاكِن / سَاكْنَة.",
+            "Recycle Unit 1 closings at the end of every role-play.",
         ],
         wrapup: [
-            "Ask the student to say 3–5 full sentences about their family only in Arabic, even if simple.",
-            "Summarize their family in Arabic back to them, slightly upgraded, so they hear a natural model.",
-            "Remind them of the homework and suggest they imagine telling their story to a Palestinian friend, not to the teacher.",
+            "Student gives a 5-sentence family summary.",
+            "Student asks the teacher 3 family questions.",
+            "Student records the homework story.",
         ],
         myNotes: "",
     },

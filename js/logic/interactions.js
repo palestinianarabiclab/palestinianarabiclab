@@ -142,6 +142,22 @@ const saveContactSettingsStateToCloud = noopAsync;
 const lessons = {};
 // Expose for cloud module and other modules
 window.lessons = lessons;
+window.defaultLessons = defaultLessons;
+
+function getLessonContentVersion(lesson) {
+    return Number(lesson?.meta?.contentVersion || 0);
+}
+
+function preferBundledLessonIfNewer(id, incomingLesson) {
+    const bundledLesson = defaultLessons[id];
+    if (
+        bundledLesson &&
+        getLessonContentVersion(bundledLesson) > getLessonContentVersion(incomingLesson)
+    ) {
+        return JSON.parse(JSON.stringify(bundledLesson));
+    }
+    return incomingLesson;
+}
 
 
 let cloudSaveTimer = null;
@@ -2560,7 +2576,7 @@ function loadLessonDataFromLS() {
             const id = key.slice(LS_LESSON_PREFIX.length);
             try {
                 const data = JSON.parse(localStorage.getItem(key));
-                lessons[id] = data;
+                lessons[id] = preferBundledLessonIfNewer(id, data);
             } catch {
                 /* ignore */
             }
@@ -2912,7 +2928,21 @@ function buildLessonExportHtml(lesson, options) {
     // ========== Homework ==========
     let homeworkHtml = "";
     if (includeHomework && lesson.homework && lesson.homework.instructions) {
-        homeworkHtml = `<p>${escapeHtml(lesson.homework.instructions)}</p>`;
+        const taskHtml = Array.isArray(lesson.homework.tasks)
+            ? lesson.homework.tasks
+                .map((task) => {
+                    const examples = Array.isArray(task.examples)
+                        ? `<ul>${task.examples.map((example) => `<li>${escapeHtml(example)}</li>`).join("")}</ul>`
+                        : "";
+                    return `<div class="homework-task">
+                        <h4>${escapeHtml(task.title || "Homework task")}</h4>
+                        <p>${escapeHtml(task.instructions || "")}</p>
+                        ${examples}
+                    </div>`;
+                })
+                .join("")
+            : "";
+        homeworkHtml = `<p>${escapeHtml(lesson.homework.instructions)}</p>${taskHtml}`;
     }
 
     // ========== Teacher Notes ==========
@@ -3273,6 +3303,15 @@ function findLessonIdFor(levelName, unitName) {
     );
 }
 
+function getUnitsForLevel(levelName, preferredUnits) {
+    const units = [...preferredUnits];
+    Object.values(lessons).forEach((lesson) => {
+        const unitName = lesson?.meta?.level === levelName ? lesson.meta.unit : "";
+        if (unitName && !units.includes(unitName)) units.push(unitName);
+    });
+    return units;
+}
+
 function renderLevels() {
     const container = $("#levelsContainer");
     container.innerHTML = "";
@@ -3288,7 +3327,7 @@ function renderLevels() {
         },
         {
             level: "Intermediate",
-            units: ["Opinions", "Complaints", "Plans & Future", "Free Time & Hobbies", "Feelings & Mental State"],
+            units: ["Opinions", "Complaints", "Plans & Future", "Free Time & Hobbies", "Feelings"],
         },
     ];
 
@@ -3315,8 +3354,8 @@ function renderLevels() {
         const unitsContainer = document.createElement("div");
         unitsContainer.className = "level-card__units";
 
-        // default units
-        const allUnits = [...lvl.units];
+        // default units plus any bundled/cloud lessons for this level
+        const allUnits = getUnitsForLevel(lvl.level, lvl.units);
 
         // add custom units for this level
         if (customUnits[lvl.level] && customUnits[lvl.level].length) {
@@ -3547,12 +3586,7 @@ function getUseInLifeQuestions(lesson) {
         .filter(Boolean)
         .filter((q) => q.ar || q.en);
 
-    if (items.length >= 2) return items;
-
-    return [
-        { ar: "شو اسمك؟", en: "What's your name?" },
-        { ar: "إنتَ/إنتِ من وين؟", en: "Where are you from?" },
-    ];
+    return items;
 }
 
 function persistResumeBeforeNav() {
@@ -3644,6 +3678,14 @@ function updateContinueButton() {
 }
 
 // Tabs
+function renderPracticeTab(container, lesson) {
+    return renderPracticeTabSimple(container, lesson);
+}
+
+function renderHomeworkTab(container, lesson) {
+    return renderHomeworkTabClean(container, lesson);
+}
+
 function setActiveTab(tabKey) {
     const lesson = lessons[appState.currentLessonId];
     const normalizedTab = normalizeLessonTabKey(tabKey, lesson);
@@ -3708,6 +3750,19 @@ function renderOverviewTab(container, lesson) {
         ul.appendChild(li);
     });
 
+    const speakingOutcomes = Array.isArray(ov.speakingOutcomes) ? ov.speakingOutcomes : [];
+    const speakingTitle = document.createElement("p");
+    speakingTitle.textContent = "Speaking outcomes:";
+    speakingTitle.style.fontWeight = "600";
+    speakingTitle.style.marginTop = "10px";
+
+    const speakingList = document.createElement("ul");
+    speakingOutcomes.forEach((outcome) => {
+        const li = document.createElement("li");
+        li.textContent = outcome;
+        speakingList.appendChild(li);
+    });
+
     const useTitle = document.createElement("h4");
     useTitle.textContent = "Use it in your life";
     useTitle.style.marginTop = "12px";
@@ -3745,8 +3800,14 @@ function renderOverviewTab(container, lesson) {
     container.appendChild(p);
     container.appendChild(goalsTitle);
     container.appendChild(ul);
-    container.appendChild(useTitle);
-    container.appendChild(useList);
+    if (speakingOutcomes.length) {
+        container.appendChild(speakingTitle);
+        container.appendChild(speakingList);
+    }
+    if (useItems.length) {
+        container.appendChild(useTitle);
+        container.appendChild(useList);
+    }
     container.appendChild(btn);
     renderSectionStatus(container, "overview");
 }
@@ -4032,6 +4093,8 @@ function renderDialogueTab(container, lesson) {
     const controls = document.createElement("div");
     controls.style.display = "flex";
     controls.style.gap = "6px";
+    controls.style.flexWrap = "wrap";
+    controls.style.justifyContent = "flex-end";
 
     const btnToggleEnglish = document.createElement("button");
     btnToggleEnglish.className = "btn btn--ghost btn--sm";
@@ -4045,6 +4108,13 @@ function renderDialogueTab(container, lesson) {
     btnToggleArabeezy.className = "btn btn--ghost btn--sm";
     btnToggleArabeezy.textContent = "Show/Hide Arabeezy";
 
+    const dialogueQuestions = safeArr(lesson?.dialogue?.questions);
+    let questionsModal = null;
+    const btnQuestions = document.createElement("button");
+    btnQuestions.className = "btn btn--outline btn--sm";
+    btnQuestions.textContent = `Questions${dialogueQuestions.length ? ` (${dialogueQuestions.length})` : ""}`;
+    btnQuestions.hidden = !dialogueQuestions.length;
+
     const btnDone = document.createElement("button");
     btnDone.className = "btn btn--primary btn--sm";
     btnDone.textContent = "Mark Dialogue as Done";
@@ -4053,6 +4123,7 @@ function renderDialogueTab(container, lesson) {
     controls.appendChild(btnToggleArabic);
     controls.appendChild(btnToggleEnglish);
     controls.appendChild(btnToggleArabeezy);
+    controls.appendChild(btnQuestions);
     controls.appendChild(btnDone);
 
     header.appendChild(title);
@@ -4168,6 +4239,74 @@ function renderDialogueTab(container, lesson) {
         updateArabeezyVisibility();
     });
 
+    function closeQuestionsModal() {
+        if (questionsModal) questionsModal.classList.remove("modal--open");
+    }
+
+    function openQuestionsModal() {
+        if (!questionsModal || !dialogueQuestions.length) return;
+        questionsModal.classList.add("modal--open");
+    }
+
+    if (dialogueQuestions.length) {
+        questionsModal = document.createElement("div");
+        questionsModal.className = "modal dialogue-questions-modal";
+        questionsModal.setAttribute("role", "dialog");
+        questionsModal.setAttribute("aria-modal", "true");
+        questionsModal.setAttribute("aria-label", "Dialogue questions");
+
+        const backdrop = document.createElement("div");
+        backdrop.className = "modal__backdrop";
+        backdrop.addEventListener("click", closeQuestionsModal);
+
+        const body = document.createElement("div");
+        body.className = "modal__body dialogue-questions-modal__body";
+
+        const modalHeader = document.createElement("div");
+        modalHeader.className = "dialogue-questions-modal__header";
+        const modalTitle = document.createElement("div");
+        const eyebrow = document.createElement("span");
+        eyebrow.className = "dialogue-questions-modal__eyebrow";
+        eyebrow.textContent = "Dialogue Practice";
+        const heading = document.createElement("h4");
+        heading.textContent = "Questions";
+        modalTitle.appendChild(eyebrow);
+        modalTitle.appendChild(heading);
+
+        const close = document.createElement("button");
+        close.type = "button";
+        close.className = "modal__close dialogue-questions-modal__close";
+        close.textContent = "Close";
+        close.addEventListener("click", closeQuestionsModal);
+
+        modalHeader.appendChild(modalTitle);
+        modalHeader.appendChild(close);
+
+        const list = document.createElement("ol");
+        list.className = "dialogue-questions-modal__list";
+        dialogueQuestions.forEach((question) => {
+            const item = document.createElement("li");
+            item.className = "dialogue-questions-modal__item";
+            const ar = document.createElement("div");
+            ar.className = "dialogue-questions-modal__ar";
+            ar.textContent = typeof question === "string" ? question : question.ar || "";
+            item.appendChild(ar);
+            if (question && typeof question === "object" && question.en) {
+                const en = document.createElement("div");
+                en.className = "dialogue-questions-modal__en";
+                en.textContent = question.en;
+                item.appendChild(en);
+            }
+            list.appendChild(item);
+        });
+
+        body.appendChild(modalHeader);
+        body.appendChild(list);
+        questionsModal.appendChild(backdrop);
+        questionsModal.appendChild(body);
+        btnQuestions.addEventListener("click", openQuestionsModal);
+    }
+
     // أول مرة
     adjustLayout();
     updateArabicVisibility();
@@ -4175,6 +4314,7 @@ function renderDialogueTab(container, lesson) {
 
     container.appendChild(header);
     container.appendChild(layout);
+    if (questionsModal) container.appendChild(questionsModal);
 
     if (appState.teacherMode) {
         const note = document.createElement("p");
@@ -4543,10 +4683,107 @@ function renderGrammarTab(container, lesson) {
 
 
 // Practice
-function renderPracticeTab(container, lesson) {
+function renderPracticeTabSimple(container, lesson) {
+    const practice = lesson.practice || {};
+    const quiz = Array.isArray(practice.quiz) ? practice.quiz : [];
+    const rolePlays = Array.isArray(practice.rolePlays) ? practice.rolePlays : [];
+
     const title = document.createElement("h4");
     title.className = "td-lessonitem__title";
-    title.textContent = "Practice – Quiz & Role-play";
+    title.textContent = "Practice - Quiz & Role-play";
+    container.appendChild(title);
+
+    const quizBlock = document.createElement("div");
+    let correctCount = 0;
+
+    if (!quiz.length) {
+        const empty = document.createElement("p");
+        empty.className = "translation-muted";
+        empty.textContent = "No quiz questions available yet.";
+        quizBlock.appendChild(empty);
+    }
+
+    quiz.forEach((q) => {
+        const qWrap = document.createElement("div");
+        qWrap.className = "quiz-question";
+
+        const qText = document.createElement("div");
+        qText.className = "flashcard__ar";
+        qText.style.direction = "rtl";
+        qText.textContent = q.questionAr || "";
+
+        const optionsWrap = document.createElement("div");
+        optionsWrap.className = "quiz-options";
+
+        const feedback = document.createElement("div");
+        feedback.className = "quiz-feedback";
+
+        const options = Array.isArray(q.optionsEn) ? q.optionsEn : [];
+        options.forEach((opt, idx) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "quiz-option";
+            btn.textContent = opt;
+            btn.addEventListener("click", () => {
+                optionsWrap.querySelectorAll(".quiz-option").forEach((optionBtn) => {
+                    optionBtn.classList.remove("quiz-option--correct", "quiz-option--incorrect");
+                });
+                if (idx === q.correctIndex) {
+                    btn.classList.add("quiz-option--correct");
+                    feedback.textContent = "Correct!";
+                    correctCount++;
+                    if (correctCount >= 5 || correctCount >= quiz.length) {
+                        setStudentProgressField("practice", true);
+                    }
+                } else {
+                    btn.classList.add("quiz-option--incorrect");
+                    feedback.textContent = "Not quite. Try again.";
+                }
+            });
+            optionsWrap.appendChild(btn);
+        });
+
+        qWrap.appendChild(qText);
+        qWrap.appendChild(optionsWrap);
+        qWrap.appendChild(feedback);
+        quizBlock.appendChild(qWrap);
+    });
+
+    container.appendChild(quizBlock);
+
+    const roleTitle = document.createElement("p");
+    roleTitle.style.marginTop = "8px";
+    roleTitle.style.fontWeight = "600";
+    roleTitle.textContent = "Role-play prompts:";
+    container.appendChild(roleTitle);
+
+    const ul = document.createElement("ul");
+    ul.className = "roleplay-list";
+    if (!rolePlays.length) {
+        const li = document.createElement("li");
+        li.textContent = "No role-play prompts available yet.";
+        ul.appendChild(li);
+    }
+    rolePlays.forEach((rp) => {
+        const li = document.createElement("li");
+        li.textContent = rp;
+        ul.appendChild(li);
+    });
+    container.appendChild(ul);
+
+    const btnDone = document.createElement("button");
+    btnDone.className = "btn btn--primary btn--sm";
+    btnDone.textContent = "Mark Practice as Done";
+    btnDone.addEventListener("click", () => setStudentProgressField("practice", true));
+    container.appendChild(btnDone);
+
+    renderSectionStatus(container, "practice");
+}
+
+function renderPracticeTabLegacy(container, lesson) {
+    const title = document.createElement("h4");
+    title.className = "td-lessonitem__title";
+    title.textContent = "Practice – Recognition, Production & Simulation";
 
     const quizBlock = document.createElement("div");
     let correctCount = 0;
@@ -4606,6 +4843,60 @@ function renderPracticeTab(container, lesson) {
         ul.appendChild(li);
     });
 
+    const structuredPractice = document.createElement("div");
+    const practiceSections = Array.isArray(lesson.practice.sections)
+        ? lesson.practice.sections
+        : [];
+
+    practiceSections.forEach((section) => {
+        const sectionWrap = document.createElement("div");
+        sectionWrap.className = "quiz-question";
+
+        const sectionTitle = document.createElement("h4");
+        sectionTitle.className = "td-lessonitem__title";
+        sectionTitle.textContent = section.title || "Practice";
+        sectionWrap.appendChild(sectionTitle);
+
+        if (section.realSituationSimulation) {
+            const sim = document.createElement("p");
+            sim.className = "teacher-edit-note";
+            sim.textContent = `Real Situation Simulation: ${section.realSituationSimulation}`;
+            sectionWrap.appendChild(sim);
+        }
+
+        function appendList(label, items, formatter) {
+            if (!Array.isArray(items) || !items.length) return;
+            const subTitle = document.createElement("p");
+            subTitle.style.fontWeight = "600";
+            subTitle.textContent = label;
+            sectionWrap.appendChild(subTitle);
+
+            const list = document.createElement("ul");
+            list.className = "roleplay-list";
+            items.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = formatter(item);
+                list.appendChild(li);
+            });
+            sectionWrap.appendChild(list);
+        }
+
+        appendList("Matching", section.matching, (item) => `${item.ar} = ${item.en}`);
+        appendList("Multiple choice", section.multipleChoice, (item) => {
+            const opts = Array.isArray(item.options) ? item.options.join(" / ") : "";
+            return `${item.prompt} (${opts})`;
+        });
+        appendList("Fill in the blank", section.fillInTheBlank, (item) => `${item.prompt} Answer: ${item.answer}`);
+        appendList("Reorder sentences", section.reorderSentences, (item) => {
+            const words = Array.isArray(item.words) ? item.words.join(" / ") : "";
+            return `${item.prompt} Words: ${words}`;
+        });
+        appendList("Translation (Arabic ↔ English)", section.translation, (item) => `${item.en} = ${item.ar}`);
+        appendList("Write your own sentences (5–10)", section.writeYourOwnSentences, (item) => item);
+
+        structuredPractice.appendChild(sectionWrap);
+    });
+
     const btnDone = document.createElement("button");
     btnDone.className = "btn btn--primary btn--sm";
     btnDone.textContent = "Mark Practice as Done";
@@ -4615,6 +4906,9 @@ function renderPracticeTab(container, lesson) {
     container.appendChild(quizBlock);
     container.appendChild(roleTitle);
     container.appendChild(ul);
+    if (practiceSections.length) {
+        container.appendChild(structuredPractice);
+    }
     container.appendChild(btnDone);
 
     if (appState.teacherMode) {
@@ -4629,7 +4923,7 @@ function renderPracticeTab(container, lesson) {
 }
 
 // Homework
-function renderHomeworkTab(container, lesson) {
+function renderHomeworkTabLegacy(container, lesson) {
     const student = getCurrentStudent();
     const progress = student && getStudentProgress(student, appState.currentLessonId);
 
@@ -4640,6 +4934,40 @@ function renderHomeworkTab(container, lesson) {
     const text = document.createElement("p");
     text.className = "homework-text";
     text.textContent = lesson.homework.instructions;
+
+    const homeworkTasks = Array.isArray(lesson.homework.tasks)
+        ? lesson.homework.tasks
+        : [];
+    const tasksWrap = document.createElement("div");
+    homeworkTasks.forEach((task) => {
+        const taskBlock = document.createElement("div");
+        taskBlock.className = "quiz-question";
+
+        const taskTitle = document.createElement("p");
+        taskTitle.style.fontWeight = "600";
+        taskTitle.textContent = task.title || "Homework task";
+        taskBlock.appendChild(taskTitle);
+
+        if (task.instructions) {
+            const taskText = document.createElement("p");
+            taskText.className = "homework-text";
+            taskText.textContent = task.instructions;
+            taskBlock.appendChild(taskText);
+        }
+
+        if (Array.isArray(task.examples) && task.examples.length) {
+            const examples = document.createElement("ul");
+            examples.className = "roleplay-list";
+            task.examples.forEach((example) => {
+                const li = document.createElement("li");
+                li.textContent = example;
+                examples.appendChild(li);
+            });
+            taskBlock.appendChild(examples);
+        }
+
+        tasksWrap.appendChild(taskBlock);
+    });
 
     const wrap = document.createElement("div");
     wrap.style.display = "flex";
@@ -4693,6 +5021,9 @@ function renderHomeworkTab(container, lesson) {
 
     container.appendChild(title);
     container.appendChild(text);
+    if (homeworkTasks.length) {
+        container.appendChild(tasksWrap);
+    }
     container.appendChild(wrap);
     container.appendChild(notesLabel);
     container.appendChild(notes);
@@ -4711,16 +5042,1630 @@ function renderHomeworkTab(container, lesson) {
 
 // Quick review
 
+function renderPracticeTabInteractiveV1(container, lesson) {
+    const practice = lesson.practice || {};
+    const title = document.createElement("h4");
+    title.className = "td-lessonitem__title";
+    title.textContent = "Practice - Recognition, Production & Simulation";
+    container.appendChild(title);
+
+    const intro = document.createElement("p");
+    intro.className = "practice-intro";
+    intro.textContent = "Practice starts with recognition, moves to guided production, then ends with real speaking situations.";
+    container.appendChild(intro);
+
+    function panel(titleText, metaText, open = false) {
+        const details = document.createElement("details");
+        details.className = "practice-panel";
+        details.open = open;
+        const summary = document.createElement("summary");
+        summary.className = "practice-panel__summary";
+        const heading = document.createElement("span");
+        heading.className = "practice-panel__title";
+        heading.textContent = titleText;
+        const meta = document.createElement("span");
+        meta.className = "practice-panel__meta";
+        meta.textContent = metaText || "Open";
+        summary.appendChild(heading);
+        summary.appendChild(meta);
+        const body = document.createElement("div");
+        body.className = "practice-panel__body";
+        details.appendChild(summary);
+        details.appendChild(body);
+        container.appendChild(details);
+        return body;
+    }
+
+    function miniTitle(parent, text) {
+        const el = document.createElement("div");
+        el.className = "practice-mini-title";
+        el.textContent = text;
+        parent.appendChild(el);
+    }
+
+    function feedback() {
+        const el = document.createElement("div");
+        el.className = "practice-feedback";
+        return el;
+    }
+
+    function normalizeAnswer(value) {
+        return String(value || "").replace(/[،.؟!?\s]/g, "").trim();
+    }
+
+    const quizItems = safeArr(practice.quiz);
+    if (quizItems.length) {
+        const body = panel("Quick Quiz", `${quizItems.length} questions`, true);
+        const grid = document.createElement("div");
+        grid.className = "practice-grid";
+        let correctCount = 0;
+        quizItems.forEach((q, qIndex) => {
+            const card = document.createElement("div");
+            card.className = "practice-card";
+            const prompt = document.createElement("div");
+            prompt.className = "practice-card__prompt practice-card__prompt--ar";
+            prompt.textContent = q.questionAr || `Question ${qIndex + 1}`;
+            const options = document.createElement("div");
+            options.className = "quiz-options";
+            const fb = feedback();
+            safeArr(q.optionsEn).forEach((opt, idx) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "quiz-option";
+                btn.textContent = opt;
+                btn.addEventListener("click", () => {
+                    options.querySelectorAll(".quiz-option").forEach((b) => b.classList.remove("quiz-option--correct", "quiz-option--incorrect"));
+                    const ok = idx === q.correctIndex;
+                    btn.classList.add(ok ? "quiz-option--correct" : "quiz-option--incorrect");
+                    fb.className = ok ? "practice-feedback practice-feedback--ok" : "practice-feedback practice-feedback--no";
+                    fb.textContent = ok ? "Correct" : "Try again";
+                    if (ok) correctCount++;
+                    if (correctCount >= 5 || correctCount >= quizItems.length) setStudentProgressField("practice", true);
+                });
+                options.appendChild(btn);
+            });
+            card.appendChild(prompt);
+            card.appendChild(options);
+            card.appendChild(fb);
+            grid.appendChild(card);
+        });
+        body.appendChild(grid);
+    }
+
+    safeArr(practice.sections).forEach((section, sectionIndex) => {
+        const count = ["matching", "multipleChoice", "fillInTheBlank", "reorderSentences", "translation", "writeYourOwnSentences"]
+            .reduce((total, key) => total + safeArr(section[key]).length, 0);
+        const body = panel(section.title || "Practice", `${count} activities`, sectionIndex === 0);
+
+        if (section.realSituationSimulation) {
+            const sim = document.createElement("p");
+            sim.className = "practice-simulation";
+            sim.textContent = `Real Situation Simulation: ${section.realSituationSimulation}`;
+            body.appendChild(sim);
+        }
+
+        if (safeArr(section.matching).length) {
+            miniTitle(body, "Matching");
+            const list = document.createElement("div");
+            list.className = "practice-list";
+            const choices = shuffleArray(safeArr(section.matching).map((item) => item.en));
+            safeArr(section.matching).forEach((item) => {
+                const row = document.createElement("div");
+                row.className = "practice-row";
+                const ar = document.createElement("div");
+                ar.className = "practice-row__ar";
+                ar.textContent = item.ar || "";
+                const select = document.createElement("select");
+                select.className = "practice-select";
+                select.innerHTML = `<option value="">Choose meaning</option>`;
+                choices.forEach((choice) => {
+                    const opt = document.createElement("option");
+                    opt.value = choice;
+                    opt.textContent = choice;
+                    select.appendChild(opt);
+                });
+                const fb = feedback();
+                select.addEventListener("change", () => {
+                    const ok = select.value === item.en;
+                    fb.className = ok ? "practice-feedback practice-feedback--ok" : "practice-feedback practice-feedback--no";
+                    fb.textContent = ok ? "Correct" : "Try again";
+                });
+                row.appendChild(ar);
+                row.appendChild(select);
+                row.appendChild(fb);
+                list.appendChild(row);
+            });
+            body.appendChild(list);
+        }
+
+        if (safeArr(section.multipleChoice).length) {
+            miniTitle(body, "Multiple Choice");
+            const grid = document.createElement("div");
+            grid.className = "practice-grid";
+            safeArr(section.multipleChoice).forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "practice-card";
+                const prompt = document.createElement("div");
+                prompt.className = "practice-card__prompt";
+                prompt.textContent = item.prompt || "";
+                const options = document.createElement("div");
+                options.className = "quiz-options";
+                const fb = feedback();
+                safeArr(item.options).forEach((option) => {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "quiz-option";
+                    btn.textContent = option;
+                    btn.addEventListener("click", () => {
+                        options.querySelectorAll(".quiz-option").forEach((b) => b.classList.remove("quiz-option--correct", "quiz-option--incorrect"));
+                        const ok = option === item.correct;
+                        btn.classList.add(ok ? "quiz-option--correct" : "quiz-option--incorrect");
+                        fb.className = ok ? "practice-feedback practice-feedback--ok" : "practice-feedback practice-feedback--no";
+                        fb.textContent = ok ? "Correct" : `Answer: ${item.correct}`;
+                    });
+                    options.appendChild(btn);
+                });
+                card.appendChild(prompt);
+                card.appendChild(options);
+                card.appendChild(fb);
+                grid.appendChild(card);
+            });
+            body.appendChild(grid);
+        }
+
+        if (safeArr(section.fillInTheBlank).length) {
+            miniTitle(body, "Fill in the Blank");
+            const list = document.createElement("div");
+            list.className = "practice-list";
+            safeArr(section.fillInTheBlank).forEach((item) => {
+                const row = document.createElement("div");
+                row.className = "practice-row practice-row--stack";
+                const prompt = document.createElement("div");
+                prompt.className = "practice-card__prompt practice-card__prompt--ar";
+                prompt.textContent = item.prompt || "";
+                const line = document.createElement("div");
+                line.className = "practice-answer-line";
+                const input = document.createElement("input");
+                input.className = "practice-input";
+                input.type = "text";
+                input.placeholder = "Type the missing word";
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn--outline btn--sm";
+                btn.textContent = "Check";
+                const fb = feedback();
+                btn.addEventListener("click", () => {
+                    const ok = normalizeAnswer(input.value) === normalizeAnswer(item.answer);
+                    fb.className = ok ? "practice-feedback practice-feedback--ok" : "practice-feedback practice-feedback--no";
+                    fb.textContent = ok ? "Correct" : `Answer: ${item.answer}`;
+                });
+                line.appendChild(input);
+                line.appendChild(btn);
+                row.appendChild(prompt);
+                row.appendChild(line);
+                row.appendChild(fb);
+                list.appendChild(row);
+            });
+            body.appendChild(list);
+        }
+
+        if (safeArr(section.reorderSentences).length) {
+            miniTitle(body, "Reorder Sentences");
+            const list = document.createElement("div");
+            list.className = "practice-list";
+            safeArr(section.reorderSentences).forEach((item) => {
+                const row = document.createElement("div");
+                row.className = "practice-row practice-row--stack";
+                const prompt = document.createElement("div");
+                prompt.className = "translation-muted";
+                prompt.textContent = item.prompt || "Put the words in order.";
+                const answer = document.createElement("div");
+                answer.className = "practice-word-bank practice-word-bank--answer";
+                const bank = document.createElement("div");
+                bank.className = "practice-word-bank";
+                const selected = [];
+                safeArr(item.words).forEach((word) => {
+                    const chip = document.createElement("button");
+                    chip.type = "button";
+                    chip.className = "practice-chip";
+                    chip.textContent = word;
+                    chip.addEventListener("click", () => {
+                        selected.push(word);
+                        chip.disabled = true;
+                        chip.classList.add("practice-chip--used");
+                        const chosen = document.createElement("button");
+                        chosen.type = "button";
+                        chosen.className = "practice-chip practice-chip--selected";
+                        chosen.textContent = word;
+                        chosen.addEventListener("click", () => {
+                            const idx = selected.indexOf(word);
+                            if (idx > -1) selected.splice(idx, 1);
+                            chosen.remove();
+                            chip.disabled = false;
+                            chip.classList.remove("practice-chip--used");
+                        });
+                        answer.appendChild(chosen);
+                    });
+                    bank.appendChild(chip);
+                });
+                const fb = feedback();
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn--outline btn--sm";
+                btn.textContent = "Check";
+                btn.addEventListener("click", () => {
+                    const ok = normalizeAnswer(selected.join(" ")) === normalizeAnswer(item.answer);
+                    fb.className = ok ? "practice-feedback practice-feedback--ok" : "practice-feedback practice-feedback--no";
+                    fb.textContent = ok ? "Correct" : `Answer: ${item.answer}`;
+                });
+                row.appendChild(prompt);
+                row.appendChild(answer);
+                row.appendChild(bank);
+                row.appendChild(btn);
+                row.appendChild(fb);
+                list.appendChild(row);
+            });
+            body.appendChild(list);
+        }
+
+        if (safeArr(section.translation).length) {
+            miniTitle(body, "Translation (Arabic <-> English)");
+            const grid = document.createElement("div");
+            grid.className = "practice-grid";
+            safeArr(section.translation).forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "practice-card";
+                const prompt = document.createElement("div");
+                prompt.className = "practice-card__prompt";
+                prompt.textContent = item.en || item.ar || "";
+                const answer = document.createElement("div");
+                answer.className = "practice-answer hidden";
+                answer.textContent = item.ar || item.en || "";
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn--ghost btn--sm";
+                btn.textContent = "Show answer";
+                btn.addEventListener("click", () => {
+                    answer.classList.toggle("hidden");
+                    btn.textContent = answer.classList.contains("hidden") ? "Show answer" : "Hide answer";
+                });
+                card.appendChild(prompt);
+                card.appendChild(answer);
+                card.appendChild(btn);
+                grid.appendChild(card);
+            });
+            body.appendChild(grid);
+        }
+
+        if (safeArr(section.writeYourOwnSentences).length) {
+            miniTitle(body, "Write Your Own Sentences (5-10)");
+            const writing = document.createElement("div");
+            writing.className = "practice-writing";
+            safeArr(section.writeYourOwnSentences).forEach((item) => {
+                const label = document.createElement("label");
+                label.className = "practice-writing__prompt";
+                label.textContent = item;
+                const textarea = document.createElement("textarea");
+                textarea.className = "homework-notes";
+                textarea.rows = 2;
+                textarea.placeholder = "Write your sentence here...";
+                writing.appendChild(label);
+                writing.appendChild(textarea);
+            });
+            body.appendChild(writing);
+        }
+    });
+
+    const rolePlays = safeArr(practice.rolePlays);
+    if (rolePlays.length) {
+        const body = panel("Real Situation Simulation", `${rolePlays.length} speaking prompts`);
+        const grid = document.createElement("div");
+        grid.className = "practice-grid";
+        rolePlays.forEach((rp, idx) => {
+            const card = document.createElement("div");
+            card.className = "practice-card practice-card--simulation";
+            const badge = document.createElement("div");
+            badge.className = "translation-badge";
+            badge.textContent = `Simulation ${idx + 1}`;
+            const text = document.createElement("p");
+            text.className = "homework-text";
+            text.textContent = rp;
+            card.appendChild(badge);
+            card.appendChild(text);
+            grid.appendChild(card);
+        });
+        body.appendChild(grid);
+    }
+
+    const btnDone = document.createElement("button");
+    btnDone.className = "btn btn--primary btn--sm";
+    btnDone.textContent = "Mark Practice as Done";
+    btnDone.addEventListener("click", () => setStudentProgressField("practice", true));
+    container.appendChild(btnDone);
+
+    renderSectionStatus(container, "practice");
+}
+
+function renderHomeworkTabInteractiveV1(container, lesson) {
+    const student = getCurrentStudent();
+    const progress = student && getStudentProgress(student, appState.currentLessonId);
+
+    const title = document.createElement("h4");
+    title.className = "td-lessonitem__title";
+    title.textContent = "Homework";
+    container.appendChild(title);
+
+    const text = document.createElement("p");
+    text.className = "homework-text homework-text--lead";
+    text.textContent = lesson.homework?.instructions || "No homework assigned yet.";
+    container.appendChild(text);
+
+    const notes = document.createElement("textarea");
+    notes.className = "homework-notes";
+    notes.placeholder = "Write homework notes or paste practice sentences here.";
+    notes.value =
+        (student &&
+            student.homeworkNotes &&
+            student.homeworkNotes[appState.currentLessonId]) ||
+        "";
+    notes.addEventListener("change", () => {
+        if (!student) return;
+        if (!student.homeworkNotes) student.homeworkNotes = {};
+        student.homeworkNotes[appState.currentLessonId] = notes.value;
+        saveStudentsToLS();
+    });
+
+    const tasksWrap = document.createElement("div");
+    tasksWrap.className = "homework-grid";
+    safeArr(lesson.homework?.tasks).forEach((task, idx) => {
+        const card = document.createElement("details");
+        card.className = "homework-card";
+        card.open = idx === 0;
+        const summary = document.createElement("summary");
+        summary.className = "homework-card__summary";
+        const taskTitle = document.createElement("span");
+        taskTitle.className = "homework-card__title";
+        taskTitle.textContent = task.title || "Homework task";
+        const meta = document.createElement("span");
+        meta.className = "homework-card__meta";
+        meta.textContent = `Task ${idx + 1}`;
+        summary.appendChild(taskTitle);
+        summary.appendChild(meta);
+        const body = document.createElement("div");
+        body.className = "homework-card__body";
+
+        if (task.instructions) {
+            const taskText = document.createElement("p");
+            taskText.className = "homework-text";
+            taskText.textContent = task.instructions;
+            body.appendChild(taskText);
+        }
+
+        if (safeArr(task.examples).length) {
+            const examplesTitle = document.createElement("div");
+            examplesTitle.className = "practice-mini-title";
+            examplesTitle.textContent = "Useful starters";
+            body.appendChild(examplesTitle);
+            const examples = document.createElement("div");
+            examples.className = "homework-examples";
+            safeArr(task.examples).forEach((example) => {
+                const chip = document.createElement("button");
+                chip.type = "button";
+                chip.className = "homework-example";
+                chip.textContent = example;
+                chip.title = "Click to add to notes";
+                chip.addEventListener("click", () => {
+                    notes.value = notes.value ? `${notes.value}\n${example}` : example;
+                    notes.dispatchEvent(new Event("change"));
+                });
+                examples.appendChild(chip);
+            });
+            body.appendChild(examples);
+        }
+
+        const taskCheck = document.createElement("label");
+        taskCheck.className = "homework-task-check";
+        const taskInput = document.createElement("input");
+        taskInput.type = "checkbox";
+        const taskCheckText = document.createElement("span");
+        taskCheckText.textContent = "I finished this task";
+        taskCheck.appendChild(taskInput);
+        taskCheck.appendChild(taskCheckText);
+        body.appendChild(taskCheck);
+
+        card.appendChild(summary);
+        card.appendChild(body);
+        tasksWrap.appendChild(card);
+    });
+    container.appendChild(tasksWrap);
+
+    const completeWrap = document.createElement("label");
+    completeWrap.className = "homework-complete";
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.id = "homeworkAssignedCheckbox";
+    check.checked = progress && progress.homework;
+    const labelText = document.createElement("span");
+    labelText.textContent = "Homework assigned / completed";
+    completeWrap.appendChild(check);
+    completeWrap.appendChild(labelText);
+    check.addEventListener("change", () => setStudentProgressField("homework", check.checked));
+
+    const notesLabel = document.createElement("div");
+    notesLabel.className = "practice-mini-title";
+    notesLabel.textContent = "Notes";
+
+    const btnDone = document.createElement("button");
+    btnDone.className = "btn btn--primary btn--sm";
+    btnDone.textContent = "Mark Homework as Done";
+    btnDone.addEventListener("click", () => {
+        check.checked = true;
+        setStudentProgressField("homework", true);
+    });
+
+    container.appendChild(completeWrap);
+    container.appendChild(notesLabel);
+    container.appendChild(notes);
+    container.appendChild(btnDone);
+    renderSectionStatus(container, "homework");
+}
+
+function renderPracticeTabCleanOld(container, lesson) {
+    const practice = lesson.practice || {};
+
+    const title = document.createElement("h4");
+    title.className = "td-lessonitem__title";
+    title.textContent = "Practice";
+    container.appendChild(title);
+
+    const layout = document.createElement("div");
+    layout.className = "practice-clean";
+    container.appendChild(layout);
+
+    function normalize(value) {
+        return String(value || "").replace(/[،.؟!?\s]/g, "").trim();
+    }
+
+    function section(parent, titleText, noteText) {
+        const wrap = document.createElement("section");
+        wrap.className = "practice-clean__section";
+        const head = document.createElement("div");
+        head.className = "practice-clean__head";
+        const h = document.createElement("h5");
+        h.textContent = titleText;
+        const note = document.createElement("p");
+        note.textContent = noteText || "";
+        head.appendChild(h);
+        if (noteText) head.appendChild(note);
+        wrap.appendChild(head);
+        parent.appendChild(wrap);
+        return wrap;
+    }
+
+    function addFeedback(parent) {
+        const fb = document.createElement("div");
+        fb.className = "practice-clean__feedback";
+        parent.appendChild(fb);
+        return fb;
+    }
+
+    function setFeedback(fb, ok, message) {
+        fb.className = ok ? "practice-clean__feedback is-ok" : "practice-clean__feedback is-no";
+        fb.textContent = message;
+    }
+
+    function addChoiceButtons(parent, options, correctValue) {
+        const choices = document.createElement("div");
+        choices.className = "practice-clean__choices";
+        const fb = addFeedback(parent);
+        safeArr(options).forEach((option) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "practice-clean__choice";
+            btn.textContent = option;
+            btn.addEventListener("click", () => {
+                choices.querySelectorAll("button").forEach((b) => b.classList.remove("is-ok", "is-no"));
+                const ok = option === correctValue;
+                btn.classList.add(ok ? "is-ok" : "is-no");
+                setFeedback(fb, ok, ok ? "Correct" : `Answer: ${correctValue}`);
+            });
+            choices.appendChild(btn);
+        });
+        parent.insertBefore(choices, fb);
+    }
+
+    const recognition = section(
+        layout,
+        "A) Recognition",
+        "Start easy: recognize the meaning before you produce the sentence."
+    );
+
+    const quickQuiz = safeArr(practice.quiz).slice(0, 6);
+    if (quickQuiz.length) {
+        const grid = document.createElement("div");
+        grid.className = "practice-clean__grid";
+        quickQuiz.forEach((q) => {
+            const card = document.createElement("div");
+            card.className = "practice-clean__card";
+            const prompt = document.createElement("div");
+            prompt.className = "practice-clean__arabic";
+            prompt.textContent = q.questionAr || "";
+            card.appendChild(prompt);
+            addChoiceButtons(card, q.optionsEn, safeArr(q.optionsEn)[q.correctIndex]);
+            grid.appendChild(card);
+        });
+        recognition.appendChild(grid);
+    }
+
+    const firstStructured = safeArr(practice.sections)[0] || {};
+    if (safeArr(firstStructured.matching).length) {
+        const matching = document.createElement("div");
+        matching.className = "practice-clean__list";
+        safeArr(firstStructured.matching).forEach((item) => {
+            const row = document.createElement("div");
+            row.className = "practice-clean__match";
+            const ar = document.createElement("span");
+            ar.className = "practice-clean__arabic";
+            ar.textContent = item.ar || "";
+            const en = document.createElement("span");
+            en.textContent = item.en || "";
+            row.appendChild(ar);
+            row.appendChild(en);
+            matching.appendChild(row);
+        });
+        recognition.appendChild(matching);
+    }
+
+    const controlled = section(
+        layout,
+        "B) Controlled Production",
+        "Now build the sentence with a little support."
+    );
+    safeArr(practice.sections).forEach((block) => {
+        if (safeArr(block.fillInTheBlank).length) {
+            safeArr(block.fillInTheBlank).forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "practice-clean__card";
+                const prompt = document.createElement("div");
+                prompt.className = "practice-clean__arabic";
+                prompt.textContent = item.prompt || "";
+                const controls = document.createElement("div");
+                controls.className = "practice-clean__line";
+                const input = document.createElement("input");
+                input.className = "practice-clean__input";
+                input.type = "text";
+                input.placeholder = "اكتب الكلمة الناقصة";
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn--outline btn--sm";
+                btn.textContent = "Check";
+                const fb = document.createElement("div");
+                fb.className = "practice-clean__feedback";
+                btn.addEventListener("click", () => {
+                    const ok = normalize(input.value) === normalize(item.answer);
+                    setFeedback(fb, ok, ok ? "Correct" : `Answer: ${item.answer}`);
+                });
+                controls.appendChild(input);
+                controls.appendChild(btn);
+                card.appendChild(prompt);
+                card.appendChild(controls);
+                card.appendChild(fb);
+                controlled.appendChild(card);
+            });
+        }
+
+        if (safeArr(block.reorderSentences).length) {
+            safeArr(block.reorderSentences).forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "practice-clean__card";
+                const prompt = document.createElement("p");
+                prompt.className = "practice-clean__hint";
+                prompt.textContent = item.prompt || "Put the words in order.";
+                const answer = document.createElement("div");
+                answer.className = "practice-clean__answer-bank";
+                const bank = document.createElement("div");
+                bank.className = "practice-clean__chips";
+                const selected = [];
+                safeArr(item.words).forEach((word) => {
+                    const chip = document.createElement("button");
+                    chip.type = "button";
+                    chip.className = "practice-clean__chip";
+                    chip.textContent = word;
+                    chip.addEventListener("click", () => {
+                        selected.push(word);
+                        chip.disabled = true;
+                        chip.classList.add("is-used");
+                        const chosen = document.createElement("button");
+                        chosen.type = "button";
+                        chosen.className = "practice-clean__chip is-selected";
+                        chosen.textContent = word;
+                        chosen.addEventListener("click", () => {
+                            const index = selected.indexOf(word);
+                            if (index > -1) selected.splice(index, 1);
+                            chosen.remove();
+                            chip.disabled = false;
+                            chip.classList.remove("is-used");
+                        });
+                        answer.appendChild(chosen);
+                    });
+                    bank.appendChild(chip);
+                });
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn--outline btn--sm";
+                btn.textContent = "Check order";
+                const fb = document.createElement("div");
+                fb.className = "practice-clean__feedback";
+                btn.addEventListener("click", () => {
+                    const ok = normalize(selected.join(" ")) === normalize(item.answer);
+                    setFeedback(fb, ok, ok ? "Correct" : `Answer: ${item.answer}`);
+                });
+                card.appendChild(prompt);
+                card.appendChild(answer);
+                card.appendChild(bank);
+                card.appendChild(btn);
+                card.appendChild(fb);
+                controlled.appendChild(card);
+            });
+        }
+    });
+
+    const real = section(
+        layout,
+        "C) Real Production",
+        "Use the language in short realistic situations."
+    );
+
+    const translations = safeArr(practice.translation).length
+        ? safeArr(practice.translation)
+        : safeArr(practice.sections).flatMap((block) => safeArr(block.translation));
+    if (translations.length) {
+        const grid = document.createElement("div");
+        grid.className = "practice-clean__grid";
+        translations.slice(0, 10).forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "practice-clean__card";
+            const prompt = document.createElement("div");
+            prompt.className = "practice-clean__prompt";
+            prompt.textContent = item.textEn || item.en || item.textAr || item.ar || "";
+            const answer = document.createElement("div");
+            answer.className = "practice-clean__arabic hidden";
+            answer.textContent = item.textAr || item.ar || item.textEn || item.en || "";
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "btn btn--ghost btn--sm";
+            btn.textContent = "Show answer";
+            btn.addEventListener("click", () => {
+                answer.classList.toggle("hidden");
+                btn.textContent = answer.classList.contains("hidden") ? "Show answer" : "Hide answer";
+            });
+            card.appendChild(prompt);
+            card.appendChild(answer);
+            card.appendChild(btn);
+            grid.appendChild(card);
+        });
+        real.appendChild(grid);
+    }
+
+    const rolePlays = safeArr(practice.rolePlays);
+    if (rolePlays.length) {
+        const sims = document.createElement("div");
+        sims.className = "practice-clean__simulation-list";
+        rolePlays.forEach((text, index) => {
+            const item = document.createElement("div");
+            item.className = "practice-clean__simulation";
+            const badge = document.createElement("span");
+            badge.textContent = `Situation ${index + 1}`;
+            const body = document.createElement("p");
+            body.textContent = text;
+            item.appendChild(badge);
+            item.appendChild(body);
+            sims.appendChild(item);
+        });
+        real.appendChild(sims);
+    }
+
+    const writingPrompts = safeArr(practice.sections).flatMap((block) => safeArr(block.writeYourOwnSentences));
+    if (writingPrompts.length) {
+        const writeBox = document.createElement("div");
+        writeBox.className = "practice-clean__write";
+        const label = document.createElement("label");
+        label.textContent = "Write your own sentences";
+        const help = document.createElement("p");
+        help.textContent = writingPrompts.slice(0, 3).join(" ");
+        const textarea = document.createElement("textarea");
+        textarea.className = "homework-notes";
+        textarea.rows = 5;
+        textarea.placeholder = "Write 5-10 short sentences here...";
+        writeBox.appendChild(label);
+        writeBox.appendChild(help);
+        writeBox.appendChild(textarea);
+        real.appendChild(writeBox);
+    }
+
+    const btnDone = document.createElement("button");
+    btnDone.className = "btn btn--primary btn--sm";
+    btnDone.textContent = "Mark Practice as Done";
+    btnDone.addEventListener("click", () => setStudentProgressField("practice", true));
+    container.appendChild(btnDone);
+    renderSectionStatus(container, "practice");
+}
+
+function renderHomeworkTabCleanOld(container, lesson) {
+    const student = getCurrentStudent();
+    const progress = student && getStudentProgress(student, appState.currentLessonId);
+
+    const title = document.createElement("h4");
+    title.className = "td-lessonitem__title";
+    title.textContent = "Homework";
+    container.appendChild(title);
+
+    const intro = document.createElement("p");
+    intro.className = "homework-clean__intro";
+    intro.textContent = lesson.homework?.instructions || "Complete the homework tasks.";
+    container.appendChild(intro);
+
+    const notes = document.createElement("textarea");
+    notes.className = "homework-notes";
+    notes.placeholder = "Student notes / homework answers...";
+    notes.value =
+        (student &&
+            student.homeworkNotes &&
+            student.homeworkNotes[appState.currentLessonId]) ||
+        "";
+    notes.addEventListener("change", () => {
+        if (!student) return;
+        if (!student.homeworkNotes) student.homeworkNotes = {};
+        student.homeworkNotes[appState.currentLessonId] = notes.value;
+        saveStudentsToLS();
+    });
+
+    const grid = document.createElement("div");
+    grid.className = "homework-clean";
+    safeArr(lesson.homework?.tasks).forEach((task, index) => {
+        const card = document.createElement("article");
+        card.className = "homework-clean__card";
+        const step = document.createElement("div");
+        step.className = "homework-clean__step";
+        step.textContent = `Task ${index + 1}`;
+        const h = document.createElement("h5");
+        h.textContent = task.title || "Homework task";
+        const p = document.createElement("p");
+        p.textContent = task.instructions || "";
+        card.appendChild(step);
+        card.appendChild(h);
+        card.appendChild(p);
+
+        if (safeArr(task.examples).length) {
+            const examples = document.createElement("div");
+            examples.className = "homework-clean__examples";
+            safeArr(task.examples).forEach((example) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.textContent = example;
+                btn.addEventListener("click", () => {
+                    notes.value = notes.value ? `${notes.value}\n${example}` : example;
+                    notes.dispatchEvent(new Event("change"));
+                });
+                examples.appendChild(btn);
+            });
+            card.appendChild(examples);
+        }
+
+        const done = document.createElement("label");
+        done.className = "homework-clean__done";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        const span = document.createElement("span");
+        span.textContent = "Done";
+        done.appendChild(checkbox);
+        done.appendChild(span);
+        card.appendChild(done);
+        grid.appendChild(card);
+    });
+    container.appendChild(grid);
+
+    const notesTitle = document.createElement("div");
+    notesTitle.className = "practice-clean__label";
+    notesTitle.textContent = "Notes / answers";
+    container.appendChild(notesTitle);
+    container.appendChild(notes);
+
+    const complete = document.createElement("label");
+    complete.className = "homework-clean__complete";
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.checked = progress && progress.homework;
+    const text = document.createElement("span");
+    text.textContent = "Homework assigned / completed";
+    complete.appendChild(check);
+    complete.appendChild(text);
+    check.addEventListener("change", () => setStudentProgressField("homework", check.checked));
+    container.appendChild(complete);
+
+    const btnDone = document.createElement("button");
+    btnDone.className = "btn btn--primary btn--sm";
+    btnDone.textContent = "Mark Homework as Done";
+    btnDone.addEventListener("click", () => {
+        check.checked = true;
+        setStudentProgressField("homework", true);
+    });
+    container.appendChild(btnDone);
+    renderSectionStatus(container, "homework");
+}
+
+function renderPracticeTabClean(container, lesson) {
+    const practice = lesson.practice || {};
+    const sections = safeArr(practice.sections);
+    const sectionA = sections.find((s) => String(s.title || "").startsWith("A")) || sections[0] || {};
+    const sectionB = sections.find((s) => String(s.title || "").startsWith("B")) || sections[1] || {};
+    const sectionC = sections.find((s) => String(s.title || "").startsWith("C")) || sections[2] || {};
+    let activeStage = "recognition";
+    let completed = new Set();
+
+    const root = document.createElement("div");
+    root.className = "practice-pro";
+
+    const header = document.createElement("div");
+    header.className = "practice-pro__header";
+    const headerText = document.createElement("div");
+    const title = document.createElement("h4");
+    title.textContent = "Practice";
+    const subtitle = document.createElement("p");
+    subtitle.textContent = "A focused path: recognize first, build with support, then speak or write.";
+    headerText.appendChild(title);
+    headerText.appendChild(subtitle);
+
+    const progressWrap = document.createElement("div");
+    progressWrap.className = "practice-pro__progress";
+    const progressNumber = document.createElement("strong");
+    const progressLabel = document.createElement("span");
+    progressLabel.textContent = "complete";
+    progressWrap.appendChild(progressNumber);
+    progressWrap.appendChild(progressLabel);
+    header.appendChild(headerText);
+    header.appendChild(progressWrap);
+
+    const nav = document.createElement("div");
+    nav.className = "practice-pro__nav";
+
+    const stageArea = document.createElement("div");
+    stageArea.className = "practice-pro__stage";
+
+    const stages = [
+        {
+            id: "recognition",
+            label: "A) Recognition",
+            desc: "Understand the phrase before answering.",
+            count: safeArr(practice.quiz).slice(0, 5).length + safeArr(sectionA.matching).length + safeArr(sectionA.multipleChoice).length,
+        },
+        {
+            id: "controlled",
+            label: "B) Controlled",
+            desc: "Build correct sentences with help.",
+            count: safeArr(sectionB.fillInTheBlank).length + safeArr(sectionB.reorderSentences).length,
+        },
+        {
+            id: "real",
+            label: "C) Real Use",
+            desc: "Use the phrases in real situations.",
+            count: safeArr(practice.translation).length + safeArr(sectionC.translation).length + safeArr(practice.rolePlays).length,
+        },
+    ];
+
+    function normalizeAnswer(value) {
+        return String(value || "").replace(/[،.؟!?\s]/g, "").trim();
+    }
+
+    function setProgress() {
+        const total = stages.length;
+        progressNumber.textContent = `${completed.size}/${total}`;
+        if (completed.size >= total) setStudentProgressField("practice", true);
+    }
+
+    function markStageDone(stageId) {
+        completed.add(stageId);
+        setProgress();
+        renderNav();
+    }
+
+    function makeButton(text, className = "btn btn--outline btn--sm") {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = className;
+        btn.textContent = text;
+        return btn;
+    }
+
+    function feedback(text = "") {
+        const fb = document.createElement("div");
+        fb.className = "practice-pro__feedback";
+        fb.textContent = text;
+        return fb;
+    }
+
+    function setFeedback(fb, ok, text) {
+        fb.className = ok ? "practice-pro__feedback is-ok" : "practice-pro__feedback is-no";
+        fb.textContent = text;
+    }
+
+    function stageShell(stage) {
+        stageArea.innerHTML = "";
+        const shell = document.createElement("div");
+        shell.className = "practice-pro__panel";
+
+        const head = document.createElement("div");
+        head.className = "practice-pro__panel-head";
+        const h = document.createElement("h5");
+        h.textContent = stage.label;
+        const p = document.createElement("p");
+        p.textContent = stage.desc;
+        head.appendChild(h);
+        head.appendChild(p);
+
+        const body = document.createElement("div");
+        body.className = "practice-pro__body";
+        shell.appendChild(head);
+        shell.appendChild(body);
+        stageArea.appendChild(shell);
+        return body;
+    }
+
+    function renderNav() {
+        nav.innerHTML = "";
+        stages.forEach((stage) => {
+            const btn = makeButton(stage.label, "practice-pro__tab");
+            btn.classList.toggle("is-active", stage.id === activeStage);
+            btn.classList.toggle("is-done", completed.has(stage.id));
+            btn.innerHTML = `<span>${stage.label}</span><small>${stage.count || 0} items</small>`;
+            btn.addEventListener("click", () => {
+                activeStage = stage.id;
+                renderNav();
+                renderStage();
+            });
+            nav.appendChild(btn);
+        });
+    }
+
+    function renderChoiceCard(parent, promptText, options, correctValue, isArabic = false) {
+        const card = document.createElement("article");
+        card.className = "practice-pro__card";
+        const prompt = document.createElement("div");
+        prompt.className = isArabic ? "practice-pro__arabic" : "practice-pro__prompt";
+        prompt.textContent = promptText || "";
+        const choices = document.createElement("div");
+        choices.className = "practice-pro__choices";
+        const fb = feedback();
+        safeArr(options).forEach((option) => {
+            const btn = makeButton(option, "practice-pro__choice");
+            btn.addEventListener("click", () => {
+                choices.querySelectorAll("button").forEach((b) => b.classList.remove("is-ok", "is-no"));
+                const ok = option === correctValue;
+                btn.classList.add(ok ? "is-ok" : "is-no");
+                setFeedback(fb, ok, ok ? "Correct" : `Answer: ${correctValue}`);
+            });
+            choices.appendChild(btn);
+        });
+        card.appendChild(prompt);
+        card.appendChild(choices);
+        card.appendChild(fb);
+        parent.appendChild(card);
+    }
+
+    function renderChoiceDrill(parent, items) {
+        if (!items.length) return;
+        let index = 0;
+        const shell = document.createElement("article");
+        shell.className = "practice-pro__drill";
+        const counter = document.createElement("div");
+        counter.className = "practice-pro__counter";
+        const prompt = document.createElement("div");
+        const choices = document.createElement("div");
+        choices.className = "practice-pro__choices";
+        const fb = feedback();
+        const controls = document.createElement("div");
+        controls.className = "practice-pro__controls";
+        const prev = makeButton("Previous", "btn btn--ghost btn--sm");
+        const next = makeButton("Next", "btn btn--ghost btn--sm");
+
+        function paint() {
+            const item = items[index];
+            counter.textContent = `${index + 1} / ${items.length}`;
+            prompt.className = item.isArabic ? "practice-pro__arabic" : "practice-pro__prompt";
+            prompt.textContent = item.prompt || "";
+            choices.innerHTML = "";
+            fb.textContent = "";
+            fb.className = "practice-pro__feedback";
+            safeArr(item.options).forEach((option) => {
+                const btn = makeButton(option, "practice-pro__choice");
+                btn.addEventListener("click", () => {
+                    choices.querySelectorAll("button").forEach((b) => b.classList.remove("is-ok", "is-no"));
+                    const ok = option === item.correct;
+                    btn.classList.add(ok ? "is-ok" : "is-no");
+                    setFeedback(fb, ok, ok ? "Correct" : `Answer: ${item.correct}`);
+                });
+                choices.appendChild(btn);
+            });
+        }
+
+        prev.addEventListener("click", () => {
+            index = (index - 1 + items.length) % items.length;
+            paint();
+        });
+        next.addEventListener("click", () => {
+            index = (index + 1) % items.length;
+            paint();
+        });
+
+        controls.appendChild(prev);
+        controls.appendChild(next);
+        shell.appendChild(counter);
+        shell.appendChild(prompt);
+        shell.appendChild(choices);
+        shell.appendChild(fb);
+        shell.appendChild(controls);
+        parent.appendChild(shell);
+        paint();
+    }
+
+    function renderRecognition() {
+        const stage = stages[0];
+        const body = stageShell(stage);
+        const choiceItems = [
+            ...safeArr(practice.quiz).slice(0, 5).map((q) => {
+                const options = safeArr(q.optionsEn);
+                return {
+                    prompt: q.questionAr,
+                    options,
+                    correct: options[q.correctIndex],
+                    isArabic: true,
+                };
+            }),
+            ...safeArr(sectionA.multipleChoice).map((item) => ({
+                prompt: item.prompt,
+                options: item.options,
+                correct: item.correct,
+                isArabic: false,
+            })),
+        ];
+        renderChoiceDrill(body, choiceItems);
+
+        if (safeArr(sectionA.matching).length) {
+            const match = document.createElement("div");
+            match.className = "practice-pro__match-board";
+
+            const promptCol = document.createElement("div");
+            promptCol.className = "practice-pro__match-col";
+            const answerCol = document.createElement("div");
+            answerCol.className = "practice-pro__match-col";
+
+            const promptTitle = document.createElement("div");
+            promptTitle.className = "practice-pro__match-title";
+            promptTitle.textContent = "Arabic";
+            const answerTitle = document.createElement("div");
+            answerTitle.className = "practice-pro__match-title";
+            answerTitle.textContent = "Choose the matching number";
+            promptCol.appendChild(promptTitle);
+            answerCol.appendChild(answerTitle);
+
+            const matchingItems = safeArr(sectionA.matching);
+            matchingItems.forEach((item, idx) => {
+                const promptRow = document.createElement("div");
+                promptRow.className = "practice-pro__match-prompt";
+                const number = document.createElement("span");
+                number.className = "practice-pro__match-number";
+                number.textContent = String(idx + 1);
+                const ar = document.createElement("span");
+                ar.className = "practice-pro__arabic";
+                ar.textContent = item.ar || "";
+                promptRow.appendChild(number);
+                promptRow.appendChild(ar);
+                promptCol.appendChild(promptRow);
+            });
+
+            shuffleArray(matchingItems.map((item, idx) => ({ ...item, matchNumber: idx + 1 }))).forEach((item) => {
+                const answerRow = document.createElement("div");
+                answerRow.className = "practice-pro__match-answer";
+                const select = document.createElement("select");
+                select.className = "practice-pro__match-select";
+                const empty = document.createElement("option");
+                empty.value = "";
+                empty.textContent = "#";
+                select.appendChild(empty);
+                matchingItems.forEach((_candidate, idx) => {
+                    const option = document.createElement("option");
+                    option.value = String(idx + 1);
+                    option.textContent = String(idx + 1);
+                    select.appendChild(option);
+                });
+                const text = document.createElement("span");
+                text.textContent = item.en || "";
+                const fb = document.createElement("span");
+                fb.className = "practice-pro__match-status";
+                select.addEventListener("change", () => {
+                    const ok = Number(select.value) === item.matchNumber;
+                    answerRow.classList.toggle("is-ok", ok);
+                    answerRow.classList.toggle("is-no", Boolean(select.value) && !ok);
+                    fb.textContent = ok ? "Correct" : (select.value ? "Try again" : "");
+                });
+                answerRow.appendChild(select);
+                answerRow.appendChild(text);
+                answerRow.appendChild(fb);
+                answerCol.appendChild(answerRow);
+            });
+
+            match.appendChild(promptCol);
+            match.appendChild(answerCol);
+            body.appendChild(match);
+        }
+
+        const done = makeButton("Finish Recognition", "btn btn--primary btn--sm");
+        done.addEventListener("click", () => {
+            markStageDone("recognition");
+            activeStage = "controlled";
+            renderStage();
+        });
+        body.appendChild(done);
+    }
+
+    function renderControlled() {
+        const stage = stages[1];
+        const body = stageShell(stage);
+
+        safeArr(sectionB.fillInTheBlank).forEach((item) => {
+            const card = document.createElement("article");
+            card.className = "practice-pro__card";
+            const prompt = document.createElement("div");
+            prompt.className = "practice-pro__arabic";
+            prompt.textContent = item.prompt || "";
+            const row = document.createElement("div");
+            row.className = "practice-pro__line";
+            const input = document.createElement("input");
+            input.className = "practice-pro__input";
+            input.type = "text";
+            input.placeholder = "Type the missing word";
+            const check = makeButton("Check");
+            const fb = feedback();
+            check.addEventListener("click", () => {
+                const ok = normalizeAnswer(input.value) === normalizeAnswer(item.answer);
+                setFeedback(fb, ok, ok ? "Correct" : `Answer: ${item.answer}`);
+            });
+            row.appendChild(input);
+            row.appendChild(check);
+            card.appendChild(prompt);
+            card.appendChild(row);
+            card.appendChild(fb);
+            body.appendChild(card);
+        });
+
+        safeArr(sectionB.reorderSentences).forEach((item) => {
+            const card = document.createElement("article");
+            card.className = "practice-pro__card";
+            const prompt = document.createElement("p");
+            prompt.className = "practice-pro__hint";
+            prompt.textContent = item.prompt || "Put the words in order.";
+            const answer = document.createElement("div");
+            answer.className = "practice-pro__answer-bank";
+            const bank = document.createElement("div");
+            bank.className = "practice-pro__chips";
+            const selected = [];
+
+            safeArr(item.words).forEach((word) => {
+                const chip = makeButton(word, "practice-pro__chip");
+                chip.addEventListener("click", () => {
+                    selected.push(word);
+                    chip.disabled = true;
+                    chip.classList.add("is-used");
+                    const chosen = makeButton(word, "practice-pro__chip is-selected");
+                    chosen.addEventListener("click", () => {
+                        const index = selected.indexOf(word);
+                        if (index > -1) selected.splice(index, 1);
+                        chosen.remove();
+                        chip.disabled = false;
+                        chip.classList.remove("is-used");
+                    });
+                    answer.appendChild(chosen);
+                });
+                bank.appendChild(chip);
+            });
+
+            const fb = feedback();
+            const check = makeButton("Check order");
+            check.addEventListener("click", () => {
+                const ok = normalizeAnswer(selected.join(" ")) === normalizeAnswer(item.answer);
+                setFeedback(fb, ok, ok ? "Correct" : `Answer: ${item.answer}`);
+            });
+            card.appendChild(prompt);
+            card.appendChild(answer);
+            card.appendChild(bank);
+            card.appendChild(check);
+            card.appendChild(fb);
+            body.appendChild(card);
+        });
+
+        const done = makeButton("Finish Controlled Practice", "btn btn--primary btn--sm");
+        done.addEventListener("click", () => {
+            markStageDone("controlled");
+            activeStage = "real";
+            renderStage();
+        });
+        body.appendChild(done);
+    }
+
+    function renderRealUse() {
+        const stage = stages[2];
+        const body = stageShell(stage);
+        const translations = safeArr(practice.translation).length
+            ? safeArr(practice.translation)
+            : safeArr(sectionC.translation);
+
+        if (translations.length) {
+            const slider = document.createElement("div");
+            slider.className = "practice-pro__translation";
+            let index = 0;
+            const card = document.createElement("article");
+            card.className = "practice-pro__translate-card";
+            const counter = document.createElement("div");
+            counter.className = "practice-pro__counter";
+            const direction = document.createElement("div");
+            direction.className = "practice-pro__translate-direction";
+            const prompt = document.createElement("div");
+            prompt.className = "practice-pro__translate-prompt";
+            const response = document.createElement("textarea");
+            response.className = "practice-pro__translate-input";
+            response.rows = 3;
+            response.placeholder = "Write your translation here...";
+            const answer = document.createElement("div");
+            answer.className = "practice-pro__translate-answer hidden";
+            const controls = document.createElement("div");
+            controls.className = "practice-pro__controls";
+            const prev = makeButton("Previous", "btn btn--ghost btn--sm");
+            const show = makeButton("Show answer", "btn btn--outline btn--sm");
+            const next = makeButton("Next", "btn btn--ghost btn--sm");
+            const selfCheck = document.createElement("div");
+            selfCheck.className = "practice-pro__self-check hidden";
+            const gotIt = makeButton("Got it", "practice-pro__self-btn");
+            const needsWork = makeButton("Need practice", "practice-pro__self-btn");
+            const selfStatus = document.createElement("span");
+            selfStatus.className = "practice-pro__self-status";
+            selfCheck.appendChild(gotIt);
+            selfCheck.appendChild(needsWork);
+            selfCheck.appendChild(selfStatus);
+
+            function paintTranslation() {
+                const item = translations[index];
+                counter.textContent = `${index + 1} / ${translations.length}`;
+                const source = item.textEn || item.en || item.textAr || item.ar || "";
+                const target = item.textAr || item.ar || item.textEn || item.en || "";
+                const sourceIsArabic = Boolean(item.textAr || item.ar) && !(item.textEn || item.en);
+                direction.textContent = sourceIsArabic ? "Arabic -> English" : "English -> Arabic";
+                prompt.textContent = source;
+                prompt.classList.toggle("is-arabic", sourceIsArabic);
+                answer.textContent = target;
+                answer.classList.toggle("is-arabic", !sourceIsArabic);
+                answer.classList.add("hidden");
+                response.value = "";
+                selfCheck.classList.add("hidden");
+                selfStatus.textContent = "";
+                gotIt.classList.remove("is-ok");
+                needsWork.classList.remove("is-no");
+                show.textContent = "Show answer";
+            }
+
+            prev.addEventListener("click", () => {
+                index = (index - 1 + translations.length) % translations.length;
+                paintTranslation();
+            });
+            next.addEventListener("click", () => {
+                index = (index + 1) % translations.length;
+                paintTranslation();
+            });
+            show.addEventListener("click", () => {
+                answer.classList.toggle("hidden");
+                show.textContent = answer.classList.contains("hidden") ? "Show answer" : "Hide answer";
+                selfCheck.classList.toggle("hidden", answer.classList.contains("hidden"));
+            });
+            gotIt.addEventListener("click", () => {
+                gotIt.classList.add("is-ok");
+                needsWork.classList.remove("is-no");
+                selfStatus.textContent = "Nice. Move to the next one.";
+            });
+            needsWork.addEventListener("click", () => {
+                needsWork.classList.add("is-no");
+                gotIt.classList.remove("is-ok");
+                selfStatus.textContent = "Mark it for review and try it again.";
+            });
+
+            controls.appendChild(prev);
+            controls.appendChild(show);
+            controls.appendChild(next);
+            card.appendChild(counter);
+            card.appendChild(direction);
+            card.appendChild(prompt);
+            card.appendChild(response);
+            card.appendChild(answer);
+            card.appendChild(selfCheck);
+            card.appendChild(controls);
+            slider.appendChild(card);
+            body.appendChild(slider);
+            paintTranslation();
+        }
+
+        const rolePlays = safeArr(practice.rolePlays);
+        if (rolePlays.length) {
+            const sims = document.createElement("div");
+            sims.className = "practice-pro__situations";
+            rolePlays.forEach((text, idx) => {
+                const item = document.createElement("article");
+                item.className = "practice-pro__situation";
+                const badge = document.createElement("span");
+                badge.textContent = `Situation ${idx + 1}`;
+                const p = document.createElement("p");
+                p.textContent = text;
+                item.appendChild(badge);
+                item.appendChild(p);
+                sims.appendChild(item);
+            });
+            body.appendChild(sims);
+        }
+
+        const writingPrompts = safeArr(sectionC.writeYourOwnSentences);
+        const write = document.createElement("div");
+        write.className = "practice-pro__write";
+        const label = document.createElement("label");
+        label.textContent = "Write your own sentences";
+        const help = document.createElement("p");
+        help.textContent = writingPrompts.length
+            ? writingPrompts.slice(0, 2).join(" ")
+            : "Write 5-10 short sentences using the phrases from this lesson.";
+        const textarea = document.createElement("textarea");
+        textarea.className = "homework-notes";
+        textarea.rows = 5;
+        textarea.placeholder = "Write 5-10 short sentences here...";
+        write.appendChild(label);
+        write.appendChild(help);
+        write.appendChild(textarea);
+        body.appendChild(write);
+
+        const done = makeButton("Finish Practice", "btn btn--primary btn--sm");
+        done.addEventListener("click", () => markStageDone("real"));
+        body.appendChild(done);
+    }
+
+    function renderStage() {
+        if (activeStage === "controlled") renderControlled();
+        else if (activeStage === "real") renderRealUse();
+        else renderRecognition();
+    }
+
+    container.appendChild(root);
+    root.appendChild(header);
+    root.appendChild(nav);
+    root.appendChild(stageArea);
+
+    const doneAll = makeButton("Mark Practice as Done", "btn btn--outline btn--sm");
+    doneAll.addEventListener("click", () => {
+        completed = new Set(stages.map((stage) => stage.id));
+        setProgress();
+        renderNav();
+    });
+    root.appendChild(doneAll);
+
+    renderNav();
+    setProgress();
+    renderStage();
+    renderSectionStatus(container, "practice");
+}
+
+function renderHomeworkTabClean(container, lesson) {
+    const student = getCurrentStudent();
+    const progress = student && getStudentProgress(student, appState.currentLessonId);
+    const tasks = safeArr(lesson.homework?.tasks);
+    const taskState = new Set();
+
+    if (!tasks.length) {
+        const title = document.createElement("h4");
+        title.className = "td-lessonitem__title";
+        title.textContent = "Homework";
+
+        const card = document.createElement("div");
+        card.className = "homework-simple";
+
+        const text = document.createElement("p");
+        text.className = "homework-text homework-simple__text";
+        text.textContent = lesson.homework?.instructions || "No homework assigned yet.";
+        card.appendChild(text);
+
+        const complete = document.createElement("label");
+        complete.className = "homework-simple__complete";
+        const check = document.createElement("input");
+        check.type = "checkbox";
+        check.checked = progress && progress.homework;
+        const checkText = document.createElement("span");
+        checkText.textContent = "Homework assigned / completed";
+        complete.appendChild(check);
+        complete.appendChild(checkText);
+        check.addEventListener("change", () => setStudentProgressField("homework", check.checked));
+
+        const notesLabel = document.createElement("label");
+        notesLabel.className = "homework-simple__label";
+        notesLabel.textContent = "Notes";
+
+        const notes = document.createElement("textarea");
+        notes.className = "homework-notes";
+        notes.placeholder = "E.g. Needs more practice with kifak/kifik.";
+        notes.value =
+            (student &&
+                student.homeworkNotes &&
+                student.homeworkNotes[appState.currentLessonId]) ||
+            "";
+        notes.addEventListener("change", () => {
+            if (!student) return;
+            if (!student.homeworkNotes) student.homeworkNotes = {};
+            student.homeworkNotes[appState.currentLessonId] = notes.value;
+            saveStudentsToLS();
+        });
+
+        const btnDone = document.createElement("button");
+        btnDone.className = "btn btn--primary btn--sm";
+        btnDone.textContent = "Mark Homework as Done";
+        btnDone.addEventListener("click", () => {
+            check.checked = true;
+            setStudentProgressField("homework", true);
+        });
+
+        container.appendChild(title);
+        container.appendChild(card);
+        container.appendChild(complete);
+        container.appendChild(notesLabel);
+        container.appendChild(notes);
+        container.appendChild(btnDone);
+        renderSectionStatus(container, "homework");
+        return;
+    }
+
+    const root = document.createElement("div");
+    root.className = "homework-pro";
+
+    const header = document.createElement("div");
+    header.className = "homework-pro__header";
+    const h = document.createElement("h4");
+    h.textContent = "Homework";
+    const p = document.createElement("p");
+    p.textContent = lesson.homework?.instructions || "Complete the homework tasks.";
+    const meter = document.createElement("div");
+    meter.className = "homework-pro__meter";
+    header.appendChild(h);
+    header.appendChild(p);
+    header.appendChild(meter);
+
+    const notes = document.createElement("textarea");
+    notes.className = "homework-notes homework-pro__notes";
+    notes.placeholder = "Write homework answers or teacher notes here...";
+    notes.value =
+        (student &&
+            student.homeworkNotes &&
+            student.homeworkNotes[appState.currentLessonId]) ||
+        "";
+    notes.addEventListener("change", () => {
+        if (!student) return;
+        if (!student.homeworkNotes) student.homeworkNotes = {};
+        student.homeworkNotes[appState.currentLessonId] = notes.value;
+        saveStudentsToLS();
+    });
+
+    function updateMeter() {
+        meter.textContent = `${taskState.size}/${tasks.length || 0} tasks done`;
+        if (tasks.length && taskState.size === tasks.length) setStudentProgressField("homework", true);
+    }
+
+    const grid = document.createElement("div");
+    grid.className = "homework-pro__grid";
+    tasks.forEach((task, idx) => {
+        const card = document.createElement("article");
+        card.className = "homework-pro__card";
+        const badge = document.createElement("span");
+        badge.className = "homework-pro__badge";
+        badge.textContent = `Task ${idx + 1}`;
+        const title = document.createElement("h5");
+        title.textContent = task.title || "Homework task";
+        const desc = document.createElement("p");
+        desc.textContent = task.instructions || "";
+        card.appendChild(badge);
+        card.appendChild(title);
+        card.appendChild(desc);
+
+        if (safeArr(task.examples).length) {
+            const examples = document.createElement("div");
+            examples.className = "homework-pro__examples";
+            safeArr(task.examples).forEach((example) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.textContent = example;
+                btn.addEventListener("click", () => {
+                    notes.value = notes.value ? `${notes.value}\n${example}` : example;
+                    notes.dispatchEvent(new Event("change"));
+                    notes.focus();
+                });
+                examples.appendChild(btn);
+            });
+            card.appendChild(examples);
+        }
+
+        const done = document.createElement("label");
+        done.className = "homework-pro__check";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        const span = document.createElement("span");
+        span.textContent = "Done";
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                taskState.add(idx);
+                card.classList.add("is-done");
+            } else {
+                taskState.delete(idx);
+                card.classList.remove("is-done");
+            }
+            updateMeter();
+        });
+        done.appendChild(checkbox);
+        done.appendChild(span);
+        card.appendChild(done);
+        grid.appendChild(card);
+    });
+
+    const notesBlock = document.createElement("div");
+    notesBlock.className = "homework-pro__notes-block";
+    const notesTitle = document.createElement("label");
+    notesTitle.textContent = "Answers / notes";
+    notesBlock.appendChild(notesTitle);
+    notesBlock.appendChild(notes);
+
+    const footer = document.createElement("div");
+    footer.className = "homework-pro__footer";
+    const complete = document.createElement("label");
+    complete.className = "homework-pro__complete";
+    const completeCheck = document.createElement("input");
+    completeCheck.type = "checkbox";
+    completeCheck.checked = progress && progress.homework;
+    const completeText = document.createElement("span");
+    completeText.textContent = "Homework assigned / completed";
+    complete.appendChild(completeCheck);
+    complete.appendChild(completeText);
+    completeCheck.addEventListener("change", () => setStudentProgressField("homework", completeCheck.checked));
+
+    const doneAll = document.createElement("button");
+    doneAll.type = "button";
+    doneAll.className = "btn btn--primary btn--sm";
+    doneAll.textContent = "Mark Homework as Done";
+    doneAll.addEventListener("click", () => {
+        completeCheck.checked = true;
+        setStudentProgressField("homework", true);
+    });
+    footer.appendChild(complete);
+    footer.appendChild(doneAll);
+
+    root.appendChild(header);
+    root.appendChild(grid);
+    root.appendChild(notesBlock);
+    root.appendChild(footer);
+    container.appendChild(root);
+    updateMeter();
+    renderSectionStatus(container, "homework");
+}
+
 function renderReviewTab(container, lesson) {
     const title = document.createElement("h4");
     title.className = "td-lessonitem__title";
     title.textContent = "Quick Review – Flashcards";
+    container.appendChild(title);
 
-    const all = [...lesson.vocabulary.core, ...lesson.vocabulary.extra];
+    const coreVocabulary = Array.isArray(lesson.vocabulary?.core) ? lesson.vocabulary.core : [];
+    const extraVocabulary = Array.isArray(lesson.vocabulary?.extra) ? lesson.vocabulary.extra : [];
+    const all = [...coreVocabulary, ...extraVocabulary];
     if (!all.length) {
         const p = document.createElement("p");
         p.textContent = "No vocabulary available for review.";
-        container.appendChild(title);
         container.appendChild(p);
         renderSectionStatus(container, "review");
         return;
@@ -4813,7 +6758,6 @@ function renderReviewTab(container, lesson) {
     controlsRow.appendChild(navButtons);
     controlsRow.appendChild(btnDone);
 
-    container.appendChild(title);
     container.appendChild(card);
     container.appendChild(controlsRow);
 

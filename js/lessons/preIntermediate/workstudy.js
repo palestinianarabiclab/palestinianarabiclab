@@ -1,805 +1,548 @@
 import { LESSON_ID_WORK_STUDY } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_WORK_STUDY;
+
 export const lesson = {
     meta: {
         level: "Pre-Intermediate",
         unit: "Work & Study",
-        lessonTitle: "Unit 6 – Work & Study in Palestinian Arabic",
+        lessonTitle: "Unit 6 - Work & Study in Gaza Palestinian Arabic",
+        contentVersion: 2026063001,
     },
 
     overview: {
-        title: "Unit 6 – Work & Study",
+        title: "Unit 6 - Work & Study",
         description:
-            "In this unit, students learn how to talk about their studies, their job (or future job), university or school life, subjects, exams, projects, and weekly schedule in Palestinian Arabic. The focus is on high-frequency verbs like ‘study, learn, work, teach, understand, finish’ and real-life dialogues between students and teachers.",
+            "Students learn how to talk naturally about university, school, work, schedules, exams, projects, deadlines, and being busy in Gaza Palestinian Arabic. The goal is to help students explain their real life, not memorize job and school words.",
         goals: [
-            "Talk about what and where they study using natural Palestinian Arabic chunks.",
-            "Describe their job or future job, and part-time or online work.",
-            "Use key verbs like: أَدْرُس، أَتْعَلَّم، أَشْتِغِل، أُدَرِّس، أَفْهَم، أَنْجَح.",
-            "Ask and answer questions about timetable, classes, exams, and projects.",
-            "Connect work & study with daily routine, time, and transportation from previous units.",
+            "Talk about studying, working, and daily schedules.",
+            "Say what they study, where they work, and what their day looks like.",
+            "Use useful chunks like: عِنْدِي دَوَام، عِنْدِي اِمْتِحَان، لَازِم أَدْرُس، بَقْدَر / مَا بَقْدَر.",
+            "Ask and answer real questions about work, university, exams, and deadlines.",
+            "Recycle earlier units: greetings, family, routine, food, transport, time, and politeness.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can explain their work/study situation in 60-90 seconds.",
+            "The student can talk about a busy day with university, work, transport, food, and family.",
+            "The student can ask a classmate about their schedule, exams, job, and free time.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== STUDENTS, PEOPLE & PLACES =====
-            {
-                id: "taleb",
-                ar: "طالِب / طالْبِة",
-                en: "student (m/f)",
-                enArabeezy: "Taleb / Talbe",
-                hint: "Person who studies at school or university.",
-                exampleAr: "أنا طالْبَة جامْعِيّة.",
-                exampleArabeezy: "ana talba jam3ya.",
-                exampleEn: "I am a university student.",
-},
-            {
-                id: "madraseh",
-                ar: "مَدْرَسَة",
-                en: "school",
-                enArabeezy: "madraseh",
-                hint:
-                    "Plural: مَدَارِس. ‘My school’ = مَدْرَسْتِي. Used for primary / secondary school.",
-                exampleAr: "أَخُوي لِسَّا فِي الْمَدْرَسَة، بْيِدْرُس صَفّ تَّاسِع.",
-                exampleArabeezy: "akhwy lsa fy elmdrsa, bydrs sf tas3.",
-                exampleEn: "My brother is still in school; he studies in ninth grade.",
-},
-            {
-                id: "jame3a",
-                ar: "جَامْعَة",
-                en: "university",
-                enArabeezy: "jame3a",
-                hint:
-                    "Plural: جَامْعَات. ‘My university’ = جَامْعْتِي. You can add the city name.",
-                exampleAr: "أَنَا بَدْرُس فِي جَامْعَة غَزَّة.",
-                exampleArabeezy: "ana bdrs fy jam3a ghza.",
-                exampleEn: "I study at Gaza University.",
-},
-            {
-                id: "qism",
-                ar: "قِسْم",
-                en: "department",
-                enArabeezy: "qism",
-                hint:
-                    "Plural: أَقْسَام. قِسْم الْهَنْدَسَة، قِسْم اللُّغَات، قِسْم الْحَاسُوب.",
-                exampleAr: "أَنَا فِي قِسْم الْهَنْدَسَة الْكَهْرَبَائِيَّة.",
-                exampleArabeezy: "ana fy qsm elhndsa elkhrbayya.",
-                exampleEn: "I am in the electrical engineering department.",
-},
-
-            {
-                id: "sherkeh",
-                ar: "شِرْكَة",
-                en: "company",
-                enArabeezy: "sherkeh",
-                hint: "Workplace, company.",
-                exampleAr: "أَبوي بِشْتِغِل في شِرْكَة خُصوصِيّة.",
-                exampleArabeezy: "abwy bshtghl fy shrka khswsya.",
-                exampleEn: "My father works in a private company.",
-},
-            {
-                id: "mu3allem",
-                ar: "مُعَلِّم / مُعَلِّمَة",
-                en: "teacher (m/f)",
-                enArabeezy: "mu3allem / mu3allmeh",
-                hint:
-                    "Spoken synonym of أُسْتَاذ. Used for school / institute teachers.",
-                exampleAr: "مُعَلِّمَة الرِّيَاضِيَّات كْتِير شَاطْرَة.",
-                exampleArabeezy: "m3lma elryadyat ktyr shatra.",
-                exampleEn: "The math teacher is very good.",
-},
-            {
-                id: "zamil",
-                ar: "زْمِيل / زْمِيلَة",
-                en: "classmate / colleague (m/f)",
-                enArabeezy: "zmiil / zmileh",
-                hint:
-                    "Plural: زْمَلَا. Used for study or work colleagues.",
-                exampleAr: "زْميلي في الشُّغُل بيساعِدْني كْثير.",
-                exampleArabeezy: "zmyly fy elshghl bysa3dny kthyr.",
-                exampleEn: "My colleague at work helps me a lot.",
-},
-            {
-                id: "mudir",
-                ar: "مُدِير / مُدِيرَة",
-                en: "manager / director",
-                enArabeezy: "mudiir / mudiireh",
-                hint: "Used in work or school context. Plural: مُدَرَا.",
-                exampleAr: "مُدِير الشُّغُل عِنْدُه اِجْتِمَاع كُلّ يَوْم إِثْنَيْن.",
-                exampleArabeezy: "mdyr elshghl 3ndh ajtma3 kl ywm ithnyn.",
-                exampleEn: "The manager at work has a meeting every Monday.",
-},
-            {
-                id: "muwazzaf",
-                ar: "مُوَظَّف / مُوَظَّفِة",
-                en: "employee (m/f)",
-                enArabeezy: "muwazzaf / muwazzafeh",
-                hint: "Person who works in an office, bank, company, etc.",
-                exampleAr: "أُخوي مُوَظَّف في بَنْك.",
-                exampleArabeezy: "akhwy mwzf fy bnk.",
-                exampleEn: "My brother is an employee in a bank.",
-},
-            {
-                id: "mohandes",
-                ar: "مُهَنْدِس / مُهَنْدِسَة",
-                en: "engineer (m/f)",
-                enArabeezy: "mohandes / mohandeseh",
-                hint: "Profession (software, civil, electrical…).",
-                exampleAr: "بِدْرُس عَشان أَصير مُهَنْدِسَة بَرْمَجِيّات.",
-                exampleArabeezy: "bdrs 3shan asyr mhndsa brmjyat.",
-                exampleEn: "I study so I can become a software engineer.",
-},
-            {
-                id: "mumarriD",
-                ar: "مُمَرِّض / مُمَرِّضَة",
-                en: "nurse (m/f)",
-                enArabeezy: "mumarriD / mumarriDa",
-                hint: "Health profession.",
-                exampleAr: "أُختي مُمَرِّضَة في مُسْتَشْفَى.",
-                exampleArabeezy: "akhty mmrda fy mstshfa.",
-                exampleEn: "My sister is a nurse in a hospital.",
-},
-
-            // ===== STUDY TOOLS & ACADEMIC THINGS =====
-            {
-                id: "daftar",
-                ar: "دَفْتَر",
-                en: "notebook",
-                enArabeezy: "daftar",
-                hint: "Plural: دَفَاتِر. ‘My notebook’ = دَفْتَرِي.",
-                exampleAr: "بَكْتُب مْلَاحَظَات فِي دَفْتَر خَاصّ لِكُلّ مَادَّة.",
-                exampleArabeezy: "bktb mla7zat fy dftr khas lkl mada.",
-                exampleEn: "I write notes in a special notebook for each subject.",
-},
-            {
-                id: "qalam",
-                ar: "قَلَم",
-                en: "pen",
-                enArabeezy: "qalam",
-                hint:
-                    "Plural: أَقْلَام. قَلَم رَصَاص = pencil, قَلَم حِبْر = ink pen.",
-                exampleAr: "دَايْمًا بَنْسَى قَلَمِي فِي الْقَاعَة.",
-                exampleArabeezy: "dayma bnsa qlmy fy elqa3a.",
-                exampleEn: "I always forget my pen in the classroom.",
-},
-            {
-                id: "kumbyuter",
-                ar: "كُمْبْيُوتِر / لَابْتُوب",
-                en: "computer / laptop",
-                enArabeezy: "kombyuter / laptop",
-                hint: "Used a lot for online study and work.",
-                exampleAr: "بَدْرُس وَبَشْتِغِل أُونْلَايْن عَلَى اللَّابْتُوب.",
-                exampleArabeezy: "bdrs wbshtghl awnlayn 3la ellabtwb.",
-                exampleEn: "I study and work online on the laptop.",
-},
-            {
-                id: "mawdoo3",
-                ar: "مَوْضُوع",
-                en: "topic / subject (theme)",
-                enArabeezy: "mawDoo3",
-                hint:
-                    "Plural: مَوَاضِيع. Used for essay topics, project topics, etc.",
-                exampleAr: "الْيَوْم مَوْضُوع الدَّرْس هُوَّ الشُّغُل وَالدِّرَاسَة.",
-                exampleArabeezy: "elywm mwdw3 eldrs hw elshghl weldrasa.",
-                exampleEn: "Today the lesson topic is work and study.",
-},
-            {
-                id: "mawadd",
-                ar: "مَوَادّ",
-                en: "subjects (school/university)",
-                enArabeezy: "mawaadd",
-                hint:
-                    "Plural word already. Singular مَادَّة = one subject / course.",
-                exampleAr: "عِنْدِي تَلَات مَوَادّ هالفصل.",
-                exampleArabeezy: "3ndy tlat mwad halfsl.",
-                exampleEn: "I have three subjects this semester.",
-},
-            {
-                id: "imti7an",
-                ar: "اِمْتِحَان",
-                en: "exam / test",
-                enArabeezy: "imti7an",
-                hint:
-                    "Plural: اِمْتِحَانَات. ‘final exam’ = اِمْتِحَان نِهَائِي.",
-                exampleAr: "الأُسْبوع الْجَاي عِنْدِي اِمْتِحَان مُهِمّ.",
-                exampleArabeezy: "elasbw3 eljay 3ndy amt7an mhm.",
-                exampleEn: "Next week I have an important exam.",
-},
-            {
-                id: "wajeb",
-                ar: "وَاجِب",
-                en: "homework / assignment",
-                enArabeezy: "wajeb",
-                hint:
-                    "Plural: وَاجْبَات. In spoken Arabic ‘homework’ is usually وَاجِب.",
-                exampleAr: "الأُسْتَاذ بْيِعْطِينَا وَاجِب بَعْد كُلّ دَرْس.",
-                exampleArabeezy: "elastadh by3tyna wajb b3d kl drs.",
-                exampleEn: "The teacher gives us homework after every lesson.",
-},
-            {
-                id: "mashroo3",
-                ar: "مَشْرُوع",
-                en: "project",
-                enArabeezy: "mashroo3",
-                hint:
-                    "Plural: مَشَارِيع. مَشْرُوع تَّخَرُّج = graduation project.",
-                exampleAr: "هَادَا أَوَّل مَشْرُوع بَسَوِّيه فِي الْجَامْعَة.",
-                exampleArabeezy: "hada awl mshrw3 bswyh fy eljam3a.",
-                exampleEn: "This is the first project I do at university.",
-},
-            {
-                id: "mu7adara",
-                ar: "مُحاضَرَة",
-                en: "lecture / class session",
-                enArabeezy: "mu7aDara",
-                hint: "University / college lesson.",
-                exampleAr: "عندي مُحاضَرَة ساعَتَيْن اليوم.",
-                exampleArabeezy: "3ndy m7adra sa3tyn elywm.",
-                exampleEn: "I have a two-hour lecture today.",
-},
-            {
-                id: "istira7a",
-                ar: "اِسْتِراحَة",
-                en: "break",
-                enArabeezy: "istira7a",
-                hint: "Pause from work or class.",
-                exampleAr: "بِنْخُد اِسْتِراحَة صْغيرَة بَين المُحاضَرات.",
-                exampleArabeezy: "bnkhd astra7a sghyra byn elm7adrat.",
-                exampleEn: "We take a short break between the lectures.",
-},
-
-            // ===== WORK & JOB WORDS =====
             {
                 id: "shoghol",
                 ar: "شُغُل",
                 en: "work / job",
                 enArabeezy: "shoghol",
-                hint:
-                    "Can mean ‘work’ in general or a job. ‘I have work’: عِنْدِي شُغُل.",
-                exampleAr: "بَشْتِغِل وَبَدْرُس فِي نَفْس الْوَقْت، عِنْدِي شُغُل جُزْئِي.",
-                exampleArabeezy: "bshtghl wbdrs fy nfs elwqt, 3ndy shghl jzyy.",
-                exampleEn: "I work and study at the same time; I have a part-time job.",
-},
+                hint: "Very common. I have work = عِنْدِي شُغُل. My work = شُغْلِي.",
+                exampleAr: "عِنْدِي شُغُل بَعْد الجَامْعَة.",
+                exampleArabeezy: "3indi shoghol ba3d el-jam3a.",
+                exampleEn: "I have work after university.",
+            },
             {
-                id: "wazifeh",
-                ar: "وَظِيفَة",
-                en: "job / position",
-                enArabeezy: "waZiifeh",
-                hint:
-                    "Plural: وَظَايِف. More formal than شُغُل.",
-                exampleAr: "الْكُلّ بِيِدَوِّر عَلَى وَظِيفَة مُنَاسْبَة بَعْد التَّخَرُّج.",
-                exampleArabeezy: "elkl bydwr 3la wzyfa mnasba b3d eltkhrj.",
-                exampleEn: "Everyone looks for a suitable job after graduation.",
-},
-            {
-                id: "duwam",
-                ar: "دْوَام / دَوام",
-                en: "working hours / shift",
+                id: "dawam",
+                ar: "دَوَام",
+                en: "shift / working hours / class schedule",
                 enArabeezy: "dawam",
-                hint: "دْوَام صَبَاحِي، دْوَام كَامِل، دْوَام جُزْئِي.",
-                exampleAr: "دْوَام الشُّغُل مِن السَّاعَة تَمْنْيَة لِلسَّاعَة أَرْبَعَة.",
-                exampleArabeezy: "dwam elshghl mn elsa3a tmnya lelsa3a arb3a.",
-                exampleEn: "Working hours are from eight to four.",
-},
+                hint: "Used for work and study schedules: عِنْدِي دَوَام، دَوَامِي مِن 8 لَـ 4.",
+                exampleAr: "دَوَامِي مِن السَّاعَة تَمَانْيَة لَلسَّاعَة أَرْبَعَة.",
+                exampleArabeezy: "dawami min el-sa3a tamanye lal-sa3a arba3a.",
+                exampleEn: "My shift is from eight to four.",
+            },
             {
                 id: "dawam_kamel",
-                ar: "بِدَوَّام كامِل",
+                ar: "دَوَام كَامِل",
                 en: "full-time",
-                enArabeezy: "bidawwam_kamel",
+                enArabeezy: "dawam kamel",
                 hint: "Full-time work or study schedule.",
-                exampleAr: "أَبوي بِشْتِغِل بِدَوَّام كامِل.",
-                exampleArabeezy: "abwy bshtghl bdwam kaml.",
+                exampleAr: "أَبُوي بِشْتِغِل دَوَام كَامِل.",
+                exampleArabeezy: "abuy bishtaghel dawam kamel.",
                 exampleEn: "My father works full-time.",
-},
+            },
             {
                 id: "dawam_joz2i",
-                ar: "دَوام جُزْئِي",
+                ar: "دَوَام جُزْئِي",
                 en: "part-time",
-                enArabeezy: "dawam_joz2i",
-                hint: "Part-time work or job.",
-                exampleAr: "أنا طالِب وبَشْتِغِل دَوام جُزْئِي.",
-                exampleArabeezy: "ana talb wbshtghl dwam jzyy.",
-                exampleEn: "I’m a student and I work part-time.",
-},
-
-            // ===== STUDY & WORK VERBS =====
+                enArabeezy: "dawam joz2i",
+                hint: "Part-time work. Useful for students who work and study.",
+                exampleAr: "أَنَا طَالِب وَبَشْتِغِل دَوَام جُزْئِي.",
+                exampleArabeezy: "ana Taleb w bashtaghel dawam joz2i.",
+                exampleEn: "I am a student and I work part-time.",
+            },
+            {
+                id: "Taleb",
+                ar: "طَالِب / طَالْبِة",
+                en: "student",
+                enArabeezy: "Taleb / Talbeh",
+                hint: "Male: طَالِب. Female: طَالْبِة. Plural: طُلَّاب.",
+                exampleAr: "أَنَا طَالْبِة وَبَتْعَلَّم عَرَبِي.",
+                exampleArabeezy: "ana Talbeh w bat3allam 3arabi.",
+                exampleEn: "I am a student and I am learning Arabic.",
+            },
+            {
+                id: "jame3a",
+                ar: "جَامْعَة",
+                en: "university",
+                enArabeezy: "jame3a",
+                hint: "Plural: جَامْعَات. My university = جَامْعْتِي.",
+                exampleAr: "بَدْرُس فِي جَامْعَة غَزَّة.",
+                exampleArabeezy: "badros fi jam3et ghazza.",
+                exampleEn: "I study at Gaza University.",
+            },
+            {
+                id: "madraseh",
+                ar: "مَدْرَسَة",
+                en: "school",
+                enArabeezy: "madraseh",
+                hint: "Plural: مَدَارِس. My school = مَدْرَسْتِي.",
+                exampleAr: "أَخُوي لِسَّه فِي المَدْرَسَة.",
+                exampleArabeezy: "akhuy lissa fi el-madraseh.",
+                exampleEn: "My brother is still in school.",
+            },
+            {
+                id: "qism",
+                ar: "قِسِم",
+                en: "department",
+                enArabeezy: "qisim",
+                hint: "University/work department: قِسِم الحَاسُوب، قِسِم اللُّغَات.",
+                exampleAr: "أَنَا فِي قِسِم الحَاسُوب.",
+                exampleArabeezy: "ana fi qisim el-7asob.",
+                exampleEn: "I am in the computer department.",
+            },
+            {
+                id: "sharikeh",
+                ar: "شَرِكَة",
+                en: "company",
+                enArabeezy: "sharikeh",
+                hint: "Plural: شَرِكَات. Work in a company = بَشْتِغِل فِي شَرِكَة.",
+                exampleAr: "أَبُوي بِشْتِغِل فِي شَرِكَة صْغِيرَة.",
+                exampleArabeezy: "abuy bishtaghel fi sharikeh zghireh.",
+                exampleEn: "My father works in a small company.",
+            },
+            {
+                id: "maktab",
+                ar: "مَكْتَب",
+                en: "office",
+                enArabeezy: "maktab",
+                hint: "Common workplace. My office = مَكْتَبِي.",
+                exampleAr: "بَشْتِغِل فِي مَكْتَب قَرِيب مِن الجَامْعَة.",
+                exampleArabeezy: "bashtaghel fi maktab qareeb min el-jam3a.",
+                exampleEn: "I work in an office near the university.",
+            },
+            {
+                id: "ostaz",
+                ar: "أُسْتَاذ / أُسْتَاذَة",
+                en: "teacher / professor",
+                enArabeezy: "ustaz / ustazeh",
+                hint: "Very common for teachers, tutors, and university instructors.",
+                exampleAr: "الأُسْتَاذ شَرَح الدَّرْس مْنِيح.",
+                exampleArabeezy: "el-ustaz shara7 el-dars mneeh.",
+                exampleEn: "The teacher explained the lesson well.",
+            },
+            {
+                id: "zamil",
+                ar: "زْمِيل / زْمِيلَة",
+                en: "classmate / colleague",
+                enArabeezy: "zmeel / zmeeleh",
+                hint: "Used for study or work colleagues. Plural: زْمَلَا.",
+                exampleAr: "زْمِيلِي فِي الشُّغُل بِيِسَاعِدْنِي كْتِير.",
+                exampleArabeezy: "zmeeli fi el-shoghol byisa3idni kteer.",
+                exampleEn: "My colleague at work helps me a lot.",
+            },
+            {
+                id: "mudir",
+                ar: "مُدِير / مُدِيرَة",
+                en: "manager / director",
+                enArabeezy: "mudeer / mudeereh",
+                hint: "Used in work or school context. Plural: مُدَرَا.",
+                exampleAr: "المُدِير عِنْدُه اِجْتِمَاع اليَوم.",
+                exampleArabeezy: "el-mudeer 3indo ijtima3 el-yom.",
+                exampleEn: "The manager has a meeting today.",
+            },
+            {
+                id: "muwazzaf",
+                ar: "مُوَظَّف / مُوَظَّفَة",
+                en: "employee",
+                enArabeezy: "muwazzaf / muwazzafeh",
+                hint: "Person who works in an office, bank, company, etc.",
+                exampleAr: "أَخُوي مُوَظَّف فِي بَنْك.",
+                exampleArabeezy: "akhuy muwazzaf fi bank.",
+                exampleEn: "My brother is an employee in a bank.",
+            },
+            {
+                id: "ijtima3",
+                ar: "اِجْتِمَاع",
+                en: "meeting",
+                enArabeezy: "ijtima3",
+                hint: "Plural: اِجْتِمَاعَات. Work/school meeting.",
+                exampleAr: "عِنْدِي اِجْتِمَاع السَّاعَة عَشَرَة.",
+                exampleArabeezy: "3indi ijtima3 el-sa3a 3ashara.",
+                exampleEn: "I have a meeting at ten.",
+            },
+            {
+                id: "maw3ed",
+                ar: "مَوْعِد",
+                en: "appointment / deadline",
+                enArabeezy: "maw3ed",
+                hint: "Use for appointments and project deadlines.",
+                exampleAr: "مَوْعِد تَسْلِيم المَشْرُوع بُكْرَا.",
+                exampleArabeezy: "maw3ed tasleem el-mashroo3 bukra.",
+                exampleEn: "The project deadline is tomorrow.",
+            },
+            {
+                id: "mu7adara",
+                ar: "مُحَاضَرَة",
+                en: "lecture / class session",
+                enArabeezy: "mu7aDara",
+                hint: "University/college class session.",
+                exampleAr: "عِنْدِي مُحَاضَرَة سَاعْتِين اليَوم.",
+                exampleArabeezy: "3indi mu7aDara sa3teen el-yom.",
+                exampleEn: "I have a two-hour lecture today.",
+            },
+            {
+                id: "maddeh",
+                ar: "مَادَّة",
+                en: "subject / course",
+                enArabeezy: "maddeh",
+                hint: "School/university subject. Plural: مَوَادّ.",
+                exampleAr: "عِنْدِي تَلَات مَوَادّ هَاد الفَصِل.",
+                exampleArabeezy: "3indi talat mawaad had el-faSil.",
+                exampleEn: "I have three subjects this semester.",
+            },
+            {
+                id: "imti7an",
+                ar: "اِمْتِحَان",
+                en: "exam / test",
+                enArabeezy: "imti7an",
+                hint: "Plural: اِمْتِحَانَات. Final exam = اِمْتِحَان نِهَائِي.",
+                exampleAr: "الأُسْبُوع الجَاي عِنْدِي اِمْتِحَان مُهِمّ.",
+                exampleArabeezy: "el-usboo3 el-jay 3indi imti7an muhim.",
+                exampleEn: "Next week I have an important exam.",
+            },
+            {
+                id: "wajeb",
+                ar: "وَاجِب",
+                en: "homework / assignment",
+                enArabeezy: "wajeb",
+                hint: "Plural: وَاجْبَات. Common school/university word.",
+                exampleAr: "الأُسْتَاذ بِيِعْطِينَا وَاجِب بَعْد كُلّ دَرْس.",
+                exampleArabeezy: "el-ustaz byi3Teena wajeb ba3d kul dars.",
+                exampleEn: "The teacher gives us homework after every lesson.",
+            },
+            {
+                id: "mashroo3",
+                ar: "مَشْرُوع",
+                en: "project",
+                enArabeezy: "mashroo3",
+                hint: "Plural: مَشَارِيع. Graduation project = مَشْرُوع تَخَرُّج.",
+                exampleAr: "هَاد أَوَّل مَشْرُوع بَسَوِّيه فِي الجَامْعَة.",
+                exampleArabeezy: "had awwal mashroo3 basawweeh fi el-jam3a.",
+                exampleEn: "This is the first project I do at university.",
+            },
+            {
+                id: "istira7a",
+                ar: "اِسْتِرَاحَة",
+                en: "break",
+                enArabeezy: "istira7a",
+                hint: "Pause from work or class.",
+                exampleAr: "بِنْخُد اِسْتِرَاحَة صْغِيرَة بَيْن المُحَاضَرَات.",
+                exampleArabeezy: "binkhud istira7a zghireh been el-mu7aDarat.",
+                exampleEn: "We take a short break between lectures.",
+            },
             {
                 id: "badros",
                 ar: "بَدْرُس",
                 en: "I study",
                 enArabeezy: "badros",
-                hint:
-                    "From دَرَس = to study. Used with subject or field: بَدْرُس عَرَبِي / هَنْدَسَة / طِبّ.",
-                exampleAr: "بَدْرُس حَاسُوب فِي الْجَامْعَة.",
-                exampleArabeezy: "bdrs 7aswb fy eljam3a.",
+                hint: "Use with subject/field: بَدْرُس عَرَبِي / حَاسُوب / طِبّ.",
+                exampleAr: "بَدْرُس حَاسُوب فِي الجَامْعَة.",
+                exampleArabeezy: "badros 7asob fi el-jam3a.",
                 exampleEn: "I study computer science at university.",
-},
-
+            },
             {
                 id: "bat3allam",
                 ar: "بَتْعَلَّم",
                 en: "I learn",
                 enArabeezy: "bat3allam",
-                hint:
-                    "From تَعَلَّم = to learn. More general than ‘study’.",
-                exampleAr: "بَتْعَلَّم اللُّغَة الْعَرَبِيَّة وَاللُّغَة الإِنْجْلِيزِيَّة.",
-                exampleArabeezy: "bt3lm ellgha el3rbya wellgha elinjlyzya.",
+                hint: "More general than study. Use with skills/languages: بَتْعَلَّم عَرَبِي / تَصْمِيم.",
+                exampleAr: "بَتْعَلَّم عَرَبِي وَإِنْجْلِيزِي.",
+                exampleArabeezy: "bat3allam 3arabi w inglizi.",
                 exampleEn: "I am learning Arabic and English.",
-},
-            {
-                id: "bas2al",
-                ar: "بَسْأَل",
-                en: "I ask (a question)",
-                enArabeezy: "bas2al",
-                hint:
-                    "From سَأَل = to ask. Used a lot in class: بَسْأَل الأُسْتَاذ.",
-                exampleAr: "لَمَّا مَا أَفْهَم بَسْأَل الأُسْتَاذ.",
-                exampleArabeezy: "lma ma afhm bsal elastadh.",
-                exampleEn: "When I don’t understand, I ask the teacher.",
-},
-
-            {
-                id: "bakammel",
-                ar: "بَكَمِّل",
-                en: "I continue / I complete",
-                enArabeezy: "bakammel",
-                hint: "Chunk: بَكَمِّل دِرَاسَة، بَكَمِّل مَشْرُوع.",
-                exampleAr: "بَكَمِّل مُسْتَوَى أَوَّل فِي اللُّغَة الْفِلَسْطِينِيَّة.",
-                exampleArabeezy: "bkml mstwa awl fy ellgha elflstynya.",
-                exampleEn: "I am completing level one in Palestinian Arabic.",
-},
-            {
-                id: "banja7",
-                ar: "بَنْجَح",
-                en: "I pass / I succeed",
-                enArabeezy: "banja7",
-                hint:
-                    "Used with exams/subjects. Opposite: بَرْسُب = I fail.",
-                exampleAr: "بَنْجَح فِي الاِمْتِحَان إِذَا بَدْرُس مْنِيح.",
-                exampleArabeezy: "bnj7 fy elamt7an idha bdrs mny7.",
-                exampleEn: "I pass the exam if I study well.",
-},
-            {
-                id: "barsob",
-                ar: "بَرْسُب",
-                en: "I fail (a subject / exam)",
-                enArabeezy: "barsob",
-                hint: "From رَسَب = to fail. Sensitive word, use carefully.",
-                exampleAr: "مَا بَدِّي أَرْسُب، عَشَان هَيْك بَدْرُس كْتِير.",
-                exampleArabeezy: "ma bdy arsb, 3shan hyk bdrs ktyr.",
-                exampleEn: "I don’t want to fail, so I study a lot.",
-},
+            },
             {
                 id: "bashteghil",
                 ar: "بَشْتِغِل",
                 en: "I work",
                 enArabeezy: "bashteghil",
-                hint:
-                    "Spoken verb for ‘work’. Add where or how: بَشْتِغِل أُونْلَايْن، بَشْتِغِل فِي مَكْتَب.",
-                exampleAr: "بشتغل مُدرّس دوام جزئي وبدرس كمان.",
-                exampleArabeezy: "bshtghl mdrs dwam jzyy wbdrs kman.",
-                exampleEn: "I work part-time as a teacher and study as well.",
-},
+                hint: "Add where/how: بَشْتِغِل أُونْلَايْن / فِي مَكْتَب / دَوَام جُزْئِي.",
+                exampleAr: "بَشْتِغِل دَوَام جُزْئِي وَبَدْرُس كَمَان.",
+                exampleArabeezy: "bashteghil dawam joz2i w badros kaman.",
+                exampleEn: "I work part-time and study too.",
+            },
             {
-                id: "yishtaghel",
-                ar: "يِشْتِغِل",
-                en: "to work",
-                enArabeezy: "yishtaghel",
-                hint: "Dictionary verb form ‘to work’.",
-                exampleAr: "بشتغل دوام جزئي بعد الجامعة.",
-                exampleArabeezy: "bshtghl dwam jzyy b3d eljam3a.",
-                exampleEn: "I work part-time after university.",
-},
+                id: "bas2al",
+                ar: "بَسْأَل",
+                en: "I ask",
+                enArabeezy: "bas2al",
+                hint: "Classroom survival verb: لَمَّا مَا أَفْهَم بَسْأَل الأُسْتَاذ.",
+                exampleAr: "لَمَّا مَا أَفْهَم بَسْأَل الأُسْتَاذ.",
+                exampleArabeezy: "lamma ma afham bas2al el-ustaz.",
+                exampleEn: "When I don't understand, I ask the teacher.",
+            },
             {
-                id: "badarreb",
-                ar: "بَدَرِّب",
-                en: "I train / I give training",
-                enArabeezy: "badarreb",
-                hint:
-                    "From دَرَّب = to train. For giving courses/workshops.",
-                exampleAr: "بَدَرِّب طُلَّاب أَجَانِب عَلَى اللُّغَة الْفِلَسْطِينِيَّة.",
-                exampleArabeezy: "bdrb tlab ajanb 3la ellgha elflstynya.",
-                exampleEn: "I train foreign students in Palestinian Arabic.",
-},
+                id: "baraji3",
+                ar: "بَرَاجِع",
+                en: "I review",
+                enArabeezy: "baraji3",
+                hint: "Use before exams or after class.",
+                exampleAr: "بَرَاجِع المَادَّة بَعْد المُحَاضَرَة.",
+                exampleArabeezy: "baraji3 el-maddeh ba3d el-mu7aDara.",
+                exampleEn: "I review the subject after the lecture.",
+            },
             {
-                id: "badarris",
-                ar: "بَدَرِّس",
-                en: "I teach",
-                enArabeezy: "badarris",
-                hint:
-                    "From دَرَّس = to teach. Teacher speaking about their job.",
-                exampleAr: "أَنَا بَدَرِّس عَرَبِي لِطُلَّاب مِن دُوَل مُخْتَلِفَة.",
-                exampleArabeezy: "ana bdrs 3rby ltlab mn dwl mkhtlfa.",
-                exampleEn: "I teach Arabic to students from different countries.",
-},
+                id: "bakammel",
+                ar: "بَكَمِّل",
+                en: "I continue / finish",
+                enArabeezy: "bakammel",
+                hint: "Use with homework/project/study: بَكَمِّل الوَاجِب / المَشْرُوع.",
+                exampleAr: "بَكَمِّل المَشْرُوع بِاللِّيل.",
+                exampleArabeezy: "bakammel el-mashroo3 bel-leel.",
+                exampleEn: "I finish the project at night.",
+            },
             {
-                id: "yitkharraj",
-                ar: "يِتْخَرَّج",
-                en: "to graduate",
-                enArabeezy: "yitkharraj",
-                hint: "Finish university or school.",
-                exampleAr: "بَدّي أِتْخَرَّج السَّنِة الجاي.",
-                exampleArabeezy: "bdy atkhrj elsna eljay.",
-                exampleEn: "I want to graduate next year.",
-},
-        ],
-
-        extra: [
-            {
-                id: "youm_dirasah",
-                ar: "يَوْم دِرَاسَة",
-                en: "school / study day",
-                enArabeezy: "youm_diraseh",
-                hint: "Opposite: يَوْم إِجَازَة = day off.",
-                exampleAr: "الْخَمِيس عِنْدْنَا يَوْم دِرَاسَة طَوِيل.",
-                exampleArabeezy: "elkhmys 3ndna ywm drasa twyl.",
-                exampleEn: "On Thursday we have a long study day.",
-},
-            {
-                id: "sabt_lakhmis",
-                ar: "مِن السَّبْت لِلْخَمِيس",
-                en: "from Saturday to Thursday",
-                enArabeezy: "min_issabt_lil5amiis",
-                hint:
-                    "Typical study/work week in many Arab countries.",
-                exampleAr: "بَدْرُس مِن السَّبْت لِلْخَمِيس وَالجُمُعَة إِجَازَة.",
-                exampleArabeezy: "bdrs mn elsbt lelkhmys weljm3a ijaza.",
-                exampleEn: "I study from Saturday to Thursday and Friday is off.",
-},
-            {
-                id: "mu3adal",
-                ar: "مُعَدَّل",
-                en: "average / GPA",
-                enArabeezy: "mu3addal",
-                hint: "Study context: مُعَدَّل عَالِي / مُنْخَفِض.",
-                exampleAr: "بَدِّي مُعَدَّل عَالِي عَشَان أَلْقَى وَظِيفَة أَحْسَن.",
-                exampleArabeezy: "bdy m3dl 3aly 3shan alqa wzyfa a7sn.",
-                exampleEn: "I want a high GPA so I can find a better job.",
-},
-            {
-                id: "mahameh",
-                ar: "مَهَمّة",
-                en: "task",
-                enArabeezy: "mahameh",
-                hint: "Task at work or for a project.",
-                exampleAr: "كُل يَوم المُدير بِعْطيهِم مَهَمّات جْديدة.",
-                exampleArabeezy: "kl ywm elmdyr b3tyhm mhmat jdyda.",
-                exampleEn: "Every day the manager gives them new tasks.",
-},
-            {
-                id: "maw3ed",
-                ar: "مَوعِد",
-                en: "appointment / deadline",
-                enArabeezy: "maw3ed",
-                hint: "Time for a meeting or for submitting something.",
-                exampleAr: "مَوعِد تَسْليم المَشْروع بُكْرَة.",
-                exampleArabeezy: "mw3d tslym elmshrw3 bkra.",
-                exampleEn: "The deadline for submitting the project is tomorrow.",
-},
+                id: "banja7_barsob",
+                ar: "بَنْجَح / بَرْسُب",
+                en: "I pass / I fail",
+                enArabeezy: "banja7 / barsob",
+                hint: "Use with exams/subjects. Sensitive word; use carefully.",
+                exampleAr: "بَنْجَح فِي الاِمْتِحَان إِذَا بَدْرُس مْنِيح.",
+                exampleArabeezy: "banja7 fi el-imti7an iza badros mneeh.",
+                exampleEn: "I pass the exam if I study well.",
+            },
             {
                 id: "lazem",
-                ar: "لازِم",
+                ar: "لَازِم",
                 en: "must / have to",
                 enArabeezy: "lazem",
-                hint: "Used to express obligation.",
-                exampleAr: "لازِم أَدْرُس كْثير لِلْاِمْتِحان.",
-                exampleArabeezy: "lazm adrs kthyr lelamt7an.",
-                exampleEn: "I must study a lot for the exam.",
-},
+                hint: "Very useful for tasks/deadlines: لَازِم أَدْرُس / لَازِم أَخَلِّص.",
+                exampleAr: "لَازِم أَخَلِّص الوَاجِب اليَوم.",
+                exampleArabeezy: "lazem akhalliS el-wajeb el-yom.",
+                exampleEn: "I have to finish the homework today.",
+            },
             {
-                id: "ma_ba2dar",
-                ar: "ما بَقْدَر",
-                en: "I can’t / I’m not able",
-                enArabeezy: "ma_ba2dar",
-                hint:
-                    "Used when you don’t have time, energy, or possibility.",
-                exampleAr: "ما بَقْدَر أِطْلَع اليوم، عندي شُغُل.",
-                exampleArabeezy: "ma bqdr atl3 elywm, 3ndy shghl.",
-                exampleEn: "I can’t go out today, I have work.",
-},
+                id: "ba2dar",
+                ar: "بَقْدَر / مَا بَقْدَر",
+                en: "I can / I can't",
+                enArabeezy: "ba2dar / ma ba2dar",
+                hint: "Use for ability/time: بَقْدَر أَسَاعْدَك / مَا بَقْدَر اليَوم.",
+                exampleAr: "بَقْدَر أَسَاعْدَك بَعْد المُحَاضَرَة.",
+                exampleArabeezy: "ba2dar asa3dak ba3d el-mu7aDara.",
+                exampleEn: "I can help you after the lecture.",
+            },
+            {
+                id: "mashghool",
+                ar: "مَشْغُول / مَشْغُولَة",
+                en: "busy",
+                enArabeezy: "mashghool / mashghooleh",
+                hint: "Male: مَشْغُول. Female: مَشْغُولَة. Plural: مَشْغُولِين.",
+                exampleAr: "اليَوم أَنَا مَشْغُول كْتِير.",
+                exampleArabeezy: "el-yom ana mashghool kteer.",
+                exampleEn: "Today I am very busy.",
+            },
+            {
+                id: "jadwal",
+                ar: "جَدْوَل",
+                en: "schedule",
+                enArabeezy: "jadwal",
+                hint: "My schedule = جَدْوَلِي. Full schedule = جَدْوَلِي مَلْيَان.",
+                exampleAr: "جَدْوَلِي هَاد الأُسْبُوع مَلْيَان.",
+                exampleArabeezy: "jadwali had el-usboo3 malyan.",
+                exampleEn: "My schedule is full this week.",
+            },
+            {
+                id: "usboo3",
+                ar: "أُسْبُوع",
+                en: "week",
+                enArabeezy: "usboo3",
+                hint: "This week = الأُسْبُوع هَادَا. Next week = الأُسْبُوع الجَاي.",
+                exampleAr: "عِنْدِي اِمْتِحَان الأُسْبُوع الجَاي.",
+                exampleArabeezy: "3indi imti7an el-usboo3 el-jay.",
+                exampleEn: "I have an exam next week.",
+            },
+            {
+                id: "shahar",
+                ar: "شَهْر",
+                en: "month",
+                enArabeezy: "shahar",
+                hint: "In speech you can say شهر 6 / شهر ستة, or الشهر الجاي.",
+                exampleAr: "فِي شَهْر سِتَّة عِنْدِي اِمْتِحَانَات نِهَائِيَّة.",
+                exampleArabeezy: "fi shahar sitteh 3indi imti7anat niha2iyyeh.",
+                exampleEn: "In month six / June, I have final exams.",
+            },
+            {
+                id: "ayy_yom",
+                ar: "أَيّ يَوم؟",
+                en: "which day?",
+                enArabeezy: "ayy yom?",
+                hint: "Use with days: السَّبِت، الأَحَد، الاِتْنِين، التَّلَات، الأَرْبَعَا، الخَمِيس، الجُمْعَة.",
+                exampleAr: "أَيّ يَوم عِنْدَك اِمْتِحَان؟ يَوم الخَمِيس.",
+                exampleArabeezy: "ayy yom 3indak imti7an? yom el-khamees.",
+                exampleEn: "Which day do you have an exam? Thursday.",
+            },
+            {
+                id: "kam_sa3a",
+                ar: "كَم سَاعَة؟",
+                en: "how many hours?",
+                enArabeezy: "kam sa3a?",
+                hint: "Use for work, study, sleep, travel, and meetings.",
+                exampleAr: "كَم سَاعَة دَوَامَك اليَوم؟ أَرْبَع سَاعَات.",
+                exampleArabeezy: "kam sa3a dawamak el-yom? arba3 sa3at.",
+                exampleEn: "How many hours is your shift today? Four hours.",
+            },
+            {
+                id: "sabt_lakhmis",
+                ar: "مِن السَّبِت لِلْخَمِيس",
+                en: "from Saturday to Thursday",
+                enArabeezy: "min el-sabet lil-khamees",
+                hint: "Typical study/work week in many Arab countries.",
+                exampleAr: "بَدْرُس مِن السَّبِت لِلْخَمِيس وَالجُمْعَة إِجَازَة.",
+                exampleArabeezy: "badros min el-sabet lil-khamees w el-jum3a ijazeh.",
+                exampleEn: "I study from Saturday to Thursday and Friday is off.",
+            },
+            {
+                id: "mahameh",
+                ar: "مَهَمَّة",
+                en: "task",
+                enArabeezy: "mahammEh",
+                hint: "Task at work or for a project. Plural: مَهَمَّات.",
+                exampleAr: "المُدِير بِعْطِينِي مَهَمَّات جْدِيدَة كُلّ يَوم.",
+                exampleArabeezy: "el-mudeer bi3Teeni mahammat jdeedeh kul yom.",
+                exampleEn: "The manager gives me new tasks every day.",
+            },
             {
                 id: "wa2t_faDi",
-                ar: "وَقْت فاضي",
+                ar: "وَقْت فَاضِي",
                 en: "free time",
-                enArabeezy: "wa2t_faDi",
+                enArabeezy: "wa2t faDi",
                 hint: "Time without work or study.",
-                exampleAr: "ما عِنْدي وَقْت فاضي اليوم.",
-                exampleArabeezy: "ma 3ndy wqt fady elywm.",
+                exampleAr: "مَا عِنْدِي وَقْت فَاضِي اليَوم.",
+                exampleArabeezy: "ma 3indi wa2t faDi el-yom.",
                 exampleEn: "I have no free time today.",
-},
+            },
         ],
-    }
-    ,
+    },
 
-    // ====================================
-    // DIALOGUE (class + project + work + future)
-    // ====================================
     dialogue: {
-        lines: [
-            {
-                "speaker": "Majd",
-                "ar": "صباح الخير يا سارة، كيف جدولك اليوم؟",
-                "arArabeezy": "sba7 elkhyr ya sara, kyf jdwlk elywm?",
-                "en": "Good morning, Sara, how is your schedule today?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "صباح الخير يا مجد، جدّ جدولي ملخبط! عندي جامعة وشغل.",
-                "arArabeezy": "sba7 elkhyr ya mjd, jd jdwly mlkhbt! 3ndy jam3a wshghl.",
-                "en": "Good morning, Majd, my schedule is crazy! I have university and work."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "جَدّ؟ وين بَشْتِغِلي؟",
-                "arArabeezy": "jd?wyn bshtghly?",
-                "en": "Really? Where do you work?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "بَشْتِغِل دَوام جُزْئِي في مَكْتَب بِشِرْكَة صْغيرَة.",
-                "arArabeezy": "bshtghl dwam jzyy fy mktb bshrka sghyra.",
-                "en": "I work part-time in an office at a small company."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "قدّيش ساعات شغلك؟ وكم يوم بتدوامي",
-                "arArabeezy": "qdysh sa3at shghlk?wkm ywm btdwamy",
-                "en": "How long are your work hours? And how many days do you work?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "مِن التّْنين لَلخَميس، مِن السّاعَة تْنين لَلْخَمْسَة.",
-                "arArabeezy": "mn eltnyn lelkhmys, mn elsa3a tnyn lelkhmsa.",
-                "en": "From Monday to Thursday, from two o’clock to five."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "وطَبْعًا قبل هيك عَندِك مُحاضَرات بِالجامْعَة؟",
-                "arArabeezy": "wtb3a qbl hyk 3ndk m7adrat beljam3a?",
-                "en": "And of course before that you have lectures at the university?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "إي، الصُّبِح بَدْرُس، وبَعْدين بَروح عَالشُّغُل.",
-                "arArabeezy": "iy, elsb7 bdrs, wb3dyn brw7 3alshghl.",
-                "en": "Yes, in the morning I study, and then I go to work."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "ما بِتْحِسّي إنّو ما عِنْدِك وَقْت فاضي؟",
-                "arArabeezy": "ma bt7sy inw ma 3ndk wqt fady?",
-                "en": "Don’t you feel like you have no free time?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "بصِراحَةً، نادِرًا ما بْلاقي وَقْت فاضي. لاِزِم أَدْرُس لِلْمَشْروع وِلْاِمْتِحانات كْمان.",
-                "arArabeezy": "bsra7a, nadra ma blaqy wqt fady. lazm adrs lelmshrw3 wlamt7anat kman.",
-                "en": "Honestly, I rarely find free time. I have to study for the project and for exams too."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "وشُو مَجال الشُّغُل؟",
-                "arArabeezy": "wshw mjal elshghl?",
-                "en": "And what type of work is it?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "مُساعَدَة إِداريّة، بَطَبِّع أَوْراق، بِرُدّ عَالتّليفون، وَبَساعِد المُوَظَّفين.",
-                "arArabeezy": "msa3da idarya, btb3 awraq, brd 3altlyfwn, wbsa3d elmwzfyn.",
-                "en": "Administrative assistance: I print papers, answer the phone, and help the employees."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "بتحسّ إنو الشغل بيساعدك بدراستك، ولا بس بتعبك أكتر؟",
-                "arArabeezy": "bt7s inw elshghl bysa3dk bdrastk, wla bs bt3bk aktr?",
-                "en": "Do you feel that the job helps you with your studies, or does it just tire you out more?"
-            },
-            {
-                "speaker": "Sara",
-                "ar": "هُوَّ مُتْعِب، بَس كْمان بَتْعَلَّم مَهارات جْديدة.",
-                "arArabeezy": "hw mt3b, bs kman bt3lm mharat jdyda.",
-                "en": "It’s tiring, but I also learn new skills."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "أنا طالِب بَس، ما بَشْتِغِل هَلَّق. بس أَحْيانًا بَفَكِّر آخُد دَوام جُزْئِي.",
-                "arArabeezy": "ana talb bs, ma bshtghl hlq. bs a7yana bfkr aakhd dwam jzyy.",
-                "en": "I’m only a student, I don’t work right now. But sometimes I think about taking a part-time job."
-            },
-            {
-                "speaker": "Sara",
-                "ar": "إذا بَدَّك تِشْتِغِل، لازم تِنَظِّم وَقْتَك مْنيح.",
-                "arArabeezy": "idha bdk tshtghl, lazm tnzm wqtk mny7.",
-                "en": "If you want to work, you must organize your time well."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "عَنْ قريب عنا اِمْتِحانات، صَعِب أَفَكِّر بِشُغُل هَلَّق.",
-                "arArabeezy": "3n qryb 3na amt7anat, s3b afkr bshghl hlq.",
-                "en": "We have exams soon, it’s hard to think about work now."
-            },
-            {
-                "speaker": "Sara",
-                "ar": "مَزْبوط، الأَهَم هَلَّق الدِّراسَة. بَعْدين بِتْدَوِّر عَشُغُل مُناسِب.",
-                "arArabeezy": "mzbwt, elahm hlq eldrasa. b3dyn btdwr 3shghl mnasb.",
-                "en": "True, right now the most important thing is studying. Later you look for a suitable job."
-            },
-            {
-                "speaker": "Majd",
-                "ar": "إنْ شاءَ الله بَعْد ما أِتْخَرَّج أَلاقِي وَظِيفَة كْوَيْسِة.",
-                "arArabeezy": "in sha ellh b3d ma atkhrj alaqy wzyfa kwysa.",
-                "en": "Inshallah after I graduate I’ll find a good job."
-            },
-            {
-                "speaker": "Sara",
-                "ar": "وأنا كْمان، خَلِّينا نِرْكِز عَالدِّراسَة هَلَّق.",
-                "arArabeezy": "wana kman, khlyna nrkz 3aldrasa hlq.",
-                "en": "Me too; let’s focus on the studies for now."
-            }
-        ]
-    }
-    ,
-
-    // ====================================
-    // GRAMMAR
-    // ====================================
-
-  grammar: [
-        {
-            id: "indirect_object",
-            title: "Indirect Object (لـ)",
-            short: "Use لـ to show who receives the action.",
-            description:
-                `In spoken Arabic, we use لـ (la-) before the person who receives the action.
-It can sound like la / li and often attaches to pronouns.
-
-Pattern:
-Verb + thing + لـ + person.`,
-            table: {
-                title: "Common Patterns",
-                headers: ["Arabic Pattern", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["بـعطي + شي + لـ + شخص", "ba3Ti + shi + la + shakhs", "give + something + to", "Work/study"],
-                    ["ببعت + شي + لـ + شخص", "bib3at + shi + la + shakhs", "send + something + to", "Messages"],
-                    ["بشرح + شي + لـ + شخص", "bishra7 + shi + la + shakhs", "explain + something + to", "Class"],
-                    ["بقول + شي + لـ + شخص", "bi2ool + shi + la + shakhs", "say + something + to", "Advice"]
-                ]
-            },
-            examples: [
-                { ar: "بشرح الدرس للطلاب", arabeezy: "bishra7 ed-dars lil-Tullaab", en: "He explains the lesson to the students." },
-                { ar: "ببعت الإيميل للأستاذ", arabeezy: "bib3at el-email lil-ustaz", en: "She sends the email to the teacher." },
-                { ar: "بعطي الكتاب لصاحبي", arabeezy: "ba3Ti el-kitaab la-Sa7bi", en: "I give the book to my friend." },
-                { ar: "بقول النصيحة إلك", arabeezy: "bi2ool en-naSee7a ilik", en: "I give you (f) advice." },
-                { ar: "بشرحلك بسرعة", arabeezy: "bishra7lak bisur3a", en: "I explain to you quickly." }
-            ],
-            teacherNotes:
-                `Spoken often shortens "la" into -lak/-lik suffixes.
-MSA keeps full li/ila forms.
-Focus on meaning before spelling.
-Keep nouns and people simple.`,
-            commonMistakes: [
-                "Dropping لـ before the person",
-                "Putting لـ before the object",
-                "Using formal إلى in casual speech"
-            ],
-            functionalUse: "Use this when you give, send, explain, or say something to someone."
-        },
-        {
-            id: "telling_time",
-            title: "Telling the Time (الساعة)",
-            short: "Use الساعة + number to tell time.",
-            description:
-                `Time is said with الساعة + number.
-You can add ونص (half) or وربع (quarter).
-For 15 before the next hour: الساعة ستة إلا ربع.
-
-Use الساعة + number for clock time.`,
-            table: {
-                title: "Time Patterns",
-                headers: ["Arabic Pattern", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["الساعة + رقم", "es-sa3a + raqam", "It’s (time)", "Exact time"],
-                    ["الساعة + رقم ونص", "es-sa3a + raqam w nos", "half past", "30 min"],
-                    ["الساعة + رقم وربع", "es-sa3a + raqam w rob3", "quarter past", "15 min"],
-                    ["الساعة + رقم إلا ربع", "es-sa3a + raqam illa rob3", "quarter to", "45 min" ]
-                ]
-            },
-            examples: [
-                { ar: "الساعة خمسة", arabeezy: "es-sa3a khamsa", en: "It’s five." },
-                { ar: "الساعة خمسة ونص", arabeezy: "es-sa3a khamsa w nos", en: "It’s 5:30." },
-                { ar: "الساعة خمسة وربع", arabeezy: "es-sa3a khamsa w rob3", en: "It’s 5:15." },
-                { ar: "الساعة ستة إلا ربع", arabeezy: "es-sa3a sitta illa rob3", en: "It’s 5:45." },
-                { ar: "الساعة تسعة، عندي محاضرة", arabeezy: "es-sa3a tis3a, 3indi mu7aDarah", en: "It’s nine, I have a lecture." }
-            ],
-            teacherNotes:
-                `Spoken keeps one simple pattern; MSA uses more formal time phrases.
-Say time often in class to build fluency.
-Use real schedules and daily routines.
-Keep numbers consistent with learner level.`,
-            commonMistakes: [
-                "Forgetting الساعة",
-                "Mixing ordinal numbers with time",
-                "Confusing إلا ربع with وربع"
-            ],
-            functionalUse: "Use this for schedules, meetings, work hours, and class times."
-        }
+    title: "Work & Study - A Busy Student Day",
+    setting: "Mona and Samer talk before class about transportation, university, work, projects, online learning, and organizing time.",
+    lines: [
+        { speaker: "Mona", ar: "سَامِر، وِينَك؟ المُحَاضَرَة قَرَّبَت تِبْلَش.", arArabeezy: "samer, waynak? el-mo7aDara qarrabat tiblish.", en: "Samer, where are you? The lecture is about to start." },
+        { speaker: "Samer", ar: "وَالله بِالطَّرِيق، بَس الإِشَارَة وَاقْفَة وَالدُّنْيَا زَحْمَة.", arArabeezy: "wallah biT-Taree2, bas el-ishara wa2fe w ed-dinya za7me.", en: "I'm on the way, but the traffic light is stuck and it's crowded." },
+        { speaker: "Mona", ar: "رْكِبْت بَاص وَلَّا تَاكْسِي؟", arArabeezy: "rkibt baS wala taxi?", en: "Did you take a bus or a taxi?" },
+        { speaker: "Samer", ar: "بَاص طَبْعًا. التَّاكْسِي صَار بَدُّه مِيزَانِيَّة لَحَالُه.", arArabeezy: "baS Tab3an. et-taxi Sar baddo mizaniyye la7alo.", en: "A bus, of course. A taxi needs its own budget now." },
+        { speaker: "Mona", ar: "مَعَك حَقّ. بَس الحَق حَالَك، الدُّكْتُور مَا بْحِبّ حَدَا يِدْخُل مُتْأَخِّر.", arArabeezy: "ma3ak 7a2. bas el7a2 7alak, ed-doctor ma bi7ibb 7ada yodkhul mit2akhkher.", en: "You're right. But hurry up, the professor doesn't like anyone coming in late." },
+        { speaker: "Samer", ar: "عَارِف، عَارِف. أَصْلًا اليَوْم مِن أَوَّلُه مُلَخْبَط.", arArabeezy: "3aref, 3aref. aSlan el-yom min awwalo mlakhbaT.", en: "I know, I know. This day has been messy from the start." },
+        { speaker: "Mona", ar: "لِيش؟ شُو عِنْدَك؟", arArabeezy: "leesh? shoo 3indak?", en: "Why? What do you have?" },
+        { speaker: "Samer", ar: "جَامْعَة الصُّبُح، وَبَعْدَهَا دَوَام مِن تَلَاتَة لِسَبْعَة، وَبِاللَّيْل لَازِم أَشْتَغِل عَالمَشْرُوع.", arArabeezy: "jam3a eS-Sobo7, w ba3dha dawam min talate la-sab3a, w bil-leil lazem ashtighil 3al-mashroo3.", en: "University in the morning, then work from three to seven, and at night I have to work on the project." },
+        { speaker: "Mona", ar: "يَا سَاتِر، يَوْمَك طَوِيل.", arArabeezy: "ya sater, yomak Taweel.", en: "Wow, your day is long." },
+        { speaker: "Samer", ar: "مِش طَوِيل، هَادَا عُقُوبَة. 😂", arArabeezy: "mish Taweel, hada 3oqoobe.", en: "Not long, this is punishment." },
+        { speaker: "Mona", ar: "ههههه، شُو بِتِشْتَغِل بَعْد الجَامْعَة؟", arArabeezy: "hahaha, shoo btishtighil ba3d el-jam3a?", en: "Haha, what do you work after university?" },
+        { speaker: "Samer", ar: "بِمَكْتَب صْغِير. بَرُدّ عَالتِّلِفُون، بَكْتُب مِلَفَّات، وَبْسَاعِد المُوَظَّفِين.", arArabeezy: "bimaktab Sgheer. barodd 3at-telefon, baktob malafat, w bsa3id el-mwaZZafeen.", en: "At a small office. I answer the phone, write files, and help the employees." },
+        { speaker: "Mona", ar: "طَيِّب بْتِقْدَر تْوَازِن بَيْن الشُّغُل وَالدِّرَاسَة؟", arArabeezy: "Tayyib bti2dar twazin bein esh-shoghol w ed-dirase?", en: "Can you balance work and studying?" },
+        { speaker: "Samer", ar: "بَقْدَر، بَس بِصُعُوبَة. خُصُوصًا هَالأُسْبُوع، عِنْدِي اِمْتِحَان وَمَشْرُوع بِنَفْس الوَقْت.", arArabeezy: "ba2dar, bas biSo3oobe. khuSooSan hal-osboo3, 3indi imti7an w mashroo3 binafs el-wa2t.", en: "I can, but with difficulty. Especially this week, I have an exam and a project at the same time." },
+        { speaker: "Mona", ar: "مَوْعِد تَسْلِيم المَشْرُوع إِمْتَى؟", arArabeezy: "maw3id tasleem el-mashroo3 imta?", en: "When is the project deadline?" },
+        { speaker: "Samer", ar: "الخَمِيس، وَلِسَّه ضَايِل نُصُّه تَقْرِيبًا.", arArabeezy: "el-khamees, w lissa Dayel noSSo ta2reeban.", en: "Thursday, and about half of it is still left." },
+        { speaker: "Mona", ar: "مَع مِين شَغَّال عَلَيْه؟", arArabeezy: "ma3 meen shaghghal 3aleih?", en: "Who are you working on it with?" },
+        { speaker: "Samer", ar: "مَع أَنَس، بَس هُو كَمَان مَشْغُول وَدَوَامُه أَطْوَل مِن دَوَامِي.", arArabeezy: "ma3 anas, bas ho kaman mashghool w dawamo aTwal min dawami.", en: "With Anas, but he's also busy and his shift is longer than mine." },
+        { speaker: "Mona", ar: "طَيِّب بَعْد المُحَاضَرَة عِنْدِي سَاعَة فَاضْيَة. إِذَا بَدَّك بِنْرَاجِع مَع بَعْض.", arArabeezy: "Tayyib ba3d el-mo7aDara 3indi sa3a faDye. iza baddak binraji3 ma3 ba3D.", en: "After the lecture, I have a free hour. If you want, we can review together." },
+        { speaker: "Samer", ar: "جَد؟ وَالله بِتِنْقِذِينِي.", arArabeezy: "jad? wallah bitinqizeeni.", en: "Really? You'd honestly save me." },
+        { speaker: "Mona", ar: "بَس سَاعَة، بَعْدِين عِنْدِي دَرْس أُونْلَايْن.", arArabeezy: "bas sa3a, ba3dain 3indi dars online.", en: "Only one hour, then I have an online lesson." },
+        { speaker: "Samer", ar: "كِفَايَة. نْرَاجِع الدَّرْس الأَخِير وَنْرَتِّب أَفْكَار المَشْرُوع.", arArabeezy: "kifaye. nraji3 ed-dars el-akheer w nrattib afkar el-mashroo3.", en: "That's enough. We'll review the last lesson and organize the project ideas." },
+        { speaker: "Mona", ar: "إِنْت فَاهِم الدَّرْس الأَخِير؟", arArabeezy: "inta fahem ed-dars el-akheer?", en: "Do you understand the last lesson?" },
+        { speaker: "Samer", ar: "نُصّ نُصّ. كُنْت تَعْبَان وَمَا رَكَّزْت مْنِيح.", arArabeezy: "noSS noSS. kont ta3ban w ma rakkazt mnee7.", en: "Half and half. I was tired and didn't focus well." },
+        { speaker: "Mona", ar: "وَلَا يْهِمَّك. بِنِسْأَل الدُّكْتُور بَعْد المُحَاضَرَة إِذَا فِي نُقْطَة مِش وَاضْحَة.", arArabeezy: "wala yhimmak. binis2al ed-doctor ba3d el-mo7aDara iza fi no2Ta mish waD7a.", en: "Don't worry. We'll ask the professor after the lecture if there's anything unclear." },
+        { speaker: "Samer", ar: "تَمَام. بِالمُنَاسَبَة، إِنْتِ شُو عَامْلَة بِالكُورْس تَبَع التَّصْمِيم؟", arArabeezy: "tamam. bil-munasabe, inti shoo 3amle bil-course taba3 et-taSmeem?", en: "Great. By the way, how's your design course going?" },
+        { speaker: "Mona", ar: "مَاشْيَة فِيه شُوَي شُوَي. بَتْعَلَّم أُونْلَايْن بِاللَّيْل لَمَّا أَفْضَى.", arArabeezy: "mashye feeh shway shway. bat3allam online bil-leil lamma afDa.", en: "I'm moving through it slowly. I study online at night when I'm free." },
+        { speaker: "Samer", ar: "بَدَّك تِشْتَغْلِي فِيه بَعْدِين؟", arArabeezy: "baddak tishtaghli feeh ba3dain?", en: "Do you want to work in it later?" },
+        { speaker: "Mona", ar: "إِنْ شَاء الله. بَدِّي أَتْعَلَّم مْنِيح بِالأَوَّل، وَبَعْدَهَا أَدَوِّر عَلَى شُغُل.", arArabeezy: "inshallah. baddi at3allam mnee7 bil-awwal, w ba3dha adawwer 3ala shoghol.", en: "God willing. I want to learn well first, and then look for work." },
+        { speaker: "Samer", ar: "الله يْوَفْقِك. بَس كِيف بْتِلَاقِي وَقْت؟", arArabeezy: "allah ywafqik. bas keef btla2i wa2t?", en: "May God help you. But how do you find time?" },
+        { speaker: "Mona", ar: "بِالعَافْيَة. عِنْدِي جَامْعَة، وَاجِب عَرَبِي، وَبْسَاعِد إِمِّي بِالبَيْت بَعْد الغَدَا.", arArabeezy: "bil-3afye. 3indi jam3a, wajib 3arabi, w bsa3id immi bil-beit ba3d el-ghada.", en: "Barely. I have university, Arabic homework, and I help my mom at home after lunch." },
+        { speaker: "Samer", ar: "يَعْنِي كُلْنَا غَرْقَانِين.", arArabeezy: "ya3ni kolna ghar2aneen.", en: "So we're all drowning." },
+        { speaker: "Mona", ar: "آه، بَس إِذَا نَظَّمْنَا الوَقْت، بِنِلْحَق.", arArabeezy: "ah, bas iza naZZamna el-wa2t, binil7aq.", en: "Yes, but if we organize our time, we can manage." },
+        { speaker: "Samer", ar: "أَنَا مُشْكِلْتِي إِنِّي بْحُطّ خُطَّة وَبَكْسِرْهَا بِنَفْس اليَوْم.", arArabeezy: "ana moshkilti inni b7oT khoTTe w baksirha binafs el-yom.", en: "My problem is that I make a plan and break it the same day." },
+        { speaker: "Mona", ar: "لَأَنَّك بْتِحُطّ شُغُل يَوْمَيْن فِي يَوْم وَاحِد.", arArabeezy: "la2annak bti7oT shoghol yomain fi yom wa7ed.", en: "Because you put two days' worth of work into one day." },
+        { speaker: "Samer", ar: "صَحّ. اليَوْم كُنْت نَاوِي أَدْرُس، أَدَاوِم، أَخَلِّص المَشْرُوع، وَأَرُوح النَّادِي.", arArabeezy: "Sa77. el-yom kont nawi adros, adawim, akhalliS el-mashroo3, w aroo7 en-nadi.", en: "True. Today I was planning to study, work, finish the project, and go to the gym." },
+        { speaker: "Mona", ar: "اِنْسَ النَّادِي اليَوْم. خَلِّص المُهِمّ الأَوَّل.", arArabeezy: "insa en-nadi el-yom. khalliS el-mohimm el-awwal.", en: "Forget the gym today. Finish the important things first." },
+        { speaker: "Samer", ar: "بَعْرِف، بَس بَحِسّ إِنِّي مُقَصِّر لَمَّا أَأَجِّل.", arArabeezy: "ba3rif, bas ba7iss inni mqaSSir lamma a2ajjil.", en: "I know, but I feel like I'm falling short when I postpone." },
+        { speaker: "Mona", ar: "مِش تَقْصِير. الأَوْلَوِيَّات بْتِتْغَيَّر.", arArabeezy: "mish taqSeer. el-awlawiyyat btitghayyar.", en: "It's not falling short. Priorities change." },
+        { speaker: "Samer", ar: "مَعِك حَقّ.", arArabeezy: "ma3ik 7a2.", en: "You're right." },
+        { speaker: "Mona", ar: "وِين وْصِلْت هَلَّق؟", arArabeezy: "wayn wSilt halla2?", en: "Where have you reached now?" },
+        { speaker: "Samer", ar: "عِنْد بَاب الجَامْعَة.", arArabeezy: "3ind bab el-jam3a.", en: "At the university gate." },
+        { speaker: "Mona", ar: "اُدْخُل دَغْرِي. القَاعَة عَالشِّمَال، جَنْب المَكْتَبَة.", arArabeezy: "odkhol doghri. el-qa3a 3ash-shmal, janb el-maktabe.", en: "Go straight in. The hall is on the left, next to the library." },
+        { speaker: "Samer", ar: "تَمَام، شَايِفْهَا.", arArabeezy: "tamam, shayifha.", en: "Okay, I see it." },
+        { speaker: "Mona", ar: "يَلَّا بِسُرْعَة قَبْل مَا الدُّكْتُور يِسَكِّر البَاب.", arArabeezy: "yalla bisor3a 2abl ma ed-doctor ysakkir el-bab.", en: "Come on quickly before the professor closes the door." },
+        { speaker: "Samer", ar: "جَاي. وَبَعْد المُحَاضَرَة بِنْرَاجِع عَشَر دَقَايِق وَلَا سَاعَة؟", arArabeezy: "jay. w ba3d el-mo7aDara binraji3 3ashar da2aye2 wala sa3a?", en: "I'm coming. After the lecture, will we review for ten minutes or an hour?" },
+        { speaker: "Mona", ar: "حَسَب مَا نِلْحَق. نْبَلِّش بِعَشَر دَقَايِق، وَإِذَا احْتَجْت نْكَمِّل.", arArabeezy: "7asab ma nil7aq. nballish bi3ashar da2aye2, w iza i7tijt nkammil.", en: "Depends on what we manage. We'll start with ten minutes, and if you need, we'll continue." },
+        { speaker: "Samer", ar: "اتَّفَقْنَا. يِسْلَمُوا كْتِير.", arArabeezy: "ittafa2na. yislamu kteer.", en: "Deal. Thank you so much." },
+        { speaker: "Mona", ar: "وَلَا يْهِمَّك. بَس المَرَّة الجَايَة اِطْلَع أَبْكَر.", arArabeezy: "wala yhimmak. bas el-marra el-jaye iTla3 abkar.", en: "No problem. But next time, leave earlier." },
+        { speaker: "Samer", ar: "خَلَص، هَاي نَصِيحَة اليَوْم. 😂", arArabeezy: "khalaS, hay naSee7et el-yom.", en: "Okay, that's today's advice." }
     ],
 
+    questions: [
+        { ar: "لِيش سَامِر تَأَخَّر عَن المُحَاضَرَة؟", en: "Why was Samer late for the lecture?" },
+        { ar: "لِيش رْكِب بَاص بَدَل تَاكْسِي؟", en: "Why did he take a bus instead of a taxi?" },
+        { ar: "شُو جَدْوَل سَامِر اليَوْم؟", en: "What is Samer's schedule today?" },
+        { ar: "وِين سَامِر بِيِشْتَغِل؟", en: "Where does Samer work?" },
+        { ar: "شُو طَبِيعَة شُغْلُه؟", en: "What is the nature of his work?" },
+        { ar: "شُو عِنْد سَامِر هَالأُسْبُوع؟", en: "What does Samer have this week?" },
+        { ar: "إِمْتَى مَوْعِد تَسْلِيم المَشْرُوع؟", en: "When is the project deadline?" },
+        { ar: "مَع مِين سَامِر شَغَّال عَالمَشْرُوع؟", en: "Who is Samer working on the project with?" },
+        { ar: "كِيف مُونَا عَرَضَت تُسَاعْدُه؟", en: "How did Mona offer to help him?" },
+        { ar: "شُو بْتِتْعَلَّم مُونَا أُونْلَايْن؟", en: "What is Mona learning online?" },
+        { ar: "شُو عِنْد مُونَا غَيْر الجَامْعَة؟", en: "What does Mona have besides university?" },
+        { ar: "لِيش قَالَت مُونَا لِسَامِر يِنْسَى النَّادِي اليَوْم؟", en: "Why did Mona tell Samer to forget the gym today?" }
+    ],
+},
 
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
+                id: "work_mc1",
                 type: "match",
-                prompt: "Match the English word to Arabic: student (m/f)",
-                options: ["طالِب / طالْبِة", "مَدْرَسَة", "جَامْعَة", "قِسْم", "شِرْكَة"],
-                correct: "طالِب / طالْبِة",
+                prompt: "Match the English word to Arabic: university",
+                options: ["جَامْعَة", "شُغُل", "مَوْعِد", "زْمِيل"],
+                correct: "جَامْعَة",
             },
             {
-                id: "mc_complete_2",
-                type: "match",
-                prompt: "Match the English word to Arabic: teacher (m/f)",
-                options: ["مُعَلِّم / مُعَلِّمَة", "زْمِيل / زْمِيلَة", "مُدِير / مُدِيرَة", "مُوَظَّف / مُوَظَّفِة", "مُهَنْدِس / مُهَنْدِسَة"],
-                correct: "مُعَلِّم / مُعَلِّمَة",
-            },
-            {
-                id: "mc_reorder_3",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: My sister is a nurse in a hospital.",
-                options: ["أُختي", "مُمَرِّضَة", "في", "مُسْتَشْفَى"],
-                correct: ["أُختي", "مُمَرِّضَة", "في", "مُسْتَشْفَى"],
-            },
-            {
-                id: "mc_choose_4",
-                type: "choose",
-                prompt: "Choose the correct Arabic word for: subjects (school/university)",
-                options: ["مَوَادّ", "اِمْتِحَان", "وَاجِب", "مَشْرُوع", "مُحاضَرَة"],
-                correct: "مَوَادّ",
-            },
-            {
-                id: "mc_match_5",
-                type: "match",
-                prompt: "Match the English word to Arabic: break",
-                options: ["اِسْتِراحَة", "شُغُل", "وَظِيفَة", "دْوَام / دَوام", "بِدَوَّام كامِل"],
-                correct: "اِسْتِراحَة",
-            },
-            {
-                id: "mc_complete_6",
+                id: "work_mc2",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: I’m a student and I work part-time.\nأنا طالِب وبَشْتِغِل ___.",
-                options: ["دَوام جُزْئِي", "بَدْرُس", "بَتْعَلَّم", "بَسْأَل", "بَكَمِّل"],
-                correct: "دَوام جُزْئِي",
+                prompt: "Complete: عِنْدِي ___ مِن تَلَاتَة لَسَبْعَة.",
+                options: ["دَوَام", "فَلَافِل", "زَحْمَة", "سَلَطَة"],
+                correct: "دَوَام",
             },
             {
-                id: "mc_reorder_7",
+                id: "work_mc3",
                 type: "reorder",
-                prompt: "Reorder the Arabic words to match: I pass the exam if I study well.",
-                options: ["بَنْجَح", "فِي", "الاِمْتِحَان", "إِذَا", "بَدْرُس", "مْنِيح"],
-                correct: ["بَنْجَح", "فِي", "الاِمْتِحَان", "إِذَا", "بَدْرُس", "مْنِيح"],
+                prompt: "Reorder: I have an exam this week.",
+                options: ["عِنْدِي", "اِمْتِحَان", "الأُسْبُوع", "هَاد"],
+                correct: ["عِنْدِي", "اِمْتِحَان", "الأُسْبُوع", "هَاد"],
             },
             {
-                id: "mc_choose_8",
+                id: "work_mc4",
                 type: "choose",
-                prompt: "Choose the correct Arabic word for: I teach",
-                options: ["بَدَرِّس", "يِتْخَرَّج", "يَوْم دِرَاسَة", "مِن السَّبْت لِلْخَمِيس", "مُعَدَّل"],
-                correct: "بَدَرِّس",
+                prompt: "Choose the correct phrase for: I can help you.",
+                options: ["بَقْدَر أَسَاعْدَك", "مَا عِنْدِي وَقْت", "بَدِّي مَيّ", "بَنْزَل هِنَا"],
+                correct: "بَقْدَر أَسَاعْدَك",
             },
             {
-                id: "mc_match_9",
-                type: "match",
-                prompt: "Match the English word to Arabic: task",
-                options: ["مَهَمّة", "مَوعِد", "لازِم", "ما بَقْدَر", "وَقْت فاضي"],
-                correct: "مَهَمّة",
+                id: "work_mc5",
+                type: "complete",
+                prompt: "Complete: مَوْعِد تَسْلِيم المَشْرُوع ___.",
+                options: ["بُكْرَا", "قَرِيب", "جَعَان", "شَاي"],
+                correct: "بُكْرَا",
             },
         ],
     },
@@ -807,113 +550,133 @@ Keep numbers consistent with learner level.`,
     practice: {
         quiz: [
             {
-                id: "ws_q1",
-                questionAr: "«بَدْرُس هَنْدَسَة فِي الْجَامْعَة» مَعْنَاهَا:",
-                optionsEn: [
-                    "I teach engineering at the university.",
-                    "I study engineering at the university.",
-                    "I work in engineering at the university.",
-                ],
-                correctIndex: 1,
-            },
-            {
-                id: "ws_q2",
-                questionAr: "أَيّ كَلِمَة تِسْتَخْدِمْهَا لِـ ‘exam’؟",
-                optionsEn: [
-                    "مَشْرُوع",
-                    "اِمْتِحَان",
-                    "اِجْتِمَاع",
-                ],
-                correctIndex: 1,
-            },
-            {
-                id: "ws_q3",
-                questionAr: "«عِنْدِي شُغُل جُزْئِيّ» مَعْنَاهَا:",
-                optionsEn: [
-                    "I have a full-time job.",
-                    "I have a part-time job.",
-                    "I don’t have any job.",
-                ],
-                correctIndex: 1,
-            },
-            {
-                id: "ws_q4",
-                questionAr: "«بَنْجَح فِي الاِمْتِحَان إِذَا بَدْرُس مْنِيح» مَعْنَاهَا:",
-                optionsEn: [
-                    "I pass the exam if I study well.",
-                    "I fail the exam if I study well.",
-                    "I don’t have an exam if I study well.",
-                ],
+                id: "work_q1",
+                questionAr: "«عِنْدِي دَوَام مِن تَلَاتَة لَسَبْعَة» مَعْنَاهَا:",
+                optionsEn: ["I have a shift from three to seven.", "I have lunch from three to seven.", "I have a taxi from three to seven."],
                 correctIndex: 0,
             },
             {
-                id: "ws_q5",
-                questionAr: "أَيّ تَعْبِير مَعْنَاه ‘I learn Palestinian dialect online’؟",
-                optionsEn: [
-                    "بَدْرُس فِلَسْطِينِي فِي الْمَدْرَسَة.",
-                    "بَتْعَلَّم فِلَسْطِينِي أُونْلَايْن.",
-                    "بَشْتِغِل فِلَسْطِينِي أُونْلَايْن.",
-                ],
-                correctIndex: 1,
+                id: "work_q2",
+                questionAr: "«أَنَا طَالِب وَبَشْتِغِل دَوَام جُزْئِي» مَعْنَاهَا:",
+                optionsEn: ["I am a student and I work part-time.", "I am a manager and I work full-time.", "I am a teacher and I don't study."],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q3",
+                questionAr: "كِيف بِنْسْأَل عَن يَوم الاِمْتِحَان؟",
+                optionsEn: ["أَيّ يَوم عِنْدَك اِمْتِحَان؟", "شُو اِسْمَك؟", "قَدِّيش الأُجْرَة؟"],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q4",
+                questionAr: "«مَا عِنْدِي وَقْت فَاضِي اليَوم» مَعْنَاهَا:",
+                optionsEn: ["I have no free time today.", "I have a lot of food today.", "I have a taxi today."],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q5",
+                questionAr: "حَوِّل لِلْمُؤَنَّث: أَنَا مَشْغُول.",
+                optionsEn: ["أَنَا مَشْغُولَة.", "أَنَا مَشْغُولِين.", "أَنَا مُوَظَّف."],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q6",
+                questionAr: "كَمِّل: لَازِم ___ الوَاجِب اليَوم.",
+                optionsEn: ["أَخَلِّص", "أَرْكَب", "آكُل"],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q7",
+                questionAr: "«بَقْدَر أَسَاعْدَك بَعْد المُحَاضَرَة» مَعْنَاهَا:",
+                optionsEn: ["I can help you after the lecture.", "I can't eat after lunch.", "I get off after the lecture."],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q8",
+                questionAr: "«مِن السَّبِت لِلْخَمِيس» مَعْنَاهَا:",
+                optionsEn: ["from Saturday to Thursday", "from morning to night", "from home to university"],
+                correctIndex: 0,
+            },
+            {
+                id: "work_q9",
+                questionAr: "إِذَا بَدِّي أَحْكِي عَن deadline، بَسْتَخْدِم:",
+                optionsEn: ["مَوْعِد", "مَيّ", "خُبِز"],
+                correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 1: University introduction. Student A is the teacher; Student B is a new student. The teacher asks about name, what they study, in which university/department, and if they work as well. Student B answers using «بَدْرُس»، «بَتْعَلَّم»، «بَشْتِغِل»، and «عِنْدِي مَشْرُوع / اِمْتِحَان». Then switch roles.",
-            "Role-play 2: Exam week. Two students talk about their subjects and exams: which one is easy, which one is difficult, how they study, and what they need to pass. They use «مَادَّة»، «مَوَادّ»، «اِمْتِحَان»، «بَنْجَح»، «بَرْسُب»، and time words (next week, tomorrow, today).",
-            "Role-play 3: Future plans. Student A interviews Student B about their future after graduation: job they want, if they want a master’s, if they want to work online or in an office. Use «رَح» for future, «بِفَضَّل»، «وَظِيفَة»، and chunks like «بِصِدْق، بَدِّي…».",
+            "Busy student role-play: explain that you study, work part-time, have an exam, and have no free time.",
+            "Classmate help role-play: ask a classmate if they understand the lesson and offer help after the lecture.",
+            "Schedule role-play: ask and answer about work hours using كَم سَاعَة؟ and مِن... لَـ...",
+            "Deadline role-play: talk about a project deadline and what you must finish today.",
+            "Real-life challenge: explain your real study/work week in 8-10 sentences using old vocabulary from routine, transport, and food.",
         ],
         translation: [
-            { id: "work_t1", type: "enToAr", textEn: "I study at the university.", textAr: "أنا بدرس بالجامعة." },
-            { id: "work_t2", type: "arToEn", textEn: "I work online.", textAr: "أنا بشتغل أونلاين." },
-            { id: "work_t3", type: "enToAr", textEn: "I have an exam tomorrow.", textAr: "عندي امتحان بكرا." },
-            { id: "work_t4", type: "arToEn", textEn: "This subject is difficult.", textAr: "هالمادة صعبة." },
-            { id: "work_t5", type: "enToAr", textEn: "Do you want to get a master's?", textAr: "بدك تعمل ماستر؟" },
-            { id: "work_t6", type: "arToEn", textEn: "I need to pass this exam.", textAr: "لازم أنجح بهالامتحان." }
+            { id: "work_t1", type: "enToAr", textEn: "I am a student and I work part-time.", textAr: "أَنَا طَالِب/طَالْبِة وَبَشْتِغِل دَوَام جُزْئِي." },
+            { id: "work_t2", type: "arToEn", textEn: "My shift is from three to seven.", textAr: "دَوَامِي مِن تَلَاتَة لَسَبْعَة." },
+            { id: "work_t3", type: "enToAr", textEn: "This week I have an exam and a project.", textAr: "الأُسْبُوع هَاد عِنْدِي اِمْتِحَان وَمَشْرُوع." },
+            { id: "work_t4", type: "arToEn", textEn: "The project deadline is Thursday.", textAr: "مَوْعِد تَسْلِيم المَشْرُوع يَوم الخَمِيس." },
+            { id: "work_t5", type: "enToAr", textEn: "I have to finish the homework today.", textAr: "لَازِم أَخَلِّص الوَاجِب اليَوم." },
+            { id: "work_t6", type: "arToEn", textEn: "I can help you after the lecture.", textAr: "بَقْدَر أَسَاعْدَك بَعْد المُحَاضَرَة." },
+            { id: "work_t7", type: "enToAr", textEn: "I don't have free time today.", textAr: "مَا عِنْدِي وَقْت فَاضِي اليَوم." },
+            { id: "work_t8", type: "arToEn", textEn: "I study from Saturday to Thursday.", textAr: "بَدْرُس مِن السَّبِت لِلْخَمِيس." },
+            { id: "work_t9", type: "enToAr", textEn: "What time does the lecture start?", textAr: "أَيّ سَاعَة بِتْبَلِّش المُحَاضَرَة؟" },
+            { id: "work_t10", type: "arToEn", textEn: "The classroom is on the left.", textAr: "القَاعَة عَالشِّمَال." },
+            { id: "work_t11", type: "enToAr", textEn: "I was late because of traffic.", textAr: "اِتْأَخَّرْت عَشَان الزَّحْمَة." },
+            { id: "work_t12", type: "arToEn", textEn: "After class I want falafel and hummus.", textAr: "بَعْد الدَّرْس بَدِّي فَلَافِل وَحُمُّص." },
+            { id: "work_t13", type: "enToAr", textEn: "My mother is at home and I want to help her.", textAr: "إِمِّي فِي البِيت وَبَدِّي أَسَاعِدْهَا." },
+            { id: "work_t14", type: "arToEn", textEn: "If we organize time, we can finish.", textAr: "إِذَا نَظَّمْنَا الوَقْت، بِنَقْدَر نْخَلِّص." },
+            { id: "work_t15", type: "enToAr", textEn: "Thanks a lot, see you later.", textAr: "يِسْلَمُوا كْتِير، بِنْشُوفَك بَعْدِين." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Write and record a 60–90 second text in Palestinian Arabic about your work & study life. Include:\n" +
-            "• What you study (or studied) and where (school / university / online).\n" +
-            "• If you work now or want to work in the future (type of job / field).\n" +
-            "• At least 4 study words (like: مَادَّة، مَوَادّ، اِمْتِحَان، مَشْرُوع، وَاجِب).\n" +
-            "• At least 3 verbs from the unit (like: بَدْرُس، بَتْعَلَّم، بَشْتِغِل، بَفْهَم، بَنْجَح).\n" +
-            "Try to tell it like a story: past (what you studied before), present (what you do now), and future (what you want to do).",
+            `Write and record a 75-120 second story about your work or study life in Palestinian Arabic. Mention: what you study or where you work, your schedule, one busy day, one exam/project/task, how you get there, what you eat or drink during the day, and if you have free time. Try to use at least 10 words from this vocabulary list and at least 5 words from previous units.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Hi, how are you today?
+2. I am a student and I work part-time.
+3. My shift is from three to seven.
+4. Every morning I go to university by bus.
+5. There is traffic near the traffic light.
+6. This week I have an exam and a project.
+7. The project deadline is Thursday.
+8. I have to finish the homework today.
+9. I can help you after the lecture.
+10. I do not have free time today.
+11. After class I want falafel and hummus.
+12. My mother is at home and I want to help her.
+13. If we organize time, we can finish.
+14. What day do you have the exam?
+15. Thanks a lot, see you later.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "Start by asking in English about the student’s real situation: Are you studying now? Working? Both? Then map the answers into Arabic using the new verbs.",
-            "Write on the board two columns: STUDY and WORK. Let the student brainstorm words in English, then give or elicit the Palestinian Arabic equivalents.",
-            "Ask the student about their most difficult subject and their favorite subject, then introduce the words مَادَّة / مَوَادّ / اِمْتِحَان.",
+            "Recycle units 1-5 first: greeting, route to class/work, breakfast/coffee, and family responsibilities.",
+            "Ask: بتدرس؟ بتشتغل؟ عندك دوام؟ عندك امتحان؟ Keep answers personal.",
+            "Use a weekly mini-schedule to make days, hours, and deadlines concrete.",
         ],
         vocabularySteps: [
-            "Teach the study words in small groups: places (school, university, department), things (notebook, pen, laptop), and abstract words (exam, project, meeting).",
-            "Highlight singular/plural inside the hints: مَادَّة / مَوَادّ, دَفْتَر / دَفَاتِر, اِمْتِحَان / اِمْتِحَانَات, then let the student make at least one plural sentence.",
-            "Introduce the verb pairs clearly: بَدْرُس / بَتْعَلَّم, بَنْجَح / بَرْسُب, and practice with simple personalisation questions.",
+            "Teach chunks, not job lists: عندي دوام، عندي امتحان، لازم أخلص، بقدر أساعدك.",
+            "Keep time/days as support inside work-study talk, not a separate grammar section.",
+            "Recycle transport and routine vocabulary in examples: بروح عالجامعة بالباص، بتأخر عشان الزحمة.",
         ],
         dialogueSteps: [
-            "Use the dialogue as a script for real life: pause after each part and ask if it matches the student’s life or not.",
-            "Let the student retell the dialogue in the first person: instead of Roba / Mark / Yara, they talk about themselves using the same structures.",
-            "Encourage improvisation: change the field of study, type of job, number of subjects, but keep the grammatical frame.",
+            "Treat the dialogue as a realistic busy-student story.",
+            "Ask the student to retell Samer's day in five sentences.",
+            "Then replace Samer's day with the student's real study/work schedule.",
         ],
         practiceTips: [
-            "Focus error correction on high-frequency chunks: «بَدْرُس»، «بَتْعَلَّم»، «عِنْدِي…»، «رَح…»، and on correct use of present vs future.",
-            "When doing role-plays, allow the student to mix a bit of English if needed, but push them to keep all the key verbs and time words in Arabic.",
-            "If the student has a real graduation project or job, use it as content: help them build 3–4 strong sentences they can really reuse.",
+            "Push complete answers: عندي دوام من... لـ..., not just the hours.",
+            "Drill بقدر / ما بقدر with real tasks.",
+            "Ask follow-ups after every answer: أي يوم؟ أي ساعة؟ كم ساعة؟ ليش؟",
         ],
         wrapup: [
-            "End the lesson by summarising the student’s work & study story in a ‘clean’ Palestinian Arabic version, so they hear a strong model of their own life.",
-            "Ask the student to write 3 goals in Arabic for their study or work for the next six months using «بِدِّي» و«رَح».",
-            "Remind them of the homework and suggest they imagine they are introducing themselves to a new teacher or manager in Palestine.",
+            "Student explains their schedule in 60 seconds.",
+            "Student asks the teacher three work/study questions.",
+            "Student records the homework story.",
         ],
         myNotes: "",
     },

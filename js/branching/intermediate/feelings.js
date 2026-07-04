@@ -5,7 +5,7 @@ export const dialogueId = 'BD::' + LESSON_ID_FEELINGS;
 export const dialogue = {
   meta: {
     level: 'Intermediate',
-    unit: 'Feelings & Mental State',
+    unit: 'Feelings',
     title: 'Feelings - Team Stress Check Decisions',
     emotionalTracking: true,
     tensionCurve: true,

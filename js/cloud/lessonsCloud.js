@@ -11,6 +11,25 @@ const LESSONS_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 // Local buffer to avoid overwriting active teacher edits when a remote update arrives
 const remoteLessonBuffer = {}; // { [lessonId]: lessonObj }
 
+function cloneLesson(lesson) {
+    return JSON.parse(JSON.stringify(lesson));
+}
+
+function getLessonContentVersion(lesson) {
+    return Number(lesson?.meta?.contentVersion || 0);
+}
+
+function preferBundledLessonIfNewer(id, incomingLesson) {
+    const bundledLesson = window.defaultLessons?.[id];
+    if (
+        bundledLesson &&
+        getLessonContentVersion(bundledLesson) > getLessonContentVersion(incomingLesson)
+    ) {
+        return cloneLesson(bundledLesson);
+    }
+    return incomingLesson;
+}
+
 function getServerTimestamp() {
     return firebase.firestore.FieldValue.serverTimestamp();
 }
@@ -50,7 +69,7 @@ function saveLessonLocally(lessonId) {
 function applyCloudLessons(lessonMap) {
     Object.entries(lessonMap || {}).forEach(([id, lesson]) => {
         if (!lesson || typeof lesson !== "object") return;
-        window.lessons[id] = lesson;
+        window.lessons[id] = preferBundledLessonIfNewer(id, lesson);
         saveLessonLocally(id);
     });
 }
@@ -130,7 +149,7 @@ function subscribeLessonsFromCloud() {
                         return;
                     }
 
-                    window.lessons[id] = lesson;
+                    window.lessons[id] = preferBundledLessonIfNewer(id, lesson);
                     saveLessonLocally(id);
 
                     // If user is viewing this lesson right now, refresh view

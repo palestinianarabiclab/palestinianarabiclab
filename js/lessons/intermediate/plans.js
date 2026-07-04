@@ -1,650 +1,496 @@
 import { LESSON_ID_PLANS_FUTURE } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_PLANS_FUTURE;
+
 export const lesson = {
     meta: {
         level: "Intermediate",
         unit: "Plans & Future",
-        lessonTitle: "Unit 13 – Plans & Future",
+        lessonTitle: "Unit 13 - Plans & Future in Gaza Palestinian Arabic",
+        contentVersion: 2026070301,
     },
 
     overview: {
-        title: "Unit 13 – Plans & Future",
+        title: "Unit 13 - Plans & Future",
         description:
-            "In this unit, students learn how to talk about future plans, intentions, schedules, and dreams in Palestinian Arabic, using patterns like ‘I’m going to’, ‘I want to’, ‘I’m planning to’, and common time expressions.",
+            "Students learn how to talk naturally about plans, appointments, goals, and changes in schedule in Gaza Palestinian Arabic while recycling language from transportation, weather, work/study, apartment, opinions, and complaints.",
         goals: [
-            "Use ‘بَدّي’ and ‘رَح’ to talk about future and near plans.",
-            "Use common time expressions: today, tomorrow, next week, this year.",
-            "Talk about study, work, travel, and free-time plans.",
-            "Express intentions with ‘نَاوِي / حَابِب / مُخَطِّط’.",
-            "Ask other people about their plans and react naturally.",
+            "Talk about near plans for today, tomorrow, and this week.",
+            "Use natural future expressions like رَاح, بَدِّي, نَاوِي, and مُخَطِّط.",
+            "Ask about someone else's plans without sounding like a textbook.",
+            "Explain when a plan changes because of weather, traffic, work, or family.",
+            "Make a simple realistic plan with time, place, reason, and backup option.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can describe their plans for the week in 60-90 seconds.",
+            "The student can ask a friend about plans and respond naturally.",
+            "The student can explain a change in plans and suggest another time.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== BASIC FUTURE & INTENT =====
+            {
+                id: "khotta",
+                ar: "خُطَّة",
+                en: "plan",
+                enArabeezy: "khoTTa",
+                hint: "Plural: خُطَط. Use for personal plans, study plans, travel plans, or a backup plan.",
+                exampleAr: "عِنْدِي خُطَّة صْغِيرَة لِهَالأُسْبُوع.",
+                exampleArabeezy: "3indi khoTTa Sgheere la-hal-osboo3.",
+                exampleEn: "I have a small plan for this week.",
+            },
+            {
+                id: "khotat",
+                ar: "خُطَط",
+                en: "plans",
+                enArabeezy: "khoTaT",
+                hint: "Plural of خُطَّة. Natural question: شُو خُطَطَك لِليَوم؟",
+                exampleAr: "خُطَطِي هَالأُسْبُوع بَس دِرَاسَة وَشُغُل.",
+                exampleArabeezy: "khoTaTi hal-osboo3 bas dirase w shoghol.",
+                exampleEn: "My plans this week are just study and work.",
+            },
             {
                 id: "baddi",
-                ar: "بَدّي",
-                en: "I want / I’m going to (intention)",
+                ar: "بَدِّي",
+                en: "I want / I'm going to",
                 enArabeezy: "baddi",
-                hint:
-                    "Very common for simple plans: بَدّي أَدْرُس = I want to / I’m going to study.",
-                exampleAr: "بَدّي أَدْرُس بُكْرَا بَعْد الحصة.",
-                exampleArabeezy: "bdy adrs bkra b3d el7sa.",
-                exampleEn: "I’m going to study tomorrow after the lesson.",
+                hint: "Very common for intention. He wants = بَدُّه. She wants = بَدَّهَا. We want = بَدِّنَا.",
+                exampleAr: "بَدِّي أَرُوح عَالمَكْتَبَة بَعْد الدَّرْس.",
+                exampleArabeezy: "baddi aroo7 3al-maktabe ba3d ed-dars.",
+                exampleEn: "I want to go to the library after class.",
             },
             {
                 id: "ra7",
-                ar: "رَح",
-                en: "will (future marker)",
+                ar: "رَاح",
+                en: "will / going to",
                 enArabeezy: "ra7",
-                hint:
-                    "Used before the verb for planned/expected future: رَح أُسَافِر = I will travel.",
-                exampleAr: "بُكْرَا رَح أُصْحَى بدري.",
-                exampleArabeezy: "bkra r7 as7a bdry.",
-                exampleEn: "Tomorrow I will wake up early.",
+                hint: "Future marker before a verb: رَاح أَرُوح, رَاح يِيجِي, رَاح نِتْقَابَل.",
+                exampleAr: "بُكْرَا رَاح أَطْلَع بَدْرِي عَشَان المَوَاصَلَات.",
+                exampleArabeezy: "bukra ra7 aTla3 badri 3ashan el-mowaSalat.",
+                exampleEn: "Tomorrow I will leave early because of transportation.",
             },
             {
                 id: "nawi",
-                ar: "نَاوِي",
-                en: "I intend / I’m planning (inside myself)",
-                enArabeezy: "nawi",
-                hint:
-                    "Masc: نَاوِي، fem: نَاوْيَة. Use with ‘إِنِّي’: نَاوِي إِنِّي…",
-                exampleAr: "أَنَا نَاوْيَ  أُكَمِّل دِرَاسَة عَرَبِي.",
-                exampleArabeezy: "ana nawy akml drasa 3rby.",
-                exampleEn: "I intend to continue studying Arabic.",
+                ar: "نَاوِي / نَاوْيَة",
+                en: "intending / planning to",
+                enArabeezy: "nawi / nawye",
+                hint: "Male: نَاوِي. Female: نَاوْيَة. More personal than رَاح.",
+                exampleAr: "أَنَا نَاوْيَة أَدْرُس عَرَبِي كُلّ يَوم نُصّ سَاعَة.",
+                exampleArabeezy: "ana nawye adros 3arabi kul yom noSS sa3a.",
+                exampleEn: "I intend to study Arabic every day for half an hour.",
             },
             {
-                id: "mukhattat",
-                ar: "مخَطِّط",
-                en: "planning / I have a plan",
-                enArabeezy: "mukhattet",
-                hint:
-                    "Masc: مُخَطِّط، fem: مُخَطِّطَة. Stronger, more organized than نَاوِي.",
-                exampleAr: "مخَطِّط إِنِّي أُسَافِر بَعْد سَنَة.",
-                exampleArabeezy: "mkhtt iny asafr b3d sna.",
-                exampleEn: "I’m planning to travel in a year.",
+                id: "mukhattet",
+                ar: "مُخَطِّط / مُخَطِّطَة",
+                en: "planning / having a plan",
+                enArabeezy: "mukhaTTiT / mukhaTTiTa",
+                hint: "Use when the plan is more organized. Plural: مُخَطِّطِين.",
+                exampleAr: "مُخَطِّط أَخُد كُورْس جَدِيد الشَّهْر الجَاي.",
+                exampleArabeezy: "mukhaTTiT akhod course jadeed esh-shahr el-jay.",
+                exampleEn: "I'm planning to take a new course next month.",
             },
             {
                 id: "7abeb",
-                ar: "حَابِب",
-                en: "I’d like / I feel like (want in a soft way)",
-                enArabeezy: "7abeb",
-                hint:
-                    "Masc: حَابِب، fem: حَابْبَة. Softer than بَدّي.",
-                exampleAr: "حَابْبَ أَجَرِّب شِي جْدِيد هَالسَّنَة.",
-                exampleArabeezy: "7abb ajrb shy jdyd halsna.",
-                exampleEn: "I’d like to try something new this year.",
+                ar: "حَابِب / حَابَّة",
+                en: "would like / feel like",
+                enArabeezy: "7abeb / 7abbe",
+                hint: "Softer than بَدِّي. Good for polite plans and preferences.",
+                exampleAr: "حَابَّة أَزُور سِتِّي يَوم الجُمُعَة.",
+                exampleArabeezy: "7abbe azoor sitti yom el-jum3a.",
+                exampleEn: "I'd like to visit my grandmother on Friday.",
             },
             {
                 id: "lazem",
                 ar: "لَازِم",
                 en: "must / have to",
-                enArabeezy: "lazem",
-                hint:
-                    "Used for obligations, plans you ‘have to’ do.",
-                exampleAr: "لَازِم أُخَلِّص الوَاجِب قَبْل الجمعة.",
-                exampleArabeezy: "lazm akhls elwajb qbl eljm3a.",
-                exampleEn: "I have to finish the homework before Friday.",
-            },
-
-            // ===== TIME EXPRESSIONS =====
-            {
-                id: "elyoom",
-                ar: "اليَوْم",
-                en: "today",
-                enArabeezy: "elyoom",
-                hint: "",
-                exampleAr: "اليَوْم مَا عِنْدِي خُطَط كْتِير.",
-                exampleArabeezy: "elywm ma 3ndy khtt ktyr.",
-                exampleEn: "I don’t have many plans today.",
+                enArabeezy: "lazim",
+                hint: "Use for obligations: لَازِم أَخَلِّص, لَازِم أَرُوح, لَازِم أَرْتَاح.",
+                exampleAr: "لَازِم أَخَلِّص الوَاجِب قَبْل المَسَا.",
+                exampleArabeezy: "lazim akhalliS el-wajib qabel el-masa.",
+                exampleEn: "I have to finish the homework before evening.",
             },
             {
-                id: "bukra",
-                ar: "بُكْرَا",
-                en: "tomorrow",
-                enArabeezy: "bukra",
-                hint: "",
-                exampleAr: "بُكْرَا رَح أَقَابِل صَدِيقْتِي.",
-                exampleArabeezy: "bkra r7 aqabl sdyqty.",
-                exampleEn: "Tomorrow I will meet my friend.",
+                id: "mish_lazem",
+                ar: "مِش لَازِم",
+                en: "not necessary / don't have to",
+                enArabeezy: "mish lazim",
+                hint: "Useful for changing plans softly: مِش لَازِم اليَوم، بِنْخَلِّيهَا بُكْرَا.",
+                exampleAr: "مِش لَازِم نِطْلَع اليَوم إِذَا الجَوّ مَطَر.",
+                exampleArabeezy: "mish lazim niTla3 el-yom iza el-jaww maTar.",
+                exampleEn: "We don't have to go out today if the weather is rainy.",
             },
             {
-                id: "ba3d_bukra",
-                ar: "بَعْد بُكْرَا",
-                en: "the day after tomorrow",
-                enArabeezy: "ba3d bukra",
-                hint: "",
-                exampleAr: "بَعْد بُكْرَا بَدّي أُرَتِّب غُرْفْتِي.",
-                exampleArabeezy: "b3d bkra bdy artb ghrfty.",
-                exampleEn: "The day after tomorrow I’m going to tidy my room.",
+                id: "ma3ad",
+                ar: "مَوْعِد",
+                en: "appointment / scheduled time",
+                enArabeezy: "maw3id",
+                hint: "Plural: مَوَاعِيد. Use for doctor, class, technician, or meeting.",
+                exampleAr: "عِنْدِي مَوْعِد مَع الدُّكْتُور بَعْد بُكْرَا.",
+                exampleArabeezy: "3indi maw3id ma3 ed-doktor ba3d bukra.",
+                exampleEn: "I have a doctor's appointment the day after tomorrow.",
             },
             {
-                id: "hal_usbou3",
-                ar: "هَالْأُسْبُوع",
+                id: "nit2abal",
+                ar: "نِتْقَابَل",
+                en: "we meet",
+                enArabeezy: "nit2abal",
+                hint: "Natural for arranging with friends: نِتْقَابَل قُدَّام الجَامْعَة.",
+                exampleAr: "بِنِتْقَابَل قُدَّام الجَامْعَة السَّاعَة تِسْعَة.",
+                exampleArabeezy: "bnit2abal qoddam el-jam3a es-sa3a tis3a.",
+                exampleEn: "We'll meet in front of the university at nine.",
+            },
+            {
+                id: "balash",
+                ar: "بَلَّش / بِبَلِّش",
+                en: "started / starts",
+                enArabeezy: "ballash / biballish",
+                hint: "I start = بَبَلِّش. The class starts = الدَّرْس بِبَلِّش.",
+                exampleAr: "الدَّرْس بِبَلِّش السَّاعَة عَشَرَة.",
+                exampleArabeezy: "ed-dars biballish es-sa3a 3ashara.",
+                exampleEn: "The class starts at ten.",
+            },
+            {
+                id: "akhalles",
+                ar: "أَخَلِّص",
+                en: "I finish / complete",
+                enArabeezy: "akhalliS",
+                hint: "Use for work, homework, project, errands. We finish = نْخَلِّص.",
+                exampleAr: "بَدِّي أَخَلِّص الشُّغُل قَبْل مَا أَطْلَع.",
+                exampleArabeezy: "baddi akhalliS esh-shoghol qabel ma aTla3.",
+                exampleEn: "I want to finish work before I go out.",
+            },
+            {
+                id: "a2ajjel",
+                ar: "أَأَجِّل / نْأَجِّل",
+                en: "postpone / delay",
+                enArabeezy: "a2ajjel / n2ajjel",
+                hint: "Use when the plan moves to another time: نْأَجِّل لِبُكْرَا.",
+                exampleAr: "إِذَا الطَّرِيق زَحْمَة، بِنْأَجِّل المِشْوَار لِبُكْرَا.",
+                exampleArabeezy: "iza eT-Taree2 za7meh, bin2ajjel el-mishwar la-bukra.",
+                exampleEn: "If the road is crowded, we'll postpone the errand until tomorrow.",
+            },
+            {
+                id: "aghayer",
+                ar: "أَغَيِّر الخُطَّة",
+                en: "I change the plan",
+                enArabeezy: "aghayyer el-khoTTa",
+                hint: "Also: نْغَيِّر الخُطَّة = we change the plan.",
+                exampleAr: "لَوْ نِزِل مَطَر، بِنْغَيِّر الخُطَّة.",
+                exampleArabeezy: "law nizil maTar, binghayyer el-khoTTa.",
+                exampleEn: "If it rains, we'll change the plan.",
+            },
+            {
+                id: "kheyar_tani",
+                ar: "خِيَار تَانِي",
+                en: "another option / backup option",
+                enArabeezy: "khiyar tani",
+                hint: "Useful when a plan might not work: عِنْدِنَا خِيَار تَانِي.",
+                exampleAr: "إِذَا التَّاكْسِي غَالِي، عِنْدِنَا خِيَار تَانِي: بَاص.",
+                exampleArabeezy: "iza et-taxi ghali, 3indna khiyar tani: baS.",
+                exampleEn: "If the taxi is expensive, we have another option: bus.",
+            },
+            {
+                id: "inzaabat",
+                ar: "زَبَطَت / بِتِزْبَط",
+                en: "it worked out / it works",
+                enArabeezy: "zabaTat / bitizbaT",
+                hint: "Very common for plans. If it works = إِذَا زَبَطَت.",
+                exampleAr: "إِذَا زَبَطَت مَعَك، نِتْقَابَل بَعْد الدَّرْس.",
+                exampleArabeezy: "iza zabaTat ma3ak, nit2abal ba3d ed-dars.",
+                exampleEn: "If it works for you, we'll meet after class.",
+            },
+            {
+                id: "ma_zabatat",
+                ar: "مَا زَبَطَت",
+                en: "it didn't work out",
+                enArabeezy: "ma zabaTat",
+                hint: "Natural when explaining changed plans: مَا زَبَطَت مَعِي اليَوم.",
+                exampleAr: "مَا زَبَطَت مَعِي اليَوم، بِنْخَلِّيهَا بُكْرَا.",
+                exampleArabeezy: "ma zabaTat ma3i el-yom, binkhalliha bukra.",
+                exampleEn: "It didn't work for me today; we'll leave it for tomorrow.",
+            },
+            {
+                id: "binkhalliha",
+                ar: "بِنْخَلِّيهَا",
+                en: "we leave it / schedule it for",
+                enArabeezy: "binkhalliha",
+                hint: "Use with time: بِنْخَلِّيهَا بُكْرَا / بَعْد الدَّرْس / الأُسْبُوع الجَاي.",
+                exampleAr: "خَلِّينَا نْخَلِّيهَا بَعْد الدَّرْس.",
+                exampleArabeezy: "khallina nkhalliha ba3d ed-dars.",
+                exampleEn: "Let's leave it for after class.",
+            },
+            {
+                id: "hal_osboo3",
+                ar: "هَالأُسْبُوع",
                 en: "this week",
-                enArabeezy: "hal usbou3",
-                hint: "",
-                exampleAr: "هَالْأُسْبُوع عِنْدِي مِشَارِيع كْتِير.",
-                exampleArabeezy: "halasbw3 3ndy mshary3 ktyr.",
-                exampleEn: "This week I have many projects.",
+                enArabeezy: "hal-osboo3",
+                hint: "Week = أُسْبُوع. Next week = الأُسْبُوع الجَاي.",
+                exampleAr: "هَالأُسْبُوع عِنْدِي دَوَام وَمَوَاعِيد كْتِير.",
+                exampleArabeezy: "hal-osboo3 3indi dawam w mawa3eed kteer.",
+                exampleEn: "This week I have work hours and many appointments.",
             },
             {
-                id: "jاي_ousbou3",
-                ar: "الأُسْبُوع الجَّاي",
+                id: "el_osboo3_el_jay",
+                ar: "الأُسْبُوع الجَاي",
                 en: "next week",
-                enArabeezy: "il usbou3 il jay",
-                hint: "",
-                exampleAr: "الأُسْبُوع الجَّاي رَح نِبْدَى وَحْدَة جْدِيدَة.",
-                exampleArabeezy: "elasbw3 eljay r7 nbda w7da jdyda.",
-                exampleEn: "Next week we will start a new unit.",
+                enArabeezy: "el-osboo3 el-jay",
+                hint: "Use for near future plans. Short in speech: الأُسْبُوع الجَاي.",
+                exampleAr: "الأُسْبُوع الجَاي رَاح أَبَلِّش شُغُل جَدِيد.",
+                exampleArabeezy: "el-osboo3 el-jay ra7 aballish shoghol jadeed.",
+                exampleEn: "Next week I will start a new job.",
             },
             {
-                id: "shahr_jاي",
-                ar: "الشَّهِر الجَّاي",
+                id: "esh_shahr_el_jay",
+                ar: "الشَّهْر الجَاي",
                 en: "next month",
-                enArabeezy: "ish-shahr il jay",
-                hint: "",
-                exampleAr: "الشَّهِر الجَّاي نَاوِي أَبْلِش رِيَاضَة.",
-                exampleArabeezy: "elshhr eljay nawy ablsh ryada.",
-                exampleEn: "Next month I intend to start doing exercise.",
+                enArabeezy: "esh-shahr el-jay",
+                hint: "Month = شَهْر. Useful for course, travel, rent, appointment, or big plans.",
+                exampleAr: "الشَّهْر الجَاي بَدِّي أَدْفَع الإِيجَار بَدْرِي.",
+                exampleArabeezy: "esh-shahr el-jay baddi adfa3 el-ijar badri.",
+                exampleEn: "Next month I want to pay the rent early.",
             },
             {
-                id: "hal_saneh",
+                id: "hal_sane",
                 ar: "هَالسَّنَة",
                 en: "this year",
-                enArabeezy: "hal saneh",
-                hint: "",
-                exampleAr: "هَالسَّنَة حَابِب أُسَافِر مَرَّة وَاحْدَة عَالأَقَلّ.",
-                exampleArabeezy: "halsna 7abb asafr mra wa7da 3alaql.",
-                exampleEn: "This year I’d like to travel at least once.",
+                enArabeezy: "hal-sane",
+                hint: "Use for bigger goals: study, work, travel, health.",
+                exampleAr: "هَالسَّنَة نَاوِي أُحَسِّن عَرَبِي أَكْتَر.",
+                exampleArabeezy: "hal-sane nawi a7assin 3arabi aktar.",
+                exampleEn: "This year I intend to improve my Arabic more.",
             },
             {
-                id: "saneh_jayyeh",
-                ar: "السَّنَة الجَّاي",
-                en: "next year",
-                enArabeezy: "is-saneh il jayyeh",
-                hint: "",
-                exampleAr: "السَّنَة الجَّاي مُخَطِّط أَكْمِّل مُسْتَوَى أَعْلَى.",
-                exampleArabeezy: "elsna eljay mkhtt akml mstwa a3la.",
-                exampleEn: "Next year I’m planning to complete a higher level.",
+                id: "yom_el_jum3a",
+                ar: "يَوم الجُمُعَة",
+                en: "Friday",
+                enArabeezy: "yom el-jum3a",
+                hint: "Use days inside plans. Other days can appear in examples: السَّبْت، الأَحَد، الاتْنِين.",
+                exampleAr: "يَوم الجُمُعَة رَاح نْزُور سِتِّي إِن شَاء الله.",
+                exampleArabeezy: "yom el-jum3a ra7 nzoor sitti inshallah.",
+                exampleEn: "On Friday we'll visit my grandmother, God willing.",
             },
             {
-                id: "ba3deen",
-                ar: "بَعْدِين",
-                en: "later / after that",
-                enArabeezy: "ba3deen",
-                hint: "Useful connector for future sequences.",
-                exampleAr: "بَدّي أَدْرُس شْوَيّ، بَعْدِين أَتْفَرَّج عَلَى فِلْم.",
-                exampleArabeezy: "bdy adrs shwy, b3dyn atfrj 3la flm.",
-                exampleEn: "I’m going to study a bit, then watch a movie.",
-            },
-
-            // ===== TYPES OF PLANS =====
-            {
-                id: "mashrou3",
-                ar: "مَشْرُوع",
-                en: "project",
-                enArabeezy: "mashrou3",
-                hint: "Study or work project.",
-                exampleAr: "عِنْدِي مَشْرُوع كْبِير لِلنِّهَاية السَّنَة.",
-                exampleArabeezy: "3ndy mshrw3 kbyr lelnhaya elsna.",
-                exampleEn: "I have a big project for the end of the year.",
-            },
-
-            {
-                id: "safar",
-                ar: "سَفَر",
-                en: "travel",
-                enArabeezy: "safar",
-                hint: "",
-                exampleAr: "حَابِب أَخَطِّط لِسَفَر قَصِير فِي الصَّيْف.",
-                exampleArabeezy: "7abb akhtt lsfr qsyr fy elsyf.",
-                exampleEn: "I’d like to plan a short trip in summer.",
+                id: "ba3d_el_dars",
+                ar: "بَعْد الدَّرْس",
+                en: "after class",
+                enArabeezy: "ba3d ed-dars",
+                hint: "A useful time chunk from Unit 1 classroom language.",
+                exampleAr: "بَعْد الدَّرْس بَدِّي أَرُوح عَالسُّوق.",
+                exampleArabeezy: "ba3d ed-dars baddi aroo7 3as-sooq.",
+                exampleEn: "After class I want to go to the market.",
             },
             {
-                id: "i3tlah",
-                ar: "عُطْلَة",
-                en: "holiday / vacation",
-                enArabeezy: "3otleh",
-                hint: "",
-                exampleAr: "بِالعُطْلَة بَدّي أَرِيح وَأَنَام كْتِير.",
-                exampleArabeezy: "bel3tla bdy ary7 wanam ktyr.",
-                exampleEn: "In the holiday I’m going to rest and sleep a lot.",
-            },
-
-            // ===== ASKING ABOUT PLANS =====
-            {
-                id: "shoo_mokhattatak",
-                ar: "شُو مُخَطَّطَاتَك؟",
-                en: "What are your plans?",
-                enArabeezy: "shoo mukhattatatak?",
-                hint:
-                    "Masc/fem the same if you drop the ending in speech: مُخَطَّطَاتَك.",
-                exampleAr: "شُو مُخَطَّطَاتَك لِهَالسَّنَة؟",
-                exampleArabeezy: "shw mkhttatk lhalsna?",
-                exampleEn: "What are your plans for this year?",
+                id: "qabel_ma",
+                ar: "قَبْل مَا...",
+                en: "before...",
+                enArabeezy: "qabel ma...",
+                hint: "Use before a verb: قَبْل مَا أَطْلَع، قَبْل مَا أَنَام، قَبْل مَا يِنْزِل المَطَر.",
+                exampleAr: "بَدِّي أَخَلِّص الوَاجِب قَبْل مَا أَنَام.",
+                exampleArabeezy: "baddi akhalliS el-wajib qabel ma anam.",
+                exampleEn: "I want to finish the homework before I sleep.",
             },
             {
-                id: "shoo_baddak_t3mel",
-                ar: "شُو بَدَّك تِعْمِل بُكْرَا؟",
-                en: "What do you want to do tomorrow?",
-                enArabeezy: "shoo baddak t3mel bukra?",
-                hint:
-                    "Fem: شُو بَدِّك تِعْمْلِي؟ You can keep 1 entry & explain here.",
-                exampleAr: "شُو بَدِّك تِعْمْلِي بُكْرَا بَعْد الدَّرْس؟",
-                exampleArabeezy: "shw bdk t3mly bkra b3d eldrs?",
-                exampleEn: "What do you want to do tomorrow after the lesson?",
+                id: "ba3d_ma",
+                ar: "بَعْد مَا...",
+                en: "after...",
+                enArabeezy: "ba3d ma...",
+                hint: "Use before a verb: بَعْد مَا أَخَلِّص، بَعْد مَا أُوصَل، بَعْد مَا أَرْجَع.",
+                exampleAr: "بَعْد مَا أُوصَل، بَبْعَتْلَك رِسَالَة.",
+                exampleArabeezy: "ba3d ma ooSal, bab3atlak risale.",
+                exampleEn: "After I arrive, I'll send you a message.",
             },
             {
-                id: "3indak_khatta",
-                ar: "عِنْدَك خُطَّة؟",
-                en: "Do you have a plan?",
-                enArabeezy: "3indak khitta?",
-                hint: "",
-                exampleAr: "لِوِيكِينْد، عِنْدَك خُطَّة أَو لِسَّه؟",
-                exampleArabeezy: "lwykynd, 3ndk khta aw lsh?",
-                exampleEn: "For the weekend, do you have a plan or not yet?",
+                id: "inshallah",
+                ar: "إِن شَاء الله",
+                en: "God willing / hopefully",
+                enArabeezy: "inshallah",
+                hint: "Very natural with future plans. It softens certainty.",
+                exampleAr: "إِن شَاء الله بُكْرَا الجَوّ بِكُون أَحْسَن.",
+                exampleArabeezy: "inshallah bukra el-jaww bikoon a7san.",
+                exampleEn: "Hopefully tomorrow the weather will be better.",
             },
             {
-                id: "ma3_time",
-                ar: "لِبَعْدِين / لِبَعْد شْوَيّ",
-                en: "for later",
-                enArabeezy: "lba3deen / lba3d shway",
-                hint: "Used when arranging time: لِبَعْدِين = for later.",
-                exampleAr: "خَلِّينَا نِخَلِّي الدَّرْس لِبَعْدِين.",
-                exampleArabeezy: "khlyna nkhly eldrs lb3dyn.",
-                exampleEn: "Let’s leave the lesson for later.",
+                id: "iza_sar_ishi",
+                ar: "إِذَا صَار إِشِي",
+                en: "if something happens",
+                enArabeezy: "iza Sar ishi",
+                hint: "Useful backup phrase when plans are uncertain.",
+                exampleAr: "إِذَا صَار إِشِي، بِرِنّ عَلَيْك قَبْل المَوْعِد.",
+                exampleArabeezy: "iza Sar ishi, birinn 3aleek qabel el-maw3id.",
+                exampleEn: "If something happens, I'll call you before the appointment.",
+            },
+            {
+                id: "ma_tit2akhkhar",
+                ar: "مَا تِتْأَخَّر",
+                en: "don't be late",
+                enArabeezy: "ma tit2akhkhar",
+                hint: "To a woman: مَا تِتْأَخَّرِي. To a group: مَا تِتْأَخَّرُوا.",
+                exampleAr: "مَا تِتْأَخَّر، الطَّرِيق اليَوم زَحْمَة.",
+                exampleArabeezy: "ma tit2akhkhar, eT-Taree2 el-yom za7meh.",
+                exampleEn: "Don't be late, the road is crowded today.",
+            },
+            {
+                id: "khalliha_3alay",
+                ar: "خَلِّيهَا عَلَيّ",
+                en: "leave it to me / I'll handle it",
+                enArabeezy: "khalliha 3alay",
+                hint: "Natural Gaza-style reassurance. To a woman speaking: خَلِّيهَا عَلَيّ also works.",
+                exampleAr: "التَّاكْسِي؟ خَلِّيهَا عَلَيّ، بَرِنّ عَلَيْه هَلِّق.",
+                exampleArabeezy: "et-taxi? khalliha 3alay, birinn 3aleh halla2.",
+                exampleEn: "The taxi? Leave it to me, I'll call him now.",
+            },
+            {
+                id: "ma_tishil_hamm",
+                ar: "مَا تِشِيل هَمّ",
+                en: "don't worry",
+                enArabeezy: "ma tisheel hamm",
+                hint: "To a woman: مَا تِشِيلِي هَمّ. Common reassurance.",
+                exampleAr: "مَا تِشِيل هَمّ، عِنْدِنَا خِيَار تَانِي.",
+                exampleArabeezy: "ma tisheel hamm, 3indna khiyar tani.",
+                exampleEn: "Don't worry, we have another option.",
+            },
+            {
+                id: "allah_yisahhil",
+                ar: "الله يِسَهِّل",
+                en: "may God make it easy",
+                enArabeezy: "allah yisahhil",
+                hint: "Natural reaction to someone's plan, travel, work, study, or appointment.",
+                exampleAr: "عِنْدَك مَوْعِد بُكْرَا؟ الله يِسَهِّل.",
+                exampleArabeezy: "3indak maw3id bukra? allah yisahhil.",
+                exampleEn: "You have an appointment tomorrow? May God make it easy.",
             },
         ],
+    },
 
-        extra: [
-            {
-                id: "ahdaf",
-                ar: "أَهْدَاف",
-                en: "goals",
-                enArabeezy: "ahdaf",
-                hint: "Singular: هَدَف.",
-                exampleAr: "عِنْدِي أَهْدَاف لِهَالسَّنَة فِي الدِّرَاسَة وَاللُّغَة.",
-                exampleArabeezy: "3ndy ahdaf lhalsna fy eldrasa wellgha.",
-                exampleEn: "I have goals for this year in study and language.",
-            },
-            {
-                id: "tadreejan",
-                ar: "تَدْرِيجِيًّا",
-                en: "gradually",
-                enArabeezy: "tadreejeyyan",
-                hint: "",
-                exampleAr: "بَدّي أَتْقَدَّم تَدْرِيجِيًّا يَعْنِي شْوَيّ شْوَيّ.",
-                exampleArabeezy: "bdy atqdm tdryjya y3ny shwy shwy.",
-                exampleEn: "I want to progress gradually, step by step.",
-            },
-            {
-                id: "illa_iza",
-                ar: "إِلَّا إِذَا",
-                en: "unless / except if",
-                enArabeezy: "illa iza",
-                hint: "Used when plan might change.",
-                exampleAr: "رَح أِجِي عَالدَّرْس، إِلَّا إِذَا طَلَع شِي طَارِئ.",
-                exampleArabeezy: "r7 ajy 3aldrs, ila idha tl3 shy tary.",
-                exampleEn: "I will come to the lesson, unless something urgent comes up.",
-            },
-            {
-                id: "tanzim_wa2t",
-                ar: "تَنْظِيم وَقْت",
-                en: "time management",
-                enArabeezy: "tanzeem wa2t",
-                hint: "",
-                exampleAr: "هَدَفِي هَالسَّنَة أُحَسِّن تَنْظِيم الوَقْت عِنْدِي.",
-                exampleArabeezy: "hdfy halsna a7sn tnzym elwqt 3ndy.",
-                exampleEn: "My goal this year is to improve my time management.",
-            },
-        ],
-    }
-    ,
-
-    // ====================================
-    // DIALOGUE – LONG SCENES
-    // ====================================
-    dialogue: {
-        lines: [
-            {
-                "speaker": "Omar",
-                "ar": "هاي يا مَلِك، كِيفِك اليوم؟",
-                "arArabeezy": "hay ya mlk, kyfk elywm?",
-                "en": "Hey Malek, how are you today?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "هَلَّقيت تَعْبان شْوَي، بَس مَبْسوط عَالخِطَط لِلأُسْبوع الجّاي.",
-                "arArabeezy": "hlqyt t3ban shwy, bs mbswt 3alkhtt lelasbw3 eljay.",
-                "en": "I’m a bit tired now, but I’m happy about the plans for next week."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "جَدّ؟ قُول، شُو مُخَطِّط تِعْمِل؟",
-                "arArabeezy": "jd?qwl, shw mkhtt t3ml?",
-                "en": "Really? Tell me, what are you planning to do?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "الأُسْبوع الجّاي رَح أِبْلِّش تَدْرِيب بِشِرْكَة سوفتْوِير.",
-                "arArabeezy": "elasbw3 eljay r7 ablsh tdryb bshrka swftwyr.",
-                "en": "Next week I’ll start an internship at a software company."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "واو، مُمْتاز! صار لَك زَمان ناوي عَهاد الاشي.",
-                "arArabeezy": "waw, mmtaz! sar lk zman nawy 3had elashy.",
-                "en": "Wow, that’s great! You’ve been intending to do that for a long time."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "إي، بِرَأْيي هاي خُطْوَة خُطْوَة لِلْمُسْتَقْبَل.",
-                "arArabeezy": "iy, brayy hay khtwa khtwa lelmstqbl.",
-                "en": "Yes, in my opinion it’s a step-by-step move for the future."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "طيب وإجازَة الصَّيْف؟ رَح تِسافِر وِلّا كُلَّه شُغُل؟",
-                "arArabeezy": "tyb wijaza elsyf?r7 tsafr wla klh shghl?",
-                "en": "And the summer vacation? Will you travel or is it all work?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "حابِب أُسافِر أُسْبوع، بَس أوَّل إِشي بَدّي أُوَفِّر مَصاري.",
-                "arArabeezy": "7abb asafr asbw3, bs awl ishy bdy awfr msary.",
-                "en": "I’d like to travel for a week, but first I want to save money."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "بتمنى يِزْبُط مَعَك. أنا خِطّتي أِتْخَرَّج السَّنَة الجّاي.",
-                "arArabeezy": "btmna yzbt m3k. ana khtty atkhrj elsna eljay.",
-                "en": "Hopefully it works out. My plan is to graduate next year."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "وبَعْدين؟ بَعْد التَّخَرُّج، شُو ناوي تِعْمِل؟",
-                "arArabeezy": "wb3dyn?b3d eltkhrj, shw nawy t3ml?",
-                "en": "And then? After graduation, what do you intend to do?"
-            },
-            {
-                "speaker": "Omar",
-                "ar": "لَسّه القَرار مِش نِهائي، بَس ناوي أَقَدِّم عَشُغُل وبِنْفَس الوَقْت أُكَمِّل دِراسَة.",
-                "arArabeezy": "lsh elqrar msh nhayy, bs nawy aqdm 3shghl wbnfs elwqt akml drasa.",
-                "en": "The decision is not final yet, but I intend to apply for a job and at the same time continue studying."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "مش مستعجل شوي؟ هاد شغل كتير على شخص واحد.",
-                "arArabeezy": "msh mst3jl shwy?had shghl ktyr 3la shkhs wa7d.",
-                "en": "Aren’t you rushing it a bit? It’s a lot of work for one person."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "مَبْسوط بِالفِكْرَة، بَس إذا شُفْت ضَغْط كْثير مُمْكِن أَجِّل واحِد مِن الهَدَفين.",
-                "arArabeezy": "mbswt belfkra, bs idha shft dght kthyr mmkn ajl wa7d mn elhdfyn.",
-                "en": "I like the idea, but if I see too much pressure I might postpone one of the two goals."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "مْهِمّ تِرَتِّب أَوْلَوِيّاتَك، هادا أَهَمّ إشِي.",
-                "arArabeezy": "mhm trtb awlwyatk, hada ahm ishy.",
-                "en": "It’s important to arrange your priorities, that’s the most important thing."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "صَحّ. على سِيرَة الخِطَط، شُو رَأْيَك نِطْلَع نِتْغَدّى بُكْرَة؟",
-                "arArabeezy": "s7. 3la syra elkhtt, shw rayk ntl3 ntghda bkra?",
-                "en": "Right. Speaking of plans, what do you think about going out for lunch tomorrow?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "بُكْرَة شْوَي مَشْغول، يِمْكِن بَعْد بُكْرَة أَفْضَل.",
-                "arArabeezy": "bkra shwy mshghwl, ymkn b3d bkra afdl.",
-                "en": "Tomorrow I’m a bit busy, maybe the day after tomorrow is better."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "تمام، بَعْد بُكْرَة عَالسّاعَة وحدة",
-                "arArabeezy": "tmam, b3d bkra 3alsa3a w7da",
-                "en": "Okay, the day after tomorrow at one o’clock?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "أَكِيد، رَح أِفْضي حالي.",
-                "arArabeezy": "akyd, r7 afdy 7aly.",
-                "en": "Sure, I’ll make myself free."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "وإذا صار تَغْيِير بالخِطّة؟",
-                "arArabeezy": "widha sar tghyyr belkhta?",
-                "en": "And if there’s a change in the plan?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "مِنْتِّفِق هَلَّقيت، وإذا اِضْطْرّينا نِلْغي أَو نِأَجِّل، بِبَعْتِلَك مِسِج.",
-                "arArabeezy": "mntfq hlqyt, widha adtryna nlghy aw najl, bb3tlk msj.",
-                "en": "We’ll agree now, and if we have to cancel or postpone, I’ll send you a message."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "شُكْرًا، بحِبّ الناس إلّي بِتِلْتِزِم بِمَواعِيدها.",
-                "arArabeezy": "shkra, b7b elnas ily btltzm bmwa3ydha.",
-                "en": "Thanks, I like people who stick to their appointments."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "تِصَدِّق؟ قَبِل، كُنْت أُخَطِّط كْثير وبَس ولا إِشِي يِصِير!",
-                "arArabeezy": "tsdq?qbl, knt akhtt kthyr wbs wla ishy ysyr!",
-                "en": "You know what? Before, I used to plan a lot and then nothing happened!"
-            },
-            {
-                "speaker": "Omar",
-                "ar": "يعني هلّق صرت واقعي أكتر؟",
-                "arArabeezy": "y3ny hlq srt waq3y aktr?",
-                "en": "So now you’ve become more realistic?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "إي، بِحاوِل أِخُذ خُطْوَة خُطْوَة وما أِحْطّ عَحالي ضَغْط كْثير.",
-                "arArabeezy": "iy, b7awl akhdh khtwa khtwa wma a7t 37aly dght kthyr.",
-                "en": "Yes, I try to go step by step and not put too much pressure on myself."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "حِلِم السَّفَر لِسّه مَوْجود عِنْدَك؟",
-                "arArabeezy": "7lm elsfr lsh mwjwd 3ndk?",
-                "en": "Is the dream of traveling still there for you?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "أَكِيد! إن شاء الله بَعْد ما أِتْخَرَّج وَأُوَفِّر مَصاري، رَح أُقْدِّم عَمنْحَة.",
-                "arArabeezy": "akyd! in sha ellh b3d ma atkhrj wawfr msary, r7 aqdm 3mn7a.",
-                "en": "Of course! God willing, after I graduate and save money, I’ll apply for a scholarship."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "وإذا ما زَبَطْت المنْحَة؟",
-                "arArabeezy": "widha ma zbtt elmn7a?",
-                "en": "And if the scholarship doesn’t work out?"
-            },
-            {
-                "speaker": "Malek",
-                "ar": "دايمًا في خِيار تاني، مُمْكِن آخُذ كُورْسات أونلاين وأَطَوِّر حالي مِن هون.",
-                "arArabeezy": "dayma fy khyar tany, mmkn aakhdh kwrsat awnlayn watwr 7aly mn hwn.",
-                "en": "There is always a second option: I can take online courses and improve myself from here."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "هالحَكِي بيعْجِبْني، في تَفاؤُل وبِنَفْس الوَقْت واقِعِي.",
-                "arArabeezy": "hal7ky by3jbny, fy tfawl wbnfs elwqt waq3y.",
-                "en": "I like that; there is optimism and at the same time realism."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "وإنت؟ شُو أَكْبَر هَدَف لَك لَلْمُسْتَقْبَل؟",
-                "arArabeezy": "wint?shw akbr hdf lk lelmstqbl?",
-                "en": "And you? What is your biggest goal for the future?"
-            },
-            {
-                "speaker": "Omar",
-                "ar": "هَدَفي أِتْخَرَّج، أِتْوَظَّف بِمَكان بحِبّه، وبَعْدين أُسافِر تَدْرِيب بَرّا سَنِة واحْدَة.",
-                "arArabeezy": "hdfy atkhrj, atwzf bmkan b7bh, wb3dyn asafr tdryb bra sna wa7da.",
-                "en": "My goal is to graduate, get a job in a place I like, and then travel for a one-year training abroad."
-            },
-            {
-                "speaker": "Malek",
-                "ar": "إن شاء الله كِلّ خِطَطَك تِزْبُط، خُطْوَة خُطْوَة.",
-                "arArabeezy": "in sha ellh kl khttk tzbt, khtwa khtwa.",
-                "en": "God willing, all your plans will work out, step by step."
-            },
-            {
-                "speaker": "Omar",
-                "ar": "وإن شاء الله خِطَطَك إنت كْمان.",
-                "arArabeezy": "win sha ellh khttk int kman.",
-                "en": "And God willing, your plans too."
-            }
-        ]
-    }
-    ,
-
-    // ====================================
-    // GRAMMAR
-    // ====================================
-
-    grammar: [
-        {
-            id: "past_want_have",
-            title: "Past of Want/Have (كان بدي / كان عندي)",
-            short: "Use كان + بدي/عندي for past wants and possession.",
-            description:
-                `To talk about past wants, use كان/كنت + بدي.
-To talk about past possession, use كان/كنت + عندي.
-
-Pattern:
-كان/كنت + بدي / عندي.`,
-            table: {
-                title: "Past Want/Have",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["كنت بدي", "kunt biddi", "I wanted", "Past want"],
-                    ["كان بدّو", "kaan bidd-o", "He wanted", "Male"],
-                    ["كانت بدّها", "kaanit bidd-ha", "She wanted", "Female"],
-                    ["كان عندي", "kaan 3indi", "I had", "Past have"],
-                    ["كان عندها", "kaanit 3inda", "She had", "Past have"]
-                ]
-            },
-            examples: [
-                { ar: "كنت بدي أزور غزة", arabeezy: "kunt biddi azuur ghazze", en: "I wanted to visit Gaza." },
-                { ar: "كان بدّو يسافر", arabeezy: "kaan bidd-o ysaafir", en: "He wanted to travel." },
-                { ar: "كانت بدّها تدرس", arabeezy: "kaanit bidd-ha tdros", en: "She wanted to study." },
-                { ar: "كان عندي وقت", arabeezy: "kaan 3indi wa2t", en: "I had time." },
-                { ar: "كنت بدي قهوة", arabeezy: "kunt biddi 2ahwe", en: "I wanted coffee." }
-            ],
-            teacherNotes:
-                `Spoken uses كان + بدي/عندي; MSA uses different verbs.
-Keep the structure fixed and simple.
-Use everyday wants and needs.
-Avoid complex verb forms.`,
-            commonMistakes: [
-                "Using بدي for past situations",
-                "Dropping كان/كنت",
-                "Mixing gender in بدّو/بدّها"
-            ],
-            functionalUse: "Use this to describe past desires or what someone had."
-        },
-        {
-            id: "future_intention",
-            title: "Future Intention (رح + فعل)",
-            short: "رح shows future plans.",
-            description:
-                `In spoken Arabic, رح marks future intention.
-It goes before the verb.
-
-رح + فعل = future plan.`,
-            table: {
-                title: "Future Patterns",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["رح أروح", "ra7 aruu7", "I will go", "Plan"],
-                    ["رح تروح", "ra7 truu7", "You will go", "Second person"],
-                    ["رح ييجي", "ra7 yiiji", "He will come", "Male"],
-                    ["رح تيجي", "ra7 tiiji", "She will come", "Female"],
-                    ["رح نطلع", "ra7 niTla3", "We will go out", "Group"]
-                ]
-            },
-            examples: [
-                { ar: "رح أزور أهلي", arabeezy: "ra7 azuur ahli", en: "I will visit my family." },
-                { ar: "رح تروح عالشغل بكير", arabeezy: "ra7 truu7 3ash-shoghl bakkeer", en: "You will go to work early." },
-                { ar: "رح يبلّش الدرس بكرا", arabeezy: "ra7 yballish ed-dars bukra", en: "The lesson will start tomorrow." },
-                { ar: "رح نطلع مشوار", arabeezy: "ra7 niTla3 mshwaar", en: "We will go out." },
-                { ar: "رح تيجي صاحبتك", arabeezy: "ra7 tiiji Sa7bitik", en: "Your friend will come." }
-            ],
-            teacherNotes:
-                `Spoken uses رح more than MSA سوف.
-Keep verbs in present form after رح.
-Use plans and schedules for practice.
-Avoid using رح with past time.`,
-            commonMistakes: [
-                "Using رح with past time",
-                "Dropping رح in future statements",
-                "Mixing MSA سوف with spoken"
-            ],
-            functionalUse: "Use this to talk about plans, intentions, and upcoming actions."
-        }
+ dialogue: {
+    title: "Plans & Future - Natural Gaza Conversation",
+    setting: "Noor and Rami talk after class about work, errands, future plans, changing lesson time, and backup plans.",
+    lines: [
+        { speaker: "Noor", ar: "يِعْطِيك العَافْيَة يَا رَامِي، شَكْلَك مُسْتَعْجِل اليَوْم. وِين رَايِح؟", arArabeezy: "ya3teek el-3afyeh ya rami, shaklak mesta3jel el-yom. wayn rayi7?", en: "Rami, Hello. You look in a hurry today. Where are you going?" },
+        { speaker: "Rami", ar: "الله يْعَافِيكِي. وَالله بَعْد الدَّرْس لَازِم أَرُوح عَالشُّغُل، وَبَعْدَهَا كُنْت نَاوِي أَمُرّ عَالسُّوق.", arArabeezy: "allah y3afeeki. wallah ba3d ed-dars lazem aroo7 3ash-shoghol, w ba3dha kont nawi amorr 3as-soo2.", en: "Thanks. After the lesson I have to go to work, and after that I was planning to stop by the market." },
+        { speaker: "Noor", ar: "عَالسُّوق اليَوْم؟ يَا زَلَمَة الطَّرِيق هَلَّق بِخْنُق.", arArabeezy: "3as-soo2 el-yom? ya zalame eT-Taree2 halla2 bikhnog.", en: "To the market today? Man, the road is really crowded now." },
+        { speaker: "Rami", ar: "عَارِف، بَس بَدِّي أَجِيب شَغْلِتِين لِلْبَيْت.", arArabeezy: "3aref, bas baddi ajeeb shaghlitain lil-beit.", en: "I know, but I need to get two things for the house." },
+        { speaker: "Noor", ar: "طَب خَلِّيهَا بُكْرَة الصُّبُح. أَرْيَحْلَك وَأَقَلّ زَحْمَة.", arArabeezy: "Tab khalliha bokra eS-Sobo7. arya7lak w a2all za7me.", en: "Then leave it for tomorrow morning. It’ll be easier for you and less crowded." },
+        { speaker: "Rami", ar: "يُمْكِن مَعِك حَقّ. أَصْلًا رَاسِي مِلْيَان مَشَاوِير هَالأُسْبُوع.", arArabeezy: "yimkin ma3ik 7a2. aSlan rasi milyan mashawir hal-osboo3.", en: "Maybe you’re right. My head is full of errands this week anyway." },
+        { speaker: "Noor", ar: "زَي شُو؟", arArabeezy: "zay shoo?", en: "Like what?" },
+        { speaker: "Rami", ar: "اليَوْم شُغُل، بُكْرَة سُوق، وَبَعْد بُكْرَة عِنْدِي مَوْعِد، وَالأُسْبُوع الجَاي يُمْكِن أَبَلِّش شُغُل جَدِيد.", arArabeezy: "el-yom shoghol, bokra soo2, w ba3d bokra 3indi maw3id, w el-osboo3 el-jay yimkin aballish shoghol jadeed.", en: "Today work, tomorrow the market, the day after tomorrow I have an appointment, and next week I might start a new job." },
+        { speaker: "Noor", ar: "مَا شَاء الله! شُغُل جَدِيد؟ مُبَارَك إِنْ شَاء الله.", arArabeezy: "ma sha2 allah! shoghol jadeed? mbarak inshallah.", en: "Wow! A new job? Congratulations, God willing." },
+        { speaker: "Rami", ar: "الله يْبَارِك فِيكِي، لِسَّه مِش أَكِيد. عِنْدِي مُقَابَلَة يَوْم الاتْنِين مَع المَسْؤُول.", arArabeezy: "allah ybarik feeki, lissa mish akeed. 3indi mo2abale yom el-itnain ma3 el-mas2ool.", en: "Thank you. It’s not certain yet. I have an interview on Monday with the manager." },
+        { speaker: "Noor", ar: "إِنْ شَاء الله بِتِزْبَط. وَإِذَا زَبَطَت، دَوَامَك رَح يِكُون الصُّبُح وَلَّا المَسَا؟", arArabeezy: "inshallah bitizbaT. w iza zabaTat, dawamak ra7 ykoon eS-Sobo7 wala el-masa?", en: "God willing, it’ll work out. If it does, will your shift be in the morning or evening?" },
+        { speaker: "Rami", ar: "غَالِبًا الصُّبُح، عَشَان هَيْك يُمْكِن أُغَيِّر وَقْت دَرْس العَرَبِي.", arArabeezy: "ghaliban eS-Sobo7, 3ashan hek yimkin oghayyer wa2t dars el-3arabi.", en: "Probably in the morning, so I might change the Arabic lesson time." },
+        { speaker: "Noor", ar: "عَادِي، بِنْخَلِّيه بِالمَسَا إِذَا بِزْبَط مَعَك.", arArabeezy: "3adi, binkhalleeh bil-masa iza bizbaT ma3ak.", en: "No problem. We can make it in the evening if that works for you." },
+        { speaker: "Rami", ar: "بِزْبَط، بَس بَدِّي أَتَأَكَّد مِن الجَدْوَل الأَوَّل.", arArabeezy: "bizbaT, bas baddi ata2akkad min el-jadwal el-awwal.", en: "That works, but I need to check the schedule first." },
+        { speaker: "Noor", ar: "تَمَام. بَس خَبِّرْنِي قَبْلَهَا بِيَوْم، عَشَان أَرَتِّب وَقْتِي.", arArabeezy: "tamam. bas khabbirni 2ablaha biyom, 3ashan arattib wa2ti.", en: "Okay. Just tell me one day before, so I can organize my time." },
+        { speaker: "Rami", ar: "أَكِيد، مَا بَدِّي أَخَرْبِطْلِك جَدْوَلِك.", arArabeezy: "akeed, ma baddi akharbiTlik jadwalik.", en: "Of course. I don’t want to mess up your schedule." },
+        { speaker: "Noor", ar: "وَلَا يْهِمَّك. وَأَنَا كَمَان عِنْدِي خُطَّة الشَّهْر الجَاي.", arArabeezy: "wala yhimmak. w ana kaman 3indi khoTTe esh-shaher el-jay.", en: "Don’t worry. I also have a plan for next month." },
+        { speaker: "Rami", ar: "شُو نَاوْيَة تِعْمَلِي؟", arArabeezy: "shoo nawye ti3mali?", en: "What are you planning to do?" },
+        { speaker: "Noor", ar: "نَاوْيَة آخُد كُورْس أُونْلَايْن عَشَان أَحَسِّن السِّي فِي وَأُقَدِّم عَلَى شُغُل أَحْسَن.", arArabeezy: "nawye akhod course online 3ashan a7assin el-CV w oqaddim 3ala shoghol a7san.", en: "I’m planning to take an online course to improve my CV and apply for a better job." },
+        { speaker: "Rami", ar: "حِلْو كْتِير. شَكْلِك دَاخْلَة عَلَى مَرْحَلَة جَدِيدَة.", arArabeezy: "7ilu kteer. shaklik dakhle 3ala mar7ale jadeede.", en: "Very nice. Looks like you’re entering a new phase." },
+        { speaker: "Noor", ar: "آه، بَس خُطْوَة خُطْوَة. أَوَّل إِشِي أَخَلِّص الكُورْس، بَعْدِين بَشُوف مَوْضُوع الشُّغُل.", arArabeezy: "ah, bas khuTwe khuTwe. awwal ishi akhalliS el-course, ba3dain bashoof mawDoo3 esh-shoghol.", en: "Yes, but step by step. First I’ll finish the course, then I’ll think about the job." },
+        { speaker: "Rami", ar: "هَيْك أَحْسَن. أَنَا كَمَان لَازِم أَرَتِّب وَقْتِي، لَأَنِّي كُلّ أُسْبُوع بَعْمَل خُطَّة وَبَخَرِّبْهَا مِن أَوَّل يَوْم.", arArabeezy: "hek a7san. ana kaman lazem arattib wa2ti, la2inni kol osboo3 ba3mal khoTTe w bakharribha min awwal yom.", en: "That’s better. I also need to organize my time, because every week I make a plan and ruin it from the first day." },
+        { speaker: "Noor", ar: "لَأَنَّك بْتِحُطّ مِلْيُون شَغْلَة بِنَفْس اليَوْم.", arArabeezy: "la2annak bti7oT milyoon shaghle binafs el-yom.", en: "Because you put a million things on the same day." },
+        { speaker: "Rami", ar: "صَحِيح. اليَوْم كُنْت حَاطِط شُغُل وَسُوق وَنَادِي وَدِرَاسَة.", arArabeezy: "Sa7ee7. el-yom kont 7aTiT shoghol w soo2 w nadi w dirase.", en: "True. Today I had work, the market, the gym, and studying planned." },
+        { speaker: "Noor", ar: "هَادَا مِش جَدْوَل، هَادَا عِقَاب. 😂", arArabeezy: "hada mish jadwal, hada 3iqab.", en: "That’s not a schedule, that’s punishment." },
+        { speaker: "Rami", ar: "ههههه وَالله مَعِك حَقّ.", arArabeezy: "hahaha wallah ma3ik 7a2.", en: "Haha, you’re right." },
+        { speaker: "Noor", ar: "خَلِّي اليَوْم لِلشُّغُل بَس. السُّوق بُكْرَة الصُّبُح، وَالنَّادِي إِذَا ضَلّ عِنْدَك طَاقَة.", arArabeezy: "khalli el-yom lish-shoghol bas. es-soo2 bokra eS-Sobo7, w en-nadi iza Dall 3indak Taa2a.", en: "Keep today for work only. The market tomorrow morning, and the gym if you still have energy." },
+        { speaker: "Rami", ar: "طَيِّب، وَإِذَا بُكْرَة شَتَّت؟", arArabeezy: "Tayyib, w iza bokra shattat?", en: "Okay, and what if it rains tomorrow?" },
+        { speaker: "Noor", ar: "رُوح بَدْرِي قَبْل المَطَر. وَإِذَا الجَوّ قَلَب، خَلِّي السُّوق بَعْد بُكْرَة.", arArabeezy: "roo7 badri 2abl el-maTar. w iza el-jaw 2alab, khalli es-soo2 ba3d bokra.", en: "Go early before the rain. And if the weather changes, leave the market for the day after tomorrow." },
+        { speaker: "Rami", ar: "مَظْبُوط. هَيْك الخُطَّة أَرْيَح.", arArabeezy: "maZbooT. hek el-khoTTe arya7.", en: "Exactly. This plan is easier." },
+        { speaker: "Noor", ar: "وَعِنْدَك الجُمُعَة إِشِي؟", arArabeezy: "w 3indak el-jum3a ishi?", en: "Do you have anything on Friday?" },
+        { speaker: "Rami", ar: "عِنْدِي عَزُومَة عِنْد خَالِي، بَس بَعْد العَصِر يُمْكِن أَكُون فَاضِي.", arArabeezy: "3indi 3azoome 3ind khali, bas ba3d el-3aSr yimkin akoon faDi.", en: "I have an invitation at my uncle’s, but after Asr I might be free." },
+        { speaker: "Noor", ar: "تَمَام. أَنَا نَاوْيَة أَزُور سِتِّي الجُمُعَة، فَمُمْكِن نِمْرُق عَلَيْهَا بَعْد العَصِر إِذَا زَبَطَت.", arArabeezy: "tamam. ana nawye azoor sitti el-jum3a, fa mumkin nimro2 3alaiha ba3d el-3aSr iza zabaTat.", en: "Okay. I’m planning to visit my grandmother on Friday, so we can stop by after Asr if it works out." },
+        { speaker: "Rami", ar: "بِزْبَط. وَإِذَا مَا لَحِقْت، نْخَلِّيهَا السَّبْت الصُّبُح.", arArabeezy: "bizbaT. w iza ma la7i2t, nkhalliha es-sabt eS-Sobo7.", en: "That works. If I can’t make it, we’ll make it Saturday morning." },
+        { speaker: "Noor", ar: "اتَّفَقْنَا. هَيْك عِنَّا خُطَّة وَخُطَّة بَدِيلَة.", arArabeezy: "ittafa2na. hek 3inna khoTTe w khoTTe badeele.", en: "Deal. Now we have a plan and a backup plan." },
+        { speaker: "Rami", ar: "أَهَمّ إِشِي مَا تِنْسِي تَبْعَتِيلِي الوَقْت.", arArabeezy: "aham ishi ma tinsi tab3ateeli el-wa2t.", en: "The most important thing is don’t forget to send me the time." },
+        { speaker: "Noor", ar: "أَبْعَتْلَك لَمَّا أُوصَل البَيْت.", arArabeezy: "ab3atlak lamma ooSal el-beit.", en: "I’ll send it to you when I get home." },
+        { speaker: "Rami", ar: "تَمَام. وَأَنَا بَتَأَكَّد مِن المُوَاصَلَات، إِذَا التَّاكْسِي غَالِي بَاخُد بَاص.", arArabeezy: "tamam. w ana bata2akkad min el-mowaSalat, iza et-taxi ghali bakhod baS.", en: "Okay. I’ll check transportation, and if the taxi is expensive, I’ll take a bus." },
+        { speaker: "Noor", ar: "آه، مِش مُسْتَاهْلَة تِدْفَع كْتِير عَشَان مِشْوَار صْغِير.", arArabeezy: "ah, mish mistahle tidfa3 kteer 3ashan mishwar Sgheer.", en: "Yeah, it’s not worth paying a lot for a short trip." },
+        { speaker: "Rami", ar: "بِالزَّبْط.", arArabeezy: "biz-zabt.", en: "Exactly." },
+        { speaker: "Noor", ar: "بَس دِير بَالَك، لَا تِعْمَل زَي كُلّ مَرَّة وَتِطْلَع بِآخِر لَحْظَة.", arArabeezy: "bas deer balak, la ti3mal zay kol marra w tiTla3 bi-akher la7Za.", en: "But be careful, don’t do what you always do and leave at the last minute." },
+        { speaker: "Rami", ar: "لَا لَا، هَالمَرَّة رَاح أَطْلَع بَدْرِي.", arArabeezy: "la la, hal-marra ra7 aTla3 badri.", en: "No, no. This time I’ll leave early." },
+        { speaker: "Noor", ar: "إِنْ شَاء الله. سْمِعْنَا هَالجُمْلَة قَبْل هَيْك. 😂", arArabeezy: "inshallah. smi3na hal-jomle 2abl hek.", en: "God willing. We’ve heard that sentence before." },
+        { speaker: "Rami", ar: "ههههه لَا، جَد هَالمَرَّة.", arArabeezy: "hahaha la, jad hal-marra.", en: "Haha no, seriously this time." },
+        { speaker: "Noor", ar: "طَيِّب خَلَاص، اليَوْم شُغُل، بُكْرَة سُوق، الاتْنِين مُقَابَلَة، وَالجُمُعَة زِيَارَة إِذَا زَبَطَت.", arArabeezy: "Tayyib khalas, el-yom shoghol, bokra soo2, el-itnain mo2abale, w el-jum3a ziyara iza zabaTat.", en: "Okay then: today work, tomorrow market, Monday interview, and Friday a visit if it works out." },
+        { speaker: "Rami", ar: "وَالسَّبْت خُطَّة بَدِيلَة.", arArabeezy: "w es-sabt khoTTe badeele.", en: "And Saturday is the backup plan." },
+        { speaker: "Noor", ar: "بِالضَّبْط. شُفْت؟ لَمَّا نْرَتِّبْهَا بِهُدُوء بْتِطْلَع بَسِيطَة.", arArabeezy: "biz-zabt. shoft? lamma nrattibha bihodoo2 btiTla3 baseeTa.", en: "Exactly. See? When we organize it calmly, it turns out simple." },
+        { speaker: "Rami", ar: "صَحّ. كُنْت مُكَبِّر المَوْضُوع بِرَاسِي.", arArabeezy: "Sa77. kont mkabbir el-mawDoo3 brasi.", en: "True. I was making it bigger in my head." },
+        { speaker: "Noor", ar: "عَادِي، كُلْنَا هَيْك لَمَّا تِتْرَاكَم المَشَاوِير.", arArabeezy: "3adi, kolna hek lamma titrakam el-mashawir.", en: "It’s normal. We’re all like that when errands pile up." },
+        { speaker: "Rami", ar: "يِسْلَمُوا يَا نُور، رَيَّحْتِينِي.", arArabeezy: "yislamu ya noor, rayya7teeni.", en: "Thanks, Noor. You made me feel relieved." },
+        { speaker: "Noor", ar: "وَلَا يْهِمَّك. وَإِذَا صَار أَي تَغْيِير اِحْكِيلِي مِن بَدْرِي.", arArabeezy: "wala yhimmak. w iza Sar ay taghyeer i7keeli min badri.", en: "Don’t worry. If anything changes, tell me early." },
+        { speaker: "Rami", ar: "أَكِيد. يَلَّا، لَازِم أَلْحَق الشُّغُل.", arArabeezy: "akeed. yalla, lazem al7aq esh-shoghol.", en: "Of course. Alright, I have to catch work." },
+        { speaker: "Noor", ar: "تَمَام، الله مَعَك. وَلَمَّا تُوصَل طَمِّنِّي.", arArabeezy: "tamam, allah ma3ak. w lamma tooSal Tamm inni.", en: "Okay, God be with you. Let me know when you arrive." },
+        { speaker: "Rami", ar: "إِنْ شَاء الله. مَع السَّلَامَة.", arArabeezy: "inshallah. ma3 es-salame.", en: "God willing. Goodbye." }
     ],
 
+    questions: [
+        { ar: "وِين رَامِي لَازِم يْرُوح بَعْد الدَّرْس؟", en: "Where does Rami have to go after the lesson?" },
+        { ar: "شُو كَان نَاوِي يِعْمَل بَعْد الشُّغُل؟", en: "What was he planning to do after work?" },
+        { ar: "لِيش نُور نَصَحَتُه مَا يْرُوح السُّوق اليَوْم؟", en: "Why did Noor advise him not to go to the market today?" },
+        { ar: "إِمْتَى اقْتَرَحَت نُور يْرُوح السُّوق؟", en: "When did Noor suggest he go to the market?" },
+        { ar: "شُو الخُطَّة الجَدِيدَة اللِّي مُمْكِن تِبْدَا مَع رَامِي الأُسْبُوع الجَاي؟", en: "What new plan might start for Rami next week?" },
+        { ar: "لِيش مُمْكِن رَامِي يْغَيِّر وَقْت دَرْس العَرَبِي؟", en: "Why might Rami change the Arabic lesson time?" },
+        { ar: "شُو نُور نَاوْيَة تِعْمَل الشَّهْر الجَاي؟", en: "What is Noor planning to do next month?" },
+        { ar: "لِيش نُور بَدْهَا تَاخُد كُورْس أُونْلَايْن؟", en: "Why does Noor want to take an online course?" },
+        { ar: "شُو المُشْكِلَة فِي جَدْوَل رَامِي حَسَب كَلَام نُور؟", en: "What is the problem with Rami’s schedule according to Noor?" },
+        { ar: "شُو الخُطَّة البَدِيلَة إِذَا الجَوّ شَتَّى؟", en: "What is the backup plan if it rains?" },
+        { ar: "شُو عِنْد رَامِي يَوْم الجُمُعَة؟", en: "What does Rami have on Friday?" },
+        { ar: "شُو الخُطَّة البَدِيلَة إِذَا مَا زَبَطَت زِيَارَة الجُمُعَة؟", en: "What is the backup plan if Friday’s visit doesn’t work out?" }
+    ],
+},
 
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
-                type: "match",
-                prompt: "Match the English word to Arabic: I want / I’m going to (intention)",
-                options: ["بَدّي", "رَح", "نَاوِي", "مخَطِّط", "حَابِب"],
-                correct: "بَدّي",
-            },
-            {
-                id: "mc_complete_2",
+                id: "plans_mc1",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: I have to finish the homework before Friday.\n___ أُخَلِّص الوَاجِب قَبْل الجمعة.",
-                options: ["لَازِم", "اليَوْم", "بُكْرَا", "بَعْد بُكْرَا", "هَالْأُسْبُوع"],
-                correct: "لَازِم",
+                prompt: "Complete the sentence: I want to go to the library after class.\n___ أَرُوح عَالمَكْتَبَة بَعْد الدَّرْس.",
+                options: ["بَدِّي", "خُطَط", "نَاوِي", "مَوْعِد"],
+                correct: "بَدِّي",
             },
             {
-                id: "mc_reorder_3",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: Next week we will start a new unit.",
-                options: ["الأُسْبُوع", "الجَّاي", "رَح", "نِبْدَى", "وَحْدَة", "جْدِيدَة"],
-                correct: ["الأُسْبُوع", "الجَّاي", "رَح", "نِبْدَى", "وَحْدَة", "جْدِيدَة"],
-            },
-            {
-                id: "mc_choose_4",
-                type: "choose",
-                prompt: "Choose the correct Arabic word for: project",
-                options: ["مَشْرُوع", "سَفَر", "عُطْلَة", "شُو مُخَطَّطَاتَك؟", "شُو بَدَّك تِعْمِل بُكْرَا؟"],
-                correct: "مَشْرُوع",
-            },
-            {
-                id: "mc_match_5",
+                id: "plans_mc2",
                 type: "match",
-                prompt: "Match the English word to Arabic: Do you have a plan?",
-                options: ["عِنْدَك خُطَّة؟", "لِبَعْدِين / لِبَعْد شْوَيّ", "أَهْدَاف", "تَدْرِيجِيًّا", "إِلَّا إِذَا"],
-                correct: "عِنْدَك خُطَّة؟",
+                prompt: "Match the Arabic phrase to English: مَوْعِد",
+                options: ["appointment / scheduled time", "backup option", "this year", "don't worry"],
+                correct: "appointment / scheduled time",
+            },
+            {
+                id: "plans_mc3",
+                type: "complete",
+                prompt: "Complete: If the road is crowded, we'll postpone the errand until tomorrow.\nإِذَا الطَّرِيق زَحْمَة، ___ المِشْوَار لِبُكْرَا.",
+                options: ["بِنْأَجِّل", "بِنِتْقَابَل", "بَبَلِّش", "أَخَلِّص"],
+                correct: "بِنْأَجِّل",
+            },
+            {
+                id: "plans_mc4",
+                type: "match",
+                prompt: "Choose the natural Gaza phrase for: It didn't work out.",
+                options: ["مَا زَبَطَت", "هَالأُسْبُوع", "بَعْد الدَّرْس", "الله يِسَهِّل"],
+                correct: "مَا زَبَطَت",
+            },
+            {
+                id: "plans_mc5",
+                type: "reorder",
+                prompt: "Reorder: Next week I will start a new job.",
+                options: ["الأُسْبُوع الجَاي", "رَاح", "أَبَلِّش", "شُغُل جَدِيد"],
+                correct: ["الأُسْبُوع الجَاي", "رَاح", "أَبَلِّش", "شُغُل جَدِيد"],
+            },
+            {
+                id: "plans_mc6",
+                type: "complete",
+                prompt: "Complete: After I arrive, I'll send you a message.\n___ أُوصَل، بَبْعَتْلَك رِسَالَة.",
+                options: ["بَعْد مَا", "قَبْل مَا", "هَالسَّنَة", "خَلِّيهَا عَلَيّ"],
+                correct: "بَعْد مَا",
+            },
+            {
+                id: "plans_mc7",
+                type: "match",
+                prompt: "Match the Arabic phrase to English: مَا تِشِيل هَمّ",
+                options: ["don't worry", "don't be late", "before class", "we meet"],
+                correct: "don't worry",
             },
         ],
     },
@@ -653,107 +499,184 @@ Avoid using رح with past time.`,
         quiz: [
             {
                 id: "plans_q1",
-                questionAr: "أَيّ جُمْلَة تِسْتَعْمِل «رَح» لِلْمُسْتَقْبَل؟",
-                optionsEn: [
-                    "بَدّي أَكْتُب الْيَوْم.",
-                    "رَح أَكْتُب بُكْرَا.",
-                    "أَنَا أَكْتُب هَلَّق.",
-                ],
-                correctIndex: 1,
+                questionAr: "«بَدِّي أَرُوح عَالسُّوق» مَعْنَاهَا:",
+                optionsEn: ["I want to go to the market.", "I came from the market.", "I work at the market."],
+                correctIndex: 0,
             },
             {
                 id: "plans_q2",
-                questionAr: "«نَاوِي إِنِّي أُسَافِر» مَعْنَاهَا:",
-                optionsEn: [
-                    "I used to travel.",
-                    "I intend to travel.",
-                    "I hate traveling.",
-                ],
-                correctIndex: 1,
+                questionAr: "العبارة الطَّبِيعِيَّة لِـ Don't worry هِي:",
+                optionsEn: ["مَا تِشِيل هَمّ", "مَا زَبَطَت", "نِتْقَابَل"],
+                correctIndex: 0,
             },
             {
                 id: "plans_q3",
-                questionAr: "«الأُسْبُوع الجَّاي» مَعْنَاهَا:",
-                optionsEn: [
-                    "this week",
-                    "next week",
-                    "last week",
-                ],
-                correctIndex: 1,
+                questionAr: "«نَاوِي / نَاوْيَة» بِنِسْتَخْدِمْهَا لِـ:",
+                optionsEn: ["intention / plan", "complaint", "price"],
+                correctIndex: 0,
             },
             {
                 id: "plans_q4",
-                questionAr: "أَيّ كَلِمَة تِسْتَعْمِلْهَا لِـ ‘later / after that’؟",
-                optionsEn: [
-                    "بَعْدِين",
-                    "إِلَّا إِذَا",
-                    "ضَغْط",
-                ],
+                questionAr: "إِذَا الخُطَّة مَا صَارَت، بِنِقُول:",
+                optionsEn: ["مَا زَبَطَت", "الله يِسَهِّل", "بَعْد مَا"],
                 correctIndex: 0,
             },
             {
                 id: "plans_q5",
-                questionAr: "«لَازِم أُخَلِّص المَشْرُوع» مَعْنَاهَا:",
-                optionsEn: [
-                    "I might finish the project.",
-                    "I have to finish the project.",
-                    "I don’t want to finish the project.",
-                ],
-                correctIndex: 1,
+                questionAr: "«الأُسْبُوع الجَاي» مَعْنَاهَا:",
+                optionsEn: ["next week", "this week", "last week"],
+                correctIndex: 0,
+            },
+            {
+                id: "plans_q6",
+                questionAr: "أَيّ جُمْلَة فِيهَا تَغْيِير خُطَّة؟",
+                optionsEn: ["بِنْأَجِّل المِشْوَار لِبُكْرَا.", "مَرْحَبَا كِيفَك؟", "الأُجْرَة غَالْيَة."],
+                correctIndex: 0,
+            },
+            {
+                id: "plans_q7",
+                questionAr: "«إِن شَاء الله» بِنِسْتَخْدِمْهَا كْتِير مَع:",
+                optionsEn: ["future plans", "only food orders", "only complaints"],
+                correctIndex: 0,
+            },
+            {
+                id: "plans_q8",
+                questionAr: "«خِيَار تَانِي» مَعْنَاهَا:",
+                optionsEn: ["another option", "second floor", "same problem"],
+                correctIndex: 0,
+            },
+            {
+                id: "plans_q9",
+                questionAr: "«مَا تِتْأَخَّر» بِنِحْكِيهَا لِـ:",
+                optionsEn: ["someone who should come on time", "someone who is hungry", "someone asking the price"],
+                correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 1: Two friends talk about their plans for this week and next week. They must use: بَدّي / رَح / هَالْأُسْبُوع / الأُسْبُوع الجَّاي / بَعْدِين in at least 6–8 lines.",
-            "Role-play 2: Talk about long-term future (this year + next year): study, work, travel. Use: نَاوِي، مُخَطِّط، أَهْدَاف، تَدْرِيجِيًّا، إِلَّا إِذَا… .",
-            "Role-play 3: Student and teacher negotiate a study plan for Arabic (how many lessons, homework, extra tasks). The student must express preferences and limits using: بَحِبّ، مَا بَحِبّ، لَازِم، مُمْكِن، مَا بِفْرِق مَعِي.",
+            "Make a realistic plan with a friend for tomorrow. Include: time, place, transportation, and a backup option.",
+            "Tell your teacher your study plan for this week using: بَدِّي, رَاح, لَازِم, قَبْل مَا, بَعْد مَا.",
+            "Your plan changed because of weather or traffic. Explain what happened and suggest another time.",
+            "Mini speaking prompt: talk for 45 seconds about your plans for this week and next month.",
+        ],
+        sections: [
+            {
+                matching: [
+                    { ar: "خُطَّة", en: "plan" },
+                    { ar: "مَوْعِد", en: "appointment" },
+                    { ar: "نْأَجِّل", en: "we postpone" },
+                    { ar: "خِيَار تَانِي", en: "another option" },
+                    { ar: "مَا زَبَطَت", en: "it didn't work out" },
+                    { ar: "الله يِسَهِّل", en: "may God make it easy" },
+                ],
+                fillInTheBlank: [
+                    { prompt: "بُكْرَا ___ أَرُوح عَالسُّوق.", answer: "رَاح" },
+                    { prompt: "أَنَا ___ أَدْرُس كُلّ يَوم.", answer: "نَاوِي / نَاوْيَة" },
+                    { prompt: "إِذَا مَا زَبَطَت، ___ لِبُكْرَا.", answer: "بِنْأَجِّل" },
+                    { prompt: "___ مَا أُوصَل، بَبْعَتْلَك رِسَالَة.", answer: "بَعْد" },
+                    { prompt: "مَا ___ هَمّ، عِنْدِنَا خِيَار تَانِي.", answer: "تِشِيل" },
+                ],
+                questionAndAnswer: [
+                    { question: "شُو خُطَطَك لِهَالأُسْبُوع؟", answerModel: "هَالأُسْبُوع بَدِّي..." },
+                    { question: "بُكْرَا شُو رَاح تِعْمَل؟", answerModel: "بُكْرَا رَاح..." },
+                    { question: "عِنْدَك مَوْعِد قَرِيب؟", answerModel: "آه، عِنْدِي مَوْعِد..." },
+                    { question: "إِذَا مَا زَبَطَت الخُطَّة، شُو بِتِعْمَل؟", answerModel: "بِنْأَجِّل / بِنْغَيِّر الخُطَّة." },
+                ],
+                transformations: [
+                    { prompt: "Change to feminine: أَنَا نَاوِي أَدْرُس.", answer: "أَنَا نَاوْيَة أَدْرُس." },
+                    { prompt: "Change to we: بَدِّي أَخَلِّص.", answer: "بَدِّنَا نْخَلِّص." },
+                    { prompt: "Change to future with رَاح: أَنَا بَرُوح بُكْرَا.", answer: "أَنَا رَاح أَرُوح بُكْرَا." },
+                    { prompt: "Change to negative: زَبَطَت مَعِي.", answer: "مَا زَبَطَت مَعِي." },
+                ],
+                reorderSentences: [
+                    {
+                        prompt: "Put the words in order: We'll meet after class.",
+                        words: ["بِنِتْقَابَل", "بَعْد", "الدَّرْس."],
+                        answer: "بِنِتْقَابَل بَعْد الدَّرْس.",
+                    },
+                    {
+                        prompt: "Put the words in order: I have to finish before evening.",
+                        words: ["لَازِم", "أَخَلِّص", "قَبْل", "المَسَا."],
+                        answer: "لَازِم أَخَلِّص قَبْل المَسَا.",
+                    },
+                    {
+                        prompt: "Put the words in order: If it rains, we'll change the plan.",
+                        words: ["لَوْ", "نِزِل", "مَطَر،", "بِنْغَيِّر", "الخُطَّة."],
+                        answer: "لَوْ نِزِل مَطَر، بِنْغَيِّر الخُطَّة.",
+                    },
+                ],
+                writeYourOwnSentences: [
+                    "Write 5 sentences about your plan for tomorrow.",
+                    "Write 5 sentences about your plans for this week.",
+                    "Write 3 backup-plan sentences using إِذَا مَا زَبَطَت / خِيَار تَانِي / بِنْأَجِّل.",
+                ],
+            },
         ],
         translation: [
-            { id: "plan_t1", type: "enToAr", textEn: "I will travel next month.", textAr: "رح أسافر الشهر الجاي." },
-            { id: "plan_t2", type: "arToEn", textEn: "We are going to meet tomorrow.", textAr: "رح نتقابل بكرا." },
-            { id: "plan_t3", type: "enToAr", textEn: "Do you have plans this weekend?", textAr: "عندك خطط بعطلة الأسبوع؟" },
-            { id: "plan_t4", type: "arToEn", textEn: "I will call you later.", textAr: "رح أتصل فيك بعدين." },
-            { id: "plan_t5", type: "enToAr", textEn: "I want to visit my family.", textAr: "بدي أزور أهلي." },
-            { id: "plan_t6", type: "arToEn", textEn: "We will start at eight.", textAr: "رح نبلّش الساعة تمانية." }
+            { id: "plans_t1", type: "enToAr", textEn: "I have a small plan for this week.", textAr: "عِنْدِي خُطَّة صْغِيرَة لِهَالأُسْبُوع." },
+            { id: "plans_t2", type: "enToAr", textEn: "Tomorrow I will leave early because of transportation.", textAr: "بُكْرَا رَاح أَطْلَع بَدْرِي عَشَان المَوَاصَلَات." },
+            { id: "plans_t3", type: "arToEn", textEn: "I intend to study Arabic every day.", textAr: "أَنَا نَاوِي/نَاوْيَة أَدْرُس عَرَبِي كُلّ يَوم." },
+            { id: "plans_t4", type: "enToAr", textEn: "We will meet in front of the university at nine.", textAr: "بِنِتْقَابَل قُدَّام الجَامْعَة السَّاعَة تِسْعَة." },
+            { id: "plans_t5", type: "arToEn", textEn: "If the road is crowded, we'll postpone the errand until tomorrow.", textAr: "إِذَا الطَّرِيق زَحْمَة، بِنْأَجِّل المِشْوَار لِبُكْرَا." },
+            { id: "plans_t6", type: "enToAr", textEn: "If it rains, we'll change the plan.", textAr: "لَوْ نِزِل مَطَر، بِنْغَيِّر الخُطَّة." },
+            { id: "plans_t7", type: "arToEn", textEn: "If it works for you, we'll meet after class.", textAr: "إِذَا زَبَطَت مَعَك، بِنِتْقَابَل بَعْد الدَّرْس." },
+            { id: "plans_t8", type: "enToAr", textEn: "It didn't work for me today; we'll leave it for tomorrow.", textAr: "مَا زَبَطَت مَعِي اليَوم، بِنْخَلِّيهَا بُكْرَا." },
+            { id: "plans_t9", type: "arToEn", textEn: "This week I have work and many appointments.", textAr: "هَالأُسْبُوع عِنْدِي شُغُل وَمَوَاعِيد كْتِير." },
+            { id: "plans_t10", type: "enToAr", textEn: "Next week I will start a new job.", textAr: "الأُسْبُوع الجَاي رَاح أَبَلِّش شُغُل جَدِيد." },
+            { id: "plans_t11", type: "enToAr", textEn: "After I arrive, I'll send you a message.", textAr: "بَعْد مَا أُوصَل، بَبْعَتْلَك رِسَالَة." },
+            { id: "plans_t12", type: "arToEn", textEn: "Don't be late, the road is crowded today.", textAr: "مَا تِتْأَخَّر، الطَّرِيق اليَوم زَحْمَة." },
+            { id: "plans_t13", type: "enToAr", textEn: "Don't worry, we have another option.", textAr: "مَا تِشِيل هَمّ، عِنْدِنَا خِيَار تَانِي." },
+            { id: "plans_t14", type: "arToEn", textEn: "You have an appointment tomorrow? May God make it easy.", textAr: "عِنْدَك مَوْعِد بُكْرَا؟ الله يِسَهِّل." },
+            { id: "plans_t15", type: "enToAr", textEn: "See you tomorrow, God willing.", textAr: "بِنْشُوفَك بُكْرَا إِن شَاء الله." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Write and record a 60–90 second audio in Palestinian Arabic about your future plans:\n" +
-            "1. Talk about your plans for this week and next week (at least 3 sentences each) using: هَالْأُسْبُوع، الأُسْبُوع الجَّاي، بَدّي، رَح، بَعْدِين.\n" +
-            "2. Talk about your big goals for this year and next year using: نَاوِي / حَابِب / مُخَطِّط / أَهْدَاف / تَدْرِيجِيًّا.\n" +
-            "3. Try to mention one plan for study, one for work (or future job), and one for travel or free time.\n" +
-            "4. Use at least one ‘unless’ sentence with «إِلَّا إِذَا».",
+            `Write and record a 60-90 second plan in Gaza Palestinian Arabic. Talk about: your plan for tomorrow, your plan for this week, one appointment, one thing you have to finish, and one backup option if the plan does not work. Reuse at least 8 words from this unit and 5 old words from earlier units like مَرْحَبَا، كِيفَك، مَع السَّلَامَة، زَحْمَة، مَوَاصَلَات، شُغُل، الجَوّ، مَوْعِد، مُشْكِلِة.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. I have a small plan for this week.
+2. Tomorrow I will leave early because of transportation.
+3. I intend to study Arabic every day.
+4. We will meet in front of the university at nine.
+5. If the road is crowded, we'll postpone the errand until tomorrow.
+6. If it rains, we'll change the plan.
+7. If it works for you, we'll meet after class.
+8. It didn't work for me today; we'll leave it for tomorrow.
+9. This week I have work and many appointments.
+10. Next week I will start a new job.
+11. After I arrive, I'll send you a message.
+12. Don't be late, the road is crowded today.
+13. Don't worry, we have another option.
+14. You have an appointment tomorrow? May God make it easy.
+15. See you tomorrow, God willing.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "Ask the student what day it is today and then in English ask: ‘What are your plans for this week?’ Move slowly into Arabic with key words: بَدّي، بُكْرَا، الأُسْبُوع الجَّاي.",
-            "Draw a small timeline (today → this week → next month → next year) and write Arabic labels.",
+            "Start by asking about today after class: بَعْد الدَّرْس شُو بَدَّك تِعْمَل؟",
+            "Recycle transportation immediately: taxi, bus, traffic, fare, arrive late.",
+            "Use the student's real calendar if possible so the unit feels useful.",
         ],
         vocabularySteps: [
-            "First, teach بَدّي vs رَح with very short examples tied to the student’s real life.",
-            "Then add نَاوِي / مُخَطِّط / حَابِب and show the difference between inside intention and organized plan.",
-            "Introduce time expressions in groups (week, month, year) and recycle them constantly.",
+            "Teach the list as a flow: plan -> intention -> appointment -> meet -> finish -> postpone -> backup option.",
+            "Keep grammar invisible through substitutions: بَدِّي / بَدُّه / بَدَّهَا / بَدِّنَا and نَاوِي / نَاوْيَة.",
+            "Use old vocabulary inside examples instead of making old words new vocabulary.",
         ],
         dialogueSteps: [
-            "Use Scene 1 as a model. Then ask the student to replace ‘project / exam / beach’ with their own reality.",
-            "For the teacher–student scene, actually ask the student about their real study plan and edit it together in Arabic.",
+            "Act the dialogue as a real planning conversation, not a reading exercise.",
+            "After every 8-10 lines, ask what changed in the plan and why.",
+            "Ask the student to replace Noor and Rami's plans with their own plans.",
         ],
         practiceTips: [
-            "Encourage approximate answers; don’t demand perfect grammar. The goal is fluency in talking about the future.",
-            "If the student is overwhelmed, choose only 2 core patterns for the first lesson (for example: بَدّي + time expressions).",
+            "Push full answers: بُكْرَا رَاح أَرُوح..., not one-word answers.",
+            "Ask for backup plans often: إِذَا مَا زَبَطَت، شُو بِنْعْمَل؟",
+            "End with a 60-second spoken weekly plan.",
         ],
         wrapup: [
-            "At the end, ask the student to tell you ONE concrete plan for tonight, this week, this month, and this year.",
-            "Save or copy their answers to reuse in the next lesson and check what really happened.",
+            "Student says one plan for tomorrow, one for this week, one for next month.",
+            "Student explains one reason a plan might change.",
+            "Student gives one backup option.",
         ],
         myNotes: "",
     },

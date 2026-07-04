@@ -1,660 +1,445 @@
 import { LESSON_ID_WEATHER } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_WEATHER;
+
 export const lesson = {
     meta: {
         level: "Pre-Intermediate",
         unit: "Weather & Small Talk",
-        lessonTitle: "Unit 9 – Weather & Small Talk",
+        lessonTitle: "Unit 7 - Weather & Small Talk in Gaza Palestinian Arabic",
+        contentVersion: 2026063002,
     },
 
     overview: {
-        title: "Unit 9 – Weather & Small Talk",
+        title: "Unit 7 - Weather & Small Talk",
         description:
-            "In this unit, students learn how to talk about the weather in the present, past, and future, and how to use weather as a natural way to start friendly small talk in Palestinian Arabic.",
+            "Students learn how Gazans use weather to start real small talk: at the door, on the phone, before work, while waiting for transport, and when checking on family.",
         goals: [
-            "Describe basic weather conditions (hot, cold, windy, rainy, humid).",
-            "Talk about weather in different cities and seasons.",
-            "Use small talk to start and continue light conversations.",
-            "Use past/future to say how the weather was or will be.",
-            "Express personal opinions about weather they like or hate.",
+            "Describe the weather naturally in Gaza Palestinian Arabic.",
+            "Start and continue small talk using weather, feelings, and quick follow-up questions.",
+            "Give simple advice based on the weather.",
+            "Compare weather using today, yesterday, tomorrow, and next week inside examples and conversation.",
+            "Recycle previous units: greetings, family, routine, food, transport, work/study, time, and politeness.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can give a 60-second weather update.",
+            "The student can start a light conversation about weather and keep it going for 8-10 lines.",
+            "The student can warn someone politely about rain, wind, heat, humidity, or dust.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== BASIC WEATHER WORDS =====
             {
-                id: "el_jaww",
+                id: "el_jaw",
                 ar: "الجَوّ",
                 en: "the weather",
-                enArabeezy: "el-jaww",
-                hint: "Most common word for ‘weather’ in Palestinian Arabic.",
-                exampleAr: "اليوم الجَوّ حِلُو.",
-                exampleArabeezy: "elywm eljw 7lw.",
-                exampleEn: "The weather is nice today.",
-            },
-
-            {
-                id: "bared",
-                ar: "بَرْد",
-                en: "cold (weather)",
-                enArabeezy: "bard",
-                hint: "‘There is cold’: في بَرْد اليوم.",
-                exampleAr: "فِي بَرْد قَوِي بِاللَّيْل.",
-                exampleArabeezy: "fy brd qwy bellyl.",
-                exampleEn: "It’s very cold at night.",
+                enArabeezy: "el-jaw",
+                hint: "Main word for weather. Common chunks: الجَوّ حِلُو، الجَوّ مُتْعِب، كِيف الجَوّ عِنْدَك؟",
+                exampleAr: "اليَوم الجَوّ حِلُو، بَس فِي هَوَا شُوَيّ.",
+                exampleArabeezy: "el-yom el-jaw 7ilu, bas fi hawa shway.",
+                exampleEn: "Today the weather is nice, but there is a little wind.",
             },
             {
-                id: "shawb",
+                id: "keef_el_jaw",
+                ar: "كِيف الجَوّ؟",
+                en: "How is the weather?",
+                enArabeezy: "keef el-jaw?",
+                hint: "Natural small-talk question. Add place/person: كِيف الجَوّ عِنْدَك؟ / كِيف الجَوّ فِي غَزَّة؟",
+                exampleAr: "مَرْحَبَا، كِيفَك؟ كِيف الجَوّ عِنْدَك اليَوم؟",
+                exampleArabeezy: "marhaba, keefak? keef el-jaw 3indak el-yom?",
+                exampleEn: "Hi, how are you? How is the weather where you are today?",
+            },
+            {
+                id: "ed_dunya",
+                ar: "الدُّنْيَا",
+                en: "the weather / outside conditions",
+                enArabeezy: "ed-dunya",
+                hint: "Very common in Gaza when talking about weather outside: الدُّنْيَا شُوب، الدُّنْيَا غَايْمَة، الدُّنْيَا بِتْشَتِّي.",
+                exampleAr: "الدُّنْيَا شُوب اليَوم، الله يْعِين.",
+                exampleArabeezy: "ed-dunya shob el-yom, allah y3een.",
+                exampleEn: "It is really hot outside today, may God help.",
+            },
+            {
+                id: "shob",
                 ar: "شُوب",
                 en: "heat / hot weather",
-                enArabeezy: "shob",
-                hint: "Used for hot weather, not for spicy food!",
-                exampleAr: "الدُّنْيا شُوب هالأَيام.",
-                exampleArabeezy: "eldnya shwb halayam.",
-                exampleEn: "It’s really hot these days.",
+                enArabeezy: "shoob",
+                hint: "Very natural in Gaza for hot weather. Say: فِي شُوب / شُو هَالشُّوب! This is the main Gaza-style word for hot weather.",
+                exampleAr: "شُو هَالشُّوب! خُد مَعَك مَيّ بَارْدَة.",
+                exampleArabeezy: "sho hal-shoob! khod ma3ak may barde.",
+                exampleEn: "What heat! Take cold water with you.",
             },
             {
-                id: "daafi",
-                ar: "دَافِي",
-                en: "warm",
-                enArabeezy: "daafi",
-                hint: "Masc: دَافِي، fem: دَافْيَة.",
-                exampleAr: "الجَوّ دَافِي وَمُرِيح اليوم.",
-                exampleArabeezy: "eljw dafy wmry7 elywm.",
-                exampleEn: "The weather is warm and comfortable today.",
+                id: "bard",
+                ar: "بَرْد / سَقْعَة",
+                en: "cold weather",
+                enArabeezy: "bard",
+                hint: "Say: فِي بَرْد / فِي سَقْعَة. For a person: بَرْدَان / بَرْدَانَة.",
+                exampleAr: "بِاللَّيْل فِي سَقْعَة، خُد جَاكِيت مَعَك.",
+                exampleArabeezy: "bil-lel fi sa2'a, khod jacket ma3ak.",
+                exampleEn: "At night it is cold; take a jacket with you.",
             },
             {
-                id: "mureeh",
-                ar: "مُرِيح",
-                en: "comfortable (weather)",
-                enArabeezy: "muree7",
-                hint: "Not too hot, not too cold.",
-                exampleAr: "الجَوّ مُرِيح، مْناسِب لِلْطِّلْعَة.",
-                exampleArabeezy: "eljw mry7, mnasb leltl3a.",
-                exampleEn: "The weather is comfortable, good for going out.",
+                id: "dafi",
+                ar: "دِفَا / دَافِي",
+                en: "warmth / warm",
+                enArabeezy: "difa / daafi",
+                hint: "دِفَا = warmth. دَافِي / دَافْيَة = warm. Used for weather, clothes, drinks, and homes.",
+                exampleAr: "الصُّبْح فِي دِفَا، بَس بَاللَّيْل بِبْرَد.",
+                exampleArabeezy: "eS-Sub7 fi difa, bas bel-lel bibrod.",
+                exampleEn: "In the morning there is warmth, but at night it gets cold.",
             },
             {
-                id: "rtoubeh",
+                id: "rtoobe",
                 ar: "رُطُوبَة",
                 en: "humidity",
-                enArabeezy: "ruṭoobe / rotoobe",
-                hint: "Very common in coastal cities.",
-                exampleAr: "الرطوبة بالصيف بتكون عالية كتير.",
-                exampleArabeezy: "elrtwba belsyf btkwn 3alya ktyr.",
-                exampleEn: "The humidity is extreme in summer.",
-            },
-
-            // ===== SUN / CLOUD / RAIN =====
-            {
-                id: "shams",
-                ar: "شَمِس",
-                en: "sun",
-                enArabeezy: "shamis / shams",
-                hint: "Everyday word for sun.",
-                exampleAr: "الشمس قويّة، لابس نضّارة شمس؟",
-                exampleArabeezy: "elshms qwya, labs ndara shms?",
-                exampleEn: "The sun is strong, are you wearing sunglasses?",
+                enArabeezy: "rToobe",
+                hint: "Very important for Gaza because it is by the sea. Common chunk: الرُّطُوبَة عَالْيَة.",
+                exampleAr: "فِي رُطُوبَة عَالْيَة اليَوم، الجَوّ مُتْعِب.",
+                exampleArabeezy: "fi rToobe 3alye el-yom, el-jaw mut3ib.",
+                exampleEn: "There is high humidity today; the weather is tiring.",
             },
             {
-                id: "mshammes",
-                ar: "مْشَمَّس",
-                en: "sunny",
-                enArabeezy: "mshammes",
-                hint: "From شمس. Sunny day.",
-                exampleAr: "بكرا الجو مشمس، نطلع نتمشّى؟",
-                exampleArabeezy: "bkra eljw mshms, ntl3 ntmsha?",
-                exampleEn: "Tomorrow is sunny, shall we go for a walk?",
-            },
-            {
-                id: "ghem",
-                ar: "غَيْم",
-                en: "cloud",
-                enArabeezy: "gheim / gheym",
-                hint: "Cloud itself; for ‘clouds’: غيوم.",
-                exampleAr: "في غَيْم كْتير بالسَّما.",
-                exampleArabeezy: "fy ghym ktyr belsma.",
-                exampleEn: "There are a lot of clouds in the sky.",
-            },
-            {
-                id: "mghayyam",
-                ar: "مْغَيَّم",
-                en: "cloudy / overcast",
-                enArabeezy: "mghayyam",
-                hint: "Sky full of clouds.",
-                exampleAr: "السَّما مْغَيَّمَة اليوم.",
-                exampleArabeezy: "elsma mghyma elywm.",
-                exampleEn: "The sky is cloudy today.",
+                id: "hawa",
+                ar: "هَوَا",
+                en: "wind / air",
+                enArabeezy: "hawa",
+                hint: "Natural Gaza word. Strong wind = هَوَا قَوِي. A little wind = هَوَا خَفِيف.",
+                exampleAr: "الهَوَا قَوِي، سَكِّر الشُّبَّاك.",
+                exampleArabeezy: "el-hawa qawi, sakkir esh-shubbak.",
+                exampleEn: "The wind is strong; close the window.",
             },
             {
                 id: "matar",
                 ar: "مَطَر",
                 en: "rain",
-                enArabeezy: "maTar / matar",
-                hint: "There is rain: في مَطَر.",
-                exampleAr: "أَحْلَى شِي لَمّا يِنْزِل مَطَر.",
-                exampleArabeezy: "a7la shy lma ynzl mtr.",
-                exampleEn: "The nicest thing is when it rains.",
+                enArabeezy: "maTar",
+                hint: "Say: فِي مَطَر. You can also say: الدُّنْيَا بِتْشَتِّي.",
+                exampleAr: "فِي مَطَر بَرَّا، دِير بَالَك عَالطَّرِيق.",
+                exampleArabeezy: "fi maTar barra, deer balak 3aT-Tareeq.",
+                exampleEn: "It is raining outside; be careful on the road.",
             },
             {
-                id: "btemTor",
-                ar: "بْتِمْطِر",
-                en: "it’s raining",
-                enArabeezy: "btemTor / btimTor",
-                hint: "Present tense ‘to rain’.",
-                exampleAr: "بَرّا بْتِمْطِر، خُد شَمْسِيّة.",
-                exampleArabeezy: "bra btmtr, khd shmsya.",
-                exampleEn: "It’s raining outside, take an umbrella.",
-            },
-
-            {
-                id: "ri7",
-                ar: "الهوا",
-                en: "wind",
-                enArabeezy: "",
-                hint: "Strong wind: رِيح قَوِيّة.",
-                exampleAr: "الهوا قوي، سكّر الشباك.",
-                exampleArabeezy: "elhwa qwy, skr elshbak.",
-                exampleEn: "The wind is strong, close the window.",
+                id: "btimTor",
+                ar: "بِتْشَتِّي",
+                en: "it is raining",
+                enArabeezy: "bishtetti",
+                hint: "Very natural Gaza form. You can also say: فِي مَطَر. Past: شَتَّت / كَان فِي مَطَر.",
+                exampleAr: "هَلْقِيت بِتْشَتِّي، خَلِّينَا نِسْتَنَّى خَمْس دَقَايِق.",
+                exampleArabeezy: "halla2et bishtetti, khallina nistanna khames da2aye2.",
+                exampleEn: "It is raining now; let us wait five minutes.",
             },
             {
-                id: "3asefeh",
-                ar: "عَاصْفَة",
-                en: "storm",
-                enArabeezy: "3aaSfeh / ʿaasfeh",
-                hint: "Wind + strong rain = عاصفة.",
-                exampleAr: "اللَّيْلِة في عَاصْفَة، مَنْضَلّ فِي الْبَيْت.",
-                exampleArabeezy: "ellyla fy 3asfa, mndl fy elbyt.",
-                exampleEn: "Tonight there’s a storm, we’ll stay home.",
+                id: "shams",
+                ar: "شَمْس",
+                en: "sun",
+                enArabeezy: "shams",
+                hint: "Strong sun = الشَّمْس قَوِيَّة. Sunglasses = نَضَّارَة شَمْس.",
+                exampleAr: "الشَّمْس قَوِيَّة، لَا تِنْسَى نَضَّارَة الشَّمْس.",
+                exampleArabeezy: "esh-shams qawiyye, la tinsa naDDaret esh-shams.",
+                exampleEn: "The sun is strong; do not forget sunglasses.",
+            },
+            {
+                id: "mshammes",
+                ar: "مُشْمِس",
+                en: "sunny",
+                enArabeezy: "mishmis ",
+                hint: "For weather/day/sky. ",
+                exampleAr: "يَوم الجُمْعَة الجَوّ رَاح يِكُون مُشْمِس.",
+                exampleArabeezy: "yom el-jum3a el-jaw ra7 ykoon mishmis.",
+                exampleEn: "On Friday the weather will be sunny.",
+            },
+            {
+                id: "saafi",
+                ar: "صَافِي",
+                en: "clear",
+                enArabeezy: "Saafi",
+                hint: "Used when the sky/weather is clear. ",
+                exampleAr: "الصُّبْح الجَوّ كَان صَافِي، بَس بَعْدِين غَيَّم.",
+                exampleArabeezy: "eS-Sub7 el-jaw kan Saafi, bas ba3deen ghayyam.",
+                exampleEn: "In the morning the weather was clear, but later it got cloudy.",
+            },
+            {
+                id: "ghayem",
+                ar: "غَيْم",
+                en: "clouds",
+                enArabeezy: "ghayem",
+                hint: "Natural chunk: فِي غَيْم كْتِير. ",
+                exampleAr: "فِي غَيْم كْتِير، شَكْلُه بُكْرَا فِي مَطَر.",
+                exampleArabeezy: "fi ghayem kteer, shaklo bukra fi maTar.",
+                exampleEn: "There are many clouds; it looks like there will be rain tomorrow.",
+            },
+            {
+                id: "mghayyam",
+                ar: "مْغَيَّم",
+                en: " cloudy",
+                enArabeezy: " mghayyam",
+                hint: "Very natural spoken phrase.",
+                exampleAr: "الجو اليَوم مْغَيَّم مِن الصُّبْح.",
+                exampleArabeezy: "el-jaw el-yom mghayyam min eS-Sub7.",
+                exampleEn: "The weather today has been cloudy since the morning.",
+            },
+            {
+                id: "ghobar",
+                ar: "غَبَار",
+                en: "dust",
+                enArabeezy: "ghabar",
+                hint: "Common with wind. Say: فِي غَبَار / الدُّنْيَا غَبَار.",
+                exampleAr: "فِي غَبَار عَالطَّرِيق، السَّوَاقَة صَعْبَة.",
+                exampleArabeezy: "fi ghabar 3aT-Tareeq, es-sawa2a Sa3be.",
+                exampleEn: "There is dust on the road; driving is hard.",
+            },
+            
+            {
+                id: "el_sayf",
+                ar: "الصَّيْف",
+                en: "summer",
+                enArabeezy: "eS-Sayf",
+                hint: "In Gaza, summer usually means شُوب + رُطُوبَة. Months can appear in examples: شَهْر سَبْعَة / شَهْر تَمَانِيَة.",
+                exampleAr: "فِي الصَّيْف الرُّطُوبَة فِي غَزَّة عَالْيَة.",
+                exampleArabeezy: "fi eS-Sayf er-rToobe fi ghazza 3alye.",
+                exampleEn: "In summer the humidity in Gaza is high.",
+            },
+            {
+                id: "esh_sheta",
+                ar: "الشِّتَا",
+                en: "winter / rain season",
+                enArabeezy: "esh-sheta",
+                hint: "In speech, الشِّتَا can mean winter and sometimes rainy weather.",
+                exampleAr: "بَحِبّ الشِّتَا عَشَان المَطَر وَالشَّاي السَّاخِن.",
+                exampleArabeezy: "ba7ib esh-sheta 3ashan el-maTar w esh-shay es-sakhen.",
+                exampleEn: "I like winter because of rain and hot tea.",
+            },
+            {
+                id: "er_rabee3",
+                ar: "الرَّبِيع",
+                en: "spring",
+                enArabeezy: "er-rabee3",
+                hint: "Usually good weather for walking and visiting family.",
+                exampleAr: "فِي الرَّبِيع الجَوّ أَلْطَف مِن الصَّيْف.",
+                exampleArabeezy: "fi er-rabee3 el-jaw alTaf min eS-Sayf.",
+                exampleEn: "In spring the weather is nicer than summer.",
+            },
+            {
+                id: "el_khareef",
+                ar: "الخَرِيف",
+                en: "fall / autumn",
+                enArabeezy: "el-khareef",
+                hint: "Between summer and winter. Weather starts changing.",
+                exampleAr: "فِي الخَرِيف الجَوّ بِصِير أَخَفّ.",
+                exampleArabeezy: "fi el-khareef el-jaw biSeer akhaff.",
+                exampleEn: "In autumn the weather becomes lighter.",
+            },
+            {
+                id: "a7san_min",
+                ar: "أَحْسَن مِن",
+                en: "better than",
+                enArabeezy: "a7san min",
+                hint: "Main comparison chunk. Other weather chunks in examples: أَبْرَد مِن، أَحَرّ مِن، أَلْطَف مِن.",
+                exampleAr: "الجَوّ اليَوم أَحْسَن مِن اِمْبَارِح.",
+                exampleArabeezy: "el-jaw el-yom a7san min embare7.",
+                exampleEn: "The weather today is better than yesterday.",
+            },
+            {
+                id: "darajet_el7arara",
+                ar: "دَرَجَة الحَرَارَة",
+                en: "temperature",
+                enArabeezy: "darajet el-7arara",
+                hint: "Useful when asking about numbers and weather. Example: قَدِّيش دَرَجَة الحَرَارَة؟",
+                exampleAr: "دَرَجَة الحَرَارَة اليَوم أَعْلَى مِن اِمْبَارِح.",
+                exampleArabeezy: "darajet el-7arara el-yom a3la min embare7.",
+                exampleEn: "The temperature today is higher than yesterday.",
+            },
+            {
+                id: "ma_basta7mel",
+                ar: "مَا بَسْتَحْمِل",
+                en: "I cannot stand",
+                enArabeezy: "ma basta7mel",
+                hint: "Strong opinion. Use with heat, humidity, cold, noise, or waiting.",
+                exampleAr: "صَرَاحَةً، مَا بَسْتَحْمِل الشُّوب مَع الرُّطُوبَة.",
+                exampleArabeezy: "Sara7atan, ma basta7mel esh-shob ma3 er-rToobe.",
+                exampleEn: "Honestly, I cannot stand heat with humidity.",
+            },
+            {
+                id: "ed_dill",
+                ar: "الضِّلّ",
+                en: "the shade",
+                enArabeezy: "eD-Dill",
+                hint: "Useful in hot Gaza weather. Common advice: اِقْعَد بِالضِّلّ.",
+                exampleAr: "الشَّمْس قَوِيَّة، اِقْعَد بِالضِّلّ.",
+                exampleArabeezy: "esh-shams qawiyye, i23od biD-Dill.",
+                exampleEn: "The sun is strong; sit in the shade.",
+            },
+            {
+                id: "ra3d_barq",
+                ar: "رَعْد وَبَرْق",
+                en: "thunder and lightning",
+                enArabeezy: "ra3d w barq",
+                hint: "Useful recognition weather phrase. Keep it light for this unit; students do not need storm vocabulary yet.",
+                exampleAr: "بَاللَّيْل كَان فِي رَعْد وَبَرْق.",
+                exampleArabeezy: "bel-lel kan fi ra3d w barq.",
+                exampleEn: "At night there was thunder and lightning.",
             },
             {
                 id: "talj",
                 ar: "تَلْج",
                 en: "snow",
                 enArabeezy: "talj",
-                hint: "Not very common in many cities, but known.",
-                exampleAr: "نَزَل تَلْج بِاللَّيْل.",
-                exampleArabeezy: "nzl tlj bellyl.",
-                exampleEn: "It snowed last night.",
+                hint: "Recognition word. Snow is not common in Gaza, but students hear it when talking about other cities/countries.",
+                exampleAr: "فِي بَعْض البِلَاد بِالشِّتَا بِنْزَل تَلْج.",
+                exampleArabeezy: "fi ba3d el-bilad bish-sheta binzal talj.",
+                exampleEn: "In some countries, snow falls in winter.",
             },
             {
-                id: "dababb",
-                ar: "ضَباب",
+                id: "dabab",
+                ar: "ضَبَاب",
                 en: "fog",
-                enArabeezy: "dabāb / dabaab",
-                hint: "Low visibility, especially in morning.",
-                exampleAr: "في ضباب عالطريق، سوق على مهلك.",
-                exampleArabeezy: "fy dbab 3altryq, swq 3la mhlk.",
-                exampleEn: "There’s fog on the road, drive slowly.",
-            },
-
-            // ===== TEMPERATURE & SEASONS =====
-            {
-                id: "darajet_el7arara",
-                ar: "دَرَجَة الحَرارَة",
-                en: "temperature",
-                enArabeezy: "darajet el-7arāra",
-                hint: "Literally ‘degree of heat’.",
-                exampleAr: "دَرَجَة الحَرارَة اليوم حَوالَي عِشْرين.",
-                exampleArabeezy: "drja el7rara elywm 7waly 3shryn.",
-                exampleEn: "The temperature today is around twenty.",
+                enArabeezy: "dabab",
+                hint: "Use with roads and visibility: فِي ضَبَاب عَالطَّرِيق.",
+                exampleAr: "الصُّبْح كَان فِي ضَبَاب عَالطَّرِيق.",
+                exampleArabeezy: "eS-Sub7 kan fi dabab 3aT-Tareeq.",
+                exampleEn: "In the morning there was fog on the road.",
             },
             {
-                id: "ta7t_el_sefr",
-                ar: "تَحْت الصِّفِر",
-                en: "below zero",
-                enArabeezy: "ta7t es-sefr",
-                hint: "Very cold weather.",
-                exampleAr: "بِهالْبَلَد الحَرارَة تَحْت الصِّفِر بِالشِّتَا.",
-                exampleArabeezy: "bhalbld el7rara t7t elsfr belshta.",
-                exampleEn: "In this country the temperature is below zero in winter.",
+                id: "asfeh",
+                ar: "عَاصْفَة",
+                en: "storm",
+                enArabeezy: "3aSfeh",
+                hint: "Useful but less frequent than rain/wind. Do not overload students with rare storm types in this unit.",
+                exampleAr: "إِذَا فِي عَاصْفَة، خَلِّيك جُوَّه البَيْت.",
+                exampleArabeezy: "iza fi 3aSfeh, khaleek juwwa el-beit.",
+                exampleEn: "If there is a storm, stay inside the house.",
             },
             {
-                id: "abrad_min",
-                ar: "أَبْرَد مِن...",
-                en: "colder than...",
-                enArabeezy: "abrad min...",
-                hint: "Comparative: اليوم أَبْرَد مِن امبارِح.",
-                exampleAr: "اليوم أَبْرَد مِن امْبارِح.",
-                exampleArabeezy: "elywm abrd mn ambar7.",
-                exampleEn: "Today is colder than yesterday.",
+                id: "deer_balak",
+                ar: "دِير بَالَك",
+                en: "be careful / take care",
+                enArabeezy: "deer balak",
+                hint: "To a woman: دِيرِي بَالِك. To a group: دِيرُوا بَالْكُم.",
+                exampleAr: "دِير بَالَك عَالطَّرِيق، فِي مَطَر وَغَبَار.",
+                exampleArabeezy: "deer balak 3aT-Tareeq, fi maTar w ghabar.",
+                exampleEn: "Be careful on the road; there is rain and dust.",
             },
             {
-                id: "fasl",
-                ar: "فَصِل",
-                en: "season",
-                enArabeezy: "faSl / faSel",
-                hint: "Plural: فُصُول.",
-                exampleAr: "شُو أَحْلَى فَصِل عِنْدَك؟",
-                exampleArabeezy: "shw a7la fsl 3ndk?",
-                exampleEn: "What’s your favourite season?",
+                id: "khod_ma3ak",
+                ar: "خُد مَعَك",
+                en: "take with you",
+                enArabeezy: "khod ma3ak",
+                hint: "To a woman: خُدِي مَعِك. Useful with شَمْسِيَّة، جَاكِيت، مَيّ.",
+                exampleAr: "خُد مَعَك شَمْسِيَّة، شَكْلُهَا بَدْهَا تْشَتِّي.",
+                exampleArabeezy: "khod ma3ak shamsiyye, shakilha baddha tshetti.",
+                exampleEn: "Take an umbrella with you; it looks like it will rain.",
             },
-            {
-                id: "seif",
-                ar: "صَيْف",
-                en: "summer",
-                enArabeezy: "Seyf / seif",
-                hint: "",
-                exampleAr: "مَا بَحِبّ الصَّيْف، الشُّوب بِجَنِّن.",
-                exampleArabeezy: "ma b7b elsyf, elshwb bjnn.",
-                exampleEn: "I don’t like summer, the heat is crazy.",
-            },
-            {
-                id: "sheta",
-                ar: "شِتَا",
-                en: "winter",
-                enArabeezy: "sheta",
-                hint: "",
-                exampleAr: "بِالشِّتَا بَلْبِس أَواعي ثَقِيلَة.",
-                exampleArabeezy: "belshta blbs awa3y thqyla.",
-                exampleEn: "In winter I wear heavy clothes.",
-            },
-            {
-                id: "rabee3",
-                ar: "رَبِيع",
-                en: "spring",
-                enArabeezy: "rabee3",
-                hint: "",
-                exampleAr: "الرَّبِيع فَصِل مُناسِب لِلْمَشِي.",
-                exampleArabeezy: "elrby3 fsl mnasb lelmshy.",
-                exampleEn: "Spring is a good season for walking.",
-            },
-            {
-                id: "kharif",
-                ar: "خَرِيف",
-                en: "autumn / fall",
-                enArabeezy: "kharif",
-                hint: "",
-                exampleAr: "بِالخَرِيف الوَرَق بْيُوقَع مِن الشَّجَر.",
-                exampleArabeezy: "belkhryf elwrq bywq3 mn elshjr.",
-                exampleEn: "In autumn the leaves fall from the trees.",
-            },
-
-            // ===== CLOTHES & DAILY TALK =====
-            {
-                id: "jaket",
-                ar: "جاكِت",
-                en: "jacket",
-                enArabeezy: "jaket",
-                hint: "Used for any light/medium jacket.",
-                exampleAr: "لا تِنْسى الجاكِت، بَرّا بَرْد.",
-                exampleArabeezy: "la tnsa eljakt, bra brd.",
-                exampleEn: "Don’t forget your jacket, it’s cold outside.",
-            },
-            {
-                id: "awa3i_2teeleh",
-                ar: "أَواعِي ثَقِيلَة",
-                en: "heavy clothes",
-                enArabeezy: "awa3i ta2eeleh",
-                hint: "Winter clothes: jackets, sweaters…",
-                exampleAr: "طَلَّعْنا الأَواعِي الثَّقِيلَة لِلشِّتَا.",
-                exampleArabeezy: "tl3na elawa3y elthqyla lelshta.",
-                exampleEn: "We took out the heavy clothes for winter.",
-            },
-
-            // ===== SMALL TALK CHUNKS =====
-            {
-                id: "keef_el_jaww_3andak",
-                ar: "كِيف الجَوّ عِنْدَك؟",
-                en: "How’s the weather where you are?",
-                enArabeezy: "keef el-jaww 3andak?",
-                hint: "Perfect opener for small talk.",
-                exampleAr: "كِيف الجَوّ عِنْدَك اليَوْم؟",
-                exampleArabeezy: "kyf eljw 3ndk elywm?",
-                exampleEn: "How’s the weather where you are today?",
-            },
-            {
-                id: "el_jaww_mnasib",
-                ar: "الجَوّ مْناسِب لِلْطِّلْعَة.",
-                en: "The weather is good for going out.",
-                enArabeezy: "el-jaww mnasib lil-ṭal3a",
-                hint: "Nice positive comment about the day.",
-                exampleAr: "اليوم الجَوّ مْناسِب لِلْطِّلْعَة عَالبَحِر.",
-                exampleArabeezy: "elywm eljw mnasb leltl3a 3alb7r.",
-                exampleEn: "Today the weather is good for going out to the beach.",
-            },
-            {
-                id: "ma_bastahmel_el_shob",
-                ar: "مَا بَسْتَحْمِل الشُّوب.",
-                en: "I can’t stand the heat.",
-                enArabeezy: "ma basta7mel esh-shob",
-                hint: "Strong opinion about weather.",
-                exampleAr: "صَرَاحَةً، مَا بَسْتَحْمِل الشُّوب.",
-                exampleArabeezy: "sra7a, ma bst7ml elshwb.",
-                exampleEn: "Honestly, I can’t stand the heat.",
-            },
-            {
-                id: "b7eb_el_matar",
-                ar: "بَحِبّ المَطَر.",
-                en: "I love the rain.",
-                enArabeezy: "ba7ebb el-matar",
-                hint: "",
-                exampleAr: "بَحِبّ المَطَر، بْحِسّ الجَوّ أَهْدَى.",
-                exampleArabeezy: "b7b elmtr, b7s eljw ahda.",
-                exampleEn: "I love the rain; I feel the weather is calmer.",
-            },
-
         ],
+    },
 
-        extra: [
-            {
-                id: "hawa_nashef",
-                ar: "هَوا ناشِف",
-                en: "dry air",
-                enArabeezy: "hawa nashef",
-                hint: "Opposite of humid air.",
-                exampleAr: "بِالْجَبَل الهَوا ناشِف أَكْثَر.",
-                exampleArabeezy: "beljbl elhwa nashf akthr.",
-                exampleEn: "In the mountains the air is drier.",
-            },
-            {
-                id: "hawa_m5noq",
-                ar: "هَوا مْخْنُوق",
-                en: "stuffy air",
-                enArabeezy: "hawa mkhnooʔ / mkhno2",
-                hint: "Air feels heavy or polluted.",
-                exampleAr: "الجَوّ مْخْنُوق جُوّا، اِفْتَح الشُّبّاك شْوَيّ.",
-                exampleArabeezy: "eljw mkhnwq jwa, aft7 elshbak shwy.",
-                exampleEn: "The air inside feels stuffy, open the window a bit.",
-            },
-            {
-                id: "nashret_ta2s",
-                ar: "نَشْرَة طَقْس",
-                en: "weather report / forecast",
-                enArabeezy: "nashret ta2s",
-                hint: "Like on TV or apps.",
-                exampleAr: "شُفْت نَشْرَة الطَّقْس قَبِل ما تْسافِرِي؟",
-                exampleArabeezy: "shft nshra eltqs qbl ma tsafry?",
-                exampleEn: "Did you check the weather report before you travelled?",
-            },
-
-        ],
-    }
-    ,
-
-    // ====================================
-    // DIALOGUE (3 LONG SCENES)
-    // ====================================
-    dialogue: {
-        lines: [
-            {
-                "speaker": "Lina",
-                "ar": "صَباح الخير! كِيف الجَوّ بُرا؟",
-                "arArabeezy": "sba7 elkhyr! kyf eljw bra?",
-                "en": "Good morning! How’s the weather outside?"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "صَباح النّور! مِشْمِس وشُوب شْوَي.",
-                "arArabeezy": "sba7 elnwr! mshms wshwb shwy.",
-                "en": "Good morning! Sunny and a bit hot."
-            },
-            {
-                "speaker": "Lina",
-                "ar": "بِفَكِّر نِطْلَع نِتْمَشّى.",
-                "arArabeezy": "bfkr ntl3 ntmsha.",
-                "en": "I think we should go for a walk."
-            },
-            {
-                "speaker": "Rania",
-                "ar": "مُمْكِن،بس ممكن تمطر بعد الظهر..",
-                "arArabeezy": "mmkn, bs mmkn tmtr b3d elzhr. .",
-                "en": "Maybe, but it might rain this afternoon."
-            },
-            {
-                "speaker": "Lina",
-                "ar": " إيش بتحبي أكتر؟ الصيف ولا الشتا؟",
-                "arArabeezy": "iysh bt7by aktr?elsyf wla elshta?",
-                "en": " what do you like more? Summer or winter?"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "بِصِراحَة الشِّتا. بَحبّ الجَوّ البَارِد.",
-                "arArabeezy": "bsra7a elshta. b7b eljw elbard.",
-                "en": "Honestly winter. I love the cold weather."
-            },
-            {
-                "speaker": "Lina",
-                "ar": "أنا العَكْس! بَحبّ الصَّيف والبحَر.",
-                "arArabeezy": "ana el3ks! b7b elsyf welb7r.",
-                "en": "I’m the opposite! I love summer and the beach."
-            },
-            {
-                "speaker": "Rania",
-                "ar": "كُلّ فَصْل إِلُه جَمالُه.",
-                "arArabeezy": "kl fsl ilh jmalh.",
-                "en": "Every season has its beauty."
-            },
-            {
-                "speaker": "Lina",
-                "ar": "إحْتِمال نِشوف ثَلْج هَالسَّنَة؟",
-                "arArabeezy": "i7tmal nshwf thlj halsna?",
-                "en": "Maybe we’ll see snow this year?"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "إذا الحَرارَة نَزَلَت تَحْت الصّفِر، أكيد!",
-                "arArabeezy": "idha el7rara nzlt t7t elsfr, akyd!",
-                "en": "If the temperature drops below zero, for sure!"
-            },
-            {
-                "speaker": "Lina",
-                "ar": "كيف الأمور بالجامعة؟",
-                "arArabeezy": "kyf elamwr beljam3a?",
-                "en": "How’s everything at university?"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "تَمام، بُدرس كْتير. وإنتي؟",
-                "arArabeezy": "tmam, bdrs ktyr. winty?",
-                "en": "Good, studying a lot. And you?"
-            },
-            {
-                "speaker": "Lina",
-                "ar": "نَفْس الإِشي، بَس عِنْدي وِقْت لَلدَّرْدَشَة!",
-                "arArabeezy": "nfs elishy, bs 3ndy wqt leldrdsha!",
-                "en": "Same thing, but I have time for chatting!"
-            },
-
-            {
-                "speaker": "Lina",
-                "ar": "إسْمَعي! الهَوا قَوِيّ. نِلبُس جاكِت؟",
-                "arArabeezy": "ism3y! elhwa qwy. nlbs jakt?",
-                "en": "Listen! The wind is strong. Should we wear jackets?"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "إي، خُدي جاكِت وأَواعي ثَقيلَة.",
-                "arArabeezy": "iy, khdy jakt wawa3y thqyla.",
-                "en": "Yes, take a jacket and heavy clothes."
-            },
-            {
-                "speaker": "Lina",
-                "ar": "الجَوّ اتغير بسرعة!",
-                "arArabeezy": "eljw atghyr bsr3a!",
-                "en": "The weather changed quickly!"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "يمكن يكون مؤقّت.",
-                "arArabeezy": "ymkn ykwn mwqt.",
-                "en": "Maybe it’s temporary."
-            },
-            {
-                "speaker": "Lina",
-                "ar": "نستنى شوي؟ يمكن الهوا يوقّف.",
-                "arArabeezy": "nstna shwy?ymkn elhwa ywqf.",
-                "en": "Shall we wait a bit? Maybe the rain stops."
-            },
-            {
-                "speaker": "Rania",
-                "ar": "تمام. خلّينا نطّلع على النشرة.",
-                "arArabeezy": "tmam. khlyna ntl3 3la elnshra.",
-                "en": "Okay. Let’s check the forecast."
-            },
-
-            {
-                "speaker": "Lina",
-                "ar": "مَع السَّلامَة!",
-                "arArabeezy": "m3 elslama!",
-                "en": "Goodbye!"
-            },
-            {
-                "speaker": "Rania",
-                "ar": "مع السَّلامَة!",
-                "arArabeezy": "m3 elslama!",
-                "en": "Goodbye!"
-            }
-        ]
-    }
-    ,
-
-    // ====================================
-    // GRAMMAR – NEW FOCUS
-    // ====================================
-
-    grammar: [
-        {
-            id: "comparative",
-            title: "Comparative (أكثر / أقل / أحسن)",
-            short: "Compare two things with من.",
-            description:
-                `In spoken Arabic, we compare using أكثر / أقل / أحسن + من.
-This is common in weather and daily opinions.
-
-Pattern:
-Comparative + من + second item.`,
-            table: {
-                title: "Common Comparatives",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["أكثر من", "aktar min", "more than", "Quantity"],
-                    ["أقل من", "a2all min", "less than", "Quantity"],
-                    ["أحسن من", "a7san min", "better than", "Quality"],
-                    ["أسوأ من", "aswa2 min", "worse than", "Quality"]
-                ]
-            },
-            examples: [
-                { ar: "الجو اليوم أحسن من مبارح", arabeezy: "el-jaww el-yom a7san min mbaare7", en: "The weather today is better than yesterday." },
-                { ar: "الشتا أكثر من السنة الماضية", arabeezy: "esh-sheta aktar min es-sane il-maDye", en: "The rain is more than last year." },
-                { ar: "الحر أقل بالليل", arabeezy: "el-7arr a2all bel-leel", en: "The heat is less at night." },
-                { ar: "هالنهار أسوأ من مبارح", arabeezy: "hal-nahaar aswa2 min mbaare7", en: "This day is worse than yesterday." },
-                { ar: "الهوا أحسن من القعدة بالبيت", arabeezy: "el-hawa a7san min el-2a3de bel-beit", en: "Fresh air is better than staying at home." }
-            ],
-            teacherNotes:
-                `MSA has formal comparative forms; spoken favors أحسن/أسوأ.
-Practice with من consistently.
-Use daily weather comparisons.
-Keep sentences short.`,
-            commonMistakes: [
-                "Forgetting من",
-                "Using formal MSA comparative words",
-                "Mixing the order of items"
-            ],
-            functionalUse: "Use this to compare weather, prices, or feelings in small talk."
-        },
-        {
-            id: "regular_plurals",
-            title: "Regular Plurals (ـين / ـات)",
-            short: "Use -ين for masculine, -ات for feminine and objects.",
-            description:
-                `Regular plurals are common in spoken Arabic.
-Masculine human plurals often take -ين, and many feminine or object nouns take -ات.
-
-Keep the pattern simple and spoken.`,
-            table: {
-                title: "Plural Examples",
-                headers: ["Arabic", "Arabeezy", "English", "Pattern"],
-                rows: [
-                    ["مهندسين", "mohandseen", "engineers", "-een"],
-                    ["معلمات", "mo3allmaat", "teachers (f)", "-aat"],
-                    ["سيارات", "sayyaaraat", "cars", "-aat"],
-                    ["لغات", "lughaat", "languages", "-aat"],
-                    ["طلاب", "Tullaab", "students", "broken plural"]
-                ]
-            },
-            examples: [
-                { ar: "المهندسين بالشارع", arabeezy: "el-mohandseen besh-shaare3", en: "The engineers are in the street." },
-                { ar: "في معلمات بالمدرسة", arabeezy: "fi mo3allmaat bel-madrasah", en: "There are teachers (f) in the school." },
-                { ar: "السيارات كتيرة اليوم", arabeezy: "es-sayyaaraat kteereh el-yom", en: "The cars are many today." },
-                { ar: "عندي لغات كتيرة", arabeezy: "3indi lughaat kteereh", en: "I have many languages." },
-                { ar: "الطلاب كتيرين", arabeezy: "et-Tullaab kteereen", en: "The students are many." }
-            ],
-            teacherNotes:
-                `Spoken uses regular plurals often, but many nouns are broken plurals.
-MSA has more strict patterns.
-Teach -ين/-ات first, then mention exceptions.
-Use real classroom roles.`,
-            commonMistakes: [
-                "Overusing -ين with non-human nouns",
-                "Forgetting vowel changes in broken plurals",
-                "Mixing masculine/feminine plural endings"
-            ],
-            functionalUse: "Use this to describe groups of people or objects in daily talk."
-        }
+  dialogue: {
+    title: "Weather & Transportation - Waiting for the Bus",
+    setting: "Rami and Noor are waiting for the bus on a windy, cloudy day. They talk about weather, transportation, family advice, and favorite seasons.",
+    lines: [
+        { speaker: "Rami", ar: "يَا سَاتِر... شُو هَالهَوَا!", arArabeezy: "ya sater... shoo hal-hawa!", en: "Oh wow... what wind!" },
+        { speaker: "Noor", ar: "ههههه قُلْتِلَك خُد جَاكِيت.", arArabeezy: "hahaha oltillak khod jacket.", en: "Haha, I told you to take a jacket." },
+        { speaker: "Rami", ar: "وَالله الصُّبُح كَان الجَوّ مْنِيح، مَا تَوَقَّعْت يِقْلِب هَيْك.", arArabeezy: "wallah eS-Sobo7 kan el-jaw mnee7, ma tawaqqa3t yi2lib hek.", en: "The weather was good in the morning. I didn’t expect it to change like this." },
+        { speaker: "Noor", ar: "هَالأَيَّام مَا بْتِعْرَف عَلَى الجَوّ. الصُّبُح بَرْد، الضُّهُر شُوب، وَبِاللَّيْل بَرْد مِن جَدِيد.", arArabeezy: "hal-ayam ma bti3raf 3ala el-jaw. eS-Sobo7 bard, eD-Duher shoob, w bil-leil bard min jadeed.", en: "These days you can’t understand the weather. Morning is cold, noon is hot, and at night it gets cold again." },
+        { speaker: "Rami", ar: "شَكْلْهَا بَدْهَا تِشْتِي.", arArabeezy: "shakilha baddha tishti.", en: "Looks like it’s going to rain." },
+        { speaker: "Noor", ar: "مِيَّة بِالمِيَّة. شُوف الغَيْم كِيف صَار.", arArabeezy: "meyye bil-meyye. shoof el-gheim keef Sar.", en: "Definitely. Look at how the clouds are now." },
+        { speaker: "Rami", ar: "بَس نَاقِص البَاص يِتْأَخَّر.", arArabeezy: "bas na2iS el-baS yit2akhkhar.", en: "All we need now is for the bus to be late." },
+        { speaker: "Noor", ar: "لَا تِحْكِي هَيْك، أَنَا إِذَا اتْأَخَّرْت كَمَان خَمْس دَقَايِق الدُّكْتُور بِسَكِّر البَاب.", arArabeezy: "la ti7ki hek, ana iza it2akhkhart kaman khams da2aye2 ed-doctor bisakkir el-bab.", en: "Don’t say that. If I’m five more minutes late, the doctor will close the door." },
+        { speaker: "Rami", ar: "لِسَّه مَا إِجَاش؟", arArabeezy: "lissa ma ijash?", en: "It still hasn’t come?" },
+        { speaker: "Noor", ar: "صَارْلِي رُبُع سَاعَة بَسْتَنَّاه.", arArabeezy: "Sarli rob3 sa3a bastannah.", en: "I’ve been waiting for it for fifteen minutes." },
+        { speaker: "Rami", ar: "يَا زَلَمَة... لَمَّا الدُّنْيَا تْغَيِّم هَيْك، المُوَاصَلَات بْتِتْأَخَّر.", arArabeezy: "ya zalame... lamma ed-dinya tghayyim hek, el-mowaSalat btit2akhkhar.", en: "Man... when it gets cloudy like this, transportation gets delayed." },
+        { speaker: "Noor", ar: "آه، وَالنَّاس كُلْهَا بْتِطْلَع بِنَفْس الوَقْت.", arArabeezy: "ah, w en-nas kolha btiTla3 binafs el-wa2t.", en: "Yes, and everyone goes out at the same time." },
+        { speaker: "Rami", ar: "أَنَا إِمْبَارِح رِجِعْت مَشِي نُصّ الطَّرِيق.", arArabeezy: "ana embare7 riji3t mashi noSS eT-Taree2.", en: "Yesterday I walked half the way back." },
+        { speaker: "Noor", ar: "لِيش؟", arArabeezy: "leesh?", en: "Why?" },
+        { speaker: "Rami", ar: "مَا لْقِيت وَلَا تَاكْسِي فَاضِي.", arArabeezy: "ma l2eet wala taxi faDi.", en: "I couldn’t find a single empty taxi." },
+        { speaker: "Noor", ar: "الحَمْدُ لله إِنِّي رِجِعْت بَدْرِي.", arArabeezy: "el-7amdullah inni riji3t badri.", en: "Thank God I came back early." },
+        { speaker: "Rami", ar: "أَهْلِك كِيف؟ الجَوّ أَثَّر عَلَيْهِم؟", arArabeezy: "ahlik keef? el-jaw aththar 3aleihom?", en: "How’s your family? Did the weather affect them?" },
+        { speaker: "Noor", ar: "إِمِّي مِن الصُّبُح بْتِحْكِيلِي: لَا تِنْسِي الجَاكِيت، وَلَا تِطْلَعِي بَدُون شَمْسِيَّة.", arArabeezy: "immi min eS-Sobo7 bti7keeli: la tinsi el-jacket, w la tiTla3i bidoon shamsiyye.", en: "My mom has been telling me since the morning: don’t forget the jacket, and don’t go out without an umbrella." },
+        { speaker: "Rami", ar: "ههههه... الأُمَّهَات كُلْهُم نَفْس الحَكِي.", arArabeezy: "hahaha... el-ommahat kolhom nafs el-7aki.", en: "Haha... all mothers say the same things." },
+        { speaker: "Noor", ar: "وَإِنْت؟", arArabeezy: "w inta?", en: "And you?" },
+        { speaker: "Rami", ar: "أَبُوي مِن إِمْبَارِح بْيِقُولِّي: الدُّنْيَا بَدْهَا تِشْتِي، لَا تِغْسِل السَّيَّارَة. 😂", arArabeezy: "aboy min embare7 bi2olli: ed-dinya baddha tishti, la tighsil es-sayyara.", en: "My dad has been telling me since yesterday: it’s going to rain, don’t wash the car." },
+        { speaker: "Noor", ar: "هههههه... شَكْلُه كَان عِنْدُه حَقّ.", arArabeezy: "hahaha... shaklo kan 3indo 7a2.", en: "Haha... looks like he was right." },
+        { speaker: "Rami", ar: "أَكِيد.", arArabeezy: "akeed.", en: "Of course." },
+        { speaker: "Noor", ar: "أَنَا أَكْتَر إِشِي بَكْرَهُه بِالرُّطُوبَة.", arArabeezy: "ana aktar ishi bakraho bir-rToobe.", en: "The thing I hate most is humidity." },
+        { speaker: "Rami", ar: "آه وَالله... بْتِحِسّ البَيْت مَخْنُوق.", arArabeezy: "ah wallah... bti7iss el-beit makhnoo2.", en: "Yes, really... it makes the house feel stuffy." },
+        { speaker: "Noor", ar: "خُصُوصًا بِاللَّيْل.", arArabeezy: "khuSooSan bil-leil.", en: "Especially at night." },
+        { speaker: "Rami", ar: "بَس مَع هَيْك، أَنَا بَحِبّ الشِّتَا أَكْتَر مِن الصَّيْف.", arArabeezy: "bas ma3 hek, ana ba7ibb esh-sheta aktar min eS-Seif.", en: "But even so, I like winter more than summer." },
+        { speaker: "Noor", ar: "أَنَا العَكْس.", arArabeezy: "ana el-3aks.", en: "I’m the opposite." },
+        { speaker: "Rami", ar: "لِيش؟", arArabeezy: "leesh?", en: "Why?" },
+        { speaker: "Noor", ar: "الصَّيْف أَسْهَل بِالنِّسْبَة إِلِي. بَتْحَرَّك أَكْتَر، وَبَحِبّ أَقْعُد عَالبَحْر.", arArabeezy: "eS-Seif ashal bin-nisbe ili. bat7arrak aktar, w ba7ibb a2od 3al-ba7er.", en: "Summer is easier for me. I move around more, and I like sitting by the sea." },
+        { speaker: "Rami", ar: "أَمَّا أَنَا أَوَّل مَا يِيجِي الصَّيْف بَزْهَق مِن الشُّوب.", arArabeezy: "amma ana awwal ma yeeji eS-Seif bazha2 min esh-shoob.", en: "As for me, as soon as summer comes, I get tired of the heat." },
+        { speaker: "Noor", ar: "الرَّبِيع أَحْسَن إِشِي.", arArabeezy: "er-rabee3 a7san ishi.", en: "Spring is the best." },
+        { speaker: "Rami", ar: "هَاي أَوَّل مَرَّة نِتَّفِق اليَوْم. 😂", arArabeezy: "hay awwal marra nittafi2 el-yom.", en: "This is the first time we agree today." },
+        { speaker: "Noor", ar: "ههههه... عَنْجَد.", arArabeezy: "hahaha... 3anjad.", en: "Haha... seriously." },
+        { speaker: "Rami", ar: "شُفْتِي التَّطْبِيق؟", arArabeezy: "shofti et-taTbee2?", en: "Did you check the app?" },
+        { speaker: "Noor", ar: "لَا، شُو بِيحْكِي؟", arArabeezy: "la, shoo bi7ki?", en: "No, what does it say?" },
+        { speaker: "Rami", ar: "بِيْقُول بُكْرَة الجَوّ أَلْطَف، وَمَا فِي مَطَر.", arArabeezy: "bi2ool bokra el-jaw alTaf, w ma fi maTar.", en: "It says tomorrow the weather will be nicer, and there’s no rain." },
+        { speaker: "Noor", ar: "الحَمْدُ لله، بُكْرَة عِنْدِي مِشْوَار طَوِيل.", arArabeezy: "el-7amdullah, bokra 3indi mishwar Taweel.", en: "Thank God. Tomorrow I have a long errand." },
+        { speaker: "Rami", ar: "وِين رَايْحَة؟", arArabeezy: "wayn ray7a?", en: "Where are you going?" },
+        { speaker: "Noor", ar: "عِنْدِي مَوْعِد وَبَعْدَهَا بَدِّي أَمُرّ عَسِتِّي.", arArabeezy: "3indi maw3id w ba3dha baddi amorr 3a-sitti.", en: "I have an appointment, and after that I want to stop by my grandmother’s." },
+        { speaker: "Rami", ar: "الله يْخَلِّيلِك إِيَّاهَا.", arArabeezy: "allah ykhaleelik iyyaha.", en: "May God keep her for you." },
+        { speaker: "Noor", ar: "آمِين.", arArabeezy: "ameen.", en: "Amen." },
+        { speaker: "Rami", ar: "آه... إِجَا البَاص أَخِيرًا.", arArabeezy: "ah... ija el-baS akheeran.", en: "Ah... the bus finally came." },
+        { speaker: "Noor", ar: "يَلَّا الحَمْدُ لله.", arArabeezy: "yalla el-7amdullah.", en: "Finally, thank God." },
+        { speaker: "Rami", ar: "دِيرِي بَالِك عَحَالِك.", arArabeezy: "deeri balik 3a7alik.", en: "Take care of yourself." },
+        { speaker: "Noor", ar: "وَإِنْت كَمَان.", arArabeezy: "w inta kaman.", en: "You too." }
     ],
 
+    questions: [
+        { ar: "وِين كَان رَامِي وَنُور؟", en: "Where were Rami and Noor?" },
+        { ar: "لِيش كَانُوا مُسْتَنِّيِين؟", en: "Why were they waiting?" },
+        { ar: "كِيف كَان الجَوّ؟", en: "How was the weather?" },
+        { ar: "لِيش نُور كَانِت خَايْفَة تِتْأَخَّر؟", en: "Why was Noor afraid of being late?" },
+        { ar: "شُو صَار مَع رَامِي إِمْبَارِح؟", en: "What happened with Rami yesterday?" },
+        { ar: "شُو كَانِت تِنْصَح أُمّ نُور؟", en: "What did Noor’s mother advise her?" },
+        { ar: "شُو قَال أَبُو رَامِي عَن السَّيَّارَة؟", en: "What did Rami’s father say about the car?" },
+        { ar: "مِين بْحِبّ الشِّتَا؟", en: "Who likes winter?" },
+        { ar: "مِين بْحِبّ الصَّيْف؟", en: "Who likes summer?" },
+        { ar: "أَي فَصْل اتَّفَقُوا إِنُّه أَلْطَف؟", en: "Which season did they agree was the nicest?" },
+        { ar: "شُو كَان تَوَقُّع الطَّقْس لِبُكْرَة؟", en: "What was the weather forecast for tomorrow?" },
+        { ar: "وِين كَانِت رَايْحَة نُور بُكْرَة؟", en: "Where was Noor going tomorrow?" }
+    ],
+},
 
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
+                id: "weather_mc1",
                 type: "match",
                 prompt: "Match the English word to Arabic: the weather",
-                options: ["الجَوّ", "بَرْد", "شُوب", "دَافِي", "مُرِيح"],
+                options: ["الجَوّ", "الشُّغُل", "العِيلَة", "الأُجْرَة"],
                 correct: "الجَوّ",
             },
             {
-                id: "mc_complete_2",
+                id: "weather_mc2",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: There are a lot of clouds in the sky.\nفي ___ كْتير بالسَّما.",
-                options: ["رُطُوبَة", "شَمِس", "مْشَمَّس", "غَيْم", "مْغَيَّم"],
-                correct: "غَيْم",
+                prompt: "Complete the Arabic for: There is a lot of heat today. فِي ___ كْتِير اليَوم.",
+                options: ["شُوب", "اِسْمِي", "سَاكِن", "أُخْت"],
+                correct: "شُوب",
             },
             {
-                id: "mc_reorder_3",
+                id: "weather_mc3",
                 type: "reorder",
-                prompt: "Reorder the Arabic words to match: The nicest thing is when it rains.",
-                options: ["أَحْلَى", "شِي", "لَمّا", "يِنْزِل", "مَطَر"],
-                correct: ["أَحْلَى", "شِي", "لَمّا", "يِنْزِل", "مَطَر"],
+                prompt: "Reorder: How is the weather where you are?",
+                options: ["كِيف", "الجَوّ", "عِنْدَك؟"],
+                correct: ["كِيف", "الجَوّ", "عِنْدَك؟"],
             },
             {
-                id: "mc_choose_4",
-                type: "choose",
-                prompt: "Choose the correct Arabic word for: fog",
-                options: ["ضَباب", "دَرَجَة الحَرارَة", "تَحْت الصِّفِر", "أَبْرَد مِن...", "فَصِل"],
-                correct: "ضَباب",
+                id: "weather_mc4",
+                type: "complete",
+                prompt: "Complete the Arabic for: The weather today is better than yesterday. الجَوّ اليَوم أَحْسَن ___ اِمْبَارِح.",
+                options: ["مِن", "فِي", "مَع", "شُو"],
+                correct: "مِن",
             },
             {
-                id: "mc_match_5",
+                id: "weather_mc5",
                 type: "match",
-                prompt: "Match the English word to Arabic: summer",
-                options: ["صَيْف", "شِتَا", "رَبِيع", "خَرِيف", "جاكِت"],
-                correct: "صَيْف",
-            },
-            {
-                id: "mc_complete_6",
-                type: "complete",
-                prompt: "Complete the Arabic sentence for: Honestly, I can’t stand the heat.\nصَرَاحَةً، ___",
-                options: ["أَواعِي ثَقِيلَة", "كِيف الجَوّ عِنْدَك؟", "الجَوّ مْناسِب لِلْطِّلْعَة.", "مَا بَسْتَحْمِل الشُّوب.", "بَحِبّ المَطَر."],
-                correct: "مَا بَسْتَحْمِل الشُّوب.",
-            },
-            {
-                id: "mc_reorder_7",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: In the mountains the air is drier.",
-                options: ["بِالْجَبَل", "الهَوا", "ناشِف", "أَكْثَر"],
-                correct: ["بِالْجَبَل", "الهَوا", "ناشِف", "أَكْثَر"],
+                prompt: "Choose a natural Arabic reaction for: Really?",
+                options: ["عَنْ جَدّ؟", "قَدِّيش الأُجْرَة؟", "أَنَا سَاكِن", "عِنْدِي أَخ"],
+                correct: "عَنْ جَدّ؟",
             },
         ],
     },
@@ -663,109 +448,132 @@ Use real classroom roles.`,
         quiz: [
             {
                 id: "weather_q1",
-                questionAr: "«فِي مَطَر» مَعْنَاهَا:",
-                optionsEn: [
-                    "There is rain / It’s raining.",
-                    "There is wind.",
-                    "It is sunny.",
-                ],
+                questionAr: "«كِيف الجَوّ عِنْدَك؟» مَعْنَاهَا:",
+                optionsEn: ["How is the weather where you are?", "Where do you live?", "What is your name?"],
                 correctIndex: 0,
             },
             {
                 id: "weather_q2",
-                questionAr: "أَيّ جُمْلَة تَعْبِّر عَن الماضي؟",
-                optionsEn: [
-                    "بُكْرَا رَح يِكُون الجَوّ حِلُو.",
-                    "امْبَارِح كان الجَوّ بَرْد.",
-                    "اليَوْم الجَوّ دَافِي.",
-                ],
-                correctIndex: 1,
+                questionAr: "إِذَا فِي مَطَر، نَصِيحَة طَبِيعِيَّة:",
+                optionsEn: ["خُد مَعَك شَمْسِيَّة.", "شُو اِسْمَك؟", "أَنَا عِنْدِي أَخ."],
+                correctIndex: 0,
             },
             {
                 id: "weather_q3",
-                questionAr: "«مَا بَسْتَحْمِل الشُّوب» مَعْنَاهَا:",
-                optionsEn: [
-                    "I can’t stand the heat.",
-                    "I love the heat.",
-                    "The heat is normal.",
-                ],
+                questionAr: "«بَرْدَانَة» بِنِحْكِيهَا:",
+                optionsEn: ["to/about a woman feeling cold", "to/about a man feeling hot", "about rain"],
                 correctIndex: 0,
             },
             {
                 id: "weather_q4",
-                questionAr: "أَيّ كَلِمَة تِسْتَخْدِمْهَا لِـ ‘humid’؟",
-                optionsEn: [
-                    "رُطُوبَة",
-                    "شُوب",
-                    "تَلْج",
-                ],
+                questionAr: "إِذَا بَدَّك تِقُول I cannot stand the heat، بِتِقُول:",
+                optionsEn: ["مَا بَسْتَحْمِل الشُّوب.", "بَحِبّ الشِّتَا.", "الدُّنْيَا غَايْمَة."],
                 correctIndex: 0,
             },
             {
                 id: "weather_q5",
-                questionAr: "أَيّ عِبَارَة طَبِيعِيّة لِبِدَايَة small talk؟",
-                optionsEn: [
-                    "كِيف الجَوّ عِنْدَك؟",
-                    "بَدِّي أَشْتَرِي مُوبَايِل.",
-                    "فِين أَقْرَب مُسْتَشْفَى؟",
-                ],
+                questionAr: "«دِيرِي بَالِك» بِنِحْكِيهَا:",
+                optionsEn: ["to a woman", "to a man", "to a group"],
+                correctIndex: 0,
+            },
+            {
+                id: "weather_q6",
+                questionAr: "أَيّ جُمْلَة فِيهَا مُقَارَنَة؟",
+                optionsEn: ["الجَوّ اليَوم أَحْسَن مِن اِمْبَارِح.", "مَرْحَبَا، كِيفَك؟", "اِسْمِي نُور."],
+                correctIndex: 0,
+            },
+            {
+                id: "weather_q7",
+                questionAr: "«الرُّطُوبَة عَالْيَة» بِنِسْمَعْهَا كْتِير فِي:",
+                optionsEn: ["Gaza/coastal weather", "family introductions", "asking for a name"],
+                correctIndex: 0,
+            },
+            {
+                id: "weather_q8",
+                questionAr: "أَيّ عِبَارَة بِتِفْتَح small talk؟",
+                optionsEn: ["وَالله الجَوّ اليَوم حِلُو.", "بَدِّي حِسَاب البَنْك.", "عِنْدِي اِمْتِحَان رِيَاضِيَّات."],
+                correctIndex: 0,
+            },
+            {
+                id: "weather_q9",
+                questionAr: "«الدُّنْيَا غَايْمَة» مَعْنَاهَا:",
+                optionsEn: ["It is cloudy outside.", "It is very sunny.", "It is my first day."],
                 correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 1: Two classmates meet in the morning at the university entrance. They talk about today’s weather, what it was like yesterday (كان…), and what it will be like tomorrow (رَح…). They also say which season they like or hate and why.",
-            "Role-play 2: Two strangers stand in a bus stop or elevator. They start with a weather comment, then use small talk connectors like «عَنْ جَدّ؟», «وَالله», «بَرْضُه» to keep the conversation going for 6–8 lines.",
-            "Role-play 3: Video call between two cities with different climate (e.g. Gaza & Ramallah / Gaza & Europe). Each one describes the weather now, last week, and next week using «فِي + noun», «كان», and «رَح يِكُون».",
+            "Start a lesson with small talk: greet your teacher, ask how they are, ask about the weather, and describe your weather today.",
+            "You are leaving the house. Tell someone what the weather is like and ask if you should take an umbrella or jacket.",
+            "You are waiting for a taxi. Talk about rain, wind, traffic, and the fare.",
+            "Call a family member in Gaza. Ask about humidity, heat, and whether everyone at home is okay.",
+            "Compare today, yesterday, and Friday: say what the weather was like, what it is like now, and what you expect.",
         ],
         translation: [
-            { id: "weather_t1", type: "enToAr", textEn: "The weather is nice today.", textAr: "الجو حلو اليوم." },
-            { id: "weather_t2", type: "arToEn", textEn: "It's cold and windy.", textAr: "الجو برد وهوا." },
-            { id: "weather_t3", type: "enToAr", textEn: "It will rain tomorrow.", textAr: "رح تمطر بكرا." },
-            { id: "weather_t4", type: "arToEn", textEn: "Do you like winter?", textAr: "بتحب الشتا؟" },
-            { id: "weather_t5", type: "enToAr", textEn: "It's hot in the afternoon.", textAr: "الجو حر بعد الظهر." },
-            { id: "weather_t6", type: "arToEn", textEn: "Let's sit outside.", textAr: "يلا نقعد برا." }
+            { id: "weather_t1", type: "enToAr", textEn: "Hi, how are you? How is the weather where you are?", textAr: "مَرْحَبَا، كِيفَك؟ كِيف الجَوّ عِنْدَك؟" },
+            { id: "weather_t2", type: "arToEn", textEn: "Today the weather is nice, but there is wind.", textAr: "اليَوم الجَوّ حِلُو، بَس فِي هَوَا." },
+            { id: "weather_t3", type: "enToAr", textEn: "There is a lot of heat and humidity today.", textAr: "فِي شُوب وَرُطُوبَة كْتِير اليَوم." },
+            { id: "weather_t4", type: "arToEn", textEn: "It is raining outside; take an umbrella with you.", textAr: "بَرَّه بِتْشَتِّي، خُد مَعَك شَمْسِيَّة." },
+            { id: "weather_t5", type: "enToAr", textEn: "The wind is strong; close the window.", textAr: "الهَوَا قَوِي، سَكِّر الشُّبَّاك." },
+            { id: "weather_t6", type: "arToEn", textEn: "Yesterday the weather was hotter than today.", textAr: "اِمْبَارِح كَان الجَوّ أَحَرّ مِن اليَوم." },
+            { id: "weather_t7", type: "enToAr", textEn: "Tomorrow the weather will be better than today.", textAr: "بُكْرَا الجَوّ رَاح يِكُون أَحْسَن مِن اليَوم." },
+            { id: "weather_t8", type: "arToEn", textEn: "Honestly, I cannot stand heat with humidity.", textAr: "صَرَاحَةً، مَا بَسْتَحْمِل الشُّوب مَع الرُّطُوبَة." },
+            { id: "weather_t9", type: "enToAr", textEn: "I like winter because of the rain and hot tea.", textAr: "بَحِبّ الشِّتَا عَشَان المَطَر وَالشَّاي السَّاخِن." },
+            { id: "weather_t10", type: "arToEn", textEn: "In summer, Gaza's humidity is high.", textAr: "فِي الصَّيْف رُطُوبَة غَزَّة عَالْيَة." },
+            { id: "weather_t11", type: "enToAr", textEn: "There is dust on the road; be careful.", textAr: "فِي غَبَار عَالطَّرِيق، دِير بَالَك." },
+            { id: "weather_t12", type: "arToEn", textEn: "If the weather is sunny on Friday, we will visit my grandmother.", textAr: "إِذَا الجَوّ مُشْمِس يَوم الجُمْعَة، رَاح نْرُوح عِنْد سِتِّي." },
+            { id: "weather_t13", type: "enToAr", textEn: "I have university today, but it is windy and cloudy outside.", textAr: "عِنْدِي جَامْعَة اليَوم، بَس الدُّنْيَا غَايْمَة وَفِي هَوَا." },
+            { id: "weather_t14", type: "arToEn", textEn: "Really? It rained yesterday?", textAr: "عَنْ جَدّ؟ اِمْبَارِح مَطَّرَت؟" },
+            { id: "weather_t15", type: "enToAr", textEn: "God be with you, and tell me when you arrive.", textAr: "الله مَعَك، وَطَمِّنِّي بَس تُوصَل." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Record a 60–90 second audio in Palestinian Arabic where you:\n" +
-            "1. Describe the weather today where you are (use at least 4 key words like: مَطَر، شُوب، بَرْد، رُطُوبَة، مْشَمَّس، مْغَيَّم).\n" +
-            "2. Say how the weather was last week using «كان» (for example: امْبَارِح كان الجَوّ…).\n" +
-            "3. Say how you think the weather will be next week using «رَح» (for example: رَح يِكُون الجَوّ…).\n" +
-            "4. Share your personal opinion about which season you like most and why, using «بَحِبّ / مَا بَحِبّ / مَا بَسْتَحْمِل…».",
+            `Write and record a 60-90 second weather small-talk story in Gaza Palestinian Arabic. Include: a greeting, how you feel today, the weather where you are, how the weather was yesterday, what you expect tomorrow or Friday, one comparison, one opinion, and one advice sentence. Reuse at least 8 words from this unit and 5 old words from earlier units.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Hi, how are you? How is the weather where you are?
+2. Today the weather is nice, but there is wind.
+3. It is raining outside; take an umbrella with you.
+4. There is a lot of heat and humidity today.
+5. Yesterday the weather was hotter than today.
+6. Tomorrow the weather will be better than today.
+7. I like winter because of the rain and hot tea.
+8. Honestly, I cannot stand heat with humidity.
+9. There is dust on the road, so be careful.
+10. If the weather is sunny on Friday, we will visit my grandmother.
+11. I have university today, but it is windy and cloudy outside.
+12. My mother said the humidity is high inside the house.
+13. In spring the weather is nicer than summer.
+14. Really? It rained yesterday?
+15. God be with you, and tell me when you arrive.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "Start by asking in English: ‘What’s the weather like today where you are?’ Then slowly move into Arabic with key chunks: «الجَوّ…»، «فِي مَطَر»، «فِي شُوب».",
-            "If possible, show a live picture (or describe it) and ask the student to repeat weather sentences after you.",
+            "Start with real small talk: مَرْحَبَا، كِيفَك؟ كِيف الجَوّ عِنْدَك؟",
+            "This unit's hidden focus is time and comparison: اليَوم، اِمْبَارِح، بُكْرَا، يَوم الجُمْعَة، أَحْسَن مِن، أَحَرّ مِن، أَلْطَف مِن.",
+            "Keep the lesson conversational; avoid listing time words as separate vocabulary unless the student needs them.",
         ],
         vocabularySteps: [
-            "Group vocabulary: (1) base words: بَرْد، شُوب، مَطَر، رُطُوبَة؛ (2) adjectives: دَافِي، مْغَيَّم، مْرَتَّب؛ (3) seasons: رَبِيع، صَيْف، شِتَا، خَرِيف.",
-            "Practice the «فِي + noun» pattern with many examples so the student feels it’s easy: فِي مَطَر، فِي بَرْد، فِي غُبَار…",
-            "Then add opinion chunks: بَحِبّ…, مَا بَحِبّ…, مَا بَسْتَحْمِل…",
+            "Teach vocabulary as chunks: فِي شُوب، فِي بَرْد، فِي رُطُوبَة، بِتْشَتِّي، خُد مَعَك...",
+            "Use example words like taxi, fare, university, grandmother, water, and tea as recycling, not new vocabulary targets.",
+            "Show masculine/feminine through quick substitutions: بَرْدَان / بَرْدَانَة, دِير بَالَك / دِيرِي بَالِك.",
         ],
         dialogueSteps: [
-            "Act Scene 1 with the student: you are Lynn, they are Roba, then switch roles and change details (other city, other season).",
-            "For Scene 2, focus on rhythm of small talk; encourage using «عَنْ جَدّ؟», «وَالله» naturally, not as ‘hard grammar’.",
-            "Scene 3 is great for online lessons: ask the student to really compare their weather with yours.",
+            "Act the dialogue naturally, then have the student change the destination, weather, and advice.",
+            "Ask the dialogue questions as spoken output. Push full answers, not one-word answers.",
+            "After the dialogue, ask the student to make their own door/building small-talk scene.",
         ],
         practiceTips: [
-            "Don’t over-correct grammar during small talk; focus on flow, confidence, and chunks.",
-            "If the student is shy, give them 3–4 ready-made questions to ask about weather and mood.",
-            "Use quick mini-drills: you say a city and season, student makes 1–2 sentences about the weather there.",
+            "Push student output: one weather sentence, one comparison, one opinion, and one advice sentence.",
+            "Recycle transport and time: قَدِّيش الأُجْرَة؟ / عَالوَقْت / قَبْل مَا تْشَتِّي.",
+            "Have the student start the next three lessons with a 30-second weather update.",
         ],
         wrapup: [
-            "At the end, build with the student a mini ‘Weather & Small Talk’ script they can reuse at the start of future lessons.",
-            "Ask the student to choose their top 5 favourite chunks from the unit, write them in their notebook, and use at least one at the beginning of the next class.",
+            "Student gives a 60-second weather update without reading.",
+            "Student asks the teacher two weather questions.",
+            "Student gives one advice sentence based on the weather.",
         ],
         myNotes: "",
     },

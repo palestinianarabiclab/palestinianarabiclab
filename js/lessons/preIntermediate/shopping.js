@@ -1,765 +1,504 @@
-// Auto-generated from original app.js
 import { LESSON_ID_SHOPPING } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_SHOPPING;
+
 export const lesson = {
     meta: {
         level: "Pre-Intermediate",
         unit: "Shopping & Prices",
-        lessonTitle: "Unit 8 – Shopping, Markets & Prices",
+        lessonTitle: "Unit 8 - Shopping, Markets & Prices in Gaza Palestinian Arabic",
+        contentVersion: 2026063001,
     },
 
     overview: {
-        title: "Unit 8 – Shopping & Prices",
+        title: "Unit 8 - Shopping, Markets & Prices",
         description:
-            "In this unit, students learn how to shop, ask about prices, bargain, and pay in Palestinian Arabic. The focus is on useful chunks like asking how much, saying it’s expensive or cheap, counting items, and dealing with markets, small shops, and online buying.",
+            "Students learn how to shop naturally in Gaza Palestinian Arabic: ask prices, compare quality, ask for size/color, bargain politely, buy by kilo or piece, and pay cash or card.",
         goals: [
-            "Ask and answer about prices clearly and naturally.",
-            "Use numbers, currency, and quantity words in real shopping situations.",
-            "Express opinion about price: expensive, cheap, fair, too much.",
-            "Practice bargaining with polite and effective phrases.",
-            "Describe what they want to buy and how many, and handle payment.",
+            "Ask and answer about prices clearly.",
+            "Use numbers, quantities, colors, size, and money in real shopping situations.",
+            "Bargain politely without sounding rude.",
+            "Say if something is expensive, cheap, suitable, or too much.",
+            "Recycle previous units: greetings, weather, transport, food, family, work/study, time, and politeness.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can buy something from a shop or market.",
+            "The student can ask for another size/color and compare prices.",
+            "The student can bargain in a simple natural way and complete payment.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== PLACES =====
             {
                 id: "dukkan",
-                ar: "دُكّان",
-                en: "corner shop / mini-market",
-                enArabeezy: "dukkān / dukkan",
-                hint:
-                    "Small neighbourhood shop for basic groceries and stuff.",
-                exampleAr: "رُحْت عَالدُّكّان أَشْتِري خُبِز وَحْلِيب.",
-                exampleArabeezy: "r7t 3aldkan ashtry khbz w7lyb.",
+                ar: "دُكَّان",
+                en: "corner shop / small shop",
+                enArabeezy: "dukkan",
+                hint: "Small neighborhood shop. Plural: دَكَاكِين.",
+                exampleAr: "رُحْت عَالدُّكَّان أَشْتَرِي خُبِز وَحَلِيب.",
+                exampleArabeezy: "ru7t 3ad-dukkan ashtiri khubiz w 7aleeb.",
                 exampleEn: "I went to the corner shop to buy bread and milk.",
             },
             {
                 id: "ma7al",
                 ar: "مَحَلّ",
                 en: "shop / store",
-                enArabeezy: "ma7all / maḥall",
-                hint:
-                    "General word for any shop. Plural: مَحَلّات.",
-                exampleAr: "هَادَا أَحْسَن مَحَلّ أَوَاعِي بِالحَارَة.",
-                exampleArabeezy: "hada a7sn m7l awa3y bel7ara.",
-                exampleEn: "This is the best clothes shop in the neighbourhood.",
+                enArabeezy: "ma7all",
+                hint: "General word for any shop. Plural: مَحَلَّات.",
+                exampleAr: "هَادَا المَحَلّ عِنْدُه أَوَاعِي مْنِيحَة.",
+                exampleArabeezy: "hada el-ma7all 3indo awa3i mnee7a.",
+                exampleEn: "This shop has good clothes.",
             },
             {
                 id: "souk",
                 ar: "سُوق",
                 en: "market",
-                enArabeezy: "sūʾ / souq",
-                hint:
-                    "Traditional market or big shopping street with many small shops.",
-                exampleAr: "بِنِنْزِل عَالسُّوق يَوْم الجُمعة.",
-                exampleArabeezy: "bnnzl 3alswq ywm eljm3a.",
-                exampleEn: "We go down to the market on Friday.",
+                enArabeezy: "souq",
+                hint: "Traditional market or shopping street. In Gaza, السوق is used for clothes, vegetables, and daily needs.",
+                exampleAr: "يَوم الجُمْعَة بِنِنْزَل عَالسُّوق.",
+                exampleArabeezy: "yom el-jum3a bininzel 3as-souq.",
+                exampleEn: "On Friday we go to the market.",
             },
             {
-                id: "supermarket",
-                ar: "سوبِرماركِت",
-                en: "supermarket",
-                enArabeezy: "supermarket",
-                hint:
-                    "Big self-service grocery shop.",
-                exampleAr: "بنشتري الأغراض الكبيرة من السوبرماركت.",
-                exampleArabeezy: "bnshtry elaghrad elkbyra mn elswbrmarkt.",
-                exampleEn: "We buy the big supplies from the supermarket.",
+                id: "bashtiri",
+                ar: "بَشْتِرِي",
+                en: "I buy",
+                enArabeezy: "bashtiri",
+                hint: "From اِشْتَرَى = to buy. You can say: بَدِّي أَشْتِرِي... = I want to buy...",
+                exampleAr: "بَشْتِرِي الخُضَار مِن السُّوق.",
+                exampleArabeezy: "bashtiri el-khuDar min es-souq.",
+                exampleEn: "I buy vegetables from the market.",
             },
-
-            // ===== MONEY & PRICE =====
             {
-                id: "masari",
-                ar: "مَصاري",
-                en: "money (cash)",
-                enArabeezy: "maṣāri / masari",
-                hint:
-                    "Very common Palestinian word for money in general.",
-                exampleAr: "مَعِي مَصاري شْوَيّ بَس.",
-                exampleArabeezy: "m3y msary shwy bs.",
-                exampleEn: "I only have a little money.",
+                id: "baddi_ashtiri",
+                ar: "بَدِّي أَشْتِرِي",
+                en: "I want to buy",
+                enArabeezy: "baddi ashtiri",
+                hint: "Best opener with a seller: بَدِّي أَشْتِرِي قَمِيص / جَزْمَة / هَدِيَّة.",
+                exampleAr: "بَدِّي أَشْتِرِي هَدِيَّة لِأُخْتِي.",
+                exampleArabeezy: "baddi ashtiri hadiyye la-okhti.",
+                exampleEn: "I want to buy a gift for my sister.",
+            },
+            {
+                id: "addeesh_hada",
+                ar: "قَدِّيش هَادَا؟",
+                en: "How much is this?",
+                enArabeezy: "addeesh hada?",
+                hint: "To ask price while pointing. For feminine item: قَدِّيش هَادِي؟",
+                exampleAr: "لَوْ سَمَحْت، قَدِّيش هَادَا؟",
+                exampleArabeezy: "law sama7t, addeesh hada?",
+                exampleEn: "Please, how much is this?",
             },
             {
                 id: "se3er",
                 ar: "سِعِر",
                 en: "price",
-                enArabeezy: "siʿer / se3er",
-                hint: "How much something costs.",
-                exampleAr: "شُو السِّعِر هُون؟",
-                exampleArabeezy: "shw els3r hwn?",
-                exampleEn: "What’s the price here?",
-            },
-            {
-                id: "addeish_hada",
-                ar: "قَدِّيش هَادَا؟",
-                en: "How much is this?",
-                enArabeezy: "addeish hāda? / 2addeish hada?",
-                hint:
-                    "Most common way to ask the price of something you’re holding/pointing at.",
-                exampleAr: "قَدِّيش هَادَا، لَو سَمَحِت؟",
-                exampleArabeezy: "qdysh hada, lw sm7t?",
-                exampleEn: "How much is this, please?",
+                enArabeezy: "se3er",
+                hint: "Common chunks: السِّعِر غَالِي، السِّعِر مْنِيح، آخِر سِعِر؟",
+                exampleAr: "السِّعِر مْنَاسِب، بَس بَدِّي أَشُوف غَيْرُه.",
+                exampleArabeezy: "es-se3er mnasib, bas baddi ashoof gheero.",
+                exampleEn: "The price is suitable, but I want to see another one.",
             },
             {
                 id: "ghali",
-                ar: "غالي",
+                ar: "غَالِي / غَالْيَة",
                 en: "expensive",
-                enArabeezy: "ghāli / ghali",
-                hint:
-                    "Masc: غالي, fem: غاليِة. Opposite of رخيص.",
-                exampleAr: "صَرَاحَةً هَادَا غالي شْوَيّ.",
-                exampleArabeezy: "sra7a hada ghaly shwy.",
-                exampleEn: "Honestly, this is a bit expensive.",
+                enArabeezy: "ghali / ghalye",
+                hint: "Male: غَالِي. Female: غَالْيَة. Plural: غَالْيِين.",
+                exampleAr: "هَادَا غَالِي شُوَيّ، فِي أَرْخَص؟",
+                exampleArabeezy: "hada ghali shway, fi arkhaS?",
+                exampleEn: "This is a little expensive; is there a cheaper one?",
             },
             {
-                id: "rakhis",
-                ar: "رخيص",
+                id: "rkhees",
+                ar: "رْخِيص / رْخِيصَة",
                 en: "cheap / inexpensive",
-                enArabeezy: "rakhiṣ / rakhis",
-                hint:
-                    "Masc: رخيص, fem: رخيصَة. Can be positive (good price) or negative (bad quality).",
-                exampleAr: "السِّعِر رخيص بَس الجَوْدَة عادية.",
-                exampleArabeezy: "els3r rkhys bs eljwda 3adya.",
-                exampleEn: "The price is cheap but the quality is average.",
+                enArabeezy: "rkheeS / rkheeSa",
+                hint: "Can be good price or low quality depending on context.",
+                exampleAr: "هَادِي رْخِيصَة، بَس الجَوْدَة كِيف؟",
+                exampleArabeezy: "hadi rkheeSa, bas el-jawde keef?",
+                exampleEn: "This is cheap, but how is the quality?",
             },
             {
-                id: "tanzeel",
-                ar: "تَنْزيلات",
-                en: "sale / discounts",
-                enArabeezy: "tanzīlāt / tanzeelat",
-                hint:
-                    "Also خَصْم = discount. Shops write: تَنْزيلات كْبيرَة.",
-                exampleAr: "فِي تَنْزيلات عَلَى الأَوَاعِي هالأَيام.",
-                exampleArabeezy: "fy tnzylat 3la elawa3y halayam.",
+                id: "mnasib",
+                ar: "مْنَاسِب / مْنَاسْبَة",
+                en: "suitable / fair",
+                enArabeezy: "mnasib / mnasbe",
+                hint: "Useful for price, size, color, and timing.",
+                exampleAr: "السِّعِر مْنَاسِب لِلْمِيزَانِيَّة.",
+                exampleArabeezy: "es-se3er mnasib lil-mizaniyye.",
+                exampleEn: "The price is suitable for the budget.",
+            },
+            {
+                id: "tanzeelat",
+                ar: "تَنْزِيلَات",
+                en: "sales / discounts",
+                enArabeezy: "tanzeelat",
+                hint: "Common in shops. Also: خَصْم = discount.",
+                exampleAr: "فِي تَنْزِيلَات عَالأَوَاعِي هَالأَيَّام.",
+                exampleArabeezy: "fi tanzeelat 3al-awa3i hal-ayyam.",
                 exampleEn: "There are sales on clothes these days.",
             },
             {
                 id: "khasm",
                 ar: "خَصْم",
                 en: "discount",
-                enArabeezy: "khaṣm / khasm",
-                hint: "Money taken off the original price.",
-                exampleAr: "فِيه خَصْم لِلطُلّاب؟",
-                exampleArabeezy: "fyh khsm leltlab?",
-                exampleEn: "Is there a student discount?",
-            },
-
-            // ===== PAYMENT =====
-            {
-                id: "kash",
-                ar: "كاش",
-                en: "cash",
-                enArabeezy: "cash",
-                hint:
-                    "Pay with physical money, not card.",
-                exampleAr: "بِفَضَّل أَدْفَع كاش.",
-                exampleArabeezy: "bfdl adf3 kash.",
-                exampleEn: "I prefer to pay in cash.",
+                enArabeezy: "khasm",
+                hint: "Ask politely: فِي خَصْم؟ / فِي خَصْم لِلْطُلَّاب؟",
+                exampleAr: "فِي خَصْم إِذَا دَفَعْت كَاش؟",
+                exampleArabeezy: "fi khasm iza dafa3t cash?",
+                exampleEn: "Is there a discount if I pay cash?",
             },
             {
-                id: "card",
-                ar: "كَرْت / كَرْد",
-                en: "bank card",
-                enArabeezy: "kart / card",
-                hint:
-                    "Bank card / debit or credit.",
-                exampleAr: "مُمْكِن أَدْفَع بِالكَرْت؟",
-                exampleArabeezy: "mmkn adf3 belkrt?",
-                exampleEn: "Can I pay by card?",
-            },
-            {
-                id: "atm",
-                ar: "صَرّاف آلي",
-                en: "ATM / cash machine",
-                enArabeezy: "ṣarrāf ʾāli / sarraf āli",
-                hint:
-                    "Machine to withdraw money from your card.",
-                exampleAr: "فِيه صَرّاف آلي قُدّام المَحَلّ.",
-                exampleArabeezy: "fyh sraf aaly qdam elm7l.",
-                exampleEn: "There is an ATM in front of the shop.",
-            },
-            {
-                id: "wasl",
-                ar: "وَصْل / بَوْن",
-                en: "receipt",
-                enArabeezy: "waṣl / bawn",
-                hint:
-                    "Paper you get after paying. Useful if you want to return something.",
-                exampleAr: "خُد الوَصْل، يُمْكِن تْحْتَاجه بَعْدين.",
-                exampleArabeezy: "khd elwsl, ymkn t7tajh b3dyn.",
-                exampleEn: "Take the receipt, you might need it later.",
-            },
-            {
-                id: "fatora_shop",
-                ar: "فاتورَة",
-                en: "invoice / bill",
-                enArabeezy: "fātūra / fatora",
-                hint:
-                    "More official than وَصْل, especially for big purchases or deliveries.",
-                exampleAr: "طَلَبْنَا فاتورَة رَسْمِيّة مِن الشِّرْكَة.",
-                exampleArabeezy: "tlbna fatwra rsmya mn elshrka.",
-                exampleEn: "We asked for an official invoice from the company.",
-            },
-
-            // ===== ITEM DETAILS =====
-            {
-                id: "no3",
-                ar: "نَوْع",
-                en: "type / kind",
-                enArabeezy: "nawʿ / no3",
-                hint:
-                    "What kind: نوع القَمِيص، نوع القَهْوِة، نوع القِماش.",
-                exampleAr: "شُو نَوْع القِماش هَادَا؟",
-                exampleArabeezy: "shw nw3 elqmash hada?",
-                exampleEn: "What type of fabric is this?",
-            },
-            {
-                id: "lawn",
-                ar: "لَوْن",
-                en: "color",
-                enArabeezy: "lawn",
-                hint:
-                    "Plural: أَلْوان. Very common in clothes & shoes shopping.",
-                exampleAr: "عِنْدو أَلْوان تَانِيَة مِن نَفْس الموديل.",
-                exampleArabeezy: "3ndw alwan tanya mn nfs elmwdyl.",
-                exampleEn: "They have other colors of the same model.",
-            },
-            {
-                id: "7ajm",
-                ar: "حَجِم / مَقاس",
-                en: "size",
-                enArabeezy: "7ajm / maqās",
-                hint:
-                    "حَجِم for general size, مَقاس for clothes & shoes.",
-                exampleAr: "مَقاس الجزمة كْبِير عَلَيّ شْوَيّ.",
-                exampleArabeezy: "mqas eljzma kbyr 3ly shwy.",
-                exampleEn: "The shoe size is a bit big on me.",
-            },
-            {
-                id: "kilo",
-                ar: "كِيلو",
-                en: "kilo (kilogram)",
-                enArabeezy: "kilo",
-                hint:
-                    "Used in markets for fruits, vegetables, etc.",
-                exampleAr: "بَدّي نُصّ كِيلو بندورة.",
-                exampleArabeezy: "bdy ns kylw bndwra.",
-                exampleEn: "I want half a kilo of tomatoes.",
-            },
-            {
-                id: "era",
-                ar: "قِطْعَة",
-                en: "piece / item",
-                enArabeezy: "ʾiṭʿa / 2eṭ3a",
-                hint:
-                    "One piece of something: clothes, cake, cheese…",
-                exampleAr: "بَدّي قِطْعَة كْمان مِن هَادَا النَّوْع.",
-                exampleArabeezy: "bdy qt3a kman mn hada elnw3.",
-                exampleEn: "I want one more piece of this type.",
-            },
-
-            // ===== VERBS & USEFUL CHUNKS =====
-            {
-                id: "bashtiri",
-                ar: "بَشْتِري",
-                en: "I buy",
-                enArabeezy: "bashtiri",
-                hint:
-                    "From اِشْتَرَى = to buy. Very frequent in shopping talk.",
-                exampleAr: "كْلّ مَرَّة بَطْلَع عَالسُّوق بَشْتِري اشياء زْيادَة.",
-                exampleArabeezy: "kl mra btl3 3alswq bshtry ashya zyada.",
-                exampleEn: "Every time I go to the market I buy extra things.",
-            },
-
-            {
-                id: "baddi_ashtiri",
-                ar: "بَدّي أِشْتِري...",
-                en: "I want to buy...",
-                enArabeezy: "baddi ashtiri...",
-                hint:
-                    "Good opener with the seller: بَدّي أِشْتِري بنْطَلُون / هَدِيّة...",
-                exampleAr: "بَدّي أِشْتِري هَدِيّة لِصْحِبْتي.",
-                exampleArabeezy: "bdy ashtry hdya ls7bty.",
-                exampleEn: "I want to buy a gift for my friend.",
-            },
-            {
-                id: "ana_bas_batfarraj",
-                ar: "أَنا بَس بَتْفَرَّج",
-                en: "I’m just looking",
-                enArabeezy: "ana bas batfarraj",
-                hint:
-                    "Polite way to tell the seller you’re not ready to buy yet.",
-                exampleAr: "مِش مُجْبَرَة تِشْتِري، حَتّى لَو حَكِيتِيلُه: أَنا بَس بَتْفَرَّج.",
-                exampleArabeezy: "msh mjbra tshtry, 7ta lw 7kytylh: ana bs btfrj.",
-                exampleEn: "You’re not obliged to buy, even if you tell him: I’m just looking.",
-            },
-            {
-                id: "3indak_ishi_tani",
-                ar: "عِنْدَك إِشِي تَانِي؟",
-                en: "Do you have something else?",
-                enArabeezy: "ʿindak ishi tāni? / 3indak ishi tani?",
-                hint:
-                    "Useful to ask for another model / color / size.",
-                exampleAr: "عِنْدَك إِشِي تَانِي نَفْس المَقاس بَس لَوْن تَانِي؟",
-                exampleArabeezy: "3ndk ishy tany nfs elmqas bs lwn tany?",
-                exampleEn: "Do you have something else in the same size but a different color?",
-            },
-            {
-                id: "mumkin_tnazzel_shway",
-                ar: "مُمْكِن تْنَزِّل شْوَيّ؟",
-                en: "Can you make it a bit cheaper?",
+                id: "mumkin_tnazzel",
+                ar: "مُمْكِن تْنَزِّل شُوَيّ؟",
+                en: "Can you lower it a little?",
                 enArabeezy: "mumkin tnazzel shway?",
-                hint:
-                    "Common bargaining phrase in markets and some shops.",
-                exampleAr: "السِّعِر عالي، مُمْكِن تْنَزِّل شْوَيّ؟",
-                exampleArabeezy: "els3r 3aly, mmkn tnzl shwy?",
-                exampleEn: "The price is high, can you lower it a bit?",
+                hint: "Polite bargaining phrase. To a woman seller: مُمْكِن تْنَزِّلِي شُوَيّ؟",
+                exampleAr: "السِّعِر عَالِي، مُمْكِن تْنَزِّل شُوَيّ؟",
+                exampleArabeezy: "es-se3er 3ali, mumkin tnazzel shway?",
+                exampleEn: "The price is high; can you lower it a little?",
             },
             {
                 id: "akher_se3er",
                 ar: "آخِر سِعِر؟",
-                en: "What’s your final price?",
-                enArabeezy: "ā5er se3er? / akher se3er?",
-                hint:
-                    "Used in bargaining when you want the lowest price.",
-                exampleAr: "يَعْنِي هَادَا آخِر سِعِر وَلّا فِيه نْقَاص كْمَان؟",
-                exampleArabeezy: "y3ny hada aakhr s3r wla fyh nqas kman?",
-                exampleEn: "So is this your final price or can you go lower?",
+                en: "final price?",
+                enArabeezy: "akher se3er?",
+                hint: "Used after bargaining. Natural in markets, less in fixed-price stores.",
+                exampleAr: "طَيِّب، آخِر سِعِر قَدِّيش؟",
+                exampleArabeezy: "Tayyib, akher se3er addeesh?",
+                exampleEn: "Okay, what's the final price?",
             },
-        ],
-
-        extra: [
             {
-                id: "mizaniyyeh",
-                ar: "مِيزانِيّة",
+                id: "masari",
+                ar: "مَصَارِي",
+                en: "money",
+                enArabeezy: "maSari",
+                hint: "Very common Palestinian word. My money = مَصَارِيّي.",
+                exampleAr: "مَعِي مَصَارِي شُوَيّ، بَدِّي شِي مْنَاسِب.",
+                exampleArabeezy: "ma3i maSari shway, baddi shi mnasib.",
+                exampleEn: "I have a little money; I want something suitable.",
+            },
+            {
+                id: "mizaniyye",
+                ar: "مِيزَانِيَّة",
                 en: "budget",
-                enArabeezy: "mīzāniyyeh / mizaniyyeh",
-                hint:
-                    "Money you plan to spend.",
-                exampleAr: "مِيزانِيّتي لِلشوبينغ هالشَّهِر مَحْدودَة.",
-                exampleArabeezy: "myzanyty lelshwbyngh halshhr m7dwda.",
-                exampleEn: "My shopping budget this month is limited.",
+                enArabeezy: "mizaniyye",
+                hint: "Money you plan to spend.",
+                exampleAr: "مِيزَانِيَّتِي اليَوم خَمْسِين شِيكِل.",
+                exampleArabeezy: "mizaniyyti el-yom khamseen shekel.",
+                exampleEn: "My budget today is fifty shekels.",
             },
             {
-                id: "safqa",
-                ar: "صَفْقَة / لُقْطَة",
-                en: "good deal / bargain",
-                enArabeezy: "ṣafʾa / loʾta / lo2ta",
-                hint:
-                    "لُقْطَة = really good catch / bargain.",
-                exampleAr: "هَادِي لُقْطَة، السِّعِر كْتِير مْناسِب.",
-                exampleArabeezy: "hady lqta, els3r ktyr mnasb.",
-                exampleEn: "This is a steal, the price is very good.",
+                id: "shekel",
+                ar: "شِيكِل / شَوَاكِل",
+                en: "shekel / shekels",
+                enArabeezy: "shekel / shawakel",
+                hint: "Common local currency. Singular: شِيكِل. Plural: شَوَاكِل.",
+                exampleAr: "الكِيلُو بِعَشَرَة شَوَاكِل.",
+                exampleArabeezy: "el-keelo bi-3ashara shawakel.",
+                exampleEn: "The kilo is ten shekels.",
             },
             {
-                id: "istibdal",
-                ar: "اِسْتِبْدال",
-                en: "exchange (change an item)",
-                enArabeezy: "istibdāl / istibdal",
-                hint:
-                    "Changing item for another one. Often with وَصْل.",
-                exampleAr: "بقدر أبدّلها بنفس السعر بس بمقاس غير؟",
-                exampleArabeezy: "bqdr abdlha bnfs els3r bs bmqas ghyr?",
-                exampleEn: "Can I exchange it for the same price but a different size?",
+                id: "cash",
+                ar: "كَاش",
+                en: "cash",
+                enArabeezy: "cash",
+                hint: "Paying with physical money. Often better for small shops.",
+                exampleAr: "بَدِّي أَدْفَع كَاش.",
+                exampleArabeezy: "baddi adfa3 cash.",
+                exampleEn: "I want to pay cash.",
             },
             {
-                id: "istirja3",
-                ar: "اِسْتِرْجاع",
-                en: "return (give back item)",
-                enArabeezy: "istirjāʿ / istirja3",
-                hint:
-                    "Taking item back to the shop and getting money back.",
-                exampleAr: "السِّياسَة عِنْدْهُم مَا فِيه اِسْتِرْجاع، بَس اِسْتِبْدال.",
-                exampleArabeezy: "elsyasa 3ndhm ma fyh astrja3, bs astbdal.",
-                exampleEn: "Their policy has no returns, only exchanges.",
+                id: "card",
+                ar: "كَارْت",
+                en: "card",
+                enArabeezy: "kart",
+                hint: "Bank card. Ask: بِصِير أَدْفَع بِالكَارْت؟",
+                exampleAr: "بِصِير أَدْفَع بِالكَارْت وَلَا بَس كَاش؟",
+                exampleArabeezy: "biSeer adfa3 bil-kart wala bas cash?",
+                exampleEn: "Can I pay by card, or only cash?",
             },
             {
-                id: "3ard_khas",
-                ar: "عَرْض خَاصّ",
-                en: "special offer",
-                enArabeezy: "ʿarḍ khāṣṣ / 3ard khaṣ",
-                hint:
-                    "Temporary promotion: 2 for 1, or cheaper price.",
-                exampleAr: "فِي عَرْض خَاصّ عَلَى الشَّمْبُو الْيَوْم.",
-                exampleArabeezy: "fy 3rd khas 3la elshmbw elywm.",
-                exampleEn: "There is a special offer on shampoo today.",
+                id: "wasl",
+                ar: "وَصْل",
+                en: "receipt",
+                enArabeezy: "waSl",
+                hint: "Useful for exchange/return. Also people may say: فَاتُورَة.",
+                exampleAr: "خُد الوَصْل، مُمْكِن تِحْتَاجُه بَعْدِين.",
+                exampleArabeezy: "khod el-waSl, mumkin ti7tajo ba3deen.",
+                exampleEn: "Take the receipt; you might need it later.",
             },
             {
-                id: "khidmet_zaba2en",
-                ar: "خِدْمِة زَبائِن",
-                en: "customer service",
-                enArabeezy: "khidmet zabāʾen / khidmet zaba2en",
-                hint:
-                    "Where you complain or ask for help with a purchase.",
-                exampleAr: "خِدْمِة الزَّبائِن فِي هالمَحَلّ مُمْتازَة.",
-                exampleArabeezy: "khdma elzbayn fy halm7l mmtaza.",
-                exampleEn: "Customer service in this shop is excellent.",
+                id: "maqas",
+                ar: "مَقَاس",
+                en: "size",
+                enArabeezy: "ma2as",
+                hint: "For clothes and shoes. Big = كْبِير. Small = صْغِير.",
+                exampleAr: "هَادَا المَقَاس كْبِير عَلَيّ شُوَيّ.",
+                exampleArabeezy: "hada el-ma2as kbeer 3alay shway.",
+                exampleEn: "This size is a little big on me.",
+            },
+            {
+                id: "lawn",
+                ar: "لَوْن / أَلْوَان",
+                en: "color / colors",
+                enArabeezy: "lawn / alwan",
+                hint: "Use for clothes, shoes, bags, and gifts.",
+                exampleAr: "عِنْدَك نَفْس المَقَاس بِلَوْن تَانِي؟",
+                exampleArabeezy: "3indak nafs el-ma2as bi-lawn tani?",
+                exampleEn: "Do you have the same size in another color?",
+            },
+            {
+                id: "azra2_aswad",
+                ar: "أَزْرَق / أَسْوَد",
+                en: "blue / black",
+                enArabeezy: "azra2 / aswad",
+                hint: "Color review. Feminine: زَرْقَا / سَوْدَا.",
+                exampleAr: "بَدِّي الجَزْمَة السَّوْدَا، مِش الزَّرْقَا.",
+                exampleArabeezy: "baddi el-jazme es-soda, mish ez-zar2a.",
+                exampleEn: "I want the black shoes, not the blue ones.",
+            },
+            {
+                id: "no3",
+                ar: "نَوْع",
+                en: "type / kind",
+                enArabeezy: "no3",
+                hint: "Use for fabric, food, coffee, clothes, and quality.",
+                exampleAr: "شُو نَوْع القُمَاش هَادَا؟",
+                exampleArabeezy: "sho no3 el-2umash hada?",
+                exampleEn: "What type of fabric is this?",
+            },
+            {
+                id: "jawde",
+                ar: "جَوْدَة",
+                en: "quality",
+                enArabeezy: "jawde",
+                hint: "High quality = جَوْدَة عَالْيَة. Low quality = جَوْدَة عَادِيَّة.",
+                exampleAr: "السِّعِر رْخِيص، بَس الجَوْدَة عَادِيَّة.",
+                exampleArabeezy: "es-se3er rkheeS, bas el-jawde 3adiyye.",
+                exampleEn: "The price is cheap, but the quality is average.",
+            },
+            {
+                id: "kilo",
+                ar: "كِيلُو",
+                en: "kilo",
+                enArabeezy: "keelo",
+                hint: "Used in food markets: fruits, vegetables, meat, cheese.",
+                exampleAr: "بَدِّي نُصّ كِيلُو بَنْدُورَة.",
+                exampleArabeezy: "baddi noSS keelo bandora.",
+                exampleEn: "I want half a kilo of tomatoes.",
+            },
+            {
+                id: "noSS",
+                ar: "نُصّ",
+                en: "half",
+                enArabeezy: "noSS",
+                hint: "Very useful with kilos and prices: نُصّ كِيلُو، نُصّ السِّعِر.",
+                exampleAr: "خَلِّيه نُصّ كِيلُو بَس.",
+                exampleArabeezy: "khallih noSS keelo bas.",
+                exampleEn: "Make it only half a kilo.",
+            },
+            {
+                id: "qiT3a",
+                ar: "قِطْعَة",
+                en: "piece / item",
+                enArabeezy: "2iT3a",
+                hint: "Plural: قِطَع. Used for clothes, sweets, cheese, and items.",
+                exampleAr: "بَدِّي قِطْعَة تَانْيَة مِن هَادَا النَّوْع.",
+                exampleArabeezy: "baddi 2iT3a tanye min hada en-no3.",
+                exampleEn: "I want another piece of this kind.",
+            },
+            {
+                id: "kamm",
+                ar: "كَمّ؟",
+                en: "how many?",
+                enArabeezy: "kam?",
+                hint: "Use for quantity. Price question uses قَدِّيش؟",
+                exampleAr: "كَمّ قِطْعَة بَدَّك؟",
+                exampleArabeezy: "kam 2iT3a baddak?",
+                exampleEn: "How many pieces do you want?",
+            },
+            {
+                id: "3indak_tani",
+                ar: "عِنْدَك إِشِي تَانِي؟",
+                en: "Do you have something else?",
+                enArabeezy: "3indak ishi tani?",
+                hint: "Use for another model, size, color, or option.",
+                exampleAr: "عِنْدَك إِشِي تَانِي نَفْس المَقَاس؟",
+                exampleArabeezy: "3indak ishi tani nafs el-ma2as?",
+                exampleEn: "Do you have something else in the same size?",
+            },
+            {
+                id: "bas_batfarraj",
+                ar: "أَنَا بَس بَتْفَرَّج",
+                en: "I'm just looking",
+                enArabeezy: "ana bas batfarraj",
+                hint: "Polite phrase when seller approaches and you are not ready to buy.",
+                exampleAr: "شُكْرًا، أَنَا بَس بَتْفَرَّج هَلْقِيت.",
+                exampleArabeezy: "shukran, ana bas batfarraj halla2et.",
+                exampleEn: "Thanks, I'm just looking for now.",
+            },
+            {
+                id: "khallih",
+                ar: "خَلِّيه",
+                en: "make it / let it be",
+                enArabeezy: "khallih",
+                hint: "Useful in bargaining: خَلِّيه بِخَمْسِين = make it fifty.",
+                exampleAr: "خَلِّيه بِخَمْسِين وَبَاخُدُه هَلْقِيت.",
+                exampleArabeezy: "khallih bi-khamseen w bakhdo halla2et.",
+                exampleEn: "Make it fifty and I'll take it now.",
+            },
+            {
+                id: "bakhdo",
+                ar: "بَاخُدُه / بَاخُدْهَا",
+                en: "I'll take it",
+                enArabeezy: "bakhdo / bakhodha",
+                hint: "Male item: بَاخُدُه. Female item: بَاخُدْهَا. Plural: بَاخُدْهُم.",
+                exampleAr: "تَمَام، بَاخُدْهَا.",
+                exampleArabeezy: "tamam, bakhodha.",
+                exampleEn: "Okay, I'll take it.",
             },
         ],
-    }
-    ,
+    },
 
-    // ====================================
-    // DIALOGUE
-    // ====================================
     dialogue: {
-        lines: [
-            {
-                "speaker": "Nader",
-                "ar": "مَسّا الخير يا يوسف، شُو أخْبارَك؟",
-                "arArabeezy": "msa elkhyr ya ywsf, shw akhbark?",
-                "en": "Good evening, Yousef, how are you?"
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "مَسّا النّور، تَمام. اليوم عندي وَقْت أشتري اشِي لِلحَفْلَة.",
-                "arArabeezy": "msa elnwr, tmam. elywm 3ndy wqt ashtry ashy lel7fla.",
-                "en": "Good evening, I’m fine. Today I have time to buy something for the party."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "طَيّب، مُمْكِن نروح عَالدُّكّان القَريب، سَامِع إنّو في تنزيلات هالأُسْبوع.",
-                "arArabeezy": "tyb, mmkn nrw7 3aldkan elqryb, sam3 inw fy tnzylat halasbw3.",
-                "en": "Okay, we can go to the nearby shop; I heard there are discounts this week."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "مُمْتاز، يِلّا نِروح.",
-                "arArabeezy": "mmtaz, yla nrw7.",
-                "en": "Great, let’s go."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "سَلام عَليكم، قَدّيش سِعِر هاد القَمِيص؟",
-                "arArabeezy": "slam 3lykm, qdysh s3r had elqmys?",
-                "en": "Peace be upon you, how much is this shirt?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "هَادَا بِخَمْسُمِيّة شِيكِل.",
-                "arArabeezy": "hada bkhmsmya shykl.",
-                "en": "This one is five hundred shekels."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "غالي شْوَي. مُمْكِن تِنَزِّل السِّعِر؟",
-                "arArabeezy": "ghaly shwy. mmkn tnzl els3r?",
-                "en": "It’s a bit expensive. Can you lower the price?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "بقدر أعطيك خصم بسيط؛ خلّيه أربعمية وخمسين.",
-                "arArabeezy": "bqdr a3tyk khsm bsyt; khlyh arb3mya wkhmsyn.",
-                "en": "I can give you a small discount; let’s make it four hundred fifty."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "وفي تَنزيلات تانيِة هالأُسْبوع عَالأغراض التّانْيِة؟",
-                "arArabeezy": "wfy tnzylat tanya halasbw3 3alaghrad eltanya?",
-                "en": "And are there other discounts this week on the other items?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "إي، في تنزيلات عَالمُعْظَم، بَس هالقَمِيص من البِضاعَة الجْديدَة.",
-                "arArabeezy": "iy, fy tnzylat 3alm3zm, bs halqmys mn elbda3a eljdyda.",
-                "en": "Yes, there are discounts on most things, but this shirt is from the new stock."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "تمام، طيب شوف هالقميص التاني، أرخص؟",
-                "arArabeezy": "tmam, tyb shwf halqmys eltany, arkhs?",
-                "en": "Okay, look at this other shirt, is it cheaper?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "إي، هَادَا أَرْخَص، سِعْرُه أَرْبَعْمِيّة شِيكِل.",
-                "arArabeezy": "iy, hada arkhs, s3rh arb3mya shykl.",
-                "en": "Yes, this one is cheaper, its price is four hundred shekels."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "مُمْكِن نِقارن الجَوْدَة بَيْن الإِثْنَيْن؟",
-                "arArabeezy": "mmkn nqarn eljwda byn elithnyn?",
-                "en": "Can we compare the quality between the two?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "الأَوَّل جَوْدَتُه أَعْلَى والقماش أَغْلَى، بَس التّاني كْمان مْنيح لِلاِسْتِعْمال اليومي.",
-                "arArabeezy": "elawl jwdth a3la welqmash aghla, bs eltany kman mny7 lelast3mal elywmy.",
-                "en": "The first has higher quality and more expensive fabric, but the second is also good for daily use."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "أنا مِيزانِيتي مَحْدودَة، بَدّي شِي مُمْكِن أَشتِريه وما يْكَسِّرني.",
-                "arArabeezy": "ana myzanyty m7dwda, bdy shy mmkn ashtryh wma yksrny.",
-                "en": "My budget is limited, I want something I can buy without it breaking me."
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "مُمْكِن أعمل تَنزيل عَالتّاني، نِخَلّيه تْلَاتْمِيّة وَخَمْسِين إِذا بتاخُدُه هَلَّق.",
-                "arArabeezy": "mmkn a3ml tnzyl 3altany, nkhlyh tlatmya wkhmsyn idha btakhdh hlq.",
-                "en": "I can give a discount on the second one, we make it three hundred fifty if you take it now."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "هيك أحسن. بضلّ ثلاثمية وخمسين إذا دفعنا بالبطاقة؟",
-                "arArabeezy": "hyk a7sn. bdl thlathmya wkhmsyn idha df3na belbtaqa?",
-                "en": "That’s better. Will it still be three hundred fifty if we pay by card?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "بِالبِطاقَة في عَلَيْها رُسُوم وبِضِيف ضَرِيبَة صْغيرَة.",
-                "arArabeezy": "belbtaqa fy 3lyha rswm wbdyf dryba sghyra.",
-                "en": "With card there are fees and we add a small tax."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "قَدّيش تَقْريبًا الضَّرِيبَة والرُّسُوم؟",
-                "arArabeezy": "qdysh tqryba eldryba welrswm?",
-                "en": "Approximately how much are the tax and fees?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "تَقْريبًا خَمِسْطَعْش شِكِل زِيادَة.",
-                "arArabeezy": "tqryba khmst3sh shkl zyada.",
-                "en": "Around fifteen shekels extra."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "طَيّب، مُمْكِن نَدْفَع كاش وتِضَلّ تْلَاتْمِيّة وَخَمْسِين بَس؟",
-                "arArabeezy": "tyb, mmkn ndf3 kash wtdl tlatmya wkhmsyn bs?",
-                "en": "Okay, can we pay cash and keep it three hundred fifty only?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "إي، الكاش أَفْضَل، خَلّيه تْلَاتْمِيّة وَخَمْسِين كاش من غير زِيادَة.",
-                "arArabeezy": "iy, elkash afdl, khlyh tlatmya wkhmsyn kash mn ghyr zyada.",
-                "en": "Yes, cash is better, let’s keep it three hundred fifty cash with no extra."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "لَو اشْتَرَيْنا شِي تاني مَعُه، مُمْكِن تِنَزِّل كْمان شْوَي؟",
-                "arArabeezy": "lw ashtryna shy tany m3h, mmkn tnzl kman shwy?",
-                "en": "If we buy something else with it, can you lower the price a bit more?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "إِذا أَخَدتوا كَم قِطْعَة، بِنِقْدَر نِعْمَل تَنزيل إِضافي عَالحِساب الكُلِّي.",
-                "arArabeezy": "idha akhdtwa km qt3a, bnqdr n3ml tnzyl idafy 3al7sab elkly.",
-                "en": "If you take a few items, we can give an additional discount on the total."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "طَيّب، هالكِرافِت كْمان حْلُوة. قَدّيش سِعْرُها؟",
-                "arArabeezy": "tyb, halkraft kman 7lwa. qdysh s3rha?",
-                "en": "Okay, this tie is also nice. How much is it?"
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "هَاد بِخَمْسين شِيكِل، بَس إِذا مَع القَمِيص، بَعْطيكُم التّنتين بِتْلَاتْمِيّة وَتْسعِين.",
-                "arArabeezy": "had bkhmsyn shykl, bs idha m3 elqmys, b3tykm eltntyn btlatmya wts3yn.",
-                "en": "This is fifty shekels, but if it’s with the shirt, I’ll give you both for three hundred ninety."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "تْلَاتْمِيّة وَتْسعِين مْنيحَة، بِناسِب مِيزانِيتي.",
-                "arArabeezy": "tlatmya wts3yn mny7a, bnasb myzanyty.",
-                "en": "Three hundred ninety is good, it suits my budget."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "مْوافِقين، مْنِخُد القَمِيص وَالرِّباط.",
-                "arArabeezy": "mwafqyn, mnkhd elqmys welrbat.",
-                "en": "We agree, we’ll take the shirt and the tie."
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "بَدّكُم كيس كْبير وَلّا صْغير؟",
-                "arArabeezy": "bdkm kys kbyr wla sghyr?",
-                "en": "Do you want a big bag or a small one?"
-            },
-            {
-                "speaker": "Nader",
-                "ar": "كيس صْغير بِكَفّي، شُكْرًا.",
-                "arArabeezy": "kys sghyr bkfy, shkra.",
-                "en": "A small bag is enough, thank you."
-            },
-            {
-                "speaker": "Shopkeeper",
-                "ar": "هاي الكيس، وهاي الفاتورَة، أَهْلًا وسَهْلًا فيكُم.",
-                "arArabeezy": "hay elkys, whay elfatwra, ahla wshla fykm.",
-                "en": "Here is the bag, and here is the receipt, you’re most welcome."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "شُكْرًا إِلَك، الله يُعْطيك العافْيِة.",
-                "arArabeezy": "shkra ilk, ellh y3tyk el3afya.",
-                "en": "Thank you, may God give you health."
-            },
-            {
-                "speaker": "Nader",
-                "ar": "يلا نرجع عالبيت ونجرّب القميص؛ بحسّه رح يكون مناسب كتير للحفلة",
-                "arArabeezy": "yla nrj3 3albyt wnjrb elqmys; b7sh r7 ykwn mnasb ktyr lel7fla",
-                "en": "Let’s go back home and try the shirt on; I think it will be very suitable for the party."
-            },
-            {
-                "speaker": "Yousef",
-                "ar": "إي، شَكْلُه أَحْلى إِشِي شُفْناه اليوم.",
-                "arArabeezy": "iy, shklh a7la ishy shfnah elywm.",
-                "en": "Yes, it looks like the nicest thing we saw today."
-            }
-        ]
-    }
-    ,
+    title: "Shopping, Markets & Prices - At the Market",
+    setting: "Rami and Mona go shopping to buy a gift and then buy vegetables at the local market.",
+    lines: [
+        { speaker: "Rami", ar: "مُونَا، تَعَالِي هُون شُوَي.", arArabeezy: "mona, ta3ali hoon shway.", en: "Mona, come here for a second." },
+        { speaker: "Mona", ar: "شُو لْقِيت؟", arArabeezy: "shoo l2eet?", en: "What did you find?" },
+        { speaker: "Rami", ar: "بَدِّي أَجِيب هَدِيَّة لِأَخُوي، بَس مِش عَارِف شُو آخُد.", arArabeezy: "baddi ajeeb hadiyye la-akhuy, bas mish 3aref shoo akhod.", en: "I want to buy a gift for my brother, but I don't know what to get." },
+        { speaker: "Mona", ar: "شُو نَاقْصُه؟", arArabeezy: "shoo na2So?", en: "What does he need?" },
+        { speaker: "Rami", ar: "بِفَكِّر قَمِيص. بَسِيط وَحِلْو.", arArabeezy: "bfakkir qameeS. baseeT w 7ilw.", en: "I'm thinking of a shirt. Simple and nice." },
+        { speaker: "Mona", ar: "طَيِّب خَلِّينَا نْفُوت هُون.", arArabeezy: "Tayyib khallina nfoot hoon.", en: "Okay, let's go in here." },
 
-    // ====================================
-    // GRAMMAR
-    // ====================================
+        { speaker: "Seller", ar: "أَهْلًا، تْفَضَّلُوا.", arArabeezy: "ahlan, tfaDDalu.", en: "Welcome, come in." },
+        { speaker: "Rami", ar: "يِعْطِيك العَافْيَة.", arArabeezy: "ya3teek el-3afyeh.", en: "Thank you." },
+        { speaker: "Seller", ar: "الله يْعَافِيك. شُو بَدْكُم؟", arArabeezy: "allah y3afeek. shoo baddkom?", en: "You're welcome. What are you looking for?" },
+        { speaker: "Rami", ar: "بَدِّي قَمِيص لِشَبّ عُمْرُه تَقْرِيبًا خَمْسَة وَعِشْرِين.", arArabeezy: "baddi qameeS la-shabb 3omro ta2reeban khamse w 3ishreen.", en: "I need a shirt for a guy who's about twenty-five years old." },
+        { speaker: "Seller", ar: "كَاجُوَال وَلَّا رَسْمِي؟", arArabeezy: "casual wala rasmi?", en: "Casual or formal?" },
+        { speaker: "Rami", ar: "كَاجُوَال.", arArabeezy: "casual.", en: "Casual." },
+        { speaker: "Seller", ar: "شُو رَأْيَك بِهَاد؟", arArabeezy: "shoo ra2yak bihad?", en: "What do you think of this one?" },
+        { speaker: "Rami", ar: "حِلْو... بَس عِنْدَك لَوْن تَانِي؟", arArabeezy: "7ilw... bas 3indak lawn tani?", en: "Nice... but do you have another color?" },
+        { speaker: "Seller", ar: "آه، فِي كُحْلِي، وَأَسْوَد، وَرَصَاصِي.", arArabeezy: "ah, fi ko7li, w aswad, w raSaSi.", en: "Yes, there's navy, black, and gray." },
+        { speaker: "Mona", ar: "أَنَا الكُحْلِي عَاجِبْنِي أَكْتَر.", arArabeezy: "ana el-ko7li 3ajebni aktar.", en: "I like the navy one more." },
+        { speaker: "Rami", ar: "بَس أَخُوي بْحِبّ الأَلْوَان الهَادْيَة.", arArabeezy: "bas akhuy bi7ibb el-alwan el-hadye.", en: "But my brother likes calm colors." },
+        { speaker: "Mona", ar: "الكُحْلِي هَادِي.", arArabeezy: "el-ko7li hadi.", en: "Navy is a calm color." },
+        { speaker: "Rami", ar: "مَعِك حَقّ.", arArabeezy: "ma3ik 7a2.", en: "You're right." },
+        { speaker: "Rami", ar: "قَدِّيش سِعْرُه؟", arArabeezy: "addeesh si3ro?", en: "How much is it?" },
+        { speaker: "Seller", ar: "خَمْسَة وَسِتِّين.", arArabeezy: "khamse w sitteen.", en: "Sixty-five." },
+        { speaker: "Rami", ar: "آخِر سِعْر؟", arArabeezy: "akher si3er?", en: "Final price?" },
+        { speaker: "Seller", ar: "هَاي آخِرُه.", arArabeezy: "hay akhro.", en: "That's my final price." },
+        { speaker: "Mona", ar: "يَا زَلَمَة... اِعْمِلْنَا سِعْر، إِحْنَا أَوَّل زَبُونَات اليَوْم. 😄", arArabeezy: "ya zalame... i3milna si3er, i7na awwal zaboonat el-yom.", en: "Come on... give us a better price, we're your first customers today." },
+        { speaker: "Seller", ar: "ههههه... وَالله أَوَّل مَرَّة بِسْمَعْهَا اليَوْم.", arArabeezy: "hahaha... wallah awwal marra bisma3ha el-yom.", en: "Haha... that's the first time I've heard that today." },
+        { speaker: "Rami", ar: "يَعْنِي بِزْبَط بِسِتِّين؟", arArabeezy: "ya3ni bizbaT bisitteen?", en: "So, can you make it sixty?" },
+        { speaker: "Seller", ar: "خَلَص، عَشَانْكُم بِسِتِّين.", arArabeezy: "khalaS, 3ashankom bisitteen.", en: "Alright, for you, sixty." },
+        { speaker: "Rami", ar: "المِقَاس هَاد وَسَط؟", arArabeezy: "el-me2as had wasaT?", en: "Is this a medium?" },
+        { speaker: "Seller", ar: "لَا، هَاد كْبِير.", arArabeezy: "la, had kbeer.", en: "No, this one is large." },
+        { speaker: "Rami", ar: "طَيِّب جِيبْلِي وَسَط.", arArabeezy: "Tayyib jeebli wasaT.", en: "Okay, bring me a medium." },
+        { speaker: "Seller", ar: "لَحْظَة...", arArabeezy: "la7Za...", en: "One moment..." },
+        { speaker: "Mona", ar: "هَيْك أَحْسَن.", arArabeezy: "hek a7san.", en: "That's better." },
+        { speaker: "Rami", ar: "إِذَا مَا زَبَط، بَقْدَر أَبَدِّلُه؟", arArabeezy: "iza ma zabaT, ba2dar abaddlo?", en: "If it doesn't fit, can I exchange it?" },
+        { speaker: "Seller", ar: "أَكِيد، بَس خَلِّي الوَصْل مَعَك.", arArabeezy: "akeed, bas khalli el-waSel ma3ak.", en: "Of course, just keep the receipt." },
+        { speaker: "Rami", ar: "تَمَام.", arArabeezy: "tamam.", en: "Great." },
+        { speaker: "Seller", ar: "كَاش وَلَّا بِطَاقَة؟", arArabeezy: "cash wala biTa2a?", en: "Cash or card?" },
+        { speaker: "Rami", ar: "كَاش.", arArabeezy: "cash.", en: "Cash." },
+        { speaker: "Seller", ar: "تْفَضَّل البَاقِي وَالوَصْل.", arArabeezy: "tfaDDal el-baqi w el-waSel.", en: "Here’s your change and the receipt." },
+        { speaker: "Rami", ar: "يِعْطِيك العَافْيَة.", arArabeezy: "ya3teek el-3afyeh.", en: "Thank you." },
+        { speaker: "Seller", ar: "الله يْعَافِيكُم.", arArabeezy: "allah y3afeekom.", en: "You're welcome." },
 
-    grammar: [
-        {
-            id: "numbers_basic",
-            title: "Numbers (1–5)",
-            short: "Use numbers for prices, quantity, and shopping.",
-            description:
-                `Numbers are used constantly in shops: price, amount, and count.
-Keep the forms simple and spoken.
+        { speaker: "Mona", ar: "بِمَا إِنَّا هُون، بَدِّي أَجِيب شُوَيَّة خُضْرَة.", arArabeezy: "bima inna hoon, baddi ajeeb shwayyet khoDra.", en: "Since we're here, I want to buy some vegetables." },
+        { speaker: "Rami", ar: "يَلَّا.", arArabeezy: "yalla.", en: "Let's go." },
 
-Use the number directly before the noun.`,
-            table: {
-                title: "Numbers",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["واحد", "waa7ed", "one", "1"],
-                    ["اتنين", "itneen", "two", "2"],
-                    ["تلاتة", "talaateh", "three", "3"],
-                    ["أربعة", "arba3a", "four", "4"],
-                    ["خمسة", "khamsa", "five", "5"]
-                ]
-            },
-            examples: [
-                { ar: "بدي واحد قهوة", arabeezy: "biddi waa7ed 2ahwe", en: "I want one coffee." },
-                { ar: "عندي اتنين أولاد", arabeezy: "3indi itneen awlaad", en: "I have two kids." },
-                { ar: "الكيلو بخمسة شواكل", arabeezy: "el-keelo bkhamsa shawaa2el", en: "The kilo is five shekels." },
-                { ar: "تلاتة خبزات", arabeezy: "talaateh khubzaat", en: "Three breads." },
-                { ar: "بدنا أربعة مي", arabeezy: "bidna arba3a may", en: "We want four waters." }
-            ],
-            teacherNotes:
-                `Spoken forms are shorter than MSA (اتنين vs اثنان).
-Keep price examples local and simple.
-Use real items from the shop.
-Avoid large numbers early.`,
-            commonMistakes: [
-                "Using formal MSA numbers",
-                "Forgetting the noun after the number",
-                "Mixing gender with low numbers too early"
-            ],
-            functionalUse: "Use this to ask for quantities and understand prices in shops."
-        },
-        {
-            id: "ordinal_numbers",
-            title: "Ordinal Numbers (الأول، التاني...)",
-            short: "Use ordinals to show order or rank.",
-            description:
-                `Ordinals show order: first, second, third.
-In spoken Arabic, we often use الأول / التاني / التالت / الرابع / الخامس.
+        { speaker: "Vegetable Seller", ar: "تْفَضَّلُوا يَا جَمَاعَة.", arArabeezy: "tfaDDalu ya jama3a.", en: "Welcome, everyone." },
+        { speaker: "Mona", ar: "قَدِّيش البَنْدُورَة اليَوْم؟", arArabeezy: "addeesh el-bandora el-yom?", en: "How much are the tomatoes today?" },
+        { speaker: "Vegetable Seller", ar: "الكِيلُو بِعَشَرَة.", arArabeezy: "el-kilo bi3ashara.", en: "Ten per kilo." },
+        { speaker: "Mona", ar: "إِمْبَارِح كَانِت بِثْمَانِيَة!", arArabeezy: "embare7 kanit bithmane.", en: "Yesterday they were eight!" },
+        { speaker: "Vegetable Seller", ar: "وَالله اليَوْم البِضَاعَة أَقَلّ.", arArabeezy: "wallah el-yom el-biDa3a a2all.", en: "Today there’s less produce." },
+        { speaker: "Rami", ar: "وَالخِيَار؟", arArabeezy: "w el-khyar?", en: "What about cucumbers?" },
+        { speaker: "Vegetable Seller", ar: "بِسَبْعَة.", arArabeezy: "bisab3a.", en: "Seven." },
+        { speaker: "Mona", ar: "طَيِّب... أَعْطِينِي نُصّ كِيلُو بَنْدُورَة، وَنُصّ كِيلُو خِيَار.", arArabeezy: "Tayyib... a3Teeni noSS kilo bandora, w noSS kilo khyar.", en: "Okay... give me half a kilo of tomatoes and half a kilo of cucumbers." },
+        { speaker: "Vegetable Seller", ar: "غَيْر إِشِي؟", arArabeezy: "gheir ishi?", en: "Anything else?" },
+        { speaker: "Mona", ar: "قَدِّيش البُرْتُقَال؟", arArabeezy: "addeesh el-borto2al?", en: "How much are the oranges?" },
+        { speaker: "Vegetable Seller", ar: "بِخَمْسَة.", arArabeezy: "bikhamse.", en: "Five." },
+        { speaker: "Mona", ar: "خَلَص، كِيلُو كَمَان.", arArabeezy: "khalaS, kilo kaman.", en: "Okay, one kilo too." },
+        { speaker: "Vegetable Seller", ar: "هَيْك صَار سَبْعْتَعْش شِيكِل.", arArabeezy: "hek Sar sab3ta3ash shekel.", en: "That'll be seventeen shekels." },
+        { speaker: "Mona", ar: "إِذَا أَخَدْت كِيلُوَيْن بَنْدُورَة، بْتِنْزِل شُوَي؟", arArabeezy: "iza akhadt kilowain bandora, btinzil shway?", en: "If I buy two kilos of tomatoes, can you lower the price a bit?" },
+        { speaker: "Vegetable Seller", ar: "ههههه... لَا وَالله، اليَوْم مَا بَقْدَر.", arArabeezy: "hahaha... la wallah, el-yom ma ba2dar.", en: "Haha... honestly, I can't today." },
+        { speaker: "Rami", ar: "جَرِّبِي مَعُه شُوَي.", arArabeezy: "jarribi ma3o shway.", en: "Try bargaining a little." },
+        { speaker: "Mona", ar: "طَيِّب خَلِّيهُم خَمْسْتَعْش؟", arArabeezy: "Tayyib khallihom khamsta3ash?", en: "Okay, make it fifteen?" },
+        { speaker: "Vegetable Seller", ar: "وَلَا يْهِمَّك، خَمْسْتَعْش.", arArabeezy: "wala yhimmak, khamsta3ash.", en: "No problem, fifteen." },
+        { speaker: "Mona", ar: "الله يْرْزُقَك.", arArabeezy: "allah yirzo2ak.", en: "May God bless your livelihood." },
+        { speaker: "Vegetable Seller", ar: "وَإِيَّاكُم.", arArabeezy: "w iyyakom.", en: "You too." },
+        { speaker: "Mona", ar: "تْفَضَّل، هَاي عِشْرِين.", arArabeezy: "tfaDDal, hay 3ishreen.", en: "Here, twenty." },
+        { speaker: "Vegetable Seller", ar: "وَهُون خَمْس شِيكِل البَاقِي.", arArabeezy: "w hoon khams shekel el-baqi.", en: "And here are your five shekels change." },
+        { speaker: "Mona", ar: "يِسْلَمُوا.", arArabeezy: "yislamu.", en: "Thank you." },
 
-Use them for floors, options, and order.`,
-            table: {
-                title: "Ordinals",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["الأول", "el-awwal", "first", "Order"],
-                    ["التاني", "et-taani", "second", "Order"],
-                    ["التالت", "et-taalet", "third", "Order"],
-                    ["الرابع", "er-raabe3", "fourth", "Order"],
-                    ["الخامس", "el-khaames", "fifth", "Order"]
-                ]
-            },
-            examples: [
-                { ar: "بدي الخيار الأول", arabeezy: "biddi el-khiyaar el-awwal", en: "I want the first option." },
-                { ar: "الشقة بالطابق التاني", arabeezy: "esh-sha22a bit-Taabe2 et-taani", en: "The apartment is on the second floor." },
-                { ar: "الطلب التالت جاهز", arabeezy: "et-Talab et-taalet jaahiz", en: "The third order is ready." },
-                { ar: "خد المقاس الرابع", arabeezy: "khud el-ma2aas er-raabe3", en: "Take the fourth size." },
-                { ar: "هاد خامس كتاب", arabeezy: "haad khaames kitaab", en: "This is the fifth book." }
-            ],
-            teacherNotes:
-                `Spoken uses التاني/التالت more than MSA الثاني/الثالث.
-Keep examples tied to shopping choices.
-Explain floors and size options.
-Avoid long ordinal lists.`,
-            commonMistakes: [
-                "Using MSA ordinals in speech",
-                "Forgetting ال before the ordinal",
-                "Mixing the ordinal with the counted noun"
-            ],
-            functionalUse: "Use this to choose options, describe order, and talk about floors."
-        }
+        { speaker: "Rami", ar: "خَلَّصْنَا؟", arArabeezy: "khallaSna?", en: "Are we done?" },
+        { speaker: "Mona", ar: "آه، الحَمْدُ لله.", arArabeezy: "ah, el-7amdullah.", en: "Yes, thank God." },
+        { speaker: "Rami", ar: "يَلَّا نِطْلَع قَبْل مَا السُّوق يْزِيد زَحْمَة.", arArabeezy: "yalla niTla3 2abl ma es-soo2 yzeed za7me.", en: "Let's leave before the market gets more crowded." },
+        { speaker: "Mona", ar: "آه وَالله، وَالدُّنْيَا شُوب كَمَان.", arArabeezy: "ah wallah, w ed-dinya shoob kaman.", en: "Yes, and it's hot too." },
+        { speaker: "Rami", ar: "بَعْدِين بِنْمُرّ عَالكَافِيه؟", arArabeezy: "ba3dain binmor 3al-cafe?", en: "Shall we stop by the café afterward?" },
+        { speaker: "Mona", ar: "إِذَا لَحِقْنَا... أَنَا جُعْت مِن اللَّفَّة كُلْهَا. 😂", arArabeezy: "iza la7i2na... ana jo3t min el-laffe kolha.", en: "If we have time... I got hungry from all this walking." },
+        { speaker: "Rami", ar: "ههههه... وَأَنَا كَمَان.", arArabeezy: "hahaha... w ana kaman.", en: "Haha... me too." }
     ],
 
+    questions: [
+        { ar: "شُو كَان بَدُّه يِشْتَرِي رَامِي؟", en: "What did Rami want to buy?" },
+        { ar: "لِمِين كَانِت الهَدِيَّة؟", en: "Who was the gift for?" },
+        { ar: "أَي لَوْن اخْتَارُوا بِالنِّهَايَة؟", en: "Which color did they choose in the end?" },
+        { ar: "قَدِّيش كَان السِّعْر أَوَّل إِشِي؟", en: "What was the original price?" },
+        { ar: "قَدِّيش دَفَع بِالنِّهَايَة؟", en: "How much did he pay in the end?" },
+        { ar: "شُو سَأَل رَامِي عَن المِقَاس؟", en: "What did Rami ask about the size?" },
+        { ar: "شُو لَازِم يِحْتَفِظ فِيه إِذَا بَدُّه يِبَدِّل القَمِيص؟", en: "What does he need to keep if he wants to exchange the shirt?" },
+        { ar: "كِيف دَفَع رَامِي؟", en: "How did Rami pay?" },
+        { ar: "شُو اشْتَرَت مُونَا مِن بَائِع الخُضَار؟", en: "What did Mona buy from the vegetable seller?" },
+        { ar: "لِيش سِعْر البَنْدُورَة ارْتَفَع؟", en: "Why did the tomato price increase?" },
+        { ar: "هَل قَدِرِت مُونَا تْفَاصِل؟", en: "Was Mona able to bargain?" },
+        { ar: "وِين كَانُوا رَايْحِين بَعْد السُّوق؟", en: "Where were they planning to go after the market?" }
+    ],
+},
 
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
+                id: "shopping_mc1",
                 type: "match",
-                prompt: "Match the English word to Arabic: corner shop / mini-market",
-                options: ["دُكّان", "مَحَلّ", "سُوق", "سوبِرماركِت", "مَصاري"],
-                correct: "دُكّان",
+                prompt: "Match the English phrase to Arabic: How much is this?",
+                options: ["قَدِّيش هَادَا؟", "كِيف الجَوّ؟", "وِين سَاكِن؟", "قَدِّيش عُمُرَك؟"],
+                correct: "قَدِّيش هَادَا؟",
             },
             {
-                id: "mc_complete_2",
+                id: "shopping_mc2",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: Honestly, this is a bit expensive.\nصَرَاحَةً هَادَا ___ شْوَيّ.",
-                options: ["سِعِر", "قَدِّيش هَادَا؟", "غالي", "رخيص", "تَنْزيلات"],
-                correct: "غالي",
+                prompt: "Complete the Arabic for: Can you lower it a little? مُمْكِن ___ شُوَيّ؟",
+                options: ["تْنَزِّل", "تْشَتِّي", "تُوصَل", "تْدْرُس"],
+                correct: "تْنَزِّل",
             },
             {
-                id: "mc_reorder_3",
+                id: "shopping_mc3",
                 type: "reorder",
-                prompt: "Reorder the Arabic words to match: Is there a student discount?",
-                options: ["فِيه", "خَصْم", "لِلطُلّاب؟"],
-                correct: ["فِيه", "خَصْم", "لِلطُلّاب؟"],
+                prompt: "Reorder: I want to buy a gift.",
+                options: ["بَدِّي", "أَشْتِرِي", "هَدِيَّة"],
+                correct: ["بَدِّي", "أَشْتِرِي", "هَدِيَّة"],
             },
             {
-                id: "mc_choose_4",
-                type: "choose",
-                prompt: "Choose the correct Arabic word for: invoice / bill",
-                options: ["فاتورَة", "نَوْع", "لَوْن", "حَجِم / مَقاس", "كِيلو"],
-                correct: "فاتورَة",
+                id: "shopping_mc4",
+                type: "complete",
+                prompt: "Complete the Arabic for: half a kilo. ___ كِيلُو",
+                options: ["نُصّ", "لَوْن", "سِعِر", "وَصْل"],
+                correct: "نُصّ",
             },
             {
-                id: "mc_match_5",
+                id: "shopping_mc5",
                 type: "match",
-                prompt: "Match the English word to Arabic: piece / item",
-                options: ["قِطْعَة", "بَشْتِري", "بَدّي أِشْتِري...", "أَنا بَس بَتْفَرَّج", "عِنْدَك إِشِي تَانِي؟"],
-                correct: "قِطْعَة",
-            },
-            {
-                id: "mc_complete_6",
-                type: "complete",
-                prompt: "Complete the Arabic sentence for: The price is high, can you lower it a bit?\nالسِّعِر عالي، ___",
-                options: ["مُمْكِن تْنَزِّل شْوَيّ؟", "آخِر سِعِر؟", "مِيزانِيّة", "صَفْقَة / لُقْطَة", "اِسْتِبْدال"],
-                correct: "مُمْكِن تْنَزِّل شْوَيّ؟",
-            },
-            {
-                id: "mc_reorder_7",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: Their policy has no returns, only exchanges.",
-                options: ["السِّياسَة", "عِنْدْهُم", "مَا", "فِيه", "اِسْتِرْجاع،", "بَس", "اِسْتِبْدال"],
-                correct: ["السِّياسَة", "عِنْدْهُم", "مَا", "فِيه", "اِسْتِرْجاع،", "بَس", "اِسْتِبْدال"],
+                prompt: "Choose the Arabic for: receipt",
+                options: ["وَصْل", "خَصْم", "مَقَاس", "سُوق"],
+                correct: "وَصْل",
             },
         ],
     },
@@ -767,91 +506,134 @@ Avoid long ordinal lists.`,
     practice: {
         quiz: [
             {
-                id: "shop_q1",
-                questionAr: "أَيّ تَعْبِير تَسْتَعْمِلُه لِـ ‘How much is this?’؟",
-                optionsEn: ["بِكَم هَادَا؟", "بَدْفَع هَادَا", "غَالِي كْتِير"],
+                id: "shopping_q1",
+                questionAr: "«قَدِّيش هَادَا؟» بِنِسْتَخْدِمْهَا عَشَان:",
+                optionsEn: ["ask the price", "ask someone's age", "ask about weather"],
                 correctIndex: 0,
             },
             {
-                id: "shop_q2",
-                questionAr: "مَعْنَى ‘غَالِي’ هُوَّ:",
-                optionsEn: ["cheap", "expensive", "beautiful"],
-                correctIndex: 1,
-            },
-            {
-                id: "shop_q3",
-                questionAr: "مَعْنَى ‘رَخِيص’ هُوَّ:",
-                optionsEn: ["cheap", "expensive", "small"],
+                id: "shopping_q2",
+                questionAr: "إِذَا السِّعِر غَالِي، مُمْكِن تِقُول:",
+                optionsEn: ["مُمْكِن تْنَزِّل شُوَيّ؟", "كِيف الجَوّ عِنْدَك؟", "أَنَا بَس بَتْفَرَّج."],
                 correctIndex: 0,
             },
             {
-                id: "shop_q4",
-                questionAr: "أَيّ جُمْلَة تُسْتَعْمَل لِلْبَحْث عَنْ تَخْفِيض؟",
-                optionsEn: ["مَا بِشْتَغِل", "مُمْكِن نِنَاقِص شْوَيّ؟", "بَدْفَع كَارْد"],
-                correctIndex: 1,
+                id: "shopping_q3",
+                questionAr: "«بَاخُدْهَا» بِنِحْكِيهَا لِـ:",
+                optionsEn: ["a feminine item", "a masculine item", "a group of people"],
+                correctIndex: 0,
             },
             {
-                id: "shop_q5",
-                questionAr: "مَعْنَى ‘كِيلُو’ هُوَّ:",
-                optionsEn: ["piece", "kilogram", "meter"],
-                correctIndex: 1,
+                id: "shopping_q4",
+                questionAr: "إِذَا بَدَّك لون تاني، بِتِسْأَل:",
+                optionsEn: ["عِنْدَك نَفْس المَقَاس بِلَوْن تَانِي؟", "قَدِّيش الأُجْرَة؟", "كِيف المُوَاصَلَات؟"],
+                correctIndex: 0,
+            },
+            {
+                id: "shopping_q5",
+                questionAr: "«نُصّ كِيلُو» مَعْنَاهَا:",
+                optionsEn: ["half a kilo", "one kilo", "two kilos"],
+                correctIndex: 0,
+            },
+            {
+                id: "shopping_q6",
+                questionAr: "«آخِر سِعِر؟» بِنِسْتَخْدِمْهَا فِي:",
+                optionsEn: ["bargaining", "greeting", "family description"],
+                correctIndex: 0,
+            },
+            {
+                id: "shopping_q7",
+                questionAr: "إِذَا بَدَّك تِدْفَع بِالمَصَارِي، بِتِقُول:",
+                optionsEn: ["بَدِّي أَدْفَع كَاش.", "بَدِّي أَشُوف المَقَاس.", "بَدِّي أَرْجَع بَدْرِي."],
+                correctIndex: 0,
+            },
+            {
+                id: "shopping_q8",
+                questionAr: "«مْنَاسِب» مُمْكِن تِحْكِيهَا عَن:",
+                optionsEn: ["price, size, color, or time", "only weather", "only family"],
+                correctIndex: 0,
+            },
+            {
+                id: "shopping_q9",
+                questionAr: "لِيش بِنَاخُد الوَصْل؟",
+                optionsEn: ["for exchange or proof of payment", "to ask the weather", "to describe family"],
+                correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 1: Market bargaining. Student A is the seller; Student B is the buyer. Buyer asks price, says it is too expensive, asks to reduce a bit, then pays. Use numbers for kilos or quantity.",
-            "Role-play 2: Clothes shop. Buyer sees a shirt and asks price. Seller gives price; buyer requests discount politely; seller offers minor reduction. Buyer decides to buy or leave. Use polite phrases and numbers.",
-            "Role-play 3: Online deal. Buyer asks for special student price. Seller gives discount. Buyer chooses payment method and says they will pay. Use chunk for online payment or cash on delivery.",
+            "At a clothes shop: ask for a shirt, price, size, and another color. Bargain once and decide if you will buy it.",
+            "At a vegetable stand: buy half a kilo of two things, ask the price, and pay.",
+            "You only have 50 shekels. Tell the seller your budget and ask for something suitable.",
+            "You bought the wrong size. Go back with the receipt and ask to exchange it.",
+            "Mini speaking prompt: describe the last thing you bought. Say where, how much, why, and if the price was good.",
         ],
         translation: [
-            { id: "shop_t1", type: "enToAr", textEn: "How much is this?", textAr: "بكم هاد؟" },
-            { id: "shop_t2", type: "arToEn", textEn: "It's too expensive.", textAr: "غالي كتير." },
-            { id: "shop_t3", type: "enToAr", textEn: "I want the blue one.", textAr: "بدي الأزرق." },
-            { id: "shop_t4", type: "arToEn", textEn: "Do you have a smaller size?", textAr: "عندك مقاس أصغر؟" },
-            { id: "shop_t5", type: "enToAr", textEn: "Can you make a discount?", textAr: "ممكن تعمل خصم؟" },
-            { id: "shop_t6", type: "arToEn", textEn: "I'll take it.", textAr: "رح آخده." }
+            { id: "shopping_t1", type: "enToAr", textEn: "Good morning, I want to buy a gift for my brother.", textAr: "صَبَاح الخِير، بَدِّي أَشْتِرِي هَدِيَّة لِأَخُوي." },
+            { id: "shopping_t2", type: "arToEn", textEn: "How much is this black shirt?", textAr: "قَدِّيش هَادَا القَمِيص الأَسْوَد؟" },
+            { id: "shopping_t3", type: "enToAr", textEn: "This is a little expensive. Can you lower it a little?", textAr: "هَادَا غَالِي شُوَيّ. مُمْكِن تْنَزِّل شُوَيّ؟" },
+            { id: "shopping_t4", type: "arToEn", textEn: "Do you have the same size in another color?", textAr: "عِنْدَك نَفْس المَقَاس بِلَوْن تَانِي؟" },
+            { id: "shopping_t5", type: "enToAr", textEn: "My budget today is fifty shekels.", textAr: "مِيزَانِيَّتِي اليَوم خَمْسِين شِيكِل." },
+            { id: "shopping_t6", type: "arToEn", textEn: "Make it fifty and I'll take it cash.", textAr: "خَلِّيه خَمْسِين وَبَاخُدُه كَاش." },
+            { id: "shopping_t7", type: "enToAr", textEn: "Can I pay by card, or only cash?", textAr: "بِصِير أَدْفَع بِالكَارْت وَلَا بَس كَاش؟" },
+            { id: "shopping_t8", type: "arToEn", textEn: "Take the receipt; you might need it later.", textAr: "خُد الوَصْل، مُمْكِن تِحْتَاجُه بَعْدِين." },
+            { id: "shopping_t9", type: "enToAr", textEn: "I want half a kilo of tomatoes and half a kilo of cucumbers.", textAr: "بَدِّي نُصّ كِيلُو بَنْدُورَة وَنُصّ كِيلُو خِيَار." },
+            { id: "shopping_t10", type: "arToEn", textEn: "A kilo of tomatoes is ten shekels.", textAr: "الكِيلُو بَنْدُورَة بِعَشَرَة شَوَاكِل." },
+            { id: "shopping_t11", type: "enToAr", textEn: "Yesterday the price was cheaper.", textAr: "اِمْبَارِح السِّعِر كَان أَرْخَص." },
+            { id: "shopping_t12", type: "arToEn", textEn: "The price is suitable, but I want to see another one.", textAr: "السِّعِر مْنَاسِب، بَس بَدِّي أَشُوف غَيْرُه." },
+            { id: "shopping_t13", type: "enToAr", textEn: "I'm just looking for now, thank you.", textAr: "أَنَا بَس بَتْفَرَّج هَلْقِيت، شُكْرًا." },
+            { id: "shopping_t14", type: "arToEn", textEn: "If the size does not work, can I exchange it?", textAr: "إِذَا المَقَاس مَا زَبَط، بِقْدَر أَبَدِّلُه؟" },
+            { id: "shopping_t15", type: "enToAr", textEn: "Let's go home before the crowd increases.", textAr: "يَلَّا نْرَوِّح قَبْل مَا يْزِيد الزَّحْمَة." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Write and record a 60–90 second audio in Palestinian Arabic about a shopping experience. Include:\n" +
-            "• What you bought and where (market, shop, online).\n" +
-            "• The price and whether it was expensive or cheap.\n" +
-            "• Use at least 3 numbers or measurements, and mention the currency.\n" +
-            "• Include one bargaining sentence or a polite request for a discount.",
+            `Write and record a 75-90 second shopping story in Gaza Palestinian Arabic. Include: where you went, what you wanted to buy, the price, color or size, whether it was expensive or suitable, how you bargained, how you paid, and whether you took a receipt. Reuse at least 8 words from this unit and 5 old words from previous units.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Good morning, I want to buy a gift for my brother.
+2. How much is this black shirt?
+3. This is a little expensive. Can you lower it a little?
+4. Do you have the same size in another color?
+5. My budget today is fifty shekels.
+6. Make it fifty and I'll take it cash.
+7. Can I pay by card, or only cash?
+8. Take the receipt; you might need it later.
+9. I want half a kilo of tomatoes and half a kilo of cucumbers.
+10. A kilo of tomatoes is ten shekels.
+11. Yesterday the price was cheaper.
+12. The price is suitable, but I want to see another one.
+13. I'm just looking for now, thank you.
+14. If the size does not work, can I exchange it?
+15. Let's go home before the crowd increases.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "Start by asking the student what they usually buy when they go out: snacks, clothes, phone credit, etc.",
-            "Show a picture of a small market stall or a shop and ask them to name items in English; then translate into Palestinian Arabic and add a price.",
+            "Start with a real question: شو آخر إشي اشتريته؟ قديش كان؟",
+            "Recycle previous units immediately: greetings, weather, family gift, transport, and food market.",
+            "This unit's hidden focus is numbers, colors, quantities, comparison, and polite bargaining.",
         ],
         vocabularySteps: [
-            "Teach key price and money words first: بِكَم؟, شِيكِل, غَالِي, رَخِيص, مُنَاسِب.",
-            "Then add numbers and quantities: وَاحِد, اتْنَيْن, تَلَاتَة, كِيلُو. Practice with real items or drawings.",
-            "Add verbs and chunks in small sets: بَدْفَع, بِيِعْنُوهُ, بِنَاقِص, بِيِعْطِي. Use them with a single item to reinforce.",
+            "Teach phrases as shopping chunks: قَدِّيش هَادَا؟ / غَالِي شُوَيّ / آخِر سِعِر؟ / بَاخُدُه.",
+            "Use masculine/feminine through items: هَادَا القَمِيص / هَادِي الجَزْمَة / بَاخُدُه / بَاخُدْهَا.",
+            "Keep numbers practical: 10, 12, 15, 50, 55, 60, 80, and prices by kilo.",
+            "Use colors as needed in context, not as a separate color lesson.",
         ],
         dialogueSteps: [
-            "Use Scene 1 and Scene 2 scripts as role-play scripts. Let the student act as seller and buyer in both sequences.",
-            "Encourage imitation of polite phrases; repeat the bargaining line a few times until it feels natural.",
-            "Adapt numbers and items to match the student’s real market or shop experience.",
+            "Act the dialogue in two scenes: clothes shop, then vegetable stand.",
+            "Ask the dialogue questions as speaking practice and require full sentence answers.",
+            "Have the student replace the shirt with a real item they want to buy.",
         ],
         practiceTips: [
-            "If the student seems shy to bargain, start with a very small reduction example and praise them for trying.",
-            "Point out tiny wins: even reducing three shekels is a success; it builds confidence.",
-            "Use short timed drills: student asks price, seller answers; switch quickly between roles.",
+            "Push output: the student must ask price, bargain once, ask for size/color, and close the purchase.",
+            "Use quick transformations: هَادَا غَالِي → هَادِي غَالْيَة; بَاخُدُه → بَاخُدْهَا.",
+            "End with a 60-second role-play where the student buys something under a budget.",
         ],
         wrapup: [
-            "Summarize the main chunks and numbers on a small list the student can screenshot or copy.",
-            "Ask the student to write 2–3 items they will buy this week with prices, even if imaginary.",
-            "Remind them of homework and that the audio can be about a real or imagined shopping trip.",
+            "Student buys one item in a role-play without reading.",
+            "Student asks for another size/color.",
+            "Student bargains politely and says how they will pay.",
         ],
         myNotes: "",
     },

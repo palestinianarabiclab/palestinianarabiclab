@@ -1,540 +1,512 @@
-// Auto-extracted from original app.js
 import { LESSON_ID_FEELINGS } from '../../core/constants.js';
 
 export const lessonId = LESSON_ID_FEELINGS;
+
 export const lesson = {
     meta: {
         level: "Intermediate",
-        unit: "Feelings & Mental State",
-        lessonTitle: "Unit 15 – Feelings & Mental State",
+        unit: "Feelings",
+        lessonTitle: "Unit 15 - Feelings / مشاعر in Gaza Palestinian Arabic",
+        contentVersion: 2026070301,
     },
 
     overview: {
-        title: "Unit 15 – Feelings & Mental State",
+                title: "Unit 15 - Feelings / مشاعر",
+
         description:
-            "In this unit, students learn how to talk about their feelings, energy, stress, and mood in Palestinian Arabic, and how to ask others about their emotional state in a natural, supportive way.",
+            "Students learn how to talk naturally and respectfully about mood, stress, energy, worries, and simple self-care in Gaza Palestinian Arabic while recycling plans, hobbies, work/study, transport, weather, and complaint language.",
         goals: [
-            "Use common adjectives to describe feelings (happy, sad, tired, stressed, relaxed, bored, worried…).",
-            "Ask and answer questions like ‘How do you feel?’ and ‘What’s wrong?’.",
-            "Use chunks like ‘I feel…’, ‘I’m under pressure’, ‘I’m not in the mood’, ‘take a break’.",
-            "React in a supportive way to bad news or difficult situations.",
-            "Talk about simple self-care plans in Palestinian Arabic.",
+            "Describe emotional states with natural Gaza expressions.",
+            "Ask someone how they really feel without sounding intrusive.",
+            "Explain pressure, low energy, worry, excitement, and not being ready.",
+            "React supportively when someone is tired, upset, or overwhelmed.",
+            "Make a small realistic self-care plan using language from earlier units.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can talk about their mood and energy in 60-90 seconds.",
+            "The student can ask a friend what is wrong and respond with empathy.",
+            "The student can set a soft boundary when they do not want to talk.",
         ],
     },
 
-    // ====================================
-    // VOCABULARY
-    // ====================================
     vocabulary: {
         core: [
-            // ===== BASIC FEELINGS =====
             {
                 id: "mabsut",
-                ar: "مَبْسُوط",
+                ar: "مَبْسُوط / مَبْسُوطَة",
                 en: "happy / pleased",
-                hint:
-                    "Masc: مَبْسُوط، fem: مَبْسُوطَة، plural: مَبْسُوطِين. Very common for ‘feeling good / happy’.",
-                exampleAr: "اليَوْم مَبْسُوطَة لِأَنِّي خَلَّصِت المَشْرُوع.",
-                exampleArabeezy: "elywm mbswta lany khlst elmshrw3.",
-                exampleEn: "Today I’m happy because I finished the project.",
-},
+                enArabeezy: "mabsooT / mabsooTa",
+                hint: "Male: مَبْسُوط. Female: مَبْسُوطَة. Plural: مَبْسُوطِين.",
+                exampleAr: "اليَوم مَبْسُوطَة عَشَان خَلَّصْت المَشْرُوع.",
+                exampleArabeezy: "el-yom mabsooTa 3ashan khallaSt el-mashroo3.",
+                exampleEn: "Today I'm happy because I finished the project.",
+            },
             {
                 id: "za3lan",
-                ar: "زَعْلَان",
+                ar: "زَعْلَان / زَعْلَانَة",
                 en: "upset / sad",
-                hint:
-                    "Masc: زَعْلَان، fem: زَعْلَانَة. Can be ‘angry’ or ‘sad’ depending on context.",
-                exampleAr: "هُوَّا زَعْلَان شْوَيّ مِن النَّتِيجَة.",
-                exampleArabeezy: "hwa z3lan shwy mn elntyja.",
-                exampleEn: "He is a bit upset about the result.",
-},
+                enArabeezy: "za3lan / za3lane",
+                hint: "Can mean sad, upset, or bothered depending on context.",
+                exampleAr: "هُوَّ زَعْلَان شُوَيّ مِن الحَكِي اللِّي صَار.",
+                exampleArabeezy: "howwa za3lan shway min el-7aki illi Sar.",
+                exampleEn: "He is a little upset about what happened.",
+            },
             {
                 id: "ta3ban",
-                ar: "تَعْبَان",
-                en: "tired / exhausted",
-                hint:
-                    "Masc: تَعْبَان، fem: تَعْبَانَة. Physical or mental tiredness.",
-                exampleAr: "بَعْد اليَوْم الطَّوِيل حَاسِّة حَالِي تَعْبَانَة.",
-                exampleArabeezy: "b3d elywm eltwyl 7asa 7aly t3bana.",
-                exampleEn: "After the long day I feel tired.",
-},
-
+                ar: "تَعْبَان / تَعْبَانَة",
+                en: "tired",
+                enArabeezy: "ta3ban / ta3bane",
+                hint: "Physical or mental tiredness. Plural: تَعْبَانِين.",
+                exampleAr: "بَعْد الأُسْبُوع الطَّوِيل حَاسِس حَالِي تَعْبَان.",
+                exampleArabeezy: "ba3d el-osboo3 eT-Taweel 7ases 7ali ta3ban.",
+                exampleEn: "After the long week, I feel tired.",
+            },
             {
                 id: "zahgan",
-                ar: "زَهْقَان",
+                ar: "زَهْقَان / زَهْقَانَة",
                 en: "bored / fed up",
-                hint:
-                    "Masc: زَهْقَان، fem: زَهْقَانَة. Often with مِن: زَهْقَان مِن الدِّرَاسَة.",
-                exampleAr: "حاسس حالي زهقان من الشغل الروتيني",
-                exampleArabeezy: "7ass 7aly zhqan mn elshghl elrwtyny",
-                exampleEn: "I feel bored / fed up with the routine work.",
-},
+                enArabeezy: "zahqan / zahqane",
+                hint: "Very natural. Often with مِن: زَهْقَان مِن الرُّوتِين.",
+                exampleAr: "زَهْقَان مِن نَفْس الرُّوتِين كُلّ يَوم.",
+                exampleArabeezy: "zahqan min nafs er-roteen kul yom.",
+                exampleEn: "I'm fed up with the same routine every day.",
+            },
             {
-                id: "motawattar",
-                ar: "مُتَوَتِّر",
+                id: "mda3oot",
+                ar: "مَضْغُوط / مَضْغُوطَة",
+                en: "stressed / under pressure",
+                enArabeezy: "maDghooT / maDghooTa",
+                hint: "Use with work, study, appointments, family, or money pressure.",
+                exampleAr: "هَالشَّهْر مَضْغُوطَة بَيْن الشُّغُل وَالدِّرَاسَة.",
+                exampleArabeezy: "hal-shahr maDghooTa bein esh-shoghol w ed-dirase.",
+                exampleEn: "This month I'm under pressure between work and study.",
+            },
+            {
+                id: "motawatter",
+                ar: "مُتَوَتِّر / مُتَوَتِّرَة",
                 en: "nervous / tense",
-                hint:
-                    "Masc: مُتَوَتِّر، fem: مُتَوَتِّرَة. Often before exams, interviews, etc.",
-                exampleAr: "متوتّر من قبل ما أقدّم الامتحان.",
-                exampleArabeezy: "mtwtr mn qbl ma aqdm elamt7an.",
-                exampleEn: "I’m nervous before taking the exam.",
-},
+                enArabeezy: "mitwatter / mitwattera",
+                hint: "Often before exams, interviews, doctor appointments, or difficult calls.",
+                exampleAr: "مُتَوَتِّر قَبْل المُقَابَلَة، بَس إِن شَاء الله بِتِزْبَط.",
+                exampleArabeezy: "mitwatter qabel el-muqabale, bas inshallah bitizbaT.",
+                exampleEn: "I'm nervous before the interview, but hopefully it works out.",
+            },
             {
-                id: "mado3oot",
-                ar: "مَضْغُوط",
-                en: "under pressure / stressed",
-                hint:
-                    "Masc: مَضْغُوط، fem: مَضْغُوطَة. From the word for ‘pressure’.",
-                exampleAr: "هَالشَّهِر كْلُه مَضْغُوطَة بَيْن الدِّرَاسَة وَالشُّغُل.",
-                exampleArabeezy: "halshhr klh mdghwta byn eldrasa welshghl.",
-                exampleEn: "This month I’m under pressure between study and work.",
-},
-            {
-                id: "merta7",
-                ar: "مِرْتَاح",
-                en: "comfortable / relaxed",
-                hint:
-                    "Masc: مِرْتَاح، fem: مِرْتَاحَة. Can be physical or emotional comfort.",
-                exampleAr: "بَحِسّ حَالِي مِرْتَاحَ لَمَّا أَكُون عَالبَحِر.",
-                exampleArabeezy: "b7s 7aly mrta7 lma akwn 3alb7r.",
-                exampleEn: "I feel relaxed when I’m at the sea.",
-},
-            {
-                id: "mit7ammis",
-                ar: "مِتْحَمِّس",
-                en: "excited / motivated",
-                hint:
-                    "Masc: مِتْحَمِّس، fem: مِتْحَمِّسَة. From حَمَاس ‘enthusiasm’.",
-                exampleAr: "مِتْحَمِّسَ أَبْلِش المُسْتَوَى الجَّدِيد.",
-                exampleArabeezy: "mt7ms ablsh elmstwa eljdyd.",
-                exampleEn: "I’m excited to start the new level.",
-},
+                id: "qalqan",
+                ar: "قَلْقَان / قَلْقَانَة",
+                en: "worried / anxious",
+                enArabeezy: "2al2an / 2al2ane",
+                hint: "Common spoken word for worry. To say about something: قَلْقَان مِن...",
+                exampleAr: "قَلْقَان مِن النَّتِيجَة بَس بَحَاوِل أَهَدَّى.",
+                exampleArabeezy: "2al2an min en-nateeje bas ba7awil ahadda.",
+                exampleEn: "I'm worried about the result, but I'm trying to calm down.",
+            },
             {
                 id: "khayef",
-                ar: "خَايِف",
+                ar: "خَايِف / خَايْفَة",
                 en: "afraid / scared",
-                hint:
-                    "Masc: خَايِف، fem: خَايْفَة. Often with مِن: خَايْفَة مِن النَّتِيجَة.",
-                exampleAr: "خَايْفَة مِن النَّتِيجَة بَعْد الاِمْتِحَان.",
-                exampleArabeezy: "khayfa mn elntyja b3d elamt7an.",
-                exampleEn: "I’m scared about the result after the exam.",
-},
+                enArabeezy: "khayef / khayfe",
+                hint: "Often with مِن. More intense than قَلْقَان.",
+                exampleAr: "خَايْفَة مِن المَوْعِد، بَس مَعِي أُمِّي.",
+                exampleArabeezy: "khayfe min el-maw3id, bas ma3i ommi.",
+                exampleEn: "I'm scared of the appointment, but my mother is with me.",
+            },
             {
-                id: "mashkour",
-                ar: "مَشْكُور",
-                en: "grateful / thankful (feeling)",
-                hint:
-                    "Literally ‘thanked’; used to express gratitude. Fem: مَشْكُورَة.",
-                exampleAr: "مَشْكُورَة كْتِير عَلَى دَعْمِك، عَنْجَد فَادَنِي.",
-                exampleArabeezy: "mshkwra ktyr 3la d3mk, 3njd fadny.",
-                exampleEn: "I feel very grateful for your support, it really helped me.",
-},
-
-            // ===== MOOD & ENERGY CHUNKS =====
+                id: "mertah",
+                ar: "مِرْتَاح / مِرْتَاحَة",
+                en: "comfortable / relaxed",
+                enArabeezy: "mirta7 / mirta7a",
+                hint: "Can be physical, emotional, or about a decision/place/person.",
+                exampleAr: "بَحِسّ حَالِي مِرْتَاحَة لَمَّا أَكُون عَالبَحِر.",
+                exampleArabeezy: "ba7is 7ali mirta7a lamma akoon 3al-ba7er.",
+                exampleEn: "I feel relaxed when I'm at the sea.",
+            },
             {
-                id: "mazaaji_mnee7",
-                ar: "مَزَاجِي مْنِيح",
-                en: "my mood is good",
-                hint:
-                    "Opposite: مَزَاجِي مِش مْنِيح = my mood is not good.",
-                exampleAr: "اليوم مزاجي منيح، بس تعبان شوي.",
-                exampleArabeezy: "elywm mzajy mny7, bs t3ban shwy.",
-                exampleEn: "Today my mood is good but I’m a bit tired.",
-},
+                id: "mit7ammes",
+                ar: "مِتْحَمِّس / مِتْحَمِّسَة",
+                en: "excited / motivated",
+                enArabeezy: "mit7ammes / mit7ammse",
+                hint: "Use for new plans, courses, work, travel, or hobbies.",
+                exampleAr: "مِتْحَمِّس أَبَلِّش الكُورْس الشَّهْر الجَاي.",
+                exampleArabeezy: "mit7ammes aballish el-course esh-shahr el-jay.",
+                exampleEn: "I'm excited to start the course next month.",
+            },
             {
-                id: "ma_eli_maal",
-                ar: "مش رايق",
-                en: "I’m not in the mood / I don’t feel like it",
-                hint:
-                    "Chunk to refuse softly or explain low energy.",
-                exampleAr: "صحابي بدّهم يطلعوا، بس اليوم مش رايق",
-                exampleArabeezy: "s7aby bdhm ytl3wa, bs elywm msh rayq",
-                exampleEn: "My friends want to go out, but today I’m not in the mood.",
-},
+                id: "mazaaji",
+                ar: "مَزَاجِي",
+                en: "my mood",
+                enArabeezy: "mazaji",
+                hint: "Good mood = مَزَاجِي مْنِيح. Bad mood = مَزَاجِي مِش مْنِيح.",
+                exampleAr: "اليَوم مَزَاجِي مِش مْنِيح، بَس بِحَاوِل أَكَمِّل.",
+                exampleArabeezy: "el-yom mazaji mish mnee7, bas ba7awil akammil.",
+                exampleEn: "Today my mood isn't good, but I'm trying to keep going.",
+            },
             {
-                id: "ta2ti_zeleeleh",
-                ar: "طَاقْتِي قَلِيلَة",
-                en: "my energy is low",
-                hint:
-                    "Useful to say you’re tired mentally/physically.",
-                exampleAr: "طَاقْتِي قَلِيلَة مِن كِلّ الشُّغُل وَالدِّرَاسَة.",
-                exampleArabeezy: "taqty qlyla mn kl elshghl weldrasa.",
-                exampleEn: "My energy is low from all the work and study.",
-},
+                id: "rayeq",
+                ar: "رَايِق / رَايْقَة",
+                en: "in a good mood / relaxed",
+                enArabeezy: "rayi2 / ray2a",
+                hint: "Often used in negative: مِش رَايِق = not in the mood.",
+                exampleAr: "هَلِّق مِش رَايْقَة أَطْلَع، بَدِّي أَقْعُد بَالبَيْت.",
+                exampleArabeezy: "halla2 mish ray2a aTla3, baddi aq3od bil-beet.",
+                exampleEn: "Right now I'm not in the mood to go out; I want to stay home.",
+            },
             {
-                id: "bihاجa_istiraaha",
-                ar: "بِحَاجَة لاسْتِرَاحَة",
-                en: "in need of a break",
-                hint:
-                    "Very natural chunk about self-care.",
-                exampleAr: "حَاسِّة إِنِّي بِحَاجَة لاسْتِرَاحَة يَومَيْن.",
-                exampleArabeezy: "7asa iny b7aja lastra7a ywmyn.",
-                exampleEn: "I feel I need a break for two days.",
-},
+                id: "ma_3indi_taqa",
+                ar: "فِش عِنْدِي طَاقَة",
+                en: "I have no energy",
+                enArabeezy: "fish 3indi Taqa",
+                hint: "Natural for low energy. To advise someone: إِذَا فِش عِنْدَك طَاقَة، خُد رَاحَة.",
+                exampleAr: "اليَوم فِش عِنْدِي طَاقَة، فَمِش رَاح أَرُوح عَالنَّادِي.",
+                exampleArabeezy: "el-yom fish 3indi Taqa, fa-mish ra7 aroo7 3an-nadi.",
+                exampleEn: "Today I have no energy, so I won't go to the gym.",
+            },
             {
-                id: "mesh_mosta3de",
-                ar: "مِش مُسْتَعِدّ",
+                id: "bahaje_lira7a",
+                ar: "بِحَاجَة لِرَاحَة",
+                en: "need a break / need rest",
+                enArabeezy: "bi7aje la-ra7a",
+                hint: "Natural self-care phrase. Also: بَدِّي أَرْتَاح.",
+                exampleAr: "حَاسِس إِنِّي بِحَاجَة لِرَاحَة يَوم أَو يَومِين.",
+                exampleArabeezy: "7ases inni bi7aje la-ra7a yom aw yomain.",
+                exampleEn: "I feel I need a break for a day or two.",
+            },
+            {
+                id: "mish_mista3ed",
+                ar: "مِش مُسْتَعِدّ / مُسْتَعِدَّة",
                 en: "not ready",
-                hint:
-                    "Masc: مِش مُسْتَعِدّ، fem: مِش مُسْتَعِدَّة. Emotionally or practically.",
-                exampleAr: "مِش مُسْتَعِدَّة أَخُد قَرَار هَلَّق.",
-                exampleArabeezy: "msh mst3da akhd qrar hlq.",
-                exampleEn: "I’m not ready to make a decision now.",
-},
+                enArabeezy: "mish mista3idd / mista3idde",
+                hint: "Emotionally or practically not ready. Useful for decisions.",
+                exampleAr: "مِش مُسْتَعِدَّة أَاخُد قَرَار هَلِّق.",
+                exampleArabeezy: "mish mista3idde aakhod qarar halla2.",
+                exampleEn: "I'm not ready to make a decision now.",
+            },
             {
                 id: "daye3",
-                ar: "ضَايِع",
+                ar: "ضَايِع / ضَايْعَة",
                 en: "lost / confused",
-                hint:
-                    "Emotional ‘lost’ (not understanding / not sure).",
-                exampleAr: "بِهَالمَوْضُوع حَاسّ حَالِي ضَايِع شْوَيّ.",
-                exampleArabeezy: "bhalmwdw3 7as 7aly day3 shwy.",
-                exampleEn: "In this topic I feel a bit lost.",
-},
-
-            // ===== VERBS ABOUT FEELINGS =====
+                enArabeezy: "Daye3 / Day3a",
+                hint: "Emotional or mental confusion, not only physical location.",
+                exampleAr: "بِهَالمَوْضُوع حَاسِس حَالِي ضَايِع شُوَيّ.",
+                exampleArabeezy: "b-hal-mawDoo3 7ases 7ali Daye3 shway.",
+                exampleEn: "In this topic I feel a little lost.",
+            },
             {
-                id: "ba7ess",
+                id: "sa7i",
+                ar: "صَاحِي / صَاحْيَة",
+                en: "awake / alert",
+                enArabeezy: "Sa7i / Sa7ye",
+                hint: "Natural for being awake and alert. Opposite of sleepy/tired.",
+                exampleAr: "اليَوم صَاحِي بَدْرِي وَحَاسِس حَالِي أَحْسَن.",
+                exampleArabeezy: "el-yom Sa7i badri w 7ases 7ali a7san.",
+                exampleEn: "Today I'm awake early and I feel better.",
+            },
+            {
+                id: "mish_na2esni",
+                ar: "مِش نَاقِصْنِي",
+                en: "I really don't need / I can't deal with",
+                enArabeezy: "mish na2eSni",
+                hint: "Strong spoken phrase when already stressed. Use carefully.",
+                exampleAr: "مِش نَاقِصْنِي دَوْشَة اليَوم، رَاسِي بْيُوجَعْنِي.",
+                exampleArabeezy: "mish na2eSni doshe el-yom, rasi byoja3ni.",
+                exampleEn: "I really can't deal with noise today; my head hurts.",
+            },
+            {
+                id: "ba7is",
                 ar: "بَحِسّ",
                 en: "I feel",
-                hint:
-                    "From يِحِسّ. Often with إِنِّي: بَحِسّ إِنِّي…",
-                exampleAr: "بَحِسّ إِنِّي مَضْغُوطَة هَالأُسْبُوع.",
-                exampleArabeezy: "b7s iny mdghwta halasbw3.",
-                exampleEn: "I feel that I’m under pressure this week.",
-},
+                enArabeezy: "ba7is",
+                hint: "Use with a feeling or with إِنِّي: بَحِسّ إِنِّي...",
+                exampleAr: "بَحِسّ إِنِّي مَضْغُوط هَالأُسْبُوع.",
+                exampleArabeezy: "ba7is inni maDghooT hal-osboo3.",
+                exampleEn: "I feel that I'm under pressure this week.",
+            },
             {
-                id: "bifakker",
-                ar: "بِفَكِّر",
-                en: "I think",
-                hint:
-                    "Mental process: thinking / considering.",
-                exampleAr: "بفكّر آخد يوم إجازة أرتاح فيه",
-                exampleArabeezy: "bfkr aakhd ywm ijaza arta7 fyh",
-                exampleEn: "I’m thinking of taking a day off to rest.",
-},
-
-            // ===== SUPPORT & EMPATHY =====
+                id: "masha3er",
+                ar: "مَشَاعِر",
+                en: "feelings",
+                enArabeezy: "masha3er",
+                hint: "Used when talking about feelings in general. Natural phrase: أَحْكِي عَن مَشَاعِرِي = I talk about my feelings.",
+                exampleAr: "مِش دَايْمًا سَهْل أَحْكِي عَن مَشَاعِرِي.",
+                exampleArabeezy: "mish dayman sahl a7ki 3an masha3eri.",
+                exampleEn: "It is not always easy to talk about my feelings.",
+            },
             {
-                id: "ma_tkhafi",
-                ar: "مَا تِخَافِي / مَا تِخَاف",
-                en: "don’t be afraid / don’t worry",
-                hint:
-                    "Masc: مَا تِخَاف، fem: مَا تِخَافِي. Emotional support.",
-                exampleAr: "مَا تِخَافِي، كِلّ إِشِي بِيُزْبُط شْوَيّ شْوَيّ.",
-                exampleArabeezy: "ma tkhafy, kl ishy byzbt shwy shwy.",
-                exampleEn: "Don’t worry, everything will work out step by step.",
-},
+                id: "bafakker",
+                ar: "بَفَكِّر",
+                en: "I'm thinking",
+                enArabeezy: "bafakker",
+                hint: "Use for considering a plan: بَفَكِّر أَاخُد رَاحَة.",
+                exampleAr: "بَفَكِّر أَاخُد يَوم رَاحَة بَدَل مَا أَضْغَط حَالِي.",
+                exampleArabeezy: "bafakker aakhod yom ra7a badal ma aDghaT 7ali.",
+                exampleEn: "I'm thinking of taking a rest day instead of pressuring myself.",
+            },
             {
-                id: "wala_yhemmak_2",
-                ar: "وَلَا يِهِمَّك",
-                en: "don’t worry you",
-                hint:
-                    "Masc: وَلَا يِهِمَّك، fem: وَلَا يِهِمِّك. Very common comforting phrase.",
-                exampleAr: "آسِف عَلَى الغَلَط. ـ وَلَا يِهِمَّك، صَار خَيْر.",
-                exampleArabeezy: "aasf 3la elghlt. wla yhmk, sar khyr.",
-                exampleEn: "Sorry about the mistake. — Don’t worry, it’s okay now.",
-},
+                id: "sho_sayer",
+                ar: "شُو صَايِر مَعَك؟",
+                en: "what's going on with you?",
+                enArabeezy: "sho Sayer ma3ak?",
+                hint: "To a woman: مَعِك. Supportive check-in after noticing something is wrong.",
+                exampleAr: "إِنْتَ مِش عَلَى بَعْضَك اليَوم، شُو صَايِر مَعَك؟",
+                exampleArabeezy: "inta mish 3ala ba3Dak el-yom, sho Sayer ma3ak?",
+                exampleEn: "You're not yourself today, what's going on with you?",
+            },
             {
-                id: "hadri_nefsek",
-                ar: "دِير(ي) بَالَك عَلَى حَالَك",
-                en: "take care of yourself",
-                hint:
-                    "Masc: دِير بَالَك عَلَى حَالَك، fem: دِيرِي بَالِك عَلَى حَالِك.",
-                exampleAr: "الدِّرَاسَة مُهِمَّة بَسّ كَمَان دِيرِي بَالِك عَلَى حَالِك.",
-                exampleArabeezy: "eldrasa mhma bs kman dyry belk 3la 7alk.",
-                exampleEn: "Study is important but also take care of yourself.",
-},
+                id: "malak",
+                ar: "مَالَك؟",
+                en: "what's wrong?",
+                enArabeezy: "malak?",
+                hint: "To a woman: مَالِك؟ To a group: مَالْكُم؟ Use gently.",
+                exampleAr: "مَالِك؟ مْبَيِّن عَلَيْكِي زَعْلَانَة.",
+                exampleArabeezy: "malik? mbayyin 3aleeki za3lane.",
+                exampleEn: "What's wrong? You look upset.",
+            },
             {
-                id: "taba3i3i",
-                ar: "طَبِيعِي",
-                en: "normal / natural",
-                hint:
-                    "Masc: طَبِيعِي، fem: طَبِيعِيَّة. For validating feelings.",
-                exampleAr: "طَبِيعِي تِكُونِي مُتَوَتِّرَة قَبْل الاِمْتِحَان.",
-                exampleArabeezy: "tby3y tkwny mtwtra qbl elamt7an.",
-                exampleEn: "It’s normal to feel nervous before the exam.",
-},
-        ],
-
-        extra: [
-            {
-                id: "mankasar_khater",
-                ar: "مِنْكَسِر خَاطِرُه",
-                en: "heartbroken / deeply sad",
-                hint:
-                    "Emotional idiom: literally ‘his heart/feeling is broken’.",
-                exampleAr: "بَعْد الخَبَر مَبَيِّن عَلِيه مِنْكَسِر خَاطِرُه.",
-                exampleArabeezy: "b3d elkhbr mbyn 3lyh mnksr khatrh.",
-                exampleEn: "After the news he looks heartbroken.",
-},
-            {
-                id: "mabsoot_3ala_elnahaieh",
-                ar: "مَبْسُوط عَلَى الآخِر",
-                en: "super happy",
-                hint:
-                    "Stronger than just مَبْسُوط.",
-                exampleAr: "نَجَحْت فِي كِلّ المَوَادّ وَمَبْسُوط عَلَى الآخِر.",
-                exampleArabeezy: "nj7t fy kl elmwad wmbswt 3la elaakhr.",
-                exampleEn: "I passed all my subjects and I’m super happy.",
-},
+                id: "mish_3ala_ba3di",
+                ar: "مِش عَلَى بَعْضِي",
+                en: "I'm not myself",
+                enArabeezy: "mish 3ala ba3Di",
+                hint: "Very natural. He is not himself = مِش عَلَى بَعْضُه.",
+                exampleAr: "مِن الصُّبُح وَأَنَا مِش عَلَى بَعْضِي.",
+                exampleArabeezy: "min eS-Subu7 w ana mish 3ala ba3Di.",
+                exampleEn: "Since the morning, I haven't been myself.",
+            },
             {
                 id: "ma_baddi_a7ki",
-                ar: "مَا بَدّي أَحْكِي عَن هَالمَوْضُوع",
-                en: "I don’t want to talk about this topic",
-                hint:
-                    "Useful boundary phrase when not ready to talk.",
-                exampleAr: "آسف/آسفة، هلّق ما بدي أحكي عن هالموضوع.",
-                exampleArabeezy: "aasf/aasfa, hlq ma bdy a7ky 3n halmwdw3.",
-                exampleEn: "Sorry, right now I don’t want to talk about this topic.",
-},
+                ar: "مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع",
+                en: "I don't want to talk about this topic",
+                enArabeezy: "ma baddi a7ki 3an hal-mawDoo3",
+                hint: "A respectful boundary. Add: هَلِّق = right now.",
+                exampleAr: "آسْفَة، هَلِّق مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع.",
+                exampleArabeezy: "asfe, halla2 ma baddi a7ki 3an hal-mawDoo3.",
+                exampleEn: "Sorry, right now I don't want to talk about this topic.",
+            },
+            {
+                id: "3adi",
+                ar: "عَادِي",
+                en: "it's okay / normal",
+                enArabeezy: "3adi",
+                hint: "Supportive phrase when someone apologizes or feels bad.",
+                exampleAr: "عَادِي، كُلِّنَا بِنْتَعَب أَحْيَانًا.",
+                exampleArabeezy: "3adi, kullina binta3ab a7yanan.",
+                exampleEn: "It's okay, we all get tired sometimes.",
+            },
+            {
+                id: "Tabe3i",
+                ar: "طَبِيعِي",
+                en: "normal / natural",
+                enArabeezy: "Tabee3i",
+                hint: "Use to validate feelings: طَبِيعِي تِحِسّ هِيك.",
+                exampleAr: "طَبِيعِي تِكُون مُتَوَتِّر قَبْل المُقَابَلَة.",
+                exampleArabeezy: "Tabee3i tkoon mitwatter qabel el-muqabale.",
+                exampleEn: "It's normal to be nervous before the interview.",
+            },
+            {
+                id: "ma_tkhaf",
+                ar: "مَا تِخَاف / مَا تِخَافِي",
+                en: "don't be afraid / don't worry",
+                enArabeezy: "ma tkhaf / ma tkhafi",
+                hint: "To a man: مَا تِخَاف. To a woman: مَا تِخَافِي.",
+                exampleAr: "مَا تِخَافِي، خُطْوَة خُطْوَة بِتِزْبَط.",
+                exampleArabeezy: "ma tkhafi, khuTwe khuTwe bitizbaT.",
+                exampleEn: "Don't worry, step by step it will work out.",
+            },
+            {
+                id: "wala_yhemmak",
+                ar: "وَلَا يِهِمَّك",
+                en: "don't worry / no problem",
+                enArabeezy: "wala yhemmak",
+                hint: "To a woman: وَلَا يِهِمِّك. Recycled politeness phrase, useful for support.",
+                exampleAr: "آسِف إِنِّي تَأَخَّرْت. ـ وَلَا يِهِمَّك، الطَّرِيق زَحْمَة.",
+                exampleArabeezy: "asef inni ta2akhkhart. - wala yhemmak, eT-Taree2 za7meh.",
+                exampleEn: "Sorry I'm late. - Don't worry, the road is crowded.",
+            },
+            {
+                id: "deer_balak",
+                ar: "دِير بَالَك عَلَى حَالَك",
+                en: "take care of yourself",
+                enArabeezy: "deer balak 3ala 7alak",
+                hint: "To a woman: دِيرِي بَالِك عَلَى حَالِك. To a group: دِيرُوا بَالْكُم.",
+                exampleAr: "الشُّغُل مُهِمّ، بَس دِير بَالَك عَلَى حَالَك.",
+                exampleArabeezy: "esh-shoghol muhim, bas deer balak 3ala 7alak.",
+                exampleEn: "Work is important, but take care of yourself.",
+            },
+            {
+                id: "khod_ra7a",
+                ar: "خُد رَاحَة / خُدِي رَاحَة",
+                en: "take a break",
+                enArabeezy: "khod ra7a / khodi ra7a",
+                hint: "To a man: خُد رَاحَة. To a woman: خُدِي رَاحَة.",
+                exampleAr: "إِذَا فِش عِنْدِك طَاقَة، خُدِي رَاحَة شُوَيّ.",
+                exampleArabeezy: "iza fish 3indik Taqa, khodi ra7a shway.",
+                exampleEn: "If you have no energy, take a little break.",
+            },
             {
                 id: "shway_shway",
-                ar: "شْوَيّ شْوَيّ",
-                en: "slowly / step by step",
-                hint:
-                    "Common calming phrase: take it easy, step by step.",
-                exampleAr: "خُدِيه شْوَيّ شْوَيّ، مَا فِي دَاعِي لِلعَجَلَة.",
-                exampleArabeezy: "khdyh shwy shwy, ma fy da3y lel3jla.",
-                exampleEn: "Take it step by step, there’s no need to rush.",
-},
+                ar: "شُوَيّ شُوَيّ",
+                en: "little by little / step by step",
+                enArabeezy: "shway shway",
+                hint: "Common calming phrase for stress or progress.",
+                exampleAr: "مِش لَازِم تِخَلِّص كُلّ إِشِي اليَوم، شُوَيّ شُوَيّ.",
+                exampleArabeezy: "mish lazim tkhalliS kul ishi el-yom, shway shway.",
+                exampleEn: "You don't have to finish everything today, step by step.",
+            },
+            {
+                id: "tammenni",
+                ar: "طَمِّنِّي عَلَيْك",
+                en: "let me know how you are",
+                enArabeezy: "Tamminni 3aleek",
+                hint: "Friendly supportive check-in. To a woman: عَلَيْكِ. Also: طَمِّنِينِي.",
+                exampleAr: "بَعْد المَوْعِد طَمِّنِّي عَلَيْك.",
+                exampleArabeezy: "ba3d el-maw3id Tamminni 3aleek.",
+                exampleEn: "After the appointment, let me know how you are.",
+            },
+            {
+                id: "ana_ma3ak",
+                ar: "أَنَا مَعَك / مَعِك",
+                en: "I'm with you / I support you",
+                enArabeezy: "ana ma3ak / ma3ik",
+                hint: "Supportive and warm. To a man: مَعَك. To a woman: مَعِك.",
+                exampleAr: "إِذَا بِدَّك تِحْكِي بَعْدِين، أَنَا مَعِك.",
+                exampleArabeezy: "iza biddik ti7ki ba3dain, ana ma3ik.",
+                exampleEn: "If you want to talk later, I'm with you.",
+            },
         ],
     },
 
-    // ====================================
-    // DIALOGUE – LONG & NATURAL
-    // ====================================
     dialogue: {
+        title: "Real Situation - A Friend Notices Something Is Wrong",
+        setting: "Noor notices that Rami is unusually quiet. They talk naturally after a hard week and make a small plan so he can rest without feeling guilty.",
         lines: [
-            // Scene 1 – Two friends talking about exam stress
-            {
-                speaker: "Narrator",
-                ar: "بَعْد المَحَاضَرَة، رُوبَا وَصَاحْبْتَهَا نُور قَاعِدِين بِالكَافِيه وَبِيِحْكُوا عَن الاِمْتِحَانَات وَالمَزَاج.",
-                en: "After the lecture, Roba and her friend Noor are sitting in a café, talking about exams and mood.",
-            },
-            {
-                speaker: "Roba",
-                ar: "صِرَاحَةً نُور، هَالأُسْبُوع مَزَاجِي مِش مْنِيح.",
-                en: "Honestly, Noor, this week my mood is not good.",
-            },
-            {
-                speaker: "Noor",
-                ar: "لِيش؟ شُو صَايِر مَعِك؟",
-                en: "Why? What’s happening with you?",
-            },
-            {
-                speaker: "Roba",
-                ar: "حَاسِّة حَالِي مَضْغُوطَة كْتِير. عِنْدِي مَشَارِيع، وَاجِبَات، وَكَم اِمْتِحَان، وَطَاقْتِي قَلِيلَة.",
-                en: "I feel really under pressure. I have projects, homework, and several exams, and my energy is low.",
-            },
-            {
-                speaker: "Noor",
-                ar: "طَبِيعِي، هَالفَتْرَة كْتِير صَعْبَة. كَمَّان أَنَا مُتَوَتِّرَة قَبْل الاِمْتِحَانات.",
-                en: "That’s normal, this period is very hard. I’m also nervous before the exams.",
-            },
-            {
-                speaker: "Roba",
-                ar: "أَحْيَانًا بَحِسّ إِنِّي زَهْقَانَة مِن الدِّرَاسَة، بَسّ مَا فِيش خِيَار، لَازِم نِكْمِل.",
-                en: "Sometimes I feel fed up with studying, but there’s no choice, we have to continue.",
-            },
-            {
-                speaker: "Noor",
-                ar: "شُوفِي، دِيرِي بَالِك عَلَى حَالِك. خُدِي نَفَس عَمِيق، استِرِيحِي سَاعَة، وَبَعْدِين كَمِّلِي شْوَيّ شْوَيّ.",
-                en: "Look, take care of yourself. Take a deep breath, rest for an hour, then continue little by little.",
-            },
-            {
-                speaker: "Roba",
-                ar: "مَعِك حَقّ. بَحِسّ إِنِّي بِحَاجَة لاسْتِرَاحَة يَوم بَدُون دِّرَاسَة.",
-                en: "You’re right. I feel I need a day of rest without studying.",
-            },
-            {
-                speaker: "Noor",
-                ar: "وَلَا يِهِمِّك، بِنْحَاوِل نِتْعَامَل مَع الضَّغْط سَوَى. إِذَا حَاسَّة حَالِك مْضَايْقَة، اِتَّصِلِي فِيا تِلْفُون.",
-                en: "Don’t worry, we’ll try to deal with the pressure together. If you’re feeling down, call me.",
-            },
-            {
-                speaker: "Roba",
-                ar: "الله يْخَلِّيك، عَنْجَد مَشْكُورَة عَلَى دَعْمِك.",
-                en: "May God keep you, I’m really grateful for your support.",
-            },
-
-            // Scene 2 – Student talking to teacher about motivation
-            {
-                speaker: "Narrator",
-                ar: "بَعْد الدَّرْس، رُوبَا قَعَدَت شْوَيّ مَع المُدَرِّس تِحْكِي عَن المَعْنَوِيَّات وَالحَمَاس.",
-                en: "After class, Roba sat a bit with the teacher to talk about motivation and morale.",
-            },
-            {
-                speaker: "Teacher",
-                ar: "روبا، باين عليكِ تعبانة هالأيام. كيفك؟",
-                en: "Roba, it looks like you’re tired these days. How are you doing?",
-            },
-            {
-                speaker: "Roba",
-                ar: "بِصَرَاحَة، بَحِسّ إِنِّي مِش مِتْحَمِّسَة زَيّ الأَوَّل. المَوَادّ كْتِيرَة، وَأَحْيَانًا بَحِسّ حَالِي ضَايِعَة.",
-                en: "Honestly, I feel I’m not as excited as before. There are many subjects, and sometimes I feel lost.",
-            },
-            {
-                speaker: "Teacher",
-                ar: "طَبِيعِي تِحِسِّي هِيك. المَهَمّ مَا تِتْرُكِي كُلّ إِشِي. شُو الأَكْثَر شِي مَضْغُوطِة فِيه هَلَّق؟",
-                en: "It’s normal to feel like that. What’s important is that you don’t drop everything. What is the area where you feel the most pressure now?",
-            },
-            {
-                speaker: "Roba",
-                ar: "مَضْغُوطَة مِن المَشْرُوع الكْبِير وَالاِمْتِحَان نَفْس الأُسْبُوع.",
-                en: "I’m under pressure from the big project and the exam in the same week.",
-            },
-            {
-                speaker: "Teacher",
-                ar: "طَيِّب، شُوفِي. مُمْكِن نِقَسِّم الشُّغُل تَدْرِيجِيًّا. اليَوم شْوَيّ، بُكْرَا شْوَيّ. مَا بِنِدْفَع كُلّ إِشِي مَرَّة وَاحْدَة.",
-                en: "Okay, look. We can divide the work gradually. A bit today, a bit tomorrow. We don’t push everything at once.",
-            },
-            {
-                speaker: "Roba",
-                ar: "هَيْك بَحِسّ إِنِّي أَقْدَر أَسَيْطِر عَلَى التَّعَب.",
-                en: "That way I feel I can control the tiredness.",
-            },
-            {
-                speaker: "Teacher",
-                ar: "بس أهم إشي إنك تهتمي بحالك: نوم، أكل منيح، وشوي رياضة، كل هالأشياء بتساعد على المزاج.",
-                en: "But the most important thing is to take care of yourself. Sleep, food, a bit of exercise, all of that helps the mood.",
-            },
-            {
-                speaker: "Roba",
-                ar: "شكرًا إلك، هلّق حاسّة حالي أحسن.",
-                en: "Thanks you, I feel better now.",
-            },
-
+            { speaker: "Noor", ar: "إيش يا زَلَمَة... شَكْلَك اليَوم مِش طَبِيعِي، مَالَك؟", arArabeezy: "eesh ya zalame... shaklak el-yom mish Tabee3i, malak?", en: "Hey man... you don't look normal today. What's wrong?" },
+            { speaker: "Rami", ar: "وَاضِح لِهَالدَّرَجَة؟", arArabeezy: "waDe7 la-hal-daraje?", en: "Is it that obvious?" },
+            { speaker: "Noor", ar: "آه. مِن أَوَّل مَا وِصِلْت وَإِنْتَ سَاكِت، وَحَتَّى القَهْوَة لِسَّه زَيّ مَا هِي.", arArabeezy: "ah. min awwal ma wiSilt w inta sakit, w 7atta el-2ahwe lissa zay ma hiye.", en: "Yes. Since you arrived you've been quiet, and even the coffee is still untouched." },
+            { speaker: "Rami", ar: "وَالله الأُسْبُوع هَاد قَاتِلْنِي.", arArabeezy: "wallah el-osboo3 had qatilni.", en: "Honestly, this week is killing me." },
+            { speaker: "Noor", ar: "خِير؟ شُو صَايِر مَعَك؟", arArabeezy: "kheir? sho Sayer ma3ak?", en: "Everything okay? What's going on with you?" },
+            { speaker: "Rami", ar: "وَلَا إِشِي لِحَالُه... بَس كُلُّهُم اِجْتَمَعُوا عَلَيّ مَرَّة وَاحْدَة.", arArabeezy: "wala ishi la7alo... bas kullhom ijtama3o 3alay marra wa7de.", en: "It's not one thing by itself... they all came together at once." },
+            { speaker: "Noor", ar: "زَيّ شُو يَعْنِي؟", arArabeezy: "zay sho ya3ni?", en: "Like what?" },
+            { speaker: "Rami", ar: "المَشْرُوع قَرَّب مَوْعِدُه، وَعِنْدِي شُغُل مُتَرَاكِم، وَلِسَّه لَازِم أُرَاجِع لِلعَرَبِي، وَفَوْق هِيك الإِنْتَرْنِت اِمْبَارِح قَطَع نُصّ اللَّيْل.", arArabeezy: "el-mashroo3 qarrab maw3ido, w 3indi shoghol mitrakim, w lissa lazim oraji3 lil-3arabi, w foq hek el-internet embare7 qaTa3 noSS el-lel.", en: "The project deadline is close, I have piled-up work, I still need to review Arabic, and on top of that the internet cut out last night." },
+            { speaker: "Noor", ar: "آخ... هَادِي لِحَالْهَا بِتْطَلِّع الوَاحِد مِن طُورُه.", arArabeezy: "akh... hadi la7alha bitTalli3 el-wa7ad min Toro.", en: "Ugh... that alone can make a person lose it." },
+            { speaker: "Rami", ar: "بِالزَّبْط. نِمْت يِمْكِن تَلَات سَاعَات، وَمِن الصُّبُح وَأَنَا حَاسِس مُخِّي وَاقِف.", arArabeezy: "biz-zabT. nimt yimkin talat sa3at, w min eS-Subu7 w ana 7ases mokhkhi wa2ef.", en: "Exactly. I slept maybe three hours, and since morning I feel like my brain stopped." },
+            { speaker: "Noor", ar: "وَاضِح عَلَيْك، حَتَّى شَكْلَك تَعْبَان.", arArabeezy: "waDe7 3aleek, 7atta shaklak ta3ban.", en: "It shows, even your face looks tired." },
+            { speaker: "Rami", ar: "حَاسِس إِنِّي مِش قَادِر أَرَكِّز بِإِشِي.", arArabeezy: "7ases inni mish qader arakkiz b-ishi.", en: "I feel like I can't focus on anything." },
+            { speaker: "Noor", ar: "طَيِّب... شْرِبْت قَهْوَة؟ أَكَلْت إِشِي؟", arArabeezy: "Tayyib... shribt 2ahwe? akalt ishi?", en: "Okay... did you drink coffee? Did you eat anything?" },
+            { speaker: "Rami", ar: "قَهْوَة آه، بَس أَكْل؟ وَلَا إِشِي.", arArabeezy: "2ahwe ah, bas akil? wala ishi.", en: "Coffee yes, but food? Nothing." },
+            { speaker: "Noor", ar: "عَشَان هِيك وَضْعَك هِيك. مِن الصُّبُح وَإِنْتَ عَايِش عَالقَهْوَة.", arArabeezy: "3ashan hek waD3ak hek. min eS-Subu7 w inta 3ayesh 3al-2ahwe.", en: "That's why you're like this. Since morning you've been living on coffee." },
+            { speaker: "Rami", ar: "ههههه... يِمْكِن.", arArabeezy: "hhhh... yimkin.", en: "Haha... maybe." },
+            { speaker: "Noor", ar: "وَالمَشْرُوع ضَايِل مِنُّه كْتِير؟", arArabeezy: "w el-mashroo3 Dayel minno kteer?", en: "And is there a lot left on the project?" },
+            { speaker: "Rami", ar: "تَقْرِيبًا النُّصّ.", arArabeezy: "taqreeban en-noSS.", en: "About half." },
+            { speaker: "Noor", ar: "يَعْنِي مِش نِهَايِة الدُّنْيَا.", arArabeezy: "ya3ni mish nihayet ed-dunya.", en: "So it's not the end of the world." },
+            { speaker: "Rami", ar: "أَنَا بَعْرَف... بَس كُلّ مَا أَفْتَح اللَّابْتُوب بَقْعُد أَطَلِّع بِالشَّاشَة خَمْس دَقَايِق وَمِش عَارِف مِن وِين أَبَلِّش.", arArabeezy: "ana ba3raf... bas kul ma afta7 el-laptop baq3od aTalli3 bish-shashe khams daqayeq w mish 3aref min wen aballish.", en: "I know... but every time I open the laptop, I stare at the screen for five minutes and don't know where to start." },
+            { speaker: "Noor", ar: "هَاي مِش مُشْكِلِة مَشْرُوع... هَاي مُشْكِلِة إِنَّك مَهْدُود.", arArabeezy: "hay mish mushkilet mashroo3... hay mushkilet innak mahdood.", en: "That's not a project problem... that's a problem of being completely worn out." },
+            { speaker: "Rami", ar: "يِمْكِن مَعِك حَقّ.", arArabeezy: "yimkin ma3ik 7a2.", en: "Maybe you're right." },
+            { speaker: "Noor", ar: "أَكِيد مَعِي حَقّ. إِنْتَ مِن أُسْبُوع وَإِنْتَ رَاكِض، طَبِيعِي تُوصَل لِهَالمَرْحَلَة.", arArabeezy: "akeed ma3i 7a2. inta min osboo3 w inta rakid, Tabee3i tooSal la-hal-mar7ale.", en: "Of course I'm right. You've been running all week; it's normal to reach this point." },
+            { speaker: "Rami", ar: "بَفَكِّر اليَوم أَكَنْسِل النَّادِي وَأَرُوح عَالبَيْت.", arArabeezy: "bafakker el-yom akansil en-nadi w aroo7 3al-beet.", en: "I'm thinking of canceling the gym today and going home." },
+            { speaker: "Noor", ar: "اِعْمَلْهَا، شُو فِيهَا؟", arArabeezy: "i3malha, sho feeha?", en: "Do it, what's wrong with that?" },
+            { speaker: "Rami", ar: "كُلّ مَرَّة بَرَيِّح فِيهَا بَحِسّ إِنِّي مُقَصِّر.", arArabeezy: "kul marra barayye7 feeha ba7is inni mqaSSir.", en: "Every time I rest, I feel like I'm falling short." },
+            { speaker: "Noor", ar: "مُقَصِّر مَع مِين؟ مَع حَالَك وَلَا مَع المَشْرُوع؟", arArabeezy: "mqaSSir ma3 meen? ma3 7alak wala ma3 el-mashroo3?", en: "Falling short with whom? Yourself or the project?" },
+            { speaker: "Rami", ar: "مَع الاتْنِين.", arArabeezy: "ma3 el-itnen.", en: "With both." },
+            { speaker: "Noor", ar: "بِالعَكْس... إِذَا ضَلِّيت هِيك يِمْكِن لَا تِرْتَاح وَلَا تْخَلِّص المَشْرُوع.", arArabeezy: "bil-3aks... iza Dalleit hek yimkin la tirta7 wala tkhalliS el-mashroo3.", en: "On the contrary... if you stay like this, you may neither rest nor finish the project." },
+            { speaker: "Rami", ar: "هَاي هِي المُشْكِلِة.", arArabeezy: "hay hiye el-mushkile.", en: "That's the problem." },
+            { speaker: "Noor", ar: "اِسْمَع مِنِّي... رُوح كُل إِشِي، وَخُدْلَك دُشّ، وَنَام بَدْرِي.", arArabeezy: "isma3 minni... roo7 kol ishi, w khodlak dushsh, w nam badri.", en: "Listen to me... go eat something, take a shower, and sleep early." },
+            { speaker: "Rami", ar: "وَالمَشْرُوع؟", arArabeezy: "w el-mashroo3?", en: "And the project?" },
+            { speaker: "Noor", ar: "إِذَا لَقِيت عِنْدَك طَاقَة اِفْتَحُه نُصّ سَاعَة بَس. إِذَا الأُمُور مِشْيِت، كَمِّل. إِذَا لَا، سَكِّرُه وَنَام.", arArabeezy: "iza la2eet 3indak Taqa ifta7o noSS sa3a bas. iza el-omoor mishyet, kammil. iza la, sakkro w nam.", en: "If you find you have energy, open it for just half an hour. If things flow, continue. If not, close it and sleep." },
+            { speaker: "Rami", ar: "هِيك يِمْكِن أَحْسَن.", arArabeezy: "hek yimkin a7san.", en: "That might be better." },
+            { speaker: "Noor", ar: "أَكِيد أَحْسَن. وَخَلِّصْهَا عَلَى مَهْلَك، مِش لَازِم تْخَلِّص كُلّ إِشِي بِيَوم وَاحِد.", arArabeezy: "akeed a7san. w khalliSha 3ala mahlak, mish lazim tkhalliS kul ishi b-yom wa7ed.", en: "Definitely better. Finish it at your own pace; you don't have to finish everything in one day." },
+            { speaker: "Rami", ar: "وَالله أَنَا مُسْتَعْجِل لَأَنُّه التَّسْلِيم الخَمِيس.", arArabeezy: "wallah ana mista3jil la2anno et-tasleem el-khamees.", en: "Honestly, I'm in a hurry because submission is Thursday." },
+            { speaker: "Noor", ar: "لِسَّه مَعَك وَقْت. أَهَمّ إِشِي مَا تِهْلِك حَالَك مِن أَوَّلْهَا.", arArabeezy: "lissa ma3ak wa2t. aham ishi ma tihlik 7alak min awwalha.", en: "You still have time. The most important thing is not to burn yourself out from the start." },
+            { speaker: "Rami", ar: "مَعِك حَقّ.", arArabeezy: "ma3ik 7a2.", en: "You're right." },
+            { speaker: "Noor", ar: "وَلَا تِشِيلْهَا لِحَالَك.", arArabeezy: "wala tisheelha la7alak.", en: "And don't carry it alone." },
+            { speaker: "Rami", ar: "بِحَاوِل.", arArabeezy: "ba7awil.", en: "I'm trying." },
+            { speaker: "Noor", ar: "إِذَا اِحْتَجْت أَيّ إِشِي اِحْكِيلِي.", arArabeezy: "iza i7tajet ay ishi i7keeli.", en: "If you need anything, tell me." },
+            { speaker: "Rami", ar: "تِسْلَمِي، وَالله هَاد الحَكِي لِحَالُه بِخَفِّف عَن الوَاحِد.", arArabeezy: "tislami, wallah had el-7aki la7alo bikhafif 3an el-wa7ad.", en: "Thanks, honestly this talk by itself makes things lighter." },
+            { speaker: "Noor", ar: "وَإِذَا قِدِرْت أَسَاعْدَك بِإِشِي خَبِّرْنِي.", arArabeezy: "w iza qidirt asa3dak b-ishi khabbirni.", en: "And if I can help you with anything, let me know." },
+            { speaker: "Rami", ar: "إِن شَاء الله.", arArabeezy: "inshallah.", en: "God willing." },
+            { speaker: "Noor", ar: "وَإِن شَاء الله بِتِتَيَسَّر، لَا تِضَلَّك شَايِل هَمّ كُلّ إِشِي.", arArabeezy: "w inshallah bititayassar, la tiDallak shayel hamm kul ishi.", en: "God willing it will get easier. Don't keep carrying the worry of everything." },
+            { speaker: "Rami", ar: "إِن شَاء الله.", arArabeezy: "inshallah.", en: "God willing." },
+            { speaker: "Noor", ar: "وَبَعْدِين... أَوَّل مَا تْخَلِّص المَشْرُوع اِبْعَتْلِي.", arArabeezy: "w ba3dain... awwal ma tkhalliS el-mashroo3 ib3atli.", en: "And then... as soon as you finish the project, message me." },
+            { speaker: "Rami", ar: "لِيش؟", arArabeezy: "lesh?", en: "Why?" },
+            { speaker: "Noor", ar: "عَشَان أَتْأَكَّد إِنَّك مَا ضَلِّيت سَهْرَان يَومِين وَرَا بَعْض.", arArabeezy: "3ashan at2akkad innak ma Dalleit sahran yomain wara ba3D.", en: "So I can make sure you didn't stay up two days in a row." },
+            { speaker: "Rami", ar: "ههههه... لَا تِخَافِي، إِذَا خَلَّصْتُه بَعْزِمِك عَلَى قَهْوَة.", arArabeezy: "hhhh... la tkhafi, iza khallaSto ba3zimik 3ala 2ahwe.", en: "Haha... don't worry, if I finish it I'll treat you to coffee." },
+            { speaker: "Noor", ar: "قَهْوَة بَس؟ بَعْد كُلّ هَالدَّعْم؟", arArabeezy: "2ahwe bas? ba3d kul had-da3m?", en: "Just coffee? After all this support?" },
+            { speaker: "Rami", ar: "طَيِّب... قَهْوَة وَكُنَافَة.", arArabeezy: "Tayyib... 2ahwe w knafe.", en: "Okay... coffee and kunafa." },
+            { speaker: "Noor", ar: "هِيك صَار الحَكِي.", arArabeezy: "hek Sar el-7aki.", en: "Now we're talking." },
+            { speaker: "Rami", ar: "اِتَّفَقْنَا.", arArabeezy: "ittafa2na.", en: "Agreed." },
+            { speaker: "Noor", ar: "يَلَّا، دِير بَالَك عَلَى حَالَك.", arArabeezy: "yalla, deer balak 3ala 7alak.", en: "Alright, take care of yourself." },
+            { speaker: "Rami", ar: "وَإِنْتِ كَمَان، يِسْلَمُوا كْتِير.", arArabeezy: "w inti kaman, yislamu kteer.", en: "You too, thank you very much." },
+            { speaker: "Noor", ar: "وَلَا يِهِمَّك.", arArabeezy: "wala yhemmak.", en: "No problem." },
+        ],
+        questions: [
+            { ar: "نُور لِيش حَسَّت إِنُّه رَامِي مِش طَبِيعِي؟", en: "Why did Noor feel Rami was not normal today?" },
+            { ar: "رَامِي قَال الأُسْبُوع هَاد عَامِل فِيه شُو؟", en: "What did Rami say this week is doing to him?" },
+            { ar: "شُو الأَشْيَا اللِّي اِجْتَمَعَت عَلَى رَامِي؟", en: "What things piled up on Rami?" },
+            { ar: "لِيش رَامِي نَام بَس تَلَات سَاعَات؟", en: "Why did Rami sleep only three hours?" },
+            { ar: "رَامِي مِن الصُّبُح حَاسِس مُخُّه كِيف؟", en: "How does Rami feel his brain is since morning?" },
+            { ar: "نُور سَأَلَت رَامِي إِذَا أَكَل وَلَا شَرِب شُو؟", en: "What did Noor ask Rami if he ate or drank?" },
+            { ar: "قَدِّيش ضَايِل مِن المَشْرُوع؟", en: "How much of the project is left?" },
+            { ar: "رَامِي لَمَّا يِفْتَح اللَّابْتُوب بِعْمَل شُو؟", en: "What does Rami do when he opens the laptop?" },
+            { ar: "نُور قَالَت هَاي مِش مُشْكِلِة مَشْرُوع، هَاي مُشْكِلِة شُو؟", en: "Noor said this is not a project problem, it is a problem of what?" },
+            { ar: "رَامِي بِفَكِّر يِكَنْسِل شُو اليَوم؟", en: "What is Rami thinking of canceling today?" },
+            { ar: "نُور اقْتَرَحَت عَلَى رَامِي يِرُوح البَيْت وَيِعْمَل شُو؟", en: "What did Noor suggest Rami do at home?" },
+            { ar: "إِذَا لَقَى عِنْدُه طَاقَة، رَامِي يِفْتَح المَشْرُوع قَدِّيش؟", en: "If Rami finds energy, how long should he open the project?" },
+            { ar: "نُور قَالَت لِرَامِي لَا تِشِيل شُو لِحَالَك؟", en: "What did Noor tell Rami not to carry alone?" },
+            { ar: "رَامِي وَعَد نُور بِشُو إِذَا خَلَّص المَشْرُوع؟", en: "What did Rami promise Noor if he finishes the project?" },
+            { ar: "اِحْكِي عَن وَقْت حَسِّيت فِيه إِنَّك مَضْغُوط بِخَمْس جُمَل.", en: "Talk about a time you felt stressed in five sentences." },
         ],
     },
 
-    // ====================================
-    // GRAMMAR
-    // ====================================
-
-  grammar: [
-        {
-            id: "full_negation",
-            title: "Full Negation System (ما...ش / مش / ما في)",
-            short: "Use different patterns depending on the sentence type.",
-            description:
-                `Spoken Arabic uses different negation patterns.
-Use ما + فعل + ش for actions, مش for adjectives/nouns, and ما في for existence.
-
-Choose the pattern based on what you negate.`,
-            table: {
-                title: "Negation Patterns",
-                headers: ["Arabic Pattern", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["ما + فعل + ش", "ma + verb + sh", "not (verb)", "Actions"],
-                    ["مش + صفة", "mish + adjective", "not (adj)", "States"],
-                    ["ما في + اسم", "ma fi + noun", "there isn’t", "Existence"],
-                    ["مش أنا", "mish ana", "not me", "Emphasis"]
-                ]
-            },
-            examples: [
-                { ar: "أنا ما بحب الزحمة", arabeezy: "ana ma b7ibb ez-z7me", en: "I don’t like crowds." },
-                { ar: "هو مش مبسوط", arabeezy: "howwa mish mabsuuT", en: "He isn’t happy." },
-                { ar: "ما في أمل", arabeezy: "ma fi amal", en: "There isn’t hope." },
-                { ar: "إنتِ ما بتناميش بكير", arabeezy: "inti ma btinaamish bakkeer", en: "You don’t sleep early. (f)" },
-                { ar: "أنا مش زعلان", arabeezy: "ana mish za3laan", en: "I’m not upset." }
-            ],
-            teacherNotes:
-                `Spoken uses ما...ش more than MSA.
-Teach مش for adjectives early.
-Use feelings and emotions as context.
-Keep patterns clear and separated.`,
-            commonMistakes: [
-                "Using مش with verbs",
-                "Forgetting ش in ما...ش",
-                "Mixing patterns in one sentence"
-            ],
-            functionalUse: "Use this to express what you don’t do or how you don’t feel."
-        },
-        {
-            id: "active_participles_emotions",
-            title: "Active Participles (Emotional States)",
-            short: "Use participles to describe feelings.",
-            description:
-                `Spoken Arabic often uses active participles to describe states.
-They act like adjectives and change for gender.
-
-Use them with pronouns to describe emotions.`,
-            table: {
-                title: "Common Emotions",
-                headers: ["Arabic", "Arabeezy", "English", "Usage"],
-                rows: [
-                    ["مبسوط", "mabsuuT", "happy", "Male"],
-                    ["مبسوطة", "mabsuuTa", "happy", "Female"],
-                    ["زعلان", "za3laan", "upset", "Male"],
-                    ["قلقان", "2al2aan", "anxious", "Male"],
-                    ["متوتر", "mtawattar", "stressed", "General"]
-                ]
-            },
-            examples: [
-                { ar: "أنا مبسوط اليوم", arabeezy: "ana mabsuuT el-yom", en: "I’m happy today." },
-                { ar: "هي مبسوطة", arabeezy: "hiyye mabsuuTa", en: "She is happy." },
-                { ar: "هو زعلان", arabeezy: "howwa za3laan", en: "He is upset." },
-                { ar: "إنت قلقان؟", arabeezy: "inta 2al2aan?", en: "Are you anxious?" },
-                { ar: "أنا مش مبسوط", arabeezy: "ana mish mabsuuT", en: "I’m not happy." }
-            ],
-            teacherNotes:
-                `Spoken uses participles more than MSA adjective phrases.
-Focus on gender endings with real examples.
-Use daily emotions and check-ins.
-Avoid formal mental-health terms.`,
-            commonMistakes: [
-                "Mixing masculine/feminine forms",
-                "Adding a verb like \"am\"",
-                "Using formal MSA emotion words"
-            ],
-            functionalUse: "Use this to describe feelings, moods, and emotional states."
-        }
-    ],
-
-
-
-    // ====================================
-    // PRACTICE
-    // ====================================
     microChecks: {
         enabled: true,
         every: 5,
         items: [
             {
-                id: "mc_match_1",
+                id: "feel_mc1",
                 type: "match",
-                prompt: "Match the English word to Arabic: happy / pleased",
-                options: ["مَبْسُوط", "زَعْلَان", "تَعْبَان", "زَهْقَان", "مُتَوَتِّر"],
-                correct: "مَبْسُوط",
+                prompt: "Review words 1-5: Match Arabic to English: مَضْغُوط / مَضْغُوطَة",
+                options: ["stressed / under pressure", "happy", "tired", "fed up"],
+                correct: "stressed / under pressure",
             },
             {
-                id: "mc_complete_2",
+                id: "feel_mc2",
                 type: "complete",
-                prompt: "Complete the Arabic sentence for: This month I’m under pressure between study and work.\nهَالشَّهِر كْلُه ___َة بَيْن الدِّرَاسَة وَالشُّغُل.",
-                options: ["مَضْغُوط", "مِرْتَاح", "مِتْحَمِّس", "خَايِف", "مَشْكُور"],
-                correct: "مَضْغُوط",
+                prompt: "Review words 6-10: Complete: I'm nervous before the interview.\nأَنَا ___ قَبْل المُقَابَلَة.",
+                options: ["مُتَوَتِّر", "قَلْقَان", "مِرْتَاح", "مِتْحَمِّس"],
+                correct: "مُتَوَتِّر",
             },
             {
-                id: "mc_reorder_3",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: Today my mood is good but I’m a bit tired.",
-                options: ["اليوم", "مزاجي", "منيح،", "بس", "تعبان", "شوي"],
-                correct: ["اليوم", "مزاجي", "منيح،", "بس", "تعبان", "شوي"],
+                id: "feel_mc3",
+                type: "complete",
+                prompt: "Review words 11-15: Complete: If I have no energy, I need rest.\nإِذَا ___، أَنَا بِحَاجَة لِرَاحَة.",
+                options: ["فِش عِنْدِي طَاقَة", "مِش رَايِق", "مَزَاجِي مْنِيح", "مِش مُسْتَعِدّ"],
+                correct: "فِش عِنْدِي طَاقَة",
             },
             {
-                id: "mc_choose_4",
-                type: "choose",
-                prompt: "Choose the correct Arabic word for: lost / confused",
-                options: ["ضَايِع", "بَحِسّ", "بِفَكِّر", "مَا تِخَافِي / مَا تِخَاف", "وَلَا يِهِمَّك"],
-                correct: "ضَايِع",
-            },
-            {
-                id: "mc_match_5",
+                id: "feel_mc4",
                 type: "match",
-                prompt: "Match the English word to Arabic: take care of yourself",
-                options: ["دِير(ي) بَالَك عَلَى حَالَك", "طَبِيعِي", "مِنْكَسِر خَاطِرُه", "مَبْسُوط عَلَى الآخِر", "مَا بَدّي أَحْكِي عَن هَالمَوْضُوع"],
-                correct: "دِير(ي) بَالَك عَلَى حَالَك",
+                prompt: "Review words 16-20: Choose the natural phrase for: I feel.",
+                options: ["بَحِسّ", "صَاحِي", "مِش نَاقِصْنِي", "ضَايِع"],
+                correct: "بَحِسّ",
+            },
+            {
+                id: "feel_mc5",
+                type: "match",
+                prompt: "Review words 21-25: Choose the natural phrase for: I don't want to talk about this topic.",
+                options: ["مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع", "شُو صَايِر مَعَك؟", "مَالَك؟", "بَفَكِّر"],
+                correct: "مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع",
+            },
+            {
+                id: "feel_mc6",
+                type: "reorder",
+                prompt: "Review words 26-30: Reorder: Don't worry, take care of yourself.",
+                options: ["وَلَا", "يِهِمَّك،", "دِير", "بَالَك", "عَلَى", "حَالَك."],
+                correct: ["وَلَا", "يِهِمَّك،", "دِير", "بَالَك", "عَلَى", "حَالَك."],
+            },
+            {
+                id: "feel_mc7",
+                type: "match",
+                prompt: "Review words 31-34: Match Arabic to English: طَمِّنِّي عَلَيْك",
+                options: ["let me know how you are", "take a break", "step by step", "I'm with you"],
+                correct: "let me know how you are",
             },
         ],
     },
@@ -544,106 +516,183 @@ Avoid formal mental-health terms.`,
             {
                 id: "feel_q1",
                 questionAr: "«مَضْغُوطَة» مَعْنَاهَا أَقْرَب لِـ:",
-                optionsEn: [
-                    "very happy",
-                    "under pressure / stressed",
-                    "hungry",
-                ],
-                correctIndex: 1,
+                optionsEn: ["under pressure / stressed", "hungry", "on the weekend"],
+                correctIndex: 0,
             },
             {
                 id: "feel_q2",
-                questionAr: "أَيّ كَلِمَة أَكْثَر شِي تِسْتَعْمِلْهَا لِـ ‘bored / fed up’؟",
-                optionsEn: [
-                    "مَبْسُوط",
-                    "زَهْقَان",
-                    "مِتْحَمِّس",
-                ],
-                correctIndex: 1,
+                questionAr: "«مِش رَايِق» مَعْنَاهَا:",
+                optionsEn: ["not in the mood", "very excited", "lost in the street"],
+                correctIndex: 0,
             },
             {
                 id: "feel_q3",
-                questionAr: "«مَزَاجِي مِش مْنِيح» مَعْنَاهَا:",
-                optionsEn: [
-                    "my mood is not good",
-                    "I’m very hungry",
-                    "I’m late",
-                ],
+                questionAr: "العبارة الطَّبِيعِيَّة لِـ take care of yourself:",
+                optionsEn: ["دِير بَالَك عَلَى حَالَك", "كَم مَرَّة؟", "بَتْفَرَّج عَلَى فِلْم"],
                 correctIndex: 0,
             },
             {
                 id: "feel_q4",
-                questionAr: "أَيّ عِبَارَة دَاعِمَة أَكْثَر لِصَدِيق تَعْبَان؟",
-                optionsEn: [
-                    "مَا إِلِي مَال.",
-                    "طَبِيعِي تِحِسّ هِيك، مَا تِخَاف.",
-                    "مَا بَدّي أَحْكِي.",
-                ],
-                correctIndex: 1,
+                questionAr: "إِذَا حَدَا قَال: «مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع»، الرَّد المُنَاسِب:",
+                optionsEn: ["عَادِي، إِذَا بِدَّك تِحْكِي بَعْدِين أَنَا مَعَك.", "لا، احكي هلقيت.", "ليش إنت تعبان؟"],
+                correctIndex: 0,
             },
             {
                 id: "feel_q5",
-                questionAr: "«بَحِسّ إِنِّي مِش مُسْتَعِدّ» تِسْتَعْمِلْهَا لَمَّا:",
-                optionsEn: [
-                    "you are very excited",
-                    "you want to sleep",
-                    "you don’t feel ready (emotionally/practically)",
-                ],
-                correctIndex: 2,
+                questionAr: "«فِش عِنْدِي طَاقَة» بِنِسْتَخْدِمْهَا لَمَّا:",
+                optionsEn: ["you feel low energy", "you want to ask the fare", "you are cooking"],
+                correctIndex: 0,
+            },
+            {
+                id: "feel_q6",
+                questionAr: "«مِش عَلَى بَعْضِي» مَعْنَاهَا:",
+                optionsEn: ["I'm not myself", "I'm at the sea", "I'm late"],
+                correctIndex: 0,
+            },
+            {
+                id: "feel_q7",
+                questionAr: "أَيّ جُمْلَة فِيهَا دَعْم لِصَدِيق؟",
+                optionsEn: ["مَا تِخَاف، شُوَيّ شُوَيّ.", "الأُجْرَة غَالْيَة.", "بَسْبَح بَالصَّيْف."],
+                correctIndex: 0,
+            },
+            {
+                id: "feel_q8",
+                questionAr: "«بَحِسّ إِنِّي ضَايِع» مَعْنَاهَا:",
+                optionsEn: ["I feel confused/lost.", "I feel hungry.", "I feel cold."],
+                correctIndex: 0,
+            },
+            {
+                id: "feel_q9",
+                questionAr: "«خُد رَاحَة» بِنِحْكِيهَا لِحَدَا:",
+                optionsEn: ["tired or low energy", "asking for a price", "ordering food"],
+                correctIndex: 0,
             },
         ],
-
         rolePlays: [
-            "Role-play 1: Two friends after a hard week. Student A asks about mood using: كِيف مَزَاجِك؟، شُو صَايِر مَعِك؟. Student B answers using at least 3 adjectives (تَعْبَان، مَضْغُوط، زَهْقَان…) and 1 chunk: مَا إِلِي مَال / طَاقْتِي قَلِيلَة.",
-            "Role-play 2: Student and teacher. The student explains they feel tired and not motivated. The teacher uses supportive chunks: طَبِيعِي، مَا تِخَافِي، وَلَا يِهِمَّك، شْوَيّ شْوَيّ، دِيرِي بَالِك عَلَى حَالِك.",
-            "Role-play 3: Short online chat. One person doesn’t want to talk about the problem now and uses: مَا بَدّي أَحْكِي عَن هَالمَوْضُوع هَلَّق. The other respects the boundary and answers with empathy and support.",
+            "A friend looks tired after class. Ask what is wrong and respond supportively without pushing.",
+            "Explain your mood this week using at least 4 words: مَضْغُوط، تَعْبَان، قَلْقَان، مِرْتَاح، مِتْحَمِّس.",
+            "Set a boundary politely: you do not want to talk about a topic now, but maybe later.",
+            "Make a small self-care plan for tonight using: خُد رَاحَة، نام بدري، بَعْد مَا، قَبْل مَا، شُوَيّ شُوَيّ.",
+        ],
+        sections: [
+            {
+                matching: [
+                    { ar: "مَضْغُوط", en: "stressed" },
+                    { ar: "قَلْقَان", en: "worried" },
+                    { ar: "مِش رَايِق", en: "not in the mood" },
+                    { ar: "فِش عِنْدِي طَاقَة", en: "I have no energy" },
+                    { ar: "مِش عَلَى بَعْضِي", en: "I'm not myself" },
+                    { ar: "دِير بَالَك عَلَى حَالَك", en: "take care of yourself" },
+                ],
+                fillInTheBlank: [
+                    { prompt: "اليَوم ___ مِش مْنِيح.", answer: "مَزَاجِي" },
+                    { prompt: "بَحِسّ إِنِّي ___ هَالأُسْبُوع.", answer: "مَضْغُوط / مَضْغُوطَة" },
+                    { prompt: "مَا بَدِّي ___ عَن هَالمَوْضُوع هَلِّق.", answer: "أَحْكِي" },
+                    { prompt: "إِذَا فِش عِنْدَك طَاقَة، ___ رَاحَة.", answer: "خُد / خُدِي" },
+                    { prompt: "بَعْد المَوْعِد ___ عَلَيْك.", answer: "طَمِّنِّي" },
+                ],
+                questionAndAnswer: [
+                    { question: "كِيف مَزَاجَك اليَوم؟", answerModel: "اليَوم مَزَاجِي..." },
+                    { question: "شُو أَكْتَر إِشِي مَضْغُوط مِنُّه؟", answerModel: "مَضْغُوط مِن..." },
+                    { question: "لَمَّا فِش عِنْدَك طَاقَة، شُو بِتِعْمَل؟", answerModel: "بَاخُد رَاحَة / بَمْشِي / بَنَام بَدْرِي." },
+                    { question: "إِذَا صَاحِبَك زَعْلَان، شُو بِتِحْكِيلُه؟", answerModel: "عَادِي، أَنَا مَعَك / مَا تِخَاف." },
+                ],
+                transformations: [
+                    { prompt: "Change to feminine: أَنَا مَضْغُوط.", answer: "أَنَا مَضْغُوطَة." },
+                    { prompt: "Change to masculine: أَنَا مِتْحَمِّسَة.", answer: "أَنَا مِتْحَمِّس." },
+                    { prompt: "Change to negative mood: مَزَاجِي مْنِيح.", answer: "مَزَاجِي مِش مْنِيح." },
+                    { prompt: "Make it supportive: إِنْتَ تَعْبَان.", answer: "طَبِيعِي تِكُون تَعْبَان، خُد رَاحَة." },
+                ],
+                reorderSentences: [
+                    {
+                        prompt: "Put the words in order: Today my mood isn't good.",
+                        words: ["اليَوم", "مَزَاجِي", "مِش", "مْنِيح."],
+                        answer: "اليَوم مَزَاجِي مِش مْنِيح.",
+                    },
+                    {
+                        prompt: "Put the words in order: I don't want to talk about this topic.",
+                        words: ["مَا", "بَدِّي", "أَحْكِي", "عَن", "هَالمَوْضُوع."],
+                        answer: "مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع.",
+                    },
+                    {
+                        prompt: "Put the words in order: Step by step, it will work out.",
+                        words: ["شُوَيّ", "شُوَيّ،", "بِتِزْبَط."],
+                        answer: "شُوَيّ شُوَيّ، بِتِزْبَط.",
+                    },
+                ],
+                writeYourOwnSentences: [
+                    "Write 5 sentences about your mood this week.",
+                    "Write 5 supportive sentences you can say to a tired friend.",
+                    "Write 3 sentences about a small plan to feel better.",
+                ],
+            },
         ],
         translation: [
-            { id: "feel_t1", type: "enToAr", textEn: "I feel happy today.", textAr: "أنا مبسوط اليوم." },
-            { id: "feel_t2", type: "arToEn", textEn: "She feels stressed.", textAr: "هي متوترة." },
-            { id: "feel_t3", type: "enToAr", textEn: "We feel tired after work.", textAr: "إحنا تعبانين بعد الشغل." },
-            { id: "feel_t4", type: "arToEn", textEn: "He feels nervous.", textAr: "هو متوتر." },
-            { id: "feel_t5", type: "enToAr", textEn: "Are you okay?", textAr: "إنت منيح/منيحة؟" },
-            { id: "feel_t6", type: "arToEn", textEn: "I feel calm.", textAr: "أنا هادي." }
+            { id: "feel_t1", type: "enToAr", textEn: "Today I'm happy because I finished the project.", textAr: "اليَوم مَبْسُوط/مَبْسُوطَة عَشَان خَلَّصْت المَشْرُوع." },
+            { id: "feel_t2", type: "arToEn", textEn: "I'm fed up with the same routine every day.", textAr: "زَهْقَان/زَهْقَانَة مِن نَفْس الرُّوتِين كُلّ يَوم." },
+            { id: "feel_t3", type: "enToAr", textEn: "This month I'm under pressure between work and study.", textAr: "هَالشَّهْر مَضْغُوط/مَضْغُوطَة بَيْن الشُّغُل وَالدِّرَاسَة." },
+            { id: "feel_t4", type: "arToEn", textEn: "I'm worried about the result, but I'm trying to calm down.", textAr: "قَلْقَان/قَلْقَانَة مِن النَّتِيجَة بَس بَحَاوِل أَهَدَّى." },
+            { id: "feel_t5", type: "enToAr", textEn: "Today my mood isn't good, but I'm trying to keep going.", textAr: "اليَوم مَزَاجِي مِش مْنِيح، بَس بِحَاوِل أَكَمِّل." },
+            { id: "feel_t6", type: "arToEn", textEn: "Today I have no energy, so I won't go to the gym.", textAr: "اليَوم فِش عِنْدِي طَاقَة، فَمِش رَاح أَرُوح عَالنَّادِي." },
+            { id: "feel_t7", type: "enToAr", textEn: "I feel I need a break for a day or two.", textAr: "بَحِسّ إِنِّي بِحَاجَة لِرَاحَة يَوم أَو يَومِين." },
+            { id: "feel_t8", type: "arToEn", textEn: "I don't want to talk about this topic right now.", textAr: "هَلِّق مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع." },
+            { id: "feel_t9", type: "enToAr", textEn: "It's okay, we all get tired sometimes.", textAr: "عَادِي، كُلِّنَا بِنْتَعَب أَحْيَانًا." },
+            { id: "feel_t10", type: "arToEn", textEn: "Don't worry, step by step it will work out.", textAr: "مَا تِخَاف/مَا تِخَافِي، شُوَيّ شُوَيّ بِتِزْبَط." },
+            { id: "feel_t11", type: "enToAr", textEn: "Work is important, but take care of yourself.", textAr: "الشُّغُل مُهِمّ، بَس دِير بَالَك/بَالِك عَلَى حَالَك/حَالِك." },
+            { id: "feel_t12", type: "arToEn", textEn: "If you have no energy, take a little break.", textAr: "إِذَا فِش عِنْدَك/عِنْدِك طَاقَة، خُد/خُدِي رَاحَة شُوَيّ." },
+            { id: "feel_t13", type: "enToAr", textEn: "After the appointment, let me know how you are.", textAr: "بَعْد المَوْعِد طَمِّنِّي عَلَيْك." },
+            { id: "feel_t14", type: "arToEn", textEn: "If you want to talk later, I'm with you.", textAr: "إِذَا بِدَّك/بِدِّك تِحْكِي بَعْدِين، أَنَا مَعَك/مَعِك." },
+            { id: "feel_t15", type: "enToAr", textEn: "I feel a little better now.", textAr: "حَاسِس/حَاسَّة حَالِي أَحْسَن شُوَيّ هَلِّق." },
         ],
     },
 
-    // ====================================
-    // HOMEWORK
-    // ====================================
     homework: {
         instructions:
-            "Record a 60–90 second audio in Palestinian Arabic about your feelings this week:\n" +
-            "1. Describe 2–3 different feelings you had (for example: happy, tired, stressed, bored) and on which days you felt them.\n" +
-            "2. Use at least 3 chunks from the unit: بَحِسّ إِنِّي…, مَزَاجِي مْنِيح / مِش مْنِيح، مَا إِلِي مَال، طَاقْتِي قَلِيلَة، طَبِيعِي.…\n" +
-            "3. Say one small self-care plan (for example: taking a break, sleeping earlier, walking, talking to a friend).\n" +
-            "4. Try to finish with a positive note, like ‘إن شاء الله الأُسْبُوع الجَّاي بَحِسّ أَحْسَن’.",
+            `Write and record a 60-90 second reflection in Gaza Palestinian Arabic about your mood this week. Mention: two feelings you had, why you felt them, one thing that gave you pressure, one thing that helped you relax, and one small self-care plan for tomorrow. Reuse at least 10 words from this unit and 5 old words from earlier units like خُطَّة، مَوْعِد، شُغُل، دِرَاسَة، نَادِي، بَحِر، مَوَاصَلَات، زَحْمَة، مَا زَبَطَت.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Today I'm happy because I finished the project.
+2. I'm fed up with the same routine every day.
+3. This month I'm under pressure between work and study.
+4. I'm worried about the result, but I'm trying to calm down.
+5. Today my mood isn't good, but I'm trying to keep going.
+6. Today I have no energy, so I won't go to the gym.
+7. I feel I need a break for a day or two.
+8. I don't want to talk about this topic right now.
+9. It's okay, we all get tired sometimes.
+10. Don't worry, step by step it will work out.
+11. Work is important, but take care of yourself.
+12. If you have no energy, take a little break.
+13. After the appointment, let me know how you are.
+14. If you want to talk later, I'm with you.
+15. I feel a little better now.`,
     },
 
-    // ====================================
-    // TEACHER NOTES
-    // ====================================
     teacherNotes: {
         warmup: [
-            "Start in English: ask the student to rate their mood from 1 to 10 today, then give them 3 words in Arabic: مَبْسُوط، تَعْبَان، مَضْغُوط.",
-            "Write a simple ‘feelings thermometer’ (from very bad to very good) and map Arabic words onto it together.",
+            "Start gently: كِيف مَزَاجَك اليَوم؟ and offer options instead of forcing personal disclosure.",
+            "Recycle Unit 14: hobbies and rest as tools for mood, not as new vocabulary.",
+            "Make it clear students can speak generally or imagine a situation.",
         ],
         vocabularySteps: [
-            "Teach pairs of opposites or contrasts: مَبْسُوط × زَعْلَان، مِرْتَاح × مَضْغُوط، مِتْحَمِّس × زَهْقَان.",
-            "Drill mini-sentences in first person: اليَوْم أَحِسّ…, أَحْيَانًا بَحِسّ…, نَادِرًا بَحِسّ….",
-            "Highlight that masc/fem changes are mostly at the end: ـَان / ـَانَة، ـوط / ـوطَة، إلخ.",
+            "Teach in clusters: basic feelings -> mood/energy -> boundaries -> supportive phrases.",
+            "Use masculine/feminine through examples, not explanations.",
+            "Keep mental-health talk practical and non-clinical: mood, pressure, rest, support.",
         ],
         dialogueSteps: [
-            "Act Scene 1 slowly, pausing to ask comprehension questions in English or Arabic.",
-            "Ask the student to change details in the dialogues: different sources of pressure, different ways to relax.",
+            "Act the dialogue with a calm tone. Do not make it dramatic.",
+            "Pause when Rami sets a boundary and ask: how did Noor respond respectfully?",
+            "Ask the student to create a safer version of the conversation using their own comfort level.",
         ],
         practiceTips: [
-            "Allow the student to use English inside one or two sentences while keeping the frame in Arabic (for example: بَحِسّ إِنِّي ‘stuck’, بَحِسّ إِنِّي ‘overwhelmed’).",
-            "Focus on giving them safe chunks to talk honestly about feelings, not on perfect grammar.",
+            "Do not push real personal disclosure. Allow fictional answers.",
+            "Require full supportive phrases, not single-word feelings.",
+            "End with a small self-care plan using بَدِّي / رَاح / قَبْل مَا / بَعْد مَا.",
         ],
         wrapup: [
-            "End the lesson by asking: «اليَوْم، بَعْد الدَّرْس، مَزَاجِك أَحْسَن أَو أَسْوَأ؟ لِيش؟» and let them answer freely.",
-            "Note the feelings words they use comfortably, and pick 1–2 new ones to recycle at the start of the next lesson.",
+            "Student says their mood, one reason, one need, and one supportive sentence.",
+            "Student practices saying they do not want to talk now.",
+            "Student gives one small plan for tomorrow.",
         ],
         myNotes: "",
     },

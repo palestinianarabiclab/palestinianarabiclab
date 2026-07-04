@@ -2362,6 +2362,87 @@ select:focus {
     color: var(--text-muted);
 }
 
+.dialogue-questions-modal {
+    z-index: 80;
+}
+
+.dialogue-questions-modal__body {
+    width: min(92vw, 760px);
+    max-width: 760px;
+    max-height: min(82vh, 720px);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.dialogue-questions-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.96);
+    background: #f8fafc;
+}
+
+.dialogue-questions-modal__eyebrow {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dialogue-questions-modal__header h4 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1.25rem;
+}
+
+.dialogue-questions-modal__close {
+    min-width: 74px;
+    border: 1px solid rgba(148, 163, 184, 0.42);
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: var(--text-main);
+    background: #ffffff;
+    font-size: 0.9rem;
+}
+
+.dialogue-questions-modal__list {
+    margin: 0;
+    padding: 16px 22px 20px 46px;
+    max-height: calc(min(82vh, 720px) - 82px);
+    overflow: auto;
+}
+
+.dialogue-questions-modal__item {
+    padding: 13px 0 14px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.82);
+}
+
+.dialogue-questions-modal__item:last-child {
+    border-bottom: none;
+}
+
+.dialogue-questions-modal__ar {
+    direction: rtl;
+    text-align: right;
+    color: var(--text-main);
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.dialogue-questions-modal__en {
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
 
 /* Grammar */
 .grammar-grid {
@@ -2674,6 +2755,1031 @@ select:focus {
 }
 
 /* Practice */
+.practice-pro,
+.homework-pro {
+    display: grid;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.practice-pro__header,
+.homework-pro__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: start;
+    padding: 14px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.practice-pro__header h4,
+.homework-pro__header h4 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.practice-pro__header p,
+.homework-pro__header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.practice-pro__progress,
+.homework-pro__meter {
+    min-width: 92px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f0fdfa;
+    color: #0f766e;
+    text-align: center;
+    border: 1px solid rgba(43, 164, 140, 0.25);
+}
+
+.practice-pro__progress strong {
+    display: block;
+    font-size: 1.05rem;
+}
+
+.practice-pro__progress span,
+.homework-pro__meter {
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.practice-pro__nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.practice-pro__tab {
+    display: grid;
+    gap: 2px;
+    min-height: 58px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    background: #ffffff;
+    color: var(--text-main);
+    cursor: pointer;
+    text-align: left;
+}
+
+.practice-pro__tab span {
+    font-weight: 800;
+}
+
+.practice-pro__tab small {
+    color: var(--text-muted);
+}
+
+.practice-pro__tab.is-active {
+    border-color: rgba(43, 164, 140, 0.75);
+    background: #f0fdfa;
+}
+
+.practice-pro__tab.is-done span::after {
+    content: " Done";
+    color: #15803d;
+    font-size: 0.75rem;
+}
+
+.practice-pro__panel,
+.homework-pro__card,
+.homework-pro__notes-block {
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.practice-pro__panel-head {
+    padding: 13px 14px 10px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__panel-head h5,
+.homework-pro__card h5 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+}
+
+.practice-pro__panel-head p,
+.practice-pro__hint,
+.homework-pro__card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.practice-pro__body {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+}
+
+.practice-pro__grid,
+.homework-pro__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.practice-pro__card {
+    display: grid;
+    gap: 9px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__drill {
+    display: grid;
+    gap: 11px;
+    max-width: 760px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.practice-pro__arabic {
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.65;
+}
+
+.practice-pro__prompt {
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.practice-pro__choices,
+.practice-pro__controls,
+.practice-pro__line,
+.practice-pro__chips,
+.homework-pro__examples,
+.homework-pro__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.practice-pro__choice,
+.practice-pro__chip,
+.homework-pro__examples button {
+    border: 1px solid rgba(148, 163, 184, 0.75);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--text-main);
+    padding: 7px 11px;
+    cursor: pointer;
+    font-size: 0.88rem;
+}
+
+.practice-pro__choice:hover,
+.practice-pro__chip:hover,
+.homework-pro__examples button:hover {
+    border-color: rgba(43, 164, 140, 0.75);
+    background: #f0fdfa;
+}
+
+.practice-pro__choice.is-ok,
+.practice-pro__chip.is-selected {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.practice-pro__choice.is-no {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.practice-pro__feedback {
+    min-height: 18px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.practice-pro__feedback.is-ok {
+    color: #15803d;
+    font-weight: 800;
+}
+
+.practice-pro__feedback.is-no {
+    color: #b91c1c;
+    font-weight: 800;
+}
+
+.practice-pro__match-list,
+.practice-pro__situations {
+    display: grid;
+    gap: 8px;
+}
+
+.practice-pro__match-board {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.9fr) minmax(260px, 1.1fr);
+    gap: 12px;
+    align-items: start;
+}
+
+.practice-pro__match-col {
+    display: grid;
+    gap: 8px;
+}
+
+.practice-pro__match-title {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.practice-pro__match-prompt,
+.practice-pro__match-answer {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    min-height: 46px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__match-answer {
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    background: #ffffff;
+}
+
+.practice-pro__match-answer.is-ok {
+    border-color: rgba(22, 163, 74, 0.45);
+    background: #f0fdf4;
+}
+
+.practice-pro__match-answer.is-no {
+    border-color: rgba(239, 68, 68, 0.45);
+    background: #fef2f2;
+}
+
+.practice-pro__match-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: #0f766e;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.82rem;
+}
+
+.practice-pro__match-select {
+    width: 52px;
+    min-height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.85);
+    background: #ffffff;
+    padding: 5px 6px;
+    font-weight: 800;
+}
+
+.practice-pro__match-status {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.practice-pro__match {
+    display: grid;
+    grid-template-columns: minmax(130px, 0.85fr) minmax(160px, 1fr);
+    gap: 10px;
+    align-items: center;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__input {
+    flex: 1 1 180px;
+    min-height: 36px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 8px;
+    padding: 7px 9px;
+    font-size: 0.9rem;
+}
+
+.practice-pro__answer-bank,
+.practice-pro__chips {
+    min-height: 42px;
+    padding: 8px;
+    border: 1px dashed rgba(148, 163, 184, 0.75);
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.practice-pro__answer-bank {
+    background: #ecfdf5;
+}
+
+.practice-pro__chip.is-used {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.practice-pro__counter,
+.homework-pro__badge {
+    width: fit-content;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(43, 164, 140, 0.12);
+    color: #0f766e;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.practice-pro__translate-card {
+    display: grid;
+    gap: 10px;
+    max-width: 760px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.practice-pro__translate-direction {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.practice-pro__translate-prompt {
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    font-size: 1rem;
+    font-weight: 750;
+    line-height: 1.55;
+}
+
+.practice-pro__translate-prompt.is-arabic,
+.practice-pro__translate-answer.is-arabic {
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 1.08rem;
+}
+
+.practice-pro__translate-input {
+    width: 100%;
+    min-height: 82px;
+    resize: vertical;
+    border-radius: 8px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    padding: 10px;
+    font-size: 0.94rem;
+    line-height: 1.5;
+}
+
+.practice-pro__translate-answer {
+    padding: 12px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    border: 1px solid rgba(43, 164, 140, 0.25);
+    font-weight: 750;
+    line-height: 1.55;
+}
+
+.practice-pro__self-check {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding-top: 2px;
+}
+
+.practice-pro__self-btn {
+    border: 1px solid rgba(148, 163, 184, 0.75);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--text-main);
+    padding: 7px 11px;
+    cursor: pointer;
+    font-size: 0.88rem;
+}
+
+.practice-pro__self-btn.is-ok {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.practice-pro__self-btn.is-no {
+    background: #fef3c7;
+    border-color: #f59e0b;
+}
+
+.practice-pro__self-status {
+    color: var(--text-muted);
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+.practice-pro__situation {
+    padding: 11px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__situation span {
+    display: inline-flex;
+    margin-bottom: 6px;
+    color: #0f766e;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.practice-pro__situation p,
+.practice-pro__write p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.practice-pro__write {
+    display: grid;
+    gap: 7px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-pro__write label,
+.homework-pro__notes-block label {
+    font-weight: 800;
+}
+
+.homework-pro__grid {
+    align-items: stretch;
+}
+
+.homework-pro__card {
+    display: grid;
+    gap: 9px;
+    padding: 13px;
+}
+
+.homework-pro__card.is-done {
+    border-color: rgba(22, 163, 74, 0.35);
+    background: #f0fdf4;
+}
+
+.homework-pro__examples button {
+    direction: rtl;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+}
+
+.homework-pro__check,
+.homework-pro__complete {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.homework-pro__notes-block {
+    display: grid;
+    gap: 8px;
+    padding: 13px;
+}
+
+.homework-pro__notes {
+    min-height: 120px;
+}
+
+.homework-pro__footer {
+    justify-content: space-between;
+}
+
+@media (max-width: 720px) {
+    .practice-pro__header,
+    .homework-pro__header,
+    .practice-pro__nav,
+    .practice-pro__grid,
+    .homework-pro__grid,
+    .practice-pro__match-board,
+    .practice-pro__match {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-pro__tab {
+        min-height: auto;
+    }
+}
+
+.practice-clean {
+    display: grid;
+    gap: 14px;
+    margin: 10px 0 14px;
+}
+
+.practice-clean__section {
+    padding: 14px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.practice-clean__head {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-clean__head h5,
+.homework-clean__card h5 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.practice-clean__head p,
+.practice-clean__hint,
+.homework-clean__intro,
+.homework-clean__card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.practice-clean__grid,
+.homework-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+}
+
+.practice-clean__card,
+.homework-clean__card {
+    display: grid;
+    gap: 9px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-clean__arabic {
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 650;
+    line-height: 1.65;
+}
+
+.practice-clean__prompt {
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.practice-clean__choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.practice-clean__choice,
+.practice-clean__chip,
+.homework-clean__examples button {
+    border: 1px solid rgba(148, 163, 184, 0.75);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--text-main);
+    padding: 7px 11px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    line-height: 1.2;
+}
+
+.practice-clean__choice:hover,
+.practice-clean__chip:hover,
+.homework-clean__examples button:hover {
+    border-color: rgba(43, 164, 140, 0.7);
+    background: #f0fdfa;
+}
+
+.practice-clean__choice.is-ok,
+.practice-clean__chip.is-selected {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.practice-clean__choice.is-no {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.practice-clean__feedback {
+    min-height: 18px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.practice-clean__feedback.is-ok {
+    color: #15803d;
+    font-weight: 700;
+}
+
+.practice-clean__feedback.is-no {
+    color: #b91c1c;
+    font-weight: 700;
+}
+
+.practice-clean__list,
+.practice-clean__simulation-list {
+    display: grid;
+    gap: 8px;
+}
+
+.practice-clean__match {
+    display: grid;
+    grid-template-columns: minmax(130px, 0.85fr) minmax(160px, 1fr);
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-clean__line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.practice-clean__input {
+    flex: 1 1 180px;
+    min-height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    padding: 7px 9px;
+    font-size: 0.9rem;
+}
+
+.practice-clean__answer-bank,
+.practice-clean__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    min-height: 42px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed rgba(148, 163, 184, 0.75);
+    background: #ffffff;
+}
+
+.practice-clean__answer-bank {
+    background: #ecfdf5;
+}
+
+.practice-clean__chip.is-used {
+    opacity: 0.42;
+    cursor: default;
+}
+
+.practice-clean__simulation {
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-clean__simulation span,
+.homework-clean__step,
+.practice-clean__label {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 6px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(43, 164, 140, 0.12);
+    color: #0f766e;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.practice-clean__simulation p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.practice-clean__write {
+    display: grid;
+    gap: 7px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.practice-clean__write label {
+    font-weight: 700;
+}
+
+.practice-clean__write p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.87rem;
+    line-height: 1.5;
+}
+
+.homework-clean {
+    margin: 10px 0 14px;
+}
+
+.homework-clean__card {
+    background: #ffffff;
+}
+
+.homework-clean__examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.homework-clean__examples button {
+    direction: rtl;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+}
+
+.homework-clean__done,
+.homework-clean__complete {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.homework-clean__complete {
+    margin: 12px 0 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+@media (max-width: 640px) {
+    .practice-clean__section {
+        padding: 11px;
+    }
+
+    .practice-clean__grid,
+    .homework-clean,
+    .practice-clean__match {
+        grid-template-columns: 1fr;
+    }
+}
+
+.practice-intro {
+    margin: 4px 0 12px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.practice-panel,
+.homework-card {
+    margin: 10px 0;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.practice-panel__summary,
+.homework-card__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 12px;
+    cursor: pointer;
+    background: #f8fafc;
+}
+
+.practice-panel__title,
+.homework-card__title {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.practice-panel__meta,
+.homework-card__meta {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.practice-panel__body,
+.homework-card__body {
+    padding: 12px;
+    border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.practice-simulation {
+    margin: 0 0 12px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #eefbf7;
+    border: 1px solid rgba(43, 164, 140, 0.24);
+    color: #0f766e;
+    font-size: 0.88rem;
+}
+
+.practice-grid,
+.homework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+}
+
+.practice-card {
+    padding: 11px;
+    border-radius: 8px;
+    background: #f9fafb;
+    border: 1px solid rgba(226, 232, 240, 0.96);
+}
+
+.practice-card--simulation {
+    background: #ffffff;
+}
+
+.practice-card__prompt {
+    font-weight: 650;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.practice-card__prompt--ar,
+.practice-row__ar {
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 1.05rem;
+}
+
+.practice-mini-title {
+    margin: 12px 0 7px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.practice-list {
+    display: grid;
+    gap: 8px;
+}
+
+.practice-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.9fr) minmax(160px, 1.2fr) minmax(70px, auto);
+    align-items: center;
+    gap: 8px;
+    padding: 9px;
+    border-radius: 8px;
+    background: #f9fafb;
+    border: 1px solid rgba(226, 232, 240, 0.96);
+}
+
+.practice-row--stack {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+}
+
+.practice-select,
+.practice-input {
+    width: 100%;
+    min-height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    background: #ffffff;
+    color: var(--text-main);
+    padding: 7px 9px;
+    font-size: 0.9rem;
+}
+
+.practice-answer-line,
+.practice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.practice-answer-line .practice-input {
+    flex: 1 1 180px;
+}
+
+.practice-feedback {
+    min-height: 18px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.practice-feedback--ok {
+    color: #15803d;
+    font-weight: 650;
+}
+
+.practice-feedback--no {
+    color: #b91c1c;
+    font-weight: 650;
+}
+
+.practice-word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    min-height: 42px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px dashed rgba(148, 163, 184, 0.85);
+    background: #ffffff;
+}
+
+.practice-word-bank--answer {
+    background: #f0fdfa;
+}
+
+.practice-chip {
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    border-radius: 999px;
+    background: #ffffff;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.88rem;
+}
+
+.practice-chip--selected {
+    background: #dff7f0;
+    border-color: rgba(43, 164, 140, 0.65);
+}
+
+.practice-chip--used {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.practice-answer {
+    margin: 8px 0;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(148, 163, 184, 0.7);
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+}
+
+.practice-writing {
+    display: grid;
+    gap: 8px;
+}
+
+.practice-writing__prompt {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
 .quiz-question {
     margin-top: 6px;
     padding: 8px 9px;
@@ -2715,8 +3821,45 @@ select:focus {
 }
 
 /* Homework */
+.homework-simple {
+    margin: 8px 0 12px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.96);
+}
+
+.homework-simple__text {
+    margin: 0;
+    color: var(--text-main);
+    white-space: pre-line;
+}
+
+.homework-simple__complete {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.homework-simple__label {
+    display: block;
+    margin: 8px 0 5px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
 .homework-text {
     font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.homework-text--lead {
+    margin: 4px 0 12px;
+    color: var(--text-muted);
 }
 
 .homework-notes {
@@ -2725,6 +3868,65 @@ select:focus {
     padding: 7px 9px;
     font-size: 0.9rem;
     border: 1px solid rgba(209, 213, 219, 0.95);
+    min-height: 76px;
+    resize: vertical;
+}
+
+.homework-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.homework-example {
+    border: 1px solid rgba(203, 213, 225, 0.95);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--text-main);
+    padding: 6px 10px;
+    cursor: pointer;
+    direction: rtl;
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    font-size: 0.88rem;
+}
+
+.homework-example:hover {
+    border-color: rgba(43, 164, 140, 0.75);
+    background: #f0fdfa;
+}
+
+.homework-task-check,
+.homework-complete {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.homework-complete {
+    display: flex;
+    width: fit-content;
+    margin: 12px 0 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.96);
+}
+
+@media (max-width: 640px) {
+    .practice-panel__summary,
+    .homework-card__summary,
+    .practice-row {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-panel__summary,
+    .homework-card__summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
 
 /* Quick review */

@@ -319,7 +319,7 @@ export function renderDialogueOnlyLevels() {
   const levelsDef = [
     { level: 'Beginner', units: ['Greetings', 'Daily Routine', 'Food & Drink', 'Family', 'trans'] },
     { level: 'Pre-Intermediate', units: ['Work & Study', 'Health & Emergencies', 'Shopping & Prices', 'Weather & Small Talk', 'Apartment & Problems'] },
-    { level: 'Intermediate', units: ['Opinions', 'Complaints', 'Plans & Future', 'Free Time & Hobbies', 'Feelings & Mental State'] },
+    { level: 'Intermediate', units: ['Opinions', 'Complaints', 'Plans & Future', 'Free Time & Hobbies', 'Feelings'] },
   ];
 
   const customUnits = readCustomUnits();
