@@ -219,8 +219,17 @@ function getScopedStorageKey(baseKey) {
     return `${baseKey}:${uid}`;
 }
 
+function deriveStudentNameFromEmail(email = "") {
+    const localPart = String(email || "").split("@")[0] || "";
+    const cleaned = localPart
+        .replace(/[._-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    return cleaned.length > 1 ? cleaned : "Student";
+}
+
 function getDisplayNameFromUser(user, profile = {}) {
-    return (profile.name || user?.displayName || user?.email || "Student").trim();
+    return (profile.name || user?.displayName || deriveStudentNameFromEmail(user?.email) || "Student").trim();
 }
 
 async function readStudentAccessProfile(uid) {
@@ -239,7 +248,7 @@ async function ensureStudentProfileDoc(user, name = "") {
     const ref = window.db.collection("users").doc(user.uid);
     const snap = await ref.get();
     const existing = snap.exists ? (snap.data() || {}) : {};
-    const displayName = (name || existing.name || user.displayName || user.email || "Student").trim();
+    const displayName = (name || existing.name || user.displayName || deriveStudentNameFromEmail(user.email) || "Student").trim();
     if (snap.exists) {
         await ref.set({
             email: user.email || existing.email || "",
@@ -322,18 +331,17 @@ async function signInStudentFromSite({ signup = false } = {}) {
     const msg = document.getElementById("studentSiteAuthMsg");
     const email = (document.getElementById("studentSiteEmail")?.value || "").trim().toLowerCase();
     const password = document.getElementById("studentSitePassword")?.value || "";
-    const name = (document.getElementById("studentSiteName")?.value || "").trim();
     if (msg) msg.textContent = signup ? "Creating your account..." : "Signing in...";
     const auth = await waitForStudentAuth();
     let cred;
     if (signup) {
-        if (name.length < 2) throw new Error("Please enter your name.");
         cred = await auth.createUserWithEmailAndPassword(email, password);
-        await cred.user.updateProfile({ displayName: name });
-        const profile = await ensureStudentProfileDoc(cred.user, name);
+        const profile = await ensureStudentProfileDoc(cred.user);
+        const displayName = getDisplayNameFromUser(cred.user, profile);
+        await cred.user.updateProfile({ displayName });
         if (msg) msg.textContent = "Account created.";
         closeLearningChoiceModal();
-        await startSignedInStudentLearning(cred.user, profile);
+        await startSignedInStudentLearning(cred.user, { ...profile, name: displayName });
         return;
     }
     cred = await auth.signInWithEmailAndPassword(email, password);
@@ -2923,7 +2931,7 @@ function goToLessonView(opts = {}) {
     if (!canOpenLesson(appState.currentLessonId)) {
         toast("This unit requires full course access.");
         goToLevels();
-        openSubscribeModal();
+        openCourseAccessPage();
         return;
     }
     showScreen("lesson-screen");
@@ -2963,6 +2971,10 @@ function continueAfterAdBreak() {
 
 function openExternalBookingPage() {
     window.location.assign(EXTERNAL_BOOKING_URL);
+}
+
+function openCourseAccessPage() {
+    window.location.assign("./pricing.html");
 }
 
 function buildLessonExportHtml(lesson, options) {
@@ -3553,7 +3565,7 @@ function renderLevels() {
                     pill.classList.add("unit-pill--locked");
                     statusSpan.textContent = "Full access";
                     pill.addEventListener("click", () => {
-                        openSubscribeModal();
+                        openCourseAccessPage();
                     });
                 } else {
                     pill.classList.add("unit-pill--clickable");
@@ -3729,6 +3741,10 @@ function closeSubscribeModal() {
 }
 
 function openLearningChoiceModal() {
+    if (window.auth?.currentUser && getCurrentStudent()) {
+        goToLevels();
+        return;
+    }
     const modal = document.getElementById("learningChoiceModal");
     if (modal) modal.classList.add("modal--open");
 }
@@ -7055,7 +7071,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnSubscribe = $("#btnSubscribe");
     if (btnSubscribe) {
         btnSubscribe.addEventListener("click", () => {
-            openSubscribeModal();
+            openCourseAccessPage();
         });
     }
     const btnStudentSchedule = $("#btnStudentSchedule");
@@ -7136,8 +7152,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnHeroSubscribe = document.getElementById("btnHeroSubscribe");
 
     if (btnHeroStudent) {
-        btnHeroStudent.addEventListener("click", () => {
-            openLearningChoiceModal();
+        btnHeroStudent.addEventListener("click", async () => {
+            const user = window.auth?.currentUser;
+            if (!user) {
+                openLearningChoiceModal();
+                return;
+            }
+            const profile = await readStudentAccessProfile(user.uid);
+            if ((profile.role || "student") !== "student") {
+                openLearningChoiceModal();
+                return;
+            }
+            await startSignedInStudentLearning(user, profile);
         });
     }
 
@@ -7150,7 +7176,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (btnHeroSubscribe) {
         btnHeroSubscribe.addEventListener("click", () => {
-            openSubscribeModal();
+            openCourseAccessPage();
         });
     }
 
@@ -7224,7 +7250,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (subscribeAccessBtn) {
         subscribeAccessBtn.addEventListener("click", () => {
             closeSubscribeModal();
-            openExternalBookingPage();
+            openCourseAccessPage();
         });
     }
 

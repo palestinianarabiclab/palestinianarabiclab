@@ -33,6 +33,10 @@
             firebase.initializeApp(config);
         }
         window.auth = firebase.auth();
+        const localPersistence = firebase.auth.Auth?.Persistence?.LOCAL;
+        if (localPersistence) {
+            await window.auth.setPersistence(localPersistence);
+        }
         window.db = firebase.firestore();
         window.dispatchEvent(new Event("palArabicFirebaseReady"));
         console.info("Firebase content sync is ready.");
