@@ -58,6 +58,7 @@ window.addEventListener("palArabicFirebaseReady", () => {
         if (lessonScreen?.classList.contains("screen--active")) renderLesson();
     });
     loadCourseOfferSettings().catch(console.warn);
+    watchStudentAuthState();
 });
 
 const noopAsync = async () => {};
@@ -199,6 +200,10 @@ let courseOfferSettings = {
     courseAccessUnits: 15,
     paypalPaymentLink: "",
 };
+let currentAccessProfile = {
+    courseAccess: false,
+    accessType: "none",
+};
 let runtimeBusyBlocks = [];
 let runtimeBusyBlocksLoadedAt = 0;
 let runtimeBusyBlocksLoadedDays = 0;
@@ -212,6 +217,131 @@ function getDefaultBookingSettings() {
 function getScopedStorageKey(baseKey) {
     const uid = appState.currentUser?.uid || "anonymous";
     return `${baseKey}:${uid}`;
+}
+
+function getDisplayNameFromUser(user, profile = {}) {
+    return (profile.name || user?.displayName || user?.email || "Student").trim();
+}
+
+async function readStudentAccessProfile(uid) {
+    if (!window.db || !uid) return {};
+    try {
+        const snap = await window.db.collection("users").doc(uid).get();
+        return snap.exists ? (snap.data() || {}) : {};
+    } catch (error) {
+        console.warn("Could not read student access profile.", error);
+        return {};
+    }
+}
+
+async function ensureStudentProfileDoc(user, name = "") {
+    if (!window.db || !user?.uid) return {};
+    const ref = window.db.collection("users").doc(user.uid);
+    const snap = await ref.get();
+    const existing = snap.exists ? (snap.data() || {}) : {};
+    const displayName = (name || existing.name || user.displayName || user.email || "Student").trim();
+    if (snap.exists) {
+        await ref.set({
+            email: user.email || existing.email || "",
+            name: displayName,
+            phone: existing.phone || "",
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        }, { merge: true });
+    } else {
+        await ref.set({
+            email: user.email || "",
+            name: displayName,
+            phone: "",
+            role: "student",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    }
+    return { ...existing, name: displayName, email: user.email || existing.email || "", role: "student" };
+}
+
+async function startSignedInStudentLearning(user, profile = {}, { navigate = true } = {}) {
+    const name = getDisplayNameFromUser(user, profile);
+    appState.currentUser = {
+        uid: user.uid,
+        email: user.email || "",
+        role: "student",
+    };
+    currentAccessProfile = {
+        courseAccess: profile.courseAccess === true,
+        accessType: profile.accessType || "none",
+    };
+    appState.guestMode = false;
+    appState.guestStudent = null;
+    const student = {
+        id: user.uid,
+        name,
+        goals: [],
+        level: profile.level || "Beginner",
+        progress: profile.progress || {},
+        homeworkNotes: profile.homeworkNotes || {},
+    };
+    appState.students = [student];
+    appState.currentStudentId = student.id;
+    appState.currentLessonId = appState.currentLessonId || LESSON_ID_GREETING;
+    appState.currentTab = appState.currentTab || "overview";
+    saveStudentsToLS({ skipCloud: true });
+    updateAuthUI();
+    if (navigate) goToLevels();
+}
+
+function waitForStudentAuth() {
+    if (window.auth && window.db) return Promise.resolve(window.auth);
+    return new Promise((resolve, reject) => {
+        const started = Date.now();
+        const timer = window.setInterval(() => {
+            if (window.auth && window.db) {
+                window.clearInterval(timer);
+                resolve(window.auth);
+                return;
+            }
+            if (Date.now() - started > 8000) {
+                window.clearInterval(timer);
+                reject(new Error("Student login is still loading. Please try again in a moment."));
+            }
+        }, 100);
+    });
+}
+
+function watchStudentAuthState() {
+    if (!window.auth) return;
+    window.auth.onAuthStateChanged(async (user) => {
+        if (!user || appState.currentUser?.role === "guest") return;
+        const profile = await readStudentAccessProfile(user.uid);
+        if ((profile.role || "student") !== "student") return;
+        await startSignedInStudentLearning(user, profile, { navigate: false });
+    });
+}
+
+async function signInStudentFromSite({ signup = false } = {}) {
+    const msg = document.getElementById("studentSiteAuthMsg");
+    const email = (document.getElementById("studentSiteEmail")?.value || "").trim().toLowerCase();
+    const password = document.getElementById("studentSitePassword")?.value || "";
+    const name = (document.getElementById("studentSiteName")?.value || "").trim();
+    if (msg) msg.textContent = signup ? "Creating your account..." : "Signing in...";
+    const auth = await waitForStudentAuth();
+    let cred;
+    if (signup) {
+        if (name.length < 2) throw new Error("Please enter your name.");
+        cred = await auth.createUserWithEmailAndPassword(email, password);
+        await cred.user.updateProfile({ displayName: name });
+        const profile = await ensureStudentProfileDoc(cred.user, name);
+        if (msg) msg.textContent = "Account created.";
+        closeLearningChoiceModal();
+        await startSignedInStudentLearning(cred.user, profile);
+        return;
+    }
+    cred = await auth.signInWithEmailAndPassword(email, password);
+    const profile = await readStudentAccessProfile(cred.user.uid);
+    if ((profile.role || "student") !== "student") throw new Error("This account is not a student account.");
+    if (msg) msg.textContent = "Signed in.";
+    closeLearningChoiceModal();
+    await startSignedInStudentLearning(cred.user, profile);
 }
 
 function ensureBookingSettingsShape() {
@@ -265,10 +395,6 @@ function formatAccessPrice(value) {
 }
 
 function updateCourseOfferUi() {
-    const priceEl = document.getElementById("fullAccessPrice");
-    if (priceEl) {
-        priceEl.textContent = formatAccessPrice(courseOfferSettings.courseAccessPrice || 15);
-    }
     const paypalLink = document.getElementById("subscribePayPalLink");
     if (paypalLink) {
         const url = (courseOfferSettings.paypalPaymentLink || "").trim();
@@ -2794,9 +2920,10 @@ function goToLessonView(opts = {}) {
         goToStudents();
         return;
     }
-    if (isGuestUser() && !isGuestAllowedLesson(appState.currentLessonId)) {
-        toast("Choose a lesson to start learning.");
+    if (!canOpenLesson(appState.currentLessonId)) {
+        toast("This unit requires full course access.");
         goToLevels();
+        openSubscribeModal();
         return;
     }
     showScreen("lesson-screen");
@@ -3422,11 +3549,11 @@ function renderLevels() {
             const lessonId = findLessonIdFor(lvl.level, unitName);
 
             if (lessonId) {
-                if (isGuestUser() && !isGuestAllowedLesson(lessonId)) {
+                if (!canOpenLesson(lessonId)) {
                     pill.classList.add("unit-pill--locked");
-                    statusSpan.textContent = "Unavailable";
+                    statusSpan.textContent = "Full access";
                     pill.addEventListener("click", () => {
-                        toast("This lesson is not available yet.");
+                        openSubscribeModal();
                     });
                 } else {
                     pill.classList.add("unit-pill--clickable");
@@ -3540,8 +3667,17 @@ function isGuestUser() {
     return !!(appState.currentUser && appState.currentUser.role === "guest");
 }
 
+function hasFullCourseAccess() {
+    return currentAccessProfile.courseAccess === true;
+}
+
+function isPreviewLesson(lessonId) {
+    return lessonId === LESSON_ID_GREETING || lessonId === LESSON_ID_WORK_STUDY;
+}
+
 function startFreeLearning({ navigate = true } = {}) {
     appState.currentUser = { uid: "guest", email: "Guest", role: "guest" };
+    currentAccessProfile = { courseAccess: false, accessType: "none" };
     appState.guestMode = true;
     appState.guestStudent = {
         id: "guest",
@@ -3559,7 +3695,13 @@ function startFreeLearning({ navigate = true } = {}) {
 }
 
 function isGuestAllowedLesson(lessonId) {
-    return !!lessonId;
+    return !!lessonId && isPreviewLesson(lessonId);
+}
+
+function canOpenLesson(lessonId) {
+    if (!lessonId) return false;
+    if (hasFullCourseAccess()) return true;
+    return isPreviewLesson(lessonId);
 }
 
 async function goToSubscribeScreen() {
@@ -3593,6 +3735,18 @@ function openLearningChoiceModal() {
 
 function closeLearningChoiceModal() {
     const modal = document.getElementById("learningChoiceModal");
+    if (modal) modal.classList.remove("modal--open");
+}
+
+function openBookingPortalModal() {
+    const modal = document.getElementById("bookingPortalModal");
+    const frame = document.getElementById("bookingPortalFrame");
+    if (frame && !frame.src) frame.src = EXTERNAL_BOOKING_URL;
+    if (modal) modal.classList.add("modal--open");
+}
+
+function closeBookingPortalModal() {
+    const modal = document.getElementById("bookingPortalModal");
     if (modal) modal.classList.remove("modal--open");
 }
 
@@ -6901,7 +7055,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnSubscribe = $("#btnSubscribe");
     if (btnSubscribe) {
         btnSubscribe.addEventListener("click", () => {
-            openExternalBookingPage();
+            openSubscribeModal();
+        });
+    }
+    const btnStudentSchedule = $("#btnStudentSchedule");
+    if (btnStudentSchedule) {
+        btnStudentSchedule.addEventListener("click", () => {
+            openBookingPortalModal();
         });
     }
     const btnContact = $("#btnContact");
@@ -6999,6 +7159,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const subscribeAccessBtn = document.getElementById("subscribeAccessBtn");
     const learningLoginBtn = document.getElementById("learningLoginBtn");
     const learningGuestBtn = document.getElementById("learningGuestBtn");
+    const studentSiteAuthForm = document.getElementById("studentSiteAuthForm");
+    const studentSiteSignupSubmit = document.getElementById("studentSiteSignupSubmit");
 
     const floatingChatBtn = document.getElementById("floatingChatBtn");
     if (floatingChatBtn) {
@@ -7055,7 +7217,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (subscribeBookingBtn) {
         subscribeBookingBtn.addEventListener("click", () => {
             closeSubscribeModal();
-            openExternalBookingPage();
+            openBookingPortalModal();
         });
     }
 
@@ -7068,8 +7230,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (learningLoginBtn) {
         learningLoginBtn.addEventListener("click", () => {
-            closeLearningChoiceModal();
-            openExternalBookingPage();
+            if (studentSiteAuthForm) studentSiteAuthForm.hidden = false;
         });
     }
 
@@ -7080,6 +7241,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
+    if (studentSiteAuthForm) {
+        studentSiteAuthForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            try {
+                await signInStudentFromSite({ signup: false });
+            } catch (error) {
+                const msg = document.getElementById("studentSiteAuthMsg");
+                if (msg) msg.textContent = error.message || "Could not sign in.";
+            }
+        });
+    }
+
+    if (studentSiteSignupSubmit) {
+        studentSiteSignupSubmit.addEventListener("click", async () => {
+            try {
+                await signInStudentFromSite({ signup: true });
+            } catch (error) {
+                const msg = document.getElementById("studentSiteAuthMsg");
+                if (msg) msg.textContent = error.message || "Could not create account.";
+            }
+        });
+    }
+
     // Close subscribe modal on backdrop click
     document.querySelectorAll("[data-close-subscribe]").forEach(el => {
         el.addEventListener("click", closeSubscribeModal);
@@ -7087,6 +7271,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.querySelectorAll("[data-close-learning-choice]").forEach(el => {
         el.addEventListener("click", closeLearningChoiceModal);
+    });
+
+    document.querySelectorAll("[data-close-booking-portal]").forEach(el => {
+        el.addEventListener("click", closeBookingPortalModal);
     });
 
     // add student

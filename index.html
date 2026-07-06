@@ -29,7 +29,7 @@
             }
         }
     </script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://va.vercel-scripts.com; script-src-elem 'self' 'unsafe-inline' https://www.gstatic.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://*.googleapis.com https://*.firebaseio.com https://*.vercel-scripts.com; frame-src 'self'; child-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://va.vercel-scripts.com; script-src-elem 'self' 'unsafe-inline' https://www.gstatic.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://*.googleapis.com https://*.firebaseio.com https://*.vercel-scripts.com; frame-src 'self' https://bookingapp-tawny.vercel.app; child-src 'self' https://bookingapp-tawny.vercel.app; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f8fafc' font-family='Arial, sans-serif'%3EPA%3C/text%3E%3C/svg%3E" />
     
@@ -64,12 +64,31 @@
             <button class="modal__close" data-close-learning-choice>&times;</button>
             <h3>Start Learning</h3>
             <p class="modal__hint">
-                Sign in if you already have student access, or continue as a guest to preview the free lessons.
+                Sign in with your student account, create a new account, or continue as a guest to preview the free lessons.
             </p>
+            <form id="studentSiteAuthForm" class="form-stack site-auth-form" hidden>
+                <label class="form-field">
+                    <span>Name</span>
+                    <input id="studentSiteName" type="text" placeholder="Your name" />
+                </label>
+                <label class="form-field">
+                    <span>Email</span>
+                    <input id="studentSiteEmail" type="email" placeholder="student@example.com" required />
+                </label>
+                <label class="form-field">
+                    <span>Password</span>
+                    <input id="studentSitePassword" type="password" placeholder="Password" required />
+                </label>
+                <div class="modal-action-stack">
+                    <button id="studentSiteLoginSubmit" class="btn btn--primary btn--sm" type="submit">Sign In</button>
+                    <button id="studentSiteSignupSubmit" class="btn btn--outline btn--sm" type="button">Create Account</button>
+                </div>
+                <p id="studentSiteAuthMsg" class="status-line"></p>
+            </form>
             <div class="choice-grid">
                 <button id="learningLoginBtn" class="choice-card" type="button">
                     <strong>Student Login</strong>
-                    <span>Use your student account for paid access and future course progress.</span>
+                    <span>Use your student account for access, course progress, and booking.</span>
                 </button>
                 <button id="learningGuestBtn" class="choice-card" type="button">
                     <strong>Continue as Guest</strong>
@@ -107,7 +126,7 @@
                         Unlock the full interactive Palestinian Arabic course for independent practice.
                     </p>
                     <p class="access-price">
-                        Full access: <strong id="fullAccessPrice">$15</strong>
+                        Payment method: <strong>PayPal</strong>
                     </p>
                     <div class="modal-action-stack">
                         <button id="subscribeAccessBtn" class="btn btn--outline btn--sm" type="button">
@@ -323,6 +342,7 @@
                     <button id="btnSwitchProfile" class="btn btn--ghost">Switch Profile</button>
                     <button id="btnContinueLesson" class="btn btn--primary btn--sm">Continue</button>
                     <button id="btnArabicLetters" class="btn btn--outline btn--sm">Arabic Letters</button>
+                    <button id="btnStudentSchedule" class="btn btn--outline btn--sm">Schedule / Booking</button>
                     <button id="btnSubscribe" class="btn btn--outline btn--sm">Subscribe</button>
                     <button id="btnContact" class="btn btn--ghost btn--sm">Contact</button>
                     <button id="btnSyncLessonsNow" class="btn btn--ghost" style="display:none;">Sync lessons</button>
@@ -616,6 +636,19 @@
     </div>
     <button id="floatingChatBtn" class="floating-chat-btn" type="button" aria-label="Chat on WhatsApp">Chat on WhatsApp</button>
 
+    <div id="bookingPortalModal" class="modal">
+        <div class="modal__backdrop" data-close-booking-portal></div>
+        <div class="modal__body modal__body--portal">
+            <button class="modal__close" data-close-booking-portal>&times;</button>
+            <h3>Schedule and Booking</h3>
+            <p class="modal__hint">Sign in with the same student account to view your schedule and book lessons.</p>
+            <iframe id="bookingPortalFrame" title="Student booking portal" loading="lazy"></iframe>
+            <p class="modal__hint">
+                <a href="https://bookingapp-tawny.vercel.app/" target="_blank" rel="noopener noreferrer">Open booking portal in a new tab</a>
+            </p>
+        </div>
+    </div>
+
     <!-- =================== MICRO-CHECK MODAL =================== -->
     <div id="microCheckModal" class="modal">
         <div class="modal__backdrop"></div>
@@ -684,7 +717,6 @@
     <footer class='site-footer'>
         <a href="./about.html">About</a>
         <a href="./contact.html">Contact</a>
-        <a href="./pricing.html">Learning Options</a>
         <a href="./privacy.html">Privacy Policy</a>
         <a href="./terms.html">Terms of Use</a>
         <a href="https://bookingapp-tawny.vercel.app/">Book a Trial Lesson</a>

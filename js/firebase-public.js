@@ -26,11 +26,13 @@
 
     async function startFirebase() {
         await loadScript("https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js");
+        await loadScript("https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js");
         await loadScript("https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js");
 
         if (!firebase.apps.length) {
             firebase.initializeApp(config);
         }
+        window.auth = firebase.auth();
         window.db = firebase.firestore();
         window.dispatchEvent(new Event("palArabicFirebaseReady"));
         console.info("Firebase content sync is ready.");

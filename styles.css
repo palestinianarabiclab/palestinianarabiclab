@@ -2315,6 +2315,31 @@ select:focus {
     gap: 10px;
     flex-wrap: wrap;
 }
+
+.site-auth-form {
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.site-auth-form[hidden] {
+    display: none;
+}
+
+.modal__body--portal {
+    width: min(1040px, calc(100vw - 32px));
+    max-width: min(1040px, calc(100vw - 32px));
+}
+
+#bookingPortalFrame {
+    width: 100%;
+    min-height: min(72vh, 760px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: #fff;
+}
    
 
 .modal__close {
