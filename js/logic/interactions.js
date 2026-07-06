@@ -2974,7 +2974,7 @@ function openExternalBookingPage() {
 }
 
 function openCourseAccessPage() {
-    window.location.assign("./pricing.html");
+    window.location.assign(EXTERNAL_BOOKING_URL);
 }
 
 function buildLessonExportHtml(lesson, options) {
@@ -7243,7 +7243,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (subscribeBookingBtn) {
         subscribeBookingBtn.addEventListener("click", () => {
             closeSubscribeModal();
-            openBookingPortalModal();
+            openExternalBookingPage();
         });
     }
 
