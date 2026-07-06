@@ -7077,7 +7077,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnStudentSchedule = $("#btnStudentSchedule");
     if (btnStudentSchedule) {
         btnStudentSchedule.addEventListener("click", () => {
-            openBookingPortalModal();
+            openExternalBookingPage();
         });
     }
     const btnContact = $("#btnContact");
