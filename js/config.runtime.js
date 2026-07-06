@@ -1,11 +1,11 @@
 window.__APP_CONFIG__ = {
     firebase: {
-        apiKey: "AIzaSyC0haaF1Y9I-cbDfaHhSYD38COP_sMLnNI",
-        authDomain: "palestinian-arabic-lab.firebaseapp.com",
-        projectId: "palestinian-arabic-lab",
-        storageBucket: "palestinian-arabic-lab.firebasestorage.app",
-        messagingSenderId: "867160813546",
-        appId: "1:867160813546:web:fe81642287dff700ab4c93",
-        measurementId: "G-Q2GHE6545F",
+        apiKey: "AIzaSyB0TR0uOS7-cOAQxtSUYpY2ikvqwDsy2YM",
+        authDomain: "farouqapp-7ea93.firebaseapp.com",
+        projectId: "farouqapp-7ea93",
+        storageBucket: "farouqapp-7ea93.firebasestorage.app",
+        messagingSenderId: "362146773658",
+        appId: "1:362146773658:web:b00d9acd346b3b17b6fd23",
+        measurementId: "G-E7G0SC7KZ6",
     },
 };

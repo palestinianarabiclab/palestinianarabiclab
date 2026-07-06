@@ -2220,24 +2220,100 @@ select:focus {
 
 /* Wide modal for subscribe options */
 .modal__body--wide {
-    max-width: 700px;
+    max-width: 900px;
     padding: 24px;
+}
+
+.modal__body--choice {
+    text-align: left;
+}
+
+.modal__body--choice > h3 {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.choice-grid,
+.offer-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.choice-card {
+    border: 1px solid rgba(15, 118, 110, 0.18);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f172a;
+    padding: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.choice-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(15, 118, 110, 0.42);
+    box-shadow: var(--shadow-soft);
+}
+
+.choice-card strong,
+.choice-card span {
+    display: block;
+}
+
+.choice-card span {
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 0.92rem;
+    line-height: 1.5;
 }
 
 /* Subscribe option cards */
 .subscribe-option-card {
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-    transition: all 0.2s ease;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 22px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .subscribe-option-card:hover {
-    border-color: #1a73e8;
-    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+    border-color: rgba(15, 118, 110, 0.36);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
     transform: translateY(-2px);
+}
+
+.subscribe-option-card h4 {
+    margin: 8px 0 10px;
+}
+
+.subscribe-option-card p {
+    color: #475569;
+    line-height: 1.55;
+}
+
+.offer-chip {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.1);
+    color: #0f766e;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.access-price {
+    margin: 12px 0;
+}
+
+.modal-action-stack {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
    
 

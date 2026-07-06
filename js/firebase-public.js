@@ -7,17 +7,6 @@
         return;
     }
 
-    function hasFreshLessonCache() {
-        try {
-            const raw = localStorage.getItem(LESSONS_CACHE_KEY);
-            if (!raw) return false;
-            const cached = JSON.parse(raw);
-            return Date.now() - Number(cached.savedAt || 0) <= LESSONS_CACHE_TTL_MS;
-        } catch {
-            return false;
-        }
-    }
-
     function loadScript(src) {
         return new Promise((resolve, reject) => {
             const existing = document.querySelector(`script[src="${src}"]`);
@@ -49,7 +38,6 @@
 
     const schedule = window.requestIdleCallback || ((callback) => setTimeout(callback, 1500));
     window.addEventListener("load", () => {
-        if (hasFreshLessonCache()) return;
         schedule(() => {
             startFirebase().catch((error) => {
                 console.warn("Firebase content sync could not start:", error);

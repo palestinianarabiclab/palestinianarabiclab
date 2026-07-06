@@ -57,24 +57,66 @@
             </nav>
         </div>
     </header>
-    <!-- Booking modal -->
+    <!-- Learning choice modal -->
+    <div id="learningChoiceModal" class="modal">
+        <div class="modal__backdrop" data-close-learning-choice></div>
+        <div class="modal__body modal__body--choice">
+            <button class="modal__close" data-close-learning-choice>&times;</button>
+            <h3>Start Learning</h3>
+            <p class="modal__hint">
+                Sign in if you already have student access, or continue as a guest to preview the free lessons.
+            </p>
+            <div class="choice-grid">
+                <button id="learningLoginBtn" class="choice-card" type="button">
+                    <strong>Student Login</strong>
+                    <span>Use your student account for paid access and future course progress.</span>
+                </button>
+                <button id="learningGuestBtn" class="choice-card" type="button">
+                    <strong>Continue as Guest</strong>
+                    <span>Preview the open lessons without creating an account.</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking / access modal -->
     <div id="subscribeModal" class="modal">
         <div class="modal__backdrop" data-close-subscribe></div>
-        <div class="modal__body modal__body--wide">
+        <div class="modal__body modal__body--wide modal__body--choice">
             <button class="modal__close" data-close-subscribe>&times;</button>
-            <h3 style="margin-bottom:16px; text-align:center;">Book a Trial Lesson</h3>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-top:20px;">
+            <h3>Choose Your Learning Path</h3>
+            <p class="modal__hint">
+                Start with a free online trial lesson, or request full self-study access to the course.
+            </p>
+            <div class="offer-choice-grid">
                 <div class="subscribe-option-card">
-                    <h4 style="margin-bottom:8px;">Book a Trial Lesson</h4>
-                    <p style="font-size:0.9rem; color:#666; margin-bottom:16px;">
-                        Book a free trial lesson to experience our teaching method.
+                    <span class="offer-chip">Live lessons</span>
+                    <h4>Online Lesson With the Teacher</h4>
+                    <p>
+                        Book your first trial lesson for free. We can check your level, practice speaking,
+                        and choose a realistic study plan.
                     </p>
-                    <p style="font-size:0.85rem; color:#888; margin-bottom:16px;">
-                        Trial lesson length: <strong>50 minutes</strong>
-                    </p>
-                    <button id="subscribeBookingBtn" class="btn btn--outline btn--sm" style="width:100%;">
-                        Open Booking Page
+                    <button id="subscribeBookingBtn" class="btn btn--primary btn--sm" type="button">
+                        Book Free Trial Lesson
                     </button>
+                </div>
+                <div class="subscribe-option-card">
+                    <span class="offer-chip">Self-study</span>
+                    <h4>Full Site Access</h4>
+                    <p>
+                        Unlock the full interactive Palestinian Arabic course for independent practice.
+                    </p>
+                    <p class="access-price">
+                        Full access: <strong id="fullAccessPrice">$15</strong>
+                    </p>
+                    <div class="modal-action-stack">
+                        <button id="subscribeAccessBtn" class="btn btn--outline btn--sm" type="button">
+                            Ask for Full Access
+                        </button>
+                        <a id="subscribePayPalLink" class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener noreferrer" hidden>
+                            Pay with PayPal
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -642,6 +684,7 @@
     <footer class='site-footer'>
         <a href="./about.html">About</a>
         <a href="./contact.html">Contact</a>
+        <a href="./pricing.html">Learning Options</a>
         <a href="./privacy.html">Privacy Policy</a>
         <a href="./terms.html">Terms of Use</a>
         <a href="https://bookingapp-tawny.vercel.app/">Book a Trial Lesson</a>

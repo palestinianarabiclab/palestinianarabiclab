@@ -57,6 +57,7 @@ window.addEventListener("palArabicFirebaseReady", () => {
         if (levelsScreen?.classList.contains("screen--active")) renderLevels();
         if (lessonScreen?.classList.contains("screen--active")) renderLesson();
     });
+    loadCourseOfferSettings().catch(console.warn);
 });
 
 const noopAsync = async () => {};
@@ -193,6 +194,11 @@ let backupSettings = {
 };
 
 let contactSettings = createInitialContactSettings();
+let courseOfferSettings = {
+    courseAccessPrice: 15,
+    courseAccessUnits: 15,
+    paypalPaymentLink: "",
+};
 let runtimeBusyBlocks = [];
 let runtimeBusyBlocksLoadedAt = 0;
 let runtimeBusyBlocksLoadedDays = 0;
@@ -250,6 +256,44 @@ async function loadContactSettingsFromCloud() {
 async function saveContactSettingsToCloud() {
     if (!window.db || typeof firebase === "undefined") return;
     await saveContactSettingsStateToCloud(window.db, firebase, contactSettings);
+}
+
+function formatAccessPrice(value) {
+    const amount = Number(value || 0);
+    if (!Number.isFinite(amount) || amount <= 0) return "$15";
+    return `$${amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2)}`;
+}
+
+function updateCourseOfferUi() {
+    const priceEl = document.getElementById("fullAccessPrice");
+    if (priceEl) {
+        priceEl.textContent = formatAccessPrice(courseOfferSettings.courseAccessPrice || 15);
+    }
+    const paypalLink = document.getElementById("subscribePayPalLink");
+    if (paypalLink) {
+        const url = (courseOfferSettings.paypalPaymentLink || "").trim();
+        paypalLink.hidden = !url;
+        if (url) paypalLink.href = url;
+    }
+}
+
+async function loadCourseOfferSettings() {
+    if (!window.db) {
+        updateCourseOfferUi();
+        return courseOfferSettings;
+    }
+    try {
+        const snap = await window.db.collection("bookingSettings").doc("primary").get();
+        const data = snap.exists ? (snap.data() || {}) : {};
+        courseOfferSettings = {
+            ...courseOfferSettings,
+            ...(data.courseOffers || {}),
+        };
+    } catch (error) {
+        console.warn("Could not load course offer settings.", error);
+    }
+    updateCourseOfferUi();
+    return courseOfferSettings;
 }
 
 async function ensureTeacherDoc(uid, email) {
@@ -3526,17 +3570,8 @@ async function goToSubscribeScreen() {
 function openSubscribeModal() {
     const modal = document.getElementById("subscribeModal");
     if (modal) {
-        const priceWrap = document.getElementById("subscribeSitePriceWrap");
-        const priceText = document.getElementById("subscribeSitePrice");
-        if (priceWrap && priceText) {
-            if (contactSettings.sitePrice) {
-                priceWrap.style.display = "block";
-                priceText.textContent = contactSettings.sitePrice;
-            } else {
-                priceWrap.style.display = "none";
-                priceText.textContent = "-";
-            }
-        }
+        updateCourseOfferUi();
+        if (window.db) loadCourseOfferSettings().catch(console.warn);
         modal.classList.add("modal--open");
         console.log("Subscribe modal opened");
     }
@@ -3549,6 +3584,16 @@ function closeSubscribeModal() {
         modal.classList.remove("modal--open");
         console.log("Subscribe modal closed");
     }
+}
+
+function openLearningChoiceModal() {
+    const modal = document.getElementById("learningChoiceModal");
+    if (modal) modal.classList.add("modal--open");
+}
+
+function closeLearningChoiceModal() {
+    const modal = document.getElementById("learningChoiceModal");
+    if (modal) modal.classList.remove("modal--open");
 }
 
 function isGrammarTabEnabled(lesson) {
@@ -6932,8 +6977,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (btnHeroStudent) {
         btnHeroStudent.addEventListener("click", () => {
-            // Public learners start without an account.
-            startFreeLearning();
+            openLearningChoiceModal();
         });
     }
 
@@ -6946,12 +6990,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (btnHeroSubscribe) {
         btnHeroSubscribe.addEventListener("click", () => {
-            openExternalBookingPage();
+            openSubscribeModal();
         });
     }
 
     // Subscribe modal buttons
     const subscribeBookingBtn = document.getElementById("subscribeBookingBtn");
+    const subscribeAccessBtn = document.getElementById("subscribeAccessBtn");
+    const learningLoginBtn = document.getElementById("learningLoginBtn");
+    const learningGuestBtn = document.getElementById("learningGuestBtn");
 
     const floatingChatBtn = document.getElementById("floatingChatBtn");
     if (floatingChatBtn) {
@@ -7012,9 +7059,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
+    if (subscribeAccessBtn) {
+        subscribeAccessBtn.addEventListener("click", () => {
+            closeSubscribeModal();
+            openExternalBookingPage();
+        });
+    }
+
+    if (learningLoginBtn) {
+        learningLoginBtn.addEventListener("click", () => {
+            closeLearningChoiceModal();
+            openExternalBookingPage();
+        });
+    }
+
+    if (learningGuestBtn) {
+        learningGuestBtn.addEventListener("click", () => {
+            closeLearningChoiceModal();
+            startFreeLearning();
+        });
+    }
+
     // Close subscribe modal on backdrop click
     document.querySelectorAll("[data-close-subscribe]").forEach(el => {
         el.addEventListener("click", closeSubscribeModal);
+    });
+
+    document.querySelectorAll("[data-close-learning-choice]").forEach(el => {
+        el.addEventListener("click", closeLearningChoiceModal);
     });
 
     // add student
