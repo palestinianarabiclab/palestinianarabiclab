@@ -64,7 +64,7 @@
             <button class="modal__close" data-close-learning-choice>&times;</button>
             <h3>Start Learning</h3>
             <p class="modal__hint">
-                Sign in with the same student account you use for booking, create a new account, or continue as a guest to preview the free lessons.
+                Sign in with the same student account you use for booking, or create a new account to request full access and track your learning.
             </p>
             <form id="studentSiteAuthForm" class="form-stack site-auth-form" hidden>
                 <label class="form-field">
@@ -85,10 +85,6 @@
                 <button id="learningLoginBtn" class="choice-card" type="button">
                     <strong>Student Login</strong>
                     <span>Use your student account for access, course progress, and booking.</span>
-                </button>
-                <button id="learningGuestBtn" class="choice-card" type="button">
-                    <strong>Continue as Guest</strong>
-                    <span>Preview the open lessons without creating an account.</span>
                 </button>
             </div>
         </div>
@@ -155,10 +151,6 @@
                     <button id="btnHeroGuest" class="btn btn--outline btn--lg">
                         Guest Preview
                     </button>
-                    <button id="btnHeroSubscribe" class="btn btn--outline btn--lg">
-                        Book a Trial Lesson
-                    </button>
-
                 </div>
             </div>
         </div>
@@ -233,77 +225,6 @@
     </section>
 
     <main>
-        <!-- ============== STUDENT DASHBOARD SCREEN ============== -->
-        <section id="student-dashboard-screen" class="screen">
-            <div class="section-header section-header--with-actions">
-                <div>
-                    <h2>Student Dashboard</h2>
-                    <p class="section-header__subtitle">
-                        Welcome back, <span id="dashboardStudentName" class="tag">Student</span>
-                    </p>
-                </div>
-                <div class="section-header__actions">
-                    <button id="btnDashboardUnits" class="btn btn--primary btn--sm">Course Units</button>
-                    <button id="btnDashboardBooking" class="btn btn--outline btn--sm">Book / Schedule</button>
-                    <button id="btnDashboardLogout" class="btn btn--ghost btn--sm">Sign Out</button>
-                </div>
-            </div>
-
-            <div class="student-dashboard-grid">
-                <article class="dashboard-card">
-                    <span class="dashboard-card__label">Progress</span>
-                    <strong id="dashboardProgressValue">0%</strong>
-                    <p id="dashboardProgressHint">Start a lesson to begin tracking progress.</p>
-                </article>
-                <article class="dashboard-card">
-                    <span class="dashboard-card__label">Last Lesson</span>
-                    <strong id="dashboardLastLesson">Not saved yet</strong>
-                    <p id="dashboardLastLessonHint">Use Save spot inside a lesson to continue later.</p>
-                </article>
-                <article class="dashboard-card">
-                    <span class="dashboard-card__label">Open Units</span>
-                    <strong id="dashboardOpenUnits">2 preview units</strong>
-                    <p id="dashboardAccessHint">Full access unlocks the complete course.</p>
-                </article>
-            </div>
-
-            <section class="real-life-panel">
-                <div>
-                    <p class="eyebrow">Practice Situations</p>
-                    <h3>Real-life Palestinian Arabic dialogues</h3>
-                    <p>
-                        Start with practical conversations for restaurant orders, family visits,
-                        transportation, welcoming guests, and doctor visits. These will grow into
-                        full practice activities as the course expands.
-                    </p>
-                </div>
-                <button id="btnDashboardRealLife" class="btn btn--outline btn--sm">Open Preview Units</button>
-            </section>
-
-            <div class="real-life-dialogue-grid" aria-label="Real-life dialogue situations">
-                <article>
-                    <strong>Restaurant</strong>
-                    <span>Order food, ask about prices, and respond naturally.</span>
-                </article>
-                <article>
-                    <strong>Family</strong>
-                    <span>Introduce relatives and ask simple family questions.</span>
-                </article>
-                <article>
-                    <strong>Transportation</strong>
-                    <span>Ask for directions, rides, and arrival times.</span>
-                </article>
-                <article>
-                    <strong>Visiting</strong>
-                    <span>Greet guests, offer coffee, and make small talk.</span>
-                </article>
-                <article>
-                    <strong>Doctor</strong>
-                    <span>Describe symptoms and understand basic advice.</span>
-                </article>
-            </div>
-        </section>
-
         <!--  ==== STUDENT SELECTION SCREEN ============== -->
         <section id="students-screen" class="screen">
             <div class="section-header">
@@ -798,7 +719,6 @@
         <a href="./contact.html">Contact</a>
         <a href="./privacy.html">Privacy Policy</a>
         <a href="./terms.html">Terms of Use</a>
-        <a href="https://bookingapp-tawny.vercel.app/">Book a Trial Lesson</a>
         <a href="./ar.html" lang="ar" dir="rtl">العربية</a>
     </footer>
 

@@ -295,10 +295,6 @@ function applyStudentAccessProfile(user, profile = {}) {
     saveStudentsToLS({ skipCloud: true });
     const levelsScreen = document.getElementById("levels-screen");
     const lessonScreen = document.getElementById("lesson-screen");
-    const dashboardScreen = document.getElementById("student-dashboard-screen");
-    if (dashboardScreen?.classList.contains("screen--active")) {
-        renderStudentDashboard();
-    }
     if (levelsScreen?.classList.contains("screen--active")) {
         const label = document.getElementById("currentStudentNameLevels");
         if (label) label.textContent = name;
@@ -352,7 +348,7 @@ async function startSignedInStudentLearning(user, profile = {}, { navigate = tru
     saveStudentsToLS({ skipCloud: true });
     updateAuthUI();
     startStudentAccessListener(user);
-    if (navigate) goToStudentDashboard();
+    if (navigate) goToLevels();
 }
 
 function waitForStudentAuth() {
@@ -3758,72 +3754,6 @@ function getOpenLessonIds() {
     return getAllLessonIds().filter((lessonId) => canOpenLesson(lessonId));
 }
 
-function getStudentProgressSummary(student) {
-    const lessonIds = getAllLessonIds();
-    let completed = 0;
-    let total = 0;
-    lessonIds.forEach((lessonId) => {
-        const progress = student?.progress?.[lessonId] || {};
-        total += Object.keys(progress).length;
-        completed += Object.values(progress).filter(Boolean).length;
-    });
-    return {
-        completed,
-        total,
-        percent: total ? Math.round((completed / total) * 100) : 0,
-    };
-}
-
-function getLessonDisplayName(lessonId) {
-    const meta = lessons[lessonId]?.meta;
-    if (!meta) return "Not saved yet";
-    return `${meta.level} - ${meta.unit}`;
-}
-
-function renderStudentDashboard() {
-    const student = getCurrentStudent();
-    if (!student) return;
-    const nameEl = document.getElementById("dashboardStudentName");
-    const progressValue = document.getElementById("dashboardProgressValue");
-    const progressHint = document.getElementById("dashboardProgressHint");
-    const lastLesson = document.getElementById("dashboardLastLesson");
-    const lastHint = document.getElementById("dashboardLastLessonHint");
-    const openUnits = document.getElementById("dashboardOpenUnits");
-    const accessHint = document.getElementById("dashboardAccessHint");
-    const summary = getStudentProgressSummary(student);
-    const openCount = getOpenLessonIds().length;
-    const totalCount = getAllLessonIds().length;
-
-    if (nameEl) nameEl.textContent = student.name || "Student";
-    if (progressValue) progressValue.textContent = `${summary.percent}%`;
-    if (progressHint) progressHint.textContent = summary.total
-        ? `${summary.completed}/${summary.total} lesson sections completed.`
-        : "Start a lesson to begin tracking progress.";
-    if (lastLesson) lastLesson.textContent = student.lastSeen?.lessonId
-        ? getLessonDisplayName(student.lastSeen.lessonId)
-        : "Not saved yet";
-    if (lastHint) lastHint.textContent = student.lastSeen?.at
-        ? `Saved ${new Date(student.lastSeen.at).toLocaleString()}.`
-        : "Use Save spot inside a lesson to continue later.";
-    if (openUnits) openUnits.textContent = hasFullCourseAccess()
-        ? `${openCount}/${totalCount} units open`
-        : `${openCount} preview units`;
-    if (accessHint) accessHint.textContent = hasFullCourseAccess()
-        ? "Full course access is active."
-        : "Guest/student preview is limited. Get full access to unlock the complete course.";
-}
-
-function goToStudentDashboard() {
-    persistResumeBeforeNav();
-    document.body.classList.remove("home-only");
-    if (!getCurrentStudent()) {
-        goToHome();
-        return;
-    }
-    showScreen("student-dashboard-screen");
-    renderStudentDashboard();
-}
-
 function isPreviewLesson(lessonId) {
     return lessonId === LESSON_ID_GREETING || lessonId === LESSON_ID_WORK_STUDY;
 }
@@ -3903,7 +3833,7 @@ function closeSubscribeModal() {
 
 function openLearningChoiceModal() {
     if (window.auth?.currentUser && getCurrentStudent()) {
-        goToStudentDashboard();
+        goToLevels();
         return;
     }
     const modal = document.getElementById("learningChoiceModal");
@@ -7255,18 +7185,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             openWhatsAppWithMessage("Hi! I want to ask about Palestinian Arabic lessons.");
         });
     }
-    document.getElementById("btnDashboardUnits")?.addEventListener("click", () => {
-        goToLevels();
-    });
-    document.getElementById("btnDashboardRealLife")?.addEventListener("click", () => {
-        goToLevels();
-    });
-    document.getElementById("btnDashboardBooking")?.addEventListener("click", () => {
-        openExternalBookingPage();
-    });
-    document.getElementById("btnDashboardLogout")?.addEventListener("click", () => {
-        signOutStudentFromSite();
-    });
     const btnBackFromSubscribe = document.getElementById("btnBackToUnitsFromSubscribe");
     if (btnBackFromSubscribe) {
         btnBackFromSubscribe.addEventListener("click", () => {
@@ -7330,7 +7248,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ===== HERO BUTTONS (أنا طالب / أنا مدرس) =====
     const btnHeroStudent = document.getElementById("btnHeroStudent");
     const btnHeroTeacher = document.getElementById("btnHeroTeacher");
-    const btnHeroSubscribe = document.getElementById("btnHeroSubscribe");
 
     if (btnHeroStudent) {
         btnHeroStudent.addEventListener("click", async () => {
@@ -7362,17 +7279,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             openAuthModal("teacher");
         });
     }
-    if (btnHeroSubscribe) {
-        btnHeroSubscribe.addEventListener("click", () => {
-            openCourseAccessPage();
-        });
-    }
-
     // Subscribe modal buttons
     const subscribeBookingBtn = document.getElementById("subscribeBookingBtn");
     const subscribeAccessBtn = document.getElementById("subscribeAccessBtn");
     const learningLoginBtn = document.getElementById("learningLoginBtn");
-    const learningGuestBtn = document.getElementById("learningGuestBtn");
     const studentSiteAuthForm = document.getElementById("studentSiteAuthForm");
     const studentSiteSignupSubmit = document.getElementById("studentSiteSignupSubmit");
 
@@ -7445,13 +7355,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (learningLoginBtn) {
         learningLoginBtn.addEventListener("click", () => {
             if (studentSiteAuthForm) studentSiteAuthForm.hidden = false;
-        });
-    }
-
-    if (learningGuestBtn) {
-        learningGuestBtn.addEventListener("click", () => {
-            closeLearningChoiceModal();
-            startFreeLearning();
         });
     }
 
