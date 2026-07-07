@@ -51,13 +51,49 @@ service cloud.firestore {
     }
 
     function isStudentUserCreate() {
-      return request.resource.data.keys().hasOnly(['email', 'role', 'createdAt', 'createdBy']) &&
+      return request.resource.data.keys().hasOnly([
+          'email', 'name', 'phone', 'role', 'createdAt', 'updatedAt', 'createdBy'
+        ]) &&
         isValidEmail(request.resource.data.email) &&
-        request.resource.data.role == "student";
+        request.resource.data.role == "student" &&
+        (!('name' in request.resource.data) || request.resource.data.name is string) &&
+        (!('phone' in request.resource.data) || request.resource.data.phone == "" || isValidPhone(request.resource.data.phone));
+    }
+
+    function isStudentSafeProfileUpdate() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'email', 'name', 'phone', 'updatedAt',
+          'courseAccessRequested', 'courseAccessRequestedAt',
+          'paymentStatus', 'paymentNote', 'requestedProduct', 'requestedPrice'
+        ]) &&
+        request.resource.data.email == resource.data.email &&
+        request.resource.data.role == resource.data.role &&
+        (!('courseAccessRequested' in request.resource.data) || request.resource.data.courseAccessRequested == true) &&
+        (!('paymentStatus' in request.resource.data) || request.resource.data.paymentStatus in ["none", "pending"]) &&
+        (!('paymentNote' in request.resource.data) || request.resource.data.paymentNote is string) &&
+        (!('requestedProduct' in request.resource.data) || request.resource.data.requestedProduct is string) &&
+        (!('requestedPrice' in request.resource.data) ||
+          request.resource.data.requestedPrice is int ||
+          request.resource.data.requestedPrice is float);
+    }
+
+    function isTeacherStudentUpdate() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'email', 'name', 'phone', 'updatedAt',
+          'balance', 'lessonPrice',
+          'courseAccess', 'accessType', 'accessProduct', 'courseAccessRequested',
+          'courseAccessUpdatedAt', 'financeUpdatedAt',
+          'paymentStatus', 'paymentNote',
+          'requestedProduct', 'requestedPrice'
+        ]) &&
+        request.resource.data.role == resource.data.role &&
+        (!('courseAccess' in request.resource.data) || request.resource.data.courseAccess is bool) &&
+        (!('accessType' in request.resource.data) || request.resource.data.accessType in ["none", "lifetime", "trial", "manual"]) &&
+        (!('paymentStatus' in request.resource.data) || request.resource.data.paymentStatus in ["none", "pending", "approved"]);
     }
 
     match /users/{uid} {
-      allow read: if ownsDoc(uid);
+      allow read: if ownsDoc(uid) || isTeacher();
 
       allow create: if (
         ownsDoc(uid) &&
@@ -69,10 +105,8 @@ service cloud.firestore {
         request.resource.data.createdBy == request.auth.uid
       );
 
-      allow update: if ownsDoc(uid) &&
-        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['email']) &&
-        request.resource.data.email == resource.data.email &&
-        request.resource.data.role == resource.data.role;
+      allow update: if (ownsDoc(uid) && isStudentSafeProfileUpdate()) ||
+        (isTeacher() && isTeacherStudentUpdate());
 
       allow delete: if false;
     }
@@ -175,14 +209,14 @@ service cloud.firestore {
         request.resource.data.keys().hasOnly([
           'timezone', 'slotMinutes', 'breakMinutes',
           'totalSlotMinutes', 'days', 'exceptions', 'appsScript',
-          'whatsapp', 'contactEmail', 'sitePrice', 'updatedAt'
+          'whatsapp', 'contactEmail', 'sitePrice', 'courseOffers', 'updatedAt'
         ]);
 
       allow update: if isTeacher() &&
         request.resource.data.diff(resource.data).affectedKeys().hasOnly([
           'timezone', 'slotMinutes', 'breakMinutes',
           'totalSlotMinutes', 'days', 'exceptions', 'appsScript',
-          'whatsapp', 'contactEmail', 'sitePrice', 'updatedAt'
+          'whatsapp', 'contactEmail', 'sitePrice', 'courseOffers', 'updatedAt'
         ]);
 
       allow delete: if false;

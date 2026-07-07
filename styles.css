@@ -1809,6 +1809,23 @@ select:focus {
     color: var(--text-muted);
 }
 
+.unit-pill__unlock {
+    align-self: flex-start;
+    margin-top: 6px;
+    border: 1px solid rgba(37, 99, 235, 0.28);
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 5px 9px;
+    cursor: pointer;
+}
+
+.unit-pill__unlock:hover {
+    background: #dbeafe;
+}
+
 
 .unit-pill--clickable {
     cursor: pointer;
@@ -1847,6 +1864,87 @@ select:focus {
 .badge--soft {
     background: rgba(34, 197, 94, 0.08);
     color: #15803d;
+}
+
+.student-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.dashboard-card,
+.real-life-panel {
+    background: #ffffff;
+    border: 1px solid rgba(209, 213, 219, 0.9);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-card {
+    padding: 16px;
+}
+
+.dashboard-card__label,
+.real-life-panel .eyebrow {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+
+.dashboard-card strong {
+    display: block;
+    font-size: 1.55rem;
+    margin-bottom: 6px;
+}
+
+.dashboard-card p,
+.real-life-panel p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.real-life-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px;
+}
+
+.real-life-panel h3 {
+    margin: 0 0 8px;
+}
+
+.real-life-dialogue-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.real-life-dialogue-grid article {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    border-radius: var(--radius-md);
+    padding: 12px;
+}
+
+.real-life-dialogue-grid strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.real-life-dialogue-grid span {
+    color: var(--text-muted);
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.45;
 }
 
 /* Add Unit Card */
@@ -5194,6 +5292,16 @@ select:focus {
 }
 
 @media (max-width: 768px) {
+    .student-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .real-life-panel {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .real-life-dialogue-grid {
+        grid-template-columns: 1fr;
+    }
     .hero__actions {
         flex-direction: column;
         align-items: stretch;

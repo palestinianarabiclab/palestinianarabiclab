@@ -204,6 +204,7 @@ let currentAccessProfile = {
     courseAccess: false,
     accessType: "none",
 };
+let studentAccessUnsubscribe = null;
 let runtimeBusyBlocks = [];
 let runtimeBusyBlocksLoadedAt = 0;
 let runtimeBusyBlocksLoadedDays = 0;
@@ -269,6 +270,60 @@ async function ensureStudentProfileDoc(user, name = "") {
     return { ...existing, name: displayName, email: user.email || existing.email || "", role: "student" };
 }
 
+function stopStudentAccessListener() {
+    if (typeof studentAccessUnsubscribe === "function") {
+        studentAccessUnsubscribe();
+    }
+    studentAccessUnsubscribe = null;
+}
+
+function applyStudentAccessProfile(user, profile = {}) {
+    const name = getDisplayNameFromUser(user, profile);
+    currentAccessProfile = {
+        courseAccess: profile.courseAccess === true,
+        accessType: profile.accessType || "none",
+    };
+    if (appState.currentUser?.role === "student") {
+        const student = getCurrentStudent();
+        if (student) {
+            student.name = name;
+            student.level = profile.level || student.level || "Beginner";
+            student.progress = profile.progress || student.progress || {};
+            student.homeworkNotes = profile.homeworkNotes || student.homeworkNotes || {};
+        }
+    }
+    saveStudentsToLS({ skipCloud: true });
+    const levelsScreen = document.getElementById("levels-screen");
+    const lessonScreen = document.getElementById("lesson-screen");
+    const dashboardScreen = document.getElementById("student-dashboard-screen");
+    if (dashboardScreen?.classList.contains("screen--active")) {
+        renderStudentDashboard();
+    }
+    if (levelsScreen?.classList.contains("screen--active")) {
+        const label = document.getElementById("currentStudentNameLevels");
+        if (label) label.textContent = name;
+        renderLevels();
+        updateContinueButton();
+    }
+    if (lessonScreen?.classList.contains("screen--active") && !canOpenLesson(appState.currentLessonId)) {
+        toast("Full course access was removed. Preview units are still available.");
+        goToLevels();
+    }
+}
+
+function startStudentAccessListener(user) {
+    stopStudentAccessListener();
+    if (!window.db || !user?.uid) return;
+    studentAccessUnsubscribe = window.db.collection("users").doc(user.uid).onSnapshot((snap) => {
+        if (!snap.exists || appState.currentUser?.uid !== user.uid) return;
+        const profile = snap.data() || {};
+        if ((profile.role || "student") !== "student") return;
+        applyStudentAccessProfile(user, profile);
+    }, (error) => {
+        console.warn("Could not watch student course access.", error);
+    });
+}
+
 async function startSignedInStudentLearning(user, profile = {}, { navigate = true } = {}) {
     const name = getDisplayNameFromUser(user, profile);
     appState.currentUser = {
@@ -296,7 +351,8 @@ async function startSignedInStudentLearning(user, profile = {}, { navigate = tru
     appState.currentTab = appState.currentTab || "overview";
     saveStudentsToLS({ skipCloud: true });
     updateAuthUI();
-    if (navigate) goToLevels();
+    startStudentAccessListener(user);
+    if (navigate) goToStudentDashboard();
 }
 
 function waitForStudentAuth() {
@@ -320,7 +376,10 @@ function waitForStudentAuth() {
 function watchStudentAuthState() {
     if (!window.auth) return;
     window.auth.onAuthStateChanged(async (user) => {
-        if (!user || appState.currentUser?.role === "guest") return;
+        if (!user) {
+            stopStudentAccessListener();
+            return;
+        }
         const profile = await readStudentAccessProfile(user.uid);
         if ((profile.role || "student") !== "student") return;
         await startSignedInStudentLearning(user, profile, { navigate: false });
@@ -2912,6 +2971,8 @@ function goToLevels() {
     $("#currentStudentNameLevels").textContent = currentStudent.name;
     const btnSwitchProfile = $("#btnSwitchProfile");
     if (btnSwitchProfile) btnSwitchProfile.style.display = isGuestUser() ? "none" : "inline-flex";
+    const btnStudentLogout = $("#btnStudentLogout");
+    if (btnStudentLogout) btnStudentLogout.hidden = isGuestUser() || appState.currentUser?.role !== "student";
     renderLevels();
     updateContinueButton();
 }
@@ -3559,11 +3620,20 @@ function renderLevels() {
             statusSpan.className = "unit-pill__status";
 
             const lessonId = findLessonIdFor(lvl.level, unitName);
+            let unlockBtn = null;
 
             if (lessonId) {
                 if (!canOpenLesson(lessonId)) {
                     pill.classList.add("unit-pill--locked");
-                    statusSpan.textContent = "Full access";
+                    statusSpan.textContent = "Locked: full access required";
+                    unlockBtn = document.createElement("button");
+                    unlockBtn.className = "unit-pill__unlock";
+                    unlockBtn.type = "button";
+                    unlockBtn.textContent = "Get Full Access";
+                    unlockBtn.addEventListener("click", (event) => {
+                        event.stopPropagation();
+                        openCourseAccessPage();
+                    });
                     pill.addEventListener("click", () => {
                         openCourseAccessPage();
                     });
@@ -3607,6 +3677,7 @@ function renderLevels() {
 
             pill.appendChild(nameSpan);
             pill.appendChild(statusSpan);
+            if (unlockBtn) pill.appendChild(unlockBtn);
             unitsContainer.appendChild(pill);
         });
 
@@ -3615,12 +3686,8 @@ function renderLevels() {
         container.appendChild(card);
     });
 
-    // Render the new "Dialogue Only (Decisions)" section if present
-    try {
-        if (typeof window.renderDialogueOnlyLevels === "function") {
-            window.renderDialogueOnlyLevels();
-        }
-    } catch (e) { }
+    const dialogueOnlyContainer = document.getElementById("dialogueOnlyContainer");
+    if (dialogueOnlyContainer) dialogueOnlyContainer.innerHTML = "";
 }
 
 // ========================= LESSON VIEW =========================
@@ -3683,11 +3750,86 @@ function hasFullCourseAccess() {
     return currentAccessProfile.courseAccess === true;
 }
 
+function getAllLessonIds() {
+    return Object.keys(lessons).filter((id) => lessons[id]?.meta);
+}
+
+function getOpenLessonIds() {
+    return getAllLessonIds().filter((lessonId) => canOpenLesson(lessonId));
+}
+
+function getStudentProgressSummary(student) {
+    const lessonIds = getAllLessonIds();
+    let completed = 0;
+    let total = 0;
+    lessonIds.forEach((lessonId) => {
+        const progress = student?.progress?.[lessonId] || {};
+        total += Object.keys(progress).length;
+        completed += Object.values(progress).filter(Boolean).length;
+    });
+    return {
+        completed,
+        total,
+        percent: total ? Math.round((completed / total) * 100) : 0,
+    };
+}
+
+function getLessonDisplayName(lessonId) {
+    const meta = lessons[lessonId]?.meta;
+    if (!meta) return "Not saved yet";
+    return `${meta.level} - ${meta.unit}`;
+}
+
+function renderStudentDashboard() {
+    const student = getCurrentStudent();
+    if (!student) return;
+    const nameEl = document.getElementById("dashboardStudentName");
+    const progressValue = document.getElementById("dashboardProgressValue");
+    const progressHint = document.getElementById("dashboardProgressHint");
+    const lastLesson = document.getElementById("dashboardLastLesson");
+    const lastHint = document.getElementById("dashboardLastLessonHint");
+    const openUnits = document.getElementById("dashboardOpenUnits");
+    const accessHint = document.getElementById("dashboardAccessHint");
+    const summary = getStudentProgressSummary(student);
+    const openCount = getOpenLessonIds().length;
+    const totalCount = getAllLessonIds().length;
+
+    if (nameEl) nameEl.textContent = student.name || "Student";
+    if (progressValue) progressValue.textContent = `${summary.percent}%`;
+    if (progressHint) progressHint.textContent = summary.total
+        ? `${summary.completed}/${summary.total} lesson sections completed.`
+        : "Start a lesson to begin tracking progress.";
+    if (lastLesson) lastLesson.textContent = student.lastSeen?.lessonId
+        ? getLessonDisplayName(student.lastSeen.lessonId)
+        : "Not saved yet";
+    if (lastHint) lastHint.textContent = student.lastSeen?.at
+        ? `Saved ${new Date(student.lastSeen.at).toLocaleString()}.`
+        : "Use Save spot inside a lesson to continue later.";
+    if (openUnits) openUnits.textContent = hasFullCourseAccess()
+        ? `${openCount}/${totalCount} units open`
+        : `${openCount} preview units`;
+    if (accessHint) accessHint.textContent = hasFullCourseAccess()
+        ? "Full course access is active."
+        : "Guest/student preview is limited. Get full access to unlock the complete course.";
+}
+
+function goToStudentDashboard() {
+    persistResumeBeforeNav();
+    document.body.classList.remove("home-only");
+    if (!getCurrentStudent()) {
+        goToHome();
+        return;
+    }
+    showScreen("student-dashboard-screen");
+    renderStudentDashboard();
+}
+
 function isPreviewLesson(lessonId) {
     return lessonId === LESSON_ID_GREETING || lessonId === LESSON_ID_WORK_STUDY;
 }
 
 function startFreeLearning({ navigate = true } = {}) {
+    stopStudentAccessListener();
     appState.currentUser = { uid: "guest", email: "Guest", role: "guest" };
     currentAccessProfile = { courseAccess: false, accessType: "none" };
     appState.guestMode = true;
@@ -3704,6 +3846,25 @@ function startFreeLearning({ navigate = true } = {}) {
     appState.currentTab = appState.currentTab || "overview";
     updateAuthUI();
     if (navigate) goToLevels();
+}
+
+async function signOutStudentFromSite() {
+    stopStudentAccessListener();
+    try {
+        if (window.auth?.currentUser) {
+            await window.auth.signOut();
+        }
+    } catch (error) {
+        console.warn("Could not sign out from Firebase.", error);
+    }
+    appState.currentUser = null;
+    appState.currentStudentId = null;
+    appState.students = [];
+    appState.guestMode = false;
+    appState.guestStudent = null;
+    currentAccessProfile = { courseAccess: false, accessType: "none" };
+    updateAuthUI();
+    goToHome();
 }
 
 function isGuestAllowedLesson(lessonId) {
@@ -3742,11 +3903,19 @@ function closeSubscribeModal() {
 
 function openLearningChoiceModal() {
     if (window.auth?.currentUser && getCurrentStudent()) {
-        goToLevels();
+        goToStudentDashboard();
         return;
     }
     const modal = document.getElementById("learningChoiceModal");
     if (modal) modal.classList.add("modal--open");
+}
+
+function openStudentLoginModal() {
+    const form = document.getElementById("studentSiteAuthForm");
+    const msg = document.getElementById("studentSiteAuthMsg");
+    if (form) form.hidden = false;
+    if (msg) msg.textContent = "";
+    openLearningChoiceModal();
 }
 
 function closeLearningChoiceModal() {
@@ -7086,6 +7255,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             openWhatsAppWithMessage("Hi! I want to ask about Palestinian Arabic lessons.");
         });
     }
+    document.getElementById("btnDashboardUnits")?.addEventListener("click", () => {
+        goToLevels();
+    });
+    document.getElementById("btnDashboardRealLife")?.addEventListener("click", () => {
+        goToLevels();
+    });
+    document.getElementById("btnDashboardBooking")?.addEventListener("click", () => {
+        openExternalBookingPage();
+    });
+    document.getElementById("btnDashboardLogout")?.addEventListener("click", () => {
+        signOutStudentFromSite();
+    });
     const btnBackFromSubscribe = document.getElementById("btnBackToUnitsFromSubscribe");
     if (btnBackFromSubscribe) {
         btnBackFromSubscribe.addEventListener("click", () => {
@@ -7155,15 +7336,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         btnHeroStudent.addEventListener("click", async () => {
             const user = window.auth?.currentUser;
             if (!user) {
-                openLearningChoiceModal();
+                openStudentLoginModal();
                 return;
             }
             const profile = await readStudentAccessProfile(user.uid);
             if ((profile.role || "student") !== "student") {
-                openLearningChoiceModal();
+                openStudentLoginModal();
                 return;
             }
             await startSignedInStudentLearning(user, profile);
+        });
+    }
+
+    const btnHeroGuest = document.getElementById("btnHeroGuest");
+    if (btnHeroGuest) {
+        btnHeroGuest.addEventListener("click", () => {
+            startFreeLearning();
         });
     }
 
@@ -7507,6 +7695,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         try { persistResumeBeforeNav(); } catch { }
         appState.currentStudentId = null;
         goToStudents();
+    });
+    document.getElementById("btnStudentLogout")?.addEventListener("click", () => {
+        signOutStudentFromSite();
     });
     const btnContinueLesson = document.getElementById("btnContinueLesson");
     if (btnContinueLesson) {

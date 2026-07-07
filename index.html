@@ -150,7 +150,10 @@
 
                 <div class="hero__actions hero__actions--center">
                     <button id="btnHeroStudent" class="btn btn--primary btn--lg">
-                        Start Learning
+                        Student Login
+                    </button>
+                    <button id="btnHeroGuest" class="btn btn--outline btn--lg">
+                        Guest Preview
                     </button>
                     <button id="btnHeroSubscribe" class="btn btn--outline btn--lg">
                         Book a Trial Lesson
@@ -175,6 +178,15 @@
                     daily routines, shopping, health, work, feelings, opinions, and future plans.
                     Each lesson is designed to help you recognize common Palestinian expressions and
                     use them in simple conversations.
+                </p>
+            </section>
+            <section>
+                <h2>Real-Life Dialogues</h2>
+                <p>
+                    Practice Palestinian Arabic through everyday situations: ordering at a restaurant,
+                    visiting family, taking transportation, welcoming guests, and explaining a health
+                    problem to a doctor. These scenarios help learners move from vocabulary lists into
+                    practical conversations they can actually use.
                 </p>
             </section>
             <section>
@@ -221,6 +233,77 @@
     </section>
 
     <main>
+        <!-- ============== STUDENT DASHBOARD SCREEN ============== -->
+        <section id="student-dashboard-screen" class="screen">
+            <div class="section-header section-header--with-actions">
+                <div>
+                    <h2>Student Dashboard</h2>
+                    <p class="section-header__subtitle">
+                        Welcome back, <span id="dashboardStudentName" class="tag">Student</span>
+                    </p>
+                </div>
+                <div class="section-header__actions">
+                    <button id="btnDashboardUnits" class="btn btn--primary btn--sm">Course Units</button>
+                    <button id="btnDashboardBooking" class="btn btn--outline btn--sm">Book / Schedule</button>
+                    <button id="btnDashboardLogout" class="btn btn--ghost btn--sm">Sign Out</button>
+                </div>
+            </div>
+
+            <div class="student-dashboard-grid">
+                <article class="dashboard-card">
+                    <span class="dashboard-card__label">Progress</span>
+                    <strong id="dashboardProgressValue">0%</strong>
+                    <p id="dashboardProgressHint">Start a lesson to begin tracking progress.</p>
+                </article>
+                <article class="dashboard-card">
+                    <span class="dashboard-card__label">Last Lesson</span>
+                    <strong id="dashboardLastLesson">Not saved yet</strong>
+                    <p id="dashboardLastLessonHint">Use Save spot inside a lesson to continue later.</p>
+                </article>
+                <article class="dashboard-card">
+                    <span class="dashboard-card__label">Open Units</span>
+                    <strong id="dashboardOpenUnits">2 preview units</strong>
+                    <p id="dashboardAccessHint">Full access unlocks the complete course.</p>
+                </article>
+            </div>
+
+            <section class="real-life-panel">
+                <div>
+                    <p class="eyebrow">Practice Situations</p>
+                    <h3>Real-life Palestinian Arabic dialogues</h3>
+                    <p>
+                        Start with practical conversations for restaurant orders, family visits,
+                        transportation, welcoming guests, and doctor visits. These will grow into
+                        full practice activities as the course expands.
+                    </p>
+                </div>
+                <button id="btnDashboardRealLife" class="btn btn--outline btn--sm">Open Preview Units</button>
+            </section>
+
+            <div class="real-life-dialogue-grid" aria-label="Real-life dialogue situations">
+                <article>
+                    <strong>Restaurant</strong>
+                    <span>Order food, ask about prices, and respond naturally.</span>
+                </article>
+                <article>
+                    <strong>Family</strong>
+                    <span>Introduce relatives and ask simple family questions.</span>
+                </article>
+                <article>
+                    <strong>Transportation</strong>
+                    <span>Ask for directions, rides, and arrival times.</span>
+                </article>
+                <article>
+                    <strong>Visiting</strong>
+                    <span>Greet guests, offer coffee, and make small talk.</span>
+                </article>
+                <article>
+                    <strong>Doctor</strong>
+                    <span>Describe symptoms and understand basic advice.</span>
+                </article>
+            </div>
+        </section>
+
         <!--  ==== STUDENT SELECTION SCREEN ============== -->
         <section id="students-screen" class="screen">
             <div class="section-header">
@@ -338,21 +421,21 @@
                     <button id="btnSwitchProfile" class="btn btn--ghost">Switch Profile</button>
                     <button id="btnContinueLesson" class="btn btn--primary btn--sm">Continue</button>
                     <button id="btnArabicLetters" class="btn btn--outline btn--sm">Arabic Letters</button>
-                    <button id="btnStudentSchedule" class="btn btn--outline btn--sm">Schedule / Booking</button>
-                    <button id="btnSubscribe" class="btn btn--outline btn--sm">Subscribe</button>
+                    <button id="btnSubscribe" class="btn btn--outline btn--sm">Subscribe / Schedule</button>
                     <button id="btnContact" class="btn btn--ghost btn--sm">Contact</button>
+                    <button id="btnStudentLogout" class="btn btn--ghost btn--sm" hidden>Sign Out</button>
                     <button id="btnSyncLessonsNow" class="btn btn--ghost" style="display:none;">Sync lessons</button>
                 </div>
             </div>
 
             <div id="levelsContainer" class="levels-grid"></div>
 
-            <div class="section-header" style="margin-top:18px;">
+            <div class="section-header" style="margin-top:18px;" hidden aria-hidden="true">
                 <h3 style="margin:0;">Dialogue Practice (Decisions)</h3>
                 <p class="section-header__subtitle">Same units, but dialogue-only with branching choices.</p>
             </div>
 
-            <div id="dialogueOnlyContainer" class="levels-grid"></div>
+            <div id="dialogueOnlyContainer" class="levels-grid" hidden aria-hidden="true"></div>
 
 
         </section>
