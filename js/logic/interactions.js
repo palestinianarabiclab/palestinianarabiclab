@@ -458,6 +458,10 @@ function formatAccessPrice(value) {
 }
 
 function updateCourseOfferUi() {
+    const priceLabel = document.getElementById("subscribeAccessPrice");
+    if (priceLabel) {
+        priceLabel.textContent = formatAccessPrice(courseOfferSettings.courseAccessPrice);
+    }
     const paypalLink = document.getElementById("subscribePayPalLink");
     if (paypalLink) {
         const url = (courseOfferSettings.paypalPaymentLink || "").trim();
@@ -2988,7 +2992,7 @@ function goToLessonView(opts = {}) {
     if (!canOpenLesson(appState.currentLessonId)) {
         toast("This unit requires full course access.");
         goToLevels();
-        openCourseAccessPage();
+        openSubscribeModal();
         return;
     }
     showScreen("lesson-screen");
@@ -3628,10 +3632,10 @@ function renderLevels() {
                     unlockBtn.textContent = "Get Full Access";
                     unlockBtn.addEventListener("click", (event) => {
                         event.stopPropagation();
-                        openCourseAccessPage();
+                        openSubscribeModal();
                     });
                     pill.addEventListener("click", () => {
-                        openCourseAccessPage();
+                        openSubscribeModal();
                     });
                 } else {
                     pill.classList.add("unit-pill--clickable");
@@ -7170,7 +7174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btnSubscribe = $("#btnSubscribe");
     if (btnSubscribe) {
         btnSubscribe.addEventListener("click", () => {
-            openCourseAccessPage();
+            openSubscribeModal();
         });
     }
     const btnStudentSchedule = $("#btnStudentSchedule");
