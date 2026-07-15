@@ -14,6 +14,13 @@ import { lessonId as complaintsId, lesson as complaints } from './intermediate/C
 import { lessonId as hobbiesId, lesson as hobbies } from './intermediate/hobbies.js';
 import { lessonId as plansId, lesson as plans } from './intermediate/plans.js';
 import { lessonId as opinionsId, lesson as opinions } from './intermediate/opinions.js';
+import { lessonId as beginnerReview1Id, lesson as beginnerReview1 } from './review/beginnerReview1.js';
+import { lessonId as beginnerFinalId, lesson as beginnerFinal } from './review/beginnerFinal.js';
+import { lessonId as preIntermediateReview2Id, lesson as preIntermediateReview2 } from './review/preIntermediateReview2.js';
+import { lessonId as preIntermediateFinalId, lesson as preIntermediateFinal } from './review/preIntermediateFinal.js';
+import { lessonId as intermediateReview3Id, lesson as intermediateReview3 } from './review/intermediateReview3.js';
+import { lessonId as intermediateFinalId, lesson as intermediateFinal } from './review/intermediateFinal.js';
+import { lessonId as placementTestId, lesson as placementTest } from './review/placementTest.js';
 
 export const defaultLessons = {
   [greetingsId]: greetings,
@@ -31,4 +38,11 @@ export const defaultLessons = {
   [plansId]: plans,
   [hobbiesId]: hobbies,
   [opinionsId]: opinions,
+  [beginnerReview1Id]: beginnerReview1,
+  [beginnerFinalId]: beginnerFinal,
+  [preIntermediateReview2Id]: preIntermediateReview2,
+  [preIntermediateFinalId]: preIntermediateFinal,
+  [intermediateReview3Id]: intermediateReview3,
+  [intermediateFinalId]: intermediateFinal,
+  [placementTestId]: placementTest,
 };

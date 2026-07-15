@@ -4,6 +4,8 @@
 import * as CONST from '../core/constants.js';
 import { defaultLessons as importedDefaultLessons } from '../lessons/index.js';
 import { arabicLetters, arabicLettersExtras, arabicLettersExercises } from '../data/arabicLettersData.js';
+import { gazaSituations } from '../data/gazaSituationsData.js';
+import { palestinianProverbs } from '../data/palestinianCultureData.js';
 import {
     createInitialContactSettings,
     loadContactSettings as loadStoredContactSettings,
@@ -295,6 +297,7 @@ function applyStudentAccessProfile(user, profile = {}) {
     saveStudentsToLS({ skipCloud: true });
     const levelsScreen = document.getElementById("levels-screen");
     const lessonScreen = document.getElementById("lesson-screen");
+    const gazaSituationScreen = document.getElementById("gaza-situation-screen");
     if (levelsScreen?.classList.contains("screen--active")) {
         const label = document.getElementById("currentStudentNameLevels");
         if (label) label.textContent = name;
@@ -303,6 +306,13 @@ function applyStudentAccessProfile(user, profile = {}) {
     }
     if (lessonScreen?.classList.contains("screen--active") && !canOpenLesson(appState.currentLessonId)) {
         toast("Full course access was removed. Preview units are still available.");
+        goToLevels();
+    }
+    if (
+        gazaSituationScreen?.classList.contains("screen--active")
+        && !canOpenGazaSituation(appState.currentGazaSituationId)
+    ) {
+        toast("Full course access was removed. The first Gaza situation is still available.");
         goToLevels();
     }
 }
@@ -3563,15 +3573,15 @@ function renderLevels() {
     const levelsDef = [
         {
             level: "Beginner",
-            units: ["Greetings", "Family", "Daily Routine", "Food & Drink", "Transportation"],
+            units: ["Greetings", "Family", "Daily Routine", "Food & Drink", "Transportation", "Cumulative Review 1", "Beginner Final"],
         },
         {
             level: "Pre-Intermediate",
-            units: ["Work & Study", "Health & Emergencies", "Shopping & Prices", "Weather & Small Talk", "Apartment & Problems"],
+            units: ["Work & Study", "Weather & Small Talk", "Shopping & Prices", "Health & Emergencies", "Apartment & Problems", "Cumulative Review 2", "Pre-Intermediate Final"],
         },
         {
             level: "Intermediate",
-            units: ["Opinions", "Complaints", "Plans & Future", "Free Time & Hobbies", "Feelings"],
+            units: ["Opinions", "Complaints", "Plans & Future", "Free Time & Hobbies", "Feelings", "Cumulative Review 3", "Intermediate Final"],
         },
     ];
 
@@ -3688,6 +3698,108 @@ function renderLevels() {
 
     const dialogueOnlyContainer = document.getElementById("dialogueOnlyContainer");
     if (dialogueOnlyContainer) dialogueOnlyContainer.innerHTML = "";
+    renderGazaSituationsHub();
+}
+
+function renderGazaSituationsHub() {
+    const container = document.getElementById("gazaSituationsContainer");
+    if (!container) return;
+    container.innerHTML = "";
+
+    gazaSituations.forEach((situation, index) => {
+        const unlocked = canOpenGazaSituation(situation.id);
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = `gaza-hub__card${unlocked ? "" : " gaza-hub__card--locked"}`;
+        card.setAttribute("aria-label", unlocked
+            ? `Open ${situation.title}`
+            : `${situation.title} — Full Access required`);
+        card.innerHTML = `
+            <span class="gaza-hub__icon" aria-hidden="true">${situation.icon}</span>
+            <span class="gaza-hub__card-copy">
+                <strong>${situation.title}</strong>
+                <span>${situation.subtitle}</span>
+                <small>${unlocked
+                    ? `${situation.lines.length} natural dialogue lines${index === 0 && !hasFullCourseAccess() ? " · Free preview" : ""}`
+                    : "🔒 Full Access required"
+                }</small>
+            </span>
+            <span class="gaza-hub__arrow" aria-hidden="true">${unlocked ? "→" : "🔒"}</span>
+        `;
+        card.addEventListener("click", () => {
+            if (!unlocked) {
+                toast("This Gaza situation requires full course access.");
+                openSubscribeModal();
+                return;
+            }
+            openGazaSituation(situation.id);
+        });
+        container.appendChild(card);
+    });
+}
+
+function isPreviewGazaSituation(situationId) {
+    return situationId === gazaSituations[0]?.id;
+}
+
+function canOpenGazaSituation(situationId) {
+    if (!situationId) return false;
+    return hasFullCourseAccess() || isPreviewGazaSituation(situationId);
+}
+
+function openGazaSituation(situationId) {
+    if (!canOpenGazaSituation(situationId)) {
+        toast("This Gaza situation requires full course access.");
+        openSubscribeModal();
+        return;
+    }
+    const situation = gazaSituations.find((item) => item.id === situationId);
+    const root = document.getElementById("gazaSituationRoot");
+    if (!situation || !root) return;
+    appState.currentGazaSituationId = situationId;
+
+    root.innerHTML = `
+        <article class="gaza-situation">
+            <header class="gaza-situation__hero">
+                <span class="gaza-situation__hero-icon" aria-hidden="true">${situation.icon}</span>
+                <div>
+                    <p class="gaza-situation__eyebrow">Real Gaza conversation · ${situation.lines.length} lines</p>
+                    <h2>${situation.title}</h2>
+                    <p>${situation.setting}</p>
+                </div>
+            </header>
+            <div class="gaza-situation__controls" aria-label="Dialogue display options">
+                <button type="button" class="btn btn--outline btn--sm" data-toggle-arabeezy>Hide Arabizi</button>
+                <button type="button" class="btn btn--outline btn--sm" data-toggle-english>Hide English</button>
+            </div>
+            <div class="gaza-situation__dialogue">
+                ${situation.lines.map((line, index) => `
+                    <section class="gaza-situation__line" data-speaker="${line.speaker}" style="--line-delay:${Math.min(index, 12) * 18}ms">
+                        <div class="gaza-situation__speaker">${line.speaker}</div>
+                        <div class="gaza-situation__text">
+                            <p class="gaza-situation__arabic" dir="rtl" lang="ar">${line.ar}</p>
+                            <p class="gaza-situation__arabeezy">${line.arabeezy}</p>
+                            <p class="gaza-situation__english">${line.en}</p>
+                        </div>
+                    </section>
+                `).join("")}
+            </div>
+        </article>
+    `;
+
+    const arabeezyToggle = root.querySelector("[data-toggle-arabeezy]");
+    const englishToggle = root.querySelector("[data-toggle-english]");
+    arabeezyToggle?.addEventListener("click", () => {
+        const hidden = root.classList.toggle("gaza-situation-root--hide-arabeezy");
+        arabeezyToggle.textContent = hidden ? "Show Arabizi" : "Hide Arabizi";
+    });
+    englishToggle?.addEventListener("click", () => {
+        const hidden = root.classList.toggle("gaza-situation-root--hide-english");
+        englishToggle.textContent = hidden ? "Show English" : "Hide English";
+    });
+
+    showScreen("gaza-situation-screen");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // ========================= LESSON VIEW =========================
@@ -3807,6 +3919,7 @@ function isGuestAllowedLesson(lessonId) {
 
 function canOpenLesson(lessonId) {
     if (!lessonId) return false;
+    if (lessons[lessonId]?.meta?.unit === "Placement Test") return true;
     if (hasFullCourseAccess()) return true;
     return isPreviewLesson(lessonId);
 }
@@ -3871,21 +3984,39 @@ function closeBookingPortalModal() {
 
 function isGrammarTabEnabled(lesson) {
     if (!lesson) return false;
-    const hasGrammar = Array.isArray(lesson.grammar) && lesson.grammar.length > 0;
-    return appState.teacherMode && hasGrammar;
+    return Array.isArray(lesson.grammar) && lesson.grammar.length > 0;
 }
-
 function updateLessonTabsVisibility(lesson) {
+    const availableTabs = safeArr(lesson?.meta?.availableTabs);
+    document.querySelectorAll(".lesson-tab[data-tab]").forEach((tab) => {
+        const tabKey = tab.dataset.tab;
+        if (availableTabs.length) {
+            tab.style.display = availableTabs.includes(tabKey) ? "inline-flex" : "none";
+        } else if (tabKey !== "grammar" && tabKey !== "culture") {
+            tab.style.display = "inline-flex";
+        }
+    });
     const grammarTab = document.querySelector('.lesson-tab[data-tab="grammar"]');
     if (grammarTab) {
         grammarTab.textContent = "Grammar";
         grammarTab.style.display = isGrammarTabEnabled(lesson) ? "inline-flex" : "none";
     }
+    const cultureTab = document.querySelector('.lesson-tab[data-tab="culture"]');
+    if (cultureTab) {
+        cultureTab.style.display = safeArr(lesson?.culture).length ? "inline-flex" : "none";
+    }
 }
 
 function normalizeLessonTabKey(tabKey, lesson) {
+    const availableTabs = safeArr(lesson?.meta?.availableTabs);
+    if (availableTabs.length && !availableTabs.includes(tabKey)) {
+        return availableTabs[0] || "overview";
+    }
     if (tabKey === "grammar" && !isGrammarTabEnabled(lesson)) {
         return "translation";
+    }
+    if (tabKey === "culture") {
+        return "overview";
     }
     return tabKey || "overview";
 }
@@ -3997,7 +4128,167 @@ function updateContinueButton() {
 
 // Tabs
 function renderPracticeTab(container, lesson) {
+    if (lesson?.practice?.assessmentMode) {
+        return renderAssessmentPractice(container, lesson);
+    }
+    if (["Greetings", "Family", "Daily Routine", "Food & Drink", "Transportation", "Cumulative Review 1", "Work & Study", "Weather & Small Talk", "Shopping & Prices", "Health & Emergencies", "Apartment & Problems", "Cumulative Review 2", "Opinions", "Complaints", "Plans & Future", "Free Time & Hobbies", "Feelings", "Cumulative Review 3"].includes(lesson?.meta?.unit)) {
+        return renderPracticeTabClean(container, lesson);
+    }
     return renderPracticeTabSimple(container, lesson);
+}
+
+function renderAssessmentPractice(container, lesson) {
+    const practice = lesson.practice || {};
+    const questions = safeArr(practice.questions);
+    const answers = new Map();
+    const shuffledOptions = questions.map((question) => {
+        const entries = safeArr(question.options).map((text, originalIndex) => ({ text, originalIndex }));
+        for (let index = entries.length - 1; index > 0; index -= 1) {
+            const swapIndex = Math.floor(Math.random() * (index + 1));
+            [entries[index], entries[swapIndex]] = [entries[swapIndex], entries[index]];
+        }
+        return entries;
+    });
+    const root = document.createElement("div");
+    root.className = "practice-pro";
+
+    const header = document.createElement("div");
+    header.className = "practice-pro__header";
+    const headerText = document.createElement("div");
+    const title = document.createElement("h4");
+    title.textContent = practice.assessmentTitle || "Final Assessment";
+    const intro = document.createElement("p");
+    intro.textContent = "Answer every question, then submit once. Correct answers are not shown during the test.";
+    headerText.appendChild(title);
+    headerText.appendChild(intro);
+    header.appendChild(headerText);
+    root.appendChild(header);
+
+    const list = document.createElement("div");
+    list.className = "practice-pro__body";
+    questions.forEach((question, questionIndex) => {
+        const card = document.createElement("article");
+        card.className = "practice-pro__card";
+        const counter = document.createElement("div");
+        counter.className = "practice-pro__counter";
+        counter.textContent = `${questionIndex + 1} / ${questions.length} · ${question.skill || "Language"}`;
+        const prompt = document.createElement("div");
+        prompt.className = "practice-pro__prompt";
+        prompt.textContent = question.prompt || "";
+        const choices = document.createElement("div");
+        choices.className = "practice-pro__choices";
+        shuffledOptions[questionIndex].forEach(({ text: option, originalIndex }) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "practice-pro__choice";
+            button.textContent = option;
+            button.addEventListener("click", () => {
+                answers.set(questionIndex, originalIndex);
+                choices.querySelectorAll("button").forEach((item) => item.classList.remove("is-selected"));
+                button.classList.add("is-selected");
+            });
+            choices.appendChild(button);
+        });
+        card.appendChild(counter);
+        card.appendChild(prompt);
+        card.appendChild(choices);
+        list.appendChild(card);
+    });
+    root.appendChild(list);
+
+    const speakingScores = [];
+    if (practice.speaking) {
+        const speaking = document.createElement("article");
+        speaking.className = "practice-pro__panel";
+        const body = document.createElement("div");
+        body.className = "practice-pro__body";
+        const heading = document.createElement("h5");
+        heading.textContent = "Teacher-scored speaking task";
+        const prompt = document.createElement("p");
+        prompt.className = "practice-pro__prompt";
+        prompt.textContent = practice.speaking.prompt || "";
+        body.appendChild(heading);
+        body.appendChild(prompt);
+        safeArr(practice.speaking.criteria).forEach((criterion, index) => {
+            const row = document.createElement("label");
+            row.className = "practice-pro__line";
+            const text = document.createElement("span");
+            text.textContent = criterion;
+            const select = document.createElement("select");
+            select.className = "practice-pro__input";
+            [[0, "0 - Not demonstrated"], [1, "1 - With support"], [2, "2 - Independent"]].forEach(([value, label]) => {
+                const option = document.createElement("option");
+                option.value = String(value);
+                option.textContent = label;
+                select.appendChild(option);
+            });
+            speakingScores[index] = select;
+            row.appendChild(text);
+            row.appendChild(select);
+            body.appendChild(row);
+        });
+        speaking.appendChild(body);
+        root.appendChild(speaking);
+    }
+
+    const result = document.createElement("div");
+    result.className = "practice-pro__feedback";
+    const submit = document.createElement("button");
+    submit.type = "button";
+    submit.className = "btn btn--primary";
+    submit.textContent = "Submit final assessment";
+    submit.addEventListener("click", () => {
+        if (answers.size < questions.length) {
+            result.className = "practice-pro__feedback is-no";
+            result.textContent = `Answer all questions first (${answers.size}/${questions.length} completed).`;
+            return;
+        }
+        const objectiveScore = questions.reduce((score, question, index) => score + (answers.get(index) === question.correctIndex ? 1 : 0), 0);
+        const speakingScore = speakingScores.reduce((score, select) => score + Number(select.value || 0), 0);
+        const objectivePercent = questions.length ? Math.round((objectiveScore / questions.length) * 100) : 0;
+        const overallMax = questions.length + speakingScores.length * 2;
+        const overallScore = objectiveScore + speakingScore;
+        const overallPercent = overallMax ? Math.round((overallScore / overallMax) * 100) : 0;
+        const level = lesson?.meta?.level || "Beginner";
+        const recommendations = {
+            Beginner: {
+                ready: "Ready for Pre-Intermediate.",
+                review: "Continue, but review weak Beginner topics first.",
+                repeat: "Repeat Cumulative Review 1 before moving on.",
+            },
+            "Pre-Intermediate": {
+                ready: "Ready for Intermediate.",
+                review: "Continue, but review weak Pre-Intermediate topics first.",
+                repeat: "Repeat Cumulative Review 2 before moving on.",
+            },
+            Intermediate: {
+                ready: "Intermediate outcomes achieved; move to advanced expansion and real-life fluency work.",
+                review: "Review weak Intermediate topics before advanced expansion.",
+                repeat: "Repeat Cumulative Review 3 before moving on.",
+            },
+        };
+        const messages = recommendations[level] || recommendations.Beginner;
+        const recommendation = practice.placementMode
+            ? objectivePercent >= 72
+                ? "Recommended starting level: Intermediate. Review any missed Pre-Intermediate skills first."
+                : objectivePercent >= 39
+                    ? "Recommended starting level: Pre-Intermediate."
+                    : "Recommended starting level: Beginner."
+            : overallPercent >= 80
+                ? messages.ready
+                : overallPercent >= 60
+                    ? messages.review
+                    : messages.repeat;
+        result.className = "practice-pro__feedback is-ok";
+        result.textContent = practice.placementMode
+            ? `Placement score: ${objectiveScore}/${questions.length} (${objectivePercent}%). ${recommendation}`
+            : `Objective: ${objectiveScore}/${questions.length} (${objectivePercent}%). Speaking: ${speakingScore}/${speakingScores.length * 2}. Overall: ${overallPercent}%. ${recommendation}`;
+        setStudentProgressField("practice", true);
+    });
+    root.appendChild(submit);
+    root.appendChild(result);
+    container.appendChild(root);
+    renderSectionStatus(container, "practice");
 }
 
 function renderHomeworkTab(container, lesson) {
@@ -4027,6 +4318,9 @@ function setActiveTab(tabKey) {
             break;
         case "dialogue":
             renderDialogueTab(container, lesson);
+            break;
+        case "culture":
+            renderCultureTab(container, lesson);
             break;
         case "grammar":
             renderGrammarTab(container, lesson);
@@ -4456,6 +4750,9 @@ function renderDialogueTab(container, lesson) {
     const arCol = document.createElement("div");
     arCol.className = "dialogue-col dialogue-col--ar";
 
+    const mobileList = document.createElement("div");
+    mobileList.className = "dialogue-mobile";
+
     lesson.dialogue.lines.forEach((line) => {
         const enLine = document.createElement("div");
         enLine.className = "dialogue-line";
@@ -4492,10 +4789,38 @@ function renderDialogueTab(container, lesson) {
         arLine.appendChild(arSpeaker);
         arLine.appendChild(arContent);
         arCol.appendChild(arLine);
+
+        const mobileCard = document.createElement("article");
+        mobileCard.className = "dialogue-mobile__card";
+
+        const mobileSpeaker = document.createElement("div");
+        mobileSpeaker.className = "dialogue-mobile__speaker";
+        mobileSpeaker.textContent = line.speaker;
+
+        const mobileArabic = document.createElement("div");
+        mobileArabic.className = "dialogue-mobile__arabic";
+        mobileArabic.dir = "rtl";
+        mobileArabic.textContent = line.ar;
+
+        const mobileArabeezy = document.createElement("div");
+        mobileArabeezy.className = "dialogue-mobile__arabeezy";
+        mobileArabeezy.textContent = arArabeezyText;
+        mobileArabeezy.hidden = !arArabeezyText;
+
+        const mobileEnglish = document.createElement("div");
+        mobileEnglish.className = "dialogue-mobile__english";
+        mobileEnglish.textContent = line.en;
+
+        mobileCard.appendChild(mobileSpeaker);
+        mobileCard.appendChild(mobileArabic);
+        mobileCard.appendChild(mobileArabeezy);
+        mobileCard.appendChild(mobileEnglish);
+        mobileList.appendChild(mobileCard);
     });
 
     layout.appendChild(enCol);
     layout.appendChild(arCol);
+    layout.appendChild(mobileList);
 
     let englishVisible = true;
     let arabicVisible = true;
@@ -4503,6 +4828,17 @@ function renderDialogueTab(container, lesson) {
 
 
     function adjustLayout() {
+        const isMobileDialogue = window.matchMedia("(max-width: 640px)").matches;
+        if (isMobileDialogue) {
+            layout.style.gridTemplateColumns = "minmax(0, 1fr)";
+            enCol.style.display = "none";
+            arCol.style.display = "none";
+            mobileList.style.display = "grid";
+            mobileList.style.gridColumn = "1 / -1";
+            return;
+        }
+
+        mobileList.style.display = "none";
         const showArabicCol = arabicVisible || arabeezyVisible;
         if (englishVisible && showArabicCol) {
             layout.style.gridTemplateColumns = "minmax(0, 1fr) minmax(0, 1fr)";
@@ -4532,17 +4868,30 @@ function renderDialogueTab(container, lesson) {
         arCol.querySelectorAll(".dialogue-text").forEach((el) => {
             el.style.display = arabicVisible ? "" : "none";
         });
+        mobileList.querySelectorAll(".dialogue-mobile__arabic").forEach((el) => {
+            el.style.display = arabicVisible ? "" : "none";
+        });
     }
 
     function updateArabeezyVisibility() {
         arCol.querySelectorAll(".dialogue-arabeezy").forEach((el) => {
             el.style.display = arabeezyVisible ? "" : "none";
         });
+        mobileList.querySelectorAll(".dialogue-mobile__arabeezy").forEach((el) => {
+            el.style.display = arabeezyVisible && el.textContent ? "" : "none";
+        });
+    }
+
+    function updateEnglishVisibility() {
+        mobileList.querySelectorAll(".dialogue-mobile__english").forEach((el) => {
+            el.style.display = englishVisible ? "" : "none";
+        });
     }
 
     btnToggleEnglish.addEventListener("click", () => {
         englishVisible = !englishVisible;
         adjustLayout();
+        updateEnglishVisibility();
     });
 
     btnToggleArabic.addEventListener("click", () => {
@@ -4843,6 +5192,214 @@ function renderTranslationTab(container, lesson) {
     renderSectionStatus(container, "translation");
 }
 
+// Culture & Gaza usage
+function renderCultureTab(container, lesson) {
+    const intro = document.createElement("header");
+    intro.className = "culture-intro";
+    intro.innerHTML = `
+        <p class="culture-intro__eyebrow">Beyond literal translation</p>
+        <h4>Palestinian Culture &amp; Gaza Usage</h4>
+        <p>Learn what people mean, when the expression fits, and how its tone changes in real life.</p>
+    `;
+    container.appendChild(intro);
+
+    const grid = document.createElement("div");
+    grid.className = "culture-grid";
+    safeArr(lesson?.culture).forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "culture-card";
+
+        const heading = document.createElement("div");
+        heading.className = "culture-card__heading";
+        const number = document.createElement("span");
+        number.className = "culture-card__number";
+        number.textContent = String(index + 1).padStart(2, "0");
+        const title = document.createElement("h5");
+        title.textContent = item.title || "Palestinian expression";
+        heading.append(number, title);
+
+        const language = document.createElement("div");
+        language.className = "culture-card__language";
+        const ar = document.createElement("p");
+        ar.className = "culture-card__ar";
+        ar.dir = "rtl";
+        ar.lang = "ar";
+        ar.textContent = item.ar || "";
+        const arabeezy = document.createElement("p");
+        arabeezy.className = "culture-card__arabeezy";
+        arabeezy.textContent = item.arabeezy || "";
+        const en = document.createElement("p");
+        en.className = "culture-card__en";
+        en.textContent = item.en || "";
+        language.append(ar, arabeezy, en);
+
+        const explanation = document.createElement("p");
+        explanation.className = "culture-card__explanation";
+        explanation.textContent = item.explanation || "";
+
+        const use = document.createElement("div");
+        use.className = "culture-card__use";
+        const useTitle = document.createElement("strong");
+        useTitle.textContent = "When Palestinians use it";
+        const useText = document.createElement("p");
+        useText.textContent = item.whenUsed || "";
+        use.append(useTitle, useText);
+
+        card.append(heading, language, explanation, use);
+        if (item.register) {
+            const register = document.createElement("p");
+            register.className = "culture-card__register";
+            register.textContent = `Tone: ${item.register}`;
+            card.appendChild(register);
+        }
+        grid.appendChild(card);
+    });
+    container.appendChild(grid);
+
+    const doneBtn = document.createElement("button");
+    doneBtn.className = "btn btn--outline btn--sm";
+    doneBtn.textContent = "Mark Culture as Done";
+    doneBtn.addEventListener("click", () => setStudentProgressField("culture", true));
+    container.appendChild(doneBtn);
+    renderSectionStatus(container, "culture");
+}
+
+function renderPalestinianCultureHub() {
+    const root = document.getElementById("palestinianCultureRoot");
+    if (!root) return;
+    root.innerHTML = "";
+
+    const intro = document.createElement("header");
+    intro.className = "culture-intro culture-intro--proverbs";
+    intro.innerHTML = `
+        <p class="culture-intro__eyebrow">${palestinianProverbs.length} expressions from everyday memory</p>
+        <h4>Folk sayings Palestinians actually recognise</h4>
+        <p>Each card separates the literal image from the intended meaning, then places the proverb inside a natural Palestinian situation.</p>
+    `;
+    root.appendChild(intro);
+
+    const grid = document.createElement("div");
+    grid.className = "culture-grid culture-grid--proverbs";
+    palestinianProverbs.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "culture-card culture-card--proverb";
+
+        const heading = document.createElement("div");
+        heading.className = "culture-card__heading";
+        const number = document.createElement("span");
+        number.className = "culture-card__number";
+        number.textContent = String(index + 1).padStart(2, "0");
+        const category = document.createElement("span");
+        category.className = "culture-card__category";
+        category.textContent = item.category || "Palestinian proverb";
+        heading.append(number, category);
+
+        const language = document.createElement("div");
+        language.className = "culture-card__language";
+        const ar = document.createElement("p");
+        ar.className = "culture-card__ar";
+        ar.dir = "rtl";
+        ar.lang = "ar";
+        ar.textContent = item.ar;
+        const arabeezy = document.createElement("p");
+        arabeezy.className = "culture-card__arabeezy";
+        arabeezy.textContent = item.arabeezy;
+        language.append(ar, arabeezy);
+
+        const literal = document.createElement("p");
+        literal.className = "culture-card__literal";
+        literal.textContent = `Literal image: ${item.literalEn}`;
+
+        const meaning = document.createElement("div");
+        meaning.className = "culture-card__meaning";
+        const meaningTitle = document.createElement("strong");
+        meaningTitle.textContent = "What it really means";
+        const meaningText = document.createElement("p");
+        meaningText.textContent = item.meaningEn;
+        meaning.append(meaningTitle, meaningText);
+
+        const explanation = document.createElement("p");
+        explanation.className = "culture-card__explanation";
+        explanation.textContent = item.explanation;
+
+        const use = document.createElement("div");
+        use.className = "culture-card__use";
+        const useTitle = document.createElement("strong");
+        useTitle.textContent = "When to say it";
+        const useText = document.createElement("p");
+        useText.textContent = item.whenUsed;
+        use.append(useTitle, useText);
+
+        const example = document.createElement("div");
+        example.className = "culture-card__example";
+        const exampleTitle = document.createElement("strong");
+        exampleTitle.textContent = "In a natural situation";
+        const exampleAr = document.createElement("p");
+        exampleAr.className = "culture-card__example-ar";
+        exampleAr.dir = "rtl";
+        exampleAr.lang = "ar";
+        exampleAr.textContent = item.exampleAr;
+        const exampleArabeezy = document.createElement("p");
+        exampleArabeezy.className = "culture-card__example-arabeezy";
+        exampleArabeezy.textContent = item.exampleArabeezy;
+        const exampleEn = document.createElement("p");
+        exampleEn.className = "culture-card__example-en";
+        exampleEn.textContent = item.exampleEn;
+        example.append(exampleTitle, exampleAr, exampleArabeezy, exampleEn);
+
+        card.append(heading, language, literal, meaning, explanation, use, example);
+        grid.appendChild(card);
+    });
+    root.appendChild(grid);
+}
+
+function renderGrammarExercises(parent, exercises) {
+    if (!exercises.length) return;
+    const block = document.createElement("section");
+    block.className = "grammar-checks";
+    const title = document.createElement("h6");
+    title.textContent = "Check your understanding";
+    block.appendChild(title);
+
+    exercises.forEach((exercise, index) => {
+        const question = document.createElement("div");
+        question.className = "grammar-check";
+        const prompt = document.createElement("p");
+        prompt.className = "grammar-check__prompt";
+        prompt.textContent = `${index + 1}. ${exercise.prompt || "Choose the correct answer."}`;
+        const options = document.createElement("div");
+        options.className = "grammar-check__options";
+        const feedback = document.createElement("p");
+        feedback.className = "grammar-check__feedback";
+        feedback.hidden = true;
+
+        safeArr(exercise.options).forEach((option) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "grammar-check__option";
+            button.textContent = option;
+            button.addEventListener("click", () => {
+                options.querySelectorAll("button").forEach((item) => {
+                    item.classList.remove("grammar-check__option--correct", "grammar-check__option--wrong");
+                });
+                const correct = option === exercise.correct;
+                button.classList.add(correct ? "grammar-check__option--correct" : "grammar-check__option--wrong");
+                if (!correct) {
+                    [...options.children].find((item) => item.textContent === exercise.correct)
+                        ?.classList.add("grammar-check__option--correct");
+                }
+                feedback.hidden = false;
+                feedback.className = `grammar-check__feedback grammar-check__feedback--${correct ? "correct" : "wrong"}`;
+                feedback.textContent = `${correct ? "Correct. " : "Not quite. "}${exercise.explanation || ""}`;
+            });
+            options.appendChild(button);
+        });
+        question.append(prompt, options, feedback);
+        block.appendChild(question);
+    });
+    parent.appendChild(block);
+}
+
 // Grammar
 function renderGrammarTab(container, lesson) {
     const title = document.createElement("h4");
@@ -4965,6 +5522,24 @@ function renderGrammarTab(container, lesson) {
                 examplesBlock.appendChild(list);
             }
             body.appendChild(examplesBlock);
+
+            const mistakes = safeArr(g.commonMistakes);
+            if (mistakes.length) {
+                const mistakesBlock = document.createElement("section");
+                mistakesBlock.className = "grammar-mistakes";
+                const mistakesTitle = document.createElement("h6");
+                mistakesTitle.textContent = "Common mistakes to avoid";
+                const list = document.createElement("ul");
+                mistakes.forEach((mistake) => {
+                    const item = document.createElement("li");
+                    item.textContent = mistake;
+                    list.appendChild(item);
+                });
+                mistakesBlock.append(mistakesTitle, list);
+                body.appendChild(mistakesBlock);
+            }
+
+            renderGrammarExercises(body, safeArr(g.exercises));
 
             if (appState.teacherMode) {
                 const notesWrap = document.createElement("div");
@@ -6216,7 +6791,10 @@ function renderPracticeTabClean(container, lesson) {
     const practice = lesson.practice || {};
     const sections = safeArr(practice.sections);
     const sectionA = sections.find((s) => String(s.title || "").startsWith("A")) || sections[0] || {};
-    const sectionB = sections.find((s) => String(s.title || "").startsWith("B")) || sections[1] || {};
+    const sectionB = sections.find((s) => String(s.title || "").startsWith("B"))
+        || sections[1]
+        || (practice.separateExerciseTypes ? sections[0] : null)
+        || {};
     const sectionC = sections.find((s) => String(s.title || "").startsWith("C")) || sections[2] || {};
     let activeStage = "recognition";
     let completed = new Set();
@@ -6230,7 +6808,7 @@ function renderPracticeTabClean(container, lesson) {
     const title = document.createElement("h4");
     title.textContent = "Practice";
     const subtitle = document.createElement("p");
-    subtitle.textContent = "A focused path: recognize first, build with support, then speak or write.";
+    subtitle.textContent = "Choose one exercise type and review at your own pace.";
     headerText.appendChild(title);
     headerText.appendChild(subtitle);
 
@@ -6242,15 +6820,26 @@ function renderPracticeTabClean(container, lesson) {
     progressWrap.appendChild(progressNumber);
     progressWrap.appendChild(progressLabel);
     header.appendChild(headerText);
+    const arabeezyToggle = document.createElement("button");
+    arabeezyToggle.type = "button";
+    arabeezyToggle.className = "btn btn--outline btn--sm";
+    arabeezyToggle.textContent = "Hide Arabizi";
+    arabeezyToggle.addEventListener("click", () => {
+        const hidden = root.classList.toggle("practice-pro--hide-arabeezy");
+        arabeezyToggle.textContent = hidden ? "Show Arabizi" : "Hide Arabizi";
+    });
+    header.appendChild(arabeezyToggle);
     header.appendChild(progressWrap);
 
     const nav = document.createElement("div");
     nav.className = "practice-pro__nav";
+    nav.setAttribute("role", "tablist");
+    nav.setAttribute("aria-label", "Practice exercise types");
 
     const stageArea = document.createElement("div");
     stageArea.className = "practice-pro__stage";
 
-    const stages = [
+    let stages = [
         {
             id: "recognition",
             label: "A) Recognition",
@@ -6261,18 +6850,56 @@ function renderPracticeTabClean(container, lesson) {
             id: "controlled",
             label: "B) Controlled",
             desc: "Build correct sentences with help.",
-            count: safeArr(sectionB.fillInTheBlank).length + safeArr(sectionB.reorderSentences).length,
+            count: safeArr(sectionB.fillInTheBlank).length
+                + safeArr(sectionB.correctTheMistake).length
+                + safeArr(sectionB.reorderSentences).length,
         },
         {
             id: "real",
             label: "C) Real Use",
             desc: "Use the phrases in real situations.",
-            count: safeArr(practice.translation).length + safeArr(sectionC.translation).length + safeArr(practice.rolePlays).length,
+            count: Math.min(
+                safeArr(practice.translation).length + safeArr(sectionC.translation).length,
+                Number(practice.maxTranslationItems) || Infinity
+            ) + safeArr(practice.rolePlays).length,
         },
-    ];
+    ].filter((stage) => stage.id !== "real" || practice.showRealUse !== false);
+    if (practice.separateExerciseTypes) {
+        stages = [
+            { id: "recognition", label: "Recognition", desc: "Review meanings before building sentences.", count: safeArr(practice.quiz).slice(0, 5).length + safeArr(sectionA.matching).length + safeArr(sectionA.multipleChoice).length },
+            { id: "fill", label: "Fill in the missing word", desc: "Complete one focused sentence at a time.", count: safeArr(sectionB.fillInTheBlank).length },
+            { id: "correct", label: "Correct the sentence", desc: "Find the grammar mistake and correct it.", count: safeArr(sectionB.correctTheMistake).length },
+            { id: "reorder", label: "Rearrange the words", desc: "Build a natural Palestinian Arabic sentence.", count: safeArr(sectionB.reorderSentences).length },
+        ].filter((stage) => stage.count > 0);
+    }
 
     function normalizeAnswer(value) {
         return String(value || "").replace(/[،.؟!?\s]/g, "").trim();
+    }
+
+    const englishCueByAnswer = new Map(Object.entries({
+        "بَرْكَب": "ride / take", "زَحْمَة": "traffic", "قَدِّيش": "how much", "لَوْ": "if / please", "مِشْوَار": "trip / errand",
+        "بَدْرُس": "study", "بِتِشْتَغْلِي": "work — you, feminine", "بِكَمِّل": "finish — he", "بِنْرَاجِع": "review — we", "بِشْتِغْلُوا": "work — they", "بِـ": "by / per",
+        "مِن": "than / from", "كَان": "was", "رَاح": "will", "فِي": "there is / in", "أَشْتِرِي": "buy", "سِعِر": "price", "كِيلُو": "kilo", "بِلَوْن": "in a color",
+        "نِي": "me — object suffix", "عِنْد": "with / at", "اِرْجَع": "come back", "قَاسَت": "measured — she",
+        "تَحْت": "under", "وَرَا": "behind", "مَسْدُودَة": "blocked — feminine", "صَلَّح": "fixed — he",
+        "لَأَنَّهَا": "because it is — feminine", "بَس": "but", "مَع": "although / with", "نَفْس": "same", "أَحْكِي": "talk", "حَلّ": "solution", "حَقِّي": "my right", "يِيجِي": "come — he",
+        "نَاوِي/نَاوْيَة": "planning / intending", "بِنْأَجِّل": "we postpone", "بَعْد": "after", "تِشِيل": "carry / take", "فَرَاغِي": "my free time", "قَبْل": "before", "مَرَّتِين": "twice", "نَادِرًا": "rarely", "عَشَان": "because",
+        "مَزَاجِي": "my mood", "مَضْغُوط/مَضْغُوطَة": "stressed", "خُد/خُدِي": "take — masculine/feminine", "طَمِّنِّي": "reassure me"
+    }).map(([answer, cue]) => [normalizeAnswer(answer), cue]));
+
+    function englishCueFor(item) {
+        if (/\([^)]*[A-Za-z][^)]*\)/.test(String(item.prompt || ""))) return "";
+        return item.cueEn || englishCueByAnswer.get(normalizeAnswer(item.answer)) || "";
+    }
+
+    function recognitionPromptInEnglish(value) {
+        const text = String(value || "").trim();
+        const quoted = text.match(/[«“\"]([^»”\"]+)[»”\"]/);
+        if (quoted && /(مَعْ?ن|معنا)/.test(text)) return `Choose the English meaning of ${quoted[1]}.`;
+        if (/^ك[َ]?مِّل/.test(text)) return `Complete the sentence: ${text.replace(/^ك[َ]?مِّل\s*:?\s*/, "")}`;
+        if (/^[«“\"]/.test(text) && quoted) return `Choose the correct meaning or use of ${quoted[1]}.`;
+        return /[A-Za-z]{4}/.test(text) ? text : `Choose the correct answer: ${text}`;
     }
 
     function setProgress() {
@@ -6333,8 +6960,10 @@ function renderPracticeTabClean(container, lesson) {
         nav.innerHTML = "";
         stages.forEach((stage) => {
             const btn = makeButton(stage.label, "practice-pro__tab");
+            btn.setAttribute("role", "tab");
             btn.classList.toggle("is-active", stage.id === activeStage);
             btn.classList.toggle("is-done", completed.has(stage.id));
+            btn.setAttribute("aria-selected", String(stage.id === activeStage));
             btn.innerHTML = `<span>${stage.label}</span><small>${stage.count || 0} items</small>`;
             btn.addEventListener("click", () => {
                 activeStage = stage.id;
@@ -6433,7 +7062,7 @@ function renderPracticeTabClean(container, lesson) {
             ...safeArr(practice.quiz).slice(0, 5).map((q) => {
                 const options = safeArr(q.optionsEn);
                 return {
-                    prompt: q.questionAr,
+                    prompt: recognitionPromptInEnglish(q.questionAr),
                     options,
                     correct: options[q.correctIndex],
                     isArabic: true,
@@ -6467,7 +7096,7 @@ function renderPracticeTabClean(container, lesson) {
             answerCol.appendChild(answerTitle);
 
             const matchingItems = safeArr(sectionA.matching);
-            matchingItems.forEach((item, idx) => {
+        matchingItems.forEach((item, idx) => {
                 const promptRow = document.createElement("div");
                 promptRow.className = "practice-pro__match-prompt";
                 const number = document.createElement("span");
@@ -6476,6 +7105,12 @@ function renderPracticeTabClean(container, lesson) {
                 const ar = document.createElement("span");
                 ar.className = "practice-pro__arabic";
                 ar.textContent = item.ar || "";
+                if (item.arabeezy) {
+                    const arabeezy = document.createElement("small");
+                    arabeezy.className = "practice-pro__arabeezy";
+                    arabeezy.textContent = item.arabeezy;
+                    ar.appendChild(arabeezy);
+                }
                 promptRow.appendChild(number);
                 promptRow.appendChild(ar);
                 promptCol.appendChild(promptRow);
@@ -6520,28 +7155,53 @@ function renderPracticeTabClean(container, lesson) {
         const done = makeButton("Finish Recognition", "btn btn--primary btn--sm");
         done.addEventListener("click", () => {
             markStageDone("recognition");
-            activeStage = "controlled";
-            renderStage();
+            const nextStage = stages[1];
+            if (nextStage) {
+                activeStage = nextStage.id;
+                renderStage();
+            }
         });
         body.appendChild(done);
     }
 
-    function renderControlled() {
-        const stage = stages[1];
+    function renderControlled(stageId = "controlled") {
+        const stage = stages.find((item) => item.id === stageId) || stages[1];
         const body = stageShell(stage);
+        let responseItems = [
+            ...safeArr(sectionB.fillInTheBlank).map((item) => ({ ...item, instruction: "Fill in the missing word." })),
+            ...safeArr(sectionB.correctTheMistake).map((item) => ({ ...item, instruction: "Correct the sentence." })),
+        ];
+        if (practice.separateExerciseTypes) {
+            if (stageId === "fill") responseItems = safeArr(sectionB.fillInTheBlank).map((item) => ({ ...item, instruction: "Fill in the missing word." }));
+            else if (stageId === "correct") responseItems = safeArr(sectionB.correctTheMistake).map((item) => ({ ...item, instruction: "Correct the sentence." }));
+            else responseItems = [];
+        }
+        const responseDeck = document.createElement("div");
+        const responseCards = [];
 
-        safeArr(sectionB.fillInTheBlank).forEach((item) => {
+        responseItems.forEach((item, itemIndex) => {
             const card = document.createElement("article");
             card.className = "practice-pro__card";
+            const counter = document.createElement("div");
+            counter.className = "practice-pro__counter";
+            counter.textContent = `${itemIndex + 1} / ${responseItems.length}`;
+            const instruction = document.createElement("p");
+            instruction.className = "practice-pro__hint";
+            const cue = englishCueFor(item);
+            instruction.textContent = cue ? `${item.instruction} English cue: ${cue}.` : item.instruction;
             const prompt = document.createElement("div");
             prompt.className = "practice-pro__arabic";
             prompt.textContent = item.prompt || "";
+            const readingHelp = document.createElement("p");
+            readingHelp.className = "practice-pro__hint";
+            readingHelp.classList.add("practice-pro__arabeezy");
+            readingHelp.textContent = item.arabeezy ? `Read it: ${item.arabeezy}` : "";
             const row = document.createElement("div");
             row.className = "practice-pro__line";
             const input = document.createElement("input");
             input.className = "practice-pro__input";
             input.type = "text";
-            input.placeholder = "Type the missing word";
+            input.placeholder = stageId === "correct" ? "Type the corrected sentence" : "Type the missing word";
             const check = makeButton("Check");
             const fb = feedback();
             check.addEventListener("click", () => {
@@ -6550,18 +7210,51 @@ function renderPracticeTabClean(container, lesson) {
             });
             row.appendChild(input);
             row.appendChild(check);
+            card.appendChild(counter);
+            card.appendChild(instruction);
             card.appendChild(prompt);
+            if (item.arabeezy) card.appendChild(readingHelp);
             card.appendChild(row);
             card.appendChild(fb);
-            body.appendChild(card);
+            card.classList.toggle("hidden", itemIndex !== 0);
+            responseCards.push(card);
+            responseDeck.appendChild(card);
         });
+        body.appendChild(responseDeck);
 
-        safeArr(sectionB.reorderSentences).forEach((item) => {
+        if (responseCards.length > 1) {
+            let responseIndex = 0;
+            const controls = document.createElement("div");
+            controls.className = "practice-pro__controls";
+            const previous = makeButton("Previous", "btn btn--ghost btn--sm");
+            const next = makeButton("Next exercise", "btn btn--outline btn--sm");
+            const showResponse = (nextIndex) => {
+                responseCards[responseIndex].classList.add("hidden");
+                responseIndex = (nextIndex + responseCards.length) % responseCards.length;
+                responseCards[responseIndex].classList.remove("hidden");
+            };
+            previous.addEventListener("click", () => showResponse(responseIndex - 1));
+            next.addEventListener("click", () => showResponse(responseIndex + 1));
+            controls.appendChild(previous);
+            controls.appendChild(next);
+            body.appendChild(controls);
+        }
+
+        const reorderItems = !practice.separateExerciseTypes || stageId === "reorder"
+            ? safeArr(sectionB.reorderSentences)
+            : [];
+        reorderItems.forEach((item) => {
             const card = document.createElement("article");
             card.className = "practice-pro__card";
             const prompt = document.createElement("p");
             prompt.className = "practice-pro__hint";
             prompt.textContent = item.prompt || "Put the words in order.";
+            if (item.arabeezy) {
+                const arabeezy = document.createElement("span");
+                arabeezy.className = "practice-pro__arabeezy";
+                arabeezy.textContent = `Read it: ${item.arabeezy}`;
+                prompt.appendChild(arabeezy);
+            }
             const answer = document.createElement("div");
             answer.className = "practice-pro__answer-bank";
             const bank = document.createElement("div");
@@ -6601,21 +7294,39 @@ function renderPracticeTabClean(container, lesson) {
             body.appendChild(card);
         });
 
-        const done = makeButton("Finish Controlled Practice", "btn btn--primary btn--sm");
+        const done = makeButton(`Finish ${stage.label}`, "btn btn--primary btn--sm");
         done.addEventListener("click", () => {
-            markStageDone("controlled");
-            activeStage = "real";
-            renderStage();
+            markStageDone(stage.id);
+            const currentIndex = stages.findIndex((item) => item.id === stage.id);
+            const nextStage = stages[currentIndex + 1];
+            if (nextStage) {
+                activeStage = nextStage.id;
+                renderStage();
+            }
         });
+
+        const isLastPracticeStage = stages[stages.length - 1]?.id === stage.id;
+        if (practice.showRealUse === false && isLastPracticeStage && safeArr(practice.rolePlays).length) {
+            const situation = document.createElement("article");
+            situation.className = "practice-pro__situation";
+            const badge = document.createElement("span");
+            badge.textContent = "Speaking situation";
+            const situationText = document.createElement("p");
+            situationText.textContent = practice.rolePlays[0];
+            situation.appendChild(badge);
+            situation.appendChild(situationText);
+            body.appendChild(situation);
+        }
         body.appendChild(done);
     }
 
     function renderRealUse() {
         const stage = stages[2];
         const body = stageShell(stage);
-        const translations = safeArr(practice.translation).length
+        const allTranslations = safeArr(practice.translation).length
             ? safeArr(practice.translation)
             : safeArr(sectionC.translation);
+        const translations = allTranslations.slice(0, Number(practice.maxTranslationItems) || allTranslations.length);
 
         if (translations.length) {
             const slider = document.createElement("div");
@@ -6653,12 +7364,19 @@ function renderPracticeTabClean(container, lesson) {
             function paintTranslation() {
                 const item = translations[index];
                 counter.textContent = `${index + 1} / ${translations.length}`;
-                const source = item.textEn || item.en || item.textAr || item.ar || "";
-                const target = item.textAr || item.ar || item.textEn || item.en || "";
-                const sourceIsArabic = Boolean(item.textAr || item.ar) && !(item.textEn || item.en);
+                const sourceIsArabic = item.type === "arToEn";
+                const source = sourceIsArabic
+                    ? (item.textAr || item.ar || "")
+                    : (item.textEn || item.en || "");
+                const target = sourceIsArabic
+                    ? (item.textEn || item.en || "")
+                    : (item.textAr || item.ar || "");
                 direction.textContent = sourceIsArabic ? "Arabic -> English" : "English -> Arabic";
                 prompt.textContent = source;
                 prompt.classList.toggle("is-arabic", sourceIsArabic);
+                if (sourceIsArabic && item.textArabeezy) {
+                    prompt.textContent = `${source}\n${item.textArabeezy}`;
+                }
                 answer.textContent = target;
                 answer.classList.toggle("is-arabic", !sourceIsArabic);
                 answer.classList.add("hidden");
@@ -6727,23 +7445,25 @@ function renderPracticeTabClean(container, lesson) {
             body.appendChild(sims);
         }
 
-        const writingPrompts = safeArr(sectionC.writeYourOwnSentences);
-        const write = document.createElement("div");
-        write.className = "practice-pro__write";
-        const label = document.createElement("label");
-        label.textContent = "Write your own sentences";
-        const help = document.createElement("p");
-        help.textContent = writingPrompts.length
-            ? writingPrompts.slice(0, 2).join(" ")
-            : "Write 5-10 short sentences using the phrases from this lesson.";
-        const textarea = document.createElement("textarea");
-        textarea.className = "homework-notes";
-        textarea.rows = 5;
-        textarea.placeholder = "Write 5-10 short sentences here...";
-        write.appendChild(label);
-        write.appendChild(help);
-        write.appendChild(textarea);
-        body.appendChild(write);
+        if (practice.showWriting !== false) {
+            const writingPrompts = safeArr(sectionC.writeYourOwnSentences);
+            const write = document.createElement("div");
+            write.className = "practice-pro__write";
+            const label = document.createElement("label");
+            label.textContent = "Write your own sentences";
+            const help = document.createElement("p");
+            help.textContent = writingPrompts.length
+                ? writingPrompts.slice(0, 2).join(" ")
+                : "Write 5-10 short sentences using the phrases from this lesson.";
+            const textarea = document.createElement("textarea");
+            textarea.className = "homework-notes";
+            textarea.rows = 5;
+            textarea.placeholder = "Write 5-10 short sentences here...";
+            write.appendChild(label);
+            write.appendChild(help);
+            write.appendChild(textarea);
+            body.appendChild(write);
+        }
 
         const done = makeButton("Finish Practice", "btn btn--primary btn--sm");
         done.addEventListener("click", () => markStageDone("real"));
@@ -6751,9 +7471,9 @@ function renderPracticeTabClean(container, lesson) {
     }
 
     function renderStage() {
-        if (activeStage === "controlled") renderControlled();
+        if (activeStage === "recognition") renderRecognition();
         else if (activeStage === "real") renderRealUse();
-        else renderRecognition();
+        else renderControlled(activeStage);
     }
 
     container.appendChild(root);
@@ -7171,6 +7891,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             goToArabicLetters();
         });
     }
+    const btnPalestinianCulture = $("#btnPalestinianCulture");
+    if (btnPalestinianCulture) {
+        btnPalestinianCulture.addEventListener("click", () => {
+            renderPalestinianCultureHub();
+            showScreen("palestinian-culture-screen");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
     const btnSubscribe = $("#btnSubscribe");
     if (btnSubscribe) {
         btnSubscribe.addEventListener("click", () => {
@@ -7183,10 +7911,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             openExternalBookingPage();
         });
     }
-    const btnContact = $("#btnContact");
-    if (btnContact) {
-        btnContact.addEventListener("click", () => {
-            openWhatsAppWithMessage("Hi! I want to ask about Palestinian Arabic lessons.");
+    const btnPlacementTest = $("#btnPlacementTest");
+    if (btnPlacementTest) {
+        btnPlacementTest.addEventListener("click", () => {
+            const placementLessonId = findLessonIdFor("Placement", "Placement Test");
+            if (!placementLessonId) return;
+            appState.currentLessonId = placementLessonId;
+            appState.currentTab = "overview";
+            goToLessonView();
         });
     }
     const btnBackFromSubscribe = document.getElementById("btnBackToUnitsFromSubscribe");
@@ -7199,6 +7931,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (btnLettersBackToUnits) {
         btnLettersBackToUnits.addEventListener("click", () => {
             goToLevels();
+        });
+    }
+    const btnCultureBackToUnits = $("#btnCultureBackToUnits");
+    if (btnCultureBackToUnits) {
+        btnCultureBackToUnits.addEventListener("click", () => goToLevels());
+    }
+    const btnGazaSituationBack = $("#btnGazaSituationBack");
+    if (btnGazaSituationBack) {
+        btnGazaSituationBack.addEventListener("click", () => {
+            goToLevels();
+            requestAnimationFrame(() => {
+                document.querySelector(".gaza-hub")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
         });
     }
     const btnExportArabicLettersPdf = $("#btnExportArabicLettersPdf");
@@ -7425,25 +8170,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     // ================= WHITEBOARD UI =================
     const whiteboardPanel = document.getElementById("whiteboardPanel");
-    const btnToggleWhiteboard = document.getElementById("btnToggleWhiteboard");
     const wbColorInput = document.getElementById("whiteboardColor");
     const wbSizeInput = document.getElementById("whiteboardSize");
     const wbSizeVal = document.getElementById("whiteboardSizeVal");
     const wbClearBtn = document.getElementById("whiteboardClear");
     const wbDownloadBtn = document.getElementById("whiteboardDownload");
-
-    if (btnToggleWhiteboard && whiteboardPanel) {
-        btnToggleWhiteboard.addEventListener("click", () => {
-            const isHidden = whiteboardPanel.classList.contains("hidden");
-            if (isHidden) {
-                whiteboardPanel.classList.remove("hidden");
-                // لما أفتح اللوحة، أهيّئ الكانفاس وأحمّل الرسمة
-                initWhiteboardCanvas();
-            } else {
-                whiteboardPanel.classList.add("hidden");
-            }
-        });
-    }
 
     if (wbColorInput) {
         wbColorInput.addEventListener("input", () => {

@@ -154,74 +154,6 @@
                 </div>
             </div>
         </div>
-        <div class="home-publisher-content">
-            <section>
-                <h2>Free Palestinian Arabic Lessons for Beginners</h2>
-                <p>
-                    Palestinian Arabic Lab is a free learning resource for students who want to understand
-                    spoken Palestinian Arabic in real situations. The lessons focus on useful phrases,
-                    short dialogues, vocabulary, pronunciation, grammar patterns, and practice tasks.
-                </p>
-            </section>
-            <section>
-                <h2>What You Can Study</h2>
-                <p>
-                    Start with greetings and introductions, then move into family, food and drink,
-                    daily routines, shopping, health, work, feelings, opinions, and future plans.
-                    Each lesson is designed to help you recognize common Palestinian expressions and
-                    use them in simple conversations.
-                </p>
-            </section>
-            <section>
-                <h2>Real-Life Dialogues</h2>
-                <p>
-                    Practice Palestinian Arabic through everyday situations: ordering at a restaurant,
-                    visiting family, taking transportation, welcoming guests, and explaining a health
-                    problem to a doctor. These scenarios help learners move from vocabulary lists into
-                    practical conversations they can actually use.
-                </p>
-            </section>
-            <section>
-                <h2>Who This Site Is For</h2>
-                <p>
-                    This site is for Arabic learners, heritage learners, travelers, language teachers,
-                    and anyone interested in spoken Palestinian Arabic. You can browse the lessons
-                    without creating an account and book a trial lesson when you want guided practice.
-                </p>
-            </section>
-            <section>
-                <h2>How the Lessons Are Organized</h2>
-                <p>
-                    The course is arranged around real communication tasks instead of isolated grammar
-                    lists. Learners begin with greetings and personal introductions, then practice
-                    family, food, daily routine, shopping, health, work and study, feelings, opinions,
-                    and plans. Each topic includes vocabulary, short examples, dialogue practice, and
-                    review activities so learners can return to the same material more than once.
-                </p>
-            </section>
-            <section>
-                <h2>Original Learning Material</h2>
-                <p>
-                    The examples on Palestinian Arabic Lab are written for this project and focus on
-                    spoken Palestinian Arabic. The goal is to help learners notice natural sentence
-                    patterns, common replies, and practical expressions they can reuse with teachers,
-                    friends, family members, and people they meet while traveling.
-                </p>
-                <p>
-                    For longer reading guides, visit the pages on
-                    <a href="./learn-palestinian-arabic.html">learning Palestinian Arabic</a>,
-                    <a href="./palestinian-arabic-for-beginners.html">beginner study steps</a>,
-                    <a href="./palestinian-arabic-phrases.html">useful phrases</a>,
-                    <a href="./palestinian-arabic-greetings.html">greetings</a>, and
-                    <a href="./palestinian-arabic-pronunciation.html">pronunciation</a>.
-                    You can also review
-                    <a href="./palestinian-arabic-family-vocabulary.html">family vocabulary</a>,
-                    <a href="./palestinian-arabic-daily-conversation.html">daily conversation examples</a>,
-                    and the difference between
-                    <a href="./palestinian-arabic-vs-msa.html">Palestinian Arabic and MSA</a>.
-                </p>
-            </section>
-        </div>
     </section>
 
     <main>
@@ -342,14 +274,24 @@
                     <button id="btnSwitchProfile" class="btn btn--ghost">Switch Profile</button>
                     <button id="btnContinueLesson" class="btn btn--primary btn--sm">Continue</button>
                     <button id="btnArabicLetters" class="btn btn--outline btn--sm">Arabic Letters</button>
+                    <button id="btnPalestinianCulture" class="btn btn--outline btn--sm">Palestinian Proverbs</button>
                     <button id="btnSubscribe" class="btn btn--outline btn--sm">Get Full Access</button>
-                    <button id="btnContact" class="btn btn--ghost btn--sm">Contact</button>
+                    <button id="btnPlacementTest" class="btn btn--ghost btn--sm">Placement Test</button>
                     <button id="btnStudentLogout" class="btn btn--ghost btn--sm" hidden>Sign Out</button>
                     <button id="btnSyncLessonsNow" class="btn btn--ghost" style="display:none;">Sync lessons</button>
                 </div>
             </div>
 
             <div id="levelsContainer" class="levels-grid"></div>
+
+            <section class="gaza-hub" aria-labelledby="gazaHubTitle">
+                <header class="gaza-hub__header">
+                    <p class="gaza-hub__eyebrow">Gaza Situations Hub</p>
+                    <h2 id="gazaHubTitle">Real-Life Spoken Arabic Situations</h2>
+                    <p>Immerse yourself directly into everyday events in the Gaza Strip. Click any card below to master the dialogue, vocabulary, and local phrases.</p>
+                </header>
+                <div id="gazaSituationsContainer" class="gaza-hub__grid"></div>
+            </section>
 
             <div class="section-header" style="margin-top:18px;" hidden aria-hidden="true">
                 <h3 style="margin:0;">Dialogue Practice (Decisions)</h3>
@@ -359,6 +301,34 @@
             <div id="dialogueOnlyContainer" class="levels-grid" hidden aria-hidden="true"></div>
 
 
+        </section>
+
+        <section id="gaza-situation-screen" class="screen">
+            <div class="section-header section-header--with-actions">
+                <div>
+                    <p class="gaza-hub__eyebrow">Gaza Situations Hub</p>
+                    <h2>Real-Life Spoken Arabic</h2>
+                </div>
+                <div class="section-header__actions">
+                    <button id="btnGazaSituationBack" class="btn btn--ghost btn--sm" type="button">Back to Units &amp; Situations</button>
+                </div>
+            </div>
+            <div id="gazaSituationRoot"></div>
+        </section>
+
+        <!-- ============== PALESTINIAN CULTURE SCREEN ============== -->
+        <section id="palestinian-culture-screen" class="screen">
+            <div class="section-header section-header--with-actions">
+                <div>
+                    <p class="culture-intro__eyebrow">Palestinian cultural language</p>
+                    <h2>Palestinian Proverbs &amp; Folk Wisdom</h2>
+                    <p class="section-header__subtitle">Understand the story behind the saying—not only its literal translation.</p>
+                </div>
+                <div class="section-header__actions">
+                    <button id="btnCultureBackToUnits" class="btn btn--ghost btn--sm" type="button">Back to Units</button>
+                </div>
+            </div>
+            <div id="palestinianCultureRoot"></div>
         </section>
 
         <!-- ============== ARABIC LETTERS SCREEN ============== -->
@@ -453,9 +423,6 @@
                 <div class="lesson-secondary-bar__buttons">
                     <button id="btnBackToLevels" class="btn btn--ghost btn--sm">Back to Units</button>
                     <button id="btnBackToStudents" class="btn btn--ghost btn--sm">Back to Profiles</button>
-                    <button id="btnToggleWhiteboard" class="btn btn--ghost btn--sm">
-                        Whiteboard
-                    </button>
                     <button id="btnSaveSpot" class="btn btn--outline btn--sm">
                         Save spot
                     </button>
@@ -546,7 +513,7 @@
             </div>
 
             <div class="modal__actions">
-                <button id="vocabPrevBtn" class="btn btn--ghost btn--sm">? Prev</button>
+                <button id="vocabPrevBtn" class="btn btn--ghost btn--sm" aria-label="Previous vocabulary word">&larr; Prev</button>
                 <button id="vocabToggleEnBtn" class="btn btn--outline btn--sm">
                     Hide English
                 </button>
@@ -555,7 +522,7 @@
                 <button id="vocabToggleExamplesBtn" class="btn btn--outline btn--sm">
                     Hide
                 </button>
-                <button id="vocabNextBtn" class="btn btn--ghost btn--sm">Next ?</button>
+                <button id="vocabNextBtn" class="btn btn--ghost btn--sm" aria-label="Next vocabulary word">Next &rarr;</button>
 
             </div>
         </div>

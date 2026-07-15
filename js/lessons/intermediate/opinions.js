@@ -7,7 +7,7 @@ export const lesson = {
         level: "Intermediate",
         unit: "Opinions",
         lessonTitle: "Unit 11 - Opinions & Preferences in Gaza Palestinian Arabic",
-        contentVersion: 2026070101,
+        contentVersion: 2026071501,
     },
 
     overview: {
@@ -471,6 +471,150 @@ export const lesson = {
     ],
 },
 
+    grammar: [
+        {
+            title: "1. Giving an opinion: direct, soft, or uncertain",
+            short: "Choose how strongly you want to sound",
+            description: "The opening phrase shows how certain or direct you are. برأيي gives a clear opinion; بحسّ إنّه makes it personal and softer; بعتقد إنّه presents a belief; and يمكن leaves real uncertainty. Match إنّه or إنّها to the thing you are discussing.",
+            table: {
+                title: "Opinion strength",
+                headers: ["Palestinian Arabic", "Arabizi", "Natural use"],
+                rows: [
+                    ["برأيي...", "bra2yi...", "a clear personal opinion"],
+                    ["بالنسبة إلي...", "bin-nisbe ili...", "from my point of view"],
+                    ["بحسّ إنّه / إنّها...", "ba7is inno / innha...", "a softer impression"],
+                    ["بعتقد إنّه / إنّها...", "ba3taqid inno / innha...", "a considered belief"],
+                    ["يمكن...", "yimkin...", "an uncertain possibility"],
+                ],
+            },
+            examples: [
+                { ar: "برأيي، الشقّة التالتة أحسن خيار.", arabeezy: "bra2yi, esh-sha22a et-talte a7san khyar.", en: "In my opinion, the third apartment is the best choice." },
+                { ar: "بحسّ إنّها غالية شوي بالنسبة إلنا.", arabeezy: "ba7is innha ghalye shway bin-nisbe ilna.", en: "I feel it is a little expensive for us." },
+                { ar: "يمكن الطريق التاني يكون أسرع.", arabeezy: "yimkin eT-Tareeq et-tani ykoon asra3.", en: "Maybe the other route is faster." },
+            ],
+            commonMistakes: [
+                "Do not translate ‘I think’ the same way every time; each opening carries a different tone.",
+                "Use إنّه with a masculine noun and إنّها with a feminine noun: المطعم → إنّه; الشقّة → إنّها.",
+            ],
+            exercises: [
+                { prompt: "Choose the softest opening: ‘___ the class is a little difficult.’", options: ["بحسّ إنّه", "أكيد", "مستحيل", "معك حق"], correct: "بحسّ إنّه", explanation: "بحسّ إنّه presents the statement as a personal impression." },
+                { prompt: "Complete: بعتقد ___ الشقّة مريحة.", options: ["إنّها", "إنّه", "من", "ولا"], correct: "إنّها", explanation: "الشقّة is feminine, so speakers use إنّها." },
+                { prompt: "Which phrase signals genuine uncertainty?", options: ["يمكن", "برأيي", "أكيد", "بالزبط"], correct: "يمكن", explanation: "يمكن means ‘maybe.’" },
+            ],
+        },
+        {
+            title: "2. Agreeing and disagreeing politely",
+            short: "Acknowledge the person before challenging the idea",
+            description: "Natural Palestinian disagreement often has two moves: acknowledge part of the other view, then add your point with بس. Use بلا زعل before a sensitive opinion. مش مقتنع is firmer than أنا شايف الموضوع غير هيك.",
+            table: {
+                title: "From agreement to disagreement",
+                headers: ["Function", "Phrase", "Tone"],
+                rows: [
+                    ["full agreement", "أنا معك / معك حق / مزبوط", "warm and direct"],
+                    ["partial agreement", "معك حق، بس...", "polite and balanced"],
+                    ["different view", "أنا شايف الموضوع غير هيك", "calm disagreement"],
+                    ["strong disagreement", "أنا مش مقتنع / مقتنعة", "clear and firm"],
+                    ["sensitive point", "بلا زعل، بس...", "softens what follows"],
+                ],
+            },
+            examples: [
+                { ar: "معك حق، بس الإيجار كمان مهم.", arabeezy: "ma3ak 7a2, bas el-ijar kaman muhim.", en: "You are right, but the rent matters too." },
+                { ar: "أنا شايفة الموضوع غير هيك.", arabeezy: "ana shayfe el-mawDoo3 gheir hek.", en: "I see the matter differently." },
+                { ar: "بلا زعل، أنا مش مقتنع بهالحلّ.", arabeezy: "bala za3al, ana mish moqtane3 b-hal-7all.", en: "No offense, I am not convinced by this solution." },
+            ],
+            commonMistakes: [
+                "أنا معك agrees with a person; أنا مع الفكرة supports an idea.",
+                "Use مقتنع for a man and مقتنعة for a woman speaking about herself.",
+            ],
+            exercises: [
+                { prompt: "Choose a polite partial disagreement.", options: ["معك حق، بس عندي ملاحظة.", "إنت غلط.", "مستحيل تفهم.", "خلص اسكت."], correct: "معك حق، بس عندي ملاحظة.", explanation: "It acknowledges the other view first." },
+                { prompt: "A woman says: ‘I am not convinced.’", options: ["أنا مش مقتنعة.", "أنا مش مقتنع.", "أنا ما مقتنعة.", "أنا مو بوافق."], correct: "أنا مش مقتنعة.", explanation: "The participle agrees with the female speaker." },
+                { prompt: "Complete: أنا شايف الموضوع ___ هيك.", options: ["غير", "أكتر", "ولا", "عشان"], correct: "غير", explanation: "غير هيك means ‘differently.’" },
+            ],
+        },
+        {
+            title: "3. Comparing choices in conversation",
+            short: "Compare qualities, amounts, and equality",
+            description: "Short comparisons such as أحسن، أرخص، أغلى، أسرع take من. For amounts, use أكتر or أقل. Use نفس for equality, and مش قدّ when one option does not measure up to another.",
+            table: {
+                title: "Comparison patterns",
+                headers: ["Pattern", "Example", "Meaning"],
+                rows: [
+                    ["comparative + من", "هاد أسرع من هداك", "faster than"],
+                    ["أكتر + noun", "فيها ضو أكتر", "more light"],
+                    ["أقل + noun", "فيها دوشة أقل", "less noise"],
+                    ["نفس + noun", "نفس السعر", "the same price"],
+                    ["مش قدّ + noun", "مش قدّ التاني", "not as good as the other"],
+                ],
+            },
+            examples: [
+                { ar: "الباص أرخص من التاكسي، بس التاكسي أسرع.", arabeezy: "el-baS arkhaS min et-taksi, bas et-taksi asra3.", en: "The bus is cheaper than the taxi, but the taxi is faster." },
+                { ar: "الشقة هاي فيها ضو أكتر ودوشة أقل.", arabeezy: "esh-sha22a hay feeha Daw aktar w doshe aqall.", en: "This apartment has more light and less noise." },
+                { ar: "الخدمة منيحة، بس مش قدّ خدمة المحلّ التاني.", arabeezy: "el-khidme mnee7a, bas mish qadd khidmit el-ma7all et-tani.", en: "The service is good, but not as good as the other shop’s." },
+            ],
+            commonMistakes: ["Keep من after direct comparisons: أغلى من، أحسن من، أهدى من.", "أكتر expresses a greater amount or degree; it does not automatically mean ‘better.’"],
+            exercises: [
+                { prompt: "Complete: المطعم هادا أرخص ___ المطعم اللي جنبنا.", options: ["من", "عن", "في", "عشان"], correct: "من", explanation: "Direct comparative forms take من." },
+                { prompt: "Choose: ‘This room has less noise.’", options: ["الأوضة هاي فيها دوشة أقل.", "الأوضة هاي أرخص من.", "الأوضة هاي نفس دوشة.", "الأوضة هاي أكتر هادية."], correct: "الأوضة هاي فيها دوشة أقل.", explanation: "أقل + noun expresses a smaller amount." },
+                { prompt: "What does مش قدّ التاني mean here?", options: ["It is not as good as the other one.", "It is exactly the same.", "It costs more.", "It is the second one."], correct: "It is not as good as the other one.", explanation: "مش قدّ marks an unequal comparison." },
+            ],
+        },
+        {
+            title: "4. Building longer spoken sentences",
+            short: "Connect opinion, reason, contrast, and result",
+            description: "بس introduces contrast, لأنه gives a reason, and عشان هيك gives a result. مع إنّه introduces an unexpected contrast. من ناحية... ومن ناحية تانية... helps weigh two sides of a choice.",
+            table: {
+                title: "Spoken connectors",
+                headers: ["Connector", "Job", "Example cue"],
+                rows: [
+                    ["بس", "contrast", "good, but expensive"],
+                    ["لأنه / لأنها", "reason", "because it is far"],
+                    ["عشان هيك", "result", "so we left"],
+                    ["مع إنّه / إنّها", "unexpected contrast", "although it is far"],
+                    ["من ناحية... ومن ناحية تانية...", "weigh two sides", "one advantage, one drawback"],
+                ],
+            },
+            examples: [
+                { ar: "ما عجبتني الشقّة لأنها ضيّقة، وعشان هيك ما أخدناها.", arabeezy: "ma 3ajabitni esh-sha22a la2innha Dayye2a, w 3ashan hek ma akhadnaha.", en: "I did not like the apartment because it is cramped, so we did not take it." },
+                { ar: "مع إنّه المطعم غالي، الأكل فيه بستاهل.", arabeezy: "ma3 inno el-maT3am ghali, el-akel feeh bistahal.", en: "Although the restaurant is expensive, the food is worth it." },
+                { ar: "من ناحية الشغل مناسب، ومن ناحية تانية الطريق بعيد.", arabeezy: "min na7yet esh-shoghol mnasib, w min na7ye tanye eT-Tareeq b3eed.", en: "For work it is suitable, but on the other hand the journey is far." },
+            ],
+            commonMistakes: ["لأنه gives the cause; عشان هيك introduces the consequence.", "Prefer short spoken connectors over stacked formal written expressions."],
+            exercises: [
+                { prompt: "Complete with a result: الطريق مسكّر، ___ رح نتأخّر.", options: ["عشان هيك", "لأنه", "مع إنه", "من ناحية"], correct: "عشان هيك", explanation: "Being late is the result." },
+                { prompt: "Complete with a reason: ما رحت عالشغل ___ كنت تعبان.", options: ["لأني", "عشان هيك", "بس", "مع إني"], correct: "لأني", explanation: "لأني introduces the speaker’s reason." },
+                { prompt: "Which means ‘although it is far’?", options: ["مع إنّه بعيد", "عشان هيك بعيد", "لأنه بعيد", "بس من بعيد"], correct: "مع إنّه بعيد", explanation: "مع إنّه introduces an unexpected contrast." },
+            ],
+        },
+        {
+            title: "5. Negating opinions: ما, مش, and Gaza ما...ش",
+            short: "Negate the verb or the description",
+            description: "Use ما before a present verb: ما بوافق. Use مش before an adjective, participle, or comparison: مش مناسب، مش مقتنع، مش أحسن. Everyday Gaza speech also commonly wraps verbs with ما...ش: ما بوافقش، ما بعرفش.",
+            table: {
+                title: "Choosing the negative pattern",
+                headers: ["What follows?", "Pattern", "Example"],
+                rows: [
+                    ["present verb", "ما + verb", "ما بوافق"],
+                    ["Gaza verb form", "ما + verb + ش", "ما بوافقش"],
+                    ["adjective", "مش + adjective", "مش مناسب"],
+                    ["participle/state", "مش + participle", "مش مقتنعة"],
+                    ["comparison", "مش + comparative", "مش أحسن من الأول"],
+                ],
+            },
+            examples: [
+                { ar: "أنا ما بوافق على هالاقتراح.", arabeezy: "ana ma bwafiq 3ala hal-iqtira7.", en: "I do not agree with this suggestion." },
+                { ar: "بصراحة، أنا ما اقتنعتش بالسبب.", arabeezy: "biSara7a, ana ma iqtana3tish bis-sabab.", en: "Honestly, I was not convinced by the reason." },
+                { ar: "الخيار التاني مش أرخص، بس أريح.", arabeezy: "el-khyar et-tani mish arkhaS, bas arya7.", en: "The second option is not cheaper, but it is more comfortable." },
+            ],
+            commonMistakes: ["Say ما بوافق / ما بوافقش with a verb, but مش موافق with the participle.", "The final ـش is a spoken Gaza feature; both ما بعرف and ما بعرفش are understandable."],
+            exercises: [
+                { prompt: "Choose the natural negation of a present verb: ‘I don’t agree.’", options: ["ما بوافق.", "مش بوافق.", "ما موافق.", "لا أنا بوافق."], correct: "ما بوافق.", explanation: "ما directly negates the present verb." },
+                { prompt: "Complete: هادا الحلّ ___ مناسب إلنا.", options: ["مش", "ما", "ولا", "لأنه"], correct: "مش", explanation: "مناسب is an adjective, so it takes مش." },
+                { prompt: "Which Gaza form also means ‘I don’t know’?", options: ["ما بعرفش", "مش بعرف", "بعرف ما", "لا بعرفش"], correct: "ما بعرفش", explanation: "Gaza speech commonly uses ما...ش around a verb." },
+            ],
+        },
+    ],
+
     microChecks: {
         enabled: true,
         every: 5,
@@ -485,16 +629,16 @@ export const lesson = {
             {
                 id: "op_mc2",
                 type: "match",
-                prompt: "Choose the polite disagreement.",
-                options: ["فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف.", "إِنْتَ غَلَط.", "اسْكُت.", "مَا بَدِّي أَسْمَع."],
-                correct: "فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف.",
+                prompt: "Choose the Arabic phrase for: I agree with you.",
+                options: ["أَنَا مَعَك", "مُمْكِن", "مَا بَعْرَف", "بِصَرَاحَة"],
+                correct: "أَنَا مَعَك",
             },
             {
                 id: "op_mc3",
                 type: "reorder",
-                prompt: "Reorder: I prefer the quieter apartment.",
-                options: ["بَفَضِّل", "الشَّقَّة", "الأَهْدَى."],
-                correct: ["بَفَضِّل", "الشَّقَّة", "الأَهْدَى."],
+                prompt: "Reorder: I am not convinced.",
+                options: ["أَنَا", "مِش", "مُقْتَنِع."],
+                correct: ["أَنَا", "مِش", "مُقْتَنِع."],
             },
             {
                 id: "op_mc4",
@@ -528,70 +672,69 @@ export const lesson = {
     },
 
     practice: {
+        showRealUse: false,
+        showWriting: false,
+        separateExerciseTypes: true,
         quiz: [
             {
                 id: "op_q1",
-                questionAr: "«شُو رَأْيَك؟» بِنِسْتَخْدِمْهَا عَشَان:",
+                questionAr: "Choose when to use: «شُو رَأْيَك؟»",
                 optionsEn: ["ask someone's opinion", "ask for medicine", "ask for the weather"],
                 correctIndex: 0,
             },
             {
                 id: "op_q2",
-                questionAr: "أَكْثَر تَعْبِير مُهَذَّب لِلاخْتِلَاف:",
+                questionAr: "Choose the most polite way to disagree.",
                 optionsEn: ["فَاهِم عَلَيْك، بَس...", "إنت غلط.", "ما بدي أسمع."],
                 correctIndex: 0,
             },
             {
                 id: "op_q3",
-                questionAr: "«أَنَا بَفَضِّل» مَعْنَاهَا:",
+                questionAr: "Choose the English meaning of: «أَنَا بَفَضِّل»",
                 optionsEn: ["I prefer", "I am sick", "I am late"],
                 correctIndex: 0,
             },
             {
                 id: "op_q4",
-                questionAr: "«أَرْخَص مِن» مَعْنَاهَا:",
+                questionAr: "Choose the English meaning of: «أَرْخَص مِن»",
                 optionsEn: ["cheaper than", "quieter than", "more expensive than"],
                 correctIndex: 0,
             },
             {
                 id: "op_q5",
-                questionAr: "«عَلَى حَسَب» مَعْنَاهَا:",
+                questionAr: "Choose the English meaning of: «عَلَى حَسَب»",
                 optionsEn: ["it depends on", "I agree", "not necessary"],
                 correctIndex: 0,
             },
             {
                 id: "op_q6",
-                questionAr: "إِذَا بَدَّك تِقُول I am not convinced، بِتِقُول:",
+                questionAr: "Choose how a male speaker says: “I am not convinced.”",
                 optionsEn: ["مِش مُقْتَنِع/مُقْتَنْعَة", "مَعَك حَقّ", "زَاكِي"],
                 correctIndex: 0,
             },
             {
                 id: "op_q7",
-                questionAr: "«المُهِمّ» بِنِسْتَخْدِمْهَا عَشَان:",
+                questionAr: "Choose the function of the connector «المُهِمّ».",
                 optionsEn: ["summarize the main point", "ask for a bus", "say goodbye"],
                 correctIndex: 0,
             },
             {
                 id: "op_q8",
-                questionAr: "«بَلَا زَعَل» مَعْنَاهَا:",
+                questionAr: "Choose the English meaning of: «بَلَا زَعَل»",
                 optionsEn: ["no offense", "good morning", "how much is it"],
                 correctIndex: 0,
             },
             {
                 id: "op_q9",
-                questionAr: "«لَوْ بَدِّي أَخْتَار» مَعْنَاهَا:",
+                questionAr: "Choose the English meaning of: «لَوْ بَدِّي أَخْتَار»",
                 optionsEn: ["if I had to choose", "if I were sick", "if the water is off"],
                 correctIndex: 0,
             },
         ],
         rolePlays: [
-            "Compare two apartments: one cheaper but noisy, one more expensive but quieter. Give your opinion and reason.",
-            "Discuss food choices: one place is cheaper, one is tastier, one is closer. Choose and explain.",
-            "Disagree politely with a friend about taking a taxi or bus. Use فاهِم عليك، بس...",
-            "Give your opinion about studying online vs in class. Use بصراحة، برأيي، على حسب.",
-            "Mini speaking prompt: choose between two weekend plans and explain your decision in 60 seconds.",
+            "Compare two choices, state your opinion, agree or disagree politely, give two reasons, and make a final decision.",
         ],
-        sections: [
+        legacySections: [
             {
                 matching: [
                     { ar: "بِرَأْيِي", en: "in my opinion" },
@@ -629,6 +772,56 @@ export const lesson = {
                     "Write 3 polite disagreement sentences using فاهِم عليك، بس... / بلا زعل...",
                     "Compare two things using: أحسن من، أرخص من، أغلى من، أهدى من، أسرع من.",
                     "Answer in Arabic: شو رأيك في الشقة؟ شو بتفضل؟ وليش؟",
+                ],
+            },
+        ],
+        sections: [
+            {
+                title: "A - Recognition",
+                matching: [
+                    { ar: "بِرَأْيِي", arabeezy: "bira2yi", en: "in my opinion" },
+                    { ar: "مَعَك حَقّ", arabeezy: "ma3ak 7a2", en: "you are right" },
+                    { ar: "مِش مُقْتَنِع", arabeezy: "mish muqtane3", en: "not convinced" },
+                    { ar: "أَحْسَن مِن", arabeezy: "a7san min", en: "better than" },
+                    { ar: "عَلَى حَسَب", arabeezy: "3ala 7asab", en: "it depends on" },
+                    { ar: "بَلَا زَعَل", arabeezy: "bala za3al", en: "no offense" },
+                ],
+                multipleChoice: [
+                    { prompt: "Choose the polite disagreement.", options: ["فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف.", "إِنْتَ غَلَط.", "مَا بَدِّي أَسْمَع."], correct: "فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف." },
+                    { prompt: "Choose the connector that introduces a reason.", options: ["لَأَنّ (la2ann)", "بَس (bas)", "مَع إِنُّه (ma3 innu)"], correct: "لَأَنّ (la2ann)" },
+                ],
+            },
+            {
+                title: "B - Opinion grammar practice",
+                fillInTheBlank: [
+                    { prompt: "بِرَأْيِي، البَاص أَرْخَص ___ التَّاكْسِي.", arabeezy: "bira2yi, el-bas arkhaS ___ et-taxi.", cueEn: "than", answer: "مِن" },
+                    { prompt: "بَفَضِّل الشَّقَّة التَّالِتة ___ هَادْيَة.", arabeezy: "bafaDDil esh-shaqqa et-talteh ___ hadyeh.", cueEn: "because it (feminine)", answer: "لَأَنَّهَا" },
+                    { prompt: "أَنَا مَعَك، ___ الإِيجَار غَالِي.", arabeezy: "ana ma3ak, ___ el-ijar ghali.", cueEn: "but", answer: "بَس" },
+                    { prompt: "___ إِنُّه أَغْلَى، هُوَّ أَحْسَن.", arabeezy: "___ innu aghla, huwwe a7san.", cueEn: "although", answer: "مَع" },
+                    { prompt: "___، الخِيَار التَّانِي أَنْسَب.", arabeezy: "___, el-khiyar et-tani ansab.", cueEn: "in my opinion", answer: "بِرَأْيِي" },
+                    { prompt: "فَاهْمَك، بَس أَنَا مِش ___.", arabeezy: "fahmak, bas ana mish ___.", cueEn: "convinced (male)", answer: "مُقْتَنِع" },
+                    { prompt: "الخِيَار ___ السِّعِر وَالمَوَاصَلَات.", arabeezy: "el-khiyar ___ es-si3er wil-mwaSalat.", cueEn: "depends on", answer: "عَلَى حَسَب" },
+                    { prompt: "لَو بَدِّي أَخْتَار، ___ الشَّقَّة الأَهْدَى.", arabeezy: "law baddi akhtar, ___ esh-shaqqa el-ahda.", cueEn: "I would take", answer: "بَاخُد" },
+                    { prompt: "المُهِمّ ___ المَكَان يِكُون نْضِيف.", arabeezy: "el-muhimm ___ el-makan ykoon nDeef.", cueEn: "that", answer: "إِنُّه" },
+                    { prompt: "Review future: بُكْرَا ___ نِقَارِن بَيْنَهُم.", arabeezy: "bukra ___ nqarin beinom.", cueEn: "will", answer: "رَاح" },
+                    { prompt: "Review housing: فِي رُطُوبَة ___ الخِزَانَة.", arabeezy: "fi rToobeh ___ el-khizaneh.", cueEn: "behind", answer: "وَرَا" },
+                    { prompt: "Review health: رَاسِي بِيْجَع___.", arabeezy: "rasi biyja3___.", cueEn: "me", answer: "نِي" },
+                ],
+                correctTheMistake: [
+                    { prompt: "Correct: هَادِي الشَّقَّة أَحْسَن عَلَى الأُولَى.", arabeezy: "hadi esh-shaqqa a7san 3ala el-oola.", answer: "هَادِي الشَّقَّة أَحْسَن مِن الأُولَى." },
+                    { prompt: "Correct: أَنَا مِش مُقْتَنِعَة. (male speaker)", arabeezy: "ana mish muqtan3a.", answer: "أَنَا مِش مُقْتَنِع." },
+                    { prompt: "Correct: هُوَّ بَفَضِّل الشَّقَّة لَأَنُّه هَادْيَة.", arabeezy: "huwwe bafaDDil esh-shaqqa la2annu hadyeh.", answer: "هُوَّ بَفَضِّل الشَّقَّة لَأَنَّهَا هَادْيَة." },
+                    { prompt: "Review past: اِمْبَارِح رَاح أَكُون مَعَك.", arabeezy: "imbari7 ra7 akoon ma3ak.", answer: "اِمْبَارِح كُنْت مَعَك." },
+                    { prompt: "Correct the connector: بَفَضِّل الشَّقَّة لَأَنُّه هَادْيَة.", arabeezy: "bafaDDil esh-shaqqa la2annu hadyeh.", answer: "بَفَضِّل الشَّقَّة لَأَنَّهَا هَادْيَة." },
+                    { prompt: "Correct the comparison: التَّاكْسِي أَغْلَى عَن البَاص.", arabeezy: "et-taxi aghla 3an el-bas.", answer: "التَّاكْسِي أَغْلَى مِن البَاص." },
+                ],
+                reorderSentences: [
+                    { prompt: "Build: In my opinion, the bus is cheaper.", arabeezy: "bira2yi el-bas arkhaS.", words: ["بِرَأْيِي،", "البَاص", "أَرْخَص."], answer: "بِرَأْيِي، البَاص أَرْخَص." },
+                    { prompt: "Build: I understand you, but I disagree.", arabeezy: "fahmak, bas ana mish ma3ak.", words: ["فَاهْمَك،", "بَس", "أَنَا مِش مَعَك."], answer: "فَاهْمَك، بَس أَنَا مِش مَعَك." },
+                    { prompt: "Build: It depends on the price.", arabeezy: "3ala 7asab es-si3er.", words: ["عَلَى حَسَب", "السِّعِر."], answer: "عَلَى حَسَب السِّعِر." },
+                    { prompt: "Review future: Tomorrow we will decide.", arabeezy: "bukra ra7 nqarrir.", words: ["بُكْرَا", "رَاح", "نِقَرِّر."], answer: "بُكْرَا رَاح نِقَرِّر." },
+                    { prompt: "Build: Although it is more expensive, it is better.", arabeezy: "ma3 innu aghla, huwwe a7san.", words: ["مَع إِنُّه", "أَغْلَى،", "هُوَّ أَحْسَن."], answer: "مَع إِنُّه أَغْلَى، هُوَّ أَحْسَن." },
+                    { prompt: "Review housing: There is dampness behind the closet.", arabeezy: "fi rToobeh wara el-khizaneh.", words: ["فِي رُطُوبَة", "وَرَا", "الخِزَانَة."], answer: "فِي رُطُوبَة وَرَا الخِزَانَة." },
                 ],
             },
         ],

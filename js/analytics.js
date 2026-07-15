@@ -1,4 +1,6 @@
 import { inject } from './vercel-analytics.mjs';
 
-// Initialize Vercel Web Analytics
-inject();
+// Vercel's internal endpoint does not exist on localhost or static preview servers.
+if (window.location.hostname.endsWith("vercel.app")) {
+    inject();
+}

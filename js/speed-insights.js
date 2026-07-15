@@ -1,4 +1,6 @@
 import { injectSpeedInsights } from './vercel-speed-insights.mjs';
 
-// Initialize Vercel Speed Insights
-injectSpeedInsights();
+// Vercel's internal endpoint does not exist on localhost or static preview servers.
+if (window.location.hostname.endsWith("vercel.app")) {
+    injectSpeedInsights();
+}
