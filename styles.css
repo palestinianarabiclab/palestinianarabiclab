@@ -1770,6 +1770,10 @@ select:focus {
     margin-bottom: 12px;
 }
 
+#btnSubscribe[hidden] {
+    display: none !important;
+}
+
 .level-card {
     min-width: 0;
     background: #ffffff;

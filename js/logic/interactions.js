@@ -286,6 +286,7 @@ function applyStudentAccessProfile(user, profile = {}) {
         courseAccess: profile.courseAccess === true,
         accessType: profile.accessType || "none",
     };
+    updateCourseAccessControls();
     if (appState.currentUser?.role === "student") {
         const student = getCurrentStudent();
         if (student) {
@@ -842,7 +843,17 @@ function updateAuthUI() {
     if (typeof window.setDrawingLayerForRole === "function") {
         window.setDrawingLayerForRole("guest");
     }
+    updateCourseAccessControls();
     updateFloatingChatVisibility();
+}
+
+function updateCourseAccessControls() {
+    const btnSubscribe = document.getElementById("btnSubscribe");
+    if (!btnSubscribe) return;
+    const isUnlockedStudent =
+        appState.currentUser?.role === "student"
+        && currentAccessProfile.courseAccess === true;
+    btnSubscribe.hidden = isUnlockedStudent;
 }
 function updateFloatingChatVisibility() {
     const floatingChatBtn = document.getElementById("floatingChatBtn");

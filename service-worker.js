@@ -1,4 +1,4 @@
-const CACHE_NAME = "pal-arabic-lab-v2026-07-16-6";
+const CACHE_NAME = "pal-arabic-lab-v2026-07-16-7";
 const STATIC_ASSETS = [
     "/",
     "/index.html",
