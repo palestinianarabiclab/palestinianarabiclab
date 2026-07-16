@@ -353,7 +353,16 @@ export function renderDialogueOnlyLevels() {
     }
 
   const isGuest = !!(window.appState && window.appState.currentUser && window.appState.currentUser.role === 'guest');
-  const guestAllowed = new Set(['Greetings', 'Family']);
+  const guestAllowed = new Set([
+    'Greetings',
+    'Transportation',
+    'trans',
+    'Family',
+    'Food & Drink',
+    'Daily Routine',
+    'Weather & Small Talk',
+    'Feelings',
+  ]);
 
   allUnits.forEach((unitName) => {
     const pill = document.createElement('div');
@@ -368,7 +377,7 @@ export function renderDialogueOnlyLevels() {
 
       // Always visible (Option 1). If no script, we still allow open.
     const branchingId = findBranchingIdFor(lvl.level, unitName) || `BD::CUSTOM::${lvl.level}::${unitName}`;
-    const isLocked = isGuest && (lvl.level !== 'Beginner' || !guestAllowed.has(unitName));
+    const isLocked = isGuest && !guestAllowed.has(unitName);
 
     // progress (lightweight): count steps in history
     if (student) {

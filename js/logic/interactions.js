@@ -6,6 +6,7 @@ import { defaultLessons as importedDefaultLessons } from '../lessons/index.js';
 import { arabicLetters, arabicLettersExtras, arabicLettersExercises } from '../data/arabicLettersData.js';
 import { gazaSituations } from '../data/gazaSituationsData.js';
 import { palestinianProverbs } from '../data/palestinianCultureData.js';
+import { getGrammarCapsules } from '../data/grammarCapsulesData.js';
 import {
     createInitialContactSettings,
     loadContactSettings as loadStoredContactSettings,
@@ -3630,20 +3631,11 @@ function renderLevels() {
             statusSpan.className = "unit-pill__status";
 
             const lessonId = findLessonIdFor(lvl.level, unitName);
-            let unlockBtn = null;
 
             if (lessonId) {
                 if (!canOpenLesson(lessonId)) {
                     pill.classList.add("unit-pill--locked");
-                    statusSpan.textContent = "Locked: full access required";
-                    unlockBtn = document.createElement("button");
-                    unlockBtn.className = "unit-pill__unlock";
-                    unlockBtn.type = "button";
-                    unlockBtn.textContent = "Get Full Access";
-                    unlockBtn.addEventListener("click", (event) => {
-                        event.stopPropagation();
-                        openSubscribeModal();
-                    });
+                    statusSpan.textContent = "🔒 Full access";
                     pill.addEventListener("click", () => {
                         openSubscribeModal();
                     });
@@ -3687,7 +3679,6 @@ function renderLevels() {
 
             pill.appendChild(nameSpan);
             pill.appendChild(statusSpan);
-            if (unlockBtn) pill.appendChild(unlockBtn);
             unitsContainer.appendChild(pill);
         });
 
@@ -3871,7 +3862,15 @@ function getOpenLessonIds() {
 }
 
 function isPreviewLesson(lessonId) {
-    return lessonId === LESSON_ID_GREETING || lessonId === LESSON_ID_WORK_STUDY;
+    return new Set([
+        LESSON_ID_GREETING,
+        LESSON_ID_TRANSPORT,
+        LESSON_ID_FAMILY,
+        LESSON_ID_FOOD_DRINK,
+        LESSON_ID_DAILY_ROUTINE,
+        LESSON_ID_WEATHER,
+        LESSON_ID_FEELINGS,
+    ]).has(lessonId);
 }
 
 function startFreeLearning({ navigate = true } = {}) {
@@ -3984,7 +3983,8 @@ function closeBookingPortalModal() {
 
 function isGrammarTabEnabled(lesson) {
     if (!lesson) return false;
-    return Array.isArray(lesson.grammar) && lesson.grammar.length > 0;
+    return (Array.isArray(lesson.grammarCapsuleIds) && lesson.grammarCapsuleIds.length > 0)
+        || (Array.isArray(lesson.grammar) && lesson.grammar.length > 0);
 }
 function updateLessonTabsVisibility(lesson) {
     const availableTabs = safeArr(lesson?.meta?.availableTabs);
@@ -5404,10 +5404,11 @@ function renderGrammarExercises(parent, exercises) {
 function renderGrammarTab(container, lesson) {
     const title = document.createElement("h4");
     title.className = "td-lessonitem__title";
-    title.textContent = "Grammar Notes";
+    title.textContent = "Grammar Capsules";
     container.appendChild(title);
 
-    const items = safeArr(lesson?.grammar);
+    const capsuleItems = getGrammarCapsules(safeArr(lesson?.grammarCapsuleIds));
+    const items = capsuleItems.length ? capsuleItems : safeArr(lesson?.grammar);
     if (!items.length) {
         const empty = document.createElement("p");
         empty.className = "translation-muted";
@@ -5438,6 +5439,27 @@ function renderGrammarTab(container, lesson) {
 
             const body = document.createElement("div");
             body.className = "grammar-accordion__body";
+
+            if (g.id) {
+                const capsuleBadge = document.createElement("span");
+                capsuleBadge.className = "badge badge--soft";
+                capsuleBadge.textContent = g.id;
+                body.appendChild(capsuleBadge);
+            }
+
+            if (g.goal) {
+                const goal = document.createElement("p");
+                goal.className = "grammar-capsule__goal";
+                goal.textContent = g.goal;
+                body.appendChild(goal);
+            }
+
+            if (g.pattern) {
+                const pattern = document.createElement("div");
+                pattern.className = "grammar-capsule__pattern";
+                pattern.textContent = g.pattern;
+                body.appendChild(pattern);
+            }
 
             const desc = document.createElement("p");
             desc.className = "grammar-desc";
@@ -5540,6 +5562,24 @@ function renderGrammarTab(container, lesson) {
             }
 
             renderGrammarExercises(body, safeArr(g.exercises));
+
+            if (g.sayIt) {
+                const sayIt = document.createElement("section");
+                sayIt.className = "grammar-capsule__say-it";
+                const sayTitle = document.createElement("strong");
+                sayTitle.textContent = "Say it aloud";
+                const sayText = document.createElement("p");
+                sayText.textContent = g.sayIt;
+                sayIt.append(sayTitle, sayText);
+                body.appendChild(sayIt);
+            }
+
+            if (safeArr(g.usedIn).length) {
+                const usedIn = document.createElement("p");
+                usedIn.className = "grammar-capsule__used-in";
+                usedIn.textContent = `Used again in: ${g.usedIn.join(" · ")}`;
+                body.appendChild(usedIn);
+            }
 
             if (appState.teacherMode) {
                 const notesWrap = document.createElement("div");

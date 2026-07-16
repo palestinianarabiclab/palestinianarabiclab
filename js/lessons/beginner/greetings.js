@@ -7,7 +7,7 @@ export const lesson = {
         level: "Beginner",
         unit: "Greetings",
         lessonTitle: "Unit 1 - Greetings & Introductions (Gaza Palestinian Arabic)",
-        contentVersion: 2026071301,
+        contentVersion: 2026071601,
     },
 
     overview: {
@@ -367,6 +367,8 @@ export const lesson = {
             register: "Common, warm, and natural with family, friends, guests, and acquaintances.",
         },
     ],
+
+    grammarCapsuleIds: ["GC-01", "GC-02", "GC-03", "GC-04", "GC-05", "GC-06"],
 
     grammar: [
         {
