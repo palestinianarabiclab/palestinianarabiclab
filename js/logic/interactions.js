@@ -2991,8 +2991,6 @@ function goToLevels() {
     }
     showScreen("levels-screen");
     $("#currentStudentNameLevels").textContent = currentStudent.name;
-    const btnSwitchProfile = $("#btnSwitchProfile");
-    if (btnSwitchProfile) btnSwitchProfile.style.display = isGuestUser() ? "none" : "inline-flex";
     const btnStudentLogout = $("#btnStudentLogout");
     if (btnStudentLogout) btnStudentLogout.hidden = isGuestUser() || appState.currentUser?.role !== "student";
     renderLevels();
@@ -8379,12 +8377,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
     // level & teacher buttons
-    document.getElementById("btnSwitchProfile")?.addEventListener("click", () => {
-        // Save current lesson position before clearing current student
-        try { persistResumeBeforeNav(); } catch { }
-        appState.currentStudentId = null;
-        goToStudents();
-    });
+    document.getElementById("btnBookLesson")?.addEventListener("click", openExternalBookingPage);
     document.getElementById("btnStudentLogout")?.addEventListener("click", () => {
         signOutStudentFromSite();
     });
