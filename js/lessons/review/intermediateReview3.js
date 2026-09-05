@@ -1,7 +1,7 @@
 export const lessonId = "Review-Intermediate-Units11-15";
 
 export const lesson = {
-    meta: { level: "Intermediate", unit: "Cumulative Review 3", lessonTitle: "Review Units 11-15", contentVersion: 2026071501, availableTabs: ["overview", "grammar", "practice"] },
+    meta: { level: "Intermediate", unit: "Cumulative Review 3", lessonTitle: "Review Units 11-15", contentVersion: 2026082001, availableTabs: ["overview", "grammar", "practice"] },
     overview: {
         title: "Cumulative Review 3",
         description: "A cumulative teacher-led review of opinions, complaints, future plans, hobbies, and feelings through connected sentences and short narratives.",
@@ -32,7 +32,7 @@ export const lesson = {
             },
             examples: [
                 { ar: "معك حق إنّه أرخص، بس برأيي الخيار التاني أريح.", arabeezy: "ma3ak 7a2 inno arkhaS, bas bra2yi el-khyar et-tani arya7.", en: "You are right that it is cheaper, but in my opinion the second option is more comfortable." },
-                { ar: "مع إنّ الخدمة أبطأ، أنا بفضّل هالمحلّ لأنه أضمن.", arabeezy: "ma3 inn el-khidme abTa2, ana bfaDDel hal-ma7all la2inno aDman.", en: "Although the service is slower, I prefer this shop because it is more reliable." },
+                { ar: "مع إنّ الإيجار أغلى، أنا بفضّل هالشقة لأنها أهدى.", arabeezy: "ma3 inn el-ijar aghla, ana bfaDDel hal-shaqqa la2innha ahda.", en: "Although the rent is higher, I prefer this apartment because it is quieter." },
             ],
             commonMistakes: ["A direct comparative takes من.", "Use لأنه for the reason and عشان هيك for the result."],
             exercises: [
@@ -99,20 +99,20 @@ export const lesson = {
                 headers: ["Meaning", "Pattern", "Example"],
                 rows: [
                     ["habit", "بـ-present", "بلعب الجمعة"],
-                    ["frequency", "مرتين بالأسبوع", "بتمرّن مرتين"],
-                    ["still", "لسا + present", "لسا بتعلّم"],
-                    ["duration to now", "صارلي + duration + present", "صارلي سنة بلعب"],
-                    ["stopped", "بطّلت + bare verb", "بطّلت ألعب"],
+                    ["frequency", "مرتين بالأسبوع", "بمشي مرتين"],
+                    ["still", "لسا + present", "لسا بقرأ"],
+                    ["duration to now", "صارلي + duration + present", "صارلي سنة بقرأ"],
+                    ["stopped", "بطّلت + bare verb", "بطّلت أقرأ"],
                 ],
             },
             examples: [
-                { ar: "صارلي سنتين بتعلّم عود، ولسا بتمرّن كل يوم.", arabeezy: "Sarli santain bat3allam 3ood, w lissa batmarran kol yom.", en: "I have been learning oud for two years, and I still practice every day." },
-                { ar: "كنت ألعب تلات مرات بالأسبوع، بس بطّلت من شهر.", arabeezy: "kunt al3ab talat marrat bil-osboo3, bas baTTalt min shaher.", en: "I used to play three times a week, but I stopped a month ago." },
+                { ar: "صارلي سنتين بقرأ كل أسبوع، ولسا بحب القراية.", arabeezy: "Sarli santain baqra kol osboo3, w lissa ba7ibb el-qiraye.", en: "I have been reading every week for two years, and I still like reading." },
+                { ar: "كنت أمشي تلات مرات بالأسبوع، بس بطّلت من شهر.", arabeezy: "kunt amshi talat marrat bil-osboo3, bas baTTalt min shaher.", en: "I used to walk three times a week, but I stopped a month ago." },
             ],
             commonMistakes: ["After بحب, بقدر, or بطّلت, the following verb normally drops habitual بـ.", "صارلي + duration connects a past starting point to the present."],
             exercises: [
-                { prompt: "Choose: ‘I have been training for a year.’", options: ["صارلي سنة بتمرّن.", "لسا سنة تمرّنت.", "بطّلت سنة.", "راح بتمرّن سنة امبارح."], correct: "صارلي سنة بتمرّن.", explanation: "صارلي + duration + present expresses continuation until now." },
-                { prompt: "What does بطّلت ألعب mean?", options: ["I stopped playing.", "I started playing.", "I still play.", "I will play."], correct: "I stopped playing.", explanation: "بطّلت marks the end of the activity." },
+                { prompt: "Choose: ‘I have been reading for a year.’", options: ["صارلي سنة بقرأ.", "لسا سنة قرأت.", "بطّلت سنة.", "راح بقرأ سنة امبارح."], correct: "صارلي سنة بقرأ.", explanation: "صارلي + duration + present expresses continuation until now." },
+                { prompt: "What does بطّلت أقرأ mean?", options: ["I stopped reading.", "I started reading.", "I still read.", "I will read."], correct: "I stopped reading.", explanation: "بطّلت marks the end of the activity." },
             ],
         },
         {
@@ -145,13 +145,24 @@ export const lesson = {
     practice: {
         showRealUse: false, showWriting: false, separateExerciseTypes: true,
         quiz: [
-            { id: "ir3_q1", questionAr: "Choose the polite disagreement.", optionsEn: ["فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف.", "إِنْتَ غَلَط.", "مَا بَدِّي أَسْمَع."], correctIndex: 0 },
+            { id: "ir3_q1", questionAr: "Choose the polite disagreement.", optionsEn: ["فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع.", "إِنْتَ غَلَط.", "مَا بَدِّي أَسْمَع."], correctIndex: 0 },
             { id: "ir3_q2", questionAr: "Choose the full past plural: They spoke.", optionsEn: ["هُمَّ حَكُوا.", "هُمَّ بِحْكُوا.", "هُمَّ رَاح يِحْكُوا."], correctIndex: 0 },
             { id: "ir3_q3", questionAr: "Choose the indirect object: They promised me.", optionsEn: ["وَعَدُونِي", "وَعَدُوه", "وَعَدْتُهَا"], correctIndex: 0 },
             { id: "ir3_q4", questionAr: "Choose the negative future.", optionsEn: ["مِش رَاح أَتْأَخَّر.", "مَا تْأَخَّرْت.", "مِش مُتْأَخِّر."], correctIndex: 0 },
             { id: "ir3_q5", questionAr: "Choose the cause-and-result sentence.", optionsEn: ["كُنْت مَضْغُوط، عَشَان هِيك أَخَدْت رَاحَة.", "بَرُوح عَالنَّادِي مَرَّتِين.", "قَدِّيش الإِيجَار؟"], correctIndex: 0 },
+            { id: "ir3_q6", questionAr: "Complete the comparison: الشَّقَّة هَاي أَهْدَى ___ الأُولَى.", optionsEn: ["مِن", "فِي", "عَشَان"], correctIndex: 0 },
+            { id: "ir3_q7", questionAr: "Choose the phrase that introduces a backup plan.", optionsEn: ["إِذَا مَا زَبَطَت...", "اِمْبَارِح...", "وَلَا مَرَّة..."], correctIndex: 0 },
+            { id: "ir3_q8", questionAr: "Choose the exact frequency phrase.", optionsEn: ["مَرَّتِين بِالأُسْبُوع", "مَع حَالِي", "مِش رَايِق"], correctIndex: 0 },
+            { id: "ir3_q9", questionAr: "Choose the phrase meaning: I still read.", optionsEn: ["لِسَّا بَقْرَا.", "بَطَّلْت أَقْرَا.", "رَاح أَقْرَا."], correctIndex: 0 },
+            { id: "ir3_q10", questionAr: "Choose the supportive response that respects a boundary.", optionsEn: ["عَادِي، إِذَا بِدَّك تِحْكِي بَعْدِين أَنَا مَعَك.", "لَازِم تِحْكِي هَلِّق.", "هَادَا مِش مُهِمّ."], correctIndex: 0 },
         ],
-        rolePlays: ["Describe a complaint that happened: give your opinion, narrate what people said and did, explain how you felt, and state what you will do next."],
+        rolePlays: [
+            "Compare two apartments and disagree politely before choosing one.",
+            "Call about a repeated apartment problem and ask for a clear solution and time.",
+            "Arrange a plan for next week and give a backup option if it does not work.",
+            "Talk about one hobby, how often you do it, and who you do it with.",
+            "Respond supportively to a tired friend who does not want to talk right now.",
+        ],
         sections: [
             { title: "A - Recognition", matching: [
                 { ar: "بِرَأْيِي", arabeezy: "bira2yi", en: "in my opinion" },
@@ -170,7 +181,7 @@ export const lesson = {
                     { prompt: "مَع إِنُّه غَالِي، أَنَا ___ هَادَا الخِيَار.", arabeezy: "ma3 innu ghali, ana ___ hada el-khiyar.", cueEn: "prefer", answer: "بَفَضِّل" },
                     { prompt: "المُشْكِلِة ___ تَلَات مَرَّات.", arabeezy: "el-mushkileh ___ talat marrat.", cueEn: "repeated", answer: "تْكَرَّرَت" },
                     { prompt: "إِذَا مَا زَبَطَت، ___ الخُطَّة.", arabeezy: "iza ma zabaTat, ___ el-khoTTeh.", cueEn: "we change", answer: "بِنْغَيِّر" },
-                    { prompt: "بَلَّشْت أَتْعَلَّم وُ___ بَتْعَلَّم.", arabeezy: "ballasht at3allam w ___ bat3allam.", cueEn: "still", answer: "لِسَّا" },
+                    { prompt: "بَلَّشْت أَقْرَا كِتَاب وُ___ بَقْرَاه.", arabeezy: "ballasht aqra kitab w ___ baqrah.", cueEn: "still", answer: "لِسَّا" },
                     { prompt: "هِيَّ ___ مَضْغُوطَة اِمْبَارِح.", arabeezy: "hiyyeh ___ maDghooTeh imbari7.", cueEn: "was", answer: "كَانَت" },
                 ],
                 correctTheMistake: [
@@ -187,10 +198,27 @@ export const lesson = {
                     { prompt: "Build: I was stressed, so I took a break.", arabeezy: "kunt maDghooT, 3ashan heek akhadt ra7a.", words: ["كُنْت مَضْغُوط،", "عَشَان هِيك", "أَخَدْت رَاحَة."], answer: "كُنْت مَضْغُوط، عَشَان هِيك أَخَدْت رَاحَة." },
                     { prompt: "Build: If the plan does not work, we will change it.", words: ["إِذَا مَا زَبَطَت الخُطَّة،", "رَاح", "نْغَيِّرْهَا."], answer: "إِذَا مَا زَبَطَت الخُطَّة، رَاح نْغَيِّرْهَا." },
                     { prompt: "Build: She was stressed yesterday because of work.", words: ["هِيَّ كَانَت مَضْغُوطَة", "اِمْبَارِح", "عَشَان الشُّغُل."], answer: "هِيَّ كَانَت مَضْغُوطَة اِمْبَارِح عَشَان الشُّغُل." },
-                    { prompt: "Build: I started learning and I am still learning.", words: ["بَلَّشْت أَتْعَلَّم", "وُلِسَّا", "بَتْعَلَّم."], answer: "بَلَّشْت أَتْعَلَّم وُلِسَّا بَتْعَلَّم." },
+                    { prompt: "Build: I started reading a book and I am still reading it.", words: ["بَلَّشْت أَقْرَا كِتَاب", "وُلِسَّا", "بَقْرَاه."], answer: "بَلَّشْت أَقْرَا كِتَاب وُلِسَّا بَقْرَاه." },
                 ],
             },
-        ], translation: [],
+        ],
+        translation: [
+            { id: "ir3_t1", type: "enToAr", textEn: "In my opinion, this apartment is quieter.", textAr: "بِرَأْيِي هَاي الشَّقَّة أَهْدَى." },
+            { id: "ir3_t2", type: "arToEn", textEn: "I understand you, but I am not convinced.", textAr: "فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع." },
+            { id: "ir3_t3", type: "enToAr", textEn: "This rent is more expensive than the first one.", textAr: "هَادَا الإِيجَار أَغْلَى مِن الأَوَّل." },
+            { id: "ir3_t4", type: "arToEn", textEn: "The same problem happened three times.", textAr: "نَفْس المُشْكِلِة تْكَرَّرَت تَلَات مَرَّات." },
+            { id: "ir3_t5", type: "enToAr", textEn: "You promised me the technician would come yesterday.", textAr: "وَعَدْتُونِي الفَنِّي يِيجِي اِمْبَارِح." },
+            { id: "ir3_t6", type: "arToEn", textEn: "This is not a solution.", textAr: "هَادَا مِش حَلّ." },
+            { id: "ir3_t7", type: "enToAr", textEn: "Tomorrow I will not be late.", textAr: "بُكْرَا مِش رَاح أَتْأَخَّر." },
+            { id: "ir3_t8", type: "arToEn", textEn: "If it does not work, we will change the plan.", textAr: "إِذَا مَا زَبَطَت، رَاح نْغَيِّر الخُطَّة." },
+            { id: "ir3_t9", type: "enToAr", textEn: "Next week I will start a new job.", textAr: "الأُسْبُوع الجَاي رَاح أَبَلِّش شُغُل جَدِيد." },
+            { id: "ir3_t10", type: "arToEn", textEn: "I go to the gym twice a week.", textAr: "بَرُوح عَالنَّادِي مَرَّتِين بِالأُسْبُوع." },
+            { id: "ir3_t11", type: "enToAr", textEn: "I have never tried photography.", textAr: "وَلَا مَرَّة جَرَّبْت التَّصْوِير." },
+            { id: "ir3_t12", type: "arToEn", textEn: "I started reading a book and I am still reading it.", textAr: "بَلَّشْت أَقْرَا كِتَاب وُلِسَّا بَقْرَاه." },
+            { id: "ir3_t13", type: "enToAr", textEn: "Today my mood is not good.", textAr: "اليَوم مَزَاجِي مِش مْنِيح." },
+            { id: "ir3_t14", type: "arToEn", textEn: "I have no energy, so I will take a break.", textAr: "فِش عِنْدِي طَاقَة، عَشَان هِيك رَاح أَاخُد رَاحَة." },
+            { id: "ir3_t15", type: "enToAr", textEn: "If you want to talk later, I am with you.", textAr: "إِذَا بِدَّك تِحْكِي بَعْدِين، أَنَا مَعَك." },
+        ],
     },
     homework: { instructions: "Review errors orally; no written homework." }, teacherNotes: { myNotes: "" },
 };

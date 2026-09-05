@@ -1,4 +1,4 @@
-import { LESSON_ID_GREETING } from '../../core/constants.js';
+import { LESSON_ID_GREETING } from '../../constants.js';
 
 export const lessonId = LESSON_ID_GREETING;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Beginner",
         unit: "Greetings",
         lessonTitle: "Unit 1 - Greetings & Introductions (Gaza Palestinian Arabic)",
-        contentVersion: 2026071601,
+        contentVersion: 2026081504,
     },
 
     overview: {
@@ -36,9 +36,9 @@ export const lesson = {
                 en: "Hello",
                 enArabeezy: "marhaba",
                 hint: "Main greeting. Natural replies: أَهْلًا، أَهْلِين، مَرْحَبْتِين، يَا هَلَا.",
-                exampleAr: "مَرْحَبَا، كِيفَك؟",
-                exampleArabeezy: "marhaba, keefak?",
-                exampleEn: "Hello, how are you?",
+                exampleAr: "مَرْحَبَا يَا لِين.",
+                exampleArabeezy: "marhaba ya Leen.",
+                exampleEn: "Hello, Lynn.",
             },
             {
                 id: "sabah_el_kheir",
@@ -46,9 +46,9 @@ export const lesson = {
                 en: "Good morning",
                 enArabeezy: "sabah el-kheir",
                 hint: "Morning greeting. Replies: صَبَاح النُّور، يِسْعِد صَبَاحَك.",
-                exampleAr: "صَبَاح الخِير يَا أُسْتَاذ.",
-                exampleArabeezy: "sabah el-kheir ya ustaz.",
-                exampleEn: "Good morning, teacher.",
+                exampleAr: "صَبَاح الخِير. ـ صَبَاح النُّور.",
+                exampleArabeezy: "sabah el-kheir. - sabah en-noor.",
+                exampleEn: "Good morning. — Good morning.",
             },
             {
                 id: "masa_el_kheir",
@@ -56,9 +56,9 @@ export const lesson = {
                 en: "Good evening",
                 enArabeezy: "masa el-kheir",
                 hint: "Evening greeting. Reply: مَسَا النُّور.",
-                exampleAr: "مَسَا الخِير يَا جَمَاعَة.",
-                exampleArabeezy: "masa el-kheir ya jama3a.",
-                exampleEn: "Good evening, everyone.",
+                exampleAr: "مَسَا الخِير. ـ مَسَا النُّور.",
+                exampleArabeezy: "masa el-kheir. - masa en-noor.",
+                exampleEn: "Good evening. — Good evening.",
             },
             {
                 id: "ahlan_wa_sahlan",
@@ -66,9 +66,9 @@ export const lesson = {
                 en: "Welcome",
                 enArabeezy: "ahlan wa sahlan",
                 hint: "Main welcome phrase. You can add فيك / فيكي / فيكم. Warmer extra phrase: نَوَّرْت (m), نَوَّرْتِي (f), نَوَّرْتُوا (pl).",
-                exampleAr: "أَهْلًا وَسَهْلًا فِيك، نَوَّرْت.",
-                exampleArabeezy: "ahlan wa sahlan feeki, nourt.",
-                exampleEn: "Welcome to you, I'm glad (you lit up the place).",
+                exampleAr: "أَهْلًا وَسَهْلًا يَا لِين.",
+                exampleArabeezy: "ahlan wa sahlan ya Leen.",
+                exampleEn: "Welcome, Lynn.",
             },
            {
                 id: "ya3teek_el_afyeh",
@@ -97,9 +97,9 @@ export const lesson = {
                 en: "what's new? / how are things?",
                 enArabeezy: "shu el-akhbar",
                 hint:  "Warm follow-up after a greeting. You can add كُلُّه تَمَام؟ = is everything okay?",
-                exampleAr: "شُو الْأَخْبَار؟ كُلُّه تَمَام؟",
-                exampleArabeezy: "shu el-akhbar? kullu tamam?",
-                exampleEn: "Hey, what's new? Is everything okay?",
+                exampleAr: "مَرْحَبَا، شُو الْأَخْبَار؟",
+                exampleArabeezy: "marhaba, shu el-akhbar?",
+                exampleEn: "Hello, how are things?",
             },
               {
                 id: "tammenni_3annak",
@@ -107,9 +107,9 @@ export const lesson = {
                 en: "Tell me how you are / reassure me about you",
                 enArabeezy: "Tamminni 3aleek / 3annak",
                 hint: "Use when you care about someone or have not heard from them. To a man: طَمِّنِّي عَنْك. To a woman: طَمِّنِينِي عَنْكِ. To a group: طَمِّنُونِي عَنْكُم.",
-                exampleAr: "بَعْد الدَّرْس طَمِّنِّي عَلَيْك.",
-                exampleArabeezy: "ba3d el-dars Tamminni 3aleek.",
-                exampleEn: "After class, tell me how you're doing.",
+                exampleAr: "مَرْحَبَا، طَمِّنِّي عَنْك.",
+                exampleArabeezy: "marhaba, Tamminni 3annak.",
+                exampleEn: "Hello, tell me how you've been.",
             },
           {
     id: "tamam",
@@ -504,31 +504,31 @@ export const lesson = {
             },
             {
                 id: "greet_mc2",
-                type: "complete",
-                prompt: "Complete: صَبَاح الخِير. - ___",
-                options: ["صَبَاح النُّور", "مَسَا النُّور", "مَرْحَبَا", "طَمِّنِّي عَنْك"],
-                correct: "صَبَاح النُّور",
+                type: "choose",
+                prompt: "Choose the Gaza Palestinian Arabic for: I am fine.",
+                options: ["أَنَا تَمَام.", "أَنَا تَعْبَان.", "شُو الْأَخْبَار؟", "طَمِّنِّي عَنْك."],
+                correct: "أَنَا تَمَام.",
             },
             {
                 id: "greet_mc3",
                 type: "reorder",
-                prompt: "Reorder: My name is Lynn.",
+                prompt: "Reorder the Arabic words to match: My name is Lynn.",
                 options: ["اِسْمِي", "لِين"],
                 correct: ["اِسْمِي", "لِين"],
             },
             {
                 id: "greet_mc4",
-                type: "complete",
-                prompt: "Complete: إِنْتِ ___ وِين؟",
-                options: ["مِن", "شُو", "مَع", "فِي"],
-                correct: "مِن",
+                type: "choose",
+                prompt: "Someone helped you. Choose the phrase that means: Thank you.",
+                options: ["شُكْرًا", "مَع السَّلَامَة", "قَدِّيش عُمُرَك؟", "شُو بِتْعْمَل؟"],
+                correct: "شُكْرًا",
             },
             {
                 id: "greet_mc5",
                 type: "match",
-                prompt: "Choose a natural goodbye.",
-                options: ["بِنْشُوفَك بَعْدِين", "شُو اِسْمَك؟", "أَنَا مِن غَزَّة", "كِيفَك؟"],
-                correct: "بِنْشُوفَك بَعْدِين",
+                prompt: "Choose the English meaning of: بِنْشُوفَك بَعْدِين",
+                options: ["See you later", "Good morning", "What is your name?", "Thank you"],
+                correct: "See you later",
             },
         ],
     },
@@ -560,8 +560,8 @@ export const lesson = {
             },
             {
                 id: "greet_q4",
-                questionAr: "Choose the English meaning of لَوْ سَمَحْت، عِيد السُّؤَال (law samaht, 3eed es-so2al).",
-                optionsEn: ["Please repeat the question.", "Please close the class.", "Please say goodbye."],
+                questionAr: "Choose the English meaning of أَنَا شُوَيّ تَعْبَان اليَوم.",
+                optionsEn: ["I am a little tired today.", "I am fine today.", "I am from Gaza."],
                 correctIndex: 0,
             },
             {
@@ -573,46 +573,6 @@ export const lesson = {
         ],
         rolePlays: [
             "Meet a new classmate: greet them, ask their name, ask where they are from, and say where you are from.",
-        ],
-        legacySections: [
-            {
-                matching: [
-                    { ar: "مَرْحَبَا", en: "Hello" },
-                    { ar: "كِيفَك؟", en: "How are you? (to a man)" },
-                    { ar: "شُو اِسْمِك؟", en: "What is your name? (to a woman)" },
-                    { ar: "مِن وِين؟", en: "Where from?" },
-                    { ar: "طَمِّنِّي عَلَيْك", en: "Tell me how you are" },
-                ],
-                fillInTheBlank: [
-                    { prompt: "شُو ___؟", answer: "اِسْمَك" },
-                    { prompt: "أَنَا ___ غَزَّة.", answer: "مِن" },
-                    { prompt: "أَنَا سَاكْنَة ___ غَزَّة.", answer: "فِي" },
-                    { prompt: "مْنِيحَة، ___ لله.", answer: "الحَمْدُ" },
-                    { prompt: "لَوْ سَمَحْت، ___ السُّؤَال.", answer: "عِيد" },
-                ],
-                reorderSentences: [
-                    {
-                        prompt: "Put the words in order: What is your name?",
-                        words: ["شُو", "اِسْمَك؟"],
-                        answer: "شُو اِسْمَك؟",
-                    },
-                    {
-                        prompt: "Put the words in order: I am from Gaza.",
-                        words: ["أَنَا", "مِن", "غَزَّة."],
-                        answer: "أَنَا مِن غَزَّة.",
-                    },
-                    {
-                        prompt: "Put the words in order: See you later.",
-                        words: ["بِنْشُوفَك", "بَعْدِين."],
-                        answer: "بِنْشُوفَك بَعْدِين.",
-                    },
-                ],
-                writeYourOwnSentences: [
-                    "Write 5 short sentences introducing yourself: greeting, name, origin, where you live, and how you feel.",
-                    "Change these to feminine: كِيفَك؟ / سَاكِن / فَاهِم.",
-                    "Change these to plural: كِيفَك؟ / مْنِيح / سَاكِن.",
-                ],
-            },
         ],
         sections: [
             {
@@ -737,10 +697,10 @@ export const lesson = {
                         answer: "أَنَا سَاكِن فِي غَزَّة.",
                     },
                     {
-                        prompt: "Put the words in order: Good morning, teacher.",
-                        arabeezy: "sabah el-kheir ya ustaz.",
-                        words: ["يَا أُسْتَاذ.", "الخِير", "صَبَاح"],
-                        answer: "صَبَاح الخِير يَا أُسْتَاذ.",
+                        prompt: "Put the words in order: Welcome, Lynn.",
+                        arabeezy: "ahlan wa sahlan ya Leen.",
+                        words: ["يَا لِين.", "وَسَهْلًا", "أَهْلًا"],
+                        answer: "أَهْلًا وَسَهْلًا يَا لِين.",
                     },
                 ],
             },
@@ -754,8 +714,8 @@ export const lesson = {
             { id: "greet_t6", type: "enToAr", textEn: "How old are you?", textAr: "قَدِّيش عُمُرَك/عُمُرِك؟", textArabeezy: "addeesh 3omrak/3omrik?" },
             { id: "greet_t7", type: "arToEn", textEn: "I am fine, thank God.", textAr: "أَنَا مْنِيح/مْنِيحَة، الحَمْدُ لله." },
             { id: "greet_t8", type: "enToAr", textEn: "Tell me how you are.", textAr: "طَمِّنِّي عَلَيْك / عَنْك." },
-            { id: "greet_t9", type: "enToAr", textEn: "Please repeat the question.", textAr: "لَوْ سَمَحْت، عِيد السُّؤَال." },
-            { id: "greet_t10", type: "arToEn", textEn: "I do not understand the word.", textAr: "أَنَا مِش فَاهِم/فَاهْمَة الكِلْمَة." },
+            { id: "greet_t9", type: "enToAr", textEn: "What are you doing?", textAr: "شُو بِتْعْمَل؟" },
+            { id: "greet_t10", type: "arToEn", textEn: "Do you work or study?", textAr: "بِتِشْتِغِل وَلَّا بِتِدْرُس؟" },
             { id: "greet_t11", type: "enToAr", textEn: "Thanks / thank you.", textAr: "يِسْلَمُوا / شُكْرًا." },
             { id: "greet_t12", type: "arToEn", textEn: "You're welcome, no problem.", textAr: "عَفْوًا، وَلَا يِهِمَّك." },
             { id: "greet_t13", type: "enToAr", textEn: "Nice to meet you.", textAr: "تْشَرَّفْنَا." },
@@ -765,7 +725,7 @@ export const lesson = {
 
     homework: {
         instructions:
-            `Write and record a 45-60 second self-introduction in Gaza Palestinian Arabic. Include: a greeting, your name, where you are from, where you live now, your age if you are comfortable, how you feel today, one classroom phrase, and a natural closing. Use at least 8 words or phrases from the vocabulary list.
+            `Write and record a 45-60 second self-introduction in Gaza Palestinian Arabic. Include: a greeting, your name, where you are from, where you live now, your age if you are comfortable, how you feel today, one polite phrase from the vocabulary list, and a natural closing. Use at least 8 words or phrases from the vocabulary list.
 
 Translate these sentences into Gaza Palestinian Arabic:
 1. Hello, how are you?
@@ -778,8 +738,8 @@ Translate these sentences into Gaza Palestinian Arabic:
 8. I am good, thank God.
 9. I am a little tired today.
 10. Tell me how you are.
-11. Please repeat the question.
-12. I do not understand the word.
+11. What are you doing?
+12. Do you work or study?
 13. Thanks / thank you.
 14. You're welcome, no problem.
 15. Goodbye, see you later.`,

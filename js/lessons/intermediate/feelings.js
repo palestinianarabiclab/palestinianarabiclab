@@ -1,4 +1,4 @@
-import { LESSON_ID_FEELINGS } from '../../core/constants.js';
+import { LESSON_ID_FEELINGS } from '../../constants.js';
 
 export const lessonId = LESSON_ID_FEELINGS;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Intermediate",
         unit: "Feelings",
         lessonTitle: "Unit 15 - Feelings in Gaza Palestinian Arabic",
-        contentVersion: 2026071501,
+        contentVersion: 2026082001,
     },
 
     overview: {
@@ -97,9 +97,9 @@ export const lesson = {
                 en: "worried / anxious",
                 enArabeezy: "2al2an / 2al2ane",
                 hint: "Common spoken word for worry. To say about something: قَلْقَان مِن...",
-                exampleAr: "قَلْقَان مِن النَّتِيجَة بَس بَحَاوِل أَهَدَّى.",
-                exampleArabeezy: "2al2an min en-nateeje bas ba7awil ahadda.",
-                exampleEn: "I'm worried about the result, but I'm trying to calm down.",
+                exampleAr: "قَلْقَان مِن المَوْعِد بُكْرَا.",
+                exampleArabeezy: "2al2an min el-maw3id bukra.",
+                exampleEn: "I'm worried about tomorrow's appointment.",
             },
             {
                 id: "khayef",
@@ -137,9 +137,9 @@ export const lesson = {
                 en: "my mood",
                 enArabeezy: "mazaji",
                 hint: "Good mood = مَزَاجِي مْنِيح. Bad mood = مَزَاجِي مِش مْنِيح.",
-                exampleAr: "اليَوم مَزَاجِي مِش مْنِيح، بَس بِحَاوِل أَكَمِّل.",
-                exampleArabeezy: "el-yom mazaji mish mnee7, bas ba7awil akammil.",
-                exampleEn: "Today my mood isn't good, but I'm trying to keep going.",
+                exampleAr: "اليَوم مَزَاجِي مِش مْنِيح.",
+                exampleArabeezy: "el-yom mazaji mish mnee7.",
+                exampleEn: "Today my mood isn't good.",
             },
             {
                 id: "rayeq",
@@ -237,9 +237,9 @@ export const lesson = {
                 en: "I'm thinking",
                 enArabeezy: "bafakker",
                 hint: "Use for considering a plan: بَفَكِّر أَاخُد رَاحَة.",
-                exampleAr: "بَفَكِّر أَاخُد يَوم رَاحَة بَدَل مَا أَضْغَط حَالِي.",
-                exampleArabeezy: "bafakker aakhod yom ra7a badal ma aDghaT 7ali.",
-                exampleEn: "I'm thinking of taking a rest day instead of pressuring myself.",
+                exampleAr: "بَفَكِّر أَاخُد يَوم رَاحَة.",
+                exampleArabeezy: "bafakker aakhod yom ra7a.",
+                exampleEn: "I'm thinking of taking a rest day.",
             },
             {
                 id: "sho_sayer",
@@ -247,9 +247,9 @@ export const lesson = {
                 en: "what's going on with you?",
                 enArabeezy: "sho Sayer ma3ak?",
                 hint: "To a woman: مَعِك. Supportive check-in after noticing something is wrong.",
-                exampleAr: "إِنْتَ مِش عَلَى بَعْضَك اليَوم، شُو صَايِر مَعَك؟",
-                exampleArabeezy: "inta mish 3ala ba3Dak el-yom, sho Sayer ma3ak?",
-                exampleEn: "You're not yourself today, what's going on with you?",
+                exampleAr: "إِنْتَ تَعْبَان اليَوم، شُو صَايِر مَعَك؟",
+                exampleArabeezy: "inta ta3ban el-yom, sho Sayer ma3ak?",
+                exampleEn: "You're tired today—what's going on with you?",
             },
             {
                 id: "malak",
@@ -257,9 +257,9 @@ export const lesson = {
                 en: "what's wrong?",
                 enArabeezy: "malak?",
                 hint: "To a woman: مَالِك؟ To a group: مَالْكُم؟ Use gently.",
-                exampleAr: "مَالِك؟ مْبَيِّن عَلَيْكِي زَعْلَانَة.",
-                exampleArabeezy: "malik? mbayyin 3aleeki za3lane.",
-                exampleEn: "What's wrong? You look upset.",
+                exampleAr: "مَالِك؟ إِنْتِ زَعْلَانَة؟",
+                exampleArabeezy: "malik? inti za3lane?",
+                exampleEn: "What's wrong? Are you upset?",
             },
             {
                 id: "mish_3ala_ba3di",
@@ -307,9 +307,9 @@ export const lesson = {
                 en: "don't be afraid / don't worry",
                 enArabeezy: "ma tkhaf / ma tkhafi",
                 hint: "To a man: مَا تِخَاف. To a woman: مَا تِخَافِي.",
-                exampleAr: "مَا تِخَافِي، خُطْوَة خُطْوَة بِتِزْبَط.",
-                exampleArabeezy: "ma tkhafi, khuTwe khuTwe bitizbaT.",
-                exampleEn: "Don't worry, step by step it will work out.",
+                exampleAr: "مَا تِخَافِي، إِن شَاء الله بِتِزْبَط.",
+                exampleArabeezy: "ma tkhafi, inshallah bitizbaT.",
+                exampleEn: "Don't worry; hopefully it will work out.",
             },
             {
                 id: "wala_yhemmak",
@@ -387,7 +387,7 @@ export const lesson = {
             { speaker: "Noor", ar: "زَيّ شُو يَعْنِي؟", arArabeezy: "zay sho ya3ni?", en: "Like what?" },
             { speaker: "Rami", ar: "المَشْرُوع قَرَّب مَوْعِدُه، وَعِنْدِي شُغُل مُتَرَاكِم، وَلِسَّه لَازِم أُرَاجِع لِلعَرَبِي، وَفَوْق هِيك الإِنْتَرْنِت اِمْبَارِح قَطَع نُصّ اللَّيْل.", arArabeezy: "el-mashroo3 qarrab maw3ido, w 3indi shoghol mitrakim, w lissa lazim oraji3 lil-3arabi, w foq hek el-internet embare7 qaTa3 noSS el-lel.", en: "The project deadline is close, I have piled-up work, I still need to review Arabic, and on top of that the internet cut out last night." },
             { speaker: "Noor", ar: "آخ... هَادِي لِحَالْهَا بِتْطَلِّع الوَاحِد مِن طُورُه.", arArabeezy: "akh... hadi la7alha bitTalli3 el-wa7ad min Toro.", en: "Ugh... that alone can make a person lose it." },
-            { speaker: "Rami", ar: "بِالزَّبْط. نِمْت يِمْكِن تَلَات سَاعَات، وَمِن الصُّبُح وَأَنَا حَاسِس مُخِّي وَاقِف.", arArabeezy: "biz-zabT. nimt yimkin talat sa3at, w min eS-Subu7 w ana 7ases mokhkhi wa2ef.", en: "Exactly. I slept maybe three hours, and since morning I feel like my brain stopped." },
+            { speaker: "Rami", ar: "مَزْبُوط. نِمْت يِمْكِن تَلَات سَاعَات، وَمِن الصُّبُح وَأَنَا حَاسِس مُخِّي وَاقِف.", arArabeezy: "mazbooT. nimt yimkin talat sa3at, w min eS-Subu7 w ana 7ases mokhkhi wa2ef.", en: "Exactly. I slept maybe three hours, and since morning I feel like my brain stopped." },
             { speaker: "Noor", ar: "وَاضِح عَلَيْك، حَتَّى شَكْلَك تَعْبَان.", arArabeezy: "waDe7 3aleek, 7atta shaklak ta3ban.", en: "It shows, even your face looks tired." },
             { speaker: "Rami", ar: "حَاسِس إِنِّي مِش قَادِر أَرَكِّز بِإِشِي.", arArabeezy: "7ases inni mish qader arakkiz b-ishi.", en: "I feel like I can't focus on anything." },
             { speaker: "Noor", ar: "طَيِّب... شْرِبْت قَهْوَة؟ أَكَلْت إِشِي؟", arArabeezy: "Tayyib... shribt 2ahwe? akalt ishi?", en: "Okay... did you drink coffee? Did you eat anything?" },
@@ -440,7 +440,7 @@ export const lesson = {
             { ar: "نُور لِيش حَسَّت إِنُّه رَامِي مِش طَبِيعِي؟", en: "Why did Noor feel Rami was not normal today?" },
             { ar: "رَامِي قَال الأُسْبُوع هَاد عَامِل فِيه شُو؟", en: "What did Rami say this week is doing to him?" },
             { ar: "شُو الأَشْيَا اللِّي اِجْتَمَعَت عَلَى رَامِي؟", en: "What things piled up on Rami?" },
-            { ar: "لِيش رَامِي نَام بَس تَلَات سَاعَات؟", en: "Why did Rami sleep only three hours?" },
+            { ar: "قَدِّيش سَاعَة نَام رَامِي؟", en: "How many hours did Rami sleep?" },
             { ar: "رَامِي مِن الصُّبُح حَاسِس مُخُّه كِيف؟", en: "How does Rami feel his brain is since morning?" },
             { ar: "نُور سَأَلَت رَامِي إِذَا أَكَل وَلَا شَرِب شُو؟", en: "What did Noor ask Rami if he ate or drank?" },
             { ar: "قَدِّيش ضَايِل مِن المَشْرُوع؟", en: "How much of the project is left?" },
@@ -449,7 +449,7 @@ export const lesson = {
             { ar: "رَامِي بِفَكِّر يِكَنْسِل شُو اليَوم؟", en: "What is Rami thinking of canceling today?" },
             { ar: "نُور اقْتَرَحَت عَلَى رَامِي يِرُوح البَيْت وَيِعْمَل شُو؟", en: "What did Noor suggest Rami do at home?" },
             { ar: "إِذَا لَقَى عِنْدُه طَاقَة، رَامِي يِفْتَح المَشْرُوع قَدِّيش؟", en: "If Rami finds energy, how long should he open the project?" },
-            { ar: "نُور قَالَت لِرَامِي لَا تِشِيل شُو لِحَالَك؟", en: "What did Noor tell Rami not to carry alone?" },
+            { ar: "نُور شُو طَلَبَت مِن رَامِي يِعْمَل إِذَا احْتَاج أَيّ إِشِي؟", en: "What did Noor ask Rami to do if he needed anything?" },
             { ar: "رَامِي وَعَد نُور بِشُو إِذَا خَلَّص المَشْرُوع؟", en: "What did Rami promise Noor if he finishes the project?" },
             { ar: "اِحْكِي عَن وَقْت حَسِّيت فِيه إِنَّك مَضْغُوط بِخَمْس جُمَل.", en: "Talk about a time you felt stressed in five sentences." },
         ],
@@ -476,8 +476,8 @@ export const lesson = {
             },
             examples: [
                 { ar: "كنت متوتّر قبل المقابلة.", arabeezy: "kunt mtwatter qabl el-muqabale.", en: "I was nervous before the interview." },
-                { ar: "هي كانت مبسوطة بالخبر.", arabeezy: "hiyye kanat mabsooTa bil-khabar.", en: "She was happy about the news." },
-                { ar: "إحنا كنّا تعبانين بعد السفر.", arabeezy: "i7na kunna ta3baneen ba3d es-safar.", en: "We were tired after the journey." },
+                { ar: "هي كانت مبسوطة بعد الموعد.", arabeezy: "hiyye kanat mabsooTa ba3d el-maw3id.", en: "She was happy after the appointment." },
+                { ar: "إحنا كنّا تعبانين بعد الشغل.", arabeezy: "i7na kunna ta3baneen ba3d esh-shoghol.", en: "We were tired after work." },
             ],
             commonMistakes: ["كنت can mean ‘I was’ or ‘you (m.) were’; context identifies the subject.", "Match the feeling: هو زعلان، هي زعلانة، همّ زعلانين."],
             exercises: [
@@ -530,7 +530,7 @@ export const lesson = {
             },
             examples: [
                 { ar: "زعلت لأنه ما حدا خبرني.", arabeezy: "zi3ilt la2inno ma 7ada khabbarni.", en: "I became upset because nobody told me." },
-                { ar: "كنت مرهقة، عشان هيك اعتذرت وما رحت.", arabeezy: "kunt marhaqa, 3ashan hek i3tazart w ma ri7t.", en: "I was exhausted, so I apologized and did not go." },
+                { ar: "كنت تعبانة، عشان هيك ما رحت.", arabeezy: "kunt ta3bane, 3ashan hek ma ri7t.", en: "I was tired, so I did not go." },
                 { ar: "من كتر التفكير، ما عرفت أنام.", arabeezy: "min kutr et-tafkeer, ma 3irift anam.", en: "From overthinking, I could not sleep." },
             ],
             commonMistakes: ["لأنه answers ‘why?’; عشان هيك tells what happened as a consequence.", "When the cause is feminine, speakers may use لأنها: زعلت لأنها تأخرت."],
@@ -548,21 +548,21 @@ export const lesson = {
                 title: "State and change",
                 headers: ["Pattern", "Meaning", "Example"],
                 rows: [
-                    ["كان + feeling", "was already in that state", "كان خايف"],
-                    ["صار + feeling", "became / started feeling", "صار خايف"],
-                    ["رجع + feeling", "felt that way again", "رجع زعل"],
-                    ["ضلّ + feeling", "remained in that state", "ضلّه ساكت"],
+                    ["كان + feeling", "was already in that state", "كان قلقان"],
+                    ["صار + feeling", "became / started feeling", "صار قلقان"],
+                    ["رجع + feeling", "felt that way again", "رجع زعلان"],
+                    ["ضلّ + feeling", "remained in that state", "ضلّه زعلان"],
                     ["بطّل + feeling/action", "stopped being/doing", "بطّل خايف"],
                 ],
             },
             examples: [
-                { ar: "بالبداية كنت خايف، بعدين صرت أهدى.", arabeezy: "bil-bidaye kunt khayef, ba3dein Sirt ahda.", en: "At first I was afraid, then I became calmer." },
+                { ar: "بالبداية كنت متوتّر، بعدين صرت مرتاح.", arabeezy: "bil-bidaye kunt mitwatter, ba3dein Sirt mirta7.", en: "At first I was nervous, then I became relaxed." },
                 { ar: "لما تأخّر الردّ، رجعت قلقت.", arabeezy: "lamma it2akhkhar er-radd, riji3t qiliqt.", en: "When the response was delayed, I became worried again." },
-                { ar: "ضلّها زعلانة طول اليوم، وبالليل هديت.", arabeezy: "Dallha za3lane Tool el-yom, w bil-lel hidyat.", en: "She remained upset all day, and calmed down at night." },
+                { ar: "ضلّها زعلانة طول اليوم، وبالليل صارت مرتاحة.", arabeezy: "Dallha za3lane Tool el-yom, w bil-lel Sarat mirta7a.", en: "She remained upset all day, and became relaxed at night." },
             ],
             commonMistakes: ["كان زعلان describes the state; صار زعلان focuses on the change into that state.", "Match صار to the subject in the past: صرت، صار، صارت، صرنا، صاروا."],
             exercises: [
-                { prompt: "Choose the word that emphasizes a change: كان هادي، وبعدين ___ معصّب.", options: ["صار", "كان", "ضلّ", "لسا"], correct: "صار", explanation: "صار marks becoming angry." },
+                { prompt: "Choose the word that emphasizes a change: كان مرتاح، وبعدين ___ قلقان.", options: ["صار", "كان", "ضلّ", "لسا"], correct: "صار", explanation: "صار marks becoming worried." },
                 { prompt: "What does رجعت قلقت mean?", options: ["I became worried again.", "I returned a worry.", "I was never worried.", "I will calm down."], correct: "I became worried again.", explanation: "رجعت before the feeling means the state returned." },
                 { prompt: "Complete: إحنا ___ مرتاحين بعد ما انحلّت المشكلة.", options: ["صرنا", "صار", "صارت", "صرتوا"], correct: "صرنا", explanation: "إحنا takes صرنا." },
             ],
@@ -583,15 +583,15 @@ export const lesson = {
                 ],
             },
             examples: [
-                { ar: "بالبداية كنت متوتّرة، وكنت عم بستنى النتيجة.", arabeezy: "bil-bidaye kunt mtwattre, w kunt 3am bastanna en-nateeje.", en: "At first I was nervous, and I was waiting for the result." },
-                { ar: "لما اتصلوا فيّ وحكولي إني نجحت، صرت أبكي من الفرحة.", arabeezy: "lamma itSalu fiyye w 7akuli inni naja7t, Sirt abki min el-far7a.", en: "When they called and told me I had passed, I started crying with joy." },
-                { ar: "بالنهاية ارتحت، ورحت أخبّر أهلي.", arabeezy: "bin-nihaye irta7t, w ri7t akhabber ahli.", en: "In the end I felt relieved and went to tell my family." },
+                { ar: "بالبداية كنت متوتّرة، وكنت عم بستنى موعد الدكتور.", arabeezy: "bil-bidaye kunt mtwattre, w kunt 3am bastanna maw3id ed-doktor.", en: "At first I was nervous, and I was waiting for the doctor's appointment." },
+                { ar: "لما حكولي إنّ الدكتور متأخّر، صرت زعلانة.", arabeezy: "lamma 7akuli inn ed-doktor mit2akhkher, Sirt za3lane.", en: "When they told me the doctor was late, I became upset." },
+                { ar: "بالنهاية إجا الدكتور وارتحت.", arabeezy: "bin-nihaye ija ed-doktor w irta7t.", en: "In the end, the doctor came and I felt relieved." },
             ],
             commonMistakes: ["Keep the timeline stable; do not jump between past and future without a reason.", "A good story needs a result, not only a list of feelings."],
             exercises: [
                 { prompt: "Which is the best opening for a past emotional story?", options: ["بالبداية كنت متوتّر.", "عشان هيك بكرة.", "راح كنت متوتّر.", "بالنهاية أول إشي."], correct: "بالبداية كنت متوتّر.", explanation: "It clearly establishes the initial past state." },
-                { prompt: "Choose the logical sequence.", options: ["كنت عم بستنى، لما وصل الخبر فرحت، وبالنهاية ارتحت.", "بالنهاية كنت عم، قبل البداية بكرة.", "فرحت عشان هيك قبل ما وصل الخبر.", "راح أرتاح امبارح لما بكرة."], correct: "كنت عم بستنى، لما وصل الخبر فرحت، وبالنهاية ارتحت.", explanation: "It moves from background to event to reaction and result." },
-                { prompt: "In حكولي إني نجحت, who received the information?", options: ["me", "them", "him", "us"], correct: "me", explanation: "The suffix ـلي in حكولي refers to ‘to me’; the plural verb means ‘they told.’" },
+                { prompt: "Choose the logical sequence.", options: ["كنت عم بستنى، لما إجا الدكتور ارتحت، وبالنهاية روّحت.", "بالنهاية كنت عم، قبل البداية بكرة.", "ارتحت عشان هيك قبل ما إجا الدكتور.", "راح أرتاح امبارح لما بكرة."], correct: "كنت عم بستنى، لما إجا الدكتور ارتحت، وبالنهاية روّحت.", explanation: "It moves from background to event to reaction and result." },
+                { prompt: "In حكولي إنّ الدكتور متأخّر, who received the information?", options: ["me", "them", "him", "us"], correct: "me", explanation: "The suffix ـلي in حكولي refers to ‘to me’; the plural verb means ‘they told.’" },
             ],
         },
     ],
@@ -721,7 +721,7 @@ export const lesson = {
                 correctTheMistake: [
                     { prompt: "Correct: هِيَّ زَعْلَان.", arabeezy: "hiyyeh za3lan.", answer: "هِيَّ زَعْلَانَة." },
                     { prompt: "Correct the past: اِمْبَارِح أَنَا مَضْغُوط.", arabeezy: "imbari7 ana maDghooT.", answer: "اِمْبَارِح كُنْت مَضْغُوط." },
-                    { prompt: "Correct the object pronoun: أَنَا حَكَيْت إِلُهَا. (to him)", arabeezy: "ana 7akeit ilha.", answer: "أَنَا حَكَيْت إِلُه." },
+                    { prompt: "Correct the receiver suffix: أَنَا حَكَيْتْلَهَا. (to him)", arabeezy: "ana 7akeitilha.", answer: "أَنَا حَكِيتْلُه." },
                     { prompt: "Correct the cause: أَنَا زَعْلَان عَشَان هُوَّ حَكَى مَعِي. (because he did not speak to me)", arabeezy: "ana za3lan 3ashan huwwe 7aka ma3i.", answer: "أَنَا زَعْلَان عَشَان هُوَّ مَا حَكَى مَعِي." },
                     { prompt: "Correct كان: هِيَّ كَان مَضْغُوطَة اِمْبَارِح.", arabeezy: "hiyyeh kan maDghooTeh imbari7.", answer: "هِيَّ كَانَت مَضْغُوطَة اِمْبَارِح." },
                     { prompt: "Correct the sequence: بَعْد مَا نِمْت، رَاح أَرْجَع عَالبِيت. (sleep happens after returning)", arabeezy: "ba3d ma nimt, ra7 arja3 3al-beit.", answer: "بَعْد مَا أَرْجَع عَالبِيت، رَاح أَنَام." },
@@ -735,21 +735,21 @@ export const lesson = {
                     { ar: "دِير بَالَك عَلَى حَالَك", arabeezy: "deer balak 3ala 7alak", en: "take care of yourself" },
                 ],
                 multipleChoice: [
-                    { prompt: "Choose the supportive response that respects a boundary.", options: ["عَادِي، أَنَا مَعَك لَمَّا تِكُون جَاهِز.", "لَازِم تِحْكِي هَلِّق.", "هَادَا مِش مُهِمّ."], correct: "عَادِي، أَنَا مَعَك لَمَّا تِكُون جَاهِز." },
-                    { prompt: "Choose the sentence that links an event to its cause.", options: ["زَعْلَان لَأَنِّي تْخَانَقْت مَع صَاحْبِي.", "زَعْلَان بُكْرَا.", "زَعْلَان مَرَّتِين."], correct: "زَعْلَان لَأَنِّي تْخَانَقْت مَع صَاحْبِي." },
+                    { prompt: "Choose the supportive response that respects a boundary.", options: ["عَادِي، أَنَا مَعَك لَمَّا تِكُون مُسْتَعِدّ.", "لَازِم تِحْكِي هَلِّق.", "هَادَا مِش مُهِمّ."], correct: "عَادِي، أَنَا مَعَك لَمَّا تِكُون مُسْتَعِدّ." },
+                    { prompt: "Choose the sentence that links a feeling to its cause.", options: ["زَعْلَان لَأَنُّه مَا حَكَى مَعِي.", "زَعْلَان بُكْرَا.", "زَعْلَان مَرَّتِين."], correct: "زَعْلَان لَأَنُّه مَا حَكَى مَعِي." },
                 ],
                 fillInTheBlank: [
                     { prompt: "اليَوم ___ مِش مْنِيح.", arabeezy: "el-yom ___ mish mnee7.", cueEn: "my mood", answer: "مَزَاجِي" },
                     { prompt: "بَحِسّ إِنِّي ___ هَالأُسْبُوع.", arabeezy: "ba7iss inni ___ hal-usboo3.", cueEn: "stressed (male)", answer: "مَضْغُوط" },
                     { prompt: "هِيَّ ___ مَضْغُوطَة اِمْبَارِح.", arabeezy: "hiyyeh ___ maDghooTeh imbari7.", cueEn: "was", answer: "كَانَت" },
                     { prompt: "أَنَا ___ تَعْبَان اِمْبَارِح.", arabeezy: "ana ___ ta3ban imbari7.", cueEn: "was", answer: "كُنْت" },
-                    { prompt: "زَعْلَان ___ تْخَانَقْت مَع صَاحْبِي.", arabeezy: "za3lan ___ tkhanagt ma3 Sa7bi.", cueEn: "because I", answer: "لَأَنِّي" },
+                    { prompt: "زَعْلَان ___ هُوَّ مَا حَكَى مَعِي.", arabeezy: "za3lan ___ huwwe ma 7aka ma3i.", cueEn: "because he", answer: "لَأَنُّه" },
                     { prompt: "مَا بَدِّي ___ عَن هَالمَوْضُوع هَلِّق.", arabeezy: "ma baddi ___ 3an hal-mawDoo3 halli2.", cueEn: "talk", answer: "أَحْكِي" },
                     { prompt: "إِذَا فِش عِنْدَك طَاقَة، ___ رَاحَة.", arabeezy: "iza fish 3indak Taqa, ___ ra7a.", cueEn: "take (masculine)", answer: "خُد" },
                     { prompt: "بَعْد المَوْعِد ___ عَلَيْك.", arabeezy: "ba3d el-maw3ed ___ 3aleik.", cueEn: "reassure me/check in", answer: "طَمِّنِّي" },
                     { prompt: "بَعْد مَا أَرْجَع عَالبِيت، رَاح ___ بَدْرِي.", arabeezy: "ba3d ma arja3 3al-beit, ra7 ___ badri.", cueEn: "sleep", answer: "أَنَام" },
                     { prompt: "Review hobby: بَلَّشْت أَتْعَلَّم وُ___ بَتْعَلَّم.", arabeezy: "ballasht at3allam w ___ bat3allam.", cueEn: "still", answer: "لِسَّا" },
-                    { prompt: "Review complaint: حَكِيت ___ عَن المُشْكِلِة.", arabeezy: "7akeit ___ 3an el-mushkileh.", cueEn: "to him", answer: "لُه" },
+                    { prompt: "Review complaint: ___ عَن المُشْكِلِة.", arabeezy: "___ 3an el-mushkileh.", cueEn: "I spoke to him", answer: "حَكِيتْلُه" },
                     { prompt: "Review future: بُكْرَا ___ أَكُون أَرْيَح.", arabeezy: "bukra ___ akoon arya7.", cueEn: "will", answer: "رَاح" },
                 ],
                 questionAndAnswer: [
@@ -782,7 +782,7 @@ export const lesson = {
                     },
                     { prompt: "Build: Yesterday she was stressed because of work.", words: ["اِمْبَارِح", "هِيَّ كَانَت مَضْغُوطَة", "عَشَان الشُّغُل."], answer: "اِمْبَارِح هِيَّ كَانَت مَضْغُوطَة عَشَان الشُّغُل." },
                     { prompt: "Build: After I return home, I will sleep early.", words: ["بَعْد مَا أَرْجَع عَالبِيت،", "رَاح أَنَام", "بَدْرِي."], answer: "بَعْد مَا أَرْجَع عَالبِيت، رَاح أَنَام بَدْرِي." },
-                    { prompt: "Review: I spoke to him about the problem.", words: ["حَكِيت لُه", "عَن", "المُشْكِلِة."], answer: "حَكِيت لُه عَن المُشْكِلِة." },
+                    { prompt: "Review: I spoke to him about the problem.", words: ["حَكِيتْلُه", "عَن", "المُشْكِلِة."], answer: "حَكِيتْلُه عَن المُشْكِلِة." },
                 ],
                 writeYourOwnSentences: [
                     "Write 5 sentences about your mood this week.",
@@ -795,8 +795,8 @@ export const lesson = {
             { id: "feel_t1", type: "enToAr", textEn: "Today I'm happy because I finished the project.", textAr: "اليَوم مَبْسُوط/مَبْسُوطَة عَشَان خَلَّصْت المَشْرُوع." },
             { id: "feel_t2", type: "arToEn", textEn: "I'm fed up with the same routine every day.", textAr: "زَهْقَان/زَهْقَانَة مِن نَفْس الرُّوتِين كُلّ يَوم." },
             { id: "feel_t3", type: "enToAr", textEn: "This month I'm under pressure between work and study.", textAr: "هَالشَّهْر مَضْغُوط/مَضْغُوطَة بَيْن الشُّغُل وَالدِّرَاسَة." },
-            { id: "feel_t4", type: "arToEn", textEn: "I'm worried about the result, but I'm trying to calm down.", textAr: "قَلْقَان/قَلْقَانَة مِن النَّتِيجَة بَس بَحَاوِل أَهَدَّى." },
-            { id: "feel_t5", type: "enToAr", textEn: "Today my mood isn't good, but I'm trying to keep going.", textAr: "اليَوم مَزَاجِي مِش مْنِيح، بَس بِحَاوِل أَكَمِّل." },
+            { id: "feel_t4", type: "arToEn", textEn: "I'm worried about tomorrow's appointment.", textAr: "قَلْقَان/قَلْقَانَة مِن المَوْعِد بُكْرَا." },
+            { id: "feel_t5", type: "enToAr", textEn: "Today my mood isn't good.", textAr: "اليَوم مَزَاجِي مِش مْنِيح." },
             { id: "feel_t6", type: "arToEn", textEn: "Today I have no energy, so I won't go to the gym.", textAr: "اليَوم فِش عِنْدِي طَاقَة، فَمِش رَاح أَرُوح عَالنَّادِي." },
             { id: "feel_t7", type: "enToAr", textEn: "I feel I need a break for a day or two.", textAr: "بَحِسّ إِنِّي بِحَاجَة لِرَاحَة يَوم أَو يَومِين." },
             { id: "feel_t8", type: "arToEn", textEn: "I don't want to talk about this topic right now.", textAr: "هَلِّق مَا بَدِّي أَحْكِي عَن هَالمَوْضُوع." },
@@ -818,8 +818,8 @@ Translate these sentences into Gaza Palestinian Arabic:
 1. Today I'm happy because I finished the project.
 2. I'm fed up with the same routine every day.
 3. This month I'm under pressure between work and study.
-4. I'm worried about the result, but I'm trying to calm down.
-5. Today my mood isn't good, but I'm trying to keep going.
+4. I'm worried about tomorrow's appointment.
+5. Today my mood isn't good.
 6. Today I have no energy, so I won't go to the gym.
 7. I feel I need a break for a day or two.
 8. I don't want to talk about this topic right now.

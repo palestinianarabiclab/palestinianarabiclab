@@ -1,4 +1,4 @@
-import { LESSON_ID_SHOPPING } from '../../core/constants.js';
+import { LESSON_ID_SHOPPING } from '../../constants.js';
 
 export const lessonId = LESSON_ID_SHOPPING;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Pre-Intermediate",
         unit: "Shopping & Prices",
         lessonTitle: "Unit 8 - Shopping, Markets & Prices in Gaza Palestinian Arabic",
-        contentVersion: 2026071501,
+        contentVersion: 2026082001,
     },
 
     overview: {
@@ -36,9 +36,9 @@ export const lesson = {
                 en: "corner shop / small shop",
                 enArabeezy: "dukkan",
                 hint: "Small neighborhood shop. Plural: دَكَاكِين.",
-                exampleAr: "رُحْت عَالدُّكَّان أَشْتَرِي خُبِز وَحَلِيب.",
-                exampleArabeezy: "ru7t 3ad-dukkan ashtiri khubiz w 7aleeb.",
-                exampleEn: "I went to the corner shop to buy bread and milk.",
+                exampleAr: "الدُّكَّان جَنْب البَيْت.",
+                exampleArabeezy: "ed-dukkan janb el-beit.",
+                exampleEn: "The corner shop is next to the house.",
             },
             {
                 id: "ma7al",
@@ -46,9 +46,9 @@ export const lesson = {
                 en: "shop / store",
                 enArabeezy: "ma7all",
                 hint: "General word for any shop. Plural: مَحَلَّات.",
-                exampleAr: "هَادَا المَحَلّ عِنْدُه أَوَاعِي مْنِيحَة.",
-                exampleArabeezy: "hada el-ma7all 3indo awa3i mnee7a.",
-                exampleEn: "This shop has good clothes.",
+                exampleAr: "المَحَلّ جَنْب السُّوق.",
+                exampleArabeezy: "el-ma7all janb es-souq.",
+                exampleEn: "The shop is next to the market.",
             },
             {
                 id: "souk",
@@ -56,9 +56,9 @@ export const lesson = {
                 en: "market",
                 enArabeezy: "souq",
                 hint: "Traditional market or shopping street. In Gaza, السوق is used for clothes, vegetables, and daily needs.",
-                exampleAr: "يَوم الجُمْعَة بِنِنْزَل عَالسُّوق.",
-                exampleArabeezy: "yom el-jum3a bininzel 3as-souq.",
-                exampleEn: "On Friday we go to the market.",
+                exampleAr: "بَرُوح عَالسُّوق يَوم الجُمْعَة.",
+                exampleArabeezy: "baroo7 3as-souq yom el-jum3a.",
+                exampleEn: "I go to the market on Friday.",
             },
             {
                 id: "bashtiri",
@@ -66,9 +66,9 @@ export const lesson = {
                 en: "I buy",
                 enArabeezy: "bashtiri",
                 hint: "From اِشْتَرَى = to buy. You can say: بَدِّي أَشْتِرِي... = I want to buy...",
-                exampleAr: "بَشْتِرِي الخُضَار مِن السُّوق.",
-                exampleArabeezy: "bashtiri el-khuDar min es-souq.",
-                exampleEn: "I buy vegetables from the market.",
+                exampleAr: "بَشْتِرِي مِن السُّوق.",
+                exampleArabeezy: "bashtiri min es-souq.",
+                exampleEn: "I buy from the market.",
             },
             {
                 id: "baddi_ashtiri",
@@ -76,9 +76,9 @@ export const lesson = {
                 en: "I want to buy",
                 enArabeezy: "baddi ashtiri",
                 hint: "Best opener with a seller: بَدِّي أَشْتِرِي قَمِيص / جَزْمَة / هَدِيَّة.",
-                exampleAr: "بَدِّي أَشْتِرِي هَدِيَّة لِأُخْتِي.",
-                exampleArabeezy: "baddi ashtiri hadiyye la-okhti.",
-                exampleEn: "I want to buy a gift for my sister.",
+                exampleAr: "بَدِّي أَشْتِرِي مِن السُّوق.",
+                exampleArabeezy: "baddi ashtiri min es-souq.",
+                exampleEn: "I want to buy from the market.",
             },
             {
                 id: "addeesh_hada",
@@ -96,9 +96,9 @@ export const lesson = {
                 en: "price",
                 enArabeezy: "se3er",
                 hint: "Common chunks: السِّعِر غَالِي، السِّعِر مْنِيح، آخِر سِعِر؟",
-                exampleAr: "السِّعِر مْنَاسِب، بَس بَدِّي أَشُوف غَيْرُه.",
-                exampleArabeezy: "es-se3er mnasib, bas baddi ashoof gheero.",
-                exampleEn: "The price is suitable, but I want to see another one.",
+                exampleAr: "سِعِر هَادَا قَدِّيش؟",
+                exampleArabeezy: "se3er hada addeesh?",
+                exampleEn: "How much is the price of this?",
             },
             {
                 id: "ghali",
@@ -106,9 +106,9 @@ export const lesson = {
                 en: "expensive",
                 enArabeezy: "ghali / ghalye",
                 hint: "Male: غَالِي. Female: غَالْيَة. Plural: غَالْيِين.",
-                exampleAr: "هَادَا غَالِي شُوَيّ، فِي أَرْخَص؟",
-                exampleArabeezy: "hada ghali shway, fi arkhaS?",
-                exampleEn: "This is a little expensive; is there a cheaper one?",
+                exampleAr: "هَادَا غَالِي كْتِير.",
+                exampleArabeezy: "hada ghali kteer.",
+                exampleEn: "This is very expensive.",
             },
             {
                 id: "rkhees",
@@ -116,9 +116,9 @@ export const lesson = {
                 en: "cheap / inexpensive",
                 enArabeezy: "rkheeS / rkheeSa",
                 hint: "Can be good price or low quality depending on context.",
-                exampleAr: "هَادِي رْخِيصَة، بَس الجَوْدَة كِيف؟",
-                exampleArabeezy: "hadi rkheeSa, bas el-jawde keef?",
-                exampleEn: "This is cheap, but how is the quality?",
+                exampleAr: "هَادِي رْخِيصَة.",
+                exampleArabeezy: "hadi rkheeSa.",
+                exampleEn: "This is inexpensive.",
             },
             {
                 id: "mnasib",
@@ -126,9 +126,9 @@ export const lesson = {
                 en: "suitable / fair",
                 enArabeezy: "mnasib / mnasbe",
                 hint: "Useful for price, size, color, and timing.",
-                exampleAr: "السِّعِر مْنَاسِب لِلْمِيزَانِيَّة.",
-                exampleArabeezy: "es-se3er mnasib lil-mizaniyye.",
-                exampleEn: "The price is suitable for the budget.",
+                exampleAr: "السِّعِر مْنَاسِب إِلِي.",
+                exampleArabeezy: "es-se3er mnasib ili.",
+                exampleEn: "The price is suitable for me.",
             },
             {
                 id: "tanzeelat",
@@ -136,9 +136,9 @@ export const lesson = {
                 en: "sales / discounts",
                 enArabeezy: "tanzeelat",
                 hint: "Common in shops. Also: خَصْم = discount.",
-                exampleAr: "فِي تَنْزِيلَات عَالأَوَاعِي هَالأَيَّام.",
-                exampleArabeezy: "fi tanzeelat 3al-awa3i hal-ayyam.",
-                exampleEn: "There are sales on clothes these days.",
+                exampleAr: "فِي تَنْزِيلَات بِالمَحَلّ اليَوم.",
+                exampleArabeezy: "fi tanzeelat bil-ma7all el-yom.",
+                exampleEn: "There are sales at the shop today.",
             },
             {
                 id: "khasm",
@@ -146,9 +146,9 @@ export const lesson = {
                 en: "discount",
                 enArabeezy: "khasm",
                 hint: "Ask politely: فِي خَصْم؟ / فِي خَصْم لِلْطُلَّاب؟",
-                exampleAr: "فِي خَصْم إِذَا دَفَعْت كَاش؟",
-                exampleArabeezy: "fi khasm iza dafa3t cash?",
-                exampleEn: "Is there a discount if I pay cash?",
+                exampleAr: "فِي خَصْم اليَوم؟",
+                exampleArabeezy: "fi khasm el-yom?",
+                exampleEn: "Is there a discount today?",
             },
             {
                 id: "mumkin_tnazzel",
@@ -156,9 +156,9 @@ export const lesson = {
                 en: "Can you lower it a little?",
                 enArabeezy: "mumkin tnazzel shway?",
                 hint: "Polite bargaining phrase. To a woman seller: مُمْكِن تْنَزِّلِي شُوَيّ؟",
-                exampleAr: "السِّعِر عَالِي، مُمْكِن تْنَزِّل شُوَيّ؟",
-                exampleArabeezy: "es-se3er 3ali, mumkin tnazzel shway?",
-                exampleEn: "The price is high; can you lower it a little?",
+                exampleAr: "هَادَا غَالِي، مُمْكِن تْنَزِّل شُوَيّ؟",
+                exampleArabeezy: "hada ghali, mumkin tnazzel shway?",
+                exampleEn: "This is expensive; can you lower it a little?",
             },
             {
                 id: "akher_se3er",
@@ -176,9 +176,9 @@ export const lesson = {
                 en: "money",
                 enArabeezy: "maSari",
                 hint: "Very common Palestinian word. My money = مَصَارِيّي.",
-                exampleAr: "مَعِي مَصَارِي شُوَيّ، بَدِّي شِي مْنَاسِب.",
-                exampleArabeezy: "ma3i maSari shway, baddi shi mnasib.",
-                exampleEn: "I have a little money; I want something suitable.",
+                exampleAr: "مَعِي مَصَارِي شُوَيّ.",
+                exampleArabeezy: "ma3i maSari shway.",
+                exampleEn: "I have a little money.",
             },
             {
                 id: "mizaniyye",
@@ -186,9 +186,9 @@ export const lesson = {
                 en: "budget",
                 enArabeezy: "mizaniyye",
                 hint: "Money you plan to spend.",
-                exampleAr: "مِيزَانِيَّتِي اليَوم خَمْسِين شِيكِل.",
-                exampleArabeezy: "mizaniyyti el-yom khamseen shekel.",
-                exampleEn: "My budget today is fifty shekels.",
+                exampleAr: "مِيزَانِيَّتِي اليَوم خَمْسِين.",
+                exampleArabeezy: "mizaniyyti el-yom khamseen.",
+                exampleEn: "My budget today is fifty.",
             },
             {
                 id: "shekel",
@@ -196,9 +196,9 @@ export const lesson = {
                 en: "shekel / shekels",
                 enArabeezy: "shekel / shawakel",
                 hint: "Common local currency. Singular: شِيكِل. Plural: شَوَاكِل.",
-                exampleAr: "الكِيلُو بِعَشَرَة شَوَاكِل.",
-                exampleArabeezy: "el-keelo bi-3ashara shawakel.",
-                exampleEn: "The kilo is ten shekels.",
+                exampleAr: "هَادَا بِعَشَرَة شَوَاكِل.",
+                exampleArabeezy: "hada bi-3ashara shawakel.",
+                exampleEn: "This costs ten shekels.",
             },
             {
                 id: "cash",
@@ -206,9 +206,9 @@ export const lesson = {
                 en: "cash",
                 enArabeezy: "cash",
                 hint: "Paying with physical money. Often better for small shops.",
-                exampleAr: "بَدِّي أَدْفَع كَاش.",
-                exampleArabeezy: "baddi adfa3 cash.",
-                exampleEn: "I want to pay cash.",
+                exampleAr: "مَعِي كَاش.",
+                exampleArabeezy: "ma3i cash.",
+                exampleEn: "I have cash.",
             },
             {
                 id: "card",
@@ -216,9 +216,9 @@ export const lesson = {
                 en: "card",
                 enArabeezy: "kart",
                 hint: "Bank card. Ask: بِصِير أَدْفَع بِالكَارْت؟",
-                exampleAr: "بِصِير أَدْفَع بِالكَارْت وَلَا بَس كَاش؟",
-                exampleArabeezy: "biSeer adfa3 bil-kart wala bas cash?",
-                exampleEn: "Can I pay by card, or only cash?",
+                exampleAr: "مَعِي كَارْت، مِش كَاش.",
+                exampleArabeezy: "ma3i kart, mish cash.",
+                exampleEn: "I have a card, not cash.",
             },
             {
                 id: "wasl",
@@ -226,9 +226,9 @@ export const lesson = {
                 en: "receipt",
                 enArabeezy: "waSl",
                 hint: "Useful for exchange/return. Also people may say: فَاتُورَة.",
-                exampleAr: "خُد الوَصْل، مُمْكِن تِحْتَاجُه بَعْدِين.",
-                exampleArabeezy: "khod el-waSl, mumkin ti7tajo ba3deen.",
-                exampleEn: "Take the receipt; you might need it later.",
+                exampleAr: "الوَصْل مَعِي.",
+                exampleArabeezy: "el-waSl ma3i.",
+                exampleEn: "The receipt is with me.",
             },
             {
                 id: "maqas",
@@ -236,9 +236,9 @@ export const lesson = {
                 en: "size",
                 enArabeezy: "ma2as",
                 hint: "For clothes and shoes. Big = كْبِير. Small = صْغِير.",
-                exampleAr: "هَادَا المَقَاس كْبِير عَلَيّ شُوَيّ.",
-                exampleArabeezy: "hada el-ma2as kbeer 3alay shway.",
-                exampleEn: "This size is a little big on me.",
+                exampleAr: "هَادَا المَقَاس مْنَاسِب إِلِي.",
+                exampleArabeezy: "hada el-ma2as mnasib ili.",
+                exampleEn: "This size is suitable for me.",
             },
             {
                 id: "lawn",
@@ -246,9 +246,9 @@ export const lesson = {
                 en: "color / colors",
                 enArabeezy: "lawn / alwan",
                 hint: "Use for clothes, shoes, bags, and gifts.",
-                exampleAr: "عِنْدَك نَفْس المَقَاس بِلَوْن تَانِي؟",
-                exampleArabeezy: "3indak nafs el-ma2as bi-lawn tani?",
-                exampleEn: "Do you have the same size in another color?",
+                exampleAr: "بَدِّي لَوْن تَانِي.",
+                exampleArabeezy: "baddi lawn tani.",
+                exampleEn: "I want another color.",
             },
             {
                 id: "azra2_aswad",
@@ -256,9 +256,9 @@ export const lesson = {
                 en: "blue / black",
                 enArabeezy: "azra2 / aswad",
                 hint: "Color review. Feminine: زَرْقَا / سَوْدَا.",
-                exampleAr: "بَدِّي الجَزْمَة السَّوْدَا، مِش الزَّرْقَا.",
-                exampleArabeezy: "baddi el-jazme es-soda, mish ez-zar2a.",
-                exampleEn: "I want the black shoes, not the blue ones.",
+                exampleAr: "بَدِّي الأَسْوَد، مِش الأَزْرَق.",
+                exampleArabeezy: "baddi el-aswad, mish el-azraq.",
+                exampleEn: "I want the black one, not the blue one.",
             },
             {
                 id: "no3",
@@ -266,9 +266,9 @@ export const lesson = {
                 en: "type / kind",
                 enArabeezy: "no3",
                 hint: "Use for fabric, food, coffee, clothes, and quality.",
-                exampleAr: "شُو نَوْع القُمَاش هَادَا؟",
-                exampleArabeezy: "sho no3 el-2umash hada?",
-                exampleEn: "What type of fabric is this?",
+                exampleAr: "بَدِّي نَوْع تَانِي.",
+                exampleArabeezy: "baddi no3 tani.",
+                exampleEn: "I want another kind.",
             },
             {
                 id: "jawde",
@@ -276,9 +276,9 @@ export const lesson = {
                 en: "quality",
                 enArabeezy: "jawde",
                 hint: "High quality = جَوْدَة عَالْيَة. Low quality = جَوْدَة عَادِيَّة.",
-                exampleAr: "السِّعِر رْخِيص، بَس الجَوْدَة عَادِيَّة.",
-                exampleArabeezy: "es-se3er rkheeS, bas el-jawde 3adiyye.",
-                exampleEn: "The price is cheap, but the quality is average.",
+                exampleAr: "الجَوْدَة مْنِيحَة.",
+                exampleArabeezy: "el-jawde mnee7a.",
+                exampleEn: "The quality is good.",
             },
             {
                 id: "kilo",
@@ -346,9 +346,9 @@ export const lesson = {
                 en: "make it / let it be",
                 enArabeezy: "khallih",
                 hint: "Useful in bargaining: خَلِّيه بِخَمْسِين = make it fifty.",
-                exampleAr: "خَلِّيه بِخَمْسِين وَبَاخُدُه هَلْقِيت.",
-                exampleArabeezy: "khallih bi-khamseen w bakhdo halla2et.",
-                exampleEn: "Make it fifty and I'll take it now.",
+                exampleAr: "خَلِّيه بِخَمْسِين.",
+                exampleArabeezy: "khallih bi-khamseen.",
+                exampleEn: "Make it fifty.",
             },
             {
                 id: "bakhdo",
@@ -483,8 +483,8 @@ export const lesson = {
             },
             examples: [
                 { ar: "هَادَا بِسَبَع شَوَاكِل، وَهَادَاك بِحْدَاعَشَر شِيكِل.", arabeezy: "hada b-saba3 shawakel, w hadak b-7da3ashar shekel.", en: "This one is seven shekels, and that one is eleven shekels." },
-                { ar: "الحِسَاب خَمْسَة وَتَلَاتِين شِيكِل.", arabeezy: "el-7sab khamseh w talateen shekel.", en: "The total is thirty-five shekels." },
-                { ar: "مَعِي خَمْسِين، مَعَك فَكَّة؟", arabeezy: "ma3i khamseen, ma3ak fakkeh?", en: "I have a fifty; do you have change?" },
+                { ar: "تَلَات قِطَع بِخَمْسَة وَتَلَاتِين شِيكِل.", arabeezy: "talat qiTa3 b-khamseh w talateen shekel.", en: "Three pieces cost thirty-five shekels." },
+                { ar: "مِيزَانِيَّتِي خَمْسِين شِيكِل.", arabeezy: "mizaniyyti khamseen shekel.", en: "My budget is fifty shekels." },
             ],
             commonMistakes: [
                 "Do not keep شَوَاكِل after every large number. Everyday speech normally says عِشْرِين شِيكِل, not عِشْرِين شَوَاكِل.",
@@ -513,9 +513,9 @@ export const lesson = {
                 ],
             },
             examples: [
-                { ar: "بَدِّي بْلُوزَة وَحْدَة سَوْدَا.", arabeezy: "baddi bloozeh wa7deh soda.", en: "I want one black blouse." },
-                { ar: "عِنْدَك قَمِيصَيْن مِن نَفْس المَقَاس؟", arabeezy: "3indak qameeSein min nafs el-maqas?", en: "Do you have two shirts in the same size?" },
-                { ar: "أَخَدْت تَلَات بْلُوزَات وَأَرْبَع قُمْصَان.", arabeezy: "akhadt talat bloozat w arba3 qumSan.", en: "I took three blouses and four shirts." },
+                { ar: "بَدِّي قِطْعَة وَحْدَة.", arabeezy: "baddi qiT3a wa7deh.", en: "I want one piece." },
+                { ar: "عِنْدَك قِطْعَتِين مِن نَفْس النَّوْع؟", arabeezy: "3indak qiT3atein min nafs en-no3?", en: "Do you have two pieces of the same kind?" },
+                { ar: "بَدِّي تَلَات قِطَع.", arabeezy: "baddi talat qiTa3.", en: "I want three pieces." },
             ],
             commonMistakes: [
                 "One follows the item in these chunks: قَمِيص وَاحَد, not وَاحَد قَمِيص in a neutral count.",
@@ -631,41 +631,41 @@ export const lesson = {
         items: [
             {
                 id: "shopping_mc1",
-                type: "match",
-                prompt: "Match the English word to Arabic: market",
+                type: "choose",
+                prompt: "Choose the Gaza Palestinian Arabic word for: market.",
                 options: ["سُوق", "دُكَّان", "مَحَلّ", "بَشْتَرِي"],
                 correct: "سُوق",
             },
             {
                 id: "shopping_mc2",
                 type: "complete",
-                prompt: "Complete: السِّعِر مِش غَالِي، السِّعِر ___.",
+                prompt: "Complete the Arabic sentence for: The price is not expensive; it is cheap.\nالسِّعِر مِش غَالِي، السِّعِر ___.",
                 options: ["رْخِيص", "مْنَاسِب", "غَالِي", "سِعِر"],
                 correct: "رْخِيص",
             },
             {
                 id: "shopping_mc3",
                 type: "reorder",
-                prompt: "Reorder: Can you lower the price?",
-                options: ["مُمْكِن", "تْنَزِّل", "السِّعِر؟"],
-                correct: ["مُمْكِن", "تْنَزِّل", "السِّعِر؟"],
+                prompt: "Reorder the Arabic words to match: Can you lower it a little?",
+                options: ["مُمْكِن", "تْنَزِّل", "شُوَيّ؟"],
+                correct: ["مُمْكِن", "تْنَزِّل", "شُوَيّ؟"],
             },
             {
                 id: "shopping_mc4",
                 type: "complete",
-                prompt: "Complete: بِصِير أَدْفَع بِـ___.",
+                prompt: "Complete the Arabic sentence for: I have a card, not cash.\nمَعِي ___، مِش كَاش.",
                 options: ["الكَارْت", "كَاش", "وَصْل", "شِيكِل"],
                 correct: "الكَارْت",
             },
-            { id: "shopping_mc6", type: "complete", prompt: "Complete: بَدِّي ___ كِيلُو.", options: ["نُصّ", "كِيلُو", "قِطْعَة", "كَمّ"], correct: "نُصّ" },
-            { id: "shopping_mc7", type: "complete", prompt: "Complete: السِّعِر مْنَاسِب، ___.", options: ["بَاخُدُه", "خَلِّيه", "بَس بَتْفَرَّج", "عِنْدَك تَانِي؟"], correct: "بَاخُدُه" },
             {
                 id: "shopping_mc5",
-                type: "match",
-                prompt: "Choose the Arabic for: receipt",
-                options: ["وَصْل", "خَصْم", "مَقَاس", "سُوق"],
-                correct: "وَصْل",
+                type: "complete",
+                prompt: "Complete the Arabic sentence for: The quality is good.\nالجَوْدَة ___.",
+                options: ["مْنِيحَة", "مَقَاس", "لَوْن", "نَوْع"],
+                correct: "مْنِيحَة",
             },
+            { id: "shopping_mc6", type: "reorder", prompt: "Reorder the Arabic words to match: How many pieces do you want?", options: ["كَمّ", "قِطْعَة", "بَدَّك؟"], correct: ["كَمّ", "قِطْعَة", "بَدَّك؟"] },
+            { id: "shopping_mc7", type: "choose", prompt: "Choose the Gaza Palestinian Arabic phrase for: I'm just looking.", options: ["أَنَا بَس بَتْفَرَّج", "خَلِّيه", "بَاخُدُه", "عِنْدَك إِشِي تَانِي؟"], correct: "أَنَا بَس بَتْفَرَّج" },
         ],
     },
 
@@ -751,26 +751,26 @@ export const lesson = {
             {
                 title: "B - Shopping grammar practice",
                 fillInTheBlank: [
-                    { prompt: "بَدِّي ___ هَدِيَّة.", arabeezy: "baddi ___ hadiyyeh.", cueEn: "buy", answer: "أَشْتِرِي" },
-                    { prompt: "قَدِّيش ___ القَمِيص؟", arabeezy: "addeesh ___ el-qameeS?", cueEn: "price of", answer: "سِعِر" },
+                    { prompt: "بَدِّي ___ مِن السُّوق.", arabeezy: "baddi ___ min es-souq.", cueEn: "buy", answer: "أَشْتِرِي" },
+                    { prompt: "قَدِّيش ___ هَادَا؟", arabeezy: "addeesh ___ hada?", cueEn: "price of", answer: "سِعِر" },
                     { prompt: "بَدِّي نُصّ ___ بَنْدُورَة.", arabeezy: "baddi noSS ___ bandora.", cueEn: "kilo", answer: "كِيلُو" },
                     { prompt: "عِنْدَك نَفْس المَقَاس ___ تَانِي؟", arabeezy: "3indak nafs el-ma2as ___ tani?", cueEn: "in another color", answer: "بِلَوْن" },
                     { prompt: "هَادَا غَالِي؛ مُمْكِن ___ شُوَيّ؟", arabeezy: "hada ghali; mumkin ___ shway?", cueEn: "lower the price", answer: "تْنَزِّل" },
                     { prompt: "خَلِّيه خَمْسِين وَ___ كَاش.", arabeezy: "khallih khamseen w ___ cash.", cueEn: "I will take it", answer: "بَاخُدُه" },
                     { prompt: "بِصِير أَدْفَع ___ الكَارْت؟", arabeezy: "biseer adfa3 ___ el-card?", cueEn: "by", answer: "بِـ" },
-                    { prompt: "بَدِّي تَلَاتَة ___ مَيّ.", arabeezy: "baddi talateh ___ mayy.", cueEn: "bottles", answer: "قَنَانِي" },
-                    { prompt: "هَادِي الشَّنْطَة غَالْيَة، بَدِّي وَحْدَة ___.", arabeezy: "hadi esh-shanTa ghalyeh, baddi wa7deh ___.", cueEn: "cheaper (feminine)", answer: "أَرْخَص" },
+                    { prompt: "كَمّ ___ بَدَّك؟", arabeezy: "kam ___ baddak?", cueEn: "pieces", answer: "قِطْعَة" },
+                    { prompt: "هَادِي غَالْيَة، بَدِّي إِشِي ___.", arabeezy: "hadi ghalyeh, baddi ishi ___.", cueEn: "cheaper", answer: "أَرْخَص" },
                     { prompt: "Review: اِمْبَارِح السِّعِر ___ أَرْخَص.", arabeezy: "imbari7 es-si3er ___ arkhaS.", cueEn: "was", answer: "كَان" },
                     { prompt: "Review: بُكْرَا ___ أَرُوح عَالسُّوق.", arabeezy: "bukra ___ aroo7 3as-soo2.", cueEn: "will", answer: "رَاح" },
                     { prompt: "Review: الجَوّ اليَوم أَحْسَن ___ اِمْبَارِح.", arabeezy: "el-jaww el-yom a7san ___ imbari7.", cueEn: "than", answer: "مِن" },
                 ],
                 correctTheMistake: [
-                    { prompt: "Correct: هَادِي القَمِيص غَالْيَة.", arabeezy: "hadi el-qameeS ghalyeh.", answer: "هَادَا القَمِيص غَالِي." },
-                    { prompt: "Correct: هَادَا الشَّنْطَة سُودَا.", arabeezy: "hada esh-shanTa soda.", answer: "هَادِي الشَّنْطَة سُودَا." },
+                    { prompt: "Correct: هَادِي السِّعِر غَالْيَة.", arabeezy: "hadi es-se3er ghalyeh.", answer: "هَادَا السِّعِر غَالِي." },
+                    { prompt: "Correct: هَادَا الجَوْدَة مْنِيح.", arabeezy: "hada el-jawde mnee7.", answer: "هَادِي الجَوْدَة مْنِيحَة." },
                     { prompt: "Correct: بَدِّي تَلَات كِيلُو بَنْدُورَة.", arabeezy: "baddi talat kilo bandora.", answer: "بَدِّي تَلَاتَة كِيلُو بَنْدُورَة." },
                     { prompt: "Review the future: بُكْرَا رُحْت عَالسُّوق.", arabeezy: "bukra ru7t 3as-soo2.", answer: "بُكْرَا رَاح أَرُوح عَالسُّوق." },
-                    { prompt: "Correct the number: بَدِّي تَلَات قَنَانِي مَيّ.", arabeezy: "baddi talat qanani mayy.", answer: "بَدِّي تَلَاتَة قَنَانِي مَيّ." },
-                    { prompt: "Correct the adjective: هَادِي الشَّنْطَة أَسْوَد.", arabeezy: "hadi esh-shanTa aswad.", answer: "هَادِي الشَّنْطَة سُودَا." },
+                    { prompt: "Correct the phrase: كَمّ كِيلُو بَدِّي؟", arabeezy: "kam kilo baddi?", answer: "كَمّ كِيلُو بَدَّك؟" },
+                    { prompt: "Correct the adjective: هَادِي رْخِيص.", arabeezy: "hadi rkheeS.", answer: "هَادِي رْخِيصَة." },
                 ],
                 reorderSentences: [
                     { prompt: "Build: I want half a kilo of tomatoes.", arabeezy: "baddi noSS kilo bandora.", words: ["بَدِّي", "نُصّ كِيلُو", "بَنْدُورَة."], answer: "بَدِّي نُصّ كِيلُو بَنْدُورَة." },
@@ -783,21 +783,21 @@ export const lesson = {
             },
         ],
         translation: [
-            { id: "shopping_t1", type: "enToAr", textEn: "Good morning, I want to buy a gift for my brother.", textAr: "صَبَاح الخِير، بَدِّي أَشْتِرِي هَدِيَّة لِأَخُوي." },
-            { id: "shopping_t2", type: "arToEn", textEn: "How much is this black shirt?", textAr: "قَدِّيش هَادَا القَمِيص الأَسْوَد؟" },
+            { id: "shopping_t1", type: "enToAr", textEn: "Good morning, I want to buy from the market.", textAr: "صَبَاح الخِير، بَدِّي أَشْتِرِي مِن السُّوق." },
+            { id: "shopping_t2", type: "arToEn", textEn: "How much is this black one?", textAr: "قَدِّيش هَادَا الأَسْوَد؟" },
             { id: "shopping_t3", type: "enToAr", textEn: "This is a little expensive. Can you lower it a little?", textAr: "هَادَا غَالِي شُوَيّ. مُمْكِن تْنَزِّل شُوَيّ؟" },
             { id: "shopping_t4", type: "arToEn", textEn: "Do you have the same size in another color?", textAr: "عِنْدَك نَفْس المَقَاس بِلَوْن تَانِي؟" },
             { id: "shopping_t5", type: "enToAr", textEn: "My budget today is fifty shekels.", textAr: "مِيزَانِيَّتِي اليَوم خَمْسِين شِيكِل." },
-            { id: "shopping_t6", type: "arToEn", textEn: "Make it fifty and I'll take it cash.", textAr: "خَلِّيه خَمْسِين وَبَاخُدُه كَاش." },
+            { id: "shopping_t6", type: "arToEn", textEn: "Make it fifty and I'll take it.", textAr: "خَلِّيه خَمْسِين وَبَاخُدُه." },
             { id: "shopping_t7", type: "enToAr", textEn: "Can I pay by card, or only cash?", textAr: "بِصِير أَدْفَع بِالكَارْت وَلَا بَس كَاش؟" },
-            { id: "shopping_t8", type: "arToEn", textEn: "Take the receipt; you might need it later.", textAr: "خُد الوَصْل، مُمْكِن تِحْتَاجُه بَعْدِين." },
-            { id: "shopping_t9", type: "enToAr", textEn: "I want half a kilo of tomatoes and half a kilo of cucumbers.", textAr: "بَدِّي نُصّ كِيلُو بَنْدُورَة وَنُصّ كِيلُو خِيَار." },
-            { id: "shopping_t10", type: "arToEn", textEn: "A kilo of tomatoes is ten shekels.", textAr: "الكِيلُو بَنْدُورَة بِعَشَرَة شَوَاكِل." },
+            { id: "shopping_t8", type: "arToEn", textEn: "The receipt is with me.", textAr: "الوَصْل مَعِي." },
+            { id: "shopping_t9", type: "enToAr", textEn: "I want half a kilo of tomatoes.", textAr: "بَدِّي نُصّ كِيلُو بَنْدُورَة." },
+            { id: "shopping_t10", type: "arToEn", textEn: "Half a kilo is ten shekels.", textAr: "نُصّ كِيلُو بِعَشَرَة شَوَاكِل." },
             { id: "shopping_t11", type: "enToAr", textEn: "Yesterday the price was cheaper.", textAr: "اِمْبَارِح السِّعِر كَان أَرْخَص." },
-            { id: "shopping_t12", type: "arToEn", textEn: "The price is suitable, but I want to see another one.", textAr: "السِّعِر مْنَاسِب، بَس بَدِّي أَشُوف غَيْرُه." },
+            { id: "shopping_t12", type: "arToEn", textEn: "The price is suitable, but I want another kind.", textAr: "السِّعِر مْنَاسِب، بَس بَدِّي نَوْع تَانِي." },
             { id: "shopping_t13", type: "enToAr", textEn: "I'm just looking for now, thank you.", textAr: "أَنَا بَس بَتْفَرَّج هَلْقِيت، شُكْرًا." },
-            { id: "shopping_t14", type: "arToEn", textEn: "If the size does not work, can I exchange it?", textAr: "إِذَا المَقَاس مَا زَبَط، بِقْدَر أَبَدِّلُه؟" },
-            { id: "shopping_t15", type: "enToAr", textEn: "Let's go home before the crowd increases.", textAr: "يَلَّا نْرَوِّح قَبْل مَا يْزِيد الزَّحْمَة." },
+            { id: "shopping_t14", type: "arToEn", textEn: "Do you have something else in the same size?", textAr: "عِنْدَك إِشِي تَانِي نَفْس المَقَاس؟" },
+            { id: "shopping_t15", type: "enToAr", textEn: "Let's go home after the market.", textAr: "يَلَّا نْرَوِّح بَعْد السُّوق." },
         ],
     },
 
@@ -806,21 +806,21 @@ export const lesson = {
             `Write and record a 75-90 second shopping story in Gaza Palestinian Arabic. Include: where you went, what you wanted to buy, the price, color or size, whether it was expensive or suitable, how you bargained, how you paid, and whether you took a receipt. Reuse at least 8 words from this unit and 5 old words from previous units.
 
 Translate these sentences into Gaza Palestinian Arabic:
-1. Good morning, I want to buy a gift for my brother.
-2. How much is this black shirt?
+1. Good morning, I want to buy from the market.
+2. How much is this black one?
 3. This is a little expensive. Can you lower it a little?
 4. Do you have the same size in another color?
 5. My budget today is fifty shekels.
-6. Make it fifty and I'll take it cash.
+6. Make it fifty and I'll take it.
 7. Can I pay by card, or only cash?
-8. Take the receipt; you might need it later.
-9. I want half a kilo of tomatoes and half a kilo of cucumbers.
-10. A kilo of tomatoes is ten shekels.
+8. The receipt is with me.
+9. I want half a kilo of tomatoes.
+10. Half a kilo is ten shekels.
 11. Yesterday the price was cheaper.
-12. The price is suitable, but I want to see another one.
+12. The price is suitable, but I want another kind.
 13. I'm just looking for now, thank you.
-14. If the size does not work, can I exchange it?
-15. Let's go home before the crowd increases.`,
+14. Do you have something else in the same size?
+15. Let's go home after the market.`,
     },
 
     teacherNotes: {

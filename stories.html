@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice reading Palestinian Arabic through interactive short stories with optional English translation and Arabizi help.">
+  <title>Palestinian Arabic Stories | Palestinian Arabic Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stories.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Ctext x='32' y='42' font-size='28' text-anchor='middle' fill='%23f8fafc' font-family='Arial,sans-serif'%3EPA%3C/text%3E%3C/svg%3E">
+  <script type="module" src="./js/stories.js"></script>
+</head>
+<body class="stories-page">
+  <header class="story-nav">
+    <a class="story-brand" href="./"><span class="logo-circle">PA</span><span>Palestinian Arabic Lab</span></a>
+    <a class="story-nav__back" href="./">Back to lessons</a>
+  </header>
+
+  <main>
+    <section id="storyLibrary" class="story-library" aria-labelledby="libraryTitle">
+      <div class="library-hero">
+        <p class="library-hero__eyebrow">READ · NOTICE · KEEP GOING</p>
+        <h1 id="libraryTitle">Palestinian Arabic Stories</h1>
+        <p>Natural reading practice for learners who already know Arabic. Read without interruption, then reveal help only when you need it.</p>
+      </div>
+      <div class="story-list">
+      <div class="story-card" data-series="drama" data-level="B1">
+        <div class="story-card__art" aria-hidden="true"><span>مِفْتاحُ<br>البَيْت</span></div>
+        <div class="story-card__body">
+          <div class="story-card__meta"><span>Intermediate</span><span>10 parts</span><span>~1,900 words</span></div>
+          <h2 lang="ar" dir="rtl">مِفْتاحُ البَيْت</h2>
+          <p>Adam is a young civil engineer in Gaza searching for his first real opportunity—and for the life he hopes to build.</p>
+          <button id="openStory" class="story-primary" type="button" data-open-story="miftah-al-bayt">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="mystery" data-level="B1">
+        <div class="story-card__art story-card__art--mystery" aria-hidden="true"><span>سِرُّ المِفْتاح<br>الأَسْوَد</span></div>
+        <div class="story-card__body">
+          <div class="story-card__meta"><span>Intermediate+</span><span>10 parts</span><span>~2,000 words</span></div>
+          <h2 lang="ar" dir="rtl">سِرُّ المِفْتاح الأَسْوَد</h2>
+          <p>A mysterious black key, a missing collection of gold, and an aspiring investigative journalist determined to uncover the truth.</p>
+          <button class="story-primary" type="button" data-open-story="sirr-al-miftah-al-aswad">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="mystery" data-level="B2">
+        <div class="story-card__art story-card__art--portrait" aria-hidden="true"><span>الصُّورَة اللِّي<br>ناقِصْها وَجْه</span></div>
+        <div class="story-card__body">
+          <div class="story-card__meta"><span>Intermediate+</span><span>10 parts</span><span>~2,100 words</span></div>
+          <h2 lang="ar" dir="rtl">الصُّورَة اللِّي ناقِصْها وَجْه</h2>
+          <p>An old family photograph, a hidden bundle of letters, and a face cut away from a past the family tried to bury.</p>
+          <button class="story-primary" type="button" data-open-story="al-sura-alli-naqisha-wajh">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--daily" aria-hidden="true"><span>أَوَّل يَوْم<br>بِالشُّغُل</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,800 words</span></div>
+          <h2 lang="ar" dir="rtl">أَوَّل يَوْم بِالشُّغُل</h2>
+          <p>After a long job search, Adam faces the nerves, mistakes, and small victories of his first day at work.</p>
+          <button class="story-primary" type="button" data-open-story="awwal-yom-bil-shughul">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--salary" aria-hidden="true"><span>أَوَّل<br>راتِب</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,600 words</span></div>
+          <h2 lang="ar" dir="rtl">أَوَّل راتِب</h2>
+          <p>Adam plans how to spend his first salary, then discovers how quickly money and priorities can change.</p>
+          <button class="story-primary" type="button" data-open-story="awwal-ratib">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--manager" aria-hidden="true"><span>المُدير<br>الجْديد</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,800 words</span></div>
+          <h2 lang="ar" dir="rtl">المُدير الجْديد</h2>
+          <p>A new manager arrives, unsettling Adam and his coworkers as rumors, pressure, and first impressions reshape the office.</p>
+          <button class="story-primary" type="button" data-open-story="al-mudir-al-jdid">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--home" aria-hidden="true"><span>بَيْتْنا<br>الجْديد</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,900 words</span></div>
+          <h2 lang="ar" dir="rtl">بَيْتْنا الجْديد</h2>
+          <p>Adam’s family leaves the home they have known for twenty years and slowly turns an unfamiliar apartment into a home of their own.</p>
+          <button class="story-primary" type="button" data-open-story="baytna-al-jdid">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--neighbor" aria-hidden="true"><span>الجار<br>الجْديد</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,700 words</span></div>
+          <h2 lang="ar" dir="rtl">الجار الجْديد</h2>
+          <p>A new tenant moves into the only empty apartment, and the building’s familiar calm begins to change.</p>
+          <button class="story-primary" type="button" data-open-story="al-jar-al-jdid">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--family" aria-hidden="true"><span>يَوْم مَع<br>العيلَة</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,600 words</span></div>
+          <h2 lang="ar" dir="rtl">يَوْم مَع العيلَة</h2>
+          <p>A Friday lunch at Adam’s grandmother’s home brings the whole family together, with all the warmth, noise, and small tensions that come with it.</p>
+          <button class="story-primary" type="button" data-open-story="yom-ma-al-aila">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--invitation" aria-hidden="true"><span>عَزومَة<br>الجُمُعَة</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,500 words</span></div>
+          <h2 lang="ar" dir="rtl">عَزومَة الجُمُعَة</h2>
+          <p>Adam’s family hosts its first big Friday lunch in the new apartment, turning careful plans into a lively family gathering.</p>
+          <button class="story-primary" type="button" data-open-story="azoumet-al-jomaa">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--bus" aria-hidden="true"><span>آخِر<br>باص</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,600 words</span></div>
+          <h2 lang="ar" dir="rtl">آخِر باص</h2>
+          <p>A long workday, a delayed visit, and one missed bus turn Adam’s journey home into an unexpected nighttime challenge.</p>
+          <button class="story-primary" type="button" data-open-story="akhir-bas">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--market" aria-hidden="true"><span>يَوْم<br>بِالسّوق</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,400 words</span></div>
+          <h2 lang="ar" dir="rtl">يَوْم بِالسّوق</h2>
+          <p>A routine shopping trip with Adam’s mother turns into bargaining, heavy bags, and a frantic search for a missing wallet.</p>
+          <button class="story-primary" type="button" data-open-story="yom-bil-souq">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--sea" aria-hidden="true"><span>رِحْلَة<br>عَالبَحَر</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,600 words</span></div>
+          <h2 lang="ar" dir="rtl">رِحْلَة عَالبَحَر</h2>
+          <p>Adam, Samer, and Yusuf head to the sea for a simple afternoon that turns into football, laughter, and a missing bag.</p>
+          <button class="story-primary" type="button" data-open-story="rihla-al-bahr">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="daily-life" data-level="A2">
+        <div class="story-card__art story-card__art--restaurant" aria-hidden="true"><span>بِالمَطْعَم</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">حِكايات مِن غَزَّة · الحياة اليومية</div>
+          <div class="story-card__meta"><span>Level A2</span><span>10 parts</span><span>~2,400 words</span></div>
+          <h2 lang="ar" dir="rtl">بِالمَطْعَم</h2>
+          <p>A simple dinner at a new restaurant turns into a long wait, a wrong order, too much food, and a bill that needs checking.</p>
+          <button class="story-primary" type="button" data-open-story="bil-mataam">Start reading</button>
+        </div>
+      </div>
+      <div class="story-card" data-series="biography" data-level="MSA">
+        <div class="story-card__art story-card__art--sira" aria-hidden="true"><span>مُحَمَّد<br>ﷺ</span></div>
+        <div class="story-card__body">
+          <div class="story-card__series">السِّيرَة النَّبَوِيَّة · الفصحى</div>
+          <div class="story-card__meta"><span>Classical Arabic</span><span>24 chapters</span><span>~3,600 words</span></div>
+          <h2 lang="ar" dir="rtl">مُحَمَّد ﷺ</h2>
+          <p>A concise narrative journey through the Prophet Muhammad’s ﷺ life, from the world before his birth to the lasting message after his death.</p>
+          <button class="story-primary" type="button" data-open-story="sira-nabawiyya">Start reading</button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="storyReader" class="reader" hidden aria-live="polite">
+      <div class="reader-topbar">
+        <button id="closeStory" class="reader-icon" type="button" aria-label="Back to story library">←</button>
+        <div class="reader-topbar__title"><strong id="readerStoryTitle" lang="ar" dir="rtl">مِفْتاحُ البَيْت</strong><span id="pageCounter">Part 1 of 10</span></div>
+        <div class="reader-tools">
+          <button id="fontDown" class="reader-icon" type="button" aria-label="Decrease text size">A−</button>
+          <button id="fontUp" class="reader-icon" type="button" aria-label="Increase text size">A+</button>
+          <button id="themeToggle" class="reader-icon" type="button" aria-label="Toggle night mode">☾</button>
+        </div>
+      </div>
+      <div class="reader-progress"><span id="readingProgress"></span></div>
+
+      <article class="reading-sheet">
+        <header class="reading-header">
+          <p id="pageKicker">Part 1</p>
+          <h1 id="pageTitle" dir="rtl" lang="ar"></h1>
+          <p class="reading-hint"><span class="reading-hint__desktop">Hover over a Palestinian expression for instant help.</span><span class="reading-hint__mobile">Tap a Palestinian expression for instant help.</span></p>
+        </header>
+        <div id="arabicText" class="arabic-text" dir="rtl" lang="ar"></div>
+        <button id="translationToggle" class="translation-toggle" type="button" aria-expanded="false">Show English translation</button>
+        <section id="englishTranslation" class="english-translation" hidden lang="en">
+          <h2>English translation</h2>
+          <div id="translationText"></div>
+        </section>
+      </article>
+
+      <nav class="reader-pager" aria-label="Story pages">
+        <button id="previousPage" type="button">← Previous</button>
+        <select id="pageSelect" aria-label="Choose a story part"></select>
+        <button id="nextPage" type="button">Next →</button>
+      </nav>
+    </section>
+  </main>
+
+  <div id="wordPopover" class="word-popover" role="dialog" aria-label="Word meaning" hidden>
+    <button id="closePopover" type="button" aria-label="Close">×</button>
+    <strong id="popoverArabic" dir="rtl" lang="ar"></strong>
+    <span id="popoverEnglish"></span>
+    <small><b>Arabizi</b> <span id="popoverArabizi"></span></small>
+  </div>
+</body>
+</html>

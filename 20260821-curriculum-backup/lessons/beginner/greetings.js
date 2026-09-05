@@ -1,0 +1,816 @@
+import { LESSON_ID_GREETING } from '../../core/constants.js';
+
+export const lessonId = LESSON_ID_GREETING;
+
+export const lesson = {
+    meta: {
+        level: "Beginner",
+        unit: "Greetings",
+        lessonTitle: "Unit 1 - Greetings & Introductions (Gaza Palestinian Arabic)",
+        contentVersion: 2026071601,
+    },
+
+    overview: {
+        title: "Unit 1 - Greetings & Introductions",
+        description:
+            "Students learn to start a simple real conversation in Gaza Palestinian Arabic: greet someone, ask how they are, introduce their name, ask where someone is from, say where they live, and close politely.",
+        goals: [
+            "Greet someone naturally in a beginner-friendly conversation.",
+            "Ask and answer: name, origin, and current place of living.",
+            "Use simple feeling answers like مْنِيح / مْنِيحَة, تَمَام, and تَعْبَان / تَعْبَانَة.",
+            "Use polite classroom phrases when they do not understand.",
+            "Close a short conversation with natural Gaza-style phrases.",
+        ],
+        speakingOutcomes: [
+            "By the end of this unit, the student can introduce themselves in 30-45 seconds.",
+            "The student can meet a new classmate and ask 4-5 basic questions.",
+            "The student can ask for help or repetition during a lesson.",
+        ],
+    },
+
+    vocabulary: {
+        core: [
+            {
+                id: "marhaba",
+                ar: "مَرْحَبَا",
+                en: "Hello",
+                enArabeezy: "marhaba",
+                hint: "Main greeting. Natural replies: أَهْلًا، أَهْلِين، مَرْحَبْتِين، يَا هَلَا.",
+                exampleAr: "مَرْحَبَا، كِيفَك؟",
+                exampleArabeezy: "marhaba, keefak?",
+                exampleEn: "Hello, how are you?",
+            },
+            {
+                id: "sabah_el_kheir",
+                ar: "صَبَاح الخِير",
+                en: "Good morning",
+                enArabeezy: "sabah el-kheir",
+                hint: "Morning greeting. Replies: صَبَاح النُّور، يِسْعِد صَبَاحَك.",
+                exampleAr: "صَبَاح الخِير يَا أُسْتَاذ.",
+                exampleArabeezy: "sabah el-kheir ya ustaz.",
+                exampleEn: "Good morning, teacher.",
+            },
+            {
+                id: "masa_el_kheir",
+                ar: "مَسَا الخِير",
+                en: "Good evening",
+                enArabeezy: "masa el-kheir",
+                hint: "Evening greeting. Reply: مَسَا النُّور.",
+                exampleAr: "مَسَا الخِير يَا جَمَاعَة.",
+                exampleArabeezy: "masa el-kheir ya jama3a.",
+                exampleEn: "Good evening, everyone.",
+            },
+            {
+                id: "ahlan_wa_sahlan",
+                ar: "أَهْلًا وَسَهْلًا",
+                en: "Welcome",
+                enArabeezy: "ahlan wa sahlan",
+                hint: "Main welcome phrase. You can add فيك / فيكي / فيكم. Warmer extra phrase: نَوَّرْت (m), نَوَّرْتِي (f), نَوَّرْتُوا (pl).",
+                exampleAr: "أَهْلًا وَسَهْلًا فِيك، نَوَّرْت.",
+                exampleArabeezy: "ahlan wa sahlan feeki, nourt.",
+                exampleEn: "Welcome to you, I'm glad (you lit up the place).",
+            },
+           {
+                id: "ya3teek_el_afyeh",
+                ar: "يِعْطِيك الْعَافِيَة",
+                en: "hello / good job / thanks for your effort",
+                enArabeezy: "ya3teek el-3afyeh",
+                hint:
+                    "Very common Palestinian expression. Use it to greet someone who is working, helping, or doing something. Natural reply: الله يْعَافِيك.",
+                exampleAr: "يِعْطِيك الْعَافِيَة. ـ الله يْعَافِيك.",
+                exampleArabeezy: "ya3teek el-3afyeh. - allah y3afeek.",
+                exampleEn: "Thanks for your effort. — God bless you.",
+            },
+            {
+                id: "keefak",
+                ar: "كِيفَك؟",
+                en: "How are you?",
+                enArabeezy: "keefak?",
+                hint: "To a man: كِيفَك؟ To a woman: كِيفِك؟ To a group: كِيفْكُم؟ Also: كِيف حَالَك؟",
+                exampleAr: "كِيفَك اليَوم؟",
+                exampleArabeezy: "keefak el-yom?",
+                exampleEn: "How are you today?",
+            },
+            {
+                id: "shu_el_akhbar",
+                ar: "شُو الْأَخْبَار؟",
+                en: "what's new? / how are things?",
+                enArabeezy: "shu el-akhbar",
+                hint:  "Warm follow-up after a greeting. You can add كُلُّه تَمَام؟ = is everything okay?",
+                exampleAr: "شُو الْأَخْبَار؟ كُلُّه تَمَام؟",
+                exampleArabeezy: "shu el-akhbar? kullu tamam?",
+                exampleEn: "Hey, what's new? Is everything okay?",
+            },
+              {
+                id: "tammenni_3annak",
+                ar: "طَمِّنِّي عَلَيْك / عَنْك",
+                en: "Tell me how you are / reassure me about you",
+                enArabeezy: "Tamminni 3aleek / 3annak",
+                hint: "Use when you care about someone or have not heard from them. To a man: طَمِّنِّي عَنْك. To a woman: طَمِّنِينِي عَنْكِ. To a group: طَمِّنُونِي عَنْكُم.",
+                exampleAr: "بَعْد الدَّرْس طَمِّنِّي عَلَيْك.",
+                exampleArabeezy: "ba3d el-dars Tamminni 3aleek.",
+                exampleEn: "After class, tell me how you're doing.",
+            },
+          {
+    id: "tamam",
+    ar: "تَمَام / بِخَيْر",
+    en: "Good / fine",
+    enArabeezy: "tamam / bekheer",
+    hint: "The two most common answers to 'How are you?' in spoken Palestinian Arabic. تَمَام is also used to mean 'okay'.",
+    exampleAr: "كَيْفَك؟ — أَنَا تَمَام، الحَمْدُ لله.",
+    exampleArabeezy: "keefak? — ana tamam, el-hamdulillah.",
+    exampleEn: "How are you? — I'm good, thank God.",
+},
+           
+            {
+                id: "ta3ban",
+                ar: "تَعْبَان / تَعْبَانَة",
+                en: "Tired",
+                enArabeezy: "ta3ban / ta3baneh",
+                hint: "Male: تَعْبَان. Female: تَعْبَانَة.",
+                exampleAr: "أَنَا شُوَيّ تَعْبَان اليَوم.",
+                exampleArabeezy: "ana shway ta3ban el-yom.",
+                exampleEn: "I'm a little tired today.",
+            },
+            {
+                id: "mashi_el_hal",
+                ar: "مَاشِي الحَال",
+                en: "Okay / so-so",
+                enArabeezy: "mashi el-hal",
+                hint: "Neutral answer: not great, not bad.",
+                exampleAr: "كِيفَك؟ مَاشِي الحَال.",
+                exampleArabeezy: "keefak? mashi el-hal.",
+                exampleEn: "How are you? I'm okay.",
+            },
+          
+            {
+                id: "sho_ismak",
+                ar: "شُو اِسْمَك؟",
+                en: "What's your name?",
+                 enArabeezy: "shu ismak / shu ismik",
+                hint:
+                    "Ask after the first greeting. To a man: شُو اِسْمَك؟ To a woman: شُو اِسْمِك؟ Answer: أَنَا اِسْمِي...",
+                exampleAr: "شُو اِسْمِك؟ ـ أَنَا اِسْمِي لِين.",
+                exampleArabeezy: "shu ismik? - ana ismi leen.",
+                exampleEn: "What’s your name? — My name is Lynn.",
+            },
+            
+            {
+                id: "tasharrafna",
+                ar: "تْشَرَّفْنَا",
+                en: "Nice to meet you",
+                enArabeezy: "tsharrafna",
+                hint: "Similar polite expression: فُرْصَة سَعِيدَة.",
+                exampleAr: "تْشَرَّفْنَا يَا لِين.",
+                exampleArabeezy: "tsharrafna ya leen.",
+                exampleEn: "Nice to meet you, Lynn.",
+            },
+            {
+                id: "min_wen",
+                ar: "مِن وِين؟",
+                en: "From where?",
+                enArabeezy: "min wen?",
+                hint: "Ask origin. Full question: إِنْتَ مِن وِين؟ / إِنْتِ مِن وِين؟ Answer: أَنَا مِن غَزَّة / كَنَدَا / أَمْرِيكَا.",
+                exampleAr: "إِنْتِ مِن وِين؟ ـ أَنَا مِن كَنَدَا.",
+                exampleArabeezy: "inti min wen? - ana min canada.",
+                exampleEn: "Where are you from? - I'm from Canada.",
+            },
+            {
+                id: "wen_saken",
+                ar: "وِين سَاكِن؟",
+                en: "Where do you live?",
+                enArabeezy: "wein saken / wein sakneh",
+                hint:
+                    "Ask about current home. Masc: وِين سَاكِن؟ Fem: وِين سَاكْنَة؟ Plural: وِين سَاكْنِين؟ Answer: أَنَا سَاكِن/سَاكْنَة فِي...",
+                    exampleAr: "هَلْقِيت وِين سَاكْنَة؟ ـ سَاكْنَة فِي غَزَّة.",
+                exampleArabeezy: "halla2et wen sakneh? - sakneh fi ghazza.",
+                exampleEn: "Where do you live now? - I live in Gaza.",
+            },
+            {
+                id: "addeesh_omrak",
+                ar: "قَدِّيش عُمُرَك؟",
+                en: "How old are you?",
+                enArabeezy: "addeesh omrak?",
+                hint: "To a man: قَدِّيش عُمُرَك؟ To a woman: قَدِّيش عُمُرِك؟ Answer: عُمْرِي... سَنَة.",
+                exampleAr: "قَدِّيش عُمُرِك؟",
+                exampleArabeezy: "addeesh omrik?",
+                exampleEn: "How old are you?",
+            },
+             {
+                id: "shu_bti3mel",
+                ar: "شُو بِتْعْمَل؟",
+                en: "what are you doing? / what are you up to?",
+                enArabeezy: "shu bti3mel / shu bti3mali",
+                hint:
+                    "Casual small-talk question. To a man: شُو بِتْعْمَل؟ To a woman: شُو بِتْعْمَلِي؟ Related very casual check-in: شُو فِي مَا فِي؟",
+                exampleAr: "أَهْلِين، شُو بِتْعْمَل؟",
+                exampleArabeezy: "ahlein, shu bti3mel?",
+                exampleEn: "Hey, what are you up to?",
+            },
+           {
+                id: "btishtighel_walla_btudros",
+                ar: "بِتِشْتِغِل وَلَّا بِتِدْرُس؟",
+                en: "do you work or study?",
+                enArabeezy: "btishtighel walla btudros",
+                hint:
+                    "Useful introduction question after name/origin. To a woman: بِتِشْتِغْلِي وَلَّا بِتِدْرُسِي؟ Keep it as a conversation question, not a vocabulary focus.",
+                exampleAr: "بِتِشْتِغِل وَلَّا بِتِدْرُس؟",
+                exampleArabeezy: "btishtighel walla btudros?",
+                exampleEn: "Do you work or study?",
+            },
+            {
+                id: "shukran",
+                ar: "شُكْرًا",
+                en: "Thank you",
+                enArabeezy: "shukran",
+                hint: "You can also say: يِسْلَمُوا. Natural replies: عَفْوًا، وَلَا يِهِمَّك، الله يْسَلِّمَك.",
+                exampleAr: "شُكْرًا كْتِير. ـ عَفْوًا، وَلَا يِهِمَّك.",
+                exampleArabeezy: "shukran kteer. - 3afwan, wala yhemmak.",
+                exampleEn: "Thank you very much. - You're welcome, no problem.",
+            },
+            {
+                id: "ma3_salama",
+                ar: "مَع السَّلَامَة",
+                en: "Goodbye",
+                enArabeezy: "ma3 salameh",
+                hint: "Other closings: الله مَعَك، فِي رِعَايِة الله، بَاي.",
+                exampleAr: "مَع السَّلَامَة، الله مَعَك.",
+                exampleArabeezy: "ma3 salameh, allah ma3ak.",
+                exampleEn: "Goodbye, God be with you.",
+            },
+            {
+                id: "binshoofak",
+                ar: "بِنْشُوفَك بَعْدِين",
+                en: "See you later",
+                enArabeezy: "binshoofak ba3deen",
+                hint: "To a woman: بِنْشُوفِك بَعْدِين. You can add: دِير بَالَك عَلَى حَالَك.",
+                exampleAr: "يَلَّا، بِنْشُوفَك بَعْدِين.",
+                exampleArabeezy: "yalla, binshoofak ba3deen.",
+                exampleEn: "Alright, see you later.",
+            },
+        ],
+    },
+
+    dialogue: {
+        title: "Real Situation - New Students Meet Before Class",
+        setting: "A new student meets a classmate before the first Arabic lesson. The teacher joins briefly.",
+        lines: [
+            { speaker: "Samer", ar: "مَرْحَبَا، إِنْتِ جَدِيدَة فِي الصَّف؟", arArabeezy: "marhaba, inti jdeedeh fi el-Saff?", en: "Hi, are you new in the class?" },
+            { speaker: "Lina", ar: "آه، مَرْحَبَا. أَنَا جَدِيدَة هِنَا.", arArabeezy: "ah, marhaba. ana jdeedeh hena.", en: "Yes, hi. I'm new here." },
+            { speaker: "Samer", ar: "أَهْلِين. شُو اِسْمِك؟", arArabeezy: "ahleen. sho ismik?", en: "Hi. What's your name?" },
+            { speaker: "Lina", ar: "اِسْمِي لِين. وَإِنْتَ شُو اِسْمَك؟", arArabeezy: "ismi leen. w inta sho ismak?", en: "My name is Lynn. And what's your name?" },
+            { speaker: "Samer", ar: "اِسْمِي سَامِر. تْشَرَّفْنَا يَا لِين.", arArabeezy: "ismi samer. tsharrafna ya leen.", en: "My name is Samer. Nice to meet you, Lynn." },
+            { speaker: "Lina", ar: "تْشَرَّفْنَا يَا سَامِر.", arArabeezy: "tsharrafna ya samer.", en: "Nice to meet you, Samer." },
+            { speaker: "Samer", ar: "أَهْلًا وَسَهْلًا فِيكِي فِي الصَّف.", arArabeezy: "ahlan wa sahlan feeki fi el-Saff.", en: "Welcome to the class." },
+            { speaker: "Samer", ar: "إِنْتِ مِن وِين؟", arArabeezy: "inti min wen?", en: "Where are you from?" },
+            { speaker: "Lina", ar: "أَنَا مِن كَنَدَا.", arArabeezy: "ana min canada.", en: "I'm from Canada." },
+            { speaker: "Lina", ar: "وَإِنْتَ مِن وِين؟", arArabeezy: "w inta min wen?", en: "And where are you from?" },
+            { speaker: "Samer", ar: "أَنَا مِن غَزَّة.", arArabeezy: "ana min ghazza.", en: "I'm from Gaza." },
+            { speaker: "Samer", ar: "هَلْقِيت إِنْتِ وِين سَاكْنَة؟", arArabeezy: "halla2et inti wen sakneh?", en: "Where do you live now?" },
+            { speaker: "Lina", ar: "أَنَا سَاكْنَة فِي غَزَّة، قَرِيب مِن المَدْرَسَة.", arArabeezy: "ana sakneh fi ghazza, qareeb min el-madraseh.", en: "I live in Gaza, near the school." },
+            { speaker: "Samer", ar: "قَدِّيش عُمُرِك، إِذَا عَادِي؟", arArabeezy: "addeesh omrik, iza 3adi?", en: "How old are you, if that's okay?" },
+            { speaker: "Lina", ar: "عُمْرِي عِشْرِين سَنَة.", arArabeezy: "omri 3ishreen saneh.", en: "I'm twenty years old." },
+            { speaker: "Lina", ar: "حِلْو. الصَّف وِين؟", arArabeezy: "7ilu. el-Saff wen?", en: "Nice. Where is the class?" },
+            { speaker: "Samer", ar: "الصَّف هِنَا، جَنْب البَاب.", arArabeezy: "el-Saff hena, jamb el-bab.", en: "The class is here, next to the door." },
+            { speaker: "Lina", ar: "يِسْلَمُوا، شُكْرًا.", arArabeezy: "yislamu, shukran.", en: "Thanks, thank you." },
+            { speaker: "Samer", ar: "عَفْوًا، وَلَا يِهِمَّك.", arArabeezy: "3afwan, wala yhemmak.", en: "You're welcome, no problem." },
+            { speaker: "Lina", ar: "شُو أَخْبَارَك مَع أَوَّل يَوم؟", arArabeezy: "sho akhbarak ma3 awwal yom?", en: "How are things on your first day?" },
+            { speaker: "Samer", ar: "تَمَام، الحَمْدُ لله. وَإِنْتِ كِيفِك؟", arArabeezy: "tamam, el-hamdullah. w inti keefik?", en: "Good, thank God. And how are you?" },
+            { speaker: "Lina", ar: "مْنِيحَة، بَس شُوَيّ تَعْبَانَة.", arArabeezy: "mneeha, bas shway ta3baneh.", en: "Good, but a little tired." },
+            { speaker: "Samer", ar: "عَادِي، أَوَّل يَوم صَعْب شُوَيّ.", arArabeezy: "3adi, awwal yom sa3b shway.", en: "That's normal, the first day is a little hard." },
+            { speaker: "Teacher", ar: "صَبَاح الخِير يَا طلاب.", arArabeezy: "sabah el-kheir ya talab.", en: "Good morning, students." },
+            { speaker: "Samer", ar: "صَبَاح النُّور أُسْتَاذ.", arArabeezy: "sabah el-noor ustaz.", en: "Good morning, teacher." },
+            { speaker: "Lina", ar: "صَبَاح النُّور.", arArabeezy: "sabah el-noor.", en: "Good morning." },
+            { speaker: "Lina", ar: "يِعْطِيك العَافْيَة أُسْتَاذ.", arArabeezy: "ya3teek el-3afyeh ustaz.", en: "Thanks, teacher." },
+            { speaker: "Teacher", ar: "كِيفْكُم اليَوم؟", arArabeezy: "keefkum el-yom?", en: "How are you all today?" },
+            { speaker: "Lina", ar: "أُسْتَاذ، لَوْ سَمَحْت، عِيد السُّؤَال.", arArabeezy: "ustaz, law samaht, 3eed el-su2al.", en: "Teacher, please repeat the question." },
+            { speaker: "Teacher", ar: "أَكِيد. كِيفْكُم اليَوم؟", arArabeezy: "akeed. keefkum el-yom?", en: "Of course. How are you all today?" },
+            { speaker: "Lina", ar: "آه، فَهِمْت. شُكْرًا.", arArabeezy: "ah, fhimt. shukran.", en: "Ah, I understood. Thank you." },
+            { speaker: "Teacher", ar: "عَفْوًا. يَلَّا نِبْدَا الدَّرْس.", arArabeezy: "3afwan. yalla nebda el-dars.", en: "You're welcome. Let's start the lesson." },
+            { speaker: "Samer", ar: "بَعْد الدَّرْس بِنْشُوفَك، طَمِّنِينِي عَلَيْك.", arArabeezy: "ba3d el-dars binshoofak, Tamnineeni 3aleek.", en: "I'll see you after class, tell me how you're doing." },
+            { speaker: "Lina", ar: "تَمَام، مَع السَّلَامَة.", arArabeezy: "tamam, ma3 salameh.", en: "Okay, goodbye." },
+            { speaker: "Samer", ar: "الله مَعِك.", arArabeezy: "allah ma3ik.", en: "God be with you." },
+        ],
+        questions: [
+            { ar: "مِين جَدِيد فِي الصَّف؟", en: "Who is new in the class?" },
+            { ar: "شُو اِسْم البِنْت؟", en: "What is the girl's name?" },
+            { ar: "شُو اِسْم الشَّب؟", en: "What is the young man's name?" },
+            { ar: "سَامِر قَال لِلِين شُو بَعْد تْشَرَّفْنَا؟", en: "What did Samer say to Lynn after nice to meet you?" },
+            { ar: "لِين مِن وِين؟", en: "Where is Lynn from?" },
+            { ar: "سَامِر مِن وِين؟", en: "Where is Samer from?" },
+            { ar: "لِين سَاكْنَة وِين هَلْقِيت؟", en: "Where does Lynn live now?" },
+            { ar: "قَدِّيش عُمُر لِين؟", en: "How old is Lynn?" },
+            { ar: "الصَّف وِين؟", en: "Where is the class?" },
+            { ar: "لِين قَالَت شُو لَمَّا سَامِر سَاعَدْهَا؟", en: "What did Lynn say when Samer helped her?" },
+            { ar: "سَامِر رَدّ عَلَيْهَا شُو؟", en: "What did Samer reply?" },
+            { ar: "سَامِر كِيفُه اليَوم؟", en: "How is Samer today?" },
+            { ar: "لِين كِيفَهَا اليَوم؟", en: "How is Lynn today?" },
+            { ar: "لِين قَالَت لِلأُسْتَاذ شُو؟", en: "What did Lynn say to the teacher?" },
+            { ar: "لِين طَلَبَت مِن الأُسْتَاذ شُو؟", en: "What did Lynn ask the teacher to do?" },
+            { ar: "اِحْكِي عَن نَفْسَك بِخَمْس جُمَل.", en: "Talk about yourself in five sentences." },
+        ],
+    },
+
+    culture: [
+        {
+            title: "Greeting someone who is working",
+            ar: "يِعْطِيك العَافْيَة",
+            arabeezy: "yi3Teek el-3afyeh",
+            en: "May God give you strength / Thanks for your effort.",
+            explanation: "This is much wider than English ‘thank you’. Palestinians use it as a greeting, appreciation, or encouragement when someone is working, cooking, cleaning, teaching, or helping.",
+            whenUsed: "Say it when entering a shop, approaching a worker, thanking a host who prepared food, or greeting your teacher. A natural reply is: الله يْعَافِيك (allah y3afeek).",
+            register: "Warm, polite, and suitable in both casual and respectful situations.",
+        },
+        {
+            title: "A warm Palestinian welcome",
+            ar: "أَهْلًا وَسَهْلًا فِيك، نَوَّرْت",
+            arabeezy: "ahlan w sahlan feek, nawwart",
+            en: "Welcome—you lit up the place.",
+            explanation: "نَوَّرْت is not normally understood literally. It tells a guest that their arrival brought light and happiness to the place.",
+            whenUsed: "Use نَوَّرْت to a man, نَوَّرْتِي to a woman, and نَوَّرْتُوا to a group when welcoming guests, students, or someone returning after an absence.",
+            register: "Warm and hospitable; common in Gaza and across Palestine.",
+        },
+        {
+            title: "Asking about someone with care",
+            ar: "طَمِّنِّي عَلَيْك",
+            arabeezy: "Tamm inni 3aleik",
+            en: "Tell me you’re okay / Let me know how you are.",
+            explanation: "This carries more emotional concern than كِيفَك؟. It often means: give me reassuring news about you.",
+            whenUsed: "Use it after illness, travel, a difficult event, a long absence, or when someone sounds worried. To a woman: طَمِّنِينِي عَلَيْكِ.",
+            register: "Personal and caring; avoid using it as an empty first greeting with a stranger.",
+        },
+        {
+            title: "Replying without exaggerating",
+            ar: "الحَمْدُ لله، مَاشِي الحَال",
+            arabeezy: "el-7amdulillah, mashi el-7al",
+            en: "Thank God, things are going okay.",
+            explanation: "A Palestinian answer does not always need to be strongly positive. مَاشِي الحَال politely says that life is manageable, even if things are not perfect.",
+            whenUsed: "Use it when someone asks كِيفَك؟ and you want a neutral, realistic reply. The tone of voice can make it sound content or tired.",
+            register: "Everyday and natural; appropriate with friends, neighbours, and colleagues.",
+        },
+        {
+            title: "Showing respect when meeting someone",
+            ar: "تْشَرَّفْنَا",
+            arabeezy: "tsharrafna",
+            en: "Nice to meet you / We are honoured.",
+            explanation: "The literal idea is ‘we were honoured’, but in conversation it functions as a polite response after names are exchanged.",
+            whenUsed: "Say it in a first meeting. You can answer with الشَّرَف إِلِي (esh-sharaf ili), meaning ‘the honour is mine’.",
+            register: "Polite and slightly more formal than simply saying أَهْلِين.",
+        },
+        {
+            title: "A goodbye with warmth",
+            ar: "الله مَعَك",
+            arabeezy: "allah ma3ak",
+            en: "May God be with you.",
+            explanation: "This is a warm leave-taking expression rather than a statement about location. It wishes the other person protection and ease.",
+            whenUsed: "Use it when someone is leaving or travelling. To a woman: الله مَعِك. To a group: الله مَعْكُم.",
+            register: "Common, warm, and natural with family, friends, guests, and acquaintances.",
+        },
+    ],
+
+    grammarCapsuleIds: ["GC-01", "GC-02", "GC-03", "GC-04", "GC-05", "GC-06"],
+
+    grammar: [
+        {
+            title: "1. Independent pronouns: who is speaking?",
+            short: "أنا، إنتَ، إنتِ، هوَّ، هيَّ، إحنا، إنتو، همَّ",
+            description: "Palestinian Arabic pronouns tell us who we are talking about. Unlike English, ‘you’ changes for a man, a woman, and a group. Learning that difference early prevents mistakes in questions, descriptions, and later verb conjugation.",
+            table: {
+                title: "Core Gaza Palestinian pronouns",
+                headers: ["Person", "Arabic", "Arabizi", "English", "Typical use"],
+                rows: [
+                    ["1st singular", "أَنَا", "ana", "I", "أَنَا مِن غَزَّة"],
+                    ["2nd masculine", "إِنْتَ", "inta", "you (man)", "إِنْتَ مِن وِين؟"],
+                    ["2nd feminine", "إِنْتِ", "inti", "you (woman)", "إِنْتِ سَاكْنَة وِين؟"],
+                    ["3rd masculine", "هُوَّ", "huwwe", "he", "هُوَّ مْنِيح"],
+                    ["3rd feminine", "هِيَّ", "hiyyeh", "she", "هِيَّ مْنِيحَة"],
+                    ["1st plural", "إِحْنَا", "i7na", "we", "إِحْنَا مِن فِلَسْطِين"],
+                    ["2nd plural", "إِنْتُو", "intu", "you all", "إِنْتُو كِيفْكُم؟"],
+                    ["3rd plural", "هُمَّ", "humme", "they", "هُمَّ سَاكْنِين هُون"],
+                ],
+            },
+            examples: [
+                { ar: "إِنْتَ مِن وِين؟", arabeezy: "inta min ween?", en: "Where are you from? (to a man)" },
+                { ar: "إِنْتِ مِن وِين؟", arabeezy: "inti min ween?", en: "Where are you from? (to a woman)" },
+                { ar: "هُمَّ مِن غَزَّة، بَس هَلْقِيت سَاكْنِين بِرَام الله.", arabeezy: "humme min Ghazza, bas hal2eet sakneen b-Ramallah.", en: "They are from Gaza, but now they live in Ramallah." },
+            ],
+            commonMistakes: [
+                "Do not use إِنْتَ for every person. Use إِنْتِ when speaking to one woman.",
+                "هُوَّ and هِيَّ refer to someone who is not being addressed directly; they mean he and she.",
+            ],
+            exercises: [
+                { prompt: "You are speaking directly to one woman. Which pronoun do you use?", options: ["إِنْتِ", "إِنْتَ", "هِيَّ"], correct: "إِنْتِ", explanation: "إِنْتِ is ‘you’ when addressing one woman. هِيَّ means ‘she’." },
+                { prompt: "Complete: ___ مِن كَنَدَا. (They)", options: ["هُمَّ", "إِحْنَا", "هُوَّ"], correct: "هُمَّ", explanation: "هُمَّ is the everyday Palestinian pronoun for ‘they’." },
+            ],
+        },
+        {
+            title: "2. The simple present sentence without ‘am / is / are’",
+            short: "أَنَا مْنِيح — هِيَّ سَاكْنَة فِي غَزَّة",
+            description: "In a present-time Palestinian Arabic sentence, we normally do not insert a word equivalent to English ‘am’, ‘is’, or ‘are’ before a noun, adjective, or location. Put the subject first, then the information about it.",
+            table: {
+                title: "Present-time patterns",
+                headers: ["Pattern", "Palestinian example", "Meaning"],
+                rows: [
+                    ["pronoun + adjective", "أَنَا مْنِيح", "I am fine"],
+                    ["pronoun + noun", "هُوَّ طَالِب", "He is a student"],
+                    ["pronoun + place phrase", "هِيَّ فِي غَزَّة", "She is in Gaza"],
+                    ["name + adjective", "سَارَة تَعْبَانَة", "Sara is tired"],
+                ],
+            },
+            examples: [
+                { ar: "أَنَا مِن فَرَنْسَا.", arabeezy: "ana min Faransa.", en: "I am from France." },
+                { ar: "هُوَّ أُسْتَاذ عَرَبِي.", arabeezy: "huwwe ustaz 3arabi.", en: "He is an Arabic teacher." },
+                { ar: "الصَّف فِي غَزَّة.", arabeezy: "eS-Saff fi Ghazza.", en: "The class is in Gaza." },
+            ],
+            commonMistakes: [
+                "Do not add هُوَّ as a translation of English ‘is’: سَارَة مْنِيحَة, not سَارَة هِيَّ مْنِيحَة in a neutral sentence.",
+                "This rule is for present descriptions. Past descriptions later use كَان / كَانَت.",
+            ],
+            exercises: [
+                { prompt: "Choose the natural Palestinian sentence: ‘Lina is from Canada.’", options: ["لِينَا مِن كَنَدَا.", "لِينَا هِيَّ مِن كَنَدَا.", "لِينَا يِكُون مِن كَنَدَا."], correct: "لِينَا مِن كَنَدَا.", explanation: "A neutral present sentence needs no separate word for ‘is’." },
+                { prompt: "What does هُوَّ طَالِب mean?", options: ["He is a student.", "The student is here.", "You are a student."], correct: "He is a student.", explanation: "هُوَّ is ‘he’; طَالِب gives the description directly." },
+            ],
+        },
+        {
+            title: "3. Masculine and feminine agreement",
+            short: "مْنِيح / مْنِيحَة — سَاكِن / سَاكْنَة",
+            description: "Many descriptions change according to the person. A common feminine marker is ـة, pronounced -a or -eh in Palestinian speech. Agreement is about the person being described, not the gender of the speaker asking the question.",
+            table: {
+                title: "Useful pairs in Unit 1",
+                headers: ["Masculine", "Feminine", "Meaning"],
+                rows: [
+                    ["مْنِيح (mnee7)", "مْنِيحَة (mnee7a)", "fine / well"],
+                    ["تَعْبَان (ta3ban)", "تَعْبَانَة (ta3baneh)", "tired"],
+                    ["سَاكِن (saken)", "سَاكْنَة (sakneh)", "living / resident"],
+                    ["مَبْسُوط (mabsooT)", "مَبْسُوطَة (mabsooTa)", "happy"],
+                ],
+            },
+            examples: [
+                { ar: "آدَم مْنِيح، وَسَارَة مْنِيحَة.", arabeezy: "Adam mnee7, w Sara mnee7a.", en: "Adam is fine, and Sara is fine." },
+                { ar: "إِنْتِ سَاكْنَة وِين هَلْقِيت؟", arabeezy: "inti sakneh ween hal2eet?", en: "Where are you living now? (to a woman)" },
+                { ar: "هُوَّ تَعْبَان شُوَيّ، بَس هِيَّ مَبْسُوطَة.", arabeezy: "huwwe ta3ban shway, bas hiyyeh mabsooTa.", en: "He is a little tired, but she is happy." },
+            ],
+            commonMistakes: [
+                "After هِيَّ, do not leave a regular adjective masculine: say هِيَّ مْنِيحَة.",
+                "Not every feminine word ends in ـة, and later units will introduce important exceptions.",
+            ],
+            exercises: [
+                { prompt: "Correct the description of a woman: هِيَّ مْنِيح", options: ["هِيَّ مْنِيحَة", "هُوَّ مْنِيحَة", "هِيَّ مْنِيحِين"], correct: "هِيَّ مْنِيحَة", explanation: "The adjective agrees with هِيَّ, so مْنِيح becomes مْنِيحَة." },
+                { prompt: "Choose: ‘Mariam is living in Gaza.’", options: ["مَرْيَم سَاكْنَة فِي غَزَّة.", "مَرْيَم سَاكِن فِي غَزَّة.", "مَرْيَم سَاكْنِين فِي غَزَّة."], correct: "مَرْيَم سَاكْنَة فِي غَزَّة.", explanation: "Mariam is feminine singular, so use سَاكْنَة." },
+            ],
+        },
+        {
+            title: "4. Building useful questions",
+            short: "شُو؟ مِين؟ وِين؟ مِن وِين؟ كِيف؟ قَدِّيش؟",
+            description: "Palestinian question words normally stay near the information being requested. Beginners should learn the whole spoken chunk—not only a dictionary translation—because English and Arabic do not always build the question in the same order.",
+            table: {
+                title: "Question chunks for introductions",
+                headers: ["Question word", "Meaning", "Natural chunk"],
+                rows: [
+                    ["شُو؟ (shu?)", "what?", "شُو اِسْمَك؟"],
+                    ["مِين؟ (meen?)", "who?", "مِين هَاد؟"],
+                    ["وِين؟ (ween?)", "where?", "وِين سَاكِن؟"],
+                    ["مِن وِين؟ (min ween?)", "where from?", "إِنْتِ مِن وِين؟"],
+                    ["كِيف؟ (keef?)", "how?", "كِيفَك اليَوم؟"],
+                    ["قَدِّيش؟ (addeish?)", "how much / how many?", "قَدِّيش عُمْرَك؟"],
+                ],
+            },
+            examples: [
+                { ar: "شُو اِسْمِك؟", arabeezy: "shu ismik?", en: "What is your name? (to a woman)" },
+                { ar: "إِنْتَ مِن وِين؟", arabeezy: "inta min ween?", en: "Where are you from? (to a man)" },
+                { ar: "قَدِّيش عُمْرَك؟", arabeezy: "addeish 3umrak?", en: "How old are you?" },
+            ],
+            commonMistakes: [
+                "وِين asks for a location; مِن وِين asks for origin. Compare: وِين سَاكِن؟ vs مِن وِين؟",
+                "For a name, use شُو اِسْمَك؟, not وِين اِسْمَك؟.",
+            ],
+            exercises: [
+                { prompt: "You want to know someone’s country or city of origin. Choose the question.", options: ["مِن وِين؟", "وِين سَاكِن؟", "كِيفَك؟"], correct: "مِن وِين؟", explanation: "مِن وِين asks ‘from where?’; وِين alone asks about location." },
+                { prompt: "Choose the correct question for someone’s name.", options: ["شُو اِسْمَك؟", "مِين وِين؟", "قَدِّيش اِسْمَك؟"], correct: "شُو اِسْمَك؟", explanation: "The natural fixed chunk is شُو اِسْمَك؟" },
+            ],
+        },
+    ],
+
+    microChecks: {
+        enabled: true,
+        every: 5,
+        items: [
+            {
+                id: "greet_mc1",
+                type: "match",
+                prompt: "Match the English word to Arabic: Hello",
+                options: ["مَرْحَبَا", "صَبَاح الخِير", "مَسَا الخِير", "أَهْلًا وَسَهْلًا"],
+                correct: "مَرْحَبَا",
+            },
+            {
+                id: "greet_mc2",
+                type: "complete",
+                prompt: "Complete: صَبَاح الخِير. - ___",
+                options: ["صَبَاح النُّور", "مَسَا النُّور", "مَرْحَبَا", "طَمِّنِّي عَنْك"],
+                correct: "صَبَاح النُّور",
+            },
+            {
+                id: "greet_mc3",
+                type: "reorder",
+                prompt: "Reorder: My name is Lynn.",
+                options: ["اِسْمِي", "لِين"],
+                correct: ["اِسْمِي", "لِين"],
+            },
+            {
+                id: "greet_mc4",
+                type: "complete",
+                prompt: "Complete: إِنْتِ ___ وِين؟",
+                options: ["مِن", "شُو", "مَع", "فِي"],
+                correct: "مِن",
+            },
+            {
+                id: "greet_mc5",
+                type: "match",
+                prompt: "Choose a natural goodbye.",
+                options: ["بِنْشُوفَك بَعْدِين", "شُو اِسْمَك؟", "أَنَا مِن غَزَّة", "كِيفَك؟"],
+                correct: "بِنْشُوفَك بَعْدِين",
+            },
+        ],
+    },
+
+    practice: {
+        maxTranslationItems: 6,
+        showWriting: false,
+        showRealUse: false,
+        separateExerciseTypes: true,
+        showCompleteDialogue: false,
+        quiz: [
+            {
+                id: "greet_q1",
+                questionAr: "Who are you speaking to when you say كِيفِك؟ (keefik?)",
+                optionsEn: ["A woman how she is", "A man his name", "Where someone lives"],
+                correctIndex: 0,
+            },
+            {
+                id: "greet_q2",
+                questionAr: "Choose the natural reply to صَبَاح الخِير (sabah el-kheir).",
+                optionsEn: ["صَبَاح النُّور", "مَع السَّلَامَة", "شُو اِسْمَك؟"],
+                correctIndex: 0,
+            },
+            {
+                id: "greet_q3",
+                questionAr: "Choose the English meaning of أَنَا مِن غَزَّة (ana min Ghazza).",
+                optionsEn: ["I am from Gaza.", "I live with Gaza.", "My name is Gaza."],
+                correctIndex: 0,
+            },
+            {
+                id: "greet_q4",
+                questionAr: "Choose the English meaning of لَوْ سَمَحْت، عِيد السُّؤَال (law samaht, 3eed es-so2al).",
+                optionsEn: ["Please repeat the question.", "Please close the class.", "Please say goodbye."],
+                correctIndex: 0,
+            },
+            {
+                id: "greet_q5",
+                questionAr: "Choose the Palestinian Arabic phrase for “See you later.”",
+                optionsEn: ["بِنْشُوفَك بَعْدِين", "شُو أَخْبَارَك؟", "أَنَا تَعْبَان"],
+                correctIndex: 0,
+            },
+        ],
+        rolePlays: [
+            "Meet a new classmate: greet them, ask their name, ask where they are from, and say where you are from.",
+        ],
+        legacySections: [
+            {
+                matching: [
+                    { ar: "مَرْحَبَا", en: "Hello" },
+                    { ar: "كِيفَك؟", en: "How are you? (to a man)" },
+                    { ar: "شُو اِسْمِك؟", en: "What is your name? (to a woman)" },
+                    { ar: "مِن وِين؟", en: "Where from?" },
+                    { ar: "طَمِّنِّي عَلَيْك", en: "Tell me how you are" },
+                ],
+                fillInTheBlank: [
+                    { prompt: "شُو ___؟", answer: "اِسْمَك" },
+                    { prompt: "أَنَا ___ غَزَّة.", answer: "مِن" },
+                    { prompt: "أَنَا سَاكْنَة ___ غَزَّة.", answer: "فِي" },
+                    { prompt: "مْنِيحَة، ___ لله.", answer: "الحَمْدُ" },
+                    { prompt: "لَوْ سَمَحْت، ___ السُّؤَال.", answer: "عِيد" },
+                ],
+                reorderSentences: [
+                    {
+                        prompt: "Put the words in order: What is your name?",
+                        words: ["شُو", "اِسْمَك؟"],
+                        answer: "شُو اِسْمَك؟",
+                    },
+                    {
+                        prompt: "Put the words in order: I am from Gaza.",
+                        words: ["أَنَا", "مِن", "غَزَّة."],
+                        answer: "أَنَا مِن غَزَّة.",
+                    },
+                    {
+                        prompt: "Put the words in order: See you later.",
+                        words: ["بِنْشُوفَك", "بَعْدِين."],
+                        answer: "بِنْشُوفَك بَعْدِين.",
+                    },
+                ],
+                writeYourOwnSentences: [
+                    "Write 5 short sentences introducing yourself: greeting, name, origin, where you live, and how you feel.",
+                    "Change these to feminine: كِيفَك؟ / سَاكِن / فَاهِم.",
+                    "Change these to plural: كِيفَك؟ / مْنِيح / سَاكِن.",
+                ],
+            },
+        ],
+        sections: [
+            {
+                title: "Recognition",
+                matching: [
+                    { ar: "مَرْحَبَا", arabeezy: "marhaba", en: "Hello" },
+                    { ar: "كِيفَك؟", arabeezy: "keefak?", en: "How are you? (to a man)" },
+                    { ar: "شُو اِسْمِك؟", arabeezy: "shu ismik?", en: "What is your name? (to a woman)" },
+                    { ar: "مِن وِين؟", arabeezy: "min ween?", en: "Where are you from?" },
+                    { ar: "مَع السَّلَامَة", arabeezy: "ma3 es-salameh", en: "Goodbye" },
+                    { ar: "صَبَاح الخِير", arabeezy: "sabah el-kheir", en: "Good morning" },
+                    { ar: "تْشَرَّفْنَا", arabeezy: "tsharrafna", en: "Nice to meet you" },
+                    { ar: "اِسْمِي نُور", arabeezy: "ismi Noor", en: "My name is Noor" },
+                    { ar: "أَنَا مِن كَنَدَا", arabeezy: "ana min Canada", en: "I am from Canada" },
+                    { ar: "بِنْشُوفَك بَعْدِين", arabeezy: "binshoofak ba3deen", en: "See you later" },
+                ],
+                multipleChoice: [
+                    {
+                        prompt: "You meet a woman for the first time. Choose: What is your name?",
+                        options: ["شُو اِسْمِك؟", "إِنْتِ مِن وِين؟", "كِيفَك؟"],
+                        correct: "شُو اِسْمِك؟",
+                    },
+                    {
+                        prompt: "Someone says صَبَاح الخِير. Choose the natural reply.",
+                        options: ["صَبَاح النُّور", "مَع السَّلَامَة", "اِسْمِي سَامِر"],
+                        correct: "صَبَاح النُّور",
+                    },
+                    {
+                        prompt: "Choose the natural answer to: إِنْتَ مِن وِين؟",
+                        options: ["أَنَا مِن فَرَنْسَا.", "اِسْمِي فَرَنْسَا.", "كِيفَك فَرَنْسَا؟"],
+                        correct: "أَنَا مِن فَرَنْسَا.",
+                    },
+                    {
+                        prompt: "You are leaving class. Choose the most suitable phrase.",
+                        options: ["مَع السَّلَامَة.", "شُو اِسْمَك؟", "مِن وِين؟"],
+                        correct: "مَع السَّلَامَة.",
+                    },
+                    {
+                        prompt: "Choose the question that asks about someone's current home.",
+                        options: ["وِين سَاكِن هَلْقِيت؟", "شُو اِسْمَك؟", "كِيفَك؟"],
+                        correct: "وِين سَاكِن هَلْقِيت؟",
+                    },
+                ],
+            },
+            {
+                title: "Fill in the missing word",
+                fillInTheBlank: [
+                    { prompt: "Write the Palestinian Arabic for (my name): ___ سَارَة.", arabeezy: "___ Sara.", answer: "اِسْمِي" },
+                    { prompt: "Write the Palestinian Arabic for (where): ___ سَاكِن هَلْقِيت؟", arabeezy: "___ saken hal2eet?", answer: "وِين" },
+                    { prompt: "Write the Palestinian Arabic for (from): أَنَا ___ كَنَدَا.", arabeezy: "ana ___ Canada.", answer: "مِن" },
+                    { prompt: "Write (fine) in the feminine form: هِيَّ ___.", arabeezy: "hiyyeh ___.", answer: "مْنِيحَة" },
+                    { prompt: "Write (living) in the masculine form: هُوَّ ___ فِي رَام الله.", arabeezy: "huwwe ___ fi Ramallah.", answer: "سَاكِن" },
+                    { prompt: "Write the Palestinian Arabic for (what): ___ اِسْمِك؟", arabeezy: "___ ismik?", answer: "شُو" },
+                    { prompt: "Write (living) in the feminine form: مَارْيَا ___ فِي القُدْس.", arabeezy: "Maria ___ fi il-Quds.", answer: "سَاكْنَة" },
+                    { prompt: "Write (fine) in the masculine form: آدَم ___.", arabeezy: "Adam ___.", answer: "مْنِيح" },
+                    { prompt: "Write the Palestinian Arabic for (in): أَنَا سَاكِن ___ غَزَّة.", arabeezy: "ana saken ___ Ghazza.", answer: "فِي" },
+                    { prompt: "Write the Palestinian Arabic for (how): ___ اليَوم؟", arabeezy: "___ el-yom?", answer: "كِيفَك" },
+                    { prompt: "Complete the morning reply: صَبَاح الخِير. — صَبَاح ___. (light)", arabeezy: "sabah el-kheir — sabah ___.", answer: "النُّور" },
+                    { prompt: "Complete the closing: بِنْشُوفَك ___. (later)", arabeezy: "binshoofak ___.", answer: "بَعْدِين" },
+                ],
+                correctTheMistake: [
+                    {
+                        prompt: "The adjective must agree with a woman. Correct: هِيَّ مْنِيح.",
+                        arabeezy: "hiyyeh mneeh.",
+                        answer: "هِيَّ مْنِيحَة.",
+                    },
+                    {
+                        prompt: "The speaker is a woman. Correct: أَنَا سَاكِن فِي القُدْس.",
+                        arabeezy: "ana saken fi il-Quds.",
+                        answer: "أَنَا سَاكْنَة فِي القُدْس.",
+                    },
+                    {
+                        prompt: "Use the correct question word for a name. Correct: وِين اِسْمَك؟",
+                        arabeezy: "ween ismak?",
+                        answer: "شُو اِسْمَك؟",
+                    },
+                    {
+                        prompt: "The adjective must agree with a man. Correct: هُوَّ مْنِيحَة.",
+                        arabeezy: "huwwe mneeha.",
+                        answer: "هُوَّ مْنِيح.",
+                    },
+                    {
+                        prompt: "Use the correct question word for place. Correct: شُو سَاكِن هَلْقِيت؟",
+                        arabeezy: "shu saken hal2eet?",
+                        answer: "وِين سَاكِن هَلْقِيت؟",
+                    },
+                    {
+                        prompt: "Use مِن for origin. Correct: أَنَا فِي إِسْبَانْيَا.",
+                        arabeezy: "ana fi Spain.",
+                        answer: "أَنَا مِن إِسْبَانْيَا.",
+                    },
+                ],
+                reorderSentences: [
+                    {
+                        prompt: "Put the words in order: Where are you from?",
+                        arabeezy: "inta min ween?",
+                        words: ["وِين؟", "مِن", "إِنْتَ"],
+                        answer: "إِنْتَ مِن وِين؟",
+                    },
+                    {
+                        prompt: "Put the words in order: My name is Adam.",
+                        arabeezy: "ismi Adam.",
+                        words: ["آدَم.", "اِسْمِي"],
+                        answer: "اِسْمِي آدَم.",
+                    },
+                    {
+                        prompt: "Put the words in order: She lives in Jerusalem.",
+                        arabeezy: "hiyyeh sakneh fi il-Quds.",
+                        words: ["فِي", "هِيَّ", "القُدْس.", "سَاكْنَة"],
+                        answer: "هِيَّ سَاكْنَة فِي القُدْس.",
+                    },
+                    {
+                        prompt: "Put the words in order: How are you today? (to a woman)",
+                        arabeezy: "keefik el-yom?",
+                        words: ["اليَوم؟", "كِيفِك"],
+                        answer: "كِيفِك اليَوم؟",
+                    },
+                    {
+                        prompt: "Put the words in order: I live in Gaza.",
+                        arabeezy: "ana saken fi Ghazza.",
+                        words: ["غَزَّة.", "سَاكِن", "أَنَا", "فِي"],
+                        answer: "أَنَا سَاكِن فِي غَزَّة.",
+                    },
+                    {
+                        prompt: "Put the words in order: Good morning, teacher.",
+                        arabeezy: "sabah el-kheir ya ustaz.",
+                        words: ["يَا أُسْتَاذ.", "الخِير", "صَبَاح"],
+                        answer: "صَبَاح الخِير يَا أُسْتَاذ.",
+                    },
+                ],
+            },
+        ],
+        translation: [
+            { id: "greet_t1", type: "enToAr", textEn: "Hi, how are you?", textAr: "مَرْحَبَا، كِيفَك؟", textArabeezy: "marhaba, keefak?" },
+            { id: "greet_t2", type: "arToEn", textEn: "My name is Lynn.", textAr: "اِسْمِي لِين.", textArabeezy: "ismi Leen." },
+            { id: "greet_t3", type: "enToAr", textEn: "Where are you from?", textAr: "إِنْتَ/إِنْتِ مِن وِين؟", textArabeezy: "inta/inti min ween?" },
+            { id: "greet_t4", type: "arToEn", textEn: "I am from Gaza.", textAr: "أَنَا مِن غَزَّة.", textArabeezy: "ana min Ghazza." },
+            { id: "greet_t5", type: "enToAr", textEn: "I live in Ramallah.", textAr: "أَنَا سَاكِن/سَاكْنَة فِي رَام الله.", textArabeezy: "ana saken/sakneh fi Ramallah." },
+            { id: "greet_t6", type: "enToAr", textEn: "How old are you?", textAr: "قَدِّيش عُمُرَك/عُمُرِك؟", textArabeezy: "addeesh 3omrak/3omrik?" },
+            { id: "greet_t7", type: "arToEn", textEn: "I am fine, thank God.", textAr: "أَنَا مْنِيح/مْنِيحَة، الحَمْدُ لله." },
+            { id: "greet_t8", type: "enToAr", textEn: "Tell me how you are.", textAr: "طَمِّنِّي عَلَيْك / عَنْك." },
+            { id: "greet_t9", type: "enToAr", textEn: "Please repeat the question.", textAr: "لَوْ سَمَحْت، عِيد السُّؤَال." },
+            { id: "greet_t10", type: "arToEn", textEn: "I do not understand the word.", textAr: "أَنَا مِش فَاهِم/فَاهْمَة الكِلْمَة." },
+            { id: "greet_t11", type: "enToAr", textEn: "Thanks / thank you.", textAr: "يِسْلَمُوا / شُكْرًا." },
+            { id: "greet_t12", type: "arToEn", textEn: "You're welcome, no problem.", textAr: "عَفْوًا، وَلَا يِهِمَّك." },
+            { id: "greet_t13", type: "enToAr", textEn: "Nice to meet you.", textAr: "تْشَرَّفْنَا." },
+            { id: "greet_t14", type: "arToEn", textEn: "Goodbye, see you later.", textAr: "مَع السَّلَامَة، بِنْشُوفَك بَعْدِين." },
+        ],
+    },
+
+    homework: {
+        instructions:
+            `Write and record a 45-60 second self-introduction in Gaza Palestinian Arabic. Include: a greeting, your name, where you are from, where you live now, your age if you are comfortable, how you feel today, one classroom phrase, and a natural closing. Use at least 8 words or phrases from the vocabulary list.
+
+Translate these sentences into Gaza Palestinian Arabic:
+1. Hello, how are you?
+2. My name is Lina.
+3. What is your name?
+4. Where are you from?
+5. I am from Gaza.
+6. I live in Ramallah.
+7. How old are you?
+8. I am good, thank God.
+9. I am a little tired today.
+10. Tell me how you are.
+11. Please repeat the question.
+12. I do not understand the word.
+13. Thanks / thank you.
+14. You're welcome, no problem.
+15. Goodbye, see you later.`,
+    },
+
+    teacherNotes: {
+        warmup: [
+            "Start with a real greeting exchange, not vocabulary explanation.",
+            "Ask the student to repeat the same mini-dialogue with their real name and country.",
+            "Keep corrections light; this unit is about confidence and first output.",
+        ],
+        vocabularySteps: [
+            "Teach each item as a usable chunk: مَرْحَبَا، كِيفَك؟ / اِسْمِي... / أَنَا مِن...",
+            "Show masculine/feminine only through examples: كِيفَك؟ / كِيفِك؟, سَاكِن / سَاكْنَة.",
+            "Recycle classroom phrases often: لَوْ سَمَحْت، عِيد السُّؤَال.",
+        ],
+        dialogueSteps: [
+            "Read the dialogue once naturally, then act it with the student.",
+            "Make the student replace Lynn and Samer with their own name and city.",
+            "Ask the dialogue questions as speaking practice, not only comprehension.",
+        ],
+        practiceTips: [
+            "Push full answers: أَنَا مِن..., not only the country.",
+            "Use quick substitutions: كِيفَك؟ كِيفِك؟ كِيفْكُم؟",
+            "End with a 30-second self-introduction recording.",
+        ],
+        wrapup: [
+            "Student introduces themselves without reading.",
+            "Student asks the teacher two questions.",
+            "Student says one natural closing.",
+        ],
+        myNotes: "",
+    },
+};

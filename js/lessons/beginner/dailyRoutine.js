@@ -1,4 +1,4 @@
-import { LESSON_ID_DAILY_ROUTINE } from '../../core/constants.js';
+import { LESSON_ID_DAILY_ROUTINE } from '../../constants.js';
 
 export const lessonId = LESSON_ID_DAILY_ROUTINE;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Beginner",
         unit: "Daily Routine",
         lessonTitle: "Unit 3 - Daily Routine & Time",
-        contentVersion: 2026071401,
+        contentVersion: 2026081504,
     },
 
     overview: {
@@ -31,315 +31,380 @@ export const lesson = {
     vocabulary: {
         core: [
             {
-                id: "kul_yom",
-                ar: "كُلّ يَوم",
-                en: "every day",
-                enArabeezy: "kul yom",
-                hint: "Use with repeated actions: كُلّ يَوم بَصْحَى... / كُلّ يَوم بَرُوح...",
-                exampleAr: "كُلّ يَوم بَحْكِي مَع إِمِّي.",
-                exampleArabeezy: "kul yom ba7ki ma3 immi.",
-                exampleEn: "Every day I talk with my mother.",
+                "id": "kull_yom",
+                "ar": "كُلّ يَوم",
+                "arArabeezy": "kul yom",
+                "en": "Every day",
+                "enArabeezy": "kull_yom",
+                "hint": "Use it for a repeated habit. بَحِبّ (I like) was learned in Food & Drink.",
+                "exampleAr": "كُلّ يَوم بَحِبّ أَحْكِي مَع إِمِّي.",
+                "exampleArabeezy": "kul yom ba7ibb a7ki ma3 immi.",
+                "exampleEn": "Every day I like to talk with my mother."
             },
             {
-                id: "el_soboh",
-                ar: "الصُّبُح",
-                en: "in the morning",
-                enArabeezy: "el-soboh",
-                hint: "Morning time. Common chunks: الصُّبُح بَصْحَى / الصُّبُح بَفْطَر.",
-                exampleAr: "الصُّبُح بَفْطَر مَع أَهْلِي.",
-                exampleArabeezy: "el-soboh bafTar ma3 ahli.",
-                exampleEn: "In the morning I have breakfast with my family.",
+                "id": "fi_elsob7",
+                "ar": "الصُّبُح",
+                "arArabeezy": "el-soboh",
+                "en": "In the morning",
+                "enArabeezy": "fi_esSob7",
+                "hint": "The main Gaza form used for production in this course. قَهْوَة was learned in Food & Drink.",
+                "exampleAr": "الصُّبُح بَحِبّ القَهْوَة.",
+                "exampleArabeezy": "el-soboh ba7ibb el-ahwe.",
+                "exampleEn": "In the morning I like coffee."
             },
             {
-                id: "ba3d_el_duhur",
-                ar: "بَعْد الضُّهُر",
-                en: "in the afternoon",
-                enArabeezy: "ba3d el-duhur",
-                hint: "Literally after noon. Useful for coming back home, lunch, or resting.",
-                exampleAr: "بَعْد الضُّهُر بَرْجَع عَالبِيت.",
-                exampleArabeezy: "ba3d el-duhur barja3 3al-beet.",
-                exampleEn: "In the afternoon I come back home.",
+                "id": "baS7a",
+                "ar": "بَصْحَى",
+                "arArabeezy": "bs7a",
+                "en": "I wake up",
+                "enArabeezy": "baS7a",
+                "hint": "A routine verb in the I-form. السَّاعَة + number tells the exact time.",
+                "exampleAr": "كُلّ يَوم بَصْحَى السَّاعَة سَبْعَة.",
+                "exampleArabeezy": "kul yom baS7a el-sa3a sab3a.",
+                "exampleEn": "Every day I wake up at seven."
             },
             {
-                id: "bel_masa",
-                ar: "بِالمَسَا",
-                en: "in the evening",
-                enArabeezy: "bel-masa",
-                hint: "Natural Gaza time word. Use it for studying, watching, visiting, or talking.",
-                exampleAr: "بِالمَسَا بَدْرُس عَرَبِي.",
-                exampleArabeezy: "bel-masa badros 3arabi.",
-                exampleEn: "In the evening I study Arabic.",
+                "id": "bakir",
+                "ar": "بَدْرِي",
+                "arArabeezy": "badri",
+                "en": "Early",
+                "enArabeezy": "badri",
+                "hint": "The main Gaza form in this course. Use it after a routine verb.",
+                "exampleAr": "كُلّ يَوم بَصْحَى بَدْرِي.",
+                "exampleArabeezy": "kul yom baS7a badri.",
+                "exampleEn": "Every day I wake up early."
             },
             {
-                id: "bel_leel",
-                ar: "بِاللِّيل",
-                en: "at night",
-                enArabeezy: "bel-leel",
-                hint: "Night time. Common chunks: بِاللِّيل بَنَام / بِاللِّيل بَحْكِي مَع أَخُوي.",
-                exampleAr: "بِاللِّيل بَنَام مِتْأَخِّر.",
-                exampleArabeezy: "bel-leel banaam mit2akher.",
-                exampleEn: "At night I sleep late.",
+                "id": "mita2kher",
+                "ar": "مِتْأَخَّر",
+                "arArabeezy": "mtakhr",
+                "en": "Late",
+                "enArabeezy": "mita2kher",
+                "hint": "Male: مِتْأَخِّر. Female: مِتْأَخِّرَة. It is the opposite of بَدْرِي.",
+                "exampleAr": "بَصْحَى مِتْأَخِّر.",
+                "exampleArabeezy": "baS7a mit2akher.",
+                "exampleEn": "I wake up late."
             },
             {
-                id: "ay_sa3a",
-                ar: "أَيّ سَاعَة؟",
-                en: "what time?",
-                enArabeezy: "ay sa3a?",
-                hint: "Ask about schedule: أَيّ سَاعَة بِتِصْحَى؟ / أَيّ سَاعَة بِتْرُوح؟",
-                exampleAr: "أَيّ سَاعَة بِتْرُوح عَالشُّغُل؟",
-                exampleArabeezy: "ay sa3a bitroo7 3al-shoghol?",
-                exampleEn: "What time do you go to work?",
+                "id": "batghassal",
+                "ar": "بَغَسِّل",
+                "arArabeezy": "baghassal",
+                "en": "I wash (my face / hands)",
+                "enArabeezy": "baghassal",
+                "hint": "Usually followed by what you wash: وِجْهِي = my face.",
+                "exampleAr": "الصُّبُح بَغَسِّل وِجْهِي.",
+                "exampleArabeezy": "el-soboh baghassal wijhi.",
+                "exampleEn": "In the morning I wash my face."
             },
             {
-                id: "badri",
-                ar: "بَدْرِي",
-                en: "early",
-                enArabeezy: "badri",
-                hint: "Natural Gaza word. Opposite: مِتْأَخِّر. Use with waking up, sleeping, arriving.",
-                exampleAr: "بَصْحَى بَدْرِي فِي أَيَّام الشُّغُل.",
-                exampleArabeezy: "baS7a badri fi ayyam el-shoghol.",
-                exampleEn: "I wake up early on work days.",
+                "id": "bat7ammam",
+                "ar": "بَتْحَمَّم",
+                "arArabeezy": "bt7mm",
+                "en": "I take a shower",
+                "enArabeezy": "bat7ammam",
+                "hint": "A common morning-routine verb in the I-form.",
+                "exampleAr": "الصُّبُح بَغَسِّل وِجْهِي وَبَتْحَمَّم.",
+                "exampleArabeezy": "el-soboh baghassal wijhi w bat7ammam.",
+                "exampleEn": "In the morning I wash my face and take a shower."
             },
             {
-                id: "mit2akher",
-                ar: "مِتْأَخِّر / مِتْأَخِّرَة",
-                en: "late",
-                enArabeezy: "mit2akher / mit2akhra",
-                hint: "Male: مِتْأَخِّر. Female: مِتْأَخِّرَة. Use with waking, sleeping, arriving.",
-                exampleAr: "اليَوم صِحِيت مِتْأَخِّر.",
-                exampleArabeezy: "el-yom Si7eet mit2akher.",
-                exampleEn: "Today I woke up late.",
+                "id": "b3deen",
+                "ar": "بَعْدِين",
+                "arArabeezy": "ba3deen",
+                "en": "Then / after that",
+                "enArabeezy": "ba3deen",
+                "hint": "Use it to move naturally from one action to the next.",
+                "exampleAr": "بَصْحَى، بَعْدِين بَغَسِّل وِجْهِي.",
+                "exampleArabeezy": "baS7a, ba3deen baghassal wijhi.",
+                "exampleEn": "I wake up, then I wash my face."
             },
             {
-                id: "baS7a",
-                ar: "بَصْحَى",
-                en: "I wake up",
-                enArabeezy: "baS7a",
-                hint: "Routine verb. Ask: أَيّ سَاعَة بِتِصْحَى؟ To a woman: بِتِصْحِي؟",
-                exampleAr: "كُلّ يَوم بَصْحَى السَّاعَة سَبْعَة.",
-                exampleArabeezy: "kul yom baS7a el-sa3a sab3a.",
-                exampleEn: "Every day I wake up at seven.",
+                "id": "bafTar",
+                "ar": "بَفْطَر",
+                "arArabeezy": "bftr",
+                "en": "I have breakfast",
+                "enArabeezy": "bafTar",
+                "hint": "The verb for having breakfast. فُطُور and أَهْلِي were learned earlier.",
+                "exampleAr": "الصُّبُح بَفْطَر مَع أَهْلِي.",
+                "exampleArabeezy": "el-soboh bafTar ma3 ahli.",
+                "exampleEn": "In the morning I have breakfast with my family."
             },
             {
-                id: "baghassal",
-                ar: "بَغَسِّل",
-                en: "I wash",
-                enArabeezy: "baghassal",
-                hint: "Daily action after waking up. Common chunk: بَغَسِّل وِجْهِي.",
-                exampleAr: "أَوَّل إِشِي بَغَسِّل وِجْهِي.",
-                exampleArabeezy: "awwal ishi baghassal wijhi.",
-                exampleEn: "First thing, I wash my face.",
+                "id": "bashrab_ahwe",
+                "ar": "بَشْرَب قَهْوَة",
+                "arArabeezy": "bashrab ahwe",
+                "en": "I drink coffee",
+                "enArabeezy": "bashrab_ahwe",
+                "hint": "قَهْوَة and شَاي were learned in Food & Drink.",
+                "exampleAr": "بَعْد الفُطُور بَشْرَب قَهْوَة.",
+                "exampleArabeezy": "ba3d el-fuToor bashrab ahwe.",
+                "exampleEn": "After breakfast I drink coffee."
             },
             {
-                id: "bat7ammam",
-                ar: "بَتْحَمَّم",
-                en: "I take a shower",
-                enArabeezy: "bat7ammam",
-                hint: "Use before going out: بَتْحَمَّم قَبِل مَا أَطْلَع.",
-                exampleAr: "بَتْحَمَّم قَبِل مَا أَطْلَع.",
-                exampleArabeezy: "bat7ammam qabel ma aTla3.",
-                exampleEn: "I shower before I go out.",
+                "id": "baakul",
+                "ar": "بَاكُل",
+                "arArabeezy": "bakl",
+                "en": "I eat",
+                "enArabeezy": "baakul",
+                "hint": "A general eating verb. غَدَا and أَهْلِي were learned earlier.",
+                "exampleAr": "بَاكُل الغَدَا مَع أَهْلِي.",
+                "exampleArabeezy": "baakul el-ghada ma3 ahli.",
+                "exampleEn": "I eat lunch with my family."
             },
             {
-                id: "bafTar",
-                ar: "بَفْطَر",
-                en: "I have breakfast",
-                enArabeezy: "bafTar",
-                hint: "Breakfast = فُطُور. Useful chunk: بَفْطَر مَع أَهْلِي.",
-                exampleAr: "بَفْطَر مَع أُخْتِي الصُّبُح.",
-                exampleArabeezy: "bafTar ma3 okhti el-soboh.",
-                exampleEn: "I have breakfast with my sister in the morning.",
+                "id": "banzel",
+                "ar": "بَنْزِل",
+                "arArabeezy": "bnzl",
+                "en": "I go out / I leave (home)",
+                "enArabeezy": "banzel",
+                "hint": "Here it means leaving the house. In a transport lesson it can also mean getting off.",
+                "exampleAr": "بَعْد الفُطُور بَنْزِل مِن البِيت.",
+                "exampleArabeezy": "ba3d el-fuToor banzel min el-beit.",
+                "exampleEn": "After breakfast I leave the house."
             },
             {
-                id: "bashrab",
-                ar: "بَشْرَب",
-                en: "I drink",
-                enArabeezy: "bashrab",
-                hint: "Use with coffee, tea, water: بَشْرَب قَهْوَة / شَاي / مَيّ.",
-                exampleAr: "الصُّبُح بَشْرَب قَهْوَة.",
-                exampleArabeezy: "el-soboh bashrab ahwe.",
-                exampleEn: "In the morning I drink coffee.",
+                "id": "baruu7_alshoghl",
+                "ar": "بَرُوح عَالشُّغُل",
+                "arArabeezy": "baroo7 3ash-shoghol",
+                "en": "I go to work",
+                "enArabeezy": "baroo7_3al_shoghol",
+                "hint": "عَـ + الشُّغُل joins naturally as عَالشُّغُل in speech.",
+                "exampleAr": "كُلّ يَوم بَرُوح عَالشُّغُل السَّاعَة تَمَانْيَة.",
+                "exampleArabeezy": "kul yom baroo7 3ash-shoghol el-sa3a tamanye.",
+                "exampleEn": "Every day I go to work at eight."
             },
             {
-                id: "baakul",
-                ar: "بَاكُل",
-                en: "I eat",
-                enArabeezy: "baakul",
-                hint: "General eating verb. Use with meals: بَاكُل الغَدَا / العَشَا.",
-                exampleAr: "بَاكُل الغَدَا مَع أَهْلِي.",
-                exampleArabeezy: "baakul el-ghada ma3 ahli.",
-                exampleEn: "I eat lunch with my family.",
+                "id": "baruu7_al_dars",
+                "ar": "بَرُوح عَالدَّرْس",
+                "arArabeezy": "baroo7 3ad-dars",
+                "en": "I go to class / lesson",
+                "enArabeezy": "baroo7_3al_dars",
+                "hint": "Use this version if you study rather than work.",
+                "exampleAr": "الصُّبُح بَرُوح عَالدَّرْس.",
+                "exampleArabeezy": "el-soboh baroo7 3ad-dars.",
+                "exampleEn": "In the morning I go to class."
             },
             {
-                id: "baroo7",
-                ar: "بَرُوح",
-                en: "I go",
-                enArabeezy: "baroo7",
-                hint: "Use with places: بَرُوح عَالشُّغُل / عَالدَّرْس / عَالجَامْعَة.",
-                exampleAr: "بَرُوح عَالشُّغُل السَّاعَة تَمَانْيَة.",
-                exampleArabeezy: "baroo7 3al-shoghol el-sa3a tamanye.",
-                exampleEn: "I go to work at eight.",
+                "id": "bashtaghel",
+                "ar": "بَشْتِغِل",
+                "arArabeezy": "bshtghl",
+                "en": "I work",
+                "enArabeezy": "bashteghil",
+                "hint": "This is the I-form of the verb already heard in بِتِشْتِغِل وَلَّا بِتِدْرُس؟",
+                "exampleAr": "بَشْتِغِل مَع أَبُوي.",
+                "exampleArabeezy": "bashtaghel ma3 abuy.",
+                "exampleEn": "I work with my father."
             },
             {
-                id: "banzel",
-                ar: "بَنْزِل",
-                en: "I leave / go out",
-                enArabeezy: "banzel",
-                hint: "Leaving home. In transport it can also mean I get off.",
-                exampleAr: "بَنْزِل مِن البِيت السَّاعَة تَمَانْيَة إِلَّا رُبُع.",
-                exampleArabeezy: "banzel min el-beet el-sa3a tamanye illa rubu3.",
-                exampleEn: "I leave the house at quarter to eight.",
+                "id": "badros",
+                "ar": "بَدْرُس",
+                "arArabeezy": "bdrs",
+                "en": "I study",
+                "enArabeezy": "badros",
+                "hint": "This is the I-form of the verb already heard in بِتِشْتِغِل وَلَّا بِتِدْرُس؟",
+                "exampleAr": "بَرُوح عَالدَّرْس وَبَدْرُس عَرَبِي.",
+                "exampleArabeezy": "baroo7 3ad-dars w badros 3arabi.",
+                "exampleEn": "I go to class and study Arabic."
             },
             {
-                id: "barja3",
-                ar: "بَرْجَع",
-                en: "I come back",
-                enArabeezy: "barja3",
-                hint: "Return home/work/class. Common chunk: بَرْجَع عَالبِيت.",
-                exampleAr: "بَرْجَع عَالبِيت بَعْد الضُّهُر.",
-                exampleArabeezy: "barja3 3al-beet ba3d el-duhur.",
-                exampleEn: "I come back home in the afternoon.",
+                "id": "ba3d_elDohr",
+                "ar": "بَعْد الضُّهُر",
+                "arArabeezy": "b3d eldhr",
+                "en": "In the afternoon",
+                "enArabeezy": "ba3d_eDDohr",
+                "hint": "A time chunk meaning the part of the day after noon.",
+                "exampleAr": "بَعْد الضُّهُر بَاكُل الغَدَا.",
+                "exampleArabeezy": "ba3d el-duhur baakul el-ghada.",
+                "exampleEn": "In the afternoon I eat lunch."
             },
             {
-                id: "barta7",
-                ar: "بَرْتَاح",
-                en: "I rest",
-                enArabeezy: "barta7",
-                hint: "Use after work/class/cleaning: بَرْتَاح شُوَيّ.",
-                exampleAr: "بَعْد مَا بَرْجَع بَرْتَاح شُوَيّ.",
-                exampleArabeezy: "ba3d ma barja3 barta7 shway.",
-                exampleEn: "After I come back, I rest a little.",
+                "id": "barja3",
+                "ar": "بَرْجَع",
+                "arArabeezy": "brj3",
+                "en": "I come back / I return",
+                "enArabeezy": "barja3",
+                "hint": "Use عَالبِيت for 'home/to the house' in natural speech.",
+                "exampleAr": "بَعْد الضُّهُر بَرْجَع عَالبِيت.",
+                "exampleArabeezy": "ba3d el-duhur barja3 3al-beit.",
+                "exampleEn": "In the afternoon I come back home."
             },
             {
-                id: "badros",
-                ar: "بَدْرُس",
-                en: "I study",
-                enArabeezy: "badros",
-                hint: "Use with subjects/languages: بَدْرُس عَرَبِي / إِنْجْلِيزِي.",
-                exampleAr: "بِالمَسَا بَدْرُس عَرَبِي.",
-                exampleArabeezy: "bel-masa badros 3arabi.",
-                exampleEn: "In the evening I study Arabic.",
+                "id": "bartaa7",
+                "ar": "بَرْتَاح",
+                "arArabeezy": "brta7",
+                "en": "I rest / I relax",
+                "enArabeezy": "barta7",
+                "hint": "A common routine verb after work or study.",
+                "exampleAr": "بَرْجَع عَالبِيت وَبَرْتَاح شُوَيّ.",
+                "exampleArabeezy": "barja3 3al-beit w barta7 shway.",
+                "exampleEn": "I come back home and rest a little."
             },
             {
-                id: "bashtaghel",
-                ar: "بَشْتِغِل",
-                en: "I work",
-                enArabeezy: "bashtaghel",
-                hint: "General work verb. It will return in Unit 6 Work & Study.",
-                exampleAr: "بَشْتِغِل فِي مَكْتَب.",
-                exampleArabeezy: "bashtaghel fi maktab.",
-                exampleEn: "I work in an office.",
+                "id": "belmasa",
+                "ar": "بِالمَسَا",
+                "arArabeezy": "bel-masa",
+                "en": "In the evening",
+                "enArabeezy": "belmasa",
+                "hint": "The main evening form used for production in this course.",
+                "exampleAr": "بِالمَسَا بَرْجَع عَالبِيت.",
+                "exampleArabeezy": "bel-masa barja3 3al-beit.",
+                "exampleEn": "In the evening I come back home."
             },
             {
-                id: "ba7ki",
-                ar: "بَحْكِي",
-                en: "I talk / speak",
-                enArabeezy: "ba7ki",
-                hint: "Very useful for speaking goals: بَحْكِي عَرَبِي / بَحْكِي مَع أَخُوي.",
-                exampleAr: "بِاللِّيل بَحْكِي مَع أَخُوي.",
-                exampleArabeezy: "bel-leel ba7ki ma3 akhuy.",
-                exampleEn: "At night I talk with my brother.",
+                "id": "batfarraj",
+                "ar": "بَتْفَرَّج عَلَى...",
+                "arArabeezy": "batfarraj 3ala...",
+                "en": "I watch (TV, series, etc.)",
+                "enArabeezy": "batfarraj_3ala",
+                "hint": "Keep عَلَى after this verb: watch TV/a series.",
+                "exampleAr": "بِالمَسَا بَتْفَرَّج عَلَى مُسَلْسَل.",
+                "exampleArabeezy": "bel-masa batfarraj 3ala musalsal.",
+                "exampleEn": "In the evening I watch a series."
             },
             {
-                id: "batfarraj",
-                ar: "بَتْفَرَّج",
-                en: "I watch",
-                enArabeezy: "batfarraj",
-                hint: "Use with TV, series, videos: بَتْفَرَّج عَلَى مُسَلْسَل.",
-                exampleAr: "بِالمَسَا بَتْفَرَّج عَلَى مُسَلْسَل.",
-                exampleArabeezy: "bel-masa batfarraj 3ala musalsal.",
-                exampleEn: "In the evening I watch a series.",
+                "id": "baqra",
+                "ar": "بَقْرَا",
+                "arArabeezy": "bqra",
+                "en": "I read",
+                "enArabeezy": "baqra",
+                "hint": "Use it with كِتَاب, a message, or an article.",
+                "exampleAr": "بِالمَسَا بَقْرَا كِتَاب.",
+                "exampleArabeezy": "bel-masa baqra kitab.",
+                "exampleEn": "In the evening I read a book."
             },
             {
-                id: "baqra",
-                ar: "بَقْرَا",
-                en: "I read",
-                enArabeezy: "baqra",
-                hint: "Books, messages, articles. Useful before sleeping.",
-                exampleAr: "أَحْيَانًا بَقْرَا قَبِل مَا أَنَام.",
-                exampleArabeezy: "a7yanan baqra qabel ma anam.",
-                exampleEn: "Sometimes I read before I sleep.",
+                "id": "ahyanan",
+                "ar": "أَحْيَانًا",
+                "arArabeezy": "a7yana",
+                "en": "Sometimes",
+                "enArabeezy": "a7yanan",
+                "hint": "Put it before an action that does not happen every day.",
+                "exampleAr": "أَحْيَانًا بَقْرَا، وَأَحْيَانًا بَتْفَرَّج.",
+                "exampleArabeezy": "a7yanan baqra, w a7yanan batfarraj.",
+                "exampleEn": "Sometimes I read, and sometimes I watch something."
             },
             {
-                id: "banaddaf",
-                ar: "بَنَضَّف",
-                en: "I clean",
-                enArabeezy: "banaddaf",
-                hint: "House/room routine. Common chunk: بَنَضَّف البِيت / غُرْفْتِي.",
-                exampleAr: "يَوم الجُمْعَة بَنَضَّف البِيت.",
-                exampleArabeezy: "yom el-jum3a banaddaf el-beet.",
-                exampleEn: "On Friday I clean the house.",
+                "id": "banaam",
+                "ar": "بَنَام",
+                "arArabeezy": "bnam",
+                "en": "I sleep",
+                "enArabeezy": "banaam",
+                "hint": "The routine I-form for sleeping.",
+                "exampleAr": "بَعْدِين بَنَام.",
+                "exampleArabeezy": "ba3deen banaam.",
+                "exampleEn": "Then I sleep."
             },
             {
-                id: "bajli",
-                ar: "بَجْلِي الصُّحُون",
-                en: "I wash the dishes",
-                enArabeezy: "bajli el-Su7oon",
-                hint: "Home routine after food. In Gaza people commonly say بَجْلِي.",
-                exampleAr: "بَعْد الغَدَا بَجْلِي الصُّحُون.",
-                exampleArabeezy: "ba3d el-ghada bajli el-Su7oon.",
-                exampleEn: "After lunch I wash the dishes.",
+                "id": "bel_leel",
+                "ar": "بِاللِّيل",
+                "arArabeezy": "bel-leel",
+                "en": "At night",
+                "enArabeezy": "bel-leel",
+                "hint": "The main night-time expression used for production in this course.",
+                "exampleAr": "بِاللِّيل بَنَام.",
+                "exampleArabeezy": "bel-leel banaam.",
+                "exampleEn": "At night I sleep."
             },
             {
-                id: "banaam",
-                ar: "بَنَام",
-                en: "I sleep",
-                enArabeezy: "banaam",
-                hint: "End of the day. Common chunks: بَنَام بَدْرِي / بَنَام مِتْأَخِّر.",
-                exampleAr: "بِاللِّيل بَنَام بَدْرِي.",
-                exampleArabeezy: "bel-leel banaam badri.",
-                exampleEn: "At night I sleep early.",
+                "id": "bajli",
+                "ar": "بَجْلِي الصُّحُون",
+                "arArabeezy": "bjly els7wn",
+                "en": "I wash the dishes",
+                "enArabeezy": "bajli_esSu7oon",
+                "hint": "A common Gaza home-routine verb. الصُّحُون = the dishes.",
+                "exampleAr": "بَعْد الغَدَا بَجْلِي الصُّحُون.",
+                "exampleArabeezy": "ba3d el-ghada bajli el-Su7oon.",
+                "exampleEn": "After lunch I wash the dishes."
             },
             {
-                id: "a7yanan",
-                ar: "أَحْيَانًا",
-                en: "sometimes",
-                enArabeezy: "a7yanan",
-                hint: "Frequency word. Put it before the action: أَحْيَانًا بَقْرَا.",
-                exampleAr: "أَحْيَانًا بَقْرَا قَبِل مَا أَنَام.",
-                exampleArabeezy: "a7yanan baqra qabel ma anam.",
-                exampleEn: "Sometimes I read before I sleep.",
+                "id": "banaddaf",
+                "ar": "بَنَضَّف",
+                "arArabeezy": "bndf",
+                "en": "I clean",
+                "enArabeezy": "banaddaf",
+                "hint": "Use it with the house or a room.",
+                "exampleAr": "بَنَضَّف البِيت وَبَعْدِين بَرْتَاح.",
+                "exampleArabeezy": "banaddaf el-beit w ba3deen barta7.",
+                "exampleEn": "I clean the house and then rest."
             },
             {
-                id: "3adatan_ghaliban",
-                ar: "عَادَةً / غَالِبًا",
-                en: "usually / most of the time",
-                enArabeezy: "3adatan / ghaliban",
-                hint: "عَادَةً = usually as a habit. غَالِبًا = most of the time.",
-                exampleAr: "عَادَةً بَرُوح عَالشُّغُل بَدْرِي.",
-                exampleArabeezy: "3adatan baroo7 3al-shoghol badri.",
-                exampleEn: "I usually go to work early.",
+                "id": "baSalli",
+                "ar": "بَصَلِّي",
+                "arArabeezy": "bsly",
+                "en": "I pray",
+                "enArabeezy": "baSalli",
+                "hint": "The routine I-form for praying.",
+                "exampleAr": "الصُّبُح بَصَلِّي، وَبَعْدِين بَفْطَر.",
+                "exampleArabeezy": "el-soboh baSalli, w ba3deen bafTar.",
+                "exampleEn": "In the morning I pray, then have breakfast."
             },
             {
-                id: "qabel_ma",
-                ar: "قَبِل مَا...",
-                en: "before...",
-                enArabeezy: "qabel ma...",
-                hint: "Use before an action: قَبِل مَا أَنْزِل / قَبِل مَا أَنَام.",
-                exampleAr: "قَبِل مَا أَنْزِل بَفْطَر.",
-                exampleArabeezy: "qabel ma anzel bafTar.",
-                exampleEn: "Before I leave, I have breakfast.",
+                "id": "usually_words",
+                "ar": "عَادَةً / غَالِبًا",
+                "arArabeezy": "3adatan / ghaliban",
+                "en": "usually / most of the time",
+                "hint": "عَادَةً describes a usual habit; غَالِبًا means most of the time.",
+                "exampleAr": "عَادَةً بَصْحَى بَدْرِي.",
+                "exampleArabeezy": "3adatan baS7a badri.",
+                "exampleEn": "I usually wake up early."
             },
             {
-                id: "ba3d_ma",
-                ar: "بَعْد مَا...",
-                en: "after...",
-                enArabeezy: "ba3d ma...",
-                hint: "Use before an action: بَعْد مَا بَرْجَع / بَعْد مَا بَاكُل.",
-                exampleAr: "بَعْد مَا بَرْجَع بَرْتَاح شُوَيّ.",
-                exampleArabeezy: "ba3d ma barja3 barta7 shway.",
-                exampleEn: "After I come back, I rest a little.",
+                "id": "abl_ma",
+                "ar": "قَبِل مَا...",
+                "arArabeezy": "qabel ma...",
+                "en": "Before (doing something)",
+                "enArabeezy": "abl_ma",
+                "hint": "Use it before a connected action. أَنْزِل means 'I leave' here; after قَبِل مَا the routine بَـ is dropped.",
+                "exampleAr": "قَبِل مَا أَنْزِل، بَفْطَر.",
+                "exampleArabeezy": "qabel ma anzel, bafTar.",
+                "exampleEn": "Before I leave, I have breakfast."
             },
             {
-                id: "ba3deen",
-                ar: "بَعْدِين",
-                en: "then / after that",
-                enArabeezy: "ba3deen",
-                hint: "Use to link actions in a routine story.",
-                exampleAr: "بَصْحَى، بَغَسِّل، بَعْدِين بَفْطَر.",
-                exampleArabeezy: "baS7a, baghassal, ba3deen bafTar.",
-                exampleEn: "I wake up, wash, then have breakfast.",
+                "id": "ba3d_ma",
+                "ar": "بَعْد مَا...",
+                "arArabeezy": "b3d ma. . .",
+                "en": "After (doing something)",
+                "enArabeezy": "ba3d_ma",
+                "hint": "Use it before a connected action. In repeated routines Gaza speakers commonly keep the بَـ form: بَعْد مَا بَرْجَع.",
+                "exampleAr": "بَعْد مَا بَرْجَع، بَرْتَاح شُوَيّ.",
+                "exampleArabeezy": "ba3d ma barja3, barta7 shway.",
+                "exampleEn": "After I come back, I rest a little."
+            }
+        ],
+        extra: [
+            {
+                "id": "btabbikh",
+                "ar": "بَطَبِّخ",
+                "arArabeezy": "btbkh",
+                "en": "I cook",
+                "enArabeezy": "batabbekh",
+                "hint": "Home routine when cooking.",
+                "exampleAr": "مَرَّة فِي الْأُسْبُوع بَطَبِّخ أَكْل فِلَسْطِينِي.",
+                "exampleArabeezy": "mra fy elasbw3 btbkh akl flstyny.",
+                "exampleEn": "Once a week I cook Palestinian food."
             },
+            {
+                "id": "bansa2",
+                "ar": "برتب الْغُرْفَة",
+                "arArabeezy": "brtb elghrfa",
+                "en": "I tidy the room",
+                "enArabeezy": "bartattib_elghurfeh",
+                "hint": "Organize / straighten the room.",
+                "exampleAr": "قَبِل مَا أَطْلَع برتب الْغُرْفَة.",
+                "exampleArabeezy": "qbl ma atl3 brtb elghrfa.",
+                "exampleEn": "Before I go out, I tidy the room."
+            },
+            {
+                "id": "bistarih_shway",
+                "ar": "بِسْتَرِيح شَوَيّ",
+                "arArabeezy": "bstry7 shwy",
+                "en": "I take a little rest",
+                "enArabeezy": "bistariy7_shway",
+                "hint": "Alternative to بَرْتَاح شَوَيّ.",
+                "exampleAr": "بَعْد الشُّغُل بِسْتَرِيح شَوَيّ.",
+                "exampleArabeezy": "b3d elshghl bstry7 shwy.",
+                "exampleEn": "After work I take a little rest."
+            }
         ],
     },
 
@@ -368,10 +433,10 @@ export const lesson = {
             { speaker: "Lina", ar: "آه، وَدَايْمًا بِتْصَحِّحْلِي لَمَّا أَغْلَط.", arArabeezy: "ah, w dayman bitsa77i7li lamma aghlaT.", en: "Yes, and she always corrects me when I make mistakes." },
             { speaker: "Omar", ar: "مُمْتَاز. أَنَا بِاللِّيل بَحْكِي مَع أَخُوي، بَس مِش كُلّ يَوم.", arArabeezy: "mumtaz. ana bel-leel ba7ki ma3 akhuy, bas mish kul yom.", en: "Excellent. At night I talk with my brother, but not every day." },
             { speaker: "Lina", ar: "أَخُوك بِنَام مِتْأَخِّر زَيَّك؟", arArabeezy: "akhook binaam mit2akher zayyak?", en: "Does your brother sleep late like you?" },
-            { speaker: "Omar", ar: "أَكْتَر مِنِّي! خُصُوصًا يَوم الخَمِيس.", arArabeezy: "aktar minni! khuSoSan yom el-khamees.", en: "More than me! Especially on Thursday." },
-            { speaker: "Lina", ar: "أَنَا الخَمِيس بَحِب أَرْتَاح، بَس أَحْيَانًا بَنَضَّف البِيت مَع إِمِّي.", arArabeezy: "ana el-khamees ba7ib arta7, bas a7yanan banaddaf el-beet ma3 immi.", en: "On Thursday I like to rest, but sometimes I clean the house with my mom." },
-            { speaker: "Omar", ar: "إِحْنَا فِي رَمَضَان رُوتِينَّا كُلُّه بِتْغَيَّر.", arArabeezy: "e7na fi ramaDan routine-na kullo bitghayyar.", en: "In Ramadan our whole routine changes." },
-            { speaker: "Lina", ar: "طَبِيعِي. بِتِصْحُوا مِتْأَخِّر؟", arArabeezy: "Tabi3i. bitiS7u mit2akher?", en: "Naturally. Do you all wake up late?" },
+            { speaker: "Omar", ar: "أَكْتَر مِنِّي! خُصُوصًا لَيْلَة الخَمِيس، عَشَان الجُمْعَة مَا عِنْدُه شُغُل.", arArabeezy: "aktar minni! khuSoSan leilet el-khamees, 3ashan el-jum3a ma 3indo shoghol.", en: "More than me, especially Thursday night, because he doesn't have work on Friday." },
+            { speaker: "Lina", ar: "صَحّ. طَيِّب وَفِي رَمَضَان، كَمَان بِتْسَهْرُوا وَبِتْصْحُوا مِتْأَخِّر؟", arArabeezy: "Sa77. Tayyib w fi ramaDan, kaman bitsaharu w bitS7u mit2akher?", en: "Right. And in Ramadan, do you also stay up and wake up late?" },
+            { speaker: "Omar", ar: "آه، فِي رَمَضَان رُوتِينَّا كُلُّه بِتْغَيَّر.", arArabeezy: "ah, fi ramaDan routine-na kullo bitghayyar.", en: "Yes, in Ramadan our whole routine changes." },
+            { speaker: "Lina", ar: "مَفْهُوم، يَعْنِي بِتْصْحُوا مِتْأَخِّر؟", arArabeezy: "mafhoom, ya3ni bitS7u mit2akher?", en: "That makes sense. So do you wake up late?" },
             { speaker: "Omar", ar: "أَحْيَانًا، وَبِنَام مِتْأَخِّر كَمَان.", arArabeezy: "a7yanan, w binaam mit2akher kaman.", en: "Sometimes, and we sleep late too." },
             { speaker: "Lina", ar: "يَلَّا رُوح، شَكْلَك رَح تِتْأَخَّر.", arArabeezy: "yalla roo7, shaklak ra7 tit2akhar.", en: "Go on, looks like you're going to be late." },
             { speaker: "Omar", ar: "آه وَالله. بِنْشُوفِك بَعْدِين.", arArabeezy: "ah wallah. binshoofik ba3deen.", en: "Yes, honestly. See you later." },
@@ -389,7 +454,7 @@ export const lesson = {
             { ar: "بَعْد مَا بِرْجَع، عُمَر بِيِعْمَل شُو؟", en: "After he comes back, what does Omar do?" },
             { ar: "لِينَا بِتْحْكِي عَرَبِي مَع مِين بِالمَسَا؟", en: "Who does Lina speak Arabic with in the evening?" },
             { ar: "أَخُو عُمَر بِنَام بَدْرِي وَلَا مِتْأَخِّر؟", en: "Does Omar's brother sleep early or late?" },
-            { ar: "لِينَا بِتِعْمَل شُو يَوم الخَمِيس؟", en: "What does Lina do on Thursday?" },
+            { ar: "لِيش أَخُو عُمَر بِنَام مِتْأَخِّر لَيْلَة الخَمِيس؟", en: "Why does Omar's brother sleep late on Thursday night?" },
             { ar: "فِي رَمَضَان رُوتِين عُمَر بِتْغَيَّر كِيف؟", en: "How does Omar's routine change in Ramadan?" },
             { ar: "اِحْكِي رُوتِين عُمَر بِخَمْس جُمَل.", en: "Tell Omar's routine in five sentences." },
             { ar: "اِحْكِي عَن رُوتِينَك إِنْت مِن الصُّبُح لِلِّيل.", en: "Talk about your routine from morning to night." },
@@ -559,52 +624,101 @@ export const lesson = {
     ],
 
     microChecks: {
-        enabled: true,
-        every: 5,
-        items: [
+        "enabled": true,
+        "every": 5,
+        "items": [
             {
-                id: "daily_mc1",
-                type: "match",
-                prompt: "Match the English phrase to Arabic: every day",
-                options: ["كُلّ يَوم", "الصُّبُح", "بِالمَسَا", "بِاللِّيل"],
-                correct: "كُلّ يَوم",
+                "id": "daily_mc1",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: Every day I wake up early.\nكُلّ يَوم بَصْحَى ___.",
+                "options": [
+                    "بَدْرِي",
+                    "الغَدَا",
+                    "عَالشُّغُل",
+                    "بَعْدِين"
+                ],
+                "correct": "بَدْرِي"
             },
             {
-                id: "daily_mc2",
-                type: "complete",
-                prompt: "Complete: الصُّبُح ___ بَدْرِي.",
-                options: ["بَصْحَى", "بَغَسِّل", "بَدْرِي", "مِتْأَخِّر"],
-                correct: "بَصْحَى",
+                "id": "daily_mc2",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: I wake up, wash my face, then have breakfast.",
+                "options": [
+                    "بَصْحَى",
+                    "بَغَسِّل",
+                    "وِجْهِي",
+                    "بَعْدِين",
+                    "بَفْطَر"
+                ],
+                "correct": [
+                    "بَصْحَى",
+                    "بَغَسِّل",
+                    "وِجْهِي",
+                    "بَعْدِين",
+                    "بَفْطَر"
+                ]
             },
             {
-                id: "daily_mc3",
-                type: "reorder",
-                prompt: "Reorder: I go to work.",
-                options: ["بَرُوح", "عَالشُّغُل"],
-                correct: ["بَرُوح", "عَالشُّغُل"],
+                "id": "daily_mc3",
+                "type": "choose",
+                "prompt": "Choose the Gaza Palestinian Arabic sentence for: I go to work at eight.",
+                "options": [
+                    "بَرُوح عَالشُّغُل السَّاعَة تَمَانْيَة.",
+                    "بَرُوح عَالدَّرْس السَّاعَة تَمَانْيَة.",
+                    "بَرُوح عَالشُّغُل الصُّبُح.",
+                    "بَشْتِغِل مَع أَبُوي السَّاعَة تَمَانْيَة."
+                ],
+                "correct": "بَرُوح عَالشُّغُل السَّاعَة تَمَانْيَة."
             },
             {
-                id: "daily_mc4",
-                type: "choose",
-                prompt: "Choose the natural Gaza word for early:",
-                options: ["بَدْرِي", "بِاللِّيل", "بَعْدِين", "قَبِل مَا"],
-                correct: "بَدْرِي",
+                "id": "daily_mc4",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: In the afternoon I return home and rest.\nبَعْد الضُّهُر بَرْجَع عَالبِيت و___.",
+                "options": [
+                    "بَرْتَاح",
+                    "بَفْطَر",
+                    "بَنْزِل",
+                    "بَصْحَى"
+                ],
+                "correct": "بَرْتَاح"
             },
             {
-                id: "daily_mc5",
-                type: "complete",
-                prompt: "Complete: بِاللِّيل ___ كِتَاب.",
-                options: ["بَقْرَا", "بَجْلِي", "بَنَضَّف", "بَتْفَرَّج"],
-                correct: "بَقْرَا",
+                "id": "daily_mc5",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: In the evening I read a book, and at night I sleep.\nبِالمَسَا بَقْرَا كِتَاب، وَبِاللِّيل ___.",
+                "options": [
+                    "بَنَام",
+                    "بَرُوح عَالدَّرْس",
+                    "بَشْرَب قَهْوَة",
+                    "بَنْزِل"
+                ],
+                "correct": "بَنَام"
             },
             {
-                id: "daily_mc6",
-                type: "complete",
-                prompt: "Complete: ___ بَرُوح عَالشُّغُل بَدْرِي.",
-                options: ["عَادَةً", "قَبِل مَا", "بَعْد مَا", "بِاللِّيل"],
-                correct: "عَادَةً",
+                "id": "daily_mc6",
+                "type": "choose",
+                "prompt": "Choose the Gaza Palestinian Arabic sentence for: Before I leave, I have breakfast.",
+                "options": [
+                    "قَبِل مَا أَنْزِل، بَفْطَر.",
+                    "بَعْد مَا بَرْجَع، بَرْتَاح.",
+                    "عَادَةً بَصْحَى بَدْرِي.",
+                    "بَعْد الغَدَا بَجْلِي الصُّحُون."
+                ],
+                "correct": "قَبِل مَا أَنْزِل، بَفْطَر."
             },
-        ],
+            {
+                "id": "daily_mc7",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: After I return, I rest a little.\nبَعْد مَا بَرْجَع، ___ شُوَيّ.",
+                "options": [
+                    "بَرْتَاح",
+                    "بَصْحَى",
+                    "بَنْزِل",
+                    "بَتْحَمَّم"
+                ],
+                "correct": "بَرْتَاح"
+            }
+        ]
     },
 
     practice: {
@@ -615,129 +729,446 @@ export const lesson = {
         quiz: [
             {
                 id: "daily_q1",
-                questionAr: "Choose the English meaning of كُلّ يَوم بَصْحَى السَّاعَة سَبْعَة.",
-                optionsEn: ["I wake up at seven every day.", "I sleep at seven every day.", "I eat at seven every day."],
-                correctIndex: 0,
+                questionAr: "Choose the English meaning of: كُلّ يَوم بَصْحَى بَدْرِي.",
+                optionsEn: [
+                    "Every day I wake up early.",
+                    "Every day I sleep late.",
+                    "In the evening I return home."
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q2",
-                questionAr: "Choose the English meaning of بِالمَسَا بَتْفَرَّج عَلَى مُسَلْسَل.",
-                optionsEn: ["In the evening I watch a series.", "In the morning I watch a series.", "At night I read a book."],
-                correctIndex: 0,
+                questionAr: "Choose the natural Gaza Palestinian sentence for: In the morning I have breakfast with my family.",
+                optionsEn: [
+                    "الصُّبُح بَفْطَر مَع أَهْلِي.",
+                    "بِالمَسَا بَنَام مَع أَهْلِي.",
+                    "بَعْد الضُّهُر بَرُوح عَالدَّرْس."
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q3",
-                questionAr: "Choose the Palestinian Arabic question for: What time?",
-                optionsEn: ["أَيّ سَاعَة؟", "شُو اِسْمَك؟", "مِن وِين؟"],
-                correctIndex: 0,
+                questionAr: "Choose the correct order for a normal morning.",
+                optionsEn: [
+                    "بَصْحَى → بَغَسِّل وِجْهِي → بَفْطَر",
+                    "بَنَام → بَرْجَع → بَصْحَى",
+                    "بَتْفَرَّج → بَنْزِل → بَتْحَمَّم"
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q4",
-                questionAr: "Choose the English meaning of قَبِل مَا أَنْزِل بَفْطَر.",
-                optionsEn: ["Before I leave, I have breakfast.", "After I leave, I sleep.", "Before I sleep, I clean."],
-                correctIndex: 0,
+                questionAr: "كَمِّل: بَعْد الفُطُور ___ مِن البِيت.",
+                optionsEn: [
+                    "بَنْزِل",
+                    "بَنَام",
+                    "بَجْلِي"
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q5",
-                questionAr: "Choose the English meaning of بَنَام مِتْأَخِّر بِاللِّيل.",
-                optionsEn: ["I sleep early at night.", "I sleep late at night.", "I wake up at night."],
-                correctIndex: 1,
+                questionAr: "Choose the English meaning of: بَرْجَع عَالبِيت وَبَرْتَاح شُوَيّ.",
+                optionsEn: [
+                    "I return home and rest a little.",
+                    "I leave home and go to work.",
+                    "I clean the house and sleep."
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q6",
-                questionAr: "كَمِّل: بَعْد مَا بَرْجَع، ___ شُوَيّ.",
-                optionsEn: ["بَرْتَاح", "بَنْزِل", "بَصْحَى"],
-                correctIndex: 0,
+                questionAr: "كَمِّل: بِالمَسَا بَتْفَرَّج ___ مُسَلْسَل.",
+                optionsEn: [
+                    "عَلَى",
+                    "مَع",
+                    "مِن"
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q7",
-                questionAr: "حَوِّل لِسُؤَال: إِنْتَ بَتْصْحَى بَدْرِي؟",
-                optionsEn: ["إِنْتِ بَتْصْحِي بَدْرِي؟", "إِنْتِ بَصْحَى بَدْرِي؟", "إِنْتِ بَنَام بَدْرِي؟"],
-                correctIndex: 0,
+                questionAr: "Which sentence means: Sometimes I read, and sometimes I watch something?",
+                optionsEn: [
+                    "أَحْيَانًا بَقْرَا، وَأَحْيَانًا بَتْفَرَّج.",
+                    "كُلّ يَوم بَجْلِي الصُّحُون.",
+                    "الصُّبُح بَرْجَع عَالبِيت."
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q8",
-                questionAr: "«عَادَةً» أَقْرَب مَعْنَى إِلَهَا:",
-                optionsEn: ["usually", "never", "where"],
-                correctIndex: 0,
+                questionAr: "Choose the best word: ___ بَصْحَى بَدْرِي، بَس مِش كُلّ يَوم.",
+                optionsEn: [
+                    "عَادَةً",
+                    "بِاللِّيل",
+                    "قَبِل مَا"
+                ],
+                correctIndex: 0
             },
             {
                 id: "daily_q9",
-                questionAr: "إِذَا بَدِّي أَرْبُط أَفْعَال بِسِلْسِلَة، بَسْتَخْدِم:",
-                optionsEn: ["بَعْدِين", "سِتِّي", "أُجْرَة"],
-                correctIndex: 0,
+                questionAr: "Choose the natural sentence for: After I come back, I rest a little.",
+                optionsEn: [
+                    "بَعْد مَا بَرْجَع، بَرْتَاح شُوَيّ.",
+                    "قَبِل مَا أَنْزِل، بَنَام.",
+                    "بِالمَسَا بَصْحَى بَدْرِي."
+                ],
+                correctIndex: 0
             },
+            {
+                id: "daily_q10",
+                questionAr: "To a woman, how do you ask: What time do you wake up?",
+                optionsEn: [
+                    "أَيّ سَاعَة بِتْصْحِي؟",
+                    "أَيّ سَاعَة بَصْحَى؟",
+                    "أَيّ سَاعَة بِنْصَحى؟"
+                ],
+                correctIndex: 0
+            }
         ],
         rolePlays: [
-            "Ask your classmate about a normal day. Use أَيّ سَاعَة؟ (ay sa3a?), إِمْتَى؟ (eemta?), and بَعْدِين؟ (ba3deen?). Then switch roles.",
+            "Student A asks about a normal day using أَيّ سَاعَة؟, وَبَعْدِين؟, and بَعْد مَا... Student B answers from morning to night. Then switch roles.",
+            "Choose work or class. Explain when you leave, where you go, when you return, and what you do in the evening."
         ],
         sections: [
             {
-                title: "A - Recognition",
+                title: "A - Recognition and timeline",
                 matching: [
-                    { ar: "بَصْحَى", arabeezy: "baS7a", en: "I wake up" },
-                    { ar: "بَفْطَر", arabeezy: "baftar", en: "I have breakfast" },
-                    { ar: "بَرُوح", arabeezy: "baroo7", en: "I go" },
-                    { ar: "بَرْجَع", arabeezy: "barja3", en: "I return" },
-                    { ar: "بَنَام", arabeezy: "banam", en: "I sleep" },
-                    { ar: "بَعْدِين", arabeezy: "ba3deen", en: "then / after that" },
+                    {
+                        ar: "الصُّبُح",
+                        arabeezy: "el-soboh",
+                        en: "in the morning"
+                    },
+                    {
+                        ar: "بَعْد الضُّهُر",
+                        arabeezy: "ba3d el-duhur",
+                        en: "in the afternoon"
+                    },
+                    {
+                        ar: "بِالمَسَا",
+                        arabeezy: "bel-masa",
+                        en: "in the evening"
+                    },
+                    {
+                        ar: "بِاللِّيل",
+                        arabeezy: "bel-leel",
+                        en: "at night"
+                    },
+                    {
+                        ar: "بَدْرِي",
+                        arabeezy: "badri",
+                        en: "early"
+                    },
+                    {
+                        ar: "مِتْأَخِّر",
+                        arabeezy: "mit2akher",
+                        en: "late"
+                    },
+                    {
+                        ar: "بَعْدِين",
+                        arabeezy: "ba3deen",
+                        en: "then / after that"
+                    },
+                    {
+                        ar: "أَحْيَانًا",
+                        arabeezy: "a7yanan",
+                        en: "sometimes"
+                    }
                 ],
                 multipleChoice: [
-                    { prompt: "Unit 2 review: Choose the meaning of عِنْدِي أَخ (3indi akh).", options: ["I have a brother.", "I visit my brother.", "I am a brother."], correct: "I have a brother." },
-                    { prompt: "Choose the meaning of كُلّ يَوم بَصْحَى بَدْرِي (kul yom baS7a badri).", options: ["Every day I wake up early.", "Yesterday I woke up late.", "Every day I sleep early."], correct: "Every day I wake up early." },
-                ],
+                    {
+                        prompt: "Choose the action that normally comes first.",
+                        options: [
+                            "بَصْحَى",
+                            "بَرْجَع عَالبِيت",
+                            "بَنَام"
+                        ],
+                        correct: "بَصْحَى"
+                    },
+                    {
+                        prompt: "Choose the home chore.",
+                        options: [
+                            "بَجْلِي الصُّحُون",
+                            "بَرُوح عَالدَّرْس",
+                            "بَشْرَب قَهْوَة"
+                        ],
+                        correct: "بَجْلِي الصُّحُون"
+                    },
+                    {
+                        prompt: "Choose the pair that expresses alternatives for different students.",
+                        options: [
+                            "بَرُوح عَالشُّغُل / بَرُوح عَالدَّرْس",
+                            "بَنَام / بِاللِّيل",
+                            "بَدْرِي / الصُّبُح"
+                        ],
+                        correct: "بَرُوح عَالشُّغُل / بَرُوح عَالدَّرْس"
+                    },
+                    {
+                        prompt: "Choose: I wake up early.",
+                        options: [
+                            "أَنَا بَصْحَى بَدْرِي.",
+                            "أَنَا بِتْصْحَى بَدْرِي."
+                        ],
+                        correct: "أَنَا بَصْحَى بَدْرِي."
+                    },
+                    {
+                        prompt: "Choose: You (woman) wake up early.",
+                        options: [
+                            "إِنْتِ بِتْصْحِي بَدْرِي.",
+                            "إِنْتِ بَصْحَى بَدْرِي."
+                        ],
+                        correct: "إِنْتِ بِتْصْحِي بَدْرِي."
+                    },
+                    {
+                        prompt: "Choose: You (man) go to work.",
+                        options: [
+                            "إِنْتَ بِتْرُوح عَالشُّغُل.",
+                            "إِنْتَ بَرُوح عَالشُّغُل."
+                        ],
+                        correct: "إِنْتَ بِتْرُوح عَالشُّغُل."
+                    },
+                    {
+                        prompt: "Choose: You (woman) sleep early.",
+                        options: [
+                            "إِنْتِ بِتْنَامِي بَدْرِي.",
+                            "إِنْتِ بِتْنَام بَدْرِي."
+                        ],
+                        correct: "إِنْتِ بِتْنَامِي بَدْرِي."
+                    }
+                ]
             },
             {
-                title: "B - Guided practice",
+                title: "B - Guided production",
                 fillInTheBlank: [
-                    { prompt: "Write the correct form of (wake up): أَنَا ___ بَدْرِي.", arabeezy: "ana ___ badri.", answer: "بَصْحَى" },
-                    { prompt: "Write the correct form of (have breakfast): الصُّبُح ___ مَع أَهْلِي.", arabeezy: "eS-Subu7 ___ ma3 ahli.", answer: "بَفْطَر" },
-                    { prompt: "Write the correct form of (go): كُلّ يَوم ___ عَالشُّغُل.", arabeezy: "kul yom ___ 3ash-shughul.", answer: "بَرُوح" },
-                    { prompt: "Write the correct form of (return): بَعْد الشُّغُل ___ عَالبِيت.", arabeezy: "ba3d esh-shughul ___ 3al-beit.", answer: "بَرْجَع" },
-                    { prompt: "Write the correct form of (sleep): بِاللِّيل ___ مِتْأَخِّر.", arabeezy: "bil-leil ___ mit2akhkher.", answer: "بَنَام" },
-                    { prompt: "Write the Palestinian Arabic for (what time): ___ سَاعَة بِتْرُوح؟", arabeezy: "___ sa3a btirroo7?", answer: "أَيّ" },
-                    { prompt: "Write the Palestinian Arabic for (then): بَصْحَى، ___ بَفْطَر.", arabeezy: "baS7a, ___ baftar.", answer: "بَعْدِين" },
-                    { prompt: "Write the Palestinian Arabic for (usually): ___ بَرُوح بَدْرِي.", arabeezy: "___ baroo7 badri.", answer: "عَادَةً" },
-                    { prompt: "Write the Palestinian Arabic for (in the evening): ___ بَدْرُس عَرَبِي.", arabeezy: "___ badrus 3arabi.", answer: "بِالمَسَا" },
-                    { prompt: "Write the Palestinian Arabic for (at night): ___ بَقْرَا كِتَاب.", arabeezy: "___ baqra kitab.", answer: "بِاللِّيل" },
-                    { prompt: "Unit 2 review — write (with): بَفْطَر ___ إِمِّي.", arabeezy: "baftar ___ immi.", answer: "مَع" },
-                    { prompt: "Unit 1 review — write (where): ___ بِتْرُوح الصُّبُح؟", arabeezy: "___ btirroo7 eS-Subu7?", answer: "وِين" },
+                    {
+                        prompt: "كُلّ يَوم ___ السَّاعَة سَبْعَة. (wake up)",
+                        arabeezy: "kul yom ___ el-sa3a sab3a.",
+                        answer: "بَصْحَى"
+                    },
+                    {
+                        prompt: "الصُّبُح ___ وِجْهِي. (wash)",
+                        arabeezy: "el-soboh ___ wijhi.",
+                        answer: "بَغَسِّل"
+                    },
+                    {
+                        prompt: "بَعْدِين ___ مَع أَهْلِي. (have breakfast)",
+                        arabeezy: "ba3deen ___ ma3 ahli.",
+                        answer: "بَفْطَر"
+                    },
+                    {
+                        prompt: "بَعْد الفُطُور ___ مِن البِيت. (leave)",
+                        arabeezy: "ba3d el-fuToor ___ min el-beit.",
+                        answer: "بَنْزِل"
+                    },
+                    {
+                        prompt: "أَنَا ___ عَالشُّغُل، وَأُخْتِي بِتْرُوح عَالدَّرْس. (go)",
+                        arabeezy: "ana ___ 3ash-shoghol...",
+                        answer: "بَرُوح"
+                    },
+                    {
+                        prompt: "بَعْد الضُّهُر ___ عَالبِيت. (return)",
+                        arabeezy: "ba3d el-duhur ___ 3al-beit.",
+                        answer: "بَرْجَع"
+                    },
+                    {
+                        prompt: "بِالمَسَا ___ عَلَى مُسَلْسَل. (watch)",
+                        arabeezy: "bel-masa ___ 3ala musalsal.",
+                        answer: "بَتْفَرَّج"
+                    },
+                    {
+                        prompt: "بِاللِّيل ___ بَدْرِي. (sleep)",
+                        arabeezy: "bel-leel ___ badri.",
+                        answer: "بَنَام"
+                    },
+                    {
+                        prompt: "___ مَا أَنْزِل، بَفْطَر. (before)",
+                        arabeezy: "___ ma anzel, bafTar.",
+                        answer: "قَبِل"
+                    },
+                    {
+                        prompt: "___ مَا بَرْجَع، بَرْتَاح. (after)",
+                        arabeezy: "___ ma barja3, barta7.",
+                        answer: "بَعْد"
+                    }
                 ],
                 correctTheMistake: [
-                    { prompt: "Correct the sentence: أَنَا بِتْصْحَى بَدْرِي.", arabeezy: "ana btiS7a badri.", answer: "أَنَا بَصْحَى بَدْرِي." },
-                    { prompt: "Correct the sentence: إِنْتِ بِتْصْحَى السَّاعَة سَبْعَة.", arabeezy: "inti btiS7a es-sa3a sab3a.", answer: "إِنْتِ بِتْصْحِي السَّاعَة سَبْعَة." },
-                    { prompt: "Correct the sentence: بَعْد مَا بَرْجَع، بَنَام الصُّبُح.", arabeezy: "ba3d ma barja3, banam eS-Subu7.", answer: "بَعْد مَا بَرْجَع، بَرْتَاح شُوَيّ." },
-                    { prompt: "Unit 2 review — correct it: هِيَّ سَاكِن مَع أَهْلْهَا.", arabeezy: "hiyyeh saken ma3 ahlha.", answer: "هِيَّ سَاكْنَة مَع أَهْلْهَا." },
-                    { prompt: "Use the feminine verb form. Correct: إِنْتِ بِتْرُوح عَالجَامْعَة.", arabeezy: "inti btirroo7 3al-jam3a.", answer: "إِنْتِ بِتْرُوحِي عَالجَامْعَة." },
-                    { prompt: "Use the correct time expression. Correct: بِاللِّيل بَصْحَى مِن النَّوم.", arabeezy: "bil-leil baS7a min en-nom.", answer: "الصُّبُح بَصْحَى مِن النَّوم." },
+                    {
+                        prompt: "Correct the person form: أَنَا بِتْصْحَى بَدْرِي.",
+                        arabeezy: "ana bitS7a badri.",
+                        answer: "أَنَا بَصْحَى بَدْرِي."
+                    },
+                    {
+                        prompt: "Correct the feminine form: إِنْتِ بِتْرُوح عَالدَّرْس.",
+                        arabeezy: "inti bitroo7 3ad-dars.",
+                        answer: "إِنْتِ بِتْرُوحِي عَالدَّرْس."
+                    },
+                    {
+                        prompt: "Correct the connector: قَبِل الفُطُور بَشْرَب قَهْوَة. Intended meaning: After breakfast, I drink coffee.",
+                        arabeezy: "qabel el-fuToor...",
+                        answer: "بَعْد الفُطُور بَشْرَب قَهْوَة."
+                    },
+                    {
+                        prompt: "Correct the time phrase: بِاللِّيل بَصْحَى بَدْرِي.",
+                        arabeezy: "bel-leel baS7a badri.",
+                        answer: "الصُّبُح بَصْحَى بَدْرِي."
+                    }
                 ],
                 reorderSentences: [
-                    { prompt: "Build: Every day I wake up early.", arabeezy: "kul yom baS7a badri.", words: ["كُلّ يَوم", "بَصْحَى", "بَدْرِي."], answer: "كُلّ يَوم بَصْحَى بَدْرِي." },
-                    { prompt: "Build: After I return, I rest a little.", arabeezy: "ba3d ma barja3, barta7 shway.", words: ["بَعْد مَا بَرْجَع", "بَرْتَاح", "شُوَيّ."], answer: "بَعْد مَا بَرْجَع بَرْتَاح شُوَيّ." },
-                    { prompt: "Build the question: What time do you sleep?", arabeezy: "ay sa3a btnam?", words: ["أَيّ سَاعَة", "بِتْنَام؟"], answer: "أَيّ سَاعَة بِتْنَام؟" },
-                    { prompt: "Review loop — build: I have a brother and a sister.", arabeezy: "3indi akh w ukht.", words: ["عِنْدِي", "أَخ", "وَأُخْت."], answer: "عِنْدِي أَخ وَأُخْت." },
-                    { prompt: "Put the words in order: In the evening I study Arabic.", arabeezy: "bil-masa badrus 3arabi.", words: ["عَرَبِي.", "بِالمَسَا", "بَدْرُس"], answer: "بِالمَسَا بَدْرُس عَرَبِي." },
-                    { prompt: "Put the words in order: Usually I go to work early.", arabeezy: "3adatan baroo7 3ash-shughul badri.", words: ["بَدْرِي.", "عَالشُّغُل", "عَادَةً", "بَرُوح"], answer: "عَادَةً بَرُوح عَالشُّغُل بَدْرِي." },
-                ],
-            },
+                    {
+                        prompt: "Build: Every day I wake up early.",
+                        arabeezy: "kul yom baS7a badri.",
+                        words: [
+                            "بَدْرِي.",
+                            "كُلّ يَوم",
+                            "بَصْحَى"
+                        ],
+                        answer: "كُلّ يَوم بَصْحَى بَدْرِي."
+                    },
+                    {
+                        prompt: "Build: In the morning I have breakfast with my family.",
+                        arabeezy: "el-soboh bafTar ma3 ahli.",
+                        words: [
+                            "مَع أَهْلِي.",
+                            "بَفْطَر",
+                            "الصُّبُح"
+                        ],
+                        answer: "الصُّبُح بَفْطَر مَع أَهْلِي."
+                    },
+                    {
+                        prompt: "Build: After breakfast I leave the house.",
+                        arabeezy: "ba3d el-fuToor banzel min el-beit.",
+                        words: [
+                            "بَنْزِل",
+                            "مِن البِيت.",
+                            "بَعْد الفُطُور"
+                        ],
+                        answer: "بَعْد الفُطُور بَنْزِل مِن البِيت."
+                    },
+                    {
+                        prompt: "Build: In the afternoon I return home and rest.",
+                        arabeezy: "ba3d el-duhur barja3 3al-beit w barta7.",
+                        words: [
+                            "وَبَرْتَاح.",
+                            "بَرْجَع عَالبِيت",
+                            "بَعْد الضُّهُر"
+                        ],
+                        answer: "بَعْد الضُّهُر بَرْجَع عَالبِيت وَبَرْتَاح."
+                    },
+                    {
+                        prompt: "Build the question to a woman: What time do you sleep?",
+                        arabeezy: "ay sa3a bitnaami?",
+                        words: [
+                            "بِتْنَامِي؟",
+                            "أَيّ سَاعَة"
+                        ],
+                        answer: "أَيّ سَاعَة بِتْنَامِي؟"
+                    },
+                    {
+                        prompt: "Build: After I return, I rest a little.",
+                        arabeezy: "ba3d ma barja3, barta7 shway.",
+                        words: [
+                            "بَرْتَاح شُوَيّ.",
+                            "بَعْد مَا بَرْجَع"
+                        ],
+                        answer: "بَعْد مَا بَرْجَع، بَرْتَاح شُوَيّ."
+                    }
+                ]
+            }
         ],
         translation: [
-            { id: "daily_t1", type: "enToAr", textEn: "Every day I wake up early.", textAr: "كُلّ يَوم بَصْحَى بَدْرِي." },
-            { id: "daily_t2", type: "arToEn", textEn: "In the morning I have breakfast with my family.", textAr: "الصُّبُح بَفْطَر مَع أَهْلِي." },
-            { id: "daily_t3", type: "enToAr", textEn: "What time do you go to work?", textAr: "أَيّ سَاعَة بِتْرُوح عَالشُّغُل؟" },
-            { id: "daily_t4", type: "arToEn", textEn: "Before I leave, I drink coffee.", textAr: "قَبِل مَا أَنْزِل بَشْرَب قَهْوَة." },
-            { id: "daily_t5", type: "enToAr", textEn: "I leave the house at quarter to eight.", textAr: "بَنْزِل مِن البِيت السَّاعَة تَمَانْيَة إِلَّا رُبُع." },
-            { id: "daily_t6", type: "arToEn", textEn: "I come back home in the afternoon.", textAr: "بَرْجَع عَالبِيت بَعْد الضُّهُر." },
-            { id: "daily_t7", type: "enToAr", textEn: "After I come back, I rest a little.", textAr: "بَعْد مَا بَرْجَع بَرْتَاح شُوَيّ." },
-            { id: "daily_t8", type: "arToEn", textEn: "Sometimes I clean my room.", textAr: "أَحْيَانًا بَنَضَّف غُرْفْتِي." },
-            { id: "daily_t9", type: "enToAr", textEn: "In the evening I study Arabic.", textAr: "بِالمَسَا بَدْرُس عَرَبِي." },
-            { id: "daily_t10", type: "arToEn", textEn: "At night I talk with my brother.", textAr: "بِاللِّيل بَحْكِي مَع أَخُوي." },
-            { id: "daily_t11", type: "enToAr", textEn: "My brother sleeps late on Thursday.", textAr: "أَخُوي بَنَام مِتْأَخِّر يَوم الخَمِيس." },
-            { id: "daily_t12", type: "arToEn", textEn: "On Friday I clean the house.", textAr: "يَوم الجُمْعَة بَنَضَّف البِيت." },
-            { id: "daily_t13", type: "enToAr", textEn: "I wake up, wash, then have breakfast.", textAr: "بَصْحَى، بَغَسِّل، بَعْدِين بَفْطَر." },
-            { id: "daily_t14", type: "arToEn", textEn: "Usually I go to work early.", textAr: "عَادَةً بَرُوح عَالشُّغُل بَدْرِي." },
-            { id: "daily_t15", type: "enToAr", textEn: "Goodbye, see you later, take care.", textAr: "مَع السَّلَامَة، بِنْشُوفَك بَعْدِين، دِير بَالَك." },
-        ],
+            {
+                id: "daily_t1",
+                type: "enToAr",
+                textEn: "Every day I wake up early.",
+                textAr: "كُلّ يَوم بَصْحَى بَدْرِي."
+            },
+            {
+                id: "daily_t2",
+                type: "arToEn",
+                textEn: "In the morning I wash my face.",
+                textAr: "الصُّبُح بَغَسِّل وِجْهِي."
+            },
+            {
+                id: "daily_t3",
+                type: "enToAr",
+                textEn: "Then I have breakfast with my family.",
+                textAr: "بَعْدِين بَفْطَر مَع أَهْلِي."
+            },
+            {
+                id: "daily_t4",
+                type: "arToEn",
+                textEn: "After breakfast I drink coffee.",
+                textAr: "بَعْد الفُطُور بَشْرَب قَهْوَة."
+            },
+            {
+                id: "daily_t5",
+                type: "enToAr",
+                textEn: "I leave the house and go to work.",
+                textAr: "بَنْزِل مِن البِيت وَبَرُوح عَالشُّغُل."
+            },
+            {
+                id: "daily_t6",
+                type: "arToEn",
+                textEn: "I go to class and study Arabic.",
+                textAr: "بَرُوح عَالدَّرْس وَبَدْرُس عَرَبِي."
+            },
+            {
+                id: "daily_t7",
+                type: "enToAr",
+                textEn: "In the afternoon I return home.",
+                textAr: "بَعْد الضُّهُر بَرْجَع عَالبِيت."
+            },
+            {
+                id: "daily_t8",
+                type: "arToEn",
+                textEn: "I return home and rest a little.",
+                textAr: "بَرْجَع عَالبِيت وَبَرْتَاح شُوَيّ."
+            },
+            {
+                id: "daily_t9",
+                type: "enToAr",
+                textEn: "In the evening I watch a series.",
+                textAr: "بِالمَسَا بَتْفَرَّج عَلَى مُسَلْسَل."
+            },
+            {
+                id: "daily_t10",
+                type: "arToEn",
+                textEn: "Sometimes I read a book.",
+                textAr: "أَحْيَانًا بَقْرَا كِتَاب."
+            },
+            {
+                id: "daily_t11",
+                type: "enToAr",
+                textEn: "At night I sleep late.",
+                textAr: "بِاللِّيل بَنَام مِتْأَخِّر."
+            },
+            {
+                id: "daily_t12",
+                type: "arToEn",
+                textEn: "After lunch I wash the dishes.",
+                textAr: "بَعْد الغَدَا بَجْلِي الصُّحُون."
+            },
+            {
+                id: "daily_t13",
+                type: "enToAr",
+                textEn: "Usually I clean the house on Friday.",
+                textAr: "عَادَةً بَنَضَّف البِيت يَوم الجُمْعَة."
+            },
+            {
+                id: "daily_t14",
+                type: "arToEn",
+                textEn: "Before I leave, I have breakfast.",
+                textAr: "قَبِل مَا أَنْزِل، بَفْطَر."
+            },
+            {
+                id: "daily_t15",
+                type: "enToAr",
+                textEn: "After I return, I rest a little.",
+                textAr: "بَعْد مَا بَرْجَع، بَرْتَاح شُوَيّ."
+            }
+        ]
     },
 
     homework: {
@@ -752,14 +1183,14 @@ Translate these sentences into Gaza Palestinian Arabic:
 5. My father goes to work at eight.
 6. What time do you go to class?
 7. Before I leave, I drink coffee.
-8. I leave the house at quarter to eight.
+8. I leave the house at eight.
 9. In the afternoon I come back home.
 10. I eat lunch with my family.
 11. After I come back, I rest a little.
 12. In the evening I study Arabic.
-13. My sister talks with her friend at night.
-14. My brother sleeps late on Thursday.
-15. Goodbye, see you later, take care.`,
+13. My sister reads a book at night.
+14. My brother sleeps late every night.
+15. Goodbye, see you later.`,
     },
 
     teacherNotes: {

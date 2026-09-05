@@ -1,4 +1,4 @@
-import { LESSON_ID_COMPLAINTS } from '../../core/constants.js';
+import { LESSON_ID_COMPLAINTS } from '../../constants.js';
 
 export const lessonId = LESSON_ID_COMPLAINTS;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Intermediate",
         unit: "Complaints",
         lessonTitle: "Unit 12 - Making Complaints Politely in Gaza Palestinian Arabic",
-        contentVersion: 2026071501,
+        contentVersion: 2026082001,
     },
 
     overview: {
@@ -36,9 +36,9 @@ export const lesson = {
                 en: "complaint",
                 enArabeezy: "shakwa",
                 hint: "More formal than مُشْكِلِة. Use when the problem repeats or needs official follow-up.",
-                exampleAr: "مَا بَدِّي أَكَبِّر المَوْضُوع، بَس بَدِّي أَقَدِّم شَكْوَى.",
-                exampleArabeezy: "ma baddi akabbir el-mawDoo3, bas baddi aqaddim shakwa.",
-                exampleEn: "I don't want to make it bigger, but I want to file a complaint.",
+                exampleAr: "عِنْدِي شَكْوَى عَن الإِنْتَرْنِت.",
+                exampleArabeezy: "3indi shakwa 3an el-internet.",
+                exampleEn: "I have a complaint about the internet.",
             },
             {
                 id: "mushkile",
@@ -66,9 +66,9 @@ export const lesson = {
                 en: "to complain",
                 enArabeezy: "ashtiki / nishtiki",
                 hint: "Use carefully. In daily speech, soften it with: مَا بَدِّي أَشْتَكِي، بَس...",
-                exampleAr: "مَا بَدِّي أَشْتَكِي، بَس المُشْكِلِة تْكَرَّرَت.",
-                exampleArabeezy: "ma baddi ashtiki, bas el-mushkile tkarrarat.",
-                exampleEn: "I don't want to complain, but the problem repeated.",
+                exampleAr: "بَدِّي أَشْتَكِي عَن المُشْكِلِة.",
+                exampleArabeezy: "baddi ashtiki 3an el-mushkile.",
+                exampleEn: "I want to complain about the problem.",
             },
             {
                 id: "tkararat",
@@ -76,9 +76,9 @@ export const lesson = {
                 en: "it repeated / happened again",
                 enArabeezy: "tkarrarat",
                 hint: "Key complaint word: the problem happened more than once.",
-                exampleAr: "نَفْس المُشْكِلِة تْكَرَّرَت تَلَات مَرَّات هَاد الأُسْبُوع.",
-                exampleArabeezy: "nafs el-mushkile tkarrarat talat marrat had el-osboo3.",
-                exampleEn: "The same problem happened three times this week.",
+                exampleAr: "المُشْكِلِة تْكَرَّرَت تَلَات مَرَّات.",
+                exampleArabeezy: "el-mushkile tkarrarat talat marrat.",
+                exampleEn: "The problem happened three times.",
             },
             {
                 id: "nafs_el_mushkile",
@@ -106,9 +106,9 @@ export const lesson = {
                 en: "not comfortable",
                 enArabeezy: "mish mree7",
                 hint: "Useful and softer than angry words. Use for noise, service, apartment, or situation.",
-                exampleAr: "الوَضْع مِش مُرِيح، خَاصَّة بِاللَّيْل.",
-                exampleArabeezy: "el-waD3 mish mree7, khaSSe bil-lel.",
-                exampleEn: "The situation is not comfortable, especially at night.",
+                exampleAr: "الصَّوْت بِاللَّيْل مِش مُرِيح.",
+                exampleArabeezy: "eS-Sot bil-lel mish mree7.",
+                exampleEn: "The sound at night is uncomfortable.",
             },
             {
                 id: "doshe",
@@ -156,9 +156,9 @@ export const lesson = {
                 en: "level / standard",
                 enArabeezy: "mostawa",
                 hint: "Use with cleanliness, service, internet, teaching.",
-                exampleAr: "مُسْتَوَى النَّظَافَة مِش زَيّ مَا اتَّفَقْنَا.",
-                exampleArabeezy: "mostawa en-naDafe mish zay ma ittafa2na.",
-                exampleEn: "The level of cleanliness is not like we agreed.",
+                exampleAr: "مُسْتَوَى الخِدْمِة مِش مْنِيح.",
+                exampleArabeezy: "mostawa el-khidme mish mnee7.",
+                exampleEn: "The standard of service is not good.",
             },
             {
                 id: "mas2ool",
@@ -206,9 +206,9 @@ export const lesson = {
                 en: "we solve it",
                 enArabeezy: "n7illha",
                 hint: "Collaborative and polite. Use with مُمْكِن: مُمْكِن نِحِلّها بِسُرْعَة؟",
-                exampleAr: "مُمْكِن نِحِلّها بِسُرْعَة؟ عِنْدِي دَرْس بَعْد سَاعَة.",
-                exampleArabeezy: "mumkin n7illha b-sur3a? 3indi dars ba3d sa3a.",
-                exampleEn: "Can we solve it quickly? I have a lesson in an hour.",
+                exampleAr: "مُمْكِن نِحِلّها اليَوم؟",
+                exampleArabeezy: "mumkin n7illha el-yom?",
+                exampleEn: "Can we solve it today?",
             },
             {
                 id: "btigdar_tshoofha",
@@ -326,9 +326,9 @@ export const lesson = {
                 en: "thanks / appreciate it",
                 enArabeezy: "mashkoor / ya3teek el-3afye",
                 hint: "Good closing after someone helps.",
-                exampleAr: "مَشْكُور كْتِير، يِعْطِيك العَافْيِة عَالمُسَاعَدَة.",
-                exampleArabeezy: "mashkoor kteer, ya3teek el-3afye 3al-musa3ade.",
-                exampleEn: "Thank you very much, I appreciate the help.",
+                exampleAr: "مَشْكُور كْتِير، يِعْطِيك العَافْيِة.",
+                exampleArabeezy: "mashkoor kteer, ya3teek el-3afye.",
+                exampleEn: "Thank you very much; may God give you strength.",
             },
         ],
     },
@@ -356,7 +356,7 @@ export const lesson = {
         { speaker: "Mona", ar: "اِسْأَلُه بِالزَّبْط إِمْتَى، مِش بَس يِحْكِي إِنُّه جَاي.", arArabeezy: "is2alo biz-zabt imta, mish bas yi7ki inno jay.", en: "Ask him exactly when, not just say that he’s coming." },
         { speaker: "Rami", ar: "لَو سَمَحْت يَا أَبُو أَحْمَد، بَدْنَا وَقْت مُحَدَّد. يَعْنِي إِمْتَى بِالزَّبْط بِقْدَر يِيجِي؟", arArabeezy: "law sama7t ya abu a7mad, baddna wa2t m7addad. ya3ni imta biz-zabt bi2dar yeeji?", en: "Please, Abu Ahmad, we need a specific time. I mean, exactly when can he come?" },
         { speaker: "Abu Ahmad", ar: "تَمَام، خَمْس دَقَايِق وَبَرْجَعْلَك.", arArabeezy: "tamam, khams da2aye2 w barja3lak.", en: "Okay, five minutes and I’ll get back to you." },
-        { speaker: "Rami", ar: "تَمَام، بِنِسْتَنَّى مِنَّك.", arArabeezy: "tamam, binistanna minnak.", en: "Okay, we’ll wait to hear from you." },
+        { speaker: "Rami", ar: "تَمَام، بِنِسْتَنَّى رَدَّك.", arArabeezy: "tamam, binistanna raddak.", en: "Okay, we’ll wait for your reply." },
         { speaker: "Mona", ar: "إِذَا مَا رَدّ، بَدْنَا حَلّ تَانِي. مِش مَعْقُول نِضَلّ نِسْتَنَّى كُلّ يَوْم.", arArabeezy: "iza ma radd, baddna 7all tani. mish ma32ool niDall nistanna kol yom.", en: "If he doesn’t respond, we need another solution. We can’t keep waiting every day." },
         { speaker: "Rami", ar: "صَحّ، بَس خَلِّينَا نْشُوف شُو بَدُّه يِحْكِي.", arArabeezy: "Sa77, bas khallina nshoof shoo baddo yi7ki.", en: "True, but let’s see what he says." },
         { speaker: "Abu Ahmad", ar: "رَامِي؟", arArabeezy: "rami?", en: "Rami?" },
@@ -377,10 +377,10 @@ export const lesson = {
         { speaker: "Rami", ar: "يِعْطِيك العَافْيَة. مَع السَّلَامَة.", arArabeezy: "ya3teek el-3afyeh. ma3 es-salame.", en: "Thank you. Goodbye." },
         { speaker: "Abu Ahmad", ar: "الله مَعْكُم.", arArabeezy: "allah ma3kom.", en: "God be with you." },
         { speaker: "Mona", ar: "إِنْ شَاء الله يِيجِي قَبْل الدَّرْس. مِش نَاقْصْنَا تَأْخِير كَمَان.", arArabeezy: "inshallah yeeji 2abl ed-dars. mish na2iSna ta2kheer kaman.", en: "God willing, he comes before the lesson. We really don’t need more delay." },
-        { speaker: "Rami", ar: "إِنْ شَاء الله. وَإِذَا زَبَطَت، بِنِبْعَتْلُه مَشْكُور.", arArabeezy: "inshallah. w iza zabaTat, binib3atlo mashkoor.", en: "God willing. If it works out, we’ll send him a thank-you message." },
+        { speaker: "Rami", ar: "إِنْ شَاء الله. وَإِذَا زَبَطَت، بِنْحْكِيلُه مَشْكُور.", arArabeezy: "inshallah. w iza zabaTat, bin7keelo mashkoor.", en: "God willing. If it works out, we’ll thank him." },
         { speaker: "Mona", ar: "وَإِذَا مَا زَبَطَت؟", arArabeezy: "w iza ma zabaTat?", en: "And if it doesn’t work out?" },
         { speaker: "Rami", ar: "بِنْكَلْمُه بُكْرَة وَبِنْحْكِي بِوُضُوح: المُشْكِلَة لِسَّه مَوْجُودَة، وَلَازِم حَلّ نِهَائِي.", arArabeezy: "binkalmo bokra w bin7ki biwoDoo7: el-moshkile lissa mawjoode, w lazem 7all nihai.", en: "We’ll call him tomorrow and say clearly: the problem is still there, and we need a final solution." },
-        { speaker: "Mona", ar: "مَظْبُوط. هَيْك أَحْسَن مِن إِنَّا نِضَلّ سَاكْتِين.", arArabeezy: "maZbooT. hek a7san min inna niDall saktin.", en: "Exactly. That’s better than staying silent." },
+        { speaker: "Mona", ar: "مَزْبُوط. هَيْك أَحْسَن مِن إِنَّا نِضَلّ سَاكْتِين.", arArabeezy: "mazbooT. hek a7san min inna niDall saktin.", en: "Exactly. That’s better than staying silent." },
         { speaker: "Rami", ar: "آه، الوَاحِد يِحْكِي بِأَدَب، بَس بَرْضُه يِكُون وَاضِح.", arArabeezy: "ah, el-wa7ad yi7ki bi2adab, bas barDo ykoon waDe7.", en: "Yes, a person should speak politely, but also be clear." }
     ],
 
@@ -474,7 +474,7 @@ export const lesson = {
                 rows: [
                     ["to me", "ـلي", "حكالي", "he told me"],
                     ["to you (m.)", "ـلك", "حكالك", "he told you"],
-                    ["to you (f.)", "ـلكِ", "حكالكِ", "he told you"],
+                    ["to you (f.)", "ـلِك", "حَكَالِك", "he told you"],
                     ["to him", "ـله", "حكاله", "he told him"],
                     ["to her", "ـلها", "حكالها", "he told her"],
                     ["to us", "ـلنا", "حكالنا", "he told us"],
@@ -601,14 +601,7 @@ export const lesson = {
             {
                 id: "comp_mc6",
                 type: "match",
-                prompt: "Review 26-30: Choose the softer neighbour complaint opener.",
-                options: ["معلش عَالإِزْعَاج، بَس فِي دَوْشَة.", "إِنْتَ مُزْعِج.", "هَادَا مِش حَلّ.", "هَلِّق أَحْسَن."],
-                correct: "معلش عَالإِزْعَاج، بَس فِي دَوْشَة.",
-            },
-            {
-                id: "comp_mc7",
-                type: "complete",
-                prompt: "Review 31-33: After help, close politely: ___ كْتِير، يِعْطِيك العَافْيِة.",
+                prompt: "Review 26-30: After someone helps you, choose the polite closing.",
                 options: ["مَشْكُور", "مِش مَعْقُول", "زَبُون", "تْكَرَّرَت"],
                 correct: "مَشْكُور",
             },
@@ -676,7 +669,7 @@ export const lesson = {
             },
         ],
         rolePlays: [
-            "Call the landlord: the heater is still broken although a technician was promised yesterday. Explain what happened, use a direct and an indirect object pronoun, and ask politely for a clear solution and time.",
+            "Call the landlord: the heater is still broken although a technician was promised yesterday. Explain what happened, use one past-tense verb and one receiver suffix such as حكيتله, and ask politely for a clear solution and time.",
         ],
         sections: [
             {
@@ -700,7 +693,7 @@ export const lesson = {
                     { prompt: "مِن ___ أَسْكُن فِي شَقَّة هَادْيَة.", arabeezy: "min ___ askon fi shaqqa hadyeh.", cueEn: "my right", answer: "حَقِّي" },
                     { prompt: "هُمَّ ___ الفَنِّي يِيجِي اِمْبَارِح.", arabeezy: "humme ___ el-fanni yiji imbari7.", cueEn: "promised me", answer: "وَعَدُونِي" },
                     { prompt: "المُشْكِلِة ___ تَلَات مَرَّات.", arabeezy: "el-mushkileh ___ talat marrat.", cueEn: "repeated (past, feminine)", answer: "تْكَرَّرَت" },
-                    { prompt: "حَكِيت ___ عَن الدَّوْشَة.", arabeezy: "7akeit ___ 3an ed-dosheh.", cueEn: "to him", answer: "لُه" },
+                    { prompt: "___ عَن الدَّوْشَة.", arabeezy: "___ 3an ed-dosheh.", cueEn: "I spoke to him", answer: "حَكِيتْلُه" },
                     { prompt: "طَلَبْت ___ يِصَلِّحُوهَا اليَوم.", arabeezy: "Talabt ___ yiSalli7uha el-yom.", cueEn: "from them", answer: "مِنْهُم" },
                     { prompt: "مَا صَار ___ زَيّ مَا اتَّفَقْنَا.", arabeezy: "ma Sar ___ zayy ma ittafaqna.", cueEn: "anything", answer: "إِشِي" },
                     { prompt: "Review opinion: أَنَا مَعَك، ___ هَادَا مِش حَلّ.", arabeezy: "ana ma3ak, ___ hada mish 7all.", cueEn: "but", answer: "بَس" },
@@ -711,7 +704,7 @@ export const lesson = {
                     { prompt: "Correct: هُمَّ وَعَدْنِي يِيجُوا.", arabeezy: "humme wa3adni yiju.", answer: "هُمَّ وَعَدُونِي يِيجُوا." },
                     { prompt: "Correct the past: إِمْبَارِح بِتْكَرَّرَت المُشْكِلِة.", arabeezy: "imbari7 bitkarrarat el-mushkileh.", answer: "إِمْبَارِح تْكَرَّرَت المُشْكِلِة." },
                     { prompt: "Correct the passive description: البَاب كَسَر.", arabeezy: "el-bab kasar.", answer: "البَاب مَكْسُور." },
-                    { prompt: "Correct the indirect object: حَكِيت هُوَّ عَن المُشْكِلِة.", arabeezy: "7akeit huwwe 3an el-mushkileh.", answer: "حَكِيت لُه عَن المُشْكِلِة." },
+                    { prompt: "Correct the indirect object: حَكِيت هُوَّ عَن المُشْكِلِة.", arabeezy: "7akeit huwwe 3an el-mushkileh.", answer: "حَكِيتْلُه عَن المُشْكِلِة." },
                     { prompt: "Correct the agreement: المُشْكِلِة تْكَرَّر.", arabeezy: "el-mushkileh tkarrar.", answer: "المُشْكِلِة تْكَرَّرَت." },
                     { prompt: "Correct the time reference: بُكْرَا إِجَا الفَنِّي.", arabeezy: "bukra ija el-fanni.", answer: "بُكْرَا رَاح يِيجِي الفَنِّي." },
                 ],
@@ -732,8 +725,8 @@ export const lesson = {
                         answer: "مَا صَار زَيّ مَا اتَّفَقْنَا.",
                     },
                     { prompt: "Build: They promised me the technician would come yesterday.", words: ["وَعَدُونِي", "الفَنِّي يِيجِي", "اِمْبَارِح."], answer: "وَعَدُونِي الفَنِّي يِيجِي اِمْبَارِح." },
-                    { prompt: "Build: I spoke to him about the noise.", words: ["حَكِيت لُه", "عَن", "الدَّوْشَة."], answer: "حَكِيت لُه عَن الدَّوْشَة." },
-                    { prompt: "Review: Although I understand you, this is not a solution.", words: ["مَع إِنِّي", "فَاهْمَك،", "هَادَا مِش حَلّ."], answer: "مَع إِنِّي فَاهْمَك، هَادَا مِش حَلّ." },
+                    { prompt: "Build: I spoke to him about the noise.", words: ["حَكِيتْلُه", "عَن", "الدَّوْشَة."], answer: "حَكِيتْلُه عَن الدَّوْشَة." },
+                    { prompt: "Review: Although I understand you, this is not a solution.", words: ["مَع إِنِّي", "فَاهِم عَلَيْك،", "هَادَا مِش حَلّ."], answer: "مَع إِنِّي فَاهِم عَلَيْك، هَادَا مِش حَلّ." },
                 ],
             },
         ],
@@ -752,7 +745,7 @@ export const lesson = {
             { id: "comp_t12", type: "arToEn", textEn: "Nothing happened as we agreed.", textAr: "مَا صَار إِشِي زَيّ مَا اتَّفَقْنَا." },
             { id: "comp_t13", type: "enToAr", textEn: "It is my right to live in a clean and quiet apartment.", textAr: "مِن حَقِّي أَسْكُن فِي شَقَّة نْضِيفَة وَهَادْيَة." },
             { id: "comp_t14", type: "arToEn", textEn: "After the technician came, now it is better.", textAr: "بَعْد مَا إِجَا الفَنِّي، هَلِّق أَحْسَن." },
-            { id: "comp_t15", type: "enToAr", textEn: "Thank you for the help; I appreciate it.", textAr: "يِعْطِيك العَافْيِة عَالمُسَاعَدَة، مَشْكُور كْتِير." },
+            { id: "comp_t15", type: "enToAr", textEn: "Thank you very much; may God give you strength.", textAr: "مَشْكُور كْتِير، يِعْطِيك العَافْيِة." },
         ],
     },
 
@@ -775,7 +768,7 @@ Translate these sentences into Gaza Palestinian Arabic:
 12. Nothing happened as we agreed.
 13. It is my right to live in a clean and quiet apartment.
 14. After the technician came, now it is better.
-15. Thank you for the help; I appreciate it.`,
+15. Thank you very much; may God give you strength.`,
     },
 
     teacherNotes: {

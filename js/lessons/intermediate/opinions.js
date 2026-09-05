@@ -1,4 +1,4 @@
-import { LESSON_ID_OPINIONS } from '../../core/constants.js';
+import { LESSON_ID_OPINIONS } from '../../constants.js';
 
 export const lessonId = LESSON_ID_OPINIONS;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Intermediate",
         unit: "Opinions",
         lessonTitle: "Unit 11 - Opinions & Preferences in Gaza Palestinian Arabic",
-        contentVersion: 2026071501,
+        contentVersion: 2026082001,
     },
 
     overview: {
@@ -36,9 +36,9 @@ export const lesson = {
                 en: "opinion",
                 enArabeezy: "ra2y",
                 hint: "My opinion = رَأْيِي. Your opinion = رَأْيَك / رَأْيِك. Plural: آرَاء.",
-                exampleAr: "رَأْيَك مُهِمّ، اِحْكِيلِي بِصَرَاحَة.",
-                exampleArabeezy: "ra2yak muhim, i7keeli biSara7a.",
-                exampleEn: "Your opinion is important, tell me honestly.",
+                exampleAr: "عِنْدَك رَأْي عَن الشَّقَّة؟",
+                exampleArabeezy: "3indak ra2y 3an esh-sha2qa?",
+                exampleEn: "Do you have an opinion about the apartment?",
             },
             {
                 id: "shu_ra2yak",
@@ -56,9 +56,9 @@ export const lesson = {
                 en: "in my opinion",
                 enArabeezy: "bi-ra2yi",
                 hint: "Natural starter before a clear opinion.",
-                exampleAr: "بِرَأْيِي الطَّابِق التَّالِت أَهْدَى.",
-                exampleArabeezy: "bi-ra2yi eT-Tabaq et-talet ahda.",
-                exampleEn: "In my opinion, the third floor is quieter.",
+                exampleAr: "بِرَأْيِي الشَّقَّة مْنِيحَة.",
+                exampleArabeezy: "bi-ra2yi esh-sha2qa mnee7a.",
+                exampleEn: "In my opinion, the apartment is good.",
             },
             {
                 id: "ana_shayef",
@@ -76,9 +76,9 @@ export const lesson = {
                 en: "I feel / I have the feeling",
                 enArabeezy: "ba7is",
                 hint: "Soft opinion, not only emotion.",
-                exampleAr: "بَحِسّ هَادَا المَكَان أَرْيَح لِلدِّرَاسَة.",
-                exampleArabeezy: "ba7is hada el-makan arya7 lid-dirase.",
-                exampleEn: "I feel this place is more comfortable for studying.",
+                exampleAr: "بَحِسّ هَاي الشَّقَّة أَحْسَن.",
+                exampleArabeezy: "ba7is hay esh-sha2qa a7san.",
+                exampleEn: "I feel this apartment is better.",
             },
             {
                 id: "bisara7a",
@@ -96,9 +96,9 @@ export const lesson = {
                 en: "by the way",
                 enArabeezy: "3ala fikra",
                 hint: "Adds a side opinion or reminder.",
-                exampleAr: "عَلَى فِكْرَة، المَوَاصَلَات هُنَاك أَسْهَل.",
-                exampleArabeezy: "3ala fikra, el-mowaSalat hunak ashal.",
-                exampleEn: "By the way, transportation there is easier.",
+                exampleAr: "عَلَى فِكْرَة، المَوَاصَلَات هُنَاك مْنِيحَة.",
+                exampleArabeezy: "3ala fikra, el-mowaSalat hunak mnee7a.",
+                exampleEn: "By the way, transportation there is good.",
             },
             {
                 id: "ma_ba3raf",
@@ -106,9 +106,9 @@ export const lesson = {
                 en: "I don't know / I'm not sure",
                 enArabeezy: "ma ba3raf",
                 hint: "Soft hesitation before giving an opinion.",
-                exampleAr: "مَا بَعْرَف، بَس حَاسِس إِنُّه الشَّقَّة صْغِيرَة.",
-                exampleArabeezy: "ma ba3raf, bas 7ases inno esh-sha2qa Sgheere.",
-                exampleEn: "I'm not sure, but I feel the apartment is small.",
+                exampleAr: "مَا بَعْرَف، الشَّقَّة صْغِيرَة وَلَّا كْبِيرَة؟",
+                exampleArabeezy: "ma ba3raf, esh-sha2qa Sgheere walla kbeere?",
+                exampleEn: "I don't know—is the apartment small or big?",
             },
             {
                 id: "mumkin",
@@ -126,9 +126,9 @@ export const lesson = {
                 en: "I agree with you",
                 enArabeezy: "ana ma3ak / ma3ik",
                 hint: "To a man: مَعَك. To a woman: مَعِك. To a group: مَعْكُم.",
-                exampleAr: "أَنَا مَعِك، الدَّوْشَة مُش مُرِيحَة.",
-                exampleArabeezy: "ana ma3ik, ed-doshe mish mree7a.",
-                exampleEn: "I agree with you, the noise is not comfortable.",
+                exampleAr: "أَنَا مَعِك، فِي دَوْشَة.",
+                exampleArabeezy: "ana ma3ik, fi doshe.",
+                exampleEn: "I agree with you; it is noisy.",
             },
             {
                 id: "ma3ak_7a2",
@@ -146,9 +146,9 @@ export const lesson = {
                 en: "true / exactly",
                 enArabeezy: "mazbooT",
                 hint: "Quick agreement: مَزْبُوط / بِالزَّبْط، كَلَامَك صَحّ.",
-                exampleAr: "بِالزَّبْط، الطَّابِق الأَوَّل أَرْخَص، بَس فِيه دَوْشَة أَكْتَر.",
-                exampleArabeezy: "biz-zabT, eT-Tabaq el-awwal arkhaS, bas feeh doshe aktar.",
-                exampleEn: "Exactly, the first floor is cheaper, but it has more noise.",
+                exampleAr: "مَزْبُوط، الطَّابِق الأَوَّل أَرْخَص.",
+                exampleArabeezy: "mazbooT, eT-Tabaq el-awwal arkhaS.",
+                exampleEn: "Exactly, the first floor is cheaper.",
             },
             {
                 id: "kalamak_sa7",
@@ -156,9 +156,9 @@ export const lesson = {
                 en: "what you're saying is right",
                 enArabeezy: "kalamak Sa77",
                 hint: "To a woman: كَلَامِك صَحّ.",
-                exampleAr: "كَلَامِك صَحّ، بَس لَازِم نِشُوف الإِيجَار كَمَان.",
-                exampleArabeezy: "kalamik Sa77, bas lazim nishoof el-ijar kaman.",
-                exampleEn: "What you're saying is right, but we also need to check the rent.",
+                exampleAr: "كَلَامِك صَحّ، مَعِك حَقّ.",
+                exampleArabeezy: "kalamik Sa77, ma3ik 7a2.",
+                exampleEn: "What you're saying is right; you're right.",
             },
             {
                 id: "mish_moqtane3",
@@ -186,9 +186,9 @@ export const lesson = {
                 en: "I prefer",
                 enArabeezy: "ana bafaDDel",
                 hint: "Use with a noun or option: بَفَضِّل شَقَّة أَهْدَى.",
-                exampleAr: "أَنَا بَفَضِّل شَقَّة أَهْدَى حَتَّى لَوْ أَغْلَى شُوَيّ.",
-                exampleArabeezy: "ana bafaDDel sha2qa ahda 7atta law aghla shway.",
-                exampleEn: "I prefer a quieter apartment even if it is a little more expensive.",
+                exampleAr: "أَنَا بَفَضِّل شَقَّة الطَّابِق التَّالِت.",
+                exampleArabeezy: "ana bafaDDel sha2qat eT-Tabaq et-talet.",
+                exampleEn: "I prefer the third-floor apartment.",
             },
             {
                 id: "a7san_min",
@@ -206,9 +206,9 @@ export const lesson = {
                 en: "quieter than",
                 enArabeezy: "ahda min",
                 hint: "Useful for places, apartments, streets, and cafés.",
-                exampleAr: "الشَّارِع هَادَا أَهْدَى مِن الشَّارِع القَدِيم.",
-                exampleArabeezy: "esh-share3 hada ahda min esh-share3 el-qadeem.",
-                exampleEn: "This street is quieter than the old street.",
+                exampleAr: "هَاي الشَّقَّة أَهْدَى مِن الأُولَى.",
+                exampleArabeezy: "hay esh-sha2qa ahda min el-oola.",
+                exampleEn: "This apartment is quieter than the first one.",
             },
             {
                 id: "aghla_min",
@@ -216,9 +216,9 @@ export const lesson = {
                 en: "more expensive than",
                 enArabeezy: "aghla min",
                 hint: "Recycle shopping and apartment rent.",
-                exampleAr: "هَادَا الإِيجَار أَغْلَى مِن اللِّي حَكَيْنَا عَنْه اِمْبَارِح.",
-                exampleArabeezy: "hada el-ijar aghla min illi 7akaina 3anno embare7.",
-                exampleEn: "This rent is more expensive than the one we talked about yesterday.",
+                exampleAr: "هَادَا الإِيجَار أَغْلَى مِن الأَوَّل.",
+                exampleArabeezy: "hada el-ijar aghla min el-awwal.",
+                exampleEn: "This rent is more expensive than the first one.",
             },
             {
                 id: "arkhas_min",
@@ -256,9 +256,9 @@ export const lesson = {
                 en: "the important thing is",
                 enArabeezy: "el-muhim",
                 hint: "Use to summarize your point.",
-                exampleAr: "المُهِمّ إِنُّه المَكَان يِكُون نْضِيف وَهَادِي.",
-                exampleArabeezy: "el-muhim inno el-makan ykoon nDeef w hadi.",
-                exampleEn: "The important thing is that the place is clean and quiet.",
+                exampleAr: "المُهِمّ الإِيجَار يِكُون مْنَاسِب.",
+                exampleArabeezy: "el-muhim el-ijar ykoon mnasib.",
+                exampleEn: "The important thing is that the rent is suitable.",
             },
             {
                 id: "ma_btifriq",
@@ -276,9 +276,9 @@ export const lesson = {
                 en: "I support / I am for",
                 enArabeezy: "ana ma3",
                 hint: "Use for ideas/plans: أَنَا مَع الفِكْرَة.",
-                exampleAr: "أَنَا مَع فِكْرَة نِسْأَل صَاحِب البَيْت مَرَّة كَمَان.",
-                exampleArabeezy: "ana ma3 fikret nis2al sa7eb el-beit marra kaman.",
-                exampleEn: "I support the idea of asking the landlord one more time.",
+                exampleAr: "أَنَا مَع هَاي الشَّقَّة.",
+                exampleArabeezy: "ana ma3 hay esh-sha2qa.",
+                exampleEn: "I am in favor of this apartment.",
             },
             {
                 id: "ana_mish_ma3",
@@ -296,9 +296,9 @@ export const lesson = {
                 en: "no offense",
                 enArabeezy: "bala za3al",
                 hint: "Use before a sensitive disagreement.",
-                exampleAr: "بَلَا زَعَل، بَس رَأْيِي مُخْتَلِف.",
-                exampleArabeezy: "bala za3al, bas ra2yi mukhtalif.",
-                exampleEn: "No offense, but my opinion is different.",
+                exampleAr: "بَلَا زَعَل، أَنَا مِش مَعَك.",
+                exampleArabeezy: "bala za3al, ana mish ma3ak.",
+                exampleEn: "No offense, but I don't agree with you.",
             },
             {
                 id: "fahmak",
@@ -306,9 +306,9 @@ export const lesson = {
                 en: "I understand you",
                 enArabeezy: "fahem 3aleik",
                 hint: "To a woman: فَاهِم عَلَيْكِ. Softens disagreement.",
-                exampleAr: "فَاهِم عَلَيْك، بَس أَنَا شَايِف المَوْضُوع بِطَرِيقَة تَانْيَة.",
-                exampleArabeezy: "fahem 3aleik, bas ana shayef el-mawDoo3 b-Taree2a tanye.",
-                exampleEn: "I understand you, but I see the topic another way.",
+                exampleAr: "فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع.",
+                exampleArabeezy: "fahem 3aleik, bas ana mish moqtane3.",
+                exampleEn: "I understand you, but I'm not convinced.",
             },
             {
                 id: "min_na7yeti",
@@ -336,9 +336,9 @@ export const lesson = {
                 en: "decision",
                 enArabeezy: "qarar",
                 hint: "Final choice after opinions. My decision = قَرَارِي.",
-                exampleAr: "خَلِّينَا مَا نِسْتَعْجِل فِي القَرَار.",
-                exampleArabeezy: "khallina ma nista3jil fi el-qarar.",
-                exampleEn: "Let's not rush the decision.",
+                exampleAr: "هَادَا قَرَار مُهِمّ.",
+                exampleArabeezy: "hada qarar muhim.",
+                exampleEn: "This is an important decision.",
             },
             {
                 id: "mash_mosta3jil",
@@ -346,9 +346,9 @@ export const lesson = {
                 en: "not in a rush",
                 enArabeezy: "mish musta3jil",
                 hint: "Female: مِش مُسْتَعْجِلَة.",
-                exampleAr: "أَنَا مِش مُسْتَعْجِل، بَدِّي أُفَكِّر لِبُكْرَا.",
-                exampleArabeezy: "ana mish musta3jil, baddi ufakker la-bukra.",
-                exampleEn: "I'm not in a rush, I want to think until tomorrow.",
+                exampleAr: "أَنَا مِش مُسْتَعْجِل، القَرَار لِبُكْرَا.",
+                exampleArabeezy: "ana mish musta3jil, el-qarar la-bukra.",
+                exampleEn: "I'm not in a rush; the decision can wait until tomorrow.",
             },
             {
                 id: "khallina",
@@ -356,9 +356,9 @@ export const lesson = {
                 en: "let's",
                 enArabeezy: "khallina",
                 hint: "Useful for making a group suggestion.",
-                exampleAr: "خَلِّينَا نِقَارِن بَيْن الشُّقَق بِهُدُوء.",
-                exampleArabeezy: "khallina niqarin bain esh-shuqaq b-hudu2.",
-                exampleEn: "Let's compare the apartments calmly.",
+                exampleAr: "خَلِّينَا نِشُوف الشَّقَّة.",
+                exampleArabeezy: "khallina nishoof esh-sha2qa.",
+                exampleEn: "Let's see the apartment.",
             },
             {
                 id: "nqarin",
@@ -376,9 +376,9 @@ export const lesson = {
                 en: "without",
                 enArabeezy: "min ghair ma",
                 hint: "Intermediate connector.",
-                exampleAr: "مِن غِير مَا نِزْعَل حَدَا، فِينَا نِخْتَلِف بِالرَّأْي.",
-                exampleArabeezy: "min ghair ma niz3al 7ada, feena nikhtilif bir-ra2y.",
-                exampleEn: "Without upsetting anyone, we can disagree in opinion.",
+                exampleAr: "مِن غِير مَا نِحْكِي كْتِير، خَلِّينَا نِقَارِن.",
+                exampleArabeezy: "min ghair ma ni7ki kteer, khallina niqarin.",
+                exampleEn: "Without talking too much, let's compare.",
             },
             {
                 id: "3adi",
@@ -400,7 +400,7 @@ export const lesson = {
         { speaker: "Samer", ar: "يَلَّا، شُو رَأْيْكُم بِالشُّقَق اللِّي شُفْنَاهَا اليَوْم؟", arArabeezy: "yalla, shoo ra2ykom bish-sho2a2 illi shofnaha el-yom?", en: "So, what do you think about the apartments we saw today?" },
         { speaker: "Mona", ar: "بِصَرَاحَة؟ أَنَا مَا ارْتَحْت لِشَقَّة الطَّابِق الأَوَّل.", arArabeezy: "biSara7a? ana ma irta7t la-sha22et eT-Tabe2 el-awwal.", en: "Honestly? I didn’t feel comfortable with the first-floor apartment." },
         { speaker: "Rami", ar: "لِيش؟ الإِيجَار أَرْخَص وَالمَكَان قَرِيب مِن كُلّ إِشِي.", arArabeezy: "leesh? el-ijar arkhaS w el-makan 2areeb min kol ishi.", en: "Why? The rent is cheaper and the place is close to everything." },
-        { speaker: "Mona", ar: "صَحّ، بَس الدُّوشَة كْتِير. أَوَّل مَا فَتَحْنَا الشُّبَّاك وَالسَّيَّارَات مَا وَقَفَت.", arArabeezy: "Sa77, bas ed-doshe kteer. awwal ma fata7na esh-shobbak w es-sayyarat ma wa2afat.", en: "True, but it’s very noisy. As soon as we opened the window, the cars didn’t stop." },
+        { speaker: "Mona", ar: "صَحّ، بَس الدُّوشَة كْتِير. أَوَّل مَا فَتَحْنَا الشُّبَّاك، صَوْت السَّيَّارَات كَان عَالِي.", arArabeezy: "Sa77, bas ed-doshe kteer. awwal ma fata7na esh-shobbak, Sot es-sayyarat kan 3ali.", en: "True, but it’s very noisy. As soon as we opened the window, the traffic was loud." },
         { speaker: "Noor", ar: "أَنَا مَع مُونَا. إِذَا كُلّ يَوْم هَيْك، الوَاحِد مَا رَح يِعْرَف يِرْتَاح.", arArabeezy: "ana ma3 mona. iza kol yom hek, el-wa7ad ma ra7 yi3raf yirta7.", en: "I’m with Mona. If it’s like that every day, a person won’t be able to relax." },
         { speaker: "Samer", ar: "بَس لَا تِنْسُوا إِنَّهَا أَوْفَر بِحَوَالَي مِيَّتِين شِيكل.", arArabeezy: "bas la tinsou innaha awfar b7awali miyyetain shekel.", en: "But don’t forget it saves about two hundred shekels." },
         { speaker: "Rami", ar: "مَعَك حَقّ... بَس بِالنِّسْبَة إِلِي الرَّاحَة أَهَمّ مِن فَرْق السِّعِر.", arArabeezy: "ma3ak 7a2... bas bin-nisbe ili er-ra7a aham min far2 es-si3er.", en: "You’re right... but for me, comfort is more important than the price difference." },
@@ -467,7 +467,7 @@ export const lesson = {
         { ar: "أَي شَقَّة اخْتَارُوا بِالنِّهَايَة؟", en: "Which apartment did they choose in the end?" },
         { ar: "شُو الشَّرْط قَبْل مَا يْوَقِّعُوا عَقْد الإِيجَار؟", en: "What was the condition before signing the rental contract?" },
         { ar: "شُو وَعَدْهُم أَبُو أَحْمَد؟", en: "What did Abu Ahmad promise them?" },
-        { ar: "وِين قَرَّرُوا يْرُوحُوا بَعْد مَا خَلَّصُوا؟", en: "Where did they decide to go after they finished?" }
+        { ar: "شُو قَرَّرُوا يِعْمَلُوا بَعْد مَا خَلَّصُوا؟", en: "What did they decide to do after they finished?" }
     ],
 },
 
@@ -649,24 +649,31 @@ export const lesson = {
             },
             {
                 id: "op_mc5",
-                type: "match",
-                prompt: "Choose the Arabic for: you're right.",
-                options: ["مَعَك حَقّ", "مِش مُقْتَنِع", "بَلَا زَعَل", "مَا بِتِفْرِق"],
-                correct: "مَعَك حَقّ",
+                type: "complete",
+                prompt: "Complete: The important thing is that the rent is suitable. ___ الإِيجَار يِكُون مْنَاسِب.",
+                options: ["المُهِمّ", "أَسْرَع مِن", "عَلَى حَسَب", "مَا بِتِفْرِق مَعِي"],
+                correct: "المُهِمّ",
             },
             {
                 id: "op_mc6",
-                type: "complete",
-                prompt: "Complete: It depends on the rent and transportation. ___ الإِيجَار وَالمَوَاصَلَات.",
-                options: ["عَلَى حَسَب", "بِصَرَاحَة", "أَبَدًا", "دَوْشَة"],
-                correct: "عَلَى حَسَب",
+                type: "match",
+                prompt: "Choose the Arabic phrase for: If I had to choose.",
+                options: ["لَوْ بَدِّي أَخْتَار", "مِن نَاحْيِتِي", "فَاهِم عَلَيْك", "أَنَا مِش مَع"],
+                correct: "لَوْ بَدِّي أَخْتَار",
             },
             {
                 id: "op_mc7",
                 type: "complete",
-                prompt: "Complete: No offense, but my opinion is different. ___، بَس رَأْيِي مُخْتَلِف.",
-                options: ["بَلَا زَعَل", "مَع السَّلَامَة", "قَدِّيش", "مَسْدُود"],
-                correct: "بَلَا زَعَل",
+                prompt: "Complete: Let's compare the rent and transportation. خَلِّينَا ___ بَيْن الإِيجَار وَالمَوَاصَلَات.",
+                options: ["نِقَارِن", "قَرَار", "مِش مُسْتَعْجِل", "مِن غِير مَا"],
+                correct: "نِقَارِن",
+            },
+            {
+                id: "op_mc8",
+                type: "match",
+                prompt: "Choose the Gaza Palestinian phrase meaning: It's okay / that's normal.",
+                options: ["عَادِي", "مُهِمّ", "غَالِي", "مُسْتَعْجِل"],
+                correct: "عَادِي",
             },
         ],
     },
@@ -709,7 +716,7 @@ export const lesson = {
             {
                 id: "op_q6",
                 questionAr: "Choose how a male speaker says: “I am not convinced.”",
-                optionsEn: ["مِش مُقْتَنِع/مُقْتَنْعَة", "مَعَك حَقّ", "زَاكِي"],
+                optionsEn: ["أَنَا مِش مُقْتَنِع.", "أَنَا مِش مُقْتَنْعَة.", "مَعَك حَقّ."],
                 correctIndex: 0,
             },
             {
@@ -734,47 +741,6 @@ export const lesson = {
         rolePlays: [
             "Compare two choices, state your opinion, agree or disagree politely, give two reasons, and make a final decision.",
         ],
-        legacySections: [
-            {
-                matching: [
-                    { ar: "بِرَأْيِي", en: "in my opinion" },
-                    { ar: "مَعَك حَقّ", en: "you're right" },
-                    { ar: "مِش مُقْتَنِع", en: "not convinced" },
-                    { ar: "أَحْسَن مِن", en: "better than" },
-                    { ar: "عَلَى حَسَب", en: "it depends on" },
-                ],
-                fillInTheBlank: [
-                    { prompt: "___، الشَّقَّة التَّالِتة أَهْدَى.", answer: "بِرَأْيِي" },
-                    { prompt: "أَنَا ___ شَقَّة قَرِيبَة مِن المَوَاصَلَات.", answer: "بَفَضِّل" },
-                    { prompt: "هَادَا الإِيجَار ___ مِن الأَوَّل.", answer: "أَغْلَى" },
-                    { prompt: "___، بَس رَأْيِي مُخْتَلِف.", answer: "بَلَا زَعَل" },
-                    { prompt: "خَلِّينَا ___ بَيْن الشُّقَق.", answer: "نِقَارِن" },
-                ],
-                reorderSentences: [
-                    {
-                        prompt: "Put the words in order: What do you think of the apartment?",
-                        words: ["شُو", "رَأْيَك", "فِي", "الشَّقَّة؟"],
-                        answer: "شُو رَأْيَك فِي الشَّقَّة؟",
-                    },
-                    {
-                        prompt: "Put the words in order: I agree with you, but...",
-                        words: ["أَنَا", "مَعَك،", "بَس..."],
-                        answer: "أَنَا مَعَك، بَس...",
-                    },
-                    {
-                        prompt: "Put the words in order: It depends on the rent.",
-                        words: ["عَلَى", "حَسَب", "الإِيجَار."],
-                        answer: "عَلَى حَسَب الإِيجَار.",
-                    },
-                ],
-                writeYourOwnSentences: [
-                    "Write 5 opinion sentences about apartments, food, transport, or study.",
-                    "Write 3 polite disagreement sentences using فاهِم عليك، بس... / بلا زعل...",
-                    "Compare two things using: أحسن من، أرخص من، أغلى من، أهدى من، أسرع من.",
-                    "Answer in Arabic: شو رأيك في الشقة؟ شو بتفضل؟ وليش؟",
-                ],
-            },
-        ],
         sections: [
             {
                 title: "A - Recognition",
@@ -787,7 +753,7 @@ export const lesson = {
                     { ar: "بَلَا زَعَل", arabeezy: "bala za3al", en: "no offense" },
                 ],
                 multipleChoice: [
-                    { prompt: "Choose the polite disagreement.", options: ["فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف.", "إِنْتَ غَلَط.", "مَا بَدِّي أَسْمَع."], correct: "فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف." },
+                    { prompt: "Choose the polite disagreement.", options: ["فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع.", "إِنْتَ غَلَط.", "مَا بَدِّي أَسْمَع."], correct: "فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع." },
                     { prompt: "Choose the connector that introduces a reason.", options: ["لَأَنّ (la2ann)", "بَس (bas)", "مَع إِنُّه (ma3 innu)"], correct: "لَأَنّ (la2ann)" },
                 ],
             },
@@ -799,8 +765,8 @@ export const lesson = {
                     { prompt: "أَنَا مَعَك، ___ الإِيجَار غَالِي.", arabeezy: "ana ma3ak, ___ el-ijar ghali.", cueEn: "but", answer: "بَس" },
                     { prompt: "___ إِنُّه أَغْلَى، هُوَّ أَحْسَن.", arabeezy: "___ innu aghla, huwwe a7san.", cueEn: "although", answer: "مَع" },
                     { prompt: "___، الخِيَار التَّانِي أَنْسَب.", arabeezy: "___, el-khiyar et-tani ansab.", cueEn: "in my opinion", answer: "بِرَأْيِي" },
-                    { prompt: "فَاهْمَك، بَس أَنَا مِش ___.", arabeezy: "fahmak, bas ana mish ___.", cueEn: "convinced (male)", answer: "مُقْتَنِع" },
-                    { prompt: "الخِيَار ___ السِّعِر وَالمَوَاصَلَات.", arabeezy: "el-khiyar ___ es-si3er wil-mwaSalat.", cueEn: "depends on", answer: "عَلَى حَسَب" },
+                    { prompt: "فَاهِم عَلَيْك، بَس أَنَا مِش ___.", arabeezy: "fahem 3aleik, bas ana mish ___.", cueEn: "convinced (male)", answer: "مُقْتَنِع" },
+                    { prompt: "القَرَار ___ السِّعِر وَالمَوَاصَلَات.", arabeezy: "el-qarar ___ es-si3er wil-mwaSalat.", cueEn: "depends on", answer: "عَلَى حَسَب" },
                     { prompt: "لَو بَدِّي أَخْتَار، ___ الشَّقَّة الأَهْدَى.", arabeezy: "law baddi akhtar, ___ esh-shaqqa el-ahda.", cueEn: "I would take", answer: "بَاخُد" },
                     { prompt: "المُهِمّ ___ المَكَان يِكُون نْضِيف.", arabeezy: "el-muhimm ___ el-makan ykoon nDeef.", cueEn: "that", answer: "إِنُّه" },
                     { prompt: "Review future: بُكْرَا ___ نِقَارِن بَيْنَهُم.", arabeezy: "bukra ___ nqarin beinom.", cueEn: "will", answer: "رَاح" },
@@ -817,7 +783,7 @@ export const lesson = {
                 ],
                 reorderSentences: [
                     { prompt: "Build: In my opinion, the bus is cheaper.", arabeezy: "bira2yi el-bas arkhaS.", words: ["بِرَأْيِي،", "البَاص", "أَرْخَص."], answer: "بِرَأْيِي، البَاص أَرْخَص." },
-                    { prompt: "Build: I understand you, but I disagree.", arabeezy: "fahmak, bas ana mish ma3ak.", words: ["فَاهْمَك،", "بَس", "أَنَا مِش مَعَك."], answer: "فَاهْمَك، بَس أَنَا مِش مَعَك." },
+                    { prompt: "Build: I understand you, but I disagree.", arabeezy: "fahem 3aleik, bas ana mish ma3ak.", words: ["فَاهِم عَلَيْك،", "بَس", "أَنَا مِش مَعَك."], answer: "فَاهِم عَلَيْك، بَس أَنَا مِش مَعَك." },
                     { prompt: "Build: It depends on the price.", arabeezy: "3ala 7asab es-si3er.", words: ["عَلَى حَسَب", "السِّعِر."], answer: "عَلَى حَسَب السِّعِر." },
                     { prompt: "Review future: Tomorrow we will decide.", arabeezy: "bukra ra7 nqarrir.", words: ["بُكْرَا", "رَاح", "نِقَرِّر."], answer: "بُكْرَا رَاح نِقَرِّر." },
                     { prompt: "Build: Although it is more expensive, it is better.", arabeezy: "ma3 innu aghla, huwwe a7san.", words: ["مَع إِنُّه", "أَغْلَى،", "هُوَّ أَحْسَن."], answer: "مَع إِنُّه أَغْلَى، هُوَّ أَحْسَن." },
@@ -834,12 +800,12 @@ export const lesson = {
             { id: "op_t6", type: "arToEn", textEn: "It depends on the rent and transportation.", textAr: "عَلَى حَسَب الإِيجَار وَالمَوَاصَلَات." },
             { id: "op_t7", type: "enToAr", textEn: "This apartment is better than the first one.", textAr: "هَادِي الشَّقَّة أَحْسَن مِن الأُولَى." },
             { id: "op_t8", type: "arToEn", textEn: "The bus is cheaper than the taxi.", textAr: "البَاص أَرْخَص مِن التَّاكْسِي." },
-            { id: "op_t9", type: "enToAr", textEn: "I understand you, but my opinion is different.", textAr: "فَاهِم عَلَيْك، بَس رَأْيِي مُخْتَلِف." },
+            { id: "op_t9", type: "enToAr", textEn: "I understand you, but I am not convinced.", textAr: "فَاهِم عَلَيْك، بَس أَنَا مِش مُقْتَنِع/مُقْتَنْعَة." },
             { id: "op_t10", type: "arToEn", textEn: "No offense, but I do not support paying a large deposit.", textAr: "بَلَا زَعَل، بَس أَنَا مِش مَع نِدْفَع تَأْمِين كْتِير." },
             { id: "op_t11", type: "enToAr", textEn: "The important thing is that the place is clean and quiet.", textAr: "المُهِمّ إِنُّه المَكَان يِكُون نْضِيف وَهَادِي." },
             { id: "op_t12", type: "arToEn", textEn: "Let's compare the rent, view, and internet.", textAr: "خَلِّينَا نِقَارِن بَيْن الإِيجَار، الإِطْلَالَة، وَالإِنْتَرْنِت." },
             { id: "op_t13", type: "enToAr", textEn: "If I had to choose, I would take the third-floor apartment.", textAr: "لَوْ بَدِّي أَخْتَار، بَاخُد شَقَّة الطَّابِق التَّالِت." },
-            { id: "op_t14", type: "arToEn", textEn: "I'm not in a rush; I want to think until tomorrow.", textAr: "أَنَا مِش مُسْتَعْجِل/مُسْتَعْجِلَة؛ بَدِّي أُفَكِّر لِبُكْرَا." },
+            { id: "op_t14", type: "arToEn", textEn: "I'm not in a rush; the decision can wait until tomorrow.", textAr: "أَنَا مِش مُسْتَعْجِل/مُسْتَعْجِلَة؛ القَرَار لِبُكْرَا." },
             { id: "op_t15", type: "enToAr", textEn: "Everyone has an opinion, and that's okay.", textAr: "كُلّ وَاحِد إِلُه رَأْي، وَهَادَا عَادِي." },
         ],
     },
@@ -857,12 +823,12 @@ Translate these sentences into Gaza Palestinian Arabic:
 6. It depends on the rent and transportation.
 7. This apartment is better than the first one.
 8. The bus is cheaper than the taxi.
-9. I understand you, but my opinion is different.
+9. I understand you, but I am not convinced.
 10. No offense, but I do not support paying a large deposit.
 11. The important thing is that the place is clean and quiet.
 12. Let's compare the rent, view, and internet.
 13. If I had to choose, I would take the third-floor apartment.
-14. I'm not in a rush; I want to think until tomorrow.
+14. I'm not in a rush; the decision can wait until tomorrow.
 15. Everyone has an opinion, and that's okay.`,
     },
 

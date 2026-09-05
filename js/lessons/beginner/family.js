@@ -1,4 +1,4 @@
-import { LESSON_ID_FAMILY } from '../../core/constants.js';
+import { LESSON_ID_FAMILY } from '../../constants.js';
 
 export const lessonId = LESSON_ID_FAMILY;
 
@@ -7,7 +7,7 @@ export const lesson = {
         level: "Beginner",
         unit: "Family",
         lessonTitle: "Unit 2 - Family & People (Gaza Palestinian Arabic)",
-        contentVersion: 2026071503,
+        contentVersion: 2026081504,
     },
 
     overview: {
@@ -36,9 +36,9 @@ export const lesson = {
                 en: "family",
                 enArabeezy: "3eileh",
                 hint: "My family = عِيلْتِي. Also common: أَهْلِي = my family / my parents.",
-                exampleAr: "عِيلْتِي صْغِيرَة، بَس قَرِيبِين مِن بَعْض.",
-                exampleArabeezy: "3eelti zghireh, bas qareebeen min ba3d.",
-                exampleEn: "My family is small, but we are close to each other.",
+                exampleAr: "عِيلْتِي مِن غَزَّة.",
+                exampleArabeezy: "3eelti min Ghazza.",
+                exampleEn: "My family is from Gaza.",
             },
             {
                 id: "ahli",
@@ -46,49 +46,49 @@ export const lesson = {
                 en: "my family / my parents",
                 enArabeezy: "ahli",
                 hint: "Usually means my parents/family. With you: أَهْلَك / أَهْلِك. With her: أَهْلْهَا.",
-                exampleAr: "أَنَا سَاكْنَة مَع أَهْلِي.",
-                exampleArabeezy: "ana sakneh ma3 ahli.",
-                exampleEn: "I live with my family.",
+                exampleAr: "أَنَا وَأَهْلِي مِن غَزَّة.",
+                exampleArabeezy: "ana w ahli min Ghazza.",
+                exampleEn: "My family and I are from Gaza.",
             },
             {
                 id: "abuy",
                 ar: "أَبُوي",
                 en: "my father",
                 enArabeezy: "abuy",
-                hint: "His father = أَبُوه. Her father = أَبُوهَا. Parents = أَبُوي وَإِمِّي / أَهْلِي.",
-                exampleAr: "أَبُوي بِيِشْتِغِل الصُّبُح.",
-                exampleArabeezy: "abuy biyishtighel el-soboh.",
-                exampleEn: "My father works in the morning.",
+                hint: "His father = أَبُوه. Her father = أَبُوهَا. Parents = أَبُوي وَإِمِّي / أَهْلِي. The example recycles اِسْمِي from Unit 1; اِسْمُه means his name.",
+                exampleAr: "أَبُوي اِسْمُه سَامِر.",
+                exampleArabeezy: "abuy ismo Samer.",
+                exampleEn: "My father's name is Samer.",
             },
             {
                 id: "immi",
                 ar: "إِمِّي",
                 en: "my mother",
                 enArabeezy: "immi",
-                hint: "His mother = إِمُّه. Her mother = إِمَّهَا. Calling mom: يَمَّا.",
-                exampleAr: "إِمِّي فِي البِيت اليَوم.",
-                exampleArabeezy: "immi fi el-beet el-yom.",
-                exampleEn: "My mother is at home today.",
+                hint: "His mother = إِمُّه. Her mother = إِمَّهَا. Calling mom: يَمَّا. The example recycles اِسْمِي from Unit 1; اِسْمْهَا means her name.",
+                exampleAr: "إِمِّي اِسْمْهَا لَيْلَى.",
+                exampleArabeezy: "immi ismaha Layla.",
+                exampleEn: "My mother's name is Layla.",
             },
            {
                 id: "akhuy",
                 ar: "أَخُوي",
                 en: "my brother",
                 enArabeezy: "akhuy",
-                hint: "Brother = أخ (akh). My brother = أَخُوي (akhuy). Two brothers = أَخَوَيْن (akhween). Brothers/siblings = إِخْوَة / إِخْوَان. (ikhwan).",
-                exampleAr: "أَخُوي أَكْبَر مِنِّي بِتَلَات سِنِين.",
-                exampleArabeezy: "akhuy akbar minni bi-talat sineen.",
-                exampleEn: "My brother is three years older than me.",
+                hint: "Brother = أخ (akh). My brother = أَخُوي (akhuy). Two brothers = أَخَوَيْن (akhween). Brothers/siblings = إِخْوَة / إِخْوَان. The example recycles اِسْمِي from Unit 1; اِسْمُه means his name.",
+                exampleAr: "أَخُوي اِسْمُه مُحَمَّد.",
+                exampleArabeezy: "akhuy ismo Mohammad.",
+                exampleEn: "My brother's name is Mohammad.",
             },
            {
                 id: "okhti",
                 ar: "أُخْتِي",
                 en: "my sister",
                 enArabeezy: "okhti",
-                hint: "Sister = أخت. My sister = أختي. Two sisters = أختين. Natural Gaza plural: خَوَات.",
-                exampleAr: "أُخْتِي أَصْغَر مِنِّي.",
-                exampleArabeezy: "okhti asghar minni.",
-                exampleEn: "My sister is younger than me.",
+                hint: "Sister = أخت. My sister = أختي. Two sisters = أختين. Natural Gaza plural: خَوَات. The example recycles اِسْمِي from Unit 1; اِسْمْهَا means her name.",
+                exampleAr: "أُخْتِي اِسْمْهَا نُور.",
+                exampleArabeezy: "okhti ismaha Noor.",
+                exampleEn: "My sister's name is Noor.",
             },
             {
                 id: "ikhwan",
@@ -118,9 +118,9 @@ export const lesson = {
                 en: "my grandfather",
                 enArabeezy: "sidi",
                 hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. His grandfather = سِيدُه. Her grandfather = سِيدْهَا.",
-                 exampleAr: "سيدي ساكن قريب منا.",
-                exampleArabeezy: "sidi saken qareeb minna.",
-                exampleEn: "My grandfather lives near us.",
+                 exampleAr: "سِيدِي مِن غَزَّة.",
+                exampleArabeezy: "sidi min Ghazza.",
+                exampleEn: "My grandfather is from Gaza.",
             },
             {
                 id: "sitti",
@@ -128,9 +128,9 @@ export const lesson = {
                 en: "my grandmother",
                 enArabeezy: "sitti",
                 hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. Her grandmother = سِتَّهَا.",
-               exampleAr: "بروح عند ستي كل يوم جمعة.",
-                exampleArabeezy: "Baru7 3ind sitti kil yōm jom3a.",
-                exampleEn: "I go to my grandmother's every Friday..",
+               exampleAr: "صَبَاح الخِير يَا سِتِّي.",
+                exampleArabeezy: "sabah el-kheir ya sitti.",
+                exampleEn: "Good morning, Grandma.",
             },
             {
                 id: "3amm",
@@ -348,9 +348,9 @@ export const lesson = {
         setting: "Two classmates talk after Arabic class. They already know each other from Unit 1 and now talk naturally about family.",
         lines: [
             { speaker: "Samer", ar: "مَرْحَبا لَيْلى، كِيفِك؟ شُو هَالصُّورَة الحِلْوِة؟", arArabeezy: "mar7aba layla, keefik? shoo hal-soora el-7ilweh?", en: "Hi Layla, how are you? What's this nice picture?" },
-            { speaker: "Layla", ar: "أَهْلِين سامِر. هاي صُورَة مِن يَوْم الجُمْعَة عِنْد سِتِّي.", arArabeezy: "ahleen samer. hay soora min yom el-jom3a 3ind sitti.", en: "Hi Samer. This is a picture from Friday at my grandmother's place." },
+            { speaker: "Layla", ar: "أَهْلِين سامِر. هاي صُورَة مِن لَمَّة العِيلِة يَوْم الجُمْعَة عِنْد سِتِّي وَسِيدِي.", arArabeezy: "ahleen samer. hay soora min lammet el-3eele yom el-jom3a 3ind sitti w sidi.", en: "Hi Samer. This is a picture from the family gathering on Friday at my grandparents' place." },
             { speaker: "Samer", ar: "ما شاء الله، مْبَيِّن العِيلِة كُلّها كانَت هْناك.", arArabeezy: "ma sha allah, mbayyen el-3eileh kullha kanat hnak.", en: "Wow, it looks like the whole family was there." },
-            { speaker: "Layla", ar: "تَقْريبًا آه. إِمِّي، أَبُوي، إِخْوِتي، وَخالْتي كَمان.", arArabeezy: "taqreeban ah. immi, abuy, ikhwt-i, w khalti kaman.", en: "Almost, yes. My mother, my father, my siblings, and my aunt too." },
+            { speaker: "Layla", ar: "تَقْريبًا آه. إِمِّي، أَبُوي، إِخْوِتي، وَعَمِّي وَمَرْتُه كَمان.", arArabeezy: "taqreeban ah. immi, abuy, ikhwt-i, w 3ammi w marto kaman.", en: "Almost, yes. My mother, father, siblings, and my uncle and his wife too." },
             { speaker: "Samer", ar: "هاد اللِّي جَنْب أَبُوك بِقَرَّبْلَك؟", arArabeezy: "had elli janb abook biqarrablak?", en: "Is the one next to your father related to you?" },
             { speaker: "Layla", ar: "آه، هاد عَمِّي. ساكِن قَريب مِنّا وَبِزُورْنا كْتير.", arArabeezy: "ah, had 3ammi. saken qareeb minna w bizoorna kteer.", en: "Yes, that's my uncle. He lives near us and visits us a lot." },
             { speaker: "Samer", ar: "حِلُو. وَإِنْتِ ساكْنِة مَع أَهْلِك لِسّا؟", arArabeezy: "7ilu. w inti sakneh ma3 ahlik lissa?", en: "Nice. And do you still live with your family?" },
@@ -362,10 +362,10 @@ export const lesson = {
             { speaker: "Samer", ar: "آه شُفْتُه. هُوَّ مِتْجَوِّز؟", arArabeezy: "ah shufto. howwa mitjawwez?", en: "Yes, I see him. Is he married?" },
             { speaker: "Layla", ar: "آه، مِتْجَوِّز وَعِنْدُه بِنْت وَحْدِة. بِنْتُه دايمًا بِتِضْحَك.", arArabeezy: "ah, mitjawwez w 3indo bint wa7deh. binto dayman bitid7ak.", en: "Yes, he's married and has one daughter. His daughter always laughs." },
             { speaker: "Samer", ar: "الله يْخَلِّيها. عِيلْتِك شَكِلْها قَريبِة مِن بَعْض.", arArabeezy: "allah ykhalliha. 3eiltik shakilha qareebeh min ba3d.", en: "May God protect her. Your family seems close to each other." },
-            { speaker: "Layla", ar: "آه الحَمْد لله. كُلّ جُمْعَة تَقْريبًا بِنِجْتِمِع عِنْد سِتِّي.", arArabeezy: "ah el-7amdullah. kul jom3a taqreeban bnjitmi3 3ind sitti.", en: "Yes, thankfully. Almost every Friday we gather at my grandmother's place." },
+            { speaker: "Layla", ar: "آه الحَمْد لله. كُلّ جُمْعَة تَقْريبًا بِنِجْتِمِع عِنْد سِتِّي وَسِيدِي.", arArabeezy: "ah el-7amdullah. kul jom3a taqreeban bnjitmi3 3ind sitti w sidi.", en: "Yes, thankfully. Almost every Friday we gather at my grandparents' place." },
             { speaker: "Samer", ar: "وَسِيدِك مَوْجُود بِالصُّورَة؟", arArabeezy: "w sidik mawjood bil-soora?", en: "And is your grandfather in the picture?" },
-            { speaker: "Layla", ar: "لا، سِيدي ساكِن مَع خالْتي وَما قِدِر يِيجي هَالْمَرَّة.", arArabeezy: "la, sidi saken ma3 khalti w ma qider yeeji hal-marra.", en: "No, my grandfather lives with my aunt and couldn't come this time." },
-            { speaker: "Samer", ar: "الله يِعْطِيه الصِّحَّة. أَنا كَمان سِتِّي ساكْنِة قَريب مِنّا.", arArabeezy: "allah yi3Teeh el-Se77a. ana kaman sitti sakneh qareeb minna.", en: "May God give him health. My grandmother also lives near us." },
+            { speaker: "Layla", ar: "هُوَّ مُش مَبْيِّن، وَقْت الصُّورَة كان جُوَّا نَايِم شُوَيّ.", arArabeezy: "howwe mish mbayyen, wa2t eS-Soora kan juwwa nayem shway.", en: "He isn't in the picture; when it was taken, he was inside sleeping for a while." },
+            { speaker: "Samer", ar: "آه، هَيْك فِهِمْت. أَنا كَمان سِتِّي وَسِيدِي بِيرْتَاحُوا شُوَيّ بَعْد الغَدَا.", arArabeezy: "ah, heik fihimt. ana kaman sitti w sidi birta7u shway ba3d el-ghada.", en: "Ah, now I understand. My grandparents also rest for a while after lunch." },
             { speaker: "Layla", ar: "عَنْجَد؟ بِتْزُورُوها كْتير؟", arArabeezy: "3anjad? bitzooroha kteer?", en: "Really? Do you visit her often?" },
             { speaker: "Samer", ar: "آه، غالِبًا يَوْم الجُمْعَة. بَرُوح أَنا وَأَخُوي.", arArabeezy: "ah, ghaliban yom el-jom3a. baroo7 ana w akhuy.", en: "Yes, usually on Friday. My brother and I go." },
             { speaker: "Layla", ar: "ما عِنْدَك خَوات، صَحّ؟", arArabeezy: "ma 3indak khawat, sa7?", en: "You don't have sisters, right?" },
@@ -389,7 +389,7 @@ export const lesson = {
             { ar: "مين أخت ليلى في الصورة؟", en: "Which one is Layla's sister in the picture?" },
             { ar: "أخ ليلى متجوز ولا أعزب؟", en: "Is Layla's brother married or single?" },
             { ar: "كل جمعة وين بتجتمع عيلة ليلى؟", en: "Where does Layla's family gather every Friday?" },
-            { ar: "ليش سيد ليلى مش موجود بالصورة؟", en: "Why isn't Layla's grandfather in the picture?" },
+            { ar: "ليش سيد ليلى مش مبيّن بالصورة؟", en: "Why can't we see Layla's grandfather in the picture?" },
             { ar: "سامر عنده خوات؟", en: "Does Samer have sisters?" },
             { ar: "أخ سامر أكبر ولا أصغر منه؟", en: "Is Samer's brother older or younger than him?" },
             { ar: "شو قالت ليلى عن جيران ستي؟", en: "What did Layla say about her grandmother's neighbors?" },
@@ -530,45 +530,52 @@ export const lesson = {
         items: [
             {
                 id: "family_mc1",
-                type: "match",
-                prompt: "Match the English word to Arabic: family",
-                options: ["عِيلَة", "أَهْلِي", "أَبُوي", "إِمِّي"],
-                correct: "عِيلَة",
+                type: "choose",
+                prompt: "Choose the Gaza Palestinian Arabic for: my father.",
+                options: ["أَبُوي", "أَخُوي", "عِيلَة", "أَهْلِي"],
+                correct: "أَبُوي",
             },
             {
                 id: "family_mc2",
-                type: "complete",
-                prompt: "Complete: أَبُوي وَ___.",
-                options: ["إِمِّي", "أَخُوي", "عِيلَة", "أَهْلِي"],
-                correct: "إِمِّي",
+                type: "choose",
+                prompt: "Choose the Gaza Palestinian Arabic word for: twin.",
+                options: ["تَوْأَم", "سِتِّي", "إِخْوَان", "أُخْتِي"],
+                correct: "تَوْأَم",
             },
             {
                 id: "family_mc3",
-                type: "choose",
-                prompt: "Choose the Gaza-style plural for sisters:",
-                options: ["خَوَات", "إِخْوَة", "أَخُوي", "وِلَاد"],
-                correct: "خَوَات",
+                type: "match",
+                prompt: "Choose the English meaning of خَالَة.",
+                options: ["أخت الأم", "أخت الأب", "أخو الأم", "أخو الأب"],
+                correct: "أخت الأم",
             },
             {
                 id: "family_mc4",
-                type: "reorder",
-                prompt: "Reorder: My uncle has a son.",
-                options: ["خَالِي", "عِنْدُه", "اِبِن"],
-                correct: ["خَالِي", "عِنْدُه", "اِبِن"],
+                type: "complete",
+                prompt: "Complete the Arabic question for: How is he related to you?\nشُو ___؟",
+                options: ["بِيِقْرَبْلَك", "أَكْبَر", "قَرَايِب", "وِلَاد"],
+                correct: "بِيِقْرَبْلَك",
             },
             {
                 id: "family_mc5",
-                type: "complete",
-                prompt: "Complete: أَخُوي أَكْبَر ___ّي.",
-                options: ["مِن", "مَع", "قَدّ", "عَلَى"],
-                correct: "مِن",
+                type: "choose",
+                prompt: "Choose the Gaza Palestinian Arabic sentence for: My sister is single.",
+                options: ["أُخْتِي عَزَابِيَّة.", "أُخْتِي مِتْجَوِّزَة.", "أُخْتِي قَدِّي.", "أُخْتِي أَكْبَر مِنِّي."],
+                correct: "أُخْتِي عَزَابِيَّة.",
             },
             {
                 id: "family_mc6",
                 type: "complete",
-                prompt: "Complete: أَنَا سَاكِن ___ أَهْلِي.",
-                options: ["مَع", "مِن", "وِين", "قَدِّي"],
-                correct: "مَع",
+                prompt: "Complete the Arabic sentence for: I live with my family.\nأَنَا ___ أَهْلِي.",
+                options: ["سَاكِن مَع", "مَا عِنْدِي", "حَمَاي", "مَا شَاء الله"],
+                correct: "سَاكِن مَع",
+            },
+            {
+                id: "family_mc7",
+                type: "choose",
+                prompt: "Someone says: My mother is very kind. Choose the reply meaning: May God keep her for you.",
+                options: ["الله يْخَلِّيلَك إِيَّاهَا.", "مَع السَّلَامَة.", "شُو بِيِقْرَبْلَك؟", "مَا عِنْدِي."],
+                correct: "الله يْخَلِّيلَك إِيَّاهَا.",
             },
         ],
     },
@@ -618,7 +625,7 @@ export const lesson = {
             {
                 id: "family_q7",
                 questionAr: "حَوِّل لِلْمُؤَنَّث: أَخُوي مِتْجَوِّز.",
-                optionsEn: ["أُخْتِي مِتْجَوِّزَة.", "أُخْتِي أَعْزَب.", "أَخُوي مَخْطُوبَة."],
+                optionsEn: ["أُخْتِي مِتْجَوِّزَة.", "أُخْتِي مِتْجَوِّز.", "أَخُوي مِتْجَوِّزَة."],
                 correctIndex: 0,
             },
             {
@@ -629,7 +636,7 @@ export const lesson = {
             },
             {
                 id: "family_q9",
-                questionAr: "رَدّ طبيعي لما حدا يحكي عن إِمُّه أو أَبُوه:",
+                questionAr: "Choose a warm reply when someone talks about their mother or father:",
                 optionsEn: ["الله يْخَلِّيلَك", "شُو اِسْمَك؟", "مَع السَّلَامَة"],
                 correctIndex: 0,
             },
@@ -679,7 +686,7 @@ export const lesson = {
                     { prompt: "Write (my age): اِبِن خَالِي ___.", arabeezy: "ibin khali ___.", answer: "قَدِّي" },
                     { prompt: "Write (living — feminine): أُخْتِي ___ مَع إِمِّي.", arabeezy: "ukhti ___ ma3 immi.", answer: "سَاكْنَة" },
                     { prompt: "Write (married — masculine): أَخُوي ___.", arabeezy: "akhuy ___.", answer: "مِتْجَوِّز" },
-                    { prompt: "Write (engaged — feminine): بِنْت خَالْتِي ___.", arabeezy: "bint khalti ___.", answer: "مَخْطُوبَة" },
+                    { prompt: "Write (my grandmother): صَبَاح الخِير يَا ___.", arabeezy: "sabah el-kheir ya ___.", answer: "سِتِّي" },
                     { prompt: "Unit 1 review — write (from): أَهْلِي ___ غَزَّة.", arabeezy: "ahli ___ Ghazza.", answer: "مِن" },
                     { prompt: "Write the question word (who): ___ هَاد؟", arabeezy: "___ hada?", answer: "مِين" },
                 ],
@@ -709,39 +716,39 @@ export const lesson = {
             { id: "family_t5", type: "enToAr", textEn: "My uncle has a son my age.", textAr: "خَالِي عِنْدُه اِبِن قَدِّي." },
             { id: "family_t6", type: "arToEn", textEn: "I live with my family.", textAr: "أَنَا سَاكِن/سَاكْنَة مَع أَهْلِي." },
             { id: "family_t7", type: "enToAr", textEn: "My brother is married.", textAr: "أَخُوي مِتْجَوِّز." },
-            { id: "family_t8", type: "arToEn", textEn: "My sister is single.", textAr: "أُخْتِي عَزْبَا." },
-            { id: "family_t9", type: "enToAr", textEn: "My sister is engaged.", textAr: "أُخْتِي مَخْطُوبَة." },
-            { id: "family_t10", type: "arToEn", textEn: "Our neighbors are like family.", textAr: "جِيرَانَّا زَيّ العِيلَة." },
-            { id: "family_t11", type: "enToAr", textEn: "My family lives here in Gaza.", textAr: "أَهْلِي سَاكْنِين هِنَا فِي غَزَّة." },
+            { id: "family_t8", type: "arToEn", textEn: "My sister is single.", textAr: "أُخْتِي عَزَابِيَّة." },
+            { id: "family_t9", type: "enToAr", textEn: "My father-in-law is from Gaza.", textAr: "حَمَاي مِن غَزَّة." },
+            { id: "family_t10", type: "arToEn", textEn: "We have relatives in Gaza.", textAr: "عِنْدْنَا قَرَايِب فِي غَزَّة." },
+            { id: "family_t11", type: "enToAr", textEn: "My family lives in Gaza.", textAr: "أَهْلِي سَاكْنِين فِي غَزَّة." },
             { id: "family_t12", type: "arToEn", textEn: "My maternal uncle has a son my age.", textAr: "خَالِي عِنْدُه اِبِن قَدِّي." },
             { id: "family_t13", type: "enToAr", textEn: "How is he related to you?", textAr: "هَاد شُو بِيِقْرَبْلَك؟" },
             { id: "family_t14", type: "arToEn", textEn: "My grandfather lives with my grandmother.", textAr: "سِيدِي سَاكِن مَع سِتِّي." },
             { id: "family_t15", type: "enToAr", textEn: "My aunt has a daughter and a twin.", textAr: "خَالْتِي عِنْدْهَا بِنْت وَتَوْأَم." },
-            { id: "family_t16", type: "arToEn", textEn: "Mashallah, your family is nice.", textAr: "مَا شَاء الله، عِيلْتَك حِلْوَة." },
+            { id: "family_t16", type: "arToEn", textEn: "Mashallah, you have many sisters.", textAr: "مَا شَاء الله، عِنْدَك خَوَات كْتِير." },
             { id: "family_t17", type: "enToAr", textEn: "May God keep your mother for you.", textAr: "الله يْخَلِّيلِك إِمِّك." },
         ],
     },
 
     homework: {
         instructions:
-            `Write and record a 60-90 second story about your family in Palestinian Arabic. Mention: who lives in your house, how many brothers and sisters you have, who is older/younger than you, and if any of them are married, single, or engaged. Try to use at least 8 words from the vocabulary list, the structure «عِنْدِي...», and at least 2 words from Unit 1.
+            `Write and record a 60-90 second story about your family in Palestinian Arabic. Mention: who lives in your house, how many brothers and sisters you have, who is older or younger than you, and if any of them are married or single. Try to use at least 8 words from the vocabulary list, the structure «عِنْدِي...», and at least 2 words from Unit 1.
 
 Translate these sentences into Gaza Palestinian Arabic:
 1. Hi, how are you?
 2. What's new? Reassure me about you.
 3. My name is Omar, and I am from Gaza.
 4. I live with my family.
-5. My mother is at home today.
-6. My father works in the morning.
+5. My mother is from Gaza.
+6. My father is from Gaza.
 7. I have one brother and one sister.
 8. I do not have sisters, but I have many relatives.
 9. Her father lives in Gaza.
-10. Her sister is younger than her.
+10. My sister is younger than me.
 11. His brother is married and has a daughter.
 12. My maternal uncle has a son my age.
-13. Her paternal aunt visits them on Friday.
-14. My mother-in-law is very kind.
-15. Goodbye, see you later, take care.`,
+13. Her paternal aunt lives with her grandmother.
+14. My mother-in-law is from Gaza.
+15. Goodbye, see you later.`,
     },
 
     teacherNotes: {
