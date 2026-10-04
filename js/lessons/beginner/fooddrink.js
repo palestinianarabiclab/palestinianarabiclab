@@ -46,9 +46,9 @@ export const lesson = {
                 en: "breakfast",
                 enArabeezy: "fuToor",
                 hint: "Morning meal. Verb: بَفْطَر = I have breakfast.",
-                exampleAr: "الصُّبُح بَفْطَر مَع أَهْلِي.",
-                exampleArabeezy: "el-soboh bafTar ma3 ahli.",
-                exampleEn: "In the morning I have breakfast with my family.",
+                "exampleAr": "إِمِّي بِتْسَوِّي الفُطُور الصُّبُح.",
+                "exampleArabeezy": "immi bitsawwi el-fuToor el-soboh.",
+                "exampleEn": "My mother prepares breakfast in the morning."
             },
             {
                 id: "ghada",
@@ -56,9 +56,9 @@ export const lesson = {
                 en: "lunch",
                 enArabeezy: "ghada",
                 hint: "Main family meal in many homes. Verb: بَتْغَدَّى = I have lunch.",
-                exampleAr: "بَعْد الضُّهُر بَاكُل الغَدَا مَع أَهْلِي.",
-                exampleArabeezy: "ba3d el-duhur baakul el-ghada ma3 ahli.",
-                exampleEn: "In the afternoon I eat lunch with my family.",
+                exampleAr: "إِحْنَا بِنَاكُل الغَدَا بَعْد الضُّهُر.",
+                exampleArabeezy: "i7na binakul el-ghada ba3d el-duhur.",
+                exampleEn: "We eat lunch in the afternoon."
             },
             {
                 id: "3asha",
@@ -75,10 +75,12 @@ export const lesson = {
                 ar: "خُبِز",
                 en: "bread",
                 enArabeezy: "khobez",
-                hint: "Very common with almost every meal. A loaf = رَغِيف خُبِز.",
-                exampleAr: "الصُّبُح بَفْطَر خُبِز.",
-                exampleArabeezy: "el-soboh bafTar khobez.",
-                exampleEn: "In the morning I have bread for breakfast.",
+                hint:
+                    "Very common. Singular as a mass: خُبِز. You can also hear: رغِيف خُبِز = a loaf of bread.",
+                exampleAr: "اشتريت خبز طازة من الفرن الصبح.",
+                exampleArabeezy: "ishtareit khobez Taaze min el-forn el-Subu7.",
+                exampleEn: "I bought fresh bread from the bakery in the morning."
+
             },
             {
                 id: "jibneh",
@@ -86,69 +88,76 @@ export const lesson = {
                 en: "cheese",
                 enArabeezy: "jibneh",
                 hint: "Common breakfast food. White cheese = جُبْنَة بَيْضَا.",
-                exampleAr: "بَفْطَر خُبِز وَجُبْنَة.",
-                exampleArabeezy: "bafTar khobez w jibneh.",
-                exampleEn: "I have bread and cheese for breakfast.",
+               "exampleAr": "أُخْتِي بِتِفْطَر خُبِز وَجُبْنَة بَيْضَا.",
+                "exampleArabeezy": "ukhti bitifTar khobez w jibneh beiDa.",
+                "exampleEn": "My sister eats bread and white cheese for breakfast."
             },
             {
                 id: "zeit_zaytoon",
                 ar: "زَيْت زَيْتُون",
                 en: "olive oil",
-                enArabeezy: "zeit zaytoon",
-                hint: "Basic Palestinian ingredient. Often eaten with bread and zaatar.",
-                exampleAr: "بَاكُل خُبِز مَع زَيْت زَيْتُون.",
-                exampleArabeezy: "baakul khobez ma3 zeit zaytoon.",
-                exampleEn: "I eat bread with olive oil.",
+                enArabeezy: "zeit_zaytoon",
+                hint:
+                    "Very basic ingredient in Palestinian food. Often eaten with bread and zaatar.",
+                exampleAr: "خُبِز مَع زَيْت زَيْتُون وَزَعْتَر فُطُور فِلَسْطِينِي كْتِير مَشْهُور.",
+                exampleArabeezy: "khbz m3 zyt zytwn wz3tr ftwr flstyny ktyr mshhwr.",
+                exampleEn: "Bread with olive oil and zaatar is a very famous Palestinian breakfast.",
             },
             {
                 id: "za3tar",
                 ar: "زَعْتَر",
-                en: "zaatar",
+                en: "zaatar (thyme mix)",
                 enArabeezy: "za3tar",
-                hint: "Thyme mix with sesame and spices. Common with bread and olive oil.",
-                exampleAr: "بَفْطَر خُبِز وَزَعْتَر.",
-                exampleArabeezy: "bafTar khobez w za3tar.",
-                exampleEn: "I have bread and zaatar for breakfast.",
+                hint:
+                    "Herb mix (thyme, sesame, etc.). Usually eaten with bread and olive oil or on manaqeesh.",
+                exampleAr: "مَنَاقِيش زَعْتَر مَع شَاي مِن أَحْلَى الْأَشْيَاء.",
+                exampleArabeezy: "mnaqysh z3tr m3 shay mn a7la elashya.",
+                exampleEn: "Zaatar manaqeesh with tea is one of the best things.",
             },
             {
                 id: "hummus",
                 ar: "حُمُّص",
-                en: "hummus",
+                en: "hummus (chickpea dip)",
                 enArabeezy: "hummus",
-                hint: "Very common with breakfast, dinner, or falafel.",
-                exampleAr: "بِالمَسَا بَاكُل حُمُّص.",
-                exampleArabeezy: "bel-masa baakul hummus.",
-                exampleEn: "In the evening I eat hummus.",
+                hint:
+                    "Very famous Middle Eastern food. Also means ‘chickpeas’ as beans.",
+                exampleAr: "حُمُّص مَع طَحِينَة أَكْلَة مَشْهُورَة فِي فِلَسْطِين.",
+                exampleArabeezy: "7ms m3 t7yna akla mshhwra fy flstyn.",
+                exampleEn: "Hummus with tahini is a famous dish in Palestine.",
             },
             {
                 id: "falafel",
                 ar: "فَلَافِل",
                 en: "falafel",
                 enArabeezy: "falafel",
-                hint: "Very common in a sandwich. Often breakfast or dinner.",
-                exampleAr: "الصُّبُح بَفْطَر حُمُّص وَفَلَافِل.",
-                exampleArabeezy: "el-soboh bafTar hummus w falafel.",
-                exampleEn: "In the morning I have hummus and falafel for breakfast.",
+                hint:
+                    "Deep-fried chickpea balls. Often eaten in a sandwich for breakfast or dinner.",
+                exampleAr: "كْتِير نَّاس بِفْطَرُوا سَنْدْوِيش فَلَافِل.",
+                exampleArabeezy: "ktyr nas bftrwa sndwysh flafl.",
+                exampleEn: "Many people have a falafel sandwich for breakfast.",
+            },
+            
+            {
+                id: "maqlubeh",
+                ar: "مَقْلُوبِة",
+                en: "maqlubeh (upside-down rice dish)",
+                enArabeezy: "maqlubeh",
+                hint:
+                    "Traditional Palestinian dish with rice, vegetables, and meat, flipped upside down.",
+                exampleAr: "مَقْلُوبِة  مِن أَشْهَر أَكَلَات فِلَسْطِين.",
+                exampleArabeezy: "mqlwba  mn ashhr aklat flstyn.",
+                exampleEn: " maqlubeh is one of the most famous Palestinian dishes.",
             },
             {
-                id: "ruz",
-                ar: "رُزّ",
-                en: "rice",
-                enArabeezy: "rozz",
-                hint: "Common with chicken, meat, vegetables, and home cooking.",
-                exampleAr: "بَاكُل رُزّ مَع أَهْلِي.",
-                exampleArabeezy: "baakul rozz ma3 ahli.",
-                exampleEn: "I eat rice with my family.",
-            },
-            {
-                id: "jaj",
+                id: "dajaj",
                 ar: "جَاج",
                 en: "chicken",
-                enArabeezy: "jaj",
-                hint: "Spoken word for chicken. More natural in daily speech than دَجَاج.",
-                exampleAr: "عَالغَدَا بَاكُل رُزّ وَجَاج.",
-                exampleArabeezy: "3al-ghada baakul rozz w jaj.",
-                exampleEn: "For lunch I eat rice and chicken.",
+                enArabeezy: "dajaj",
+                hint:
+                    "دَجَاج = chicken (meat). For a whole chicken you can hear جَاجَة.",
+                exampleAr: "المقلوبة بالجاج أكلة مفضّلة عند كتير ناس",
+                exampleArabeezy: "elmqlwba beljaj akla mfdla 3nd ktyr nas",
+                exampleEn: "Chicken maqlubeh is a favorite dish for many people.",
             },
             {
                 id: "la7meh",
@@ -165,21 +174,13 @@ export const lesson = {
                 ar: "سَمَك",
                 en: "fish",
                 enArabeezy: "samak",
-                hint: "Important in Gaza because the sea is part of daily food culture.",
-                exampleAr: "بَاكُل سَمَك مَع أَهْلِي.",
-                exampleArabeezy: "baakul samak ma3 ahli.",
-                exampleEn: "I eat fish with my family.",
+                hint:
+                    "",
+                exampleAr: "فِي غَزَّة السَّمَك طَازَة وِكْتِير طَيِّب.",
+                exampleArabeezy: "fy ghza elsmk taza wktyr tyb.",
+                exampleEn: "In Gaza, the fish is fresh and very tasty.",
             },
-            {
-                id: "maqlubeh",
-                ar: "مَقْلُوبِة",
-                en: "maqlubeh",
-                enArabeezy: "maqlubeh",
-                hint: "Famous Palestinian rice dish with chicken/meat and vegetables.",
-                exampleAr: "اليَوم بَاكُل مَقْلُوبِة جَاج.",
-                exampleArabeezy: "el-yom baakul maqlubeh jaj.",
-                exampleEn: "Today I am eating chicken maqlubeh.",
-            },
+
             {
                 id: "salata",
                 ar: "سَلَطَة",
@@ -196,9 +197,9 @@ export const lesson = {
                 en: "vegetables",
                 enArabeezy: "khodar",
                 hint: "Examples: بَنْدُورَة، خِيَار، بَطَاطَا، بَصَل.",
-                exampleAr: "بَاكُل خُضَار مَع الغَدَا.",
-                exampleArabeezy: "baakul khodar ma3 el-ghada.",
-                exampleEn: "I eat vegetables with lunch.",
+                exampleAr: "إِمِّي دَايْمًا بِتِسَوِّي سلطة خضَار طَازَة مَع الْغَدَا.",
+                exampleArabeezy: "imy dayma btswy slta khdar taza m3 elghda.",
+                exampleEn: "My mom always prepares fresh vegetables salad with lunch.",
             },
             {
                 id: "fawakeh",
@@ -210,7 +211,17 @@ export const lesson = {
                 exampleArabeezy: "ba3d el-ghada baakul fawakeh.",
                 exampleEn: "After lunch I eat fruit.",
             },
-
+            {
+                id: "halaweeyat",
+                ar: "حَلَوِيَّات",
+                en: "sweets / desserts",
+                enArabeezy: "7alaweyyat",
+                hint:
+                    "Plural noun. Singular general form: حَلْوِيّة. Includes cakes, Arabic sweets, etc.",
+                exampleAr: "بِحِبّ حَلَوِيَّات عَرَبِيَّة زَيّ كُنَافَة.",
+                exampleArabeezy: "b7b 7lwyat 3rbya zy knafa.",
+                exampleEn: "I like Arabic sweets like kunafa.",
+            },
             {
                 id: "baharat",
                 ar: "بَهَارَات",
@@ -222,14 +233,68 @@ export const lesson = {
                 exampleEn: "I eat chicken with spices.",
             },
             {
+                id: "ma2le",
+                ar: "مَقْلِي",
+                en: "fried",
+                enArabeezy: "ma2li",
+                hint:
+                    "Adjective: مُقْرَمِش مَقْلِي = crispy fried.",
+                exampleAr: "فَلَافِل أَكْثَرُه أَكْلَة مَقْلِيَّة.",
+                exampleArabeezy: "flafl akthrh akla mqlya.",
+                exampleEn: "Falafel is mostly a fried food.",
+            },
+            {
+                id: "maTbukh",
+                ar: "مَطْبُوخ",
+                en: "cooked",
+                enArabeezy: "maTbukh",
+                hint:
+                    "Opposite of raw. خْضَار مَطْبُوخَة = cooked vegetables.",
+                exampleAr: "بِفَضَّل خْضَار مَطْبُوخَ عَنْ المَقْلِيَّ.",
+                exampleArabeezy: "bfdl khdar mtbwkha 3n elmqlya.",
+                exampleEn: "I prefer cooked vegetables over fried ones.",
+            },
+
+            {
+                id: "m7ar",
+                ar: "حَارّ /شطة ",
+                en: "spicy / hot (food)",
+                enArabeezy: "7arr",
+                hint: "Used for spicy food.",
+                exampleAr: "بَحِبّ الاكل الحارّ.",
+                exampleArabeezy: "b7b elakl el7ar.",
+                exampleEn: "I like spicy food.",
+            },
+            {
+                id: "mal7",
+                ar: "مالِح",
+                en: "salty",
+                enArabeezy: "melle7",
+                hint: "From ملح = salt.",
+                exampleAr: "هَادَا الطَّبَق مالِح كْتِير.",
+                exampleArabeezy: "hada eltbq ml7 ktyr.",
+                exampleEn: "This dish is too salty.",
+            },
+            {
+                id: "S7i",
+                ar: "صِحِّي",
+                en: "healthy",
+                enArabeezy: "Se77i",
+                hint: "Used for healthy food.",
+                exampleAr: "بِحَاوِل آكُل أَكِل صِحِّي.",
+                exampleArabeezy: "b7awl aakl akl s7y.",
+                exampleEn: "I try to eat healthy food.",
+            },
+            {
                 id: "mayy",
                 ar: "مَيّ",
                 en: "water",
                 enArabeezy: "mayy",
-                hint: "Very frequent. I want water = بَدِّي مَيّ.",
-                exampleAr: "بَعْد الغَدَا بَشْرَب مَيّ.",
-                exampleArabeezy: "ba3d el-ghada bashrab mayy.",
-                exampleEn: "After lunch I drink water.",
+                hint:
+                    "Very frequent. ‘I drink water’: بَشْرَب مَيّ.",
+                exampleAr: "لَازِم تِشْرَب مَيّ كْتِير خِلَال النَّهَار.",
+                exampleArabeezy: "lazm tshrb my ktyr khlal elnhar.",
+                exampleEn: "You need to drink a lot of water during the day.",
             },
             {
                 id: "ahweh",
@@ -237,9 +302,9 @@ export const lesson = {
                 en: "coffee",
                 enArabeezy: "ahweh",
                 hint: "In spoken Gaza pronunciation often sounds like أَهْوَة.",
-                exampleAr: "الصُّبُح بَشْرَب قَهْوَة.",
-                exampleArabeezy: "el-soboh bashrab ahweh.",
-                exampleEn: "In the morning I drink coffee.",
+                exampleAr: "بَشْرَب قَهْوَة سَادَة الصُّبِح.",
+                exampleArabeezy: "bshrb qhwa sada elsb7.",
+                exampleEn: "I drink black coffee in the morning.",
             },
             {
                 id: "shay",
@@ -257,9 +322,9 @@ export const lesson = {
                 en: "juice",
                 enArabeezy: "3aseer",
                 hint: "Plural/types: عَصَايِر. Orange juice = عَصِير بُرْتُقَال.",
-                exampleAr: "بِالمَسَا بَشْرَب عَصِير.",
-                exampleArabeezy: "bel-masa bashrab 3aseer.",
-                exampleEn: "In the evening I drink juice.",
+                exampleAr: "بِدَّك عَصِير بُرْتُقَال ولا مَيّ؟",
+                exampleArabeezy: "biddak 3aseer burtuqal walla mayy?",
+                exampleEn: "Do you want orange juice or water?",
             },
             {
                 id: "ja3an",
@@ -267,9 +332,9 @@ export const lesson = {
                 en: "hungry",
                 enArabeezy: "ja3an / ja3aneh",
                 hint: "Male: جَعَان. Female: جَعَانَة. Plural: جَعَانِين.",
-                exampleAr: "بَعْد الشُّغُل أَنَا جَعَان.",
-                exampleArabeezy: "ba3d el-shughul ana ja3an.",
-                exampleEn: "After work I am hungry.",
+                exampleAr: "أَنَا كْتِير جَعَان، وِين المَطْعَم؟",
+                exampleArabeezy: "ana kteer ja3an, wen el-mat3am?",
+                exampleEn: "I'm very hungry, where is the restaurant?",
             },
             {
                 id: "3atshan",
@@ -277,9 +342,19 @@ export const lesson = {
                 en: "thirsty",
                 enArabeezy: "3atshan / 3atshaneh",
                 hint: "Male: عَطْشَان. Female: عَطْشَانَة. Plural: عَطْشَانِين.",
-                exampleAr: "بَعْد الشُّغُل أَنَا عَطْشَان.",
-                exampleArabeezy: "ba3d el-shughul ana 3atshan.",
-                exampleEn: "After work I am thirsty.",
+                exampleAr: "أَنَا عَطْشَانَة، لَوْ سَمَحْت بدي مَيّ.",
+                exampleArabeezy: "ana 3atshaneh, law sama7ti biddi mayy.",
+                exampleEn: "I'm thirsty, please I want water.",
+            },
+            {
+                id: "t3am",
+                ar: "طَعِم",
+                en: "taste (flavour)",
+                enArabeezy: "ta3am",
+                hint: "Used to talk about taste of food.",
+                exampleAr: "طَعِم الْأَكِل هُنَا مُمْتَاز.",
+                exampleArabeezy: "t3m elakl hna mmtaz.",
+                exampleEn: "The taste of the food here is excellent.",
             },
             {
                 id: "zaki",
@@ -287,9 +362,9 @@ export const lesson = {
                 en: "tasty / delicious",
                 enArabeezy: "zaki / zakiyeh",
                 hint: "Male: زَاكِي. Female: زَاكِيَة. Plural: زَاكْيِين.",
-                exampleAr: "الجَاج زَاكِي كْتِير.",
-                exampleArabeezy: "el-jaj zaki kteer.",
-                exampleEn: "The chicken is very tasty.",
+                "exampleAr": "المَقْلُوبِة المَطْبُوحَة فِي البِيت كْتِير زَاكْيَة.",
+                "exampleArabeezy": "el-maqlubeh el-maTbookha fel-beet kteer zakiyeh.",
+                "exampleEn": "The home-cooked maqlubeh is very delicious."
             },
             {
                 id: "mish_zaki",
@@ -332,6 +407,39 @@ export const lesson = {
                 exampleEn: "I don't like fish.",
             },
             {
+                id: "bifaDDil",
+                ar: "بِفَضَّل",
+                en: "I prefer",
+                enArabeezy: "bifaDDel",
+                hint:
+                    "More specific than بَحِبّ. ‘I prefer X over Y’: بِفَضَّل … عَنْ …. ",
+                "exampleAr": "هِيَّ بِتْفَضَّل الجَاج عَنْ اللَّحْمَة.",
+                "exampleArabeezy": "hiyya bitfaDDel el-jaj 3an el-la7meh.",
+                "exampleEn": "She prefers chicken over meat."
+            },
+            {
+                id: "ba2mor",
+                ar: "بَطْلُب",
+                en: "I order (food/drink)",
+                enArabeezy: "baTlob",
+                hint:
+                    "Spoken form for ‘I order’ (in café / restaurant): بَطْلُب قَهْوَة، بَطْلُب سَنْدْوِيش.",
+                exampleAr: "فِي الكافي بَطْلُب قَهْوَة وَعَصِير.",
+                exampleArabeezy: "fy elkafy btlb qhwa w3syr.",
+                exampleEn: "At the café I order coffee and juice.",
+            },
+            {
+                id: "bajarrib",
+                ar: "بَجَرِّب",
+                en: "I try (food / something new)",
+                enArabeezy: "bajarrib",
+                hint:
+                    "From جَرَّب = to try. Used a lot with new dishes: بَجَرِّب أَكْلَة جْدِيدَة.",
+                exampleAr: "لَمَّا أَسَافِر بَجَرِّب أَكْلَات مَحَلِّيَّة.",
+                exampleArabeezy: "lma asafr bjrb aklat m7lya.",
+                exampleEn: "When I travel I try local dishes.",
+            },
+            {
                 id: "baddi",
                 ar: "بَدِّي",
                 en: "I want",
@@ -356,9 +464,9 @@ export const lesson = {
                 ar: "صَحَّة وَعَافْيَة",
                 en: "enjoy / bon appetit",
                 enArabeezy: "sa77a w 3afyeh",
-                hint: "Said when serving food or when someone is eating. Reply: الله يْعَافِيك.",
-                exampleAr: "صَحَّة وَعَافْيَة. ـ الله يْعَافِيك.",
-                exampleArabeezy: "sa77a w 3afyeh. - allah y3afeek.",
+                hint: "Said when serving food or when someone is eating. Reply: عقلبك.",
+                exampleAr: "صَحَّة وَعَافْيَة. ـ عقلبك .",
+                exampleArabeezy: "sa77a w 3afyeh. — 3a2lbak.",
                 exampleEn: "Enjoy your meal. — Thank you.",
             },
         ],
@@ -519,37 +627,7 @@ export const lesson = {
                 { prompt: "Complete: ___ شَاي means ‘two cups of tea’.", options: ["كَاسْتَيْن", "كَاسَة", "تَلَات كَاسَات"], correct: "كَاسْتَيْن", explanation: "كَاسْتَيْن is the common dual form: two cups/glasses." },
             ],
         },
-        {
-            title: "4. Feminine sound plurals in food and daily speech",
-            short: "سَلَطَة ← سَلَطَات — كَاسَة ← كَاسَات",
-            description: "Many feminine nouns ending in ـة form a spoken plural with ـات. Before adding ـات, the final ـة is heard as t: سَلَطَة → سَلَطَات. This is a useful pattern, not a promise: Arabic also has many broken plurals, so each new noun should still be learned with its real plural.",
-            table: {
-                title: "Common ـات plurals in this unit",
-                headers: ["Singular", "Plural", "Arabizi plural", "Meaning"],
-                rows: [
-                    ["سَلَطَة", "سَلَطَات", "salaTat", "salads"],
-                    ["كَاسَة", "كَاسَات", "kasat", "cups / glasses"],
-                    ["وَجْبَة", "وَجْبَات", "wajbat", "meals"],
-                    ["طَلْبِيَّة", "طَلْبِيَّات", "Talabiyyat", "orders"],
-                    ["قَنِّينَة", "قَنَانِي / قَنِّينَات", "qanani / qanneenat", "bottles (two heard options)"],
-                ],
-            },
-            examples: [
-                { ar: "عِنْدْهُم سَلَطَات زَاكْيَات كْتِير.", arabeezy: "3indhum salaTat zakyat kteer.", en: "They have many tasty salads." },
-                { ar: "بَدِّنَا تَلَات كَاسَات وَقَنِّينَتَيْن مَيّ.", arabeezy: "baddna talat kasat w qanneentein mayy.", en: "We want three glasses and two bottles of water." },
-                { ar: "وَجْبَات المَطْعَم كْبِيرَة وَمْشَبِّعَة.", arabeezy: "wajbat el-maT3am kbeereh w mshabbi3a.", en: "The restaurant’s meals are large and filling." },
-            ],
-            commonMistakes: [
-                "Do not add ـات to every feminine noun. مَدِينَة → مُدُن and فَاكْهَة → فَوَاكِه show that broken plurals remain common.",
-                "Adjective agreement with non-human plurals varies in speech. You may hear plural agreement (سَلَطَات زَاكْيَات) and feminine-singular agreement in some contexts. Learn what speakers use with each chunk.",
-                "The written ـة is pronounced as t when an ending follows or inside many connected forms: سَلَطَة → سَلَطَات.",
-            ],
-            exercises: [
-                { prompt: "Choose the plural of سَلَطَة.", options: ["سَلَطَات", "سَلَطُون", "سُلُوط"], correct: "سَلَطَات", explanation: "Replace the feminine ending ـة with the plural ending ـات." },
-                { prompt: "Which singular/plural pair is correct?", options: ["وَجْبَة ← وَجْبَات", "كَاسَة ← كَاسُون", "فَاكْهَة ← فَاكْهَات دائمًا"], correct: "وَجْبَة ← وَجْبَات", explanation: "وَجْبَات is a regular, common feminine sound plural." },
-                { prompt: "What happens to the sound of ـة in سَلَطَات?", options: ["It becomes a clear t sound before ـات.", "It becomes w.", "It disappears with no plural ending."], correct: "It becomes a clear t sound before ـات.", explanation: "The connected stem exposes t: salaTa → salaTat." },
-            ],
-        },
+
     ],
 
     microChecks: {
@@ -564,11 +642,31 @@ export const lesson = {
                 correct: "عَشَا",
             },
             {
-                id: "food_mc2",
-                type: "complete",
-                prompt: "Complete the Arabic phrase for: bread with olive oil.\nخُبِز مَع زَيْت ___.",
-                options: ["زَيْتُون", "فَلَافِل", "جُبْنَة", "حُمُّص"],
-                correct: "زَيْتُون",
+                "id": "food_mc2",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: Bread with olive oil and thyme is a very famous Palestinian breakfast.",
+                "options": [
+                    "مَشْهُور",
+                    "زَيْتُون",
+                    "خُبِز",
+                    "فُطُور",
+                    "وَزَعْتَر",
+                    "فِلَسْطِينِي",
+                    "مَع",
+                    "كْتِير",
+                    "زَيْت"
+                ],
+                "correct": [
+                    "خُبِز",
+                    "مَع",
+                    "زَيْت",
+                    "زَيْتُون",
+                    "وَزَعْتَر",
+                    "فُطُور",
+                    "فِلَسْطِينِي",
+                    "كْتِير",
+                    "مَشْهُور"
+                ]
             },
             {
                 id: "food_mc3",
@@ -578,33 +676,97 @@ export const lesson = {
                 correct: "مَقْلُوبِة",
             },
             {
-                id: "food_mc4",
-                type: "complete",
-                prompt: "Complete the Arabic phrase for: vegetable salad.\nسَلَطَة ___.",
-                options: ["خُضَار", "فَوَاكِه", "بَهَارَات", "مَوْز"],
-                correct: "خُضَار",
+                "id": "food_mc4",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: In Gaza, fish is fresh and very delicious.\nفِي غَزَّة السَّمَك ___ وِكْتِير طَيِّب.",
+                "options": [
+                    "طَازَة",
+                    "بَارِد",
+                    "سُخُن",
+                    "حِلِو"
+                ],
+                "correct": "طَازَة"
             },
             {
-                id: "food_mc5",
-                type: "choose",
-                prompt: "Choose the Gaza Palestinian Arabic sentence for: I am hungry.",
-                options: ["أَنَا جَعَان.", "أَنَا عَطْشَان.", "بَشْرَب مَيّ.", "بَشْرَب شَاي."],
-                correct: "أَنَا جَعَان.",
+                "id": "food_mc5",
+                "type": "choose",
+                "prompt": "Choose the Palestinian Arabic sentence for: I like Arabic sweets like kunafa.",
+                "options": [
+                    "بَحِبّ حَلَوِيَّات عَرَبِيَّة زَيّ كُنَافَة.",
+                    "أَنَا جَعَان وِبَدِّي أَنَام.",
+                    "بَشْرَب قَهْوَة مَع سُكَّر.",
+                    "بَطْبُخ جَاج وِرُزّ كُلّ يَوم."
+                ],
+                "correct": "بَحِبّ حَلَوِيَّات عَرَبِيَّة زَيّ كُنَافَة."
             },
             {
-                id: "food_mc6",
-                type: "choose",
-                prompt: "Choose the Gaza Palestinian Arabic sentence for: Today I don't feel like rice.",
-                options: ["اليَوم مِش جَاي عَلَى بَالِي رُزّ.", "اليَوم الأَكْل مِش زَاكِي.", "أَنَا عَطْشَان.", "بَحِبّ الرُّزّ."],
-                correct: "اليَوم مِش جَاي عَلَى بَالِي رُزّ.",
+                "id": "food_mc6",
+                "type": "choose",
+                "prompt": "Choose the Palestinian Arabic sentence for: Falafel is mostly a fried dish.",
+                "options": [
+                    "الفَلَافِل أَكْثَرُه أَكْلَة مَقْلِيَّة.",
+                    "الفَلَافِل مَشْرُوب سُخُن.",
+                    "أَنَا مِش جَاي عَلَى بَالِي أَنَام.",
+                    "بَشْرَب شَاي مَع سُكَّر."
+                ],
+                "correct": "الفَلَافِل أَكْثَرُه أَكْلَة مَقْلِيَّة."
             },
             {
-                id: "food_mc7",
-                type: "choose",
-                prompt: "Your host offers more food, but you are full. Choose the reply meaning: No thanks, I'm full.",
-                options: ["بَدِّي كَمَان جَاج.", "لَا يِسْلَمُوا، شْبِعِت.", "أَنَا جَعَان.", "صَحَّة وَعَافْيَة."],
-                correct: "لَا يِسْلَمُوا، شْبِعِت.",
+                "id": "food_mc7",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: You must drink a lot of water during the day.\nلَازِم تِشْرَب ___ كْتِير خِلَال النَّهَار.",
+                "options": [
+                    "مَيّ",
+                    "شَاي",
+                    "قَهْوَة",
+                    "عَصِير"
+                ],
+                "correct": "مَيّ"
             },
+            {
+                "id": "food_mc8",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: I am very hungry, where is the restaurant?",
+                "options": [
+                    "وِين",
+                    "جَعَان،",
+                    "أَنَا",
+                    "المَطْعَم؟",
+                    "كْتِير"
+                ],
+                "correct": [
+                    "أَنَا",
+                    "كْتِير",
+                    "جَعَان،",
+                    "وِين",
+                    "المَطْعَم؟"
+                ]
+            },
+            {
+                "id": "food_mc9",
+                "type": "choose",
+                "prompt": "Choose the Palestinian Arabic sentence for: Today I don't feel like having rice.",
+                "options": [
+                    "اليَوم مِش جَاي عَلَى بَالِي رُزّ.",
+                    "اليَوم بَدِّي آكُل رُزّ وِجَاج.",
+                    "أَنَا جَعَان كْتِير اليَوم.",
+                    "بَدِّي أِشْرَب مَيّ بَارْدَة."
+                ],
+                "correct": "اليَوم مِش جَاي عَلَى بَالِي رُزّ."
+            },
+            {
+                "id": "food_mc9",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: I prefer fish over meat.\nبِفَضَّل السَّمَك ___ اللَّحِم.",
+                "options": [
+                    "عَنْ",
+                    "مِن",
+                    "فِي",
+                    "مَع"
+                ],
+                "correct": "عَنْ"
+            },
+
         ],
     },
 
@@ -696,10 +858,10 @@ export const lesson = {
                 ],
                 reorderSentences: [
                     { prompt: "Build a question to one woman: What do you eat in the morning?", arabeezy: "shu btakli eS-Subu7?", words: ["الصُّبُح؟", "شُو", "بِتَاكْلِي"], answer: "شُو بِتَاكْلِي الصُّبُح؟" },
-                    { prompt: "Build: They do not like fish.", arabeezy: "humme ma bi7ibbu el-samak.", words: ["هُمَّ", "مَا بِحِبُّوا", "السَّمَك."], answer: "هُمَّ مَا بِحِبُّوا السَّمَك." },
+                    { prompt: "Build: They do not like fish.", arabeezy: "humme ma bi7ibbu el-samak.", words: ["مَا بِحِبُّوا","هُمَّ",  "السَّمَك."], answer: "هُمَّ مَا بِحِبُّوا السَّمَك." },
                     { prompt: "Build: We eat lunch with our family.", arabeezy: "bnaakul el-ghada ma3 ahlna.", words: ["مَع أَهْلْنَا.", "بِنَاكُل", "إِحْنَا", "الغَدَا"], answer: "إِحْنَا بِنَاكُل الغَدَا مَع أَهْلْنَا." },
                     { prompt: "Build a polite offer to one man.", arabeezy: "tfaddal kol shway jaj.", words: ["شُوَيّ", "تْفَضَّل", "جَاج.", "كُل"], answer: "تْفَضَّل كُل شُوَيّ جَاج." },
-                    { prompt: "Build: My sister is thirsty, but she does not want juice.", arabeezy: "ukhti 3atshaneh bas ma biddha 3aseer.", words: ["أُخْتِي", "عَطْشَانَة،", "بَس", "مَا بَدَّهَا", "عَصِير."], answer: "أُخْتِي عَطْشَانَة، بَس مَا بَدَّهَا عَصِير." },
+                    { prompt: "Build: My sister is thirsty, but she does not want juice.", arabeezy: "ukhti 3atshaneh bas ma biddha 3aseer.", words: ["عَطْشَانَة،","أُخْتِي", "مَا بَدَّهَا", "بَس",  "عَصِير."], answer: "أُخْتِي عَطْشَانَة، بَس مَا بَدَّهَا عَصِير." },
                 ],
             },
         ],

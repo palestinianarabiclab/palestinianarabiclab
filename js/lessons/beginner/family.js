@@ -70,7 +70,7 @@ export const lesson = {
                 exampleArabeezy: "immi ismaha Layla.",
                 exampleEn: "My mother's name is Layla.",
             },
-           {
+            {
                 id: "akhuy",
                 ar: "أَخُوي",
                 en: "my brother",
@@ -80,7 +80,7 @@ export const lesson = {
                 exampleArabeezy: "akhuy ismo Mohammad.",
                 exampleEn: "My brother's name is Mohammad.",
             },
-           {
+            {
                 id: "okhti",
                 ar: "أُخْتِي",
                 en: "my sister",
@@ -110,15 +110,15 @@ export const lesson = {
                 exampleArabeezy: "ana w taw2ami bnafs el-3omor.",
                 exampleEn: "My twin and I are the same age.",
             },
-           
-            
+
+
             {
                 id: "sidi",
                 ar: "سِيدِي",
                 en: "my grandfather",
                 enArabeezy: "sidi",
                 hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. His grandfather = سِيدُه. Her grandfather = سِيدْهَا.",
-                 exampleAr: "سِيدِي مِن غَزَّة.",
+                exampleAr: "سِيدِي مِن غَزَّة.",
                 exampleArabeezy: "sidi min Ghazza.",
                 exampleEn: "My grandfather is from Gaza.",
             },
@@ -128,7 +128,7 @@ export const lesson = {
                 en: "my grandmother",
                 enArabeezy: "sitti",
                 hint: "Very common affectionate word. Grandparents = سِيدِي وَسِتِّي. Her grandmother = سِتَّهَا.",
-               exampleAr: "صَبَاح الخِير يَا سِتِّي.",
+                exampleAr: "صَبَاح الخِير يَا سِتِّي.",
                 exampleArabeezy: "sabah el-kheir ya sitti.",
                 exampleEn: "Good morning, Grandma.",
             },
@@ -172,7 +172,7 @@ export const lesson = {
                 exampleArabeezy: "khalti zay immi taqreeban.",
                 exampleEn: "My aunt is almost like my mother.",
             },
-             {
+            {
                 id: "ibin",
                 ar: "اِبِن",
                 en: "son",
@@ -192,7 +192,7 @@ export const lesson = {
                 exampleArabeezy: "khalti 3indha bint zghireh.",
                 exampleEn: "My aunt has a young daughter.",
             },
-             {
+            {
                 id: "wlad",
                 ar: "ولاد",
                 en: "children / kids",
@@ -258,7 +258,7 @@ export const lesson = {
                 en: "married",
                 enArabeezy: "mitjawwez / mitjawwzeh",
                 hint: "Male: مِتْجَوِّز. Female: مِتْجَوِّزَة. Plural: مِتْجَوِّزِين.",
-               exampleAr: "أخوي متجوز وعنده ولد.",
+                exampleAr: "أخوي متجوز وعنده ولد.",
                 exampleArabeezy: "akhuy mitjawwez w 3indo walad.",
                 exampleEn: "My brother is married and has a son.",
             },
@@ -272,7 +272,7 @@ export const lesson = {
                 exampleArabeezy: "okhti 3azabeyeh w lissa bitidros.",
                 exampleEn: "My sister is single and still studies.",
             },
-                {
+            {
                 id: "joz_mara",
                 ar: "جوز / مرة",
                 en: "husband / wife",
@@ -282,14 +282,16 @@ export const lesson = {
                 exampleArabeezy: "marti min ghazzeh.",
                 exampleEn: "My wife is from Gaza.",
             },
-            {id: "7amay_7amati",
+            {
+                id: "7amay_7amati",
                 ar: "حماي / حماتي",
                 en: "father-in-law / mother-in-law",
                 enArabeezy: "7amay / 7amati",
                 hint: "Spouse's parents. حماي (7amay) = my father-in-law. حماتي (7amati) = my mother-in-law. In-laws = حمايل / أهل الجوز أو أهل المرة depending on context.",
                 exampleAr: "حماتي ساكنة قريب منا.",
                 exampleArabeezy: "7amati sakneh qareeb minna.",
-                exampleEn: "My mother-in-law lives near us.",},
+                exampleEn: "My mother-in-law lives near us.",
+            },
             {
                 id: "3indi",
                 ar: "عِنْدِي...",
@@ -381,7 +383,7 @@ export const lesson = {
             { speaker: "Layla", ar: "مَع السَّلامِة، بِنْشُوفَك بَعْدَيْن.", arArabeezy: "ma3 el-salameh, binshoofak ba3dain.", en: "Goodbye, see you later." },
         ],
         questions: [
-              { ar: "شو كان سامر وليلى بيشوفوا؟", en: "What were Samer and Layla looking at?" },
+            { ar: "شو كان سامر وليلى بيشوفوا؟", en: "What were Samer and Layla looking at?" },
             { ar: "الصورة كانت من أي يوم؟", en: "Which day was the picture from?" },
             { ar: "مين كان موجود بالصورة من عيلة ليلى؟", en: "Who from Layla's family was in the picture?" },
             { ar: "مين الشخص اللي جنب أبو ليلى؟", en: "Who is the person next to Layla's father?" },
@@ -394,7 +396,7 @@ export const lesson = {
             { ar: "أخ سامر أكبر ولا أصغر منه؟", en: "Is Samer's brother older or younger than him?" },
             { ar: "شو قالت ليلى عن جيران ستي؟", en: "What did Layla say about her grandmother's neighbors?" },
             { ar: "احكي عن عيلة ليلى بخمس جمل.", en: "Talk about Layla's family in five sentences." },
-            { ar: "احكي عن عيلتك إنت: مين ساكن معك؟ عندك إخوة؟", en: "Talk about your family: who lives with you? Do you have siblings?" },  ],
+            { ar: "احكي عن عيلتك إنت: مين ساكن معك؟ عندك إخوة؟", en: "Talk about your family: who lives with you? Do you have siblings?" },],
     },
 
     grammar: [
@@ -431,97 +433,7 @@ export const lesson = {
                 { prompt: "Which phrase means ‘our family’?", options: ["عِيلْتْنَا", "عِيلْتُه", "عِيلْتِك"], correct: "عِيلْتْنَا", explanation: "The ending ـنَا means ‘our’." },
             ],
         },
-        {
-            title: "2. Two nouns together: family relationships and ownership",
-            short: "بَيْت سِتِّي — اِسْم أَبُوه — صُورَة العِيلَة",
-            description: "Another way to show possession is to place two nouns together: the thing first, then its owner. English often reverses the order or uses ‘of’. Palestinian Arabic keeps the two nouns close, and the first noun is understood as connected to the second.",
-            table: {
-                title: "The spoken possession pattern",
-                headers: ["Pattern", "Palestinian Arabic", "Arabizi", "Natural English"],
-                rows: [
-                    ["thing + owner", "بَيْت سِتِّي", "beit sitti", "my grandmother’s house"],
-                    ["thing + owner", "اِسْم أَبُوه", "ism abooh", "his father’s name"],
-                    ["thing + family", "صُورَة العِيلَة", "Sooret el-3eeleh", "the family photo"],
-                    ["relationship + name", "أَخُو سَارَة", "akho Sara", "Sara’s brother"],
-                ],
-            },
-            examples: [
-                { ar: "هَاد بَيْت سِتِّي.", arabeezy: "had beit sitti.", en: "This is my grandmother’s house." },
-                { ar: "شُو اِسْم أَبُوك؟", arabeezy: "shu ism abook?", en: "What is your father’s name? (to a man)" },
-                { ar: "هَاي صُورَة عِيلْتْنَا يَوم الجُمْعَة.", arabeezy: "hay Sooret 3eeltna yom el-jum3a.", en: "This is our family photo from Friday." },
-            ],
-            commonMistakes: [
-                "Do not insert مِن between the two nouns: بَيْت سِتِّي, not بَيْت مِن سِتِّي.",
-                "The first noun normally does not take الـ in a tight ownership phrase: صُورَة العِيلَة, not الصُّورَة العِيلَة.",
-                "Everyday speech often changes the ending sound: صُورَة becomes صُورِة/صُورَتـ before an attached owner, as in صُورِتْنَا.",
-            ],
-            exercises: [
-                { prompt: "Build ‘my grandmother’s house’.", options: ["بَيْت سِتِّي", "سِتِّي بَيْت", "بَيْت مِن سِتِّي"], correct: "بَيْت سِتِّي", explanation: "Put the possessed thing first (house), then the owner (my grandmother)." },
-                { prompt: "What does أَخُو لَيْلَى mean?", options: ["Layla’s brother", "My brother Layla", "Layla’s sister"], correct: "Layla’s brother", explanation: "أَخُو is the relationship; لَيْلَى identifies the owner/relative." },
-                { prompt: "Choose the natural phrase for ‘the family photo’.", options: ["صُورَة العِيلَة", "العِيلَة صُورَة", "صُورَة مِن العِيلَة"], correct: "صُورَة العِيلَة", explanation: "The direct noun+noun structure gives the intended possession/association." },
-            ],
-        },
-        {
-            title: "3. Talking about two people: اتْنِين and the dual",
-            short: "أَخُوَيْن — أُخْتَيْن — وَلَدَيْن",
-            description: "Palestinian Arabic has dual forms, especially for common people, body parts, and fixed quantities. In natural conversation, speakers also use اتْنِين / تِنْتَيْن with a plural or counted noun. The goal is to recognise both strategies, not force a formal dual into every sentence.",
-            table: {
-                title: "Natural ways to express two",
-                headers: ["Singular", "Common dual", "Alternative with number", "Meaning"],
-                rows: [
-                    ["أَخ", "أَخُوَيْن (akhowein)", "اتْنِين إِخْوَة", "two brothers"],
-                    ["أُخْت", "أُخْتَيْن (ukhtein)", "تِنْتَيْن أَخَوَات", "two sisters"],
-                    ["وَلَد", "وَلَدَيْن (waladein)", "اتْنِين وْلَاد", "two boys/children"],
-                    ["بِنْت", "بِنْتَيْن (bintein)", "تِنْتَيْن بَنَات", "two girls/daughters"],
-                ],
-            },
-            examples: [
-                { ar: "عِنْدِي أَخُوَيْن وَأُخْت.", arabeezy: "3indi akhowein w ukht.", en: "I have two brothers and one sister." },
-                { ar: "إِلْهَا بِنْتَيْن، وَالتِّنْتَيْن بِدْرُسُوا.", arabeezy: "ilha bintein, wit-tintein bidarsu.", en: "She has two daughters, and both of them study." },
-                { ar: "إِحْنَا اتْنِين إِخْوَة وَتَلَات أَخَوَات.", arabeezy: "i7na itnein ikhweh w talat akhawat.", en: "We are two brothers and three sisters." },
-            ],
-            commonMistakes: [
-                "Do not assume every dual heard in formal Arabic is equally common in conversation. Learn the high-frequency family forms first.",
-                "Use اتْنِين with masculine/general counting and تِنْتَيْن with feminine counting in careful Palestinian speech.",
-                "After a dual subject, real speech may use plural verb agreement; later verb units will practise this variation.",
-            ],
-            exercises: [
-                { prompt: "Choose the common phrase for ‘two sisters’.", options: ["أُخْتَيْن", "أُخْتَات", "اتْنِين أُخْت"], correct: "أُخْتَيْن", explanation: "أُخْتَيْن is a very common dual family form." },
-                { prompt: "Complete: عِنْدِي ___ وَأُخْت وَحْدَة. (two brothers)", options: ["أَخُوَيْن", "أَخُو", "أَخَوَات"], correct: "أَخُوَيْن", explanation: "The dual of أَخ in everyday Palestinian usage is أَخُوَيْن." },
-                { prompt: "Which sentence means ‘She has two daughters’?", options: ["إِلْهَا بِنْتَيْن.", "إِلْهَا بِنْت.", "إِلْهَا وَلَدَيْن."], correct: "إِلْهَا بِنْتَيْن.", explanation: "بِنْتَيْن means two girls or two daughters." },
-            ],
-        },
-        {
-            title: "4. First plural patterns and adjective agreement",
-            short: "إِخْوَة، أَخَوَات، وْلَاد، بَنَات — كْبَار، صْغَار",
-            description: "Arabic plurals do not come from one universal ending. Palestinian learners should store the plural with each important noun. When describing people, the adjective is usually plural too: وْلَاد صْغَار, بَنَات كْبَار. This unit introduces useful patterns without pretending every noun follows them.",
-            table: {
-                title: "Family plurals worth learning as complete pairs",
-                headers: ["Singular", "Plural", "Arabizi", "Example"],
-                rows: [
-                    ["أَخ", "إِخْوَة", "ikhweh", "عِنْدِي تَلَات إِخْوَة"],
-                    ["أُخْت", "أَخَوَات", "akhawat", "عِنْدِي أَخَوَات كْبَار"],
-                    ["وَلَد", "وْلَاد", "wlad", "وْلَاد صْغَار"],
-                    ["بِنْت", "بَنَات", "banat", "بَنَات مْنَاح"],
-                    ["عَمّ / خَال", "عْمَام / أَخْوَال", "3mam / akhwal", "أَخْوَالِي سَاكْنِين بِغَزَّة"],
-                ],
-            },
-            examples: [
-                { ar: "إِخْوَتِي كْبَار وَكُلْهُم مُتْجَوِّزِين.", arabeezy: "ikhwiti kbar w kullhum mitjawwzeen.", en: "My brothers are older/grown and all of them are married." },
-                { ar: "عِنْدُه تَلَات بَنَات صْغَار.", arabeezy: "3indo talat banat zghar.", en: "He has three young daughters." },
-                { ar: "أَخْوَالِي سَاكْنِين قَرِيب مِنَّا.", arabeezy: "akhwali sakneen qareeb minna.", en: "My maternal uncles live near us." },
-            ],
-            commonMistakes: [
-                "Do not create every plural by adding ـات. أُخْت → أَخَوَات works with ـات, but أَخ → إِخْوَة and وَلَد → وْلَاد change internally.",
-                "For groups of people, keep the description plural: بَنَات صْغَار, not بَنَات صْغِيرَة.",
-                "Numbers three to ten have their own agreement pattern. This unit teaches useful chunks; the shopping unit develops counting more fully.",
-            ],
-            exercises: [
-                { prompt: "Choose the plural of أَخ used in this unit.", options: ["إِخْوَة", "أَخَات", "أَخُون"], correct: "إِخْوَة", explanation: "أَخ → إِخْوَة is a broken plural and must be learned as a pair." },
-                { prompt: "Choose the natural phrase: ‘young girls/daughters’.", options: ["بَنَات صْغَار", "بَنَات صْغِيرَة", "بِنْت صْغَار"], correct: "بَنَات صْغَار", explanation: "The noun and the human adjective are both plural here." },
-                { prompt: "Complete: عِنْدِي تَلَات ___. (sisters)", options: ["أَخَوَات", "أُخْت", "إِخْوَة"], correct: "أَخَوَات", explanation: "أَخَوَات is the plural of أُخْت." },
-            ],
-        },
+
     ],
 
     microChecks: {
@@ -543,21 +455,33 @@ export const lesson = {
                 correct: "تَوْأَم",
             },
             {
-                id: "family_mc3",
+                "id": "family_mc3",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: My aunt comes to my grandmother's house every Friday.\n___ بِتِيجِي عِنْد سِتِّي كُلّ جُمْعَة.",
+                "options": [
+                    "عَمْتِي",
+                    "جَارْتِي",
+                    "صَاحْبْتِي",
+                    "بِنْتِي"
+                ],
+                "correct": "عَمْتِي"
+            },
+            {
+                id: "family_mc4",
                 type: "match",
                 prompt: "Choose the English meaning of خَالَة.",
                 options: ["أخت الأم", "أخت الأب", "أخو الأم", "أخو الأب"],
                 correct: "أخت الأم",
             },
             {
-                id: "family_mc4",
+                id: "family_mc5",
                 type: "complete",
                 prompt: "Complete the Arabic question for: How is he related to you?\nشُو ___؟",
                 options: ["بِيِقْرَبْلَك", "أَكْبَر", "قَرَايِب", "وِلَاد"],
                 correct: "بِيِقْرَبْلَك",
             },
             {
-                id: "family_mc5",
+                id: "family_mc6",
                 type: "choose",
                 prompt: "Choose the Gaza Palestinian Arabic sentence for: My sister is single.",
                 options: ["أُخْتِي عَزَابِيَّة.", "أُخْتِي مِتْجَوِّزَة.", "أُخْتِي قَدِّي.", "أُخْتِي أَكْبَر مِنِّي."],
@@ -699,10 +623,10 @@ export const lesson = {
                     { prompt: "Use the feminine form. Correct: أُخْتِي مِتْجَوِّز.", arabeezy: "ukhti mitjawwez.", answer: "أُخْتِي مِتْجَوِّزَة." },
                 ],
                 reorderSentences: [
-                    { prompt: "Build: I have one brother and two sisters.", arabeezy: "3indi akh w ukhtein.", words: ["عِنْدِي", "أَخ", "وَأُخْتِين."], answer: "عِنْدِي أَخ وَأُخْتِين." },
-                    { prompt: "Build: My sister is younger than me.", arabeezy: "ukhti asghar minni.", words: ["أُخْتِي", "أَصْغَر", "مِنِّي."], answer: "أُخْتِي أَصْغَر مِنِّي." },
+                    { prompt: "Build: I have one brother and two sisters.", arabeezy: "3indi akh w ukhtein.", words: ["أَخ","عِنْدِي",  "وَأُخْتِين."], answer: "عِنْدِي أَخ وَأُخْتِين." },
+                    { prompt: "Build: My sister is younger than me.", arabeezy: "ukhti asghar minni.", words: ["أَصْغَر","أُخْتِي",  "مِنِّي."], answer: "أُخْتِي أَصْغَر مِنِّي." },
                     { prompt: "Build the question: Who do you live with?", arabeezy: "ma3 meen saken?", words: ["مَع", "مِين", "سَاكِن؟"], answer: "مَع مِين سَاكِن؟" },
-                    { prompt: "Unit 1 review — build: Where are you from?", arabeezy: "inta min ween?", words: ["إِنْتَ", "مِن", "وِين؟"], answer: "إِنْتَ مِن وِين؟" },
+                    { prompt: "Unit 1 review — build: Where are you from?", arabeezy: "inta min ween?", words: ["إِنْتَ", "مِن", "وِين؟"], answer: " مِن وِين إِنْتَ؟" },
                     { prompt: "Put the words in order: My mother lives with my grandmother.", arabeezy: "immi sakneh ma3 sitti.", words: ["مَع", "إِمِّي", "سِتِّي.", "سَاكْنَة"], answer: "إِمِّي سَاكْنَة مَع سِتِّي." },
                     { prompt: "Put the words in order: I do not have brothers.", arabeezy: "ma 3indi ikhweh.", words: ["إِخْوَة.", "مَا", "عِنْدِي"], answer: "مَا عِنْدِي إِخْوَة." },
                 ],

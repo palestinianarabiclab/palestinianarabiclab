@@ -30,55 +30,60 @@ export const lesson = {
     vocabulary: {
         core: [
             {
+                id: "mwasalat",
+                ar: "مُوَاصَلات",
+                en: "transportation",
+                enArabeezy: "mwasalat",
+                hint: "Refers to public or general transport (buses, taxis, etc.).",
+                exampleAr: "فِيه مُوَاصَلات هُون؟",
+                exampleArabeezy: "feeh mwasalat hoon?",
+                exampleEn: "Is there transportation here?"
+            },
+            {
                 id: "mishwar",
                 ar: "مِشْوَار",
                 en: "errand / trip",
                 enArabeezy: "mishwar",
                 hint: "Very common daily word. I have an errand = عِنْدِي مِشْوَار.",
-                exampleAr: "عِنْدِي مِشْوَار بَعْد الغدا.",
-                exampleArabeezy: "3indi mishwar ba3d el-ghada.",
-                exampleEn: "I have an errand after lunch.",
-            },
-            {
-                id: "tareeq",
-                ar: "طَرِيق",
-                en: "road / way",
-                enArabeezy: "Taree2",
-                hint: "Useful in directions: وِين الطَّرِيق؟ الطَّرِيق زَحْمَة.",
-                exampleAr: "وِين الطَّرِيق؟",
-                exampleArabeezy: "wein el-Taree2?",
-                exampleEn: "Where is the road / way?",
-            },
-            {
-                id: "shari3",
-                ar: "شَارِع",
-                en: "street",
-                enArabeezy: "share3",
-                hint: "Plural: شَوَارِع (shawari3).",
-                exampleAr: "وِين الشَّارِع؟",
-                exampleArabeezy: "wein el-share3?",
-                exampleEn: "Where is the street?",
+                exampleAr: "عِنْدِي مِشْوَار بَعْد الضُّهُر، وَلَازِم أَلَاقِي مُوَاصَلات بِسُرْعَة عَشَان مَا أِتْأَخَّر.",
+                exampleArabeezy: "3indi mishwar ba3d el-Duhur, w lazim ala2i mwasalat b-sur3a 3ashan ma at2akhar.",
+                exampleEn: "I have an errand after noon, and I need to find transportation quickly so I don't get late.",
             },
             {
                 id: "sayyara",
                 ar: "سَيَّارَة",
                 en: "car",
                 enArabeezy: "sayyara",
-                hint: "Plural: سَيَّارَات (sayyarat). My car = سَيَّارْتِي (sayyarti).",
-                exampleAr: "أَبُوي عِنْدُه سَيَّارَة.",
-                exampleArabeezy: "abuy 3indo sayyara.",
-                exampleEn: "My father has a car.",
+                hint:
+                    "Plural: سَيَّارَات (cars). For ‘my car’: سَيَّارْتِي. Used for private cars and sometimes company cars.",
+                exampleAr: "أَخوي بيسوق سَيّارة الشُّرْكَة.",
+                exampleArabeezy: "akhwy bswq syara elshrka.",
+                exampleEn: "My brother drives the company car.",
             },
             {
+                id: "shari3",
+                ar: "طَرِيق/ شَارِع",
+                en: "street / road",
+                enArabeezy: "shari3",
+                hint:
+                    "Plural: شَوَارِع. شَارِع رَئِيسِي = main street; شَارِع ضَيِّق = narrow street.",
+                exampleAr: "الشَّوَارِع الْيَوْم مَلْيَانَة سَيَّارَات.",
+                exampleArabeezy: "elshwar3 elywm mlyana syarat.",
+                exampleEn: "The streets today are full of cars.",
+            },
+            
+            {
                 id: "taxi",
-                ar: "تَاكْسِي",
+                ar: " تاكسي",
                 en: "taxi",
                 enArabeezy: "taxi",
-                hint: "Common city transport. Plural: تَكَاسِي (takasi). بِالتَّاكْسِي means by taxi.",
-                exampleAr: "بَرُوح عَالشُّغُل بِالتَّاكْسِي.",
-                exampleArabeezy: "baroo7 3al-shughul bit-taxi.",
-                exampleEn: "I go to work by taxi.",
+                hint:
+                    "Very common word. Both spellings تَكْسِي / تاكسي are used. Plural: تَكَاسِي. Often yellow or white, used inside the city.",
+                exampleAr: "أَحْيانًا باخُد تاكسي لَمّا أكون مُسْتَعْجِل.",
+                exampleArabeezy: "a7yana bakhd taksy lma akwn mst3jl.",
+                exampleEn: "Sometimes I take a taxi when I’m in a hurry.",
             },
+
             {
                 id: "bas",
                 ar: "بَاص",
@@ -90,34 +95,36 @@ export const lesson = {
                 exampleEn: "Every day I go to work by bus.",
             },
             {
-                id: "mashi",
-                ar: "مَشِي",
-                en: "walking",
-                enArabeezy: "mashi",
-                hint: "As a verb: بَمْشِي = I walk.",
-                exampleAr: "بَرُوح عَالشُّغُل مَشِي.",
-                exampleArabeezy: "baroo7 3al-shughul mashi.",
-                exampleEn: "I go to work on foot.",
+                id: "qitar",
+                ar: "قِطار",
+                en: "train",
+                enArabeezy: "qitar",
+                hint: "Train. Used more for travel in countries that have trains.",
+                exampleAr: "رِكِبنا القِطار لَمّا كُنّا بِالأُرْدُن.",
+                exampleArabeezy: "rkbna elqtar lma kna belardn.",
+                exampleEn: "We took the train when we were in Jordan.",
             },
+
             {
-                id: "za7meh",
+                id: "z7meh",
                 ar: "زَحْمَة",
-                en: "traffic / crowded",
+                en: "traffic / crowd / traffic jam",
                 enArabeezy: "za7meh",
-                hint: "Works for traffic, streets, buses, and places.",
-                exampleAr: "الطَّرِيق اليَوم زَحْمَة.",
-                exampleArabeezy: "el-Taree2 el-yom za7meh.",
-                exampleEn: "The road is crowded today.",
+                hint: "Used a lot for traffic jam: فِي زَحْمَة فِي الشَّارِع.",
+                exampleAr: "تَأَخَّرْت عَلى الدَّرْس عَشَان فِي زَحْمَة.",
+                exampleArabeezy: "takhrt 3la eldrs 3shan fy z7ma.",
+                exampleEn: "I was late to the lesson because there was traffic.",
             },
             {
                 id: "ishara",
                 ar: "إِشَارَة",
-                en: "traffic light",
+                en: "traffic light (short form)",
                 enArabeezy: "ishara",
-                hint: "Usually means traffic light in road context.",
-                exampleAr: "فِي زَحْمَة عِنْد الإِشَارَة.",
-                exampleArabeezy: "fi za7meh 3ind el-ishara.",
-                exampleEn: "There is traffic at the traffic light.",
+                hint:
+                    "إِشَارَة ضَوْ = traffic light. People just say: عِنْد الإِشَارَة.",
+                exampleAr: "التَّاكْسِي وِقِف عَالإِشَارَة الحَمْرَا.",
+                exampleArabeezy: "eltaksy wqf 3alishara el7mra.",
+                exampleEn: "The taxi stopped at the red light.",
             },
             {
                 id: "mawqaf",
@@ -125,9 +132,9 @@ export const lesson = {
                 en: "stop / station",
                 enArabeezy: "mawqaf",
                 hint: "Bus/taxi stop. Bus stop = مَوْقِف بَاصَات.",
-                exampleAr: "البَاص عِنْد المَوْقِف.",
-                exampleArabeezy: "el-bas 3ind el-mawqaf.",
-                exampleEn: "The bus is at the stop.",
+                exampleAr: "مَوقِف الباصات قُدّام الجامْعَة.",
+                exampleArabeezy: "mwqf elbasat qdam eljam3a.",
+                exampleEn: "The bus stop is in front of the university.",
             },
             {
                 id: "qareeb_ba3eed",
@@ -150,14 +157,36 @@ export const lesson = {
                 exampleEn: "The taxi is expensive today.",
             },
             {
-                id: "ojra",
-                ar: "الأُجْرَة",
-                en: "fare",
-                enArabeezy: "el-ojra",
+                id: "2addesh_el2ijra",
+                ar: "قَدّيش الأُجْرَة؟",
+                en: "How much is the fare?",
+                enArabeezy: "2addesh_el2ijreh",
                 hint: "Use with taxis/buses. Ask: قَدِّيش الأُجْرَة؟ You may also hear: كَمْ سِعِر المِشْوَار؟",
-                exampleAr: "قَدِّيش أُجْرَة التَّاكْسِي؟",
-                exampleArabeezy: "addeesh ojret et-taxi?",
-                exampleEn: "How much is the taxi fare?",
+                exampleAr: "لما تاخد تاكسي، اسأل السواق: قديش الأجرة؟",
+                exampleArabeezy: "lma takhd taksy, asal elswaq: qdysh elajra?",
+                exampleEn: "When you take a taxi, ask the driver: How much is the fare?",
+            },
+            {
+                id: "bdaTTi3",
+                ar: "بَقَطِّع الشَّارِع",
+                en: "I cross the street",
+                enArabeezy: "ba2aTTi3_eshshari3",
+                hint:
+                    "Chunk: بَقَطِّع الشَّارِع = I cross the street. Used a lot with traffic lights.",
+                exampleAr: "بقطع الشارع لما الإشارة تكون خضرا.",
+                exampleArabeezy: "bqt3 elshar3 lma elishara tkwn khdra.",
+                exampleEn: "I cross the street when the light is green.",
+            },
+            {
+                id: "keef_arooh",
+                ar: "كِيف بَقْدَر أَرُوح عَلَى...؟",
+                en: "How can I go to…?",
+                enArabeezy: "keef_ba2dar_aroo7_3ala",
+                hint:
+                    "Chunk for asking directions: كِيف بَقْدَر أَرُوح عَلَى الْجَامْعَة؟",
+                exampleAr: "كِيف بَقْدَر أَرُوح عَلَى مَحَطَّة الباص",
+                exampleArabeezy: "kyf bqdr arw7 3la m7ta elbas",
+                exampleEn: "How can I go to the bus station?",
             },
             {
                 id: "baroo7",
@@ -185,9 +214,19 @@ export const lesson = {
                 en: "I get off / go down",
                 enArabeezy: "banzel",
                 hint: "Transport: I get off here = بَنْزَل هِنَا.",
-                exampleAr: "بَنْزَل عِنْد المَوْقِف.",
-                exampleArabeezy: "banzel 3ind el-mawqaf.",
-                exampleEn: "I get off at the stop.",
+                exampleAr: "بَنْزِل قُدَّام مَدْخَل الْجَامْعَة.",
+                exampleArabeezy: "bnzl qdam mdkhl eljam3a.",
+                exampleEn: "I get off in front of the university entrance.",
+            },
+            {
+                id: "bsoog",
+                ar: "بَسُوق",
+                en: "I drive",
+                enArabeezy: "basooq",
+                hint: "From سَاق = to drive. بَسُوق سَيَّارَة / بَسُوق بُصّ.",
+                exampleAr: "أَبُوي بَسُوق سَيَّارَة صْغِيرَة.",
+                exampleArabeezy: "abwy bswq syara sghyra.",
+                exampleEn: "My father drives a small car.",
             },
             {
                 id: "bamshi",
@@ -498,18 +537,97 @@ export const lesson = {
         enabled: true,
         every: 5,
         items: [
-            { id: "trans_mc1", type: "match", prompt: "Choose the Gaza Palestinian Arabic word for: taxi.", options: ["تَاكْسِي", "سَيَّارَة", "شَارِع", "طَرِيق"], correct: "تَاكْسِي" },
-            { id: "trans_mc2", type: "complete", prompt: "Complete the Arabic sentence for: There is traffic in the street.\nفِي ___ بِالشَّارِع.", options: ["زَحْمَة", "إِشَارَة", "مَوْقِف", "بَاص"], correct: "زَحْمَة" },
-            { id: "trans_mc3", type: "complete", prompt: "Complete the Arabic sentence for: The taxi is expensive.\nالتَّاكْسِي ___.", options: ["غَالِي", "قَرِيب", "بَعِيد", "رْخِيص"], correct: "غَالِي" },
             {
-                id: "trans_mc4",
-                type: "reorder",
-                prompt: "Reorder the Arabic words to match: I wait for the bus at the stop.",
-                options: ["بَسْتَنَّى", "البَاص", "عِنْد", "المَوْقِف"],
-                correct: ["بَسْتَنَّى", "البَاص", "عِنْد", "المَوْقِف"],
+                "id": "trans_mc1",
+                "type": "choose",
+                "prompt": "Choose the Palestinian Arabic sentence for: Today the streets are full of cars.",
+                "options": [
+                    "الشَّوَارِع اليَوم مَلْيَانَة سَيَّارَات.",
+                    "الشَّوَارِع اليَوم فَاضْيَة مِش هَادْيَة.",
+                    "اليَوم مِش جَاي عَلَى بَالِي أَنَام.",
+                    "بَدِّي أَرُوح عَالشُّغُل بَكْرِي."
+                ],
+                "correct": "الشَّوَارِع اليَوم مَلْيَانَة سَيَّارَات."
             },
             {
-                id: "trans_mc5",
+                "id": "trans_mc2",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: We took the train when we were in Jordan.",
+                "options": [
+                    "كُنَّا",
+                    "القِطَار",
+                    "بِالأُرْدُن",
+                    "رِكِبْنَا",
+                    "لَمَّا"
+                ],
+                "correct": [
+                    "رِكِبْنَا",
+                    "القِطَار",
+                    "لَمَّا",
+                    "كُنَّا",
+                    "بِالأُرْدُن"
+                ]
+            },
+            {
+                "id": "trans_mc3",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: The taxi stopped at the red light.",
+                "options": [
+                    "الحَمْرَا",
+                    "وِقِف",
+                    "عَالإِشَارَة",
+                    "التَّاكْسِي"
+                ],
+                "correct": [
+                    "التَّاكْسِي",
+                    "وِقِف",
+                    "عَالإِشَارَة",
+                    "الحَمْرَا"
+                ]
+            },
+            {
+                "id": "trans_mc4",
+                "type": "choose",
+                "prompt": "Choose the Palestinian Arabic sentence for: My grandma's house is close, I go on foot.",
+                "options": [
+                    "بِيت سِتِّي قَرِيب، بَرُوح مَشِي.",
+                    "بِيت سِتِّي بَعِيد، بَرُوح بِالسَّيَّارَة.",
+                    "الشَّوَارِع اليَوم مَلْيَانَة سَيَّارَات.",
+                    "رِكِبْنَا القِطَار لَمَّا كُنَّا بِالأُرْدُن."
+                ],
+                "correct": "بِيت سِتِّي قَرِيب، بَرُوح مَشِي."
+            },
+            {
+                "id": "trans_mc4",
+                "type": "reorder",
+                "prompt": "Reorder the Arabic words to match: I get off in front of the university entrance.",
+                "options": [
+                    "الْجَامْعَة",
+                    "قُدَّام",
+                    "بَنْزِل",
+                    "مَدْخَل"
+                ],
+                "correct": [
+                    "بَنْزِل",
+                    "قُدَّام",
+                    "مَدْخَل",
+                    "الْجَامْعَة"
+                ]
+            },
+            {
+                "id": "trans_mc5",
+                "type": "complete",
+                "prompt": "Complete the Arabic sentence for: I arrive at class at nine o'clock.\n___ عَالدَّرْس السَّاعَة تِسْعَة.",
+                "options": [
+                    "بَوْصَل",
+                    "بَرْجَع",
+                    "بَطْلَع",
+                    "بَنَام"
+                ],
+                "correct": "بَوْصَل"
+            },
+            {
+                id: "trans_mc6",
                 type: "complete",
                 prompt: "Complete the Arabic request for: I get off here, please.\nبَنْزَل هِنَا، ___.",
                 options: ["لَوْ سَمَحْت", "دُغْرِي", "هُنَاك", "مِسْتَعْجِل"],
@@ -622,11 +740,11 @@ export const lesson = {
                     { prompt: "Use the correct preposition. Correct: المَوْقِف قَرِيب عَلَى البِيت.", arabeezy: "el-mawqif qareeb 3ala el-beit.", answer: "المَوْقِف قَرِيب مِن البِيت." },
                 ],
                 reorderSentences: [
-                    { prompt: "Build: I take the bus every day.", arabeezy: "barkab el-bas kul yom.", words: ["بَرْكَب", "البَاص", "كُلّ يَوم."], answer: "بَرْكَب البَاص كُلّ يَوم." },
-                    { prompt: "Build: I get off here, please.", arabeezy: "banzal hena, law sama7t.", words: ["بَنْزَل", "هِنَا،", "لَوْ سَمَحْت."], answer: "بَنْزَل هِنَا، لَوْ سَمَحْت." },
-                    { prompt: "Build: Go straight, then turn right.", arabeezy: "roo7 dughri, ba3deen lif yameen.", words: ["رُوح دُغْرِي،", "بَعْدِين", "لِف يَمِين."], answer: "رُوح دُغْرِي، بَعْدِين لِف يَمِين." },
-                    { prompt: "Review: After class I want falafel.", arabeezy: "ba3d ed-dars baddi falafel.", words: ["بَعْد الدَّرْس", "بَدِّي", "فَلَافِل."], answer: "بَعْد الدَّرْس بَدِّي فَلَافِل." },
-                    { prompt: "Put the words in order: The bus stop is near the house.", arabeezy: "mawqif el-basat qareeb min el-beit.", words: ["مِن البِيت.", "مَوْقِف البَاصَات", "قَرِيب"], answer: "مَوْقِف البَاصَات قَرِيب مِن البِيت." },
+                    { prompt: "Build: I take the bus every day.", arabeezy: "barkab el-bas kul yom.", words: ["البَاص","بَرْكَب",  "كُلّ يَوم."], answer: "بَرْكَب البَاص كُلّ يَوم." },
+                    { prompt: "Build: I get off here, please.", arabeezy: "banzal hena, law sama7t.", words: ["بَنْزَل", "لَوْ سَمَحْت." ,"هِنَا،"], answer: "بَنْزَل هِنَا، لَوْ سَمَحْت." },
+                    { prompt: "Build: Go straight, then turn right.", arabeezy: "roo7 dughri, ba3deen lif yameen.", words: ["بَعْدِين","رُوح دُغْرِي،",  "لِف يَمِين."], answer: "رُوح دُغْرِي، بَعْدِين لِف يَمِين." },
+                    { prompt: "Review: After class I want falafel.", arabeezy: "ba3d ed-dars baddi falafel.", words: [ "بَدِّي","بَعْد الدَّرْس", "فَلَافِل."], answer: "بَعْد الدَّرْس بَدِّي فَلَافِل." },
+                    { prompt: "Put the words in order: The bus stop is near the house.", arabeezy: "mawqif el-basat qareeb min el-beit.", words: ["مَوْقِف البَاصَات","مِن البِيت.",  "قَرِيب"], answer: "مَوْقِف البَاصَات قَرِيب مِن البِيت." },
                     { prompt: "Put the words in order: I was late because of traffic.", arabeezy: "it2akhkhart 3ashan ez-za7meh.", words: ["عَشَان", "اِتْأَخَّرْت", "الزَّحْمَة."], answer: "اِتْأَخَّرْت عَشَان الزَّحْمَة." },
                 ],
             },
