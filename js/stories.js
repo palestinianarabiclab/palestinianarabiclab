@@ -1689,6 +1689,9 @@ let pages = [], activeStoryId='miftah-al-bayt', activeStory=storyCatalog[activeS
 let fontSize = Number(localStorage.getItem('palStoryFont') || 1.3);
 
 function escapeRegExp(value){ return value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function escapeHtml(value){
+  return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 function parseStory(markdown){
   return markdown.split(/^---\s*$/m).map((part,index) => {
     const lines = part.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
@@ -1761,6 +1764,136 @@ async function openStory(storyId){
     if(button){button.disabled=true;button.textContent='Story unavailable';}
   }
 }
+function printStory(){
+  if(!pages.length) return;
+  const story = storyCatalog[activeStoryId] || {};
+  const title = escapeHtml(story.title||'Story');
+
+  const tocItems = pages.map((page,index)=>{
+    const partTitle = page.title ? ' – '+escapeHtml(page.title) : '';
+    return `<li><a href="#part-${index}">الجزء ${index+1}${partTitle}</a></li>`;
+  }).join('');
+
+  const partsHtml = pages.map((page,index)=>{
+    const arabic = (page.paragraphs||[]).map(p=>`<p dir="rtl" lang="ar">${escapeHtml(p)}</p>`).join('');
+    const translation = page.translation
+      ? `<div class="print-translation"><h2 class="print-tr-title">الترجمة إلى الإنجليزية</h2><div class="print-tr-body">${page.translation.split(/\n\n+/).filter(Boolean).map(p=>`<p>${escapeHtml(p)}</p>`).join('')}</div></div>`
+      : '';
+    return `
+      <section class="print-part" id="part-${index}">
+        <h2 class="print-part-title">الجزء ${index+1}${page.title ? ' – '+escapeHtml(page.title) : ''}</h2>
+        <hr class="print-divider"/>
+        ${arabic}
+        ${translation}
+      </section>`;
+  }).join('');
+
+  const html = `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${title}</title><style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 18mm;
+      @bottom-center {
+        content: "صفحة " counter(page) " من " counter(pages);
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: 8pt;
+        color: #8a7c6b;
+      }
+      @top-right {
+        content: "Palestinian Arabic Lab";
+        font-family: Georgia, serif;
+        font-size: 8.5pt;
+        color: #b45436;
+        letter-spacing: 0.1em;
+      }
+    }
+    @page :first { margin: 0; }
+    @page :first { @top-right { content: none; } @bottom-center { content: none; } }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Naskh Arabic','Amiri','Scheherazade New','Segoe UI',Tahoma,sans-serif;
+      font-size: 11.5pt; line-height: 2.1; color: #18231d; background: #fff;
+      direction: rtl; text-align: justify;
+    }
+    /* Cover */
+    .cover { height: 297mm; page-break-after: always; background: #f2eee5; border: 14px double #173a2b; padding: 38mm 26mm; box-sizing: border-box; }
+    .cover-inner { border: 5px solid #b45436; padding: 30mm 22mm; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-sizing: border-box; }
+    .cover .kicker { font-family: Georgia, serif; font-size: 14px; letter-spacing: 0.45em; text-transform: uppercase; color: #b45436; margin-bottom: 16mm; }
+    .cover h1 { font-family: Georgia, serif; font-size: 44px; line-height: 1.3; color: #17211c; margin: 0 0 10mm; }
+    .cover .ornament { width: 70px; height: 1px; background: linear-gradient(to right, #b45436 30%, #e0dbd1, transparent 70%); margin: 9mm auto; }
+    .cover .brand { font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 16px; color: #68726c; margin-top: 7mm; letter-spacing: 0.05em; }
+    .cover .note { font-size: 10.5px; color: #8a7c6b; margin-top: 16mm; line-height: 1.9; max-width: 130mm; }
+    /* TOC */
+    .toc { page-break-after: always; padding: 12mm 18mm 0; }
+    .toc h1 { font-family: Georgia, serif; font-size: 30px; color: #17211c; border-bottom: 3px double #b45436; padding-bottom: 7mm; margin-bottom: 11mm; text-align: center; }
+    .toc ol { list-style: none; padding: 0; margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 13.5px; color: #18231d; }
+    .toc li { margin: 0 0 5.5mm; padding-left: 12mm; border-left: 2px solid #e0dbd1; position: relative; }
+    .toc li::before { content: ""; position: absolute; left: 0; top: 35%; width: 3px; height: 60%; background: #b45436; }
+    .toc a { text-decoration: none; color: inherit; display: block; }
+    .toc a:hover { color: #b45436; }
+    /* Parts */
+    .print-part { page-break-before: always; page-break-inside: auto; padding-top: 8mm; }
+    .print-part:first-of-type { page-break-before: auto; }
+    .print-part-title { font-family: Georgia, serif; font-size: 18px; color: #17211c; margin: 0 0 5mm; text-align: right; border-bottom: 1px solid #ded7ca; padding-bottom: 3mm; }
+    .print-divider { border: none; border-top: 1px solid #e0dbd1; margin: 4mm 0 8mm; width: 55%; float: right; }
+    p { margin: 0 0 1.15em; text-align: justify; }
+    .print-translation { margin-top: 9mm; padding-top: 6mm; border-top: 1px solid #d9d1c4; direction: ltr; text-align: left; }
+    .print-translation .print-tr-title { font-family: Georgia, serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #b45436; margin: 0 0 4mm; border: none; padding: 0; text-align: left; }
+    .print-translation .print-tr-body { font-family: Georgia, serif; font-size: 10.5pt; line-height: 1.95; color: #3d443f; }
+    .print-translation .print-tr-body p { margin: 0 0 1.05em; }
+    /* Colophon */
+    .colophon { page-break-before: always; padding: 22mm 22mm 0; text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 10px; color: #68726c; line-height: 2; }
+    .colophon .line { width: 80px; height: 1px; background: #b45436; margin: 7mm auto; }
+    @media print {
+      body { margin: 0; }
+      .print-part { page-break-before: always; }
+      .print-part:first-of-type { page-break-before: auto; }
+      p { orphans: 3; widows: 3; }
+      .cover { page-break-after: always; }
+      .toc { page-break-after: always; }
+      .colophon { page-break-before: always; }
+    }
+  </style></head><body>
+    <!-- Cover -->
+    <div class="cover">
+      <div class="cover-inner">
+        <div class="kicker">قصص فلسطينية للتعلم</div>
+        <h1>${title}</h1>
+        <div class="ornament"></div>
+        <div class="brand">Palestinian Arabic Lab</div>
+        <div class="note">مجموعة من القصص القصيرة لتعلم اللهجة الفلسطينية. هذه الطبعة مُحضّرة للطباعة أو الحفظ كملف PDF من متصفحك.</div>
+      </div>
+    </div>
+
+    <!-- Table of contents -->
+    <div class="toc">
+      <h1>محتويات الكتاب</h1>
+      <ol>${tocItems}</ol>
+    </div>
+
+    <!-- Story parts -->
+    ${partsHtml}
+
+    <!-- Colophon -->
+    <div class="colophon">
+      <div class="line"></div>
+      <p>مُولّد من <strong>Palestinian Arabic Lab</strong>.</p>
+      <p>يمكنك طباعة هذه الصفحة أو حفظها كملف PDF من خلال قائمة الطباعة في متصفحك.</p>
+      <p>جميع الحقوق محفوظة &copy; Palestinian Arabic Lab</p>
+    </div>
+  </body></html>`;
+
+  const win = window.open('', '_blank');
+  if(!win){
+    alert('الرجاء السماح بالنوافذ المنبثقة لتمكين الطباعة.');
+    return;
+  }
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+  win.focus();
+  setTimeout(()=>{ try{ win.print(); } catch(e){} }, 350);
+}
 function showPopover(button){
   els.popoverArabizi.closest('small').hidden=false;
   els.wordPopover.classList.remove('word-popover--clause');
@@ -1796,4 +1929,5 @@ document.addEventListener('click',e=>{if(!els.wordPopover.hidden&&!e.target.clos
 els.fontUp.addEventListener('click',()=>{fontSize=Math.min(1.75,fontSize+.1);document.documentElement.style.setProperty('--reader-size',`${fontSize}rem`);localStorage.setItem('palStoryFont',fontSize)});
 els.fontDown.addEventListener('click',()=>{fontSize=Math.max(1,fontSize-.1);document.documentElement.style.setProperty('--reader-size',`${fontSize}rem`);localStorage.setItem('palStoryFont',fontSize)});
 els.themeToggle.addEventListener('click',()=>{document.body.classList.toggle('night');localStorage.setItem('palStoryNight',document.body.classList.contains('night')?'1':'0')});
+els.printStory.addEventListener('click', printStory);
 if(localStorage.getItem('palStoryNight')==='1')document.body.classList.add('night');

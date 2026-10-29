@@ -75,6 +75,16 @@
 .word-popover button { display:none; }
 .word-popover--clause { max-width:min(360px,calc(100vw - 24px)); padding:12px 16px; }
 .word-popover--clause > span { margin:0; font-size:.9rem; line-height:1.45; font-weight:650; }
+@media print {
+  .story-nav, .reader-topbar, .reader-progress, .reader-pager, .word-popover, #translationToggle { display:none !important; }
+  .stories-page { background:#fff; }
+  .reader { background:#fff; }
+  .reading-sheet { box-shadow:none; border:none; width:100%; max-width:none; margin:0; padding:18px; }
+  .reading-header { border-bottom:1px solid #ded7ca; }
+  .arabic-text { font-size:12pt; line-height:2.1; }
+  .arabic-text p { orphans:3; widows:3; }
+  body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
 .stories-page.night { --story-ink:#eee9df; --story-muted:#b8b3aa; --story-paper:#1f2421; --story-bg:#141816; }
 .night .story-nav,.night .reader-topbar,.night .reader-pager button,.night .reader-pager select,.night .word-popover { background:#202622; color:#eee9df; border-color:#3a423d; }
 .night .story-brand,.night .story-nav__back,.night .reader-icon { color:#eee9df; }
